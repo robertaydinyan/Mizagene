@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace app\modules\models;
 
 use Yii;
 use yii\base\Model;
@@ -28,8 +28,6 @@ class LoginFormAdmin extends Model
         return [
             // username and password are both required
             [['username', 'password'], 'required'],
-            // rememberMe must be a boolean value
-            ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
         ];
@@ -46,7 +44,6 @@ class LoginFormAdmin extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, 'Incorrect username or password.');
             }
@@ -60,7 +57,7 @@ class LoginFormAdmin extends Model
     public function login()
     {
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
+            return Yii::$app->admin->login($this->getUser(), 3600*24*30);
         }
         return false;
     }
@@ -68,7 +65,7 @@ class LoginFormAdmin extends Model
     /**
      * Finds user by [[username]]
      *
-     * @return User|null
+     * @return Admin|null
      */
     public function getUser()
     {

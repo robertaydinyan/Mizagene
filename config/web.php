@@ -21,7 +21,20 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            'enableAutoLogin' => false,
+            'loginUrl' => ['site/login'],
+            'identityCookie' => [
+                'name' => '_panelUser',
+            ]
+        ],
+        'admin' => [
+            'class' => 'yii\web\User',
+            'identityClass' => 'app\modules\models\Admin',
+            'enableAutoLogin' => false,
+            'loginUrl' => ['admin/login'],
+            'identityCookie' => [
+                'name' => '_panelAdmin',
+            ]
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -48,10 +61,21 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'admin' => 'Admin/default/',
+                'admin/<_controller:\w*>' => 'Admin/default/<_controller>',
+                'admin/<_controller:\w*>/<_action:\w*>' => 'Admin/<_controller>/<_action>'
             ],
+        ],
+        'session' => [
+            'class' => 'yii\web\Session',
         ],
     ],
     'params' => $params,
+    'modules' => [
+        'Admin' => [
+            'class' => 'app\modules\admin',
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {

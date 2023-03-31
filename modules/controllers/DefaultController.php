@@ -1,0 +1,37 @@
+<?php
+
+namespace app\modules\controllers;
+
+use app\modules\models\admin;
+use app\modules\models\LoginFormAdmin;
+use Yii;
+use yii\web\Controller;
+
+/**
+ * Default controller for the `Admin` module
+ */
+class DefaultController extends Controller
+{
+    /**
+     * Renders the index view for the module
+     * @return string
+     */
+    public function actionIndex() {
+        return $this->render('index');
+    }
+
+    public function actionLogin() {
+        if (!Yii::$app->admin->isGuest) {
+            return $this->redirect('/admin/index');
+        }
+
+        $model = new LoginFormAdmin();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->redirect('/admin/index');
+        }
+
+        return $this->render('login', [
+            'model' => $model
+        ]);
+    }
+}
