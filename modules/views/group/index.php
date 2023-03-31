@@ -1,49 +1,46 @@
 <?php
 
-use app\modules\models\Admin;
+use app\modules\models\Group;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var app\modules\models\AdminSearch $searchModel */
+/** @var app\modules\models\GroupSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Admins';
+$this->title = 'Groups';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="admin-index">
+<div class="group-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Admin', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Group', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
         'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'id',
+            'name',
             [
-                'label' => 'id',
+                'label' => 'items',
+                'format' => 'html',
                 'value' => function($model) {
-                    return $model->id;
+                    return join('<br>', $model->getItems());
                 }
             ],
-            'email:email',
-            'username',
-            [
-                'label' => 'Role',
-                'value' => function($model) {
-                    return $model->getRole();
-                }
-            ],
-            'created_at',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Admin $model, $key, $index, $column) {
+                'urlCreator' => function ($action, Group $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],

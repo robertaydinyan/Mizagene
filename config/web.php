@@ -30,8 +30,8 @@ $config = [
         'admin' => [
             'class' => 'yii\web\User',
             'identityClass' => 'app\modules\models\Admin',
-            'enableAutoLogin' => false,
-            'loginUrl' => ['admin/login'],
+            'enableAutoLogin' => true,
+            'loginUrl' => ['/admin/login'],
             'identityCookie' => [
                 'name' => '_panelAdmin',
             ]
@@ -63,7 +63,7 @@ $config = [
             'rules' => [
                 'admin' => 'Admin/default/',
                 'admin/<_controller:\w*>' => 'Admin/default/<_controller>',
-                'admin/<_controller:\w*>/<_action:\w*>' => 'Admin/<_controller>/<_action>'
+                'admin/<_controller:\w*>/<_action:\w*>' => 'Admin/<_controller>/<_action>',
             ],
         ],
         'session' => [

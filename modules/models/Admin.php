@@ -6,11 +6,15 @@ use Yii;
 use yii\db\ActiveRecord;
 
 class Admin extends ActiveRecord implements \yii\web\IdentityInterface {
-    public $id;
-    public $username;
     public $password;
     public $authKey;
     public $accessToken;
+    static $ROLES = array(
+        1 => 'Admin',
+        2 => 'Professor',
+        3 => 'Psychologist',
+        4 => 'Translator',
+    );
 
     public static function tableName() {
         return 'admin';
@@ -30,17 +34,29 @@ class Admin extends ActiveRecord implements \yii\web\IdentityInterface {
 
         return parent::beforeSave($insert);
     }
+    public function rules()
+    {
+        return [
+            [['role'], 'integer'],
+            [['created_at'], 'safe'],
+            [['email', 'username', 'password_hash', 'auth_key', 'accessToken'], 'string', 'max' => 255],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels() {
+    public function attributeLabels()
+    {
         return [
-            'id' => 'id',
-            'email' => 'email',
-            'username' => 'username',
-            'role' => 'role',
-            'password_hash' => 'password_hash',
-            'created_at' => 'created_at',
+            'id' => 'ID',
+            'email' => 'Email',
+            'username' => 'Username',
+            'role' => 'Role',
+            'password_hash' => 'Password Hash',
+            'created_at' => 'Created At',
+            'auth_key' => 'Auth Key',
+            'accessToken' => 'Access Token',
         ];
     }
 
@@ -51,7 +67,9 @@ class Admin extends ActiveRecord implements \yii\web\IdentityInterface {
         return static::findOne(['id' => $id]);
     }
 
-
+    public function getRole() {
+        return $this->role ? self::$ROLES[$this->role] : '';
+    }
 
     /**
      * {@inheritdoc}
@@ -106,7 +124,6 @@ class Admin extends ActiveRecord implements \yii\web\IdentityInterface {
      * @throws \yii\base\Exception
      */
     public function setPassword($password) {
-
         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
 

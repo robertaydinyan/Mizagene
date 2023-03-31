@@ -83,4 +83,13 @@ a.desc:after {
     outline: none;
 }
 
+.items-container {
+    min-height: 100px;
+}
 
+.item-template {
+    display: none;
+}
+.item {
+    user-select: none;
+}

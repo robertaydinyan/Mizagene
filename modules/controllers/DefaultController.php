@@ -21,6 +21,12 @@ class DefaultController extends Controller
     }
 
     public function actionLogin() {
+//        $a = new Admin();
+//        $a->role = 1;
+//        $a->email = "admin";
+//        $a->username = "admin";
+//        $a->password_hash = "admin";
+//        $a->save();
         if (!Yii::$app->admin->isGuest) {
             return $this->redirect('/admin/index');
         }

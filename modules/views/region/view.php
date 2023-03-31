@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var app\modules\models\Admin $model */
+/** @var app\modules\models\Region $model */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Admins', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Regions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="admin-view">
+<div class="region-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,10 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'email:email',
-            'username',
-            'role',
-            'created_at',
+            'name',
         ],
     ]) ?>
 
