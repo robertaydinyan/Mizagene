@@ -11,5 +11,5 @@
 //		password
 //		phone number
 //		How do you want to use the posibilities of the technology?
-//    radio	Via API
-//			radio	Via manual information input to the system
+//      radio	Via API
+//	    radio	Via manual information input to the system
