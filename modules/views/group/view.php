@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var app\modules\models\Admin $model */
+/** @var app\modules\models\Group $model */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Admins', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Groups', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="admin-view">
+<div class="group-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,10 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'email:email',
-            'username',
-            'role',
-            'created_at',
+            'name',
+            [
+                'label' => 'items',
+                'format' => 'html',
+                'value' => function($model) {
+                    return join('<br>', $model->getItems());
+                }
+            ]
         ],
     ]) ?>
 

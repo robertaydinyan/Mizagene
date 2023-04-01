@@ -37,7 +37,10 @@ AppAsset::register($this);
                 echo Nav::widget([
                     'options' => ['class' => 'navbar-nav'],
                     'items' => [
-                        ['label' => 'Users', 'url' => ['/admin/users/']],
+                        ['label' => 'Users', 'url' => ['/admin/admin/index']],
+                        ['label' => 'Items', 'url' => ['/admin/items/index']],
+                        ['label' => 'Region', 'url' => ['/admin/region/index']],
+                        ['label' => 'Group', 'url' => ['/admin/group/index']],
                     ]
                 ]);
                 NavBar::end();
