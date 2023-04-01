@@ -5,6 +5,7 @@ use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
 /** @var app\modules\models\Items $model */
+/** @var app\modules\models\Language[] $languages */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Items', 'url' => ['index']];
@@ -25,7 +26,24 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+    <?php
+    $custom_columns = array();
+    if ($languages) {
+        foreach ($languages as $language) {
+            $custom_columns[] = [
+                'label' => 'Title ' . $language->language,
+                'value' => function ($model) use ($language) {
+                    return $model->getTitle($language->id);
+                }
+            ];
+            $custom_columns[] = [
+                'label' => 'Description ' . $language->language,
+                'value' => function ($model) use ($language) {
+                    return $model->getDescription($language->id);
+                }
+            ];
+        }
+    } ?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -33,14 +51,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'e2e_item_id',
             'item_id',
             'i_type',
+            ...$custom_columns,
             'i_usg_type',
             'i_comb_type_id',
-            'e2e_item_ru',
-            'e2e_i_description_ru',
-            'e2e_item_en',
-            'e2e_i_description_en',
-            'e2e_item_ir',
-            'e2e_i_description_ir',
             'i_result_sector1_colorid',
             'i_result_sector2_colorid',
             'i_result_sector3_colorid',

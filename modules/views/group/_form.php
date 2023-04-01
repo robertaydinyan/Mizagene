@@ -36,7 +36,7 @@ use yii\widgets\ActiveForm;
                 <?php if ($items) {
                     foreach ($items as $item) {
                         if (!$model->items || !in_array($item->id, json_decode($model->items))) {
-                            echo sprintf('<option value="%s">%s</option>', $item->id, $item->e2e_item_en);
+                            echo sprintf('<option value="%s">%s</option>', $item->id, $item->getTitle(1));
                         }
                     }
                 } ?>

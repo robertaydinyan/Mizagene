@@ -35,6 +35,8 @@ class m230330_203144_create_items extends Migration
             'i_result_sector8_colorid' => $this->integer()->null(),
             'i_result_sector9_colorid' => $this->integer()->null(),
             'i_result_sector10_colorid' => $this->integer()->null(),
+            'source' => $this->integer()->defaultValue(0),
+            'stage' => $this->integer()->defaultValue(0),
 
         ]);
     }

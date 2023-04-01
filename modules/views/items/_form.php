@@ -6,6 +6,7 @@ use yii\widgets\ActiveForm;
 /** @var yii\web\View $this */
 /** @var app\modules\models\Items $model */
 /** @var yii\widgets\ActiveForm $form */
+/** @var app\modules\models\Language[] $languages */
 ?>
 
 <div class="items-form">
@@ -22,17 +23,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'i_comb_type_id')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'e2e_item_ru')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'e2e_i_description_ru')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'e2e_item_en')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'e2e_i_description_en')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'e2e_item_ir')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'e2e_i_description_ir')->textInput(['maxlength' => true]) ?>
+    <?php if ($languages) {
+        foreach ($languages as $language) {
+            echo $form->field($model, 'title[' . $language->id . ']')->textInput([
+                'maxlength' => true,
+                'value' => $model->getTitle($language->id),
+            ])->label('Title ' . $language->language);
+            echo $form->field($model, 'description[' . $language->id . ']')->textInput([
+                'maxlength' => true,
+                'value' => $model->getDescription($language->id),
+            ])->label('Description ' . $language->language);
+        }
+    } ?>
 
     <?= $form->field($model, 'i_result_sector1_colorid')->textInput() ?>
 

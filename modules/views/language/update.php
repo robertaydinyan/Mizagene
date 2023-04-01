@@ -3,21 +3,19 @@
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var app\modules\models\Items $model */
-/** @var app\modules\models\Language[] $languages */
+/** @var app\modules\models\Language $model */
 
-$this->title = 'Update Items: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Items', 'url' => ['index']];
+$this->title = 'Update Language: ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Languages', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="items-update">
+<div class="language-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
-        'languages' => $languages
     ]) ?>
 
 </div>

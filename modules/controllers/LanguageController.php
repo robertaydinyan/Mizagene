@@ -2,19 +2,16 @@
 
 namespace app\modules\controllers;
 
-use app\modules\models\Items;
-use app\modules\models\ItemsSearch;
-use app\modules\models\ItemTitle;
 use app\modules\models\Language;
-use yii\rbac\Item;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ItemsController implements the CRUD actions for Items model.
+ * LanguageController implements the CRUD actions for Language model.
  */
-class ItemsController extends Controller
+class LanguageController extends Controller
 {
     /**
      * @inheritDoc
@@ -35,65 +32,68 @@ class ItemsController extends Controller
     }
 
     /**
-     * Lists all Items models.
+     * Lists all Language models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new ItemsSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-        $dataProviderMigration = $searchModel->search($this->request->queryParams, 1);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Language::find(),
+            /*
+            'pagination' => [
+                'pageSize' => 50
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC,
+                ]
+            ],
+            */
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'dataProviderMigration' => $dataProviderMigration,
         ]);
     }
 
     /**
-     * Displays a single Items model.
+     * Displays a single Language model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        $languages = Language::find()->all();
-
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'languages' => $languages
         ]);
     }
 
     /**
-     * Creates a new Items model.
+     * Creates a new Language model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Items();
+        $model = new Language();
 
         if ($this->request->isPost) {
-            if (Items::saveData($this->request->post(), $model)) {
+            if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
         }
 
-        $languages = Language::find()->all();
         return $this->render('create', [
             'model' => $model,
-            'languages' => $languages
         ]);
     }
 
     /**
-     * Updates an existing Items model.
+     * Updates an existing Language model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,19 +103,17 @@ class ItemsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && Items::saveData($this->request->post(), $model)) {
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        $languages = Language::find()->all();
         return $this->render('update', [
             'model' => $model,
-            'languages' => $languages
         ]);
     }
 
     /**
-     * Deletes an existing Items model.
+     * Deletes an existing Language model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -129,15 +127,15 @@ class ItemsController extends Controller
     }
 
     /**
-     * Finds the Items model based on its primary key value.
+     * Finds the Language model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Items the loaded model
+     * @return Language the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Items::findOne(['id' => $id])) !== null) {
+        if (($model = Language::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

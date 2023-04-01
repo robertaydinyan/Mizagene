@@ -10,7 +10,7 @@ $(document).ready(function() {
     });
     itemEvents();
     function itemEvents() {
-        $('.item-disabled').off().draggable();
+        $('.item-disabled').draggable();
         $('.items-container').sortable().droppable({
             drop: function(event, ui) {
                 if (ui.draggable.hasClass('item-disabled')) {

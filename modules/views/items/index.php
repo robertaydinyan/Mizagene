@@ -9,6 +9,7 @@ use yii\grid\GridView;
 /** @var yii\web\View $this */
 /** @var app\modules\models\ItemsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
+/** @var yii\data\ActiveDataProvider $dataProviderMigration */
 
 $this->title = 'Items';
 $this->params['breadcrumbs'][] = $this->title;
@@ -27,30 +28,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'id',
-            'e2e_item_id',
             'item_id',
-            'i_type',
-            'i_usg_type',
-            //'i_comb_type_id',
-            //'e2e_item_ru',
-            //'e2e_i_description_ru',
-            //'e2e_item_en',
-            //'e2e_i_description_en',
-            //'e2e_item_ir',
-            //'e2e_i_description_ir',
-            //'i_result_sector1_colorid',
-            //'i_result_sector2_colorid',
-            //'i_result_sector3_colorid',
-            //'i_result_sector4_colorid',
-            //'i_result_sector5_colorid',
-            //'i_result_sector6_colorid',
-            //'i_result_sector7_colorid',
-            //'i_result_sector8_colorid',
-            //'i_result_sector9_colorid',
-            //'i_result_sector10_colorid',
+            [
+                'label' => 'Title Russian',
+                'value' => function($model) {
+                    return $model->getTitle(1);
+                }
+            ],
+            [
+                'label' => 'Title English',
+                'value' => function($model) {
+                    return $model->getTitle(2);
+                }
+            ],
+            'stage',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Items $model, $key, $index, $column) {
@@ -60,5 +52,32 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
-
+    <h1><?= Html::encode($this->title . ' (migrated)') ?></h1>
+    <?= GridView::widget([
+        'dataProvider' => $dataProviderMigration,
+        'filterModel' => $searchModel,
+        'columns' => [
+            'id',
+            'item_id',
+            [
+                'label' => 'Title Russian',
+                'value' => function($model) {
+                    return $model->getTitle(1);
+                }
+            ],
+            [
+                'label' => 'Title English',
+                'value' => function($model) {
+                    return $model->getTitle(2);
+                }
+            ],
+            'stage',
+            [
+                'class' => ActionColumn::className(),
+                'urlCreator' => function ($action, Items $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'id' => $model->id]);
+                }
+            ],
+        ],
+    ]); ?>
 </div>
