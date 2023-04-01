@@ -42,11 +42,7 @@ class m230330_203144_create_items extends Migration
     /**
      * {@inheritdoc}
      */
-    public function safeDown()
-    {
-        echo "m230330_203144_create_items cannot be reverted.\n";
-
-        return false;
+    public function safeDown(){
     }
 
     /*

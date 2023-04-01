@@ -28,11 +28,7 @@ class m230330_214513_create_admin extends Migration
      * {@inheritdoc}
      */
     public function safeDown()
-    {
-        echo "m230330_214513_create_admin cannot be reverted.\n";
-
-        return false;
-    }
+    {    }
 
     /*
     // Use up()/down() to run migration code without a transaction.
