@@ -40,11 +40,16 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'options' => ['class' => 'navbar-nav ms-auto'],
         'items' => [
             ['label' => 'Home', 'url' => [Yii::$app->homeUrl]],
-            ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest
+                    ? ['label' => 'Sign Up as Company', 'url' => ['/site/signup?t=company']]  : "",
+            Yii::$app->user->isGuest
+                ?   ['label' => 'Sign Up', 'url' => ['/site/signup']]:
+                    ['label' => 'About', 'url' => ['/site/about']],
+            Yii::$app->user->isGuest
                 ? ['label' => 'Login', 'url' => ['/site/login']]
-                : '<li class="nav-item">'
+                :
+                '<li class="nav-item">'
                     . Html::beginForm(['/site/logout'])
                     . Html::submitButton(
                         'Logout (' . Yii::$app->user->identity->username . ')',
@@ -52,10 +57,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                     )
                     . Html::endForm()
                     . '</li>',
-        Yii::$app->user->isGuest
-                ? ['label' => 'Sign Up', 'url' => ['/site/signup']]: "",
-        Yii::$app->user->isGuest
-                    ? ['label' => 'Sign Up as Company', 'url' => ['/site/signup?t=company']]  : ""
+
+
 //
         ]
     ]);
