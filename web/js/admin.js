@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    // groups events
     $('.items-list').change(function() {
         let option = $(this).find('option[value=' + $(this).val() + ']');
         let item_template = $('.item-template');
@@ -21,4 +22,29 @@ $(document).ready(function() {
             }
         });
     }
+
+    // items events
+    $('.send-to-translator').on('click', function () {
+        $.post('/admin/items/fixtranslation', {
+            'itemID': $(this).closest('tr').attr('data-key'),
+        }).done(() => {
+            $(this).remove();
+        });
+    });
+    $('.send-to-professor').on('click', function () {
+        $.post('/admin/items/fixcolors', {
+            'itemID': $(this).closest('tr').attr('data-key'),
+        }).done(() => {
+            $(this).remove();
+        });
+    });
+
+    $('.item-accept').on('click', function () {
+        $.post('/admin/items/accept', {
+            'itemID': $(this).closest('tr').attr('data-key'),
+        }).done(() => {
+            if ($(this).hasClass('remove-row')) $(this).closest('tr').remove();
+            else $(this).closest('td').next().next().children().eq(1).find('input').prop('checked', 'checked');
+        });
+    });
 });

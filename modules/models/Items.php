@@ -31,12 +31,21 @@ use yii\rbac\Item;
  * @property string|null $i_result_sector9_colorid
  * @property string|null $i_result_sector10_colorid
  * @property int|null $source
- * @property int|null $stage
+ * @property int|null $check1
+ * @property int|null $check2
+ * @property int|null $check3
+ * @property int|null $check4
  */
 class Items extends \yii\db\ActiveRecord
 {
-    private $STAGES0 = array(
-        0 => ''
+    private static $COLOR_RANGE = array(
+        0 => '',
+        '' => '',
+        'critical' => 'critical',
+        'bad' => 'bad',
+        'notenough' => 'notenough',
+        'good' => 'good',
+        'verygood' => 'verygood'
     );
     /**
      * {@inheritdoc}
@@ -52,7 +61,7 @@ class Items extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['e2e_item_id', 'item_id', 'source', 'stage'], 'integer'],
+            [['e2e_item_id', 'item_id', 'source', 'check1', 'check2', 'check3', 'check4'], 'integer'],
             [['i_type', 'i_usg_type', 'i_comb_type_id', 'i_result_sector1_colorid', 'i_result_sector2_colorid', 'i_result_sector3_colorid', 'i_result_sector4_colorid', 'i_result_sector5_colorid', 'i_result_sector6_colorid', 'i_result_sector7_colorid', 'i_result_sector8_colorid', 'i_result_sector9_colorid', 'i_result_sector10_colorid'], 'string', 'max' => 255],
         ];
     }
@@ -80,28 +89,49 @@ class Items extends \yii\db\ActiveRecord
             'i_result_sector9_colorid' => 'I Result Sector9 Colorid',
             'i_result_sector10_colorid' => 'I Result Sector10 Colorid',
             'source' => 'Source',
-            'stage' => 'Stage',
+            'check1' => 'check1',
+            'check2' => 'check2',
+            'check3' => 'check3',
+            'check4' => 'check4'
         ];
     }
 
-    public function getTitle($language) {
+    public function getTitle($language = '') {
+        if (!$language) return '';
+        $it = ItemTitle::find()->where(['itemID' => $this->id, 'languageID' => $language])->one();
+        return $it ?: new ItemTitle();
+    }
+
+    public function getDescription($language = '') {
         if (!$language) return '';
         $it = ItemTitle::find()->where(['itemID' => $this->id, 'languageID' => $language])->one();
         return $it ?: new ItemTitle();
     }
 
     public static function saveData($post, $model) {
-        if ($model->load($post) && $model->save()) {
-            foreach ($post['Items']['title'] as $i => $t) {
-                $it = ItemTitle::find()->where(['itemID' => $model->id, 'languageID' => $i])->one() ?: new ItemTitle();
-                $it->description = $post['Items']['description'][$i];
-                $it->title = $t;
-                $it->itemID = $model->id;
-                $it->languageID = $i;
-                $it->save();
+        if ($model->load($post)) {
+            if ($model->save()) {
+                foreach ($post['Items']['title'] as $i => $t) {
+                    $it = ItemTitle::find()->where(['itemID' => $model->id, 'languageID' => $i])->one() ?: new ItemTitle();
+                    if ($it->description != $post['Items']['description'][$i] || $it->title != $t)
+                        $model->check4 = 1;
+                    $it->description = $post['Items']['description'][$i];
+                    $it->title = $t;
+                    $it->itemID = $model->id;
+                    $it->languageID = $i;
+                    $it->save();
+                }
+                return $model->save();
             }
-            return true;
         }
         return false;
+    }
+
+    public function getCheck() {
+        return $this->{'check' . Yii::$app->admin->getIdentity()->role};
+    }
+
+    public static function getColorRange() {
+        return self::$COLOR_RANGE;
     }
 }

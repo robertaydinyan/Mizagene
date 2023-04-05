@@ -33,13 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
             $custom_columns[] = [
                 'label' => 'Title ' . $language->language,
                 'value' => function ($model) use ($language) {
-                    return $model->getTitle($language->id);
+                    return $model->getTitle($language->id)->title;
                 }
             ];
             $custom_columns[] = [
                 'label' => 'Description ' . $language->language,
                 'value' => function ($model) use ($language) {
-                    return $model->getDescription($language->id);
+                    return $model->getTitle($language->id)->description;
                 }
             ];
         }

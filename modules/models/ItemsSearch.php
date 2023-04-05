@@ -2,6 +2,7 @@
 
 namespace app\modules\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\modules\models\Items;
@@ -56,6 +57,13 @@ class ItemsSearch extends Items
             return $dataProvider;
         }
 
+        if (Yii::$app->admin->getIdentity()->role == 4) {
+            $query->andFilterWhere(['check4' => 1]);
+        }
+
+        if (Yii::$app->admin->getIdentity()->role == 2) {
+            $query->andFilterWhere(['check2' => 1]);
+        }
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,

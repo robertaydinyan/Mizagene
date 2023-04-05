@@ -6,6 +6,7 @@ use app\modules\models\Items;
 use app\modules\models\ItemsSearch;
 use app\modules\models\ItemTitle;
 use app\modules\models\Language;
+use Yii;
 use yii\rbac\Item;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -126,6 +127,33 @@ class ItemsController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionFixtranslation() {
+        $itemID = Yii::$app->request->post('itemID');
+        $item = Items::findOne($itemID);
+        if (in_array(Yii::$app->admin->getIdentity()->role, [1, 3])) {
+            $item->check4 = 1;
+        }
+
+        $item->save();
+    }
+
+    public function actionFixcolors() {
+        $itemID = Yii::$app->request->post('itemID');
+        $item = Items::findOne($itemID);
+        if (in_array(Yii::$app->admin->getIdentity()->role, [1, 3])) {
+            $item->check2 = 1;
+        }
+
+        $item->save();
+    }
+
+    public function actionAccept() {
+        $itemID = Yii::$app->request->post('itemID');
+        $item = Items::findOne($itemID);
+        $item->{"check" . Yii::$app->admin->getIdentity()->role} = 2;
+        $item->save();
     }
 
     /**

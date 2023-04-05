@@ -24,7 +24,6 @@ AppAsset::register($this);
     </head>
     <body class="d-flex flex-column h-100">
         <?php $this->beginBody() ?>
-
         <header>
             <?php
                 NavBar::begin([
@@ -36,13 +35,14 @@ AppAsset::register($this);
                 ]);
                 echo Nav::widget([
                     'options' => ['class' => 'navbar-nav'],
-                    'items' => [
-                        ['label' => 'Users', 'url' => ['/admin/admin/index']],
-                        ['label' => 'Items', 'url' => ['/admin/items/index']],
-                        ['label' => 'Region', 'url' => ['/admin/region/index']],
-                        ['label' => 'Language', 'url' => ['/admin/language/index']],
-                        ['label' => 'Group', 'url' => ['/admin/group/index']],
-                    ]
+                    'items' => !Yii::$app->admin->isGuest ? [
+                            ['label' => 'Users', 'url' => ['/admin/admin/index']],
+                            ['label' => 'Items', 'url' => ['/admin/items/index']],
+                            ['label' => 'Region', 'url' => ['/admin/region/index']],
+                            ['label' => 'Language', 'url' => ['/admin/language/index']],
+                            ['label' => 'Group', 'url' => ['/admin/group/index']],
+                            ['label' => 'Log out', 'url' => ['/admin/logout']],
+                    ] : []
                 ]);
                 NavBar::end();
                 ?>

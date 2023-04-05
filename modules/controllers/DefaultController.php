@@ -6,6 +6,7 @@ use app\modules\models\admin;
 use app\modules\models\LoginFormAdmin;
 use Yii;
 use yii\web\Controller;
+use yii\web\Response;
 
 /**
  * Default controller for the `Admin` module
@@ -39,5 +40,18 @@ class DefaultController extends Controller
         return $this->render('login', [
             'model' => $model
         ]);
+    }
+
+
+    /**
+     * Logout action.
+     *
+     * @return Response
+     */
+    public function actionLogout()
+    {
+        Yii::$app->admin->logout();
+
+        return $this->goHome();
     }
 }
