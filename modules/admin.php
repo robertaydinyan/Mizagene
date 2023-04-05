@@ -22,11 +22,6 @@ class admin extends \yii\base\Module
             return Yii::$app->response->redirect('/admin/login');
         }
 
-        Yii::$app->getView()->registerJsFile(
-            '@web/js/admin.js',
-            ['depends' => [\yii\web\JqueryAsset::class]]
-        );
-
         parent::init();
     }
 }

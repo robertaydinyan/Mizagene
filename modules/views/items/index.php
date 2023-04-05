@@ -55,27 +55,140 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title . ' (migrated)') ?></h1>
     <?= GridView::widget([
         'dataProvider' => $dataProviderMigration,
-        'filterModel' => $searchModel,
+//        'filterModel' => $searchModel,
         'columns' => [
-            'id',
+            [
+                'header' => 'actions',
+                'class' => ActionColumn::className(),
+                'template' => '{view} {update} {translate} {delete}',
+                'buttons' => [
+                    'translate' => function ($url, $model, $key) {
+                        return Html::a('<i class="fa fa-language send-to-translator"></i>', '#', [
+                            'title' => 'Send to translator',
+                            'data-pjax' => '1',
+                        ]);
+                    }
+                ],
+                'urlCreator' => function ($action, Items $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'id' => $model->id]);
+                }
+            ],
             'item_id',
+            [
+                'label' => 'Title Persian',
+                'value' => function($model) {
+                    return $model->getTitle(3)->title;
+                }
+            ],
             [
                 'label' => 'Title Russian',
                 'value' => function($model) {
-                    return $model->getTitle(1);
+                    return $model->getTitle(1)->title;
                 }
             ],
             [
                 'label' => 'Title English',
                 'value' => function($model) {
-                    return $model->getTitle(2);
+                    return $model->getTitle(2)->title;
                 }
             ],
-            'stage',
             [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Items $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
+                'label' => 'Title Temp Russian',
+                'value' => function($model) {
+                    return $model->getTitle(1)->title_temp;
+                }
+            ],
+            [
+                'label' => 'Title Temp English',
+                'value' => function($model) {
+                    return $model->getTitle(2)->title_temp;
+                }
+            ],
+            [
+                'label' => 'i_result_sector1_colorid',
+                'format' => 'html',
+                'value' => function($model) {
+                    return $model->i_result_sector1_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector1_colorid);
+                }
+            ],
+
+            [
+                'label' => 'i_result_sector1_colorid',
+                'format' => 'html',
+                'value' => function($model) {
+                    return $model->i_result_sector1_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector1_colorid);
+                }
+            ],
+
+            [
+                'label' => 'i_result_sector2_colorid',
+                'format' => 'html',
+                'value' => function($model) {
+                    return $model->i_result_sector2_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector2_colorid);
+                }
+            ],
+
+            [
+                'label' => 'i_result_sector3_colorid',
+                'format' => 'html',
+                'value' => function($model) {
+                    return $model->i_result_sector3_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector3_colorid);
+                }
+            ],
+
+            [
+                'label' => 'i_result_sector4_colorid',
+                'format' => 'html',
+                'value' => function($model) {
+                    return $model->i_result_sector4_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector4_colorid);
+                }
+            ],
+
+            [
+                'label' => 'i_result_sector5_colorid',
+                'format' => 'html',
+                'value' => function($model) {
+                    return $model->i_result_sector5_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector5_colorid);
+                }
+            ],
+
+            [
+                'label' => 'i_result_sector6_colorid',
+                'format' => 'html',
+                'value' => function($model) {
+                    return $model->i_result_sector6_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector6_colorid);
+                }
+            ],
+
+            [
+                'label' => 'i_result_sector7_colorid',
+                'format' => 'html',
+                'value' => function($model) {
+                    return $model->i_result_sector7_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector7_colorid);
+                }
+            ],
+
+            [
+                'label' => 'i_result_sector8_colorid',
+                'format' => 'html',
+                'value' => function($model) {
+                    return $model->i_result_sector8_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector8_colorid);
+                }
+            ],
+
+            [
+                'label' => 'i_result_sector9_colorid',
+                'format' => 'html',
+                'value' => function($model) {
+                    return $model->i_result_sector9_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector9_colorid);
+                }
+            ],
+
+            [
+                'label' => 'i_result_sector10_colorid',
+                'format' => 'html',
+                'value' => function($model) {
+                    return $model->i_result_sector10_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector10_colorid);
                 }
             ],
         ],

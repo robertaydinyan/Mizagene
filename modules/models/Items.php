@@ -3,6 +3,7 @@
 namespace app\modules\models;
 
 use Yii;
+use yii\rbac\Item;
 
 /**
  * This is the model class for table "items".
@@ -19,16 +20,18 @@ use Yii;
  * @property string|null $e2e_i_description_en
  * @property string|null $e2e_item_ir
  * @property string|null $e2e_i_description_ir
- * @property int|null $i_result_sector1_colorid
- * @property int|null $i_result_sector2_colorid
- * @property int|null $i_result_sector3_colorid
- * @property int|null $i_result_sector4_colorid
- * @property int|null $i_result_sector5_colorid
- * @property int|null $i_result_sector6_colorid
- * @property int|null $i_result_sector7_colorid
- * @property int|null $i_result_sector8_colorid
- * @property int|null $i_result_sector9_colorid
- * @property int|null $i_result_sector10_colorid
+ * @property string|null $i_result_sector1_colorid
+ * @property string|null $i_result_sector2_colorid
+ * @property string|null $i_result_sector3_colorid
+ * @property string|null $i_result_sector4_colorid
+ * @property string|null $i_result_sector5_colorid
+ * @property string|null $i_result_sector6_colorid
+ * @property string|null $i_result_sector7_colorid
+ * @property string|null $i_result_sector8_colorid
+ * @property string|null $i_result_sector9_colorid
+ * @property string|null $i_result_sector10_colorid
+ * @property int|null $source
+ * @property int|null $stage
  */
 class Items extends \yii\db\ActiveRecord
 {
@@ -49,8 +52,8 @@ class Items extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['e2e_item_id', 'item_id', 'i_result_sector1_colorid', 'i_result_sector2_colorid', 'i_result_sector3_colorid', 'i_result_sector4_colorid', 'i_result_sector5_colorid', 'i_result_sector6_colorid', 'i_result_sector7_colorid', 'i_result_sector8_colorid', 'i_result_sector9_colorid', 'i_result_sector10_colorid', 'source', 'stage'], 'integer'],
-            [['i_type', 'i_usg_type', 'i_comb_type_id'], 'string', 'max' => 255],
+            [['e2e_item_id', 'item_id', 'source', 'stage'], 'integer'],
+            [['i_type', 'i_usg_type', 'i_comb_type_id', 'i_result_sector1_colorid', 'i_result_sector2_colorid', 'i_result_sector3_colorid', 'i_result_sector4_colorid', 'i_result_sector5_colorid', 'i_result_sector6_colorid', 'i_result_sector7_colorid', 'i_result_sector8_colorid', 'i_result_sector9_colorid', 'i_result_sector10_colorid'], 'string', 'max' => 255],
         ];
     }
 
@@ -84,13 +87,7 @@ class Items extends \yii\db\ActiveRecord
     public function getTitle($language) {
         if (!$language) return '';
         $it = ItemTitle::find()->where(['itemID' => $this->id, 'languageID' => $language])->one();
-        return $it ? $it['title'] : null;
-    }
-
-    public function getDescription($language) {
-        if (!$language) return '';
-        $it = ItemTitle::find()->where(['itemID' => $this->id, 'languageID' => $language])->one();
-        return $it ? $it['description'] : null;
+        return $it ?: new ItemTitle();
     }
 
     public static function saveData($post, $model) {

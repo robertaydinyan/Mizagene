@@ -61,7 +61,10 @@ AppAsset::register($this);
                 <p class="float-right"><?= Yii::powered() ?></p>
             </div>
         </footer>
-
+    <?php  Yii::$app->getView()->registerJsFile(
+        '@web/js/admin.js',
+        ['depends' => [\yii\web\JqueryAsset::class]]
+    ); ?>
     <?php $this->endBody() ?>
     </body>
 </html>
