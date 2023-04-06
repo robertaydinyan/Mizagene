@@ -45,11 +45,13 @@ class ItemsController extends Controller
         $searchModel = new ItemsSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
         $dataProviderMigration = $searchModel->search($this->request->queryParams, 1);
+        $dataProviderPushed = $searchModel->search($this->request->queryParams, null, 1);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'dataProviderMigration' => $dataProviderMigration,
+            'dataProviderPushed' => $dataProviderPushed,
         ]);
     }
 
@@ -154,6 +156,17 @@ class ItemsController extends Controller
         $item = Items::findOne($itemID);
         $item->{"check" . Yii::$app->admin->getIdentity()->role} = 2;
         $item->save();
+    }
+
+    public function actionPush() {
+        if (Yii::$app->admin->getIdentity()->role == 1) {
+            $itemID = Yii::$app->request->get('itemID');
+            $item = Items::findOne($itemID);
+            $item->check1 = 1;
+            $item->save();
+        }
+
+        return $this->redirect('/admin/items/index');
     }
 
     /**

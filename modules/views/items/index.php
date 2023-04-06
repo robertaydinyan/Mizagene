@@ -10,6 +10,7 @@ use yii\grid\GridView;
 /** @var app\modules\models\ItemsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 /** @var yii\data\ActiveDataProvider $dataProviderMigration */
+/** @var yii\data\ActiveDataProvider $dataProviderPushed */
 
 $this->title = 'Items';
 $this->params['breadcrumbs'][] = $this->title;
@@ -137,8 +138,9 @@ $color_columns = [
         }
     ]
 ];
+$columns_migrated = $columns;
 if (in_array(Yii::$app->admin->getIdentity()->role, [1, 3])) {
-    array_splice($columns, 1, 0, [[
+    array_splice($columns_migrated, 1, 0, [[
             'header' => 'status',
             'contentOptions' => ['style' => 'min-width: 128px'],
             'content' => function ($model) {
@@ -146,17 +148,27 @@ if (in_array(Yii::$app->admin->getIdentity()->role, [1, 3])) {
                     '<label>'.Html::checkbox('checkbox1', $model->check2 == 2, ['disabled' => true]).' proffesor</label>'.
                     '<label>'.Html::checkbox('checkbox2', $model->check3 == 2, ['disabled' => true]).' psychologist</label>'.
                     '<label>'.Html::checkbox('checkbox3', $model->check4 == 2, ['disabled' => true]).' translator</label>' .
-                    (($model->check2 == 2 && $model->check3 == 2 && $model->check4 == 2 && Yii::$app->admin->getIdentity()->role == 1) ? HTML::button('Push') : '');
+                    (($model->check2 == 2 && $model->check3 == 2 && $model->check4 == 2 && Yii::$app->admin->getIdentity()->role == 1) ? HTML::a('Push', ['push?itemID=' . $model->id], ['class' => 'btn btn-primary push-item']) : '');
             }
     ]]);
 }
 if (Yii::$app->admin->getIdentity()->role != 4) {
     $columns = array_merge($columns, $color_columns);
+    $columns_migrated = array_merge($columns_migrated, $color_columns);
 }
 ?>
 <div class="items-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h2><?= Html::encode($this->title . ' pushed') ?></h2>
+    <?= GridView::widget([
+        'dataProvider' => $dataProviderPushed,
+//        'filterModel' => $searchModel,
+        'columns' => [
+            ...$columns
+        ],
+    ]); ?>
+
+    <h2><?= Html::encode($this->title . 'created') ?></h2>
 
     <p>
         <?= Html::a('Create Items', ['create'], ['class' => 'btn btn-success']) ?>
@@ -192,7 +204,7 @@ if (Yii::$app->admin->getIdentity()->role != 4) {
         ],
     ]); ?>
 
-    <h1><?= Html::encode($this->title . ' (migrated)') ?></h1>
+    <h2><?= Html::encode($this->title . ' (migrated)') ?></h2>
     <?= GridView::widget([
         'dataProvider' => $dataProviderMigration,
 //        'filterModel' => $searchModel,
@@ -235,7 +247,7 @@ if (Yii::$app->admin->getIdentity()->role != 4) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                 }
             ],
-            ...$columns
+            ...$columns_migrated
         ],
     ]); ?>
 </div>

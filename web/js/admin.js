@@ -43,8 +43,12 @@ $(document).ready(function() {
         $.post('/admin/items/accept', {
             'itemID': $(this).closest('tr').attr('data-key'),
         }).done(() => {
-            if ($(this).hasClass('remove-row')) $(this).closest('tr').remove();
-            else $(this).closest('td').next().next().children().eq(1).find('input').prop('checked', 'checked');
+            if ($(this).hasClass('remove-row')) {
+                $(this).closest('tr').remove();
+            } else {
+                $(this).closest('td').next().next().children().eq(1).find('input').prop('checked', 'checked');
+                $(this).remove();
+            }
         });
     });
 });

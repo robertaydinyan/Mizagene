@@ -39,7 +39,7 @@ class ItemsSearch extends Items
      *
      * @return ActiveDataProvider
      */
-    public function search($params, $source = 0)
+    public function search($params, $source = 0, $pushed = 0)
     {
         $query = Items::find();
 
@@ -64,6 +64,11 @@ class ItemsSearch extends Items
         if (Yii::$app->admin->getIdentity()->role == 2) {
             $query->andFilterWhere(['check2' => 1]);
         }
+
+        if (!is_null($source)) {
+            $query->andFilterWhere(['source' => $source]);
+        }
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
@@ -79,7 +84,7 @@ class ItemsSearch extends Items
             'i_result_sector8_colorid' => $this->i_result_sector8_colorid,
             'i_result_sector9_colorid' => $this->i_result_sector9_colorid,
             'i_result_sector10_colorid' => $this->i_result_sector10_colorid,
-            'source' => $source
+            'check1' => $pushed
         ]);
 
         $query->andFilterWhere(['like', 'i_type', $this->i_type])
