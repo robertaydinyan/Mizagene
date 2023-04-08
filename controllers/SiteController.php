@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\SignupForm;
+use app\models\SignupcompanyForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -107,6 +108,16 @@ class SiteController extends Controller
         return $this->render(view: 'signup', params: ['model' => $model]);
     }
 
+    public function actionSignupcompany(){
+        $model = new SignupcompanyForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->signupcompany()){
+            return $this->redirect(Yii::$app->homeUrl);
+        }
+
+        return $this->render(view: 'signupcompany', params: ['model' => $model]);
+    }
+
     /**
      * Logout action.
      *
@@ -145,4 +156,6 @@ class SiteController extends Controller
     public function actionAbout() {
         return $this->render('about');
     }
+
+
 }

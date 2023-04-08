@@ -12,7 +12,7 @@ class m230403_143244_add_some_fields_for_user extends Migration
      */
     public function safeUp()
     {
-        $this->addColumn('user', 'mail', $this->string(255));
+        $this->addColumn('user', 'email', $this->string(255));
         $this->addColumn('user', 'country', $this->string(255));
         $this->addColumn('user', 'usage_type', $this->string(255));
 
