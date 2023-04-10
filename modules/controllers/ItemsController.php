@@ -40,18 +40,24 @@ class ItemsController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
+        $steps = Items::getSteps();
+        $step = Yii::$app->request->get('step');
+        $pill = Yii::$app->request->get('pill') ?: 1;
+        $step = isset($steps[$step]) ? $step : min(array_keys($steps));
         $searchModel = new ItemsSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-        $dataProviderMigration = $searchModel->search($this->request->queryParams, 1);
-        $dataProviderPushed = $searchModel->search($this->request->queryParams, null, 1);
+        $params = $this->request->queryParams;
+        $params['pill'] = $pill;
+        $params['step'] = $step;
+        $dataProvider = $searchModel->search($params);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'dataProviderMigration' => $dataProviderMigration,
-            'dataProviderPushed' => $dataProviderPushed,
+            'pill' => $pill,
+            'step' => $step,
+            'tabs' => Items::getTabs(),
+            'steps' => Items::getSteps(),
         ]);
     }
 
@@ -124,11 +130,27 @@ class ItemsController extends Controller
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($id) {
+        $item = $this->findModel($id);
+        if (in_array(Yii::$app->admin->getIdentity()->role, [1, 3])) {
+            $item->deleted = 1;
+        }
+        $item->save();
+        return $this->redirect(Yii::$app->request->referrer);
+    }
+    /**
+     * Restores an existing Items model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param int $id ID
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionRestore($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        $item = $this->findModel($id);
+        $item->deleted = 0;
+        $item->save();
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
     public function actionFixtranslation() {
@@ -152,9 +174,10 @@ class ItemsController extends Controller
     }
 
     public function actionAccept() {
+        $role = Yii::$app->admin->getIdentity()->role;
         $itemID = Yii::$app->request->post('itemID');
         $item = Items::findOne($itemID);
-        $item->{"check" . Yii::$app->admin->getIdentity()->role} = 2;
+        $item->{"check" . } += 1;
         $item->save();
     }
 

@@ -47,6 +47,24 @@ class Items extends \yii\db\ActiveRecord
         'good' => 'good',
         'verygood' => 'verygood'
     );
+
+    private static $tabs = array(
+        1 => 'Pushed items',
+        2 => 'Created items',
+        3 => 'Migrated items',
+        4 => 'Archive',
+    );
+
+    private static $steps = array(
+        1 => 'Filtering',
+        2 => 'Translating',
+        3 => 'Accept translation',
+        4 => 'Configuring',
+        5 => 'Professor checking',
+        6 => 'Translating parameters',
+        7 => 'Waiting for push'
+    );
+
     /**
      * {@inheritdoc}
      */
@@ -96,6 +114,30 @@ class Items extends \yii\db\ActiveRecord
         ];
     }
 
+    public static function attributeLabelsCustom($pill = 1, $step = 1) {
+        $role = Yii::$app->admin->getIdentity()->role;
+        $titles = array('item_id', 'title_persian', 'title_russian', 'title_english', 'title_temp_russian', 'title_temp_english');
+        $configurations = array('color1', 'color2', 'color3', 'color4', 'color5', 'color6', 'color7', 'color8', 'color9', 'color10');
+        switch ($pill) {
+            case 1:
+                return array(array_merge($titles, $configurations), "");
+            case 2;
+                break;
+            case 3;
+                switch ($step) {
+                    case 1:
+                        return array($titles, '{view} {delete} {translate}');
+                    case 2:
+                        return array($titles, $role == 4 ? '{view} {checkmark} {update}' : '{view} {delete}');
+                    case 3:
+                        return array(array_merge($titles, $configurations), '{view} {update} ' . (in_array($role, [1, 3]) ? '{checkmark}' : ''));
+                }
+                break;
+            case 4;
+                return array($titles, '{restore}');
+        }
+    }
+
     public function getTitle($language = '') {
         if (!$language) return '';
         $it = ItemTitle::find()->where(['itemID' => $this->id, 'languageID' => $language])->one();
@@ -133,5 +175,28 @@ class Items extends \yii\db\ActiveRecord
 
     public static function getColorRange() {
         return self::$COLOR_RANGE;
+    }
+
+    public static function getSteps() {
+        $role = Yii::$app->admin->getIdentity()->role;
+        $steps = self::$steps;
+        if ($role == 4) {
+            unset($steps[1]);
+            unset($steps[4]);
+            unset($steps[5]);
+            unset($steps[7]);
+        } else if ($role == 2) {
+            unset($steps[1]);
+            unset($steps[2]);
+            unset($steps[5]);
+            unset($steps[6]);
+            unset($steps[7]);
+        }
+
+        return $steps;
+    }
+
+    public static function getTabs() {
+        return self::$tabs;
     }
 }

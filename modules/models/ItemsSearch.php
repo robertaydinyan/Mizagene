@@ -39,7 +39,7 @@ class ItemsSearch extends Items
      *
      * @return ActiveDataProvider
      */
-    public function search($params, $source = 0, $pushed = 0)
+    public function search($params)
     {
         $query = Items::find();
 
@@ -56,19 +56,6 @@ class ItemsSearch extends Items
             // $query->where('0=1');
             return $dataProvider;
         }
-
-        if (Yii::$app->admin->getIdentity()->role == 4) {
-            $query->andFilterWhere(['check4' => 1]);
-        }
-
-        if (Yii::$app->admin->getIdentity()->role == 2) {
-            $query->andFilterWhere(['check2' => 1]);
-        }
-
-        if (!is_null($source)) {
-            $query->andFilterWhere(['source' => $source]);
-        }
-
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
@@ -84,9 +71,35 @@ class ItemsSearch extends Items
             'i_result_sector8_colorid' => $this->i_result_sector8_colorid,
             'i_result_sector9_colorid' => $this->i_result_sector9_colorid,
             'i_result_sector10_colorid' => $this->i_result_sector10_colorid,
-            'check1' => $pushed
         ]);
+        switch ($params['pill']) {
+            case 1:
+                $query->andFilterWhere(['check1' => 2, 'deleted' => 0]);
+            case 2:
+                $query->andFilterWhere(['source' => 0, 'deleted' => 0, 'check2' => 0]);
+                break;
+            case 3:
+                $query->andFilterWhere(['source' => 1, 'deleted' => 0, 'check2' => 0]);
+                break;
+            case 4:
+                $query->andFilterWhere(['deleted' => 1]);
+                break;
+        }
 
+        switch ($params['step']) {
+            case 1:
+                $query->andFilterWhere(['check2' => 0, 'check3' => 0, 'check4' => 0]);
+                break;
+            case 2:
+                $query->andFilterWhere(['check2' => 0, 'check3' => 0, 'check4' => 1]);
+                break;
+            case 3:
+                $query->andFilterWhere(['check2' => 0, 'check3' => 0, 'check4' => 2]);
+                break;
+            case 4:
+                $query->andFilterWhere(['deleted' => 1]);
+                break;
+        }
         $query->andFilterWhere(['like', 'i_type', $this->i_type])
             ->andFilterWhere(['like', 'i_usg_type', $this->i_usg_type])
             ->andFilterWhere(['like', 'i_comb_type_id', $this->i_comb_type_id]);

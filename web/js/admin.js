@@ -28,14 +28,14 @@ $(document).ready(function() {
         $.post('/admin/items/fixtranslation', {
             'itemID': $(this).closest('tr').attr('data-key'),
         }).done(() => {
-            $(this).remove();
+            $(this).closest('tr').remove();
         });
     });
     $('.send-to-professor').on('click', function () {
         $.post('/admin/items/fixcolors', {
             'itemID': $(this).closest('tr').attr('data-key'),
         }).done(() => {
-            $(this).remove();
+            $(this).closest('tr').remove();
         });
     });
 

@@ -33,4 +33,12 @@ class API {
         $link = self::$links[strtolower(substr(debug_backtrace()[1]['function'], 3))];
         return $link ?: new \Exception('missing table');
     }
+
+    public static function returnError($code, $message) {
+        http_response_code($code);
+        echo json_encode(array(
+            "error" => $message
+        ));
+        die();
+    }
 }
