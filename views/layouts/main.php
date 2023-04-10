@@ -42,7 +42,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Home', 'url' => [Yii::$app->homeUrl]],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest
-                    ? ['label' => 'Sign Up as Company', 'url' => ['/site/signup?t=company']]  : "",
+                    ? ['label' => 'Sign Up as Company', 'url' => ['/site/signupcompany']]  : "",
             Yii::$app->user->isGuest
                 ?   ['label' => 'Sign Up', 'url' => ['/site/signup']]:
                     ['label' => 'About', 'url' => ['/site/about']],

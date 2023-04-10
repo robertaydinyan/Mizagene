@@ -17,7 +17,7 @@ class m230403_143054_create_sign_up_company extends Migration
             'img' => $this->string(255)->notNull(),
             'name' => $this->string(),
             'company_name' => $this->string(),
-            'mail' => $this->string(),
+            'email' => $this->string(),
             'password' => $this->string(),
             'phone_number' => $this->integer(),
             'company_residence' => $this->string(),
