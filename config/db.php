@@ -4,7 +4,7 @@ return [
     'class' => \yii\db\Connection::class,
     'dsn' => 'mysql:host=localhost;dbname=mizagene',
     'username' => 'root',
-    'password' => 'mysql',
+    'password' => '',
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)
