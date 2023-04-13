@@ -87,7 +87,7 @@ class ItemsController extends Controller
         $model = new Items();
 
         if ($this->request->isPost) {
-            if (Items::saveData($this->request->post(), $model)) {
+            if ($model->saveData($this->request->post())) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -112,7 +112,7 @@ class ItemsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && Items::saveData($this->request->post(), $model)) {
+        if ($this->request->isPost && $model->saveData($this->request->post())) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -173,14 +173,6 @@ class ItemsController extends Controller
         $item->save();
     }
 
-    public function actionAccept() {
-        $role = Yii::$app->admin->getIdentity()->role;
-        $itemID = Yii::$app->request->post('itemID');
-        $item = Items::findOne($itemID);
-        $item->{"check" . } += 1;
-        $item->save();
-    }
-
     public function actionPush() {
         if (Yii::$app->admin->getIdentity()->role == 1) {
             $itemID = Yii::$app->request->get('itemID');
@@ -192,6 +184,43 @@ class ItemsController extends Controller
         return $this->redirect('/admin/items/index');
     }
 
+    public function actionChecktranslator() {
+        $role = Yii::$app->admin->getIdentity()->role;
+        if (in_array($role, [1, 4])) {
+            $itemID = Yii::$app->request->post('itemID');
+            $item = Items::findOne($itemID);
+            $item->check4 += 1;
+            $item->save();
+        }
+    }
+
+    public function actionCheckpsychologist() {
+        $role = Yii::$app->admin->getIdentity()->role;
+        if (in_array($role, [1, 3])) {
+            $itemID = Yii::$app->request->post('itemID');
+            $item = Items::findOne($itemID);
+            $item->check3 += 1;
+            $item->save();
+        }
+    }
+    public function actionCheckprofessor() {
+        $role = Yii::$app->admin->getIdentity()->role;
+        if (in_array($role, [1, 2])) {
+            $itemID = Yii::$app->request->post('itemID');
+            $item = Items::findOne($itemID);
+            $item->check2 += 1;
+            $item->save();
+        }
+    }
+    public function actionAdmin() {
+        $role = Yii::$app->admin->getIdentity()->role;
+        if ($role == 1) {
+            $itemID = Yii::$app->request->post('itemID');
+            $item = Items::findOne($itemID);
+            $item->check1 += 1;
+            $item->save();
+        }
+    }
     /**
      * Finds the Items model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

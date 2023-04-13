@@ -79,7 +79,7 @@ class ItemsSearch extends Items
                 $query->andFilterWhere(['source' => 0, 'deleted' => 0, 'check2' => 0]);
                 break;
             case 3:
-                $query->andFilterWhere(['source' => 1, 'deleted' => 0, 'check2' => 0]);
+                $query->andFilterWhere(['source' => 1, 'deleted' => 0, 'check1' => 0]);
                 break;
             case 4:
                 $query->andFilterWhere(['deleted' => 1]);
@@ -97,13 +97,24 @@ class ItemsSearch extends Items
                 $query->andFilterWhere(['check2' => 0, 'check3' => 0, 'check4' => 2]);
                 break;
             case 4:
-                $query->andFilterWhere(['deleted' => 1]);
+                $query->andFilterWhere(['check2' => 0, 'check3' => 1, 'check4' => 2]);
+                break;
+            case 5:
+                $query->andFilterWhere(['check2' => 1, 'check3' => 1, 'check4' => 2]);
+                break;
+            case 6:
+                $query->andFilterWhere(['check2' => 2, 'check3' => 1, 'check4' => 2]);
+                break;
+            case 7:
+                $query->andFilterWhere(['check2' => 2, 'check3' => 1, 'check4' => 3]);
+                break;
+            case 8:
+                $query->andFilterWhere(['check2' => 2, 'check3' => 2, 'check4' => 3]);
                 break;
         }
         $query->andFilterWhere(['like', 'i_type', $this->i_type])
             ->andFilterWhere(['like', 'i_usg_type', $this->i_usg_type])
             ->andFilterWhere(['like', 'i_comb_type_id', $this->i_comb_type_id]);
-
         return $dataProvider;
     }
 }

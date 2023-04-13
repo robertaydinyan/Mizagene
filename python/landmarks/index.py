@@ -1,9 +1,15 @@
+import sys
+import os
+os.chdir("/var/www/html/Mizagene/python/landmarks/")
+sys.path.append('/home/ec2-user/.local/lib/python3.9/site-packages')
+import numpy as np
 import cv2
+import numpy as np
 import mediapipe as mp
 import numpy as np
-import sys
 import json
 import math
+import re
 
 mp_drawing = mp.solutions.drawing_utils
 mp_face_detection = mp.solutions.face_detection
@@ -57,7 +63,6 @@ result = {
         "mmpp": None
     }
 }
-# sys.exit()
 IMAGE_FILES = sys.argv
 IMAGE_FILES.pop(0)
 with mp_face_detection.FaceDetection(
@@ -124,7 +129,6 @@ with mp_face_detection.FaceDetection(
                             'y': landmark.y,
                             'z': landmark.z
                         })
-
                         # Draw landmark dot.
                         cv2.circle(face_roi, (x, y), 1, color, -1)
 
@@ -135,8 +139,7 @@ with mp_face_detection.FaceDetection(
                         text_x = x - text_width // 2
                         text_y = y - text_height // 2
                         cv2.putText(face_roi, text, (text_x, text_y + text_height - 5), font, font_scale, text_color, font_thickness, cv2.LINE_AA)
-        file = IMAGE_FILES[0].split('.')[0].split('\\')[-1].strip()
+        file = re.split('\\ |/', IMAGE_FILES[0])[-1].split('.')[0].strip()
         cv2.imwrite('images/' + file + '{}.png'.format(idx), image)
-
-with open('json/' + file + '.json', 'w') as f:
+with open(os.path.abspath('json/' + file + '.json'), 'w') as f:
     json.dump(result, f)

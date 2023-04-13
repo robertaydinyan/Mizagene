@@ -19,9 +19,10 @@ class admin extends \yii\base\Module
     {
         $this->layout = '@app/modules/views/layouts/main';
         if ($_SERVER['REQUEST_URI'] != '/admin/login' && Yii::$app->admin->isGuest) {
-            return Yii::$app->response->redirect('/admin/login');
+            header('Location: /admin/login');
+            die();
+        } else {
+            parent::init();
         }
-
-        parent::init();
     }
 }

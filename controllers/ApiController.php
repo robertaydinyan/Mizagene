@@ -42,9 +42,18 @@ class ApiController extends Controller {
             API::returnError(400, "Something is wrong with file");
         }
         $file_name = strtotime("now");
-        $uploadFile = \Yii::getAlias('@webroot') . '\images\face\\' . $file_name . '.' . explode('/', $file['type'])[1];
+        $uploadFile = \Yii::getAlias('@webroot') . DS . 'images' . DS . 'face' . DS . $file_name . '.' . explode('/', $file['type'])[1];
         if (move_uploaded_file($file['tmp_name'], $uploadFile)) {
-            shell_exec('cd ' . \Yii::getAlias('@webroot') . DS . '..' . DS . 'python' . DS . 'landmarks' . DS . ' && python index.py ' . $uploadFile);
+            chmod($uploadFile, 0755);
+
+            $command = 'cd /var/www/html/Mizagene/python/landmarks/ && /usr/bin/python index.py ' . $uploadFile . ' 2>&1';
+            exec($command);
+            // if ($returnCode !== 0) {
+            //     var_dump($outputArray);
+            //     var_dump($returnCode);
+            // }
+            // var_dump($output);
+
             echo json_encode(file_get_contents(\Yii::getAlias('@webroot') . DS . '..' . DS . 'python' . DS . 'landmarks' . DS . 'json' . DS . $file_name . '.json'));
         } else {
             API::returnError(500, "Something is wrong with file");

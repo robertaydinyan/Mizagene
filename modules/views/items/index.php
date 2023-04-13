@@ -17,6 +17,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $columns = [
     'item_id' => 'item_id',
+    'i_usg_type' => [
+        'label' => 'Usg type',
+        'value' => function($model) {
+            return $model->getIUsgType();
+        }
+    ],
+    'i_type' => [
+        'label' => 'type',
+        'value' => function($model) {
+            return $model->getIType();
+        }
+    ],
+    'i_comb_type_id' => [
+        'label' => 'Comb type',
+        'value' => function($model) {
+            return $model->getICombType();
+        }
+    ],
     'title_persian' => [
         'label' => 'Title Persian',
         'value' => function($model) {
@@ -169,23 +187,47 @@ foreach ($cl[0] as $column) {
                 'buttons' => [
                     'translate' => function ($url, $model, $key) {
                         return (in_array(Yii::$app->admin->getIdentity()->role, [1, 3]) AND $model->check4 != 1) ?
-                            Html::a('<i class="fa fa-language send-to-translator"></i>', 'javascript:;', [
+                            Html::a('<i class="fa fa-language ajax-call" data-path="/admin/items/fixtranslation"></i>', 'javascript:;', [
                                 'title' => 'Send to translator',
                                 'data-pjax' => '1',
                             ]) :
                             '';
                     },
-                    'checkmark' => function ($url, $model, $key) use ($step) {
-                        return Html::a(sprintf('<i class="fa fa-check item-accept %s"></i>',
-                            Yii::$app->admin->getIdentity()->role != 3 ? 'remove-row' : ''
-                        ), 'javascript:;', [
-                            'title' => 'accept',
-                            'data-pjax' => '1',
-                        ]);
+                    'checkmarkTranslator' => function ($url, $model, $key) use ($step) {
+                        return in_array(Yii::$app->admin->getIdentity()->role, [1, 4]) ?
+                            Html::a('<i class="fa fa-check ajax-call" data-path="/admin/items/checktranslator"></i>', 'javascript:;', [
+                                'title' => 'accept',
+                                'data-pjax' => '1',
+                            ])
+                        : '';
+                    },
+                    'checkmarkPsychologist' => function ($url, $model, $key) use ($step) {
+                        return in_array(Yii::$app->admin->getIdentity()->role, [1, 3]) ?
+                            Html::a('<i class="fa fa-check ajax-call" data-path="/admin/items/checkpsychologist"></i>', 'javascript:;', [
+                                'title' => 'accept',
+                                'data-pjax' => '1',
+                            ])
+                            : '';
+                    },
+                    'checkmarkProfessor' => function ($url, $model, $key) use ($step) {
+                        return in_array(Yii::$app->admin->getIdentity()->role, [1, 2]) ?
+                            Html::a('<i class="fa fa-check ajax-call" data-path="/admin/items/checkprofessor"></i>', 'javascript:;', [
+                                'title' => 'accept',
+                                'data-pjax' => '1',
+                            ])
+                            : '';
+                    },
+                    'checkmarkAdmin' => function ($url, $model, $key) use ($step) {
+                        return in_array(Yii::$app->admin->getIdentity()->role, [1, 2]) ?
+                            Html::a('<i class="fa fa-check ajax-call" data-path="/admin/items/checkadmin"></i>', 'javascript:;', [
+                                'title' => 'accept',
+                                'data-pjax' => '1',
+                            ])
+                            : '';
                     },
                     'colors' => function ($url, $model, $key) {
                         return in_array(Yii::$app->admin->getIdentity()->role, [1, 3]) ?
-                            Html::a('<i class="fa fa-tint send-to-professor"></i>', 'javascript:;', [
+                            Html::a('<i class="fa fa-tint ajax-call" data-path="/admin/items/fixcolors"></i>', 'javascript:;', [
                                 'title' => 'Send to professor',
                                 'data-pjax' => '1',
                             ]) :
@@ -196,6 +238,15 @@ foreach ($cl[0] as $column) {
                             'title' => 'Restore',
                             'data-pjax' => '1',
                         ]);
+                    },
+                    'update' => function ($url, $model, $key) {
+                        return  Html::a('<i class="fa fa-pencil"></i>', $url, ['class' => 'bg-blue label']);
+                    },
+                    'view' => function ($url, $model, $key) {
+                        return  Html::a('<i class="fa fa-eye"></i>', $url, ['class' => 'bg-blue label']);
+                    },
+                    'delete' => function ($url, $model, $key) {
+                        return in_array(Yii::$app->admin->getIdentity()->role, [1, 3]) ? Html::a('<i class="fa fa-trash"></i>', $url, ['class' => 'bg-blue label']) : '';
                     }
                 ],
 

@@ -24,31 +24,12 @@ $(document).ready(function() {
     }
 
     // items events
-    $('.send-to-translator').on('click', function () {
-        $.post('/admin/items/fixtranslation', {
-            'itemID': $(this).closest('tr').attr('data-key'),
-        }).done(() => {
-            $(this).closest('tr').remove();
-        });
-    });
-    $('.send-to-professor').on('click', function () {
-        $.post('/admin/items/fixcolors', {
-            'itemID': $(this).closest('tr').attr('data-key'),
-        }).done(() => {
-            $(this).closest('tr').remove();
-        });
-    });
 
-    $('.item-accept').on('click', function () {
-        $.post('/admin/items/accept', {
+    $('.ajax-call').on('click', function () {
+        $.post($(this).data("path"), {
             'itemID': $(this).closest('tr').attr('data-key'),
         }).done(() => {
-            if ($(this).hasClass('remove-row')) {
-                $(this).closest('tr').remove();
-            } else {
-                $(this).closest('td').next().next().children().eq(1).find('input').prop('checked', 'checked');
-                $(this).remove();
-            }
+            $(this).closest('tr').remove();
         });
     });
 });
