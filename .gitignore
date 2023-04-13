@@ -4,6 +4,8 @@
 #db configuration
 config/db.php
 
+# python code for api
+python
 # netbeans project files
 nbproject
 
