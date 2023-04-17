@@ -10,16 +10,10 @@ use yii\rbac\Item;
  *
  * @property int $id
  * @property int|null $e2e_item_id
- * @property int|null $item_id
- * @property string|null $i_type
- * @property string|null $i_usg_type
- * @property string|null $i_comb_type_id
- * @property string|null $e2e_item_ru
- * @property string|null $e2e_i_description_ru
- * @property string|null $e2e_item_en
- * @property string|null $e2e_i_description_en
- * @property string|null $e2e_item_ir
- * @property string|null $e2e_i_description_ir
+ * @property int $item_id
+ * @property int $i_usg_type
+ * @property int $i_type
+ * @property int $i_comb_type_id
  * @property string|null $i_result_sector1_colorid
  * @property string|null $i_result_sector2_colorid
  * @property string|null $i_result_sector3_colorid
@@ -31,10 +25,25 @@ use yii\rbac\Item;
  * @property string|null $i_result_sector9_colorid
  * @property string|null $i_result_sector10_colorid
  * @property int|null $source
- * @property int|null $check1
- * @property int|null $check2
- * @property int|null $check3
- * @property int|null $check4
+ * @property int $check1
+ * @property int $check2
+ * @property int $check3
+ * @property int $check4
+ * @property int $deleted
+ * @property string|null $i_result_sector1_colorid_description
+ * @property string|null $i_result_sector2_colorid_description
+ * @property string|null $i_result_sector3_colorid_description
+ * @property string|null $i_result_sector4_colorid_description
+ * @property string|null $i_result_sector5_colorid_description
+ * @property string|null $i_result_sector6_colorid_description
+ * @property string|null $i_result_sector7_colorid_description
+ * @property string|null $i_result_sector8_colorid_description
+ * @property string|null $i_result_sector9_colorid_description
+ * @property string|null $i_result_sector10_colorid_description
+ * @property string|null $comment
+ * @property int $priority
+ *
+ * @property ItemTitle[] $itemTitles
  */
 class Items extends \yii\db\ActiveRecord
 {
@@ -49,21 +58,23 @@ class Items extends \yii\db\ActiveRecord
     );
 
     private static $tabs = array(
-        1 => 'Pushed items',
-        2 => 'Created items',
-        3 => 'Migrated items',
+        1 => 'Active Items',
+        2 => 'Creation',
+        3 => 'Migrated Base',
         4 => 'Archive',
     );
 
     private static $steps = array(
-        1 => 'Filtering',
-        2 => 'Translating',
-        3 => 'Accept translation',
-        4 => 'Configuring',
-        5 => 'Professor checking',
-        6 => 'Translating parameters',
-        7 => 'Accept translation of parameters',
-        8 => 'Waiting for push'
+        1 => 'Migrated Base',
+        2 => 'Translation',
+        3 => 'Translation (check)',
+        4 => 'Item Config',
+        5 => 'Item Config (check)',
+        6 => 'Results Config',
+        7 => 'Results (Translate)',
+        8 => 'Results (Edits)',
+        9 => 'Results (Edits Translate)',
+        10 => 'Push'
     );
 
     private static $ITypes = array(
@@ -73,7 +84,7 @@ class Items extends \yii\db\ActiveRecord
     );
 
     private static $IUsgTypes = array(
-        0 => '',
+        0 => 'not set',
         1 => 'Single (children only)',
         2 => 'Single (adults only)',
         3 => 'Single (talents)',
@@ -129,6 +140,12 @@ class Items extends \yii\db\ActiveRecord
         34 => 'b_cust-b_cont',
     );
 
+    private static $priorities = array(
+        0 => 'Regular',
+        1 => 'High priority',
+        2 => 'Very high priority'
+    );
+
     /**
      * {@inheritdoc}
      */
@@ -143,8 +160,10 @@ class Items extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['i_type', 'i_usg_type', 'i_comb_type_id', 'e2e_item_id', 'item_id', 'source', 'check1', 'check2', 'check3', 'check4'], 'integer'],
-            [['i_result_sector1_colorid', 'i_result_sector2_colorid', 'i_result_sector3_colorid', 'i_result_sector4_colorid', 'i_result_sector5_colorid', 'i_result_sector6_colorid', 'i_result_sector7_colorid', 'i_result_sector8_colorid', 'i_result_sector9_colorid', 'i_result_sector10_colorid'], 'string', 'max' => 255],
+            [['e2e_item_id', 'item_id', 'i_usg_type', 'i_type', 'i_comb_type_id', 'source', 'check1', 'check2', 'check3', 'check4', 'deleted', 'priority'], 'integer'],
+            [['item_id'], 'required'],
+            [['comment'], 'string'],
+            [['i_result_sector1_colorid', 'i_result_sector2_colorid', 'i_result_sector3_colorid', 'i_result_sector4_colorid', 'i_result_sector5_colorid', 'i_result_sector6_colorid', 'i_result_sector7_colorid', 'i_result_sector8_colorid', 'i_result_sector9_colorid', 'i_result_sector10_colorid', 'i_result_sector1_colorid_description', 'i_result_sector2_colorid_description', 'i_result_sector3_colorid_description', 'i_result_sector4_colorid_description', 'i_result_sector5_colorid_description', 'i_result_sector6_colorid_description', 'i_result_sector7_colorid_description', 'i_result_sector8_colorid_description', 'i_result_sector9_colorid_description', 'i_result_sector10_colorid_description'], 'string', 'max' => 255],
         ];
     }
 
@@ -157,8 +176,8 @@ class Items extends \yii\db\ActiveRecord
             'id' => 'ID',
             'e2e_item_id' => 'E2e Item ID',
             'item_id' => 'Item ID',
-            'i_type' => 'I Type',
             'i_usg_type' => 'I Usg Type',
+            'i_type' => 'I Type',
             'i_comb_type_id' => 'I Comb Type ID',
             'i_result_sector1_colorid' => 'I Result Sector1 Colorid',
             'i_result_sector2_colorid' => 'I Result Sector2 Colorid',
@@ -171,10 +190,23 @@ class Items extends \yii\db\ActiveRecord
             'i_result_sector9_colorid' => 'I Result Sector9 Colorid',
             'i_result_sector10_colorid' => 'I Result Sector10 Colorid',
             'source' => 'Source',
-            'check1' => 'check1',
-            'check2' => 'check2',
-            'check3' => 'check3',
-            'check4' => 'check4'
+            'check1' => 'Check1',
+            'check2' => 'Check2',
+            'check3' => 'Check3',
+            'check4' => 'Check4',
+            'deleted' => 'Deleted',
+            'i_result_sector1_colorid_description' => 'I Result Sector1 Colorid Description',
+            'i_result_sector2_colorid_description' => 'I Result Sector2 Colorid Description',
+            'i_result_sector3_colorid_description' => 'I Result Sector3 Colorid Description',
+            'i_result_sector4_colorid_description' => 'I Result Sector4 Colorid Description',
+            'i_result_sector5_colorid_description' => 'I Result Sector5 Colorid Description',
+            'i_result_sector6_colorid_description' => 'I Result Sector6 Colorid Description',
+            'i_result_sector7_colorid_description' => 'I Result Sector7 Colorid Description',
+            'i_result_sector8_colorid_description' => 'I Result Sector8 Colorid Description',
+            'i_result_sector9_colorid_description' => 'I Result Sector9 Colorid Description',
+            'i_result_sector10_colorid_description' => 'I Result Sector10 Colorid Description',
+            'comment' => 'Comment',
+            'priority' => 'Priority',
         ];
     }
 
@@ -182,17 +214,78 @@ class Items extends \yii\db\ActiveRecord
         $role = Yii::$app->admin->getIdentity()->role;
         $titles = array('item_id', 'title_persian', 'title_russian', 'title_english', 'title_temp_russian', 'title_temp_english');
         $configurations = array('i_usg_type', 'i_type', 'i_comb_type_id', 'color1', 'color2', 'color3', 'color4', 'color5', 'color6', 'color7', 'color8', 'color9', 'color10');
+//        $view1 = array(
+//            array(
+//                'item_id',
+//                'title_persian',
+//                'description_persian',
+//                '',
+//                'title_temp_russian',
+//                'title_temp_english',
+//                'description_temp_russian',
+//                'description_temp_english',
+//                '',
+//                'title_russian',
+//                'title_english',
+//                'description_russian',
+//                'description_english'
+//            ),
+//            '{view} {translate} {delete}'
+//        );
+
+        $view1_editable = array(
+            array(
+                'item_id',
+                'persian',
+                'russian',
+                'title_temp_english',
+                'description_temp_english',
+                '',
+                'title_russian_editable',
+                'title_english_editable',
+                'description_russian_editable',
+                'description_english_editable'
+            ),
+            '{view} {checkmarkTranslator} {delete}'
+        );
         switch ($pill) {
             case 1:
-                return array(array_merge($titles, $configurations), "");
+                return array(
+                    array(
+                        'item_id',
+                        'persian',
+                        'russian',
+                        'title_temp_english',
+                        'description_temp_english',
+                        '',
+                        'title_russian',
+                        'title_english',
+                        'description_russian',
+                        'description_english'
+                    ),
+                    '{view} {save} {delete}'
+                );
             case 2;
                 break;
             case 3;
                 switch ($step) {
                     case 1:
-                        return array(array_merge($titles, $configurations), '{view} {delete} {translate}');
+                        return array(
+                            array(
+                                'item_id',
+                                'persian',
+                                'russian_temp',
+                                'english_temp',
+                                'comment',
+                                'usg_type',
+                                'priority'
+                            ),
+                            '{delete} {save} {translate}'
+                        );
                     case 2:
-                        return array($titles, '{view} {checkmarkTranslator} {update} {delete}');
+                        return in_array($role, [1, 4]) ?
+                            $view1_editable :
+                            $view1;
                     case 3:
                         return array($titles, '{view} {checkmarkPsychologist} {delete}');
                     case 4:
@@ -200,10 +293,31 @@ class Items extends \yii\db\ActiveRecord
                     case 5:
                         return array(array_merge($titles, $configurations), '{view} {update} {checkmarkProfessor} {delete}');
                     case 6:
-                        return array($titles, '{view} {checkmarkTranslator} {update} {delete}');
+                        return array(array(
+                            'color1_description',
+                            'color2_description',
+                            'color3_description',
+                            'color4_description',
+                            'color5_description',
+                            'color6_description',
+                            'color7_description',
+                            'color8_description',
+                            'color9_description',
+                            'color10_description'), '{view} {checkmarkTranslator} {update} {delete}');
                     case 7:
-                        return array($titles, '{view} {checkmarkPsychologist} {update} {delete}');
                     case 8:
+                        return array(array(
+                            'color1_description',
+                            'color2_description',
+                            'color3_description',
+                            'color4_description',
+                            'color5_description',
+                            'color6_description',
+                            'color7_description',
+                            'color8_description',
+                            'color9_description',
+                            'color10_description'), '{view} {checkmarkPsychologist} {update} {delete}');
+                    case 10:
                         return array(array_merge($titles, $configurations), '{view} {checkmarkAdmin} {delete}');
                 }
                 break;
@@ -295,6 +409,7 @@ class Items extends \yii\db\ActiveRecord
             unset($steps[4]);
             unset($steps[5]);
             unset($steps[7]);
+            unset($steps[8]);
         } else if ($role == 2) {
             unset($steps[1]);
             unset($steps[2]);
@@ -302,6 +417,34 @@ class Items extends \yii\db\ActiveRecord
             unset($steps[4]);
             unset($steps[6]);
             unset($steps[7]);
+        }
+
+        return $steps;
+    }
+
+    public static function getActiveSteps() {
+        $role = Yii::$app->admin->getIdentity()->role;
+        $steps = self::$steps;
+        if ($role == 4) {
+            unset($steps[1]);
+            unset($steps[3]);
+            unset($steps[4]);
+            unset($steps[5]);
+            unset($steps[7]);
+            unset($steps[8]);
+        } else if ($role == 2) {
+            unset($steps[1]);
+            unset($steps[2]);
+            unset($steps[3]);
+            unset($steps[4]);
+            unset($steps[6]);
+            unset($steps[7]);
+        } else if ($role == 3) {
+            unset($steps[2]);
+            unset($steps[5]);
+            unset($steps[6]);
+        } else {
+            $steps = array();
         }
 
         return $steps;
@@ -343,5 +486,28 @@ class Items extends \yii\db\ActiveRecord
         if ($this->check2 == 1 AND $this->check3 == 1 AND $this->check4 == 2) return 5;
         if ($this->check2 == 2 AND $this->check3 == 1 AND $this->check4 == 2) return 6;
         if ($this->check2 == 2 AND $this->check3 == 1 AND $this->check4 == 3) return 7;
+    }
+
+    public static function getTabElCount($i) {
+        $query = Items::find();
+        $searchModel = new ItemsSearch();
+        $searchModel->filterPills($query, $i);
+
+        return $query->count();
+    }
+    public static function getStepElCount($i) {
+        $query = Items::find();
+        $searchModel = new ItemsSearch();
+        $searchModel->filterSteps($query, $i);
+
+        return $query->count();
+    }
+
+    public static function getPriorities() {
+        return self::$priorities;
+    }
+
+    public function getitemtitle() {
+        return $this->hasMany(ItemTitle::class, ['itemID' => 'id']);
     }
 }

@@ -27,7 +27,8 @@ class AppAsset extends AssetBundle
     public $js = [
         'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js',
         'https://code.jquery.com/ui/1.13.2/jquery-ui.js',
-        'js/main.js'
+        'js/main.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/colresizable/1.6.0/colResizable-1.6.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

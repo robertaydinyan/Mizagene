@@ -110,13 +110,16 @@ with mp_face_detection.FaceDetection(
                     coords = [(lm.x, lm.y, lm.z) for lm in face_landmarks.landmark]
                     def compute_distance(a, b):
                         return math.sqrt((a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2)
-
+                    print(coords[10])
+                    print(coords[152])
                     result["result"]["faceHeight"] = compute_distance(coords[10], coords[152])
                     result["result"]["faceWidth"] = compute_distance(coords[234], coords[454])
                     result["result"]["foreheadHeight"] = compute_distance(coords[10], coords[336])
                     result["result"]["yawError"] = math.degrees(math.atan2(coords[33][1] - coords[263][1], coords[33][0] - coords[263][0]))
                     result["result"]["pitchError"] = math.degrees(math.atan2(coords[27][2] - coords[8][2], coords[27][1] - coords[8][1]))
-                    result["result"]["mmpp"] = 20.0 / result["result"]["faceWidth"]  # assuming the average human face width is 20 cm
+                    result["result"]["mmpp"] = 2.0 / result["result"]["faceWidth"]
+                    result["result"]["faceHeight"] = result["result"]["faceHeight"] * result["result"]["imageHeight"] / result["result"]["mmpp"]
+                    result["result"]["faceWidth"] = result["result"]["faceWidth"] * result["result"]["imageWidth"] / result["result"]["mmpp"]
 
                     dot_spec = mp_drawing.DrawingSpec(color=(0, 255), circle_radius=0, thickness=0)
                     for i, landmark in enumerate(face_landmarks.landmark):

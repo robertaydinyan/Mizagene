@@ -39,7 +39,7 @@ class ItemsSearch extends Items
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($search, $pill, $step)
     {
         $query = Items::find();
 
@@ -47,36 +47,34 @@ class ItemsSearch extends Items
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 200
+            ],
         ]);
-
-        $this->load($params);
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
         }
-        // grid filtering conditions
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'e2e_item_id' => $this->e2e_item_id,
-            'item_id' => $this->item_id,
-            'i_result_sector1_colorid' => $this->i_result_sector1_colorid,
-            'i_result_sector2_colorid' => $this->i_result_sector2_colorid,
-            'i_result_sector3_colorid' => $this->i_result_sector3_colorid,
-            'i_result_sector4_colorid' => $this->i_result_sector4_colorid,
-            'i_result_sector5_colorid' => $this->i_result_sector5_colorid,
-            'i_result_sector6_colorid' => $this->i_result_sector6_colorid,
-            'i_result_sector7_colorid' => $this->i_result_sector7_colorid,
-            'i_result_sector8_colorid' => $this->i_result_sector8_colorid,
-            'i_result_sector9_colorid' => $this->i_result_sector9_colorid,
-            'i_result_sector10_colorid' => $this->i_result_sector10_colorid,
-        ]);
-        switch ($params['pill']) {
+
+        $this->filterPills($query, $pill);
+        $this->filterSteps($query, $step);
+        if (is_numeric($search)) {
+            $query->andFilterWhere(['like', 'item_id', $search]);
+        } else {
+            $query->joinWith(['itemtitle']);
+            $query->andFilterWhere(['or', ['like', 'title', $search], ['like', 'description', $search]]);
+        }
+        return $dataProvider;
+    }
+
+    public function filterPills($query, $pill) {
+        switch ($pill) {
             case 1:
                 $query->andFilterWhere(['check1' => 2, 'deleted' => 0]);
             case 2:
-                $query->andFilterWhere(['source' => 0, 'deleted' => 0, 'check2' => 0]);
+                $query->andFilterWhere(['source' => 0, 'deleted' => 0, 'check1' => 0]);
                 break;
             case 3:
                 $query->andFilterWhere(['source' => 1, 'deleted' => 0, 'check1' => 0]);
@@ -85,8 +83,10 @@ class ItemsSearch extends Items
                 $query->andFilterWhere(['deleted' => 1]);
                 break;
         }
+    }
 
-        switch ($params['step']) {
+    public function filterSteps($query, $step) {
+        switch ($step) {
             case 1:
                 $query->andFilterWhere(['check2' => 0, 'check3' => 0, 'check4' => 0]);
                 break;
@@ -112,9 +112,5 @@ class ItemsSearch extends Items
                 $query->andFilterWhere(['check2' => 2, 'check3' => 2, 'check4' => 3]);
                 break;
         }
-        $query->andFilterWhere(['like', 'i_type', $this->i_type])
-            ->andFilterWhere(['like', 'i_usg_type', $this->i_usg_type])
-            ->andFilterWhere(['like', 'i_comb_type_id', $this->i_comb_type_id]);
-        return $dataProvider;
     }
 }

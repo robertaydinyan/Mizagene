@@ -6,6 +6,7 @@ use app\modules\models\Items;
 use app\modules\models\ItemsSearch;
 use app\modules\models\ItemTitle;
 use app\modules\models\Language;
+use yii\web\Response;
 use Yii;
 use yii\rbac\Item;
 use yii\web\Controller;
@@ -46,10 +47,7 @@ class ItemsController extends Controller
         $pill = Yii::$app->request->get('pill') ?: 1;
         $step = isset($steps[$step]) ? $step : min(array_keys($steps));
         $searchModel = new ItemsSearch();
-        $params = $this->request->queryParams;
-        $params['pill'] = $pill;
-        $params['step'] = $step;
-        $dataProvider = $searchModel->search($params);
+        $dataProvider = $searchModel->search('', $pill, $step);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -58,6 +56,22 @@ class ItemsController extends Controller
             'step' => $step,
             'tabs' => Items::getTabs(),
             'steps' => Items::getSteps(),
+        ]);
+    }
+
+    public function actionGetitemslist($search) {
+//        Yii::$app->response->format = Response::FORMAT_JSON;
+        $steps = Items::getSteps();
+        $step = Yii::$app->request->get('step');
+        $pill = Yii::$app->request->get('pill') ?: 1;
+        $step = isset($steps[$step]) ? $step : min(array_keys($steps));
+        $searchModel = new ItemsSearch();
+        $dataProvider = $searchModel->search($search, $pill, $step);
+
+        return $this->renderAjax('_items-list', [
+            'dataProvider' => $dataProvider,
+            'pill' => $pill,
+            'step' => $step
         ]);
     }
 
@@ -101,26 +115,25 @@ class ItemsController extends Controller
         ]);
     }
 
-    /**
-     * Updates an existing Items model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id ID
-     * @return string|\yii\web\Response
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
-
-        if ($this->request->isPost && $model->saveData($this->request->post())) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost) {
+            $model = $this->findModel($id);
+            $model->load(json_decode(Yii::$app->request->post('Items'), true));
+            return $model->save();
+//            $description = Yii::$app->request->post('Items')['description'];
+//            if ($description) {
+//                foreach (Yii::$app->request->post('Items')['title'] as $j => $t) {
+//                    $it = ItemTitle::find()->where(['itemID' => $model->id, 'languageID' => $j])->one() ?: new ItemTitle();
+//                    $it->description = $description[$j][$i];
+//                    $it->title = $t[$i];
+//                    $it->itemID = $model->id;
+//                    $it->languageID = $j;
+//                    $it->save();
+//                }
+//            }
         }
-
-        $languages = Language::find()->all();
-        return $this->render('update', [
-            'model' => $model,
-            'languages' => $languages
-        ]);
+//        return $this->redirect(Yii::$app->request->referrer);
     }
 
     /**
@@ -173,15 +186,13 @@ class ItemsController extends Controller
         $item->save();
     }
 
-    public function actionPush() {
+    public function actionCheckadmin() {
         if (Yii::$app->admin->getIdentity()->role == 1) {
-            $itemID = Yii::$app->request->get('itemID');
+            $itemID = Yii::$app->request->post('itemID');
             $item = Items::findOne($itemID);
             $item->check1 = 1;
             $item->save();
         }
-
-        return $this->redirect('/admin/items/index');
     }
 
     public function actionChecktranslator() {
