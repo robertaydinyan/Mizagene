@@ -69,6 +69,7 @@ class ItemsController extends Controller
         $dataProvider = $searchModel->search($search, $pill, $step);
 
         return $this->renderAjax('_items-list', [
+            'source' => 'controller',
             'dataProvider' => $dataProvider,
             'pill' => $pill,
             'step' => $step

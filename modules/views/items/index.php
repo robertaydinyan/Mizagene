@@ -11,25 +11,26 @@ use yii\bootstrap5\ActiveForm;
 
 $this->title = 'Items';
 $this->params['breadcrumbs'][] = $this->title;
-
 ?>
 <div class="items-index">
-    <ul class="nav nav-pills mb-3" role="tablist">
-        <?php if ($tabs) {
+
+    <ul class="nav nav-pills mb-3" role="tablist" style="margin-top: 128px;">
+        <?php
+        if ($tabs) {
             foreach ($tabs as $i => $title) {
                 echo sprintf('
-                    <li class="nav-pills">
-                        <a class="nav-pill %s" href="?pill=%s">%s <span class="pill-badge pill-badge-primary">%s</span></a>
-                    </li>',
+                            <li class="nav-pills">
+                                <a class="nav-pill %s" href="?pill=%s"><span>%s</span> %s</a>
+                            </li>',
                     $pill == $i ? "active" : "",
                     $i,
                     $title,
-                    Items::getTabElCount($i)
+                    Items::getTabElCount($i) == 0 ? "" : '<span class="pill-badge pill-badge-primary">' . Items::getTabElCount($i) . '</span>'
                 );
             }
         }?>
     </ul>
-    <ul class="nav nav-pills mb-3" role="tablist">
+    <ul class="nav nav-pills mb-3 mt-4" role="tablist">
         <?php if ($steps) {
             $active_steps = Items::getActiveSteps();
             foreach ($steps as $i => $title) {
@@ -56,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'form' => $form,
         'dataProvider' => $dataProvider,
         'pill' => $pill,
-        'step' => $step
+        'step' => $step,
     ]); ?>
     <?php ActiveForm::end(); ?>
 

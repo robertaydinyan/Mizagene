@@ -4,7 +4,11 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\bootstrap5\ActiveForm;
 
+if (isset($source)) {
+    $form = ActiveForm::begin();
+}
 $columns = [
     '' => [
         'label' => '',

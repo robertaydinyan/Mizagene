@@ -90,6 +90,7 @@ a.desc:after {
 .item-template {
     display: none;
 }
+
 .item {
     user-select: none;
 }
@@ -124,9 +125,6 @@ td:has(> .item-sector) {
 
 .color-for-verygood  {
     background-color: rgb(0, 102, 0);
-}
-.container-fluid {
-    margin-top: 60px;
 }
 
 .flag-icon {
@@ -231,8 +229,8 @@ td:has(> .item-sector) {
 }
 
 .archive {
+    margin-top: 0;
     width: 28px;
-    height: 28px;
 }
 
 .archive-red {
@@ -263,10 +261,6 @@ td:has(> .item-sector) {
     padding: 8px !important;
     padding-top: 20px !important;
 }
-
-.nav-pills {
-    margin-top: 12px;
-}
 .JPadding > tbody > tr > td, .JPadding > tbody > tr > th {
     padding-left: 8!important;
     padding-right: 8!important;
@@ -277,10 +271,21 @@ td:has(> .item-sector) {
     padding: 8px;
     margin: 6px;
     text-decoration: none;
+    height: 48px;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .nav-pill.active {
-    border-bottom: 2px solid black;
+    background: #444;
+    color: white;
+    padding-top: 8px;
+    border-radius: 5px;
+}
+
+.nav-pill.active .pill-badge-primary {
+    background: white;
+    color: #444;
 }
 
 .item-search-bar {
@@ -291,9 +296,10 @@ td:has(> .item-sector) {
 .pill-badge {
     color: white;
     border-radius: 5px;
-    width: 50px;
+    padding: 4px;
     display: inline-block;
     text-align: center;
+    min-width: 44px;
 }
 
 .pill-badge-primary {
@@ -306,4 +312,33 @@ td:has(> .item-sector) {
 
 textarea.form-control {
     min-height: 80px !important;
+}
+
+.grid-view tbody {
+    font-size: 12px !important;
+}
+
+.grid-view tbody textarea, select, input {
+    font-size: 12px !important;
+}
+
+.navbar {
+    background-color: white !important;
+}
+
+.navbar-brand {
+    color: black !important;
+}
+
+.nav-link {
+    color: black !important;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-accent-bg: #f7f7f7;
+}
+
+.collapse {
+    position: absolute;
+    right: 0;
 }
