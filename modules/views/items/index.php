@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="items-index">
 
-    <ul class="nav nav-pills mb-3" role="tablist" style="margin-top: 128px;">
+    <ul class="nav nav-pills mb-3" role="tablist">
         <?php
         if ($tabs) {
             foreach ($tabs as $i => $title) {
@@ -30,24 +30,26 @@ $this->params['breadcrumbs'][] = $this->title;
             }
         }?>
     </ul>
-    <ul class="nav nav-pills mb-3 mt-4" role="tablist">
-        <?php if ($steps) {
-            $active_steps = Items::getActiveSteps();
-            foreach ($steps as $i => $title) {
-                echo sprintf('
-                    <li class="nav-pills">
-                        <a class="nav-pill %s" href="?pill=%s&step=%s">%s <span class="pill-badge %s">%s</span></a>
-                    </li>',
-                    $step == $i ? "active" : "",
-                    $pill,
-                    $i,
-                    $title,
-                    isset($active_steps[$i]) ? "pill-badge-danger" : "pill-badge-primary",
-                    Items::getStepElCount($i)
-                );
-            }
-        } ?>
-    </ul>
+    <div class="steps-container">
+        <ul class="nav nav-pills mb-3 mt-4 nav-pills-steps" role="tablist">
+            <?php if ($steps) {
+                $active_steps = Items::getActiveSteps();
+                foreach ($steps as $i => $title) {
+                    echo sprintf('
+                        <li class="nav-pills">
+                            <a class="nav-pill %s" href="?pill=%s&step=%s">%s <span class="pill-badge %s">%s</span></a>
+                        </li>',
+                        $step == $i ? "active" : "",
+                        $pill,
+                        $i,
+                        $title,
+                        isset($active_steps[$i]) ? "pill-badge-danger" : "pill-badge-primary",
+                        Items::getStepElCount($i)
+                    );
+                }
+            } ?>
+        </ul>
+    </div>
 
     <div class="form-group col-3">
         <input type="text" class="form-control item-search-bar" placeholder="search by parameter ID, or any language">

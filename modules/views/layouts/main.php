@@ -22,6 +22,7 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <?php $this->registerCssFile('/css/admin.css', ['depends' => ['app\assets\AppAsset']]); ?>
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
@@ -39,11 +40,11 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => !Yii::$app->admin->isGuest ? [
-            ['label' => 'Users', 'url' => ['/admin/admin/index']],
-            ['label' => 'Items', 'url' => ['/admin/items/index']],
-            ['label' => 'Region', 'url' => ['/admin/region/index']],
-            ['label' => 'Language', 'url' => ['/admin/language/index']],
-            ['label' => 'Group', 'url' => ['/admin/group/index']],
+            ['label' => 'Users', 'url' => ['/admin/admin/index'], 'active' => Yii::$app->controller->id == 'admin'],
+            ['label' => 'Items', 'url' => ['/admin/items/index'], 'active' => Yii::$app->controller->id == 'items'],
+            ['label' => 'Region', 'url' => ['/admin/region/index'], 'active' => Yii::$app->controller->id == 'region'],
+            ['label' => 'Language', 'url' => ['/admin/language/index'], 'active' => Yii::$app->controller->id == 'language'],
+            ['label' => 'Group', 'url' => ['/admin/group/index'], 'active' => Yii::$app->controller->id == 'group'],
             ['label' => 'Log out', 'url' => ['/admin/logout']],
         ] : []
     ]);
@@ -69,6 +70,9 @@ AppAsset::register($this);
     '@web/js/admin.js',
     ['depends' => [\yii\web\JqueryAsset::class]]
 ); ?>
+<div class="preloader">
+    <div class="loader"></div>
+</div>
 <?php $this->endBody() ?>
 </body>
 </html>

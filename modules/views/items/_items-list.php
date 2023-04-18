@@ -46,7 +46,7 @@ $columns = [
     ],
     'russian_temp' => [
         'header' => '<div class="title-label title-label-disabled">
-            <img class="flag-icon" src="/images/icons/google.png" alt="Google">
+            <img class="flag-icon-g" src="/images/icons/google.png" alt="Google">
             <img class="flag-icon" src="/images/icons/flag1.jpg" alt="Russian">
             <div class="title-label-content">
                 <span>Title</span>
@@ -67,7 +67,7 @@ $columns = [
     ],
     'english_temp' => [
         'header' => '<div class="title-label title-label-disabled">
-            <img class="flag-icon" src="/images/icons/google.png" alt="Google">
+            <img class="flag-icon-g" src="/images/icons/google.png" alt="Google">
             <img class="flag-icon" src="/images/icons/flag2.png" alt="English">
             <div class="title-label-content">
                 <span>Title</span>
@@ -312,8 +312,11 @@ foreach ($cl[0] as $column) {
     'columns' => [
         ...$columns_filtered,
         [
-            'header' => '<div><span>Actions</span></div>',
-            'headerOptions' => ['class' => 'join-left join-right'],
+            'header' => Html::a('', 'javascript:;',
+                [
+                    'class' => 'icon archive-white label',
+                ]
+            ),
             'class' => ActionColumn::className(),
             'template' => $cl[1],
             'buttons' => [

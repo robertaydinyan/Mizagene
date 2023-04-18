@@ -96,4 +96,10 @@ $(document).ready(function() {
             });
         }
     });
+    $('.steps-container').toggle();
+
+    $('.nav-pill.active').on('click', function(event) {
+        event.preventDefault();
+        $('.steps-container').toggle();
+    })
 });

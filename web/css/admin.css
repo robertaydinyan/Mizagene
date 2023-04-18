@@ -1,0 +1,285 @@
+main {
+    margin-top: 126px;
+}
+
+.color-for-critical {
+    background-color: rgb(255, 0, 0);
+}
+
+.color-for-bad {
+    background-color: rgb(200, 0, 0);
+}
+
+.color-for-notenough {
+    background-color: rgb(255, 102, 0);
+}
+
+.color-for-good {
+    background-color: rgb(0, 153, 51);
+}
+
+.color-for-verygood  {
+    background-color: rgb(0, 102, 0);
+}
+
+.flag-icon {
+    width: 26px;
+    height: 16px;
+    margin: auto 0;
+}
+
+.flag-icon-g {
+    height: 16px;
+    margin: auto 0;
+}
+
+.title-label {
+    border-radius: 5px;
+    border: 1px solid #c3c3c3;
+    display: flex;
+    align-items: flex-start;
+}
+
+.title-label-content {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.title-label-content span:first-child {
+    width: calc(50% - 18px) !important;
+    border-right: 1px solid;
+}
+
+.title-label-content span {
+    width: calc(50% + 18px) !important;
+    display: inline-block;
+    margin: 0;
+    text-align: center;
+}
+
+.title-label-disabled .title-label-content span:first-child {
+    width: calc(50% - 30px) !important;
+}
+
+.title-label-disabled .title-label-content span {
+    width: calc(50% + 30px) !important;
+}
+
+.grid-view {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.grid-view th {
+    overflow: hidden;
+    font-weight: 400 !important;
+    border: none !important;
+    padding: 12px 0 12px 12px;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.grid-view th.join-right > div {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.grid-view th.join-left {
+    padding-left: 0;
+}
+
+.grid-view th.join-left > div {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.grid-view th > div {
+    background-color: white;
+    padding: 4px 12px;
+    border-radius: 5px;
+}
+
+.grid-view td {
+    border: none !important;
+}
+
+.title-value {
+    display: flex;
+}
+
+.title-value span {
+    width: 50%;
+    display: inline-block;
+}
+
+.title-label-disabled {
+    color: white;
+    background-color: transparent !important;
+}
+
+.title-label-disabled .flag-icon:first-child {
+    margin-right: 8px;
+}
+
+.flag-icon-g {
+    margin-right: 8px;
+}
+
+.grid-view thead {
+    background-color: #444444;
+}
+
+.icon {
+    background-position: center;
+    background-size: cover;
+    display: inline-block;
+    margin-right: 12px;
+    margin-top: 6px;
+    width: 22px;
+    height: 22px;
+}
+
+.archive {
+    margin-top: 0;
+    width: 28px;
+}
+
+.archive-red {
+    background-image: url("/images/icons/archive_red.png");
+}
+
+.archive-white {
+    margin-top: 0;
+    width: 28px;
+    background-image: url("/images/icons/archive_white.png");
+}
+
+.save-filled {
+    background-image: url("/images/icons/save_filled.png");
+}
+
+.save-green {
+    background-image: url("/images/icons/save_green.png");
+}
+
+.save-green-filled {
+    background-image: url("/images/icons/save_green_filled.png");
+}
+
+.forward-gray {
+    background-image: url("/images/icons/forward_gray.png");
+}
+
+.forward-black {
+    background-image: url("/images/icons/forward_black.png");
+}
+
+.grid-view td {
+    padding: 8px !important;
+    padding-top: 20px !important;
+}
+.JPadding > tbody > tr > td, .JPadding > tbody > tr > th {
+    padding-left: 8!important;
+    padding-right: 8!important;
+}
+
+.nav-pill {
+    color: black;
+    padding: 8px;
+    margin: 6px;
+    text-decoration: none;
+    height: 48px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.nav-pill.active {
+    background: #444;
+    color: white;
+    padding-top: 8px;
+    border-radius: 5px;
+}
+
+.nav-pill.active .pill-badge-primary {
+    background: white;
+    color: #444;
+}
+
+.item-search-bar {
+    margin-bottom: 8px;
+    background-color: #f1f1f1;
+}
+
+.pill-badge {
+    color: white;
+    border-radius: 5px;
+    padding: 4px;
+    display: inline-block;
+    text-align: center;
+    min-width: 44px;
+}
+
+.pill-badge-primary {
+    background: #444444;
+}
+
+.pill-badge-danger {
+    background: red;
+}
+
+textarea.form-control {
+    min-height: 80px !important;
+}
+
+.grid-view tbody {
+    font-size: 12px !important;
+}
+
+.grid-view tbody textarea, select, input {
+    font-size: 12px !important;
+}
+
+.navbar {
+    background-color: white !important;
+}
+
+.navbar-brand {
+    color: black !important;
+}
+
+.nav-link {
+    color: black !important;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-accent-bg: #f7f7f7;
+}
+
+.collapse {
+    position: absolute;
+    right: 0;
+}
+
+a.nav-link {
+    font-size: 19px;
+    margin-right: 5px;
+}
+
+a.nav-link:not(.active) {
+    padding-top: 16px;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    color: #464646 !important;
+    font-size: 26px;
+}
+
+.nav-pills-steps {
+    position: absolute;
+    background: #f7f7f7;
+    padding: 12px;
+    margin-top: -16px !important;
+}
