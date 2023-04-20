@@ -26,6 +26,9 @@ AppAsset::register($this);
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
+<div class="preloader">
+    <div class="loader"></div>
+</div>
 <header>
     <?php
     NavBar::begin([
@@ -92,9 +95,6 @@ AppAsset::register($this);
     '@web/js/admin.js',
     ['depends' => [\yii\web\JqueryAsset::class]]
 ); ?>
-<div class="preloader">
-    <div class="loader"></div>
-</div>
 <?php $this->endBody() ?>
 </body>
 </html>
