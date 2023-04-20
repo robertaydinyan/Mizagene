@@ -1,18 +1,49 @@
 $(document).ready(function() {
     // general
+    let color_spector = [
+        'critical',
+        'bad',
+        'notenough',
+        'good',
+        'verygood'
+    ];
+    $('.grid-view input, select, textarea').removeAttr('id');
+
     function takeFormData(el) {
         let formValues = {};
-        let name
+        let name;
         $(el).find('input, select, textarea').each(function() {
             name = $(this).attr('name').split('[');
-            (!formValues[name[0]]) && (formValues[name[0]] = {});
-            formValues[name[0]][name[1].replace(']', '')] = $(this).val();
+            name = name.map((v, k) => {
+                return v.replace(']', '');
+            })
+            if (name.length === 2) {
+                (!formValues[name[0]]) && (formValues[name[0]] = {});
+                formValues[name[0]][name[1]] = $(this).val();
+            } else {
+                (!formValues[name[0]]) && (formValues[name[0]] = {});
+                (!formValues[name[0]][name[1]]) && (formValues[name[0]][name[1]] = {});
+                formValues[name[0]][name[1]][name[2]] = $(this).val();
+            }
         });
 
         return formValues;
     }
 
-    let page = window.location.href.split('/').slice(3).join('/').split('&')[0];
+    function rowValidation(row) {
+        let missed_value = false;
+        $.each($(row).find('.required'), (j, t) => {
+            if (!$(t).val() || $(t).val() === '0') missed_value = true;
+        });
+
+        if (missed_value) {
+            $(row).find('.forward-black').removeClass('forward-black').addClass('forward-gray').removeClass('ajax-call');
+        } else {
+            $(row).find('.forward-gray').removeClass('forward-gray').addClass('forward-black').addClass('ajax-call');
+        }
+    }
+
+    let page = window.location.href.split('/').slice(3).join('/');
     function tableRowsWidth(table) {
         if (localStorage[page]) {
             let widths = JSON.parse(localStorage[page]);
@@ -63,7 +94,7 @@ $(document).ready(function() {
     }
 
     // items events
-    $('.ajax-call').on('click', function () {
+    $(document).on('click', '.ajax-call', function () {
         $.post($(this).data("path"), {
             'itemID': $(this).closest('tr').attr('data-key'),
         }).done(() => {
@@ -81,13 +112,15 @@ $(document).ready(function() {
     });
 
     $('.grid-view input, textarea, select').change(function() {
-        $(this).closest('tr').find('.save-filled').removeClass('save-filled').addClass('save-green');
+        $(this).closest('tr').find('.save-filled, .save-green-filled').removeClass('save-filled').removeClass('save-green-filled').addClass('save-green');
     });
 
     $('.save-item').on('click', function() {
         if ($(this).hasClass('save-green')) {
+            rowValidation($(this).closest('tr'));
+
             let data = takeFormData($(this).closest('tr'));
-            $.post('/admin/items/update?id=' + $(this).closest('tr').data('key'), {
+            $.get('/admin/items/update?id=' + $(this).closest('tr').data('key'), {
                 'Items': JSON.stringify(data)
             }).done((data) => {
                 if (data) {
@@ -96,10 +129,18 @@ $(document).ready(function() {
             });
         }
     });
-    $('.steps-container').toggle();
 
-    $('.nav-pill.active').on('click', function(event) {
-        event.preventDefault();
-        $('.steps-container').toggle();
-    })
+    $.each($('.grid-view tbody tr'), (i, v) => {
+        rowValidation($(v));
+    });
+
+    $('.color-spector').on('click', function() {
+        let current = $(this).find('input').val();
+        let next = color_spector[color_spector.findIndex((value) => {
+            return value === current;
+        }) + 1];
+        next = next ? next : 'critical';
+        $(this).attr('class', 'color-spector color-for-' + next);
+        $(this).find('input').val(next).change();
+    });
 });

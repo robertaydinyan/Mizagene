@@ -20,8 +20,20 @@ $columns = [
     'item_id' => [
         'header' => '<div><span>ID</span></div>',
         'format' => 'raw',
-        'value' => function($model) use ($form) {
-            return '<span style="display: block; width: 100%; text-align: right">' . $model->item_id . '</span>';
+        'value' => function($model) {
+            return sprintf('
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-column">
+                        %s
+                        %s
+                    </div>
+                    <span>%s</span>
+                </div>',
+
+                $model->priority ? ('<div class="icon m-icon priority-' . $model->priority . '"></div>') : '',
+                $model->comment ? ('<div class="icon m-icon comment"  data-toggle="tooltip" title="' . $model->comment . '"></div>') : '',
+                $model->item_id
+            );
         }
     ],
     'persian' => [
@@ -65,6 +77,50 @@ $columns = [
             );
         }
     ],
+    'russian' => [
+        'header' => '<div class="title-label">
+            <img class="flag-icon" src="/images/icons/flag1.jpg" alt="Russian">
+            <div class="title-label-content">
+                <span>Title</span>
+                <span>Description</span>
+            </div>
+        </div>',
+        'format' => 'raw',
+        'value' => function($model) {
+            return sprintf('<div class="title-value">
+                <span>%s</span>
+                <span>%s</span>
+            </div>',
+
+                $model->getTitle(1)->title,
+                $model->getTitle(1)->description
+            );
+        }
+    ],
+    'russian_editable' => [
+        'header' => '<div class="title-label">
+            <img class="flag-icon" src="/images/icons/flag1.jpg" alt="Russian">
+            <div class="title-label-content">
+                <span>Title</span>
+                <span>Description</span>
+            </div>
+        </div>',
+        'format' => 'raw',
+        'value' => function($model) use ($form) {
+            return '<div class="title-value">' .
+                $form->field($model, 'title[1]')->textarea([
+                    'maxlength' => true,
+                    'value' => $model->getTitle(1)->title,
+                    'class' => 'form-control required'
+                ])->label(false) .
+                $form->field($model, 'description[1]')->textarea([
+                    'maxlength' => true,
+                    'value' => $model->getTitle(1)->description,
+                    'class' => 'form-control required'
+                ])->label(false) .
+            '</div>';
+        }
+    ],
     'english_temp' => [
         'header' => '<div class="title-label title-label-disabled">
             <img class="flag-icon-g" src="/images/icons/google.png" alt="Google">
@@ -84,6 +140,50 @@ $columns = [
                 $model->getTitle(2)->title_temp,
                 $model->getTitle(2)->description_temp
             );
+        }
+    ],
+    'english' => [
+        'header' => '<div class="title-label">
+            <img class="flag-icon" src="/images/icons/flag2.png" alt="English">
+            <div class="title-label-content">
+                <span>Title</span>
+                <span>Description</span>
+            </div>
+        </div>',
+        'format' => 'raw',
+        'value' => function($model) {
+            return sprintf('<div class="title-value">
+                <span>%s</span>
+                <span>%s</span>
+            </div>',
+
+                $model->getTitle(2)->title,
+                $model->getTitle(2)->description
+            );
+        }
+    ],
+    'english_editable' => [
+        'header' => '<div class="title-label">
+            <img class="flag-icon" src="/images/icons/flag2.png" alt="English">
+            <div class="title-label-content">
+                <span>Title</span>
+                <span>Description</span>
+            </div>
+        </div>',
+        'format' => 'raw',
+        'value' => function($model) use ($form) {
+            return '<div class="title-value">' .
+                $form->field($model, 'title[2]')->textarea([
+                    'maxlength' => true,
+                    'value' => $model->getTitle(2)->title,
+                    'class' => 'form-control required'
+                ])->label(false) .
+                $form->field($model, 'description[2]')->textarea([
+                    'maxlength' => true,
+                    'value' => $model->getTitle(2)->description,
+                    'class' => 'form-control required'
+                ])->label(false) .
+            '</div>';
         }
     ],
     'comment' => [
@@ -112,101 +212,6 @@ $columns = [
             return $form->field($model, 'priority')->dropDownList(Items::getPriorities())->label(false);
         }
     ],
-    'russian' => [
-        'label' => 'Title Russian',
-        'value' => function($model) {
-            return $model->getTitle(1)->title;
-        }
-    ],
-    'title_russian' => [
-        'label' => 'Title Russian',
-        'value' => function($model) {
-            return $model->getTitle(1)->title;
-        }
-    ],
-    'title_russian_editable' => [
-        'label' => 'Title Russian',
-        'format' => 'raw',
-        'value' => function($model) use ($form) {
-            return $form->field($model, 'title[1][]')->textarea([
-                'maxlength' => true,
-                'value' => $model->getTitle(1)->title,
-            ])->label(false);
-        }
-    ],
-    'description_russian' => [
-        'label' => 'Description Russian',
-        'value' => function($model) {
-            return $model->getTitle(1)->description;
-        }
-    ],
-    'description_russian_editable' => [
-        'label' => 'Description Russian',
-        'format' => 'raw',
-        'value' => function($model) use ($form) {
-            return $form->field($model, 'description[1][]')->textarea([
-                'maxlength' => true,
-                'value' => $model->getTitle(1)->description,
-            ])->label(false);
-        }
-    ],
-
-//    'title_temp_russian' => [
-//        'label' => 'Title Temp Russian',
-//        'value' => function($model) {
-//            return $model->getTitle(1)->title_temp;
-//        }
-//    ],
-//    'description_temp_russian' => [
-//        'label' => 'Description Temp Russian',
-//        'value' => function($model) {
-//            return $model->getTitle(1)->description_temp;
-//        }
-//    ],
-    'title_english' => [
-        'label' => 'Title English',
-        'value' => function($model) {
-            return $model->getTitle(2)->title;
-        }
-    ],
-    'title_english_editable' => [
-        'label' => 'Title English',
-        'format' => 'raw',
-        'value' => function($model) use ($form) {
-            return $form->field($model, 'title[2][]')->textarea([
-                'maxlength' => true,
-                'value' => $model->getTitle(2)->title,
-            ])->label(false);
-        }
-    ],
-    'description_english' => [
-        'label' => 'Description English',
-        'value' => function($model) {
-            return $model->getTitle(2)->description;
-        }
-    ],
-    'description_english_editable' => [
-        'label' => 'Description English',
-        'format' => 'raw',
-        'value' => function($model) use ($form) {
-            return $form->field($model, 'description[2][]')->textarea([
-                'maxlength' => true,
-                'value' => $model->getTitle(2)->description,
-            ])->label(false);
-        }
-    ],
-    'title_temp_english' => [
-        'label' => 'Title Temp English',
-        'value' => function($model) {
-            return $model->getTitle(2)->title_temp;
-        }
-    ],
-    'description_temp_english' => [
-        'label' => 'Description Temp English',
-        'value' => function($model) {
-            return $model->getTitle(2)->description_temp;
-        }
-    ],
     'i_type' => [
         'label' => 'type',
         'value' => function($model) {
@@ -219,74 +224,98 @@ $columns = [
             return $model->getICombType();
         }
     ],
-    'color1' => [
-        'label' => 'i_result_sector1_colorid',
-        'format' => 'html',
-        'value' => function($model) {
-            return $model->i_result_sector1_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector1_colorid);
+    'results' => [
+        'header' => '<div><span>Results</span></div>',
+        'headerOptions' => ['class' => 'join-right'],
+        'label' => 'Results',
+        'format' => 'raw',
+        'value' => function($model) use ($form) {
+            return sprintf('<div>
+                   <div class="color-spector color-for-%s">%s</div>
+                   <div class="color-spector color-for-%s">%s</div>
+                   <div class="color-spector color-for-%s">%s</div>
+                   <div class="color-spector color-for-%s">%s</div>
+                   <div class="color-spector color-for-%s">%s</div>
+                   <div class="color-spector color-for-%s">%s</div>
+                   <div class="color-spector color-for-%s">%s</div>
+                   <div class="color-spector color-for-%s">%s</div>
+                   <div class="color-spector color-for-%s">%s</div>
+                   <div class="color-spector color-for-%s">%s</div>
+                   <p>save the colors</p>
+                </div>',
+
+
+                $model->i_result_sector1_colorid,
+                $form->field($model, 'i_result_sector1_colorid')->hiddenInput(['class' => 'required'])->label(false),
+                $model->i_result_sector2_colorid,
+                $form->field($model, 'i_result_sector2_colorid')->hiddenInput(['class' => 'required'])->label(false),
+                $model->i_result_sector3_colorid,
+                $form->field($model, 'i_result_sector3_colorid')->hiddenInput(['class' => 'required'])->label(false),
+                $model->i_result_sector4_colorid,
+                $form->field($model, 'i_result_sector4_colorid')->hiddenInput(['class' => 'required'])->label(false),
+                $model->i_result_sector5_colorid,
+                $form->field($model, 'i_result_sector5_colorid')->hiddenInput(['class' => 'required'])->label(false),
+                $model->i_result_sector6_colorid,
+                $form->field($model, 'i_result_sector6_colorid')->hiddenInput(['class' => 'required'])->label(false),
+                $model->i_result_sector7_colorid,
+                $form->field($model, 'i_result_sector7_colorid')->hiddenInput(['class' => 'required'])->label(false),
+                $model->i_result_sector8_colorid,
+                $form->field($model, 'i_result_sector8_colorid')->hiddenInput(['class' => 'required'])->label(false),
+                $model->i_result_sector9_colorid,
+                $form->field($model, 'i_result_sector9_colorid')->hiddenInput(['class' => 'required'])->label(false),
+                $model->i_result_sector10_colorid,
+                $form->field($model, 'i_result_sector10_colorid')->hiddenInput(['class' => 'required'])->label(false)
+
+            );
         }
     ],
-    'color2' => [
-        'label' => 'i_result_sector2_colorid',
-        'format' => 'html',
-        'value' => function($model) {
-            return $model->i_result_sector2_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector2_colorid);
-        }
-    ],
-    'color3' => [
-        'label' => 'i_result_sector3_colorid',
-        'format' => 'html',
-        'value' => function($model) {
-            return $model->i_result_sector3_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector3_colorid);
-        }
-    ],
-    'color4' => [
-        'label' => 'i_result_sector4_colorid',
-        'format' => 'html',
-        'value' => function($model) {
-            return $model->i_result_sector4_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector4_colorid);
-        }
-    ],
-    'color5' => [
-        'label' => 'i_result_sector5_colorid',
-        'format' => 'html',
-        'value' => function($model) {
-            return $model->i_result_sector5_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector5_colorid);
-        }
-    ],
-    'color6' => [
-        'label' => 'i_result_sector6_colorid',
-        'format' => 'html',
-        'value' => function($model) {
-            return $model->i_result_sector6_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector6_colorid);
-        }
-    ],
-    'color7' => [
-        'label' => 'i_result_sector7_colorid',
-        'format' => 'html',
-        'value' => function($model) {
-            return $model->i_result_sector7_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector7_colorid);
-        }
-    ],
-    'color8' => [
-        'label' => 'i_result_sector8_colorid',
-        'format' => 'html',
-        'value' => function($model) {
-            return $model->i_result_sector8_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector8_colorid);
-        }
-    ],
-    'color9' => [
-        'label' => 'i_result_sector9_colorid',
-        'format' => 'html',
-        'value' => function($model) {
-            return $model->i_result_sector9_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector9_colorid);
-        }
-    ],
-    'color10' => [
-        'label' => 'i_result_sector10_colorid',
-        'format' => 'html',
-        'value' => function($model) {
-            return $model->i_result_sector10_colorid == 0 ? null : sprintf('<div class="item-sector color-for-%s"></div>', $model->i_result_sector10_colorid);
+//                   <div class="color-spector color-status-%s color-for-%s">%s</div>
+//                   <div class="color-spector color-status-%s color-for-%s">%s</div>
+//                   <div class="color-spector color-status-%s color-for-%s">%s</div>
+//                   <div class="color-spector color-status-%s color-for-%s">%s</div>
+//                   <div class="color-spector color-status-%s color-for-%s">%s</div>
+//                   <div class="color-spector color-status-%s color-for-%s">%s</div>
+//                   <div class="color-spector color-status-%s color-for-%s">%s</div>
+//                   <div class="color-spector color-status-%s color-for-%s">%s</div>
+//                   <div class="color-spector color-status-%s color-for-%s">%s</div>
+    'results_description' => [
+        'header' => '<div><span>Results</span></div>',
+        'headerOptions' => ['class' => 'join-right'],
+        'label' => 'Results',
+        'format' => 'raw',
+        'value' => function($model) use ($form) {
+            return sprintf('<div>
+                   <div class="color-spector color-for-%s">
+                        <span>%s</span>
+                        %s
+                   </div>
+                   <p>save the colors</p>
+                </div>',
+
+
+                $model->i_result_sector1_colorid,
+                $model->i_result_sector1_colorid_description ? "+" : "-",
+                $form->field($model, 'i_result_sector1_colorid')->hiddenInput(['class' => 'required'])->label(false)
+//                $model->i_result_sector2_colorid,
+//                $form->field($model, 'i_result_sector2_colorid')->hiddenInput(['class' => 'required'])->label(false),
+//                $model->i_result_sector3_colorid,
+//                $form->field($model, 'i_result_sector3_colorid')->hiddenInput(['class' => 'required'])->label(false),
+//                $model->i_result_sector4_colorid,
+//                $form->field($model, 'i_result_sector4_colorid')->hiddenInput(['class' => 'required'])->label(false),
+//                $model->i_result_sector5_colorid,
+//                $form->field($model, 'i_result_sector5_colorid')->hiddenInput(['class' => 'required'])->label(false),
+//                $model->i_result_sector6_colorid,
+//                $form->field($model, 'i_result_sector6_colorid')->hiddenInput(['class' => 'required'])->label(false),
+//                $model->i_result_sector7_colorid,
+//                $form->field($model, 'i_result_sector7_colorid')->hiddenInput(['class' => 'required'])->label(false),
+//                $model->i_result_sector8_colorid,
+//                $form->field($model, 'i_result_sector8_colorid')->hiddenInput(['class' => 'required'])->label(false),
+//                $model->i_result_sector9_colorid,
+//                $form->field($model, 'i_result_sector9_colorid')->hiddenInput(['class' => 'required'])->label(false),
+//                $model->i_result_sector10_colorid,
+//                $form->field($model, 'i_result_sector10_colorid')->hiddenInput(['class' => 'required'])->label(false)
+
+            );
         }
     ],
     'color1_description' => 'i_result_sector1_colorid_description',
@@ -299,6 +328,22 @@ $columns = [
     'color8_description' => 'i_result_sector8_colorid_description',
     'color9_description' => 'i_result_sector9_colorid_description',
     'color10_description' => 'i_result_sector10_colorid_description',
+    'types' => [
+        'header' => '<div><span>Types(Type, Usage, Combination)</span></div>',
+        'headerOptions' => ['class' => 'join-left'],
+        'format' => 'raw',
+        'value' => function($model) use ($form) {
+            return sprintf('<div class="d-flex col-12">
+                    <div class="col-6">%s</div> 
+                    <div class="col-6">%s</div>
+                </div> 
+                <div>%s</div>',
+                $form->field($model, 'i_type')->dropDownList(Items::getITypes(), ['class' => 'required'])->label(false),
+                $form->field($model, 'i_usg_type')->dropDownList(Items::getIUsgTypes(), ['class' => 'required'])->label(false),
+                $form->field($model, 'i_comb_type_id')->dropDownList(Items::getICombTypes(), ['class' => 'required'])->label(false)
+            );
+        }
+    ],
 ];
 $columns_filtered = array();
 $cl = Items::attributeLabelsCustom($pill, $step);
@@ -314,7 +359,7 @@ foreach ($cl[0] as $column) {
         [
             'header' => Html::a('', 'javascript:;',
                 [
-                    'class' => 'icon archive-white label',
+                    'class' => 'icon save-white label',
                 ]
             ),
             'class' => ActionColumn::className(),
@@ -328,26 +373,38 @@ foreach ($cl[0] as $column) {
                 },
                 'checkmarkTranslator' => function ($url, $model, $key) use ($step) {
                     return in_array(Yii::$app->admin->getIdentity()->role, [1, 4]) ?
-                        Html::a('<i class="fa fa-check ajax-call" data-path="/admin/items/checktranslator"></i>', 'javascript:;', [
-                            'title' => 'accept',
-                            'data-pjax' => '1',
+                        Html::a('',
+                            'javascript:;', [
+                            'class' => 'icon forward-black label ajax-call',
+                            'data-path' => '/admin/items/checktranslator'
                         ])
+                        : '';
+                },
+                'declinePsychologist' => function ($url, $model, $key) use ($step) {
+                    return in_array(Yii::$app->admin->getIdentity()->role, [1, 3]) ?
+                        Html::a('',
+                            'javascript:;', [
+                                'class' => 'icon backward label ajax-call',
+                                'data-path' => '/admin/items/declinepsychologist'
+                            ])
                         : '';
                 },
                 'checkmarkPsychologist' => function ($url, $model, $key) use ($step) {
                     return in_array(Yii::$app->admin->getIdentity()->role, [1, 3]) ?
-                        Html::a('<i class="fa fa-check ajax-call" data-path="/admin/items/checkpsychologist"></i>', 'javascript:;', [
-                            'title' => 'accept',
-                            'data-pjax' => '1',
-                        ])
+                        Html::a('',
+                            'javascript:;', [
+                                'class' => 'icon forward-black label ajax-call',
+                                'data-path' => '/admin/items/checkpsychologist'
+                            ])
                         : '';
                 },
                 'checkmarkProfessor' => function ($url, $model, $key) use ($step) {
                     return in_array(Yii::$app->admin->getIdentity()->role, [1, 2]) ?
-                        Html::a('<i class="fa fa-check ajax-call" data-path="/admin/items/checkprofessor"></i>', 'javascript:;', [
-                            'title' => 'accept',
-                            'data-pjax' => '1',
-                        ])
+                        Html::a('',
+                            'javascript:;', [
+                                'class' => 'icon forward-black label ajax-call',
+                                'data-path' => '/admin/items/checkprofessor'
+                            ])
                         : '';
                 },
                 'checkmarkAdmin' => function ($url, $model, $key) use ($step) {
@@ -360,10 +417,10 @@ foreach ($cl[0] as $column) {
                 },
                 'colors' => function ($url, $model, $key) {
                     return in_array(Yii::$app->admin->getIdentity()->role, [1, 3]) ?
-                        Html::a('<i class="fa fa-tint ajax-call" data-path="/admin/items/fixcolors"></i>', 'javascript:;', [
-                            'title' => 'Send to professor',
-                            'data-pjax' => '1',
-                        ]) :
+                        Html::a('',
+                            'javascript:;',
+                            ['class' => 'icon forward-black label ajax-call', 'data-path' => '/admin/items/fixcolors']
+                        ) :
                         '';
                 },
                 'restore' => function ($url, $model, $key) {
@@ -394,7 +451,6 @@ foreach ($cl[0] as $column) {
                     );
                 }
             ],
-
             'urlCreator' => function ($action, Items $model, $key, $index, $column) {
                 return Url::toRoute([$action, 'id' => $model->id]);
             }

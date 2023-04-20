@@ -58,27 +58,27 @@ class Items extends \yii\db\ActiveRecord
     );
 
     private static $tabs = array(
-        1 => 'Active Items',
-        2 => 'Creation',
-        3 => 'Migrated Base',
-        4 => 'Archive',
+        1 => array('Active Items', 'active.png'),
+        3 => array('Migrated Base', 'migrate.png'),
+        2 => array('Creation', 'create.png'),
+        4 => array('Archive', 'archive.png'),
     );
 
     private static $steps = array(
         1 => 'Migrated Base',
         2 => 'Translation',
         3 => 'Translation (check)',
-        4 => 'Item Config',
-        5 => 'Item Config (check)',
-        6 => 'Results Config',
-        7 => 'Results (Translate)',
-        8 => 'Results (Edits)',
-        9 => 'Results (Edits Translate)',
-        10 => 'Push'
+        4 => 'Config',
+        5 => 'Config (check)',
+        6 => 'Result',
+        7 => 'Result Translation',
+        8 => 'Result (Check)',
+//        9 => 'Results (Edits Translate)',
+        9 => 'Push'
     );
 
     private static $ITypes = array(
-        0 => '',
+        0 => 'not set',
         1 => 'single',
         2 => 'multiple'
     );
@@ -103,7 +103,7 @@ class Items extends \yii\db\ActiveRecord
     );
 
     private static $ICombTypes = array(
-        0 => '',
+        0 => 'not set',
         1 => 'friend-friend',
         2 => 'partner-partner',
         3 => 'spouse-spouse',
@@ -283,27 +283,74 @@ class Items extends \yii\db\ActiveRecord
                             '{delete} {save} {translate}'
                         );
                     case 2:
-                        return in_array($role, [1, 4]) ?
-                            $view1_editable :
-                            $view1;
+                        return array(
+                            array(
+                                'item_id',
+                                'persian',
+                                'russian_temp',
+                                'russian_editable',
+                                'english_temp',
+                                'english_editable'
+                            ),
+                            '{delete} {save} {checkmarkTranslator}'
+                        );
                     case 3:
-                        return array($titles, '{view} {checkmarkPsychologist} {delete}');
+                        return $role == 4 ?
+                            array(
+                                array(
+                                    'item_id',
+                                    'persian',
+                                    'russian',
+                                    'english'
+                                ),
+                                ''
+                            ) :
+                            array(
+                                array(
+                                    'item_id',
+                                    'persian',
+                                    'russian',
+                                    'english',
+                                    'comment'
+                                ),
+                                '{delete} {save} {declinePsychologist} {checkmarkPsychologist}'
+                            );
                     case 4:
-                        return array(array_merge($titles, $configurations), '{view} {update} {colors} {delete}');
+                        return array(
+                            array(
+                                'item_id',
+                                'persian',
+                                'russian',
+                                'english',
+                                'results',
+                                'types'
+                            ),
+                            '{delete} {save} {colors}'
+                        );
                     case 5:
-                        return array(array_merge($titles, $configurations), '{view} {update} {checkmarkProfessor} {delete}');
+                        return array(
+                            array(
+                                'item_id',
+                                'persian',
+                                'russian',
+                                'english',
+                                'results',
+                                'types'
+                            ),
+                            '{delete} {save} {checkmarkProfessor}'
+                        );
+
                     case 6:
-                        return array(array(
-                            'color1_description',
-                            'color2_description',
-                            'color3_description',
-                            'color4_description',
-                            'color5_description',
-                            'color6_description',
-                            'color7_description',
-                            'color8_description',
-                            'color9_description',
-                            'color10_description'), '{view} {checkmarkTranslator} {update} {delete}');
+                        return array(
+                            array(
+                                'item_id',
+                                'persian',
+                                'russian',
+                                'english',
+                                'results_description'
+                            ),
+                            '{view} {checkmarkTranslator} {update} {delete}'
+                        );
                     case 7:
                     case 8:
                         return array(array(
@@ -339,58 +386,26 @@ class Items extends \yii\db\ActiveRecord
     }
 
     public function saveData($post) {
-        $this->checkDifferences($post);
-        if ($this->load($post)) {
+//        echo "<pre>";
+//        var_dump($post);
+//
+//        die();
+        if ($this->load($post, 'Items')) {
             if ($this->save()) {
-                foreach ($post['Items']['title'] as $i => $t) {
-                    $it = ItemTitle::find()->where(['itemID' => $this->id, 'languageID' => $i])->one() ?: new ItemTitle();
-                    if ($it->description != $post['Items']['description'][$i] || $it->title != $t)
-                        $this->check4 = 0;
-                    $it->description = $post['Items']['description'][$i];
-                    $it->title = $t;
-                    $it->itemID = $this->id;
-                    $it->languageID = $i;
-                    $it->save();
+                if (isset($post['Items']) && isset($post['Items']['title'])) {
+                    foreach ($post['Items']['title'] as $i => $t) {
+                        $it = ItemTitle::find()->where(['itemID' => $this->id, 'languageID' => $i])->one() ?: new ItemTitle();
+                        $it->description = $post['Items']['description'][$i];
+                        $it->title = $t;
+                        $it->itemID = $this->id;
+                        $it->languageID = $i;
+                        $it->save();
+                    }
                 }
-                return $this->save();
+                return 1;
             }
         }
         return false;
-    }
-
-    public function checkDifferences($post) {
-        if (
-            $this->i_usg_type != $post['i_usg_type'] ||
-            $this->i_type != $post['i_type'] ||
-            $this->i_comb_type_id != $post['i_comb_type_id'] ||
-            $this->i_result_sector1_colorid != $post['i_result_sector1_colorid'] ||
-            $this->i_result_sector2_colorid != $post['i_result_sector2_colorid'] ||
-            $this->i_result_sector3_colorid != $post['i_result_sector3_colorid'] ||
-            $this->i_result_sector4_colorid != $post['i_result_sector4_colorid'] ||
-            $this->i_result_sector5_colorid != $post['i_result_sector5_colorid'] ||
-            $this->i_result_sector6_colorid != $post['i_result_sector6_colorid'] ||
-            $this->i_result_sector7_colorid != $post['i_result_sector7_colorid'] ||
-            $this->i_result_sector8_colorid != $post['i_result_sector8_colorid'] ||
-            $this->i_result_sector9_colorid != $post['i_result_sector9_colorid'] ||
-            $this->i_result_sector10_colorid != $post['i_result_sector10_colorid']
-        ) {
-            $this->check2 = 0;
-        }
-
-        if (
-            $this->i_result_sector1_colorid_description != $post['i_result_sector1_colorid_description'] ||
-            $this->i_result_sector2_colorid_description != $post['i_result_sector2_colorid_description'] ||
-            $this->i_result_sector3_colorid_description != $post['i_result_sector3_colorid_description'] ||
-            $this->i_result_sector4_colorid_description != $post['i_result_sector4_colorid_description'] ||
-            $this->i_result_sector5_colorid_description != $post['i_result_sector5_colorid_description'] ||
-            $this->i_result_sector6_colorid_description != $post['i_result_sector6_colorid_description'] ||
-            $this->i_result_sector7_colorid_description != $post['i_result_sector7_colorid_description'] ||
-            $this->i_result_sector8_colorid_description != $post['i_result_sector8_colorid_description'] ||
-            $this->i_result_sector9_colorid_description != $post['i_result_sector9_colorid_description'] ||
-            $this->i_result_sector10_colorid_description != $post['i_result_sector10_colorid_description']
-        ) {
-            $this->check4 = 2;
-        }
     }
 
     public function getCheck() {
@@ -417,6 +432,8 @@ class Items extends \yii\db\ActiveRecord
             unset($steps[4]);
             unset($steps[6]);
             unset($steps[7]);
+        } else if ($role == 3) {
+            unset($steps[2]);
         }
 
         return $steps;

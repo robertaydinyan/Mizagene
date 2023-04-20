@@ -1,5 +1,134 @@
+main > .container {
+    padding: 70px 15px 20px;
+}
+
+.footer {
+    background-color: #f5f5f5;
+    font-size: .9em;
+    height: 60px;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    content: '';
+    left: 3px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: solid 5px transparent;
+    margin: 4px 4px 2px 4px;
+    background: transparent;
+}
+
+a.asc:after {
+    border-bottom: solid 7px #212529;
+    border-top-width: 0;
+}
+
+a.desc:after {
+    border-top: solid 7px #212529;
+    border-bottom-width: 0;
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+/* align the logout "link" (button in form) of the navbar */
+.nav li > form > button.logout {
+    padding-top: 7px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@media(max-width:767px) {
+    .nav li > form > button.logout {
+        display:block;
+        text-align: left;
+        width: 100%;
+        padding: 10px 0;
+    }
+}
+
+.nav > li > form > button.logout:focus,
+.nav > li > form > button.logout:hover {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.nav > li > form > button.logout:focus {
+    outline: none;
+}
+
+.preloader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background: white;
+    z-index: 9999;
+}
+
+/* Customize the preloader */
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #000;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: loader-rotate 1s linear infinite;
+}
+
+/* Animation for rotating preloader */
+@keyframes loader-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 main {
     margin-top: 126px;
+}
+
+.color-spector {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.color-for-0 {
+    background: white;
 }
 
 .color-for-critical {
@@ -107,10 +236,11 @@ main {
 
 .title-value {
     display: flex;
+    justify-content: space-around;
 }
 
-.title-value span {
-    width: 50%;
+.title-value span, .title-value div {
+    width: calc(50% - 2px);
     display: inline-block;
 }
 
@@ -141,6 +271,16 @@ main {
     height: 22px;
 }
 
+.b-icon {
+    height: 60px;
+}
+
+.m-icon {
+    height: 40px;
+    width: 40px;
+}
+
+
 .archive {
     margin-top: 0;
     width: 28px;
@@ -164,6 +304,10 @@ main {
     background-image: url("/images/icons/save_green.png");
 }
 
+.save-white {
+    background-image: url("/images/icons/save_white.png");
+}
+
 .save-green-filled {
     background-image: url("/images/icons/save_green_filled.png");
 }
@@ -174,6 +318,22 @@ main {
 
 .forward-black {
     background-image: url("/images/icons/forward_black.png");
+}
+
+.priority-1 {
+    background-image: url("/images/icons/high_priority.png");
+}
+
+.priority-2 {
+    background-image: url("/images/icons/very_high_priority.png");
+}
+
+.comment {
+    background-image: url("/images/icons/very_high_priority.png");
+}
+
+.backward {
+    background-image: url("/images/icons/backward.png");
 }
 
 .grid-view td {
@@ -202,14 +362,13 @@ main {
     border-radius: 5px;
 }
 
-.nav-pill.active .pill-badge-primary {
+.nav-pill.active .pill-badge-primary, .nav-pill.active .pill-badge-dark {
     background: white;
     color: #444;
 }
 
 .item-search-bar {
     margin-bottom: 8px;
-    background-color: #f1f1f1;
 }
 
 .pill-badge {
@@ -222,7 +381,15 @@ main {
 }
 
 .pill-badge-primary {
-    background: #444444;
+    background: #ff8900;
+}
+
+.pill-badge-dark {
+    background: #464646;
+}
+
+.pill-badge-grey {
+    background: #b1b1b1;
 }
 
 .pill-badge-danger {
@@ -238,6 +405,7 @@ textarea.form-control {
 }
 
 .grid-view tbody textarea, select, input {
+    min-width: 0;
     font-size: 12px !important;
 }
 
@@ -249,7 +417,12 @@ textarea.form-control {
     color: black !important;
 }
 
+.underlined-nav-link .nav-link {
+    color: #2384ec !important;
+}
+
 .nav-link {
+    border: 4px;
     color: black !important;
 }
 
@@ -267,19 +440,21 @@ a.nav-link {
     margin-right: 5px;
 }
 
-a.nav-link:not(.active) {
-    padding-top: 16px;
-}
-
 .nav-link.active {
-    font-weight: bold;
-    color: #464646 !important;
-    font-size: 26px;
+    background: #ff8900;
+    color: white !important;
+    border-radius: 8px;
+    padding: 8px 20px !important;
 }
 
-.nav-pills-steps {
-    position: absolute;
+.dropdown-menu {
+    width: 220px;
+}
+
+.submenu_item {
+    padding: 8px 0 !important;
+}
+.steps-container {
+    padding: 20px;
     background: #f7f7f7;
-    padding: 12px;
-    margin-top: -16px !important;
 }

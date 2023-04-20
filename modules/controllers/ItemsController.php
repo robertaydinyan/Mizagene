@@ -118,10 +118,12 @@ class ItemsController extends Controller
 
     public function actionUpdate($id)
     {
-        if ($this->request->isPost) {
+        if ($this->request->isGet) {
             $model = $this->findModel($id);
-            $model->load(json_decode(Yii::$app->request->post('Items'), true));
-            return $model->save();
+//            echo "<pre>";
+//            var_dump(json_decode(Yii::$app->request->get('Items'), true));
+//            die();
+            return $model->saveData(json_decode(Yii::$app->request->get('Items'), true));
 //            $description = Yii::$app->request->post('Items')['description'];
 //            if ($description) {
 //                foreach (Yii::$app->request->post('Items')['title'] as $j => $t) {
@@ -215,6 +217,17 @@ class ItemsController extends Controller
             $item->save();
         }
     }
+
+    public function actionDeclinepsychologist() {
+        $role = Yii::$app->admin->getIdentity()->role;
+        if (in_array($role, [1, 3])) {
+            $itemID = Yii::$app->request->post('itemID');
+            $item = Items::findOne($itemID);
+            $item->check4 -= 1;
+            $item->save();
+        }
+    }
+
     public function actionCheckprofessor() {
         $role = Yii::$app->admin->getIdentity()->role;
         if (in_array($role, [1, 2])) {

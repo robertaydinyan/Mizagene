@@ -60,11 +60,18 @@ class ItemsSearch extends Items
 
         $this->filterPills($query, $pill);
         $this->filterSteps($query, $step);
-        if (is_numeric($search)) {
-            $query->andFilterWhere(['like', 'item_id', $search]);
+        if ($search) {
+            if (is_numeric($search)) {
+                $query->andFilterWhere(['like', 'item_id', $search]);
+            } else {
+                $query->joinWith(['itemtitle']);
+                $query->andFilterWhere(['or', ['like', 'title', $search], ['like', 'description', $search]]);
+            }
         } else {
-            $query->joinWith(['itemtitle']);
-            $query->andFilterWhere(['or', ['like', 'title', $search], ['like', 'description', $search]]);
+            $query->orderBy([
+                'priority' => SORT_DESC,
+                'item_id' => SORT_ASC
+            ]);
         }
         return $dataProvider;
     }
