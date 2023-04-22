@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\SignupForm;
 use app\models\SignupcompanyForm;
+use app\models\Userprofiles;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -30,12 +31,12 @@ class SiteController extends Controller
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['about'],
+                        'actions' => ['userProfiles'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['about'],
+                        'actions' => ['userProfiles'],
                         'allow' => false,
                         'roles' => ['?'],
                     ]
@@ -155,6 +156,19 @@ class SiteController extends Controller
      */
     public function actionAbout() {
         return $this->render('about');
+    }
+
+    public function actionUserprofiles() {
+        $tableData = Userprofiles::find()->all();
+
+        $myParam = Yii::$app->request->get('myParam');
+        $userprofiles = new Userprofiles();
+        $datasearch = $userprofiles->search($myParam);
+
+        return $this->render('userprofiles', [
+            'tableData' => $tableData,
+            'datasearch' => $datasearch,
+        ]);
     }
 
 
