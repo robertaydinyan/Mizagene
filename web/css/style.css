@@ -26,7 +26,7 @@ header {
 .testBack {
     position: absolute;
     z-index: -4;
-    width: 100vw;
+    width: 100%;
     opacity: 0.4;
     height: 100vh;
     top: 0;
@@ -255,4 +255,19 @@ header {
 
 .KYCButton:hover {
     color: #003C46;
+}
+
+.analysis-pill .active {
+    background: #003C46!important;
+    color: white!important;
+}
+
+.analysis-pill .nav-link {
+    color: rgb(114, 114, 114);
+    border: 1px solid rgb(114, 114, 114);
+    border-radius: 0!important;
+}
+
+.analysis-pill .nav-link:hover {
+    color: rgb(114, 114, 114);
 }

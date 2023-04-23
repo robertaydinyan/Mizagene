@@ -13,6 +13,15 @@ use yii\web\IdentityInterface;
  * @property string $password
  * @property string $auth_key
  * @property string $access_token
+ * @property string $email
+ * @property string $company_name
+ * @property int $country
+ * @property string $position
+ * @property int $direction
+ * @property int $employees
+ * @property string $company_link
+ * @property string $phone
+ * @property int $status
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -30,8 +39,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'password', 'auth_key', 'access_token'], 'required'],
-            [['username', 'password', 'auth_key', 'access_token'], 'string', 'max' => 255],
+            [['username', 'password', 'auth_key', 'access_token', 'email'], 'required'],
+            [['username', 'password', 'auth_key', 'access_token', 'company_name'], 'string', 'max' => 255],
         ];
     }
 
@@ -46,6 +55,15 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'password' => 'Password',
             'auth_key' => 'Auth Key',
             'access_token' => 'Access Token',
+            'email' => 'Email',
+            'company_name' => 'company_name',
+            'country' => 'country',
+            'position' => 'position',
+            'direction' => 'direction',
+            'employees' => 'employees',
+            'company_link' => 'company_link',
+            'phone' => 'phone',
+            'status' => 'status',
         ];
     }
 

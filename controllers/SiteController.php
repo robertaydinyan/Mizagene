@@ -158,4 +158,10 @@ class SiteController extends Controller
     }
 
 
+    public function actionAboutTechnology()
+    {
+        return $this->render('technology');
+    }
+
+
 }
