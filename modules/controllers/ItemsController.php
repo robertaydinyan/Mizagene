@@ -2,6 +2,7 @@
 
 namespace app\modules\controllers;
 
+use app\modules\models\ItemColors;
 use app\modules\models\Items;
 use app\modules\models\ItemsSearch;
 use app\modules\models\ItemTitle;
@@ -45,9 +46,10 @@ class ItemsController extends Controller
         $steps = Items::getSteps();
         $step = Yii::$app->request->get('step');
         $pill = Yii::$app->request->get('pill') ?: 1;
+        $status = Yii::$app->request->get('status') ?: 1;
         $step = isset($steps[$step]) ? $step : min(array_keys($steps));
         $searchModel = new ItemsSearch();
-        $dataProvider = $searchModel->search('', $pill, $step);
+        $dataProvider = $searchModel->search('', $pill, $step, $status);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -56,23 +58,26 @@ class ItemsController extends Controller
             'step' => $step,
             'tabs' => Items::getTabs(),
             'steps' => Items::getSteps(),
+            'status' => $status
         ]);
     }
 
     public function actionGetitemslist($search) {
-//        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->format = Response::FORMAT_JSON;
         $steps = Items::getSteps();
-        $step = Yii::$app->request->get('step');
         $pill = Yii::$app->request->get('pill') ?: 1;
+        $step = Yii::$app->request->get('step') ?: 1;
+        $status = Yii::$app->request->get('status') ?: 1;
         $step = isset($steps[$step]) ? $step : min(array_keys($steps));
         $searchModel = new ItemsSearch();
-        $dataProvider = $searchModel->search($search, $pill, $step);
+        $dataProvider = $searchModel->search($search, $pill, $step, $status);
 
         return $this->renderAjax('_items-list', [
             'source' => 'controller',
             'dataProvider' => $dataProvider,
             'pill' => $pill,
-            'step' => $step
+            'step' => $step,
+            'status' => $status
         ]);
     }
 
@@ -118,7 +123,7 @@ class ItemsController extends Controller
 
     public function actionUpdate($id)
     {
-        if ($this->request->isGet) {
+//        if ($this->request->isPost) {
             $model = $this->findModel($id);
 //            echo "<pre>";
 //            var_dump(json_decode(Yii::$app->request->get('Items'), true));
@@ -135,7 +140,7 @@ class ItemsController extends Controller
 //                    $it->save();
 //                }
 //            }
-        }
+//        }
 //        return $this->redirect(Yii::$app->request->referrer);
     }
 
@@ -194,6 +199,7 @@ class ItemsController extends Controller
             $itemID = Yii::$app->request->post('itemID');
             $item = Items::findOne($itemID);
             $item->check1 = 1;
+            $item->activated_at = date('Y-m-d h:i:s');
             $item->save();
         }
     }
@@ -245,6 +251,22 @@ class ItemsController extends Controller
             $item->check1 += 1;
             $item->save();
         }
+    }
+
+    public function actionChangeDescStatus($id) {
+        $ic = ItemColors::findOne($id);
+        $ic->status = Yii::$app->request->post('status');
+        $ic->comment = Yii::$app->request->post('comment');
+        return $ic->save();
+    }
+
+    public function actionDeclineProfessor() {
+        $item = Items::findOne(Yii::$app->request->post('itemID'));
+        $item->returned = 1;
+        $item->check2 = 2;
+        $item->check3 = 1;
+        $item->check4 = 2;
+        $item->save();
     }
     /**
      * Finds the Items model based on its primary key value.

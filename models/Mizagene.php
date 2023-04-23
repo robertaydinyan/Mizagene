@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\modules\models\ItemColors;
 use app\modules\models\Items;
 use app\modules\models\ItemTitle;
 use app\components\Translate;
@@ -53,18 +54,23 @@ class Mizagene {
         $ch = CURL::init(API::getLink(), $this->token, 1);
         $sectors = json_decode(curl_exec($ch));
         foreach ($sectors as $sector) {
-            $item = Items::find()->where(['item_id' => $sector->item_id])->one();
-            $item->i_result_sector1_colorid = $sector->i_result_sector1_colorid;
-            $item->i_result_sector2_colorid = $sector->i_result_sector2_colorid;
-            $item->i_result_sector3_colorid = $sector->i_result_sector3_colorid;
-            $item->i_result_sector4_colorid = $sector->i_result_sector4_colorid;
-            $item->i_result_sector5_colorid = $sector->i_result_sector5_colorid;
-            $item->i_result_sector6_colorid = $sector->i_result_sector6_colorid;
-            $item->i_result_sector7_colorid = $sector->i_result_sector7_colorid;
-            $item->i_result_sector8_colorid = $sector->i_result_sector8_colorid;
-            $item->i_result_sector9_colorid = $sector->i_result_sector9_colorid;
-            $item->i_result_sector10_colorid = $sector->i_result_sector10_colorid;
-            $item->save();
+            for ($i = 1; $i <= 10; $i++) {
+                $ic = new ItemColors();
+                $ic->item_id = $sector->item_id;
+                $ic->sector_id = $i;
+                $ic->color_id = $sector->{"i_result_sector" . $i . "_colorid"};
+                $ic->save();
+            }
+//            $item->i_result_sector1_colorid = $sector->i_result_sector1_colorid;
+//            $item->i_result_sector2_colorid = $sector->i_result_sector2_colorid;
+//            $item->i_result_sector3_colorid = $sector->i_result_sector3_colorid;
+//            $item->i_result_sector4_colorid = $sector->i_result_sector4_colorid;
+//            $item->i_result_sector5_colorid = $sector->i_result_sector5_colorid;
+//            $item->i_result_sector6_colorid = $sector->i_result_sector6_colorid;
+//            $item->i_result_sector7_colorid = $sector->i_result_sector7_colorid;
+//            $item->i_result_sector8_colorid = $sector->i_result_sector8_colorid;
+//            $item->i_result_sector9_colorid = $sector->i_result_sector9_colorid;
+//            $item->i_result_sector10_colorid = $sector->i_result_sector10_colorid;
         }
     }
 }

@@ -17,10 +17,7 @@ class ItemsSearch extends Items
      */
     public function rules()
     {
-        return [
-            [['id', 'e2e_item_id', 'item_id', 'i_result_sector1_colorid', 'i_result_sector2_colorid', 'i_result_sector3_colorid', 'i_result_sector4_colorid', 'i_result_sector5_colorid', 'i_result_sector6_colorid', 'i_result_sector7_colorid', 'i_result_sector8_colorid', 'i_result_sector9_colorid', 'i_result_sector10_colorid'], 'integer'],
-            [['i_type', 'i_usg_type', 'i_comb_type_id'], 'safe'],
-        ];
+        return [];
     }
 
     /**
@@ -39,7 +36,7 @@ class ItemsSearch extends Items
      *
      * @return ActiveDataProvider
      */
-    public function search($search, $pill, $step)
+    public function search($search, $pill, $step, $status)
     {
         $query = Items::find();
 
@@ -59,7 +56,8 @@ class ItemsSearch extends Items
         }
 
         $this->filterPills($query, $pill);
-        $this->filterSteps($query, $step);
+        $this->filterSteps($query, $step, $status);
+
         if ($search) {
             if (is_numeric($search)) {
                 $query->andFilterWhere(['like', 'item_id', $search]);
@@ -92,7 +90,7 @@ class ItemsSearch extends Items
         }
     }
 
-    public function filterSteps($query, $step) {
+    public function filterSteps($query, $step, $status = null) {
         switch ($step) {
             case 1:
                 $query->andFilterWhere(['check2' => 0, 'check3' => 0, 'check4' => 0]);
@@ -110,13 +108,18 @@ class ItemsSearch extends Items
                 $query->andFilterWhere(['check2' => 1, 'check3' => 1, 'check4' => 2]);
                 break;
             case 6:
+                $status && $query->andFilterWhere(['returned' => $status - 1]);
                 $query->andFilterWhere(['check2' => 2, 'check3' => 1, 'check4' => 2]);
                 break;
             case 7:
-                $query->andFilterWhere(['check2' => 2, 'check3' => 1, 'check4' => 3]);
+                $status && $query->andFilterWhere(['returned' => $status - 1]);
+                $query->andFilterWhere(['check2' => 2, 'check3' => 2, 'check4' => 2]);
                 break;
             case 8:
                 $query->andFilterWhere(['check2' => 2, 'check3' => 2, 'check4' => 3]);
+                break;
+            case 9:
+                $query->andFilterWhere(['check2' => 3, 'check3' => 2, 'check4' => 3]);
                 break;
         }
     }

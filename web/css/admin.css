@@ -329,11 +329,15 @@ main {
 }
 
 .comment {
-    background-image: url("/images/icons/very_high_priority.png");
+    background-image: url("/images/icons/comment.png");
 }
 
-.backward {
-    background-image: url("/images/icons/backward.png");
+.backward-black {
+    background-image: url("/images/icons/backward-black.png");
+}
+
+.backward-gray {
+    background-image: url("/images/icons/backward-gray.png");
 }
 
 .grid-view td {
@@ -457,4 +461,25 @@ a.nav-link {
 .steps-container {
     padding: 20px;
     background: #f7f7f7;
+}
+
+.absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.align-super {
+    vertical-align: super;
+}
+
+.small-button {
+    padding: 0 12px;
+    font-size: 13px;
+    height: 24px
+}
+
+.fa-circle {
+    color: white;
 }

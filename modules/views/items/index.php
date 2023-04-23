@@ -10,6 +10,7 @@ use app\modules\models\Admin;
 use app\modules\models\Items;
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
+use yii\helpers\Url;
 
 $this->title = 'Items';
 $this->params['breadcrumbs'][] = $this->title;
@@ -56,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             $i,
                             $title,
                             isset($active_steps[$i]) ? "pill-badge-primary" : "pill-badge-dark",
-                            Items::getStepElCount($i)
+                            Items::getStepElCount($pill, $i)
                         );
                     }
                 ?>
@@ -64,8 +65,16 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     <?php endif; ?>
     <div class="grid-header mt-4 col-12 d-flex justify-content-between">
-        <div class="form-group col-3">
-            <input type="text" class="form-control item-search-bar" placeholder="search by parameter ID, or any language">
+        <div class="form-group col-6 d-flex">
+            <div class="form-group col-6 ">
+                <input type="text" class="form-control item-search-bar" placeholder="search by parameter ID, or any language">
+            </div>
+            <?php if (in_array($step, [6, 7])): ?>
+                <div class="col-6">
+                    <?= Html::a('In process', ["?pill=$pill&step=$step&status=1"], ['class' => 'btn ' . ($status == 1 ? 'btn-dark' : '')]) ?>
+                    <?= Html::a('Returned', ["?pill=$pill&step=$step&status=2"], ['class' => 'btn ' . ($status == 2 ? 'btn-dark' : '')]) ?>
+                </div>
+            <?php endif; ?>
         </div>
         <div>
             <?= Html::a(' <i class="fa fa-plus"></i> Create Parameter', ['create'], ['class' => 'btn btn-dark']) ?>
@@ -77,6 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'pill' => $pill,
         'step' => $step,
+        'status' => $status
     ]); ?>
     <?php ActiveForm::end(); ?>
 
@@ -92,3 +102,26 @@ $this->params['breadcrumbs'][] = $this->title;
         min-height: 200px !important;
     }
 </style>
+
+<!-- Modal -->
+<div class="modal fade" id="DeclineComment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">write below comment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" class="form-control description-comment">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary confirm-description-comment">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
