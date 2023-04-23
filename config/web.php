@@ -62,8 +62,8 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'admin' => 'Admin/default/',
-                'admin/<_controller:\w*>' => 'Admin/default/<_controller>',
-                'admin/<_controller:\w*>/<_action:\w*>' => 'Admin/<_controller>/<_action>',
+                'admin/<_action:\w*>' => 'Admin/default/<_action>',
+                'admin/<controller:\w+>/<action:[\w\-]+>' => 'Admin/<controller>/<action>',
             ],
         ],
         'session' => [

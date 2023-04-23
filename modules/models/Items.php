@@ -3,7 +3,6 @@
 namespace app\modules\models;
 
 use Yii;
-use yii\rbac\Item;
 
 /**
  * This is the model class for table "items".
@@ -14,32 +13,12 @@ use yii\rbac\Item;
  * @property int $i_usg_type
  * @property int $i_type
  * @property int $i_comb_type_id
- * @property string|null $i_result_sector1_colorid
- * @property string|null $i_result_sector2_colorid
- * @property string|null $i_result_sector3_colorid
- * @property string|null $i_result_sector4_colorid
- * @property string|null $i_result_sector5_colorid
- * @property string|null $i_result_sector6_colorid
- * @property string|null $i_result_sector7_colorid
- * @property string|null $i_result_sector8_colorid
- * @property string|null $i_result_sector9_colorid
- * @property string|null $i_result_sector10_colorid
  * @property int|null $source
  * @property int $check1
  * @property int $check2
  * @property int $check3
  * @property int $check4
  * @property int $deleted
- * @property string|null $i_result_sector1_colorid_description
- * @property string|null $i_result_sector2_colorid_description
- * @property string|null $i_result_sector3_colorid_description
- * @property string|null $i_result_sector4_colorid_description
- * @property string|null $i_result_sector5_colorid_description
- * @property string|null $i_result_sector6_colorid_description
- * @property string|null $i_result_sector7_colorid_description
- * @property string|null $i_result_sector8_colorid_description
- * @property string|null $i_result_sector9_colorid_description
- * @property string|null $i_result_sector10_colorid_description
  * @property string|null $comment
  * @property int $priority
  *
@@ -146,6 +125,11 @@ class Items extends \yii\db\ActiveRecord
         2 => 'Very high priority'
     );
 
+    private static $statuses = array(
+        1 => 'In process',
+        2 => 'Returned'
+    );
+
     /**
      * {@inheritdoc}
      */
@@ -163,7 +147,6 @@ class Items extends \yii\db\ActiveRecord
             [['e2e_item_id', 'item_id', 'i_usg_type', 'i_type', 'i_comb_type_id', 'source', 'check1', 'check2', 'check3', 'check4', 'deleted', 'priority'], 'integer'],
             [['item_id'], 'required'],
             [['comment'], 'string'],
-            [['i_result_sector1_colorid', 'i_result_sector2_colorid', 'i_result_sector3_colorid', 'i_result_sector4_colorid', 'i_result_sector5_colorid', 'i_result_sector6_colorid', 'i_result_sector7_colorid', 'i_result_sector8_colorid', 'i_result_sector9_colorid', 'i_result_sector10_colorid', 'i_result_sector1_colorid_description', 'i_result_sector2_colorid_description', 'i_result_sector3_colorid_description', 'i_result_sector4_colorid_description', 'i_result_sector5_colorid_description', 'i_result_sector6_colorid_description', 'i_result_sector7_colorid_description', 'i_result_sector8_colorid_description', 'i_result_sector9_colorid_description', 'i_result_sector10_colorid_description'], 'string', 'max' => 255],
         ];
     }
 
@@ -179,32 +162,12 @@ class Items extends \yii\db\ActiveRecord
             'i_usg_type' => 'I Usg Type',
             'i_type' => 'I Type',
             'i_comb_type_id' => 'I Comb Type ID',
-            'i_result_sector1_colorid' => 'I Result Sector1 Colorid',
-            'i_result_sector2_colorid' => 'I Result Sector2 Colorid',
-            'i_result_sector3_colorid' => 'I Result Sector3 Colorid',
-            'i_result_sector4_colorid' => 'I Result Sector4 Colorid',
-            'i_result_sector5_colorid' => 'I Result Sector5 Colorid',
-            'i_result_sector6_colorid' => 'I Result Sector6 Colorid',
-            'i_result_sector7_colorid' => 'I Result Sector7 Colorid',
-            'i_result_sector8_colorid' => 'I Result Sector8 Colorid',
-            'i_result_sector9_colorid' => 'I Result Sector9 Colorid',
-            'i_result_sector10_colorid' => 'I Result Sector10 Colorid',
             'source' => 'Source',
             'check1' => 'Check1',
             'check2' => 'Check2',
             'check3' => 'Check3',
             'check4' => 'Check4',
             'deleted' => 'Deleted',
-            'i_result_sector1_colorid_description' => 'I Result Sector1 Colorid Description',
-            'i_result_sector2_colorid_description' => 'I Result Sector2 Colorid Description',
-            'i_result_sector3_colorid_description' => 'I Result Sector3 Colorid Description',
-            'i_result_sector4_colorid_description' => 'I Result Sector4 Colorid Description',
-            'i_result_sector5_colorid_description' => 'I Result Sector5 Colorid Description',
-            'i_result_sector6_colorid_description' => 'I Result Sector6 Colorid Description',
-            'i_result_sector7_colorid_description' => 'I Result Sector7 Colorid Description',
-            'i_result_sector8_colorid_description' => 'I Result Sector8 Colorid Description',
-            'i_result_sector9_colorid_description' => 'I Result Sector9 Colorid Description',
-            'i_result_sector10_colorid_description' => 'I Result Sector10 Colorid Description',
             'comment' => 'Comment',
             'priority' => 'Priority',
         ];
@@ -253,15 +216,15 @@ class Items extends \yii\db\ActiveRecord
                 return array(
                     array(
                         'item_id',
-                        'persian',
-                        'russian',
-                        'title_temp_english',
-                        'description_temp_english',
-                        '',
-                        'title_russian',
-                        'title_english',
-                        'description_russian',
-                        'description_english'
+//                        'persian',
+//                        'russian',
+//                        'title_temp_english',
+//                        'description_temp_english',
+//                        '',
+//                        'title_russian',
+//                        'title_english',
+//                        'description_russian',
+//                        'description_english'
                     ),
                     '{view} {save} {delete}'
                 );
@@ -347,25 +310,43 @@ class Items extends \yii\db\ActiveRecord
                                 'persian',
                                 'russian',
                                 'english',
-                                'results_description'
+                                'results_description_ru_editable'
                             ),
-                            '{view} {checkmarkTranslator} {update} {delete}'
+                            '{delete} {checkmarkPsychologist}'
                         );
                     case 7:
+                        return array(
+                            array(
+                                'item_id',
+                                'persian',
+                                'russian',
+                                'english',
+                                'results_description_en_editable'
+                            ),
+                            '{delete} {checkmarkTranslator}'
+                        );
                     case 8:
-                        return array(array(
-                            'color1_description',
-                            'color2_description',
-                            'color3_description',
-                            'color4_description',
-                            'color5_description',
-                            'color6_description',
-                            'color7_description',
-                            'color8_description',
-                            'color9_description',
-                            'color10_description'), '{view} {checkmarkPsychologist} {update} {delete}');
-                    case 10:
-                        return array(array_merge($titles, $configurations), '{view} {checkmarkAdmin} {delete}');
+                        return array(
+                            array(
+                                'item_id',
+                                'persian',
+                                'russian',
+                                'english',
+                                'results_description_en_check'
+                            ),
+                            '{delete} {declineProfessor} {checkmarkProfessor}'
+                        );
+                    case 9:
+                        return array(
+                            array(
+                                'item_id',
+                                'persian',
+                                'russian',
+                                'english',
+                                'results_description'
+                            ),
+                            '{delete} {declineProfessor} {checkmarkAdmin}'
+                        );
                 }
                 break;
             case 4;
@@ -386,26 +367,34 @@ class Items extends \yii\db\ActiveRecord
     }
 
     public function saveData($post) {
-//        echo "<pre>";
-//        var_dump($post);
-//
-//        die();
-        if ($this->load($post, 'Items')) {
-            if ($this->save()) {
-                if (isset($post['Items']) && isset($post['Items']['title'])) {
-                    foreach ($post['Items']['title'] as $i => $t) {
-                        $it = ItemTitle::find()->where(['itemID' => $this->id, 'languageID' => $i])->one() ?: new ItemTitle();
-                        $it->description = $post['Items']['description'][$i];
-                        $it->title = $t;
-                        $it->itemID = $this->id;
-                        $it->languageID = $i;
-                        $it->save();
+        if (isset($post['Items'])) {
+            if ($this->load($post, 'Items')) {
+                if ($this->save()) {
+                    if (isset($post['Items']['title'])) {
+                        foreach ($post['Items']['title'] as $i => $t) {
+                            $it = ItemTitle::find()->where(['itemID' => $this->id, 'languageID' => $i])->one() ?: new ItemTitle();
+                            $it->description = $post['Items']['description'][$i];
+                            $it->title = $t;
+                            $it->itemID = $this->id;
+                            $it->languageID = $i;
+                            $it->save();
+                        }
                     }
+                    if (isset($post['Items']['colorSectors'])) {
+                        $colorSectors = $post['Items']['colorSectors'];
+                        for ($i = 0; $i < 10; $i++) {
+                            $ic = ItemColors::find()->where(['item_id' => $this->item_id, 'sector_id' => ($i + 1)])->one();
+                            isset($colorSectors['color_id']) && isset($colorSectors['color_id'][$i]) && $ic->color_id = $colorSectors['color_id'][$i];
+                            isset($colorSectors['description_ru']) && isset($colorSectors['description_ru'][$i]) && $ic->description_ru = $colorSectors['description_ru'][$i];
+                            isset($colorSectors['description_en']) && isset($colorSectors['description_en'][$i]) && $ic->description_en = $colorSectors['description_en'][$i];
+                            $ic->save();
+                        }
+                    }
+                    return 1;
                 }
-                return 1;
             }
+            return false;
         }
-        return false;
     }
 
     public function getCheck() {
@@ -475,12 +464,24 @@ class Items extends \yii\db\ActiveRecord
         return self::$ITypes;
     }
 
+    public function getType() {
+        return self::$ITypes[$this->i_type];
+    }
+
     public static function getICombTypes() {
         return self::$ICombTypes;
     }
 
+    public function getCombType() {
+        return self::$ICombTypes[$this->i_comb_type_id];
+    }
+
     public static function getIUsgTypes() {
         return self::$IUsgTypes;
+    }
+
+    public function getUsgType() {
+        return self::$IUsgTypes[$this->i_usg_type];
     }
 
     public function getIType() {
@@ -512,10 +513,11 @@ class Items extends \yii\db\ActiveRecord
 
         return $query->count();
     }
-    public static function getStepElCount($i) {
+    public static function getStepElCount($pill, $step) {
         $query = Items::find();
         $searchModel = new ItemsSearch();
-        $searchModel->filterSteps($query, $i);
+        $searchModel->filterPills($query, $pill);
+        $searchModel->filterSteps($query, $step);
 
         return $query->count();
     }
@@ -526,5 +528,17 @@ class Items extends \yii\db\ActiveRecord
 
     public function getitemtitle() {
         return $this->hasMany(ItemTitle::class, ['itemID' => 'id']);
+    }
+
+    public function getItemTitles() {
+        return $this->hasMany(ItemTitle::class, ['itemID' => 'id']);
+    }
+
+    public function getColorSector($i) {
+        return ItemColors::find()->where(['item_id' => $this->item_id, 'sector_id' => $i])->one();
+    }
+
+    public function getColorSectors() {
+        return $this->hasMany(ItemColors::class, ['item_id' => 'item_id']);
     }
 }

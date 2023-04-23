@@ -8,38 +8,62 @@ $(document).ready(function() {
         'verygood'
     ];
     $('.grid-view input, select, textarea').removeAttr('id');
+    function takeFormData($container) {
+        let unindexed_array = $container.find('input, textarea, select').serializeArray();
+        let indexed_object = {};
 
-    function takeFormData(el) {
-        let formValues = {};
-        let name;
-        $(el).find('input, select, textarea').each(function() {
-            name = $(this).attr('name').split('[');
-            name = name.map((v, k) => {
-                return v.replace(']', '');
-            })
-            if (name.length === 2) {
-                (!formValues[name[0]]) && (formValues[name[0]] = {});
-                formValues[name[0]][name[1]] = $(this).val();
-            } else {
-                (!formValues[name[0]]) && (formValues[name[0]] = {});
-                (!formValues[name[0]][name[1]]) && (formValues[name[0]][name[1]] = {});
-                formValues[name[0]][name[1]][name[2]] = $(this).val();
+        $.map(unindexed_array, function(n, i) {
+            let keyParts = n['name'].replace('[]', '').split('[');
+            let currentObject = indexed_object;
+            for (let j = 0; j < keyParts.length; j++) {
+                let keyPart = keyParts[j].replace(']', ''); // remove the closing bracket
+                if (j === keyParts.length - 1) {
+                    if (currentObject[keyPart] === undefined) {
+                        currentObject[keyPart] = n['value'];
+                    } else {
+                        if (!Array.isArray(currentObject[keyPart])) {
+                            currentObject[keyPart] = [currentObject[keyPart]];
+                        }
+                        currentObject[keyPart].push(n['value']);
+                    }
+                } else {
+                    if (currentObject[keyPart] === undefined) {
+                        currentObject[keyPart] = {};
+                    }
+                    currentObject = currentObject[keyPart];
+                }
             }
         });
 
-        return formValues;
+        return indexed_object;
     }
 
-    function rowValidation(row) {
-        let missed_value = false;
-        $.each($(row).find('.required'), (j, t) => {
-            if (!$(t).val() || $(t).val() === '0') missed_value = true;
-        });
+    function rowValidation(row, type = 0) {
+        if (type === 1) {
+            if ($('.decline-result-description').length > 0) {
+                if (row.find('.color-spector span:contains("R")').length === 10) {
+                    $(row).find('.forward-gray').removeClass('forward-gray').addClass('forward-black').addClass('ajax-call');
+                } else {
+                    $(row).find('.forward-black').removeClass('forward-black').addClass('forward-gray').removeClass('ajax-call');
+                }
 
-        if (missed_value) {
-            $(row).find('.forward-black').removeClass('forward-black').addClass('forward-gray').removeClass('ajax-call');
+                if (row.find('.color-spector span:contains("W")').length > 0 && row.find('.color-spector span:contains(" ")').length === 0) {
+                    $(row).find('.backward-gray').removeClass('backward-gray').addClass('backward-black').addClass('ajax-call');
+                } else {
+                    $(row).find('.backward-black').removeClass('backward-black').addClass('backward-gray').removeClass('ajax-call');
+                }
+            }
         } else {
-            $(row).find('.forward-gray').removeClass('forward-gray').addClass('forward-black').addClass('ajax-call');
+            let missed_value = false;
+            $.each($(row).find('.required'), (j, t) => {
+                if (!$(t).val() || $(t).val() === '0') missed_value = true;
+            });
+
+            if (missed_value) {
+                $(row).find('.forward-black').removeClass('forward-black').addClass('forward-gray').removeClass('ajax-call');
+            } else {
+                $(row).find('.forward-gray').removeClass('forward-gray').addClass('forward-black').addClass('ajax-call');
+            }
         }
     }
 
@@ -117,24 +141,25 @@ $(document).ready(function() {
 
     $('.save-item').on('click', function() {
         if ($(this).hasClass('save-green')) {
-            rowValidation($(this).closest('tr'));
-
             let data = takeFormData($(this).closest('tr'));
+            console.log(data);
             $.get('/admin/items/update?id=' + $(this).closest('tr').data('key'), {
                 'Items': JSON.stringify(data)
             }).done((data) => {
                 if (data) {
                     $(this).removeClass('save-green').addClass('save-green-filled');
                 }
+                rowValidation($(this).closest('tr'));
             });
         }
     });
 
     $.each($('.grid-view tbody tr'), (i, v) => {
         rowValidation($(v));
+        rowValidation($(v), 1);
     });
 
-    $('.color-spector').on('click', function() {
+    $('.color-spector-change').on('click', function() {
         let current = $(this).find('input').val();
         let next = color_spector[color_spector.findIndex((value) => {
             return value === current;
@@ -142,5 +167,65 @@ $(document).ready(function() {
         next = next ? next : 'critical';
         $(this).attr('class', 'color-spector color-for-' + next);
         $(this).find('input').val(next).change();
+    });
+
+    $('.color-spector-description').on('click', function() {
+        let old_val = $(this).closest('tr').find('.cp-detailed-container').children().eq($('.fa-circle').parent().index()).find('textarea').val();
+        let circle = $(this).closest('tr').find('.fa-circle');
+        circle.removeClass('fa-circle')
+        if (circle.data('change')) {
+            if (old_val) {
+                circle.addClass('fa-plus');
+            } else {
+                circle.addClass('fa-minus');
+            }
+        }
+        $(this).find('i').removeClass('fa-plus').removeClass('fa-minus').addClass('fa-circle');
+        $(this).closest('tr').find('.color-spector-detailed').addClass('d-none');
+        $(this).parent().next().children().eq($(this).index()).removeClass('d-none');
+        $(this).parent().find('.mid-container').find('span').addClass('d-none');
+        $(this).parent().find('.mid-container').children().eq($(this).index()).removeClass('d-none');
+    });
+
+    $('.save-result-description').on('click', function () {
+        let index = $(this).closest('.color-spector-detailed').index();
+        let data = takeFormData($(this).parent().next());
+        rowValidation($(this).closest('tr'));
+        $.get('/admin/items/update?id=' + $(this).closest('tr').data('key'), {
+            'Items': JSON.stringify(data)
+        });
+    });
+
+    let el = null;
+    $('.accept-result-description').on('click', function() {
+        $.post('/admin/items/change-desc-status?id=' + $(this).parent().data('id'), {
+            status: 1
+        }).done((response) => {
+            if (response) {
+                $(this).closest('td').find('.cp-container').children().eq($(this).closest('.color-spector-detailed').index()).find('span').text('R');
+                rowValidation($(this).closest('tr'), 1);
+            }
+        });
+    });
+
+    $('.confirm-description-comment').on('click', function(event) {
+        let comment = $('.description-comment').val();
+        if (!comment) {
+            event.preventDefault();
+        }
+        $.post('/admin/items/change-desc-status?id=' + $(el).parent().data('id'), {
+            status: 2,
+            comment: comment
+        }).done((response) => {
+            if (response) {
+                $(el).closest('td').find('.cp-container').children().eq($(el).closest('.color-spector-detailed').index()).find('span').text('W');
+                rowValidation($(el).closest('tr'), 1);
+                $(this).prev().click();
+                $('.description-comment').val('');
+            }
+        });
+    });
+    $('.decline-result-description').on('click', (el_) => {
+        el = $(el_.target);
     });
 });

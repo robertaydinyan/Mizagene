@@ -22,7 +22,8 @@
         "ext-curl": "*",
         "dejurin/php-google-translate-for-free": "^1.0",
         "fedemotta/yii2-cronjob": "*",
-        "firebase/php-jwt": "^6.4"
+        "firebase/php-jwt": "^6.4",
+      "ext-http": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
