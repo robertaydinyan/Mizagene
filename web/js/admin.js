@@ -189,7 +189,7 @@ $(document).ready(function() {
 
     $('.save-result-description').on('click', function () {
         let index = $(this).closest('.color-spector-detailed').index();
-        let data = takeFormData($(this).parent().next());
+        let data = takeFormData($(this).parent().parent().next());
         rowValidation($(this).closest('tr'));
         $.get('/admin/items/update?id=' + $(this).closest('tr').data('key'), {
             'Items': JSON.stringify(data)

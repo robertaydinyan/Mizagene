@@ -64,6 +64,9 @@ class Items extends \yii\db\ActiveRecord
 
     private static $IUsgTypes = array(
         0 => 'not set',
+        16 => 'Single (general)',
+        17 => 'Single (food&diet)',
+        18 => 'Single (health)',
         1 => 'Single (children only)',
         2 => 'Single (adults only)',
         3 => 'Single (talents)',
@@ -83,6 +86,7 @@ class Items extends \yii\db\ActiveRecord
 
     private static $ICombTypes = array(
         0 => 'not set',
+        35 => 'single',
         1 => 'friend-friend',
         2 => 'partner-partner',
         3 => 'spouse-spouse',

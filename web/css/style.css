@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800&display=swap');
-
+/*rgb(236, 143, 245)*/
 body {
     margin: 0;
     font: normal 75% Arial, Helvetica, sans-serif;
@@ -27,7 +27,7 @@ header {
     position: absolute;
     z-index: -4;
     width: 100%;
-    opacity: 0.4;
+    opacity: 0.1;
     height: 100vh;
     top: 0;
     bottom: 0;
@@ -37,7 +37,7 @@ header {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(240, 240,240,0.1);
     background-size: cover;
     background-position: 50% 50%;
 }
@@ -108,7 +108,7 @@ header {
 }
 
 .title {
-    font-size: 50px!important;
+    font-size: 40px!important;
     line-height: 55px;
     font-weight: 800;
     letter-spacing: 0px;
@@ -131,7 +131,7 @@ header {
 
 .fillButton {
     color: white!important;
-    background: rgb(179, 52, 220)!important;
+    background: rgb(210, 58, 225)!important;
     padding: 14px 40px!important;
     border-radius: 3px!important;
     margin: 0 10px!important;
@@ -142,17 +142,18 @@ header {
 }
 
 .outlineButton {
-    color: white!important;
+    color: #003C46!important;
     background: none!important;
-    border: 1px solid #fff!important;
+    border: 1px solid #003C46!important;
     padding: 14px 40px!important;
     border-radius: 3px!important;
     margin: 0 10px!important;
 }
 
 .outlineButton:hover {
-    background: rgb(179, 52, 220)!important;
-    border: 1px solid rgb(179, 52, 220)!important;
+    background: #003C46!important;
+    color: white!important;
+    border: 1px solid #003C46!important;
 }
 
 .flip-card {
@@ -195,7 +196,7 @@ header {
 }
 
 .flip-card p {
-    font-weight: 200;
+    font-weight: 400;
 }
 
 .loginLink {
@@ -213,7 +214,7 @@ header {
 }
 
 .signUpBtn {
-    background: rgb(179, 52, 220)!important;
+    background: rgb(210, 58, 225)!important;
     border: none;
     height: 30px;
     color: white;
@@ -234,7 +235,7 @@ header {
 }
 
 .HRButton:hover {
-    color: rgb(179, 52, 220);
+    color: rgb(210, 58, 225);
 }
 
 .IButton:hover {
@@ -268,6 +269,49 @@ header {
     border-radius: 0!important;
 }
 
+.investor_tab_3 .active {
+    background: #003C46!important;
+    color: white!important;
+}
+
+.investor_tab_1 .active {
+    background: rgb(210, 58, 225)!important;
+    color: white!important;
+}
+
+.investor_tab_2 .active {
+    background: rgb(75, 173, 233)!important;
+    color: white!important;
+}
+
+.investors-pill button:hover {
+    color: rgb(114, 114, 114)!important;
+}
+
+.investors-pill .nav-link {
+    color: rgb(114, 114, 114);
+    border: 1px solid rgb(114, 114, 114);
+    border-radius: 0!important;
+    font-size: 19px;
+}
+
 .analysis-pill .nav-link:hover {
     color: rgb(114, 114, 114);
 }
+
+.investors-pill .active:hover {
+    color: white!important;
+}
+
+.callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: none;
+}
+
+.callout-success {
+    border-left: 10px solid rgb(210, 58, 225)!important;
+    color: #003C46!important;
+    font-size: 19px;
+}
+

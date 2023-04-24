@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 namespace app\controllers;
@@ -164,167 +163,24 @@ class SiteController extends Controller
         return $this->render('technology');
     }
 
-
-}
-=======
-<?php
-
-namespace app\controllers;
-
-use app\models\SignupForm;
-use app\models\SignupcompanyForm;
-use app\models\Userprofiles;
-use Yii;
-use yii\filters\AccessControl;
-use yii\web\Controller;
-use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
-
-class SiteController extends Controller
-{
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
+    public function actionService()
     {
-        return [
-            'access' => [
-                'class' => AccessControl::class,
-                'only' => ['logout','about'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    [
-                        'actions' => ['userProfiles'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    [
-                        'actions' => ['userProfiles'],
-                        'allow' => false,
-                        'roles' => ['?'],
-                    ]
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
+        return $this->render('service');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function actions()
+    public function actionInvestors()
     {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-        ];
+        return $this->render('investors');
     }
 
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    public function actionIndex()
+    public function actionPartners()
     {
-        return $this->render('index');
+        return $this->render('partners');
     }
 
-    /**
-     * Login action.
-     *
-     * @return Response|string
-     */
-    public function actionLogin()
+    public function actionKycSolutions()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-
-        $model->password = '';
-        return $this->render('login', [
-            'model' => $model,
-        ]);
-    }
-
-    public function actionSignup(){
-        $model = new SignupForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->signup()){
-            return $this->redirect(Yii::$app->homeUrl);
-        }
-
-        return $this->render(view: 'signup', params: ['model' => $model]);
-    }
-
-    public function actionSignupcompany(){
-        $model = new SignupcompanyForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->signupcompany()){
-            return $this->redirect(Yii::$app->homeUrl);
-        }
-
-        return $this->render(view: 'signupcompany', params: ['model' => $model]);
-    }
-
-    /**
-     * Logout action.
-     *
-     * @return Response
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
-
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact() {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout() {
-        return $this->render('about');
+        return $this->render('kyc');
     }
 
     public function actionUserprofiles() {
@@ -339,7 +195,4 @@ class SiteController extends Controller
             'datasearch' => $datasearch,
         ]);
     }
-
-
 }
->>>>>>> faed5531170a51b712868c6088e89c129196ed23

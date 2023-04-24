@@ -60,7 +60,7 @@ class ApiController extends Controller {
             // }
             // var_dump($output);
 
-            echo json_encode(file_get_contents(\Yii::getAlias('@webroot') . DS . '..' . DS . 'python' . DS . 'landmarks' . DS . 'json' . DS . $file_name . '.json'));
+            return json_encode(file_get_contents(\Yii::getAlias('@webroot') . DS . '..' . DS . 'python' . DS . 'landmarks' . DS . 'json' . DS . $file_name . '.json'));
         } else {
             API::returnError(500, "Something is wrong with file");
         }
@@ -102,7 +102,10 @@ class ApiController extends Controller {
             foreach ($item['itemTitles'] as &$title) {
                 unset($title['itemID']);
             }
-            foreach ($item['colorSectors'] as &$title) {
+
+            $item['zones'] = $item['colorSectors'];
+            unset($item['colorSectors']);
+            foreach ($item['zones'] as &$title) {
                 unset($title['item_id']);
             }
         }
