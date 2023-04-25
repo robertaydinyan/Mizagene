@@ -410,8 +410,9 @@ class Items extends \yii\db\ActiveRecord
             unset($steps[1]);
             unset($steps[4]);
             unset($steps[5]);
-            unset($steps[7]);
+            unset($steps[6]);
             unset($steps[8]);
+            unset($steps[9]);
         } else if ($role == 2) {
             unset($steps[1]);
             unset($steps[2]);
@@ -419,8 +420,13 @@ class Items extends \yii\db\ActiveRecord
             unset($steps[4]);
             unset($steps[6]);
             unset($steps[7]);
+            unset($steps[9]);
         } else if ($role == 3) {
             unset($steps[2]);
+            unset($steps[5]);
+            unset($steps[7]);
+            unset($steps[8]);
+            unset($steps[9]);
         }
 
         return $steps;

@@ -171,7 +171,19 @@ $(document).ready(function() {
              colResizable($('.grid-view table'));
         });
     });
+    $('.item-usage-type').on('change', function () {
+        let type = $(this).closest('tr').find('.item-type');
+        if (type.val() == 0) {
+            let isSingle = false;
+            $.each($(this).val(), (v) => {
+                if (single_usg_types[v]) {
+                    isSingle = true;
+                }
+            });
 
+            isSingle && type.val(1);
+        }
+    }).change();
     $('.grid-view input, textarea, select').change(function() {
         $(this).closest('tr').find('.save-filled, .save-green-filled').removeClass('save-filled').removeClass('save-green-filled').addClass('save-green');
     });
@@ -285,19 +297,6 @@ $(document).ready(function() {
         saveRowData($(this).closest('tr'), $(this).closest('tr').data('key'));
     });
 
-    $('.item-usage-type').on('change', function () {
-        let type = $(this).closest('tr').find('.item-type');
-        if (type.val() == 0) {
-            let isSingle = false;
-            $.each($(this).val(), (v) => {
-                if (single_usg_types[v]) {
-                    isSingle = true;
-                }
-            });
-
-            isSingle && type.val(1);
-        }
-    }).change();
 
     function itemTypeChange(el) {
         let ict = el.find('.item-comb-type');
@@ -310,7 +309,7 @@ $(document).ready(function() {
         } else if ($(el).val() == 2) {
             !$(ict).next().hasClass('select2') && $(ict).select2();
             $(ict).show().addClass('required');
-            let single_usg_types_ = {...single_usg_types}
+            let single_usg_types_ = {...single_usg_types};
             ust.select2('destroy').html(createOptions($.extend(single_usg_types_, multiple_usg_types))).val(usg_type).select2();
         }
     }
