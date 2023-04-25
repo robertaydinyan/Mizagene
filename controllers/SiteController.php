@@ -183,6 +183,26 @@ class SiteController extends Controller
         return $this->render('kyc');
     }
 
+    public function actionIndividualSolutions()
+    {
+        return $this->render('individual');
+    }
+
+    public function actionPersonalSolutions()
+    {
+        return $this->render('personal');
+    }
+
+    public function actionHrSolutions()
+    {
+        return $this->render('hr');
+    }
+
+    public function actionFaq()
+    {
+        return $this->render('faq');
+    }
+
     public function actionUserprofiles() {
         $tableData = Userprofiles::find()->all();
 

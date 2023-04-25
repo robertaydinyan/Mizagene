@@ -41,9 +41,10 @@
 
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 d-flex p-5 justify-content-center">
             <div class="d-flex flex-column mb-3 w-100" style="margin-top: auto">
+                <p class="ps-2 m-0" style="color: white">Live Demo</p>
                 <p class="ps-2 m-0" style="color: white">Вход</p>
-                <div class="ps-2" style="color: rgb(114, 114, 114);">Физическое лицо</div>
-                <div class="ps-2" style="color: rgb(114, 114, 114);">Компания</div>
+<!--                <div class="ps-2" style="color: rgb(114, 114, 114);">Физическое лицо</div>-->
+<!--                <div class="ps-2" style="color: rgb(114, 114, 114);">Компания</div>-->
                 <p class="ps-2 m-0" style="color: white;">Регистрация</p>
                 <!--                <div class="ps-2" style="color: rgb(114, 114, 114);">Физическое лицо</div>-->
                 <!--                <div class="ps-2" style="color: rgb(114, 114, 114);">Компания</div>-->

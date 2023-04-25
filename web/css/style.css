@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800&display=swap');
-/*rgb(236, 143, 245)*/
+
 body {
     margin: 0;
     font: normal 75% Arial, Helvetica, sans-serif;
@@ -12,6 +12,10 @@ canvas {
 
 header {
     height: max-content;
+}
+
+.pre-header .active {
+    color: rgb(236, 143, 245);
 }
 
 .backImage {
@@ -37,9 +41,22 @@ header {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(240, 240,240,0.1);
+    background-color: rgba(255, 255,255,0.1);
     background-size: cover;
     background-position: 50% 50%;
+}
+
+#particles-js-individual {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255,255,0.1);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+#particles-js-team {
+    background-color: rgba(240, 240,240,0.1);
 }
 
 .header-menu {
@@ -55,7 +72,7 @@ header {
 
 .pre-header {
     position: fixed;
-    height: 30px;
+    height: 90px;
     z-index: 999;
     background: #003C46;
 }
@@ -135,6 +152,46 @@ header {
     padding: 14px 40px!important;
     border-radius: 3px!important;
     margin: 0 10px!important;
+}
+
+.fillGreenButton {
+    color: white!important;
+    background: #003C46!important;
+    padding: 14px 40px!important;
+    border-radius: 3px!important;
+    margin: 0 10px!important;
+}
+
+.fillBlueButton {
+    color: white!important;
+    background: rgb(75, 173, 233)!important;
+    padding: 14px 40px!important;
+    border-radius: 3px!important;
+    margin: 0 10px!important;
+}
+
+.fillPurpleButton {
+    color: white!important;
+    background: rgb(210, 58, 225)!important;
+    padding: 14px 40px!important;
+    border-radius: 3px!important;
+    margin: 0 10px!important;
+}
+
+.fillRedButton {
+    color: white!important;
+    background: rgb(234, 51, 61)!important;
+    padding: 14px 40px!important;
+    border-radius: 3px!important;
+    margin: 0 10px!important;
+}
+
+.fillGreenButton:hover {
+    background: rgb(0, 41, 47) !important;
+}
+
+.fillBlueButton:hover {
+    background: rgb(36, 140, 203) !important;
 }
 
 .fillButton:hover {
@@ -263,8 +320,22 @@ header {
     color: white!important;
 }
 
+.hr-pill .active {
+    background: rgb(210, 58, 225)!important;
+    color: white!important;
+    border: 1px solid rgb(210, 58, 225)!important;
+}
+
 .analysis-pill .nav-link {
-    color: rgb(114, 114, 114);
+    color: #003C46;
+    font-weight: 500;
+    border: 1px solid rgb(114, 114, 114);
+    border-radius: 0!important;
+}
+
+.hr-pill .nav-link {
+    color: rgb(210, 58, 225);
+    font-weight: 500;
     border: 1px solid rgb(114, 114, 114);
     border-radius: 0!important;
 }
@@ -272,16 +343,19 @@ header {
 .investor_tab_3 .active {
     background: #003C46!important;
     color: white!important;
+    border: 1px solid #003C46!important;
 }
 
 .investor_tab_1 .active {
     background: rgb(210, 58, 225)!important;
     color: white!important;
+    border: 1px solid rgb(210, 58, 225)!important;
 }
 
 .investor_tab_2 .active {
     background: rgb(75, 173, 233)!important;
     color: white!important;
+    border: 1px solid rgb(75, 173, 233)!important;
 }
 
 .investors-pill button:hover {
@@ -299,7 +373,15 @@ header {
     color: rgb(114, 114, 114);
 }
 
+.hr-pill .nav-link:hover {
+    color: rgb(210, 58, 225);
+}
+
 .investors-pill .active:hover {
+    color: white!important;
+}
+
+.hr-pill .active:hover {
     color: white!important;
 }
 
