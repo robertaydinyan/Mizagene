@@ -1,13 +1,41 @@
 $(document).ready(function() {
+    let single_usg_types = {
+        1: 'Caharacter (general)',
+        2: 'Character (positive)',
+        3: 'Character (negative)',
+        4: 'Psyche',
+        5: 'Emotion',
+        6: 'Intellect',
+        7: 'Communication',
+        8: 'Food&Diet',
+        9: 'Health',
+        10: 'Job & Career',
+        11: 'Children only',
+        12: 'Adult only',
+        13: 'Talents',
+        14: 'Sports',
+        15: 'Science',
+        16: 'Profession',
+        17: 'Study',
+        18: 'Single (intimate preferences)',
+        19: 'Industrial',
+        20: 'HR'
+    }
+
+    let multiple_usg_types = {
+        21: 'Friendship',
+        22: 'Love',
+        23: 'Relationships in Family',
+        24: 'Relationships at Work',
+        25: 'Relationships in Business',
+        26: 'Intimate',
+        27: 'Child',
+    }
+
     // general
-    let color_spector = [
-        'critical',
-        'bad',
-        'notenough',
-        'good',
-        'verygood'
-    ];
     $('.grid-view input, select, textarea').removeAttr('id');
+
+
     function takeFormData($container) {
         let unindexed_array = $container.find('input, textarea, select').serializeArray();
         let indexed_object = {};
@@ -41,13 +69,12 @@ $(document).ready(function() {
     function rowValidation(row, type = 0) {
         if (type === 1) {
             if ($('.decline-result-description').length > 0) {
-                if (row.find('.color-spector span:contains("R")').length === 10) {
+                if (row.find('.color-spector i[data-status="R"]').length === 10) {
                     $(row).find('.forward-gray').removeClass('forward-gray').addClass('forward-black').addClass('ajax-call');
                 } else {
                     $(row).find('.forward-black').removeClass('forward-black').addClass('forward-gray').removeClass('ajax-call');
                 }
-
-                if (row.find('.color-spector span:contains("W")').length > 0 && row.find('.color-spector span:contains(" ")').length === 0) {
+                if (row.find('.color-spector i[data-status="W"]').length > 0 && row.find('.color-spector i[data-status=" "]').length === 0) {
                     $(row).find('.backward-gray').removeClass('backward-gray').addClass('backward-black').addClass('ajax-call');
                 } else {
                     $(row).find('.backward-black').removeClass('backward-black').addClass('backward-gray').removeClass('ajax-call');
@@ -91,6 +118,16 @@ $(document).ready(function() {
             }
         }).removeClass('JPadding');
     }
+
+    function createOptions(arr) {
+        let result = "";
+        $.each(arr, (i, k) => {
+           result += "<option value='" + i + "'>" + k + "</option>";
+        });
+
+        return result
+    }
+
     colResizable($('.grid-view table'));
 
     // groups events
@@ -116,7 +153,7 @@ $(document).ready(function() {
             }
         });
     }
-
+    $('.select2').select2();
     // items events
     $(document).on('click', '.ajax-call', function () {
         $.post($(this).data("path"), {
@@ -139,48 +176,54 @@ $(document).ready(function() {
         $(this).closest('tr').find('.save-filled, .save-green-filled').removeClass('save-filled').removeClass('save-green-filled').addClass('save-green');
     });
 
+    function saveRowData(el, id) {
+        let data = takeFormData(el);
+        $.get('/admin/items/update?id=' + id, {
+            'Items': JSON.stringify(data)
+        }).done((data) => {
+            if (data) {
+                $(el).find('.save-green').removeClass('save-green').addClass('save-green-filled');
+            }
+            rowValidation(el);
+        });
+    }
+
     $('.save-item').on('click', function() {
         if ($(this).hasClass('save-green')) {
-            let data = takeFormData($(this).closest('tr'));
-            console.log(data);
-            $.get('/admin/items/update?id=' + $(this).closest('tr').data('key'), {
-                'Items': JSON.stringify(data)
-            }).done((data) => {
-                if (data) {
-                    $(this).removeClass('save-green').addClass('save-green-filled');
-                }
-                rowValidation($(this).closest('tr'));
-            });
+            saveRowData($(this).closest('tr'), $(this).closest('tr').data('key'));
         }
     });
 
     $.each($('.grid-view tbody tr'), (i, v) => {
         rowValidation($(v));
         rowValidation($(v), 1);
+        itemTypeChange($(v).find('.item-type'));
+    });
+
+    $.each($('.select2[multiple]'), function(i, k) {
+        $(k).prev().remove();
     });
 
     $('.color-spector-change').on('click', function() {
-        let current = $(this).find('input').val();
-        let next = color_spector[color_spector.findIndex((value) => {
-            return value === current;
-        }) + 1];
-        next = next ? next : 'critical';
+        let next = parseInt($(this).find('input').val()) + 1;
+        next = next === 7 ? 1 : next
         $(this).attr('class', 'color-spector color-for-' + next);
         $(this).find('input').val(next).change();
     });
 
     $('.color-spector-description').on('click', function() {
-        let old_val = $(this).closest('tr').find('.cp-detailed-container').children().eq($('.fa-circle').parent().index()).find('textarea').val();
+        let old_val = $(this).closest('tr').find('.cp-detailed-container').children().eq($('.fa-circle').parent().index()).find('.save-result-description').attr('data-text');
         let circle = $(this).closest('tr').find('.fa-circle');
-        circle.removeClass('fa-circle')
+        circle.removeClass('fa-circle');
         if (circle.data('change')) {
             if (old_val) {
-                circle.addClass('fa-plus');
+                circle.removeClass('fa-minus').addClass('fa-plus');
             } else {
-                circle.addClass('fa-minus');
+                circle.removeClass('fa-plus').addClass('fa-minus');
             }
         }
-        $(this).find('i').removeClass('fa-plus').removeClass('fa-minus').addClass('fa-circle');
+        circle.text(circle.data('status'));
+        $(this).find('i').text('').addClass('fa-circle');
         $(this).closest('tr').find('.color-spector-detailed').addClass('d-none');
         $(this).parent().next().children().eq($(this).index()).removeClass('d-none');
         $(this).parent().find('.mid-container').find('span').addClass('d-none');
@@ -193,19 +236,31 @@ $(document).ready(function() {
         rowValidation($(this).closest('tr'));
         $.get('/admin/items/update?id=' + $(this).closest('tr').data('key'), {
             'Items': JSON.stringify(data)
+        }).done((result) => {
+            if (result) {
+                $(this).text('saved');
+                $(this).closest('.color-spector-detailed').find('.save-result-description').attr('data-text', $(this).closest('.color-spector-detailed').find('textarea').val());
+            }
         });
     });
 
-    let el = null;
+    $('.result-description').on('change', function() {
+         $(this).closest('.color-spector-detailed').find('.save-result-description').text('save');
+    });
+
+    let declineActive = null;
     $('.accept-result-description').on('click', function() {
         $.post('/admin/items/change-desc-status?id=' + $(this).parent().data('id'), {
             status: 1
         }).done((response) => {
             if (response) {
-                $(this).closest('td').find('.cp-container').children().eq($(this).closest('.color-spector-detailed').index()).find('span').text('R');
+                $(this).closest('td').find('.cp-container').children().eq($(this).closest('.color-spector-detailed').index()).find('i').attr('data-status', 'R');
                 rowValidation($(this).closest('tr'), 1);
             }
         });
+    });
+    $('.decline-result-description').on('click', (el_) => {
+        declineActive = $(el_.target);
     });
 
     $('.confirm-description-comment').on('click', function(event) {
@@ -213,19 +268,67 @@ $(document).ready(function() {
         if (!comment) {
             event.preventDefault();
         }
-        $.post('/admin/items/change-desc-status?id=' + $(el).parent().data('id'), {
+        $.post('/admin/items/change-desc-status?id=' + $(declineActive).parent().data('id'), {
             status: 2,
             comment: comment
         }).done((response) => {
             if (response) {
-                $(el).closest('td').find('.cp-container').children().eq($(el).closest('.color-spector-detailed').index()).find('span').text('W');
-                rowValidation($(el).closest('tr'), 1);
+                $(declineActive).closest('td').find('.cp-container').children().eq($(declineActive).closest('.color-spector-detailed').index()).find('i').attr('data-status', 'W');
+                rowValidation($(declineActive).closest('tr'), 1);
                 $(this).prev().click();
                 $('.description-comment').val('');
             }
         });
     });
-    $('.decline-result-description').on('click', (el_) => {
-        el = $(el_.target);
+
+    $('.forward-black').on('click', function() {
+        saveRowData($(this).closest('tr'), $(this).closest('tr').data('key'));
+    });
+
+    $('.item-usage-type').on('change', function () {
+        let type = $(this).closest('tr').find('.item-type');
+        if (type.val() == 0) {
+            let isSingle = false;
+            $.each($(this).val(), (v) => {
+                if (single_usg_types[v]) {
+                    isSingle = true;
+                }
+            });
+
+            isSingle && type.val(1);
+        }
+    }).change();
+
+    function itemTypeChange(el) {
+        let ict = el.find('.item-comb-type');
+        let ust = el.find('.item-usage-type');
+        let usg_type = el.find('.item-usage-type').val();
+        if ($(el).val() == 1) {
+            $(ict).next().hasClass('select2') && $(ict).select2('destroy');
+            $(ict).hide().removeClass('required');
+            ust.select2('destroy').html(createOptions(single_usg_types)).val(usg_type).select2();
+        } else if ($(el).val() == 2) {
+            !$(ict).next().hasClass('select2') && $(ict).select2();
+            $(ict).show().addClass('required');
+            let single_usg_types_ = {...single_usg_types}
+            ust.select2('destroy').html(createOptions($.extend(single_usg_types_, multiple_usg_types))).val(usg_type).select2();
+        }
+    }
+
+    $('.item-type').on('change', function() {
+        itemTypeChange($(this));
+    });
+
+
+
+    // groups
+    $('.flag-changeable').on('click', function() {
+        if ($(this).attr('src').includes('flag1')) {
+            $(this).attr('src', '/images/icons/flag2.png');
+            $(this).next().val(2);
+        } else {
+            $(this).attr('src', '/images/icons/flag1.jpg')
+            $(this).next().val(1);
+        }
     });
 });

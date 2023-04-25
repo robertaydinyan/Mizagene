@@ -199,9 +199,10 @@ $columns = [
         'headerOptions' => ['class' => 'join-right join-left'],
         'format' => 'raw',
         'value' => function($model) use ($form) {
-            return $form->field($model, 'i_usg_type')->dropDownList(Items::getIUsgTypes(), [
-                'template' => '{input}',
-            ])->label(false);
+            return $form->field($model, 'i_usg_type')->dropDownList(
+                Items::getIUsgTypes(),
+                ['multiple' => 'multiple', 'class' => 'required form-control item-usage-type select2'],
+            )->label(false);
         }
     ],
     'priority' => [
@@ -296,20 +297,18 @@ $columns = [
                     <div class="color-spector-detailed %s">
                         <div class="d-flex justify-content-between">
                             <div>
-                               <div class="color-spector color-for-%s position-relative"></div>
                                <span class="align-super">%s | <b>zone %s</b> | %s%% </span>
                             </div>
                             <div class="d-flex">
                                 %s
-                                <a class="btn btn-dark small-button save-result-description" href="javascript:;"> save </a>
+                                <a class="btn btn-dark small-button save-result-description" href="javascript:;" data-text="%s"> save </a>
                             </div>
                        </div>
                        %s
                    </div>',
 
                     $i == 1 ? '' : 'd-none',
-                    $model->getColorSector($i)->color_id,
-                    $model->getColorSector($i)->color_id,
+                    $model->getColorSector($i)->color,
                     $i,
                     ($i * 10 - 9) . '-' . ($i * 10),
                     $status == 2 ?
@@ -322,7 +321,8 @@ $columns = [
                             ]
                         )
                     : '',
-                    $form->field($model, 'colorSectors[description_ru][' . ($i - 1) . ']')->textarea(['class' => 'form-control required', 'value' => $model->getColorSector($i)->description_ru])->label(false),
+                    $model->getColorSector($i)->description_ru,
+                    $form->field($model, 'colorSectors[description_ru][' . ($i - 1) . ']')->textarea(['class' => 'form-control required result-description', 'value' => $model->getColorSector($i)->description_ru])->label(false)
                 );
             }
 
@@ -384,20 +384,18 @@ $columns = [
                     <div class="color-spector-detailed %s">
                         <div class="d-flex justify-content-between">
                             <div>
-                               <div class="color-spector color-for-%s position-relative"></div>
                                <span class="align-super">%s | <b>zone %s</b> | %s%% </span>
                             </div>
                             <div class="d-flex">
                                 %s
-                                <a class="btn btn-dark small-button save-result-description" href="javascript:;"> save </a>
+                                <a class="btn btn-dark small-button save-result-description" href="javascript:;" data-text="%s"> save </a>
                             </div>
                        </div>
                        %s
                    </div>',
 
                     $i == 1 ? '' : 'd-none',
-                    $model->getColorSector($i)->color_id,
-                    $model->getColorSector($i)->color_id,
+                    $model->getColorSector($i)->color,
                     $i,
                     ($i * 10 - 9) . '-' . ($i * 10),
                     $status == 2 ?
@@ -410,12 +408,13 @@ $columns = [
                             ]
                         )
                         : '',
-                    $form->field($model, 'colorSectors[description_en][' . ($i - 1) . ']')->textarea(['class' => 'form-control required', 'value' => $model->getColorSector($i)->description_en])->label(false)
+                    $model->getColorSector($i)->description_en,
+                    $form->field($model, 'colorSectors[description_en][' . ($i - 1) . ']')->textarea(['class' => 'form-control required result-description', 'value' => $model->getColorSector($i)->description_en])->label(false)
                 );
             }
 
             return sprintf('<div class="d-flex">
-                   <div class="col-5 cp-container">
+                   <div class="col-5">
                        %s
                        <div class="mid-container">
                            %s
@@ -432,6 +431,7 @@ $columns = [
             );
         }
     ],
+
     'results_description_en_check' => [
         'header' => '<div class="title-label">
             <img class="flag-icon" src="/images/icons/flag2.png" alt="English">
@@ -444,11 +444,13 @@ $columns = [
             for ($i = 1; $i <= 10; $i++) {
                 $left .= sprintf('
                     <div class="color-spector color-for-%s position-relative color-spector-description">
-                        <span class="absolute-center">%s</span>
+                        <i class="absolute-center fa %s" data-status="%s">%s</i>
                    </div>',
 
                     $model->getColorSector($i)->color_id,
-                    $model->getColorSector($i)->statusT
+                    $i == 1 ? 'fa-circle' : '',
+                    $model->getColorSector($i)->statusT,
+                    $i != 1 ? $model->getColorSector($i)->statusT : ''
                 );
             }
             $right = '';
@@ -470,8 +472,8 @@ $columns = [
                    </div>',
 
                     $i == 1 ? '' : 'd-none',
-                    $model->getColorSector($i)->color_id,
-                    $model->getColorSector($i)->color_id,
+                    $model->getColorSector($i)->color,
+                    $model->getColorSector($i)->color,
                     $i,
                     ($i * 10 - 9) . '-' . ($i * 10),
                     $model->getColorSector($i)->id,
@@ -503,7 +505,6 @@ $columns = [
     ],
     'results_description' => [
         'header' => '<div class="title-label">
-            <img class="flag-icon" src="/images/icons/flag2.png" alt="English">
             <span style="margin-left: 4px;">Result</span>
         </div>',
         'label' => 'Results',
@@ -536,8 +537,8 @@ $columns = [
                    </div>',
 
                     $i == 1 ? '' : 'd-none',
-                    $model->getColorSector($i)->color_id,
-                    $model->getColorSector($i)->color_id,
+                    $model->getColorSector($i)->color,
+                    $model->getColorSector($i)->color,
                     $i,
                     ($i * 10 - 9) . '-' . ($i * 10),
                     $model->getColorSector($i)->description_en,
@@ -572,14 +573,18 @@ $columns = [
         'headerOptions' => ['class' => 'join-left'],
         'format' => 'raw',
         'value' => function($model) use ($form) {
+    var_dump($model->i_usg_type);
             return sprintf('<div class="d-flex col-12">
                     <div class="col-6">%s</div> 
                     <div class="col-6">%s</div>
                 </div> 
                 <div>%s</div>',
-                $form->field($model, 'i_type')->dropDownList(Items::getITypes(), ['class' => 'required'])->label(false),
-                $form->field($model, 'i_usg_type')->dropDownList(Items::getIUsgTypes(), ['class' => 'required'])->label(false),
-                $form->field($model, 'i_comb_type_id')->dropDownList(Items::getICombTypes(), ['class' => 'required'])->label(false)
+                $form->field($model, 'i_type')->dropDownList(Items::getITypes(), ['class' => 'required item-type'])->label(false),
+                $form->field($model, 'i_usg_type')->dropDownList(
+                    Items::getIUsgTypes(),
+                    ['multiple' => 'multiple', 'class' => 'required form-control item-usage-type select2', 'value' => $model->i_usg_type]
+                )->label(false),
+                $form->field($model, 'i_comb_type_id')->dropDownList(Items::getICombTypes(), ['multiple' => 'multiple', 'class' => 'item-comb-type select2'])->label(false)
             );
         }
     ],

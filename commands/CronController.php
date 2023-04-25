@@ -34,7 +34,7 @@ class CronController extends Controller {
             foreach ($dates as $date) {
                 $mz = new Mizagene($date, $token);
 //                $mz->getItems();
-                $mz->getSectors();
+//                $mz->getSectors();
             }
             $command->finish();
             return Controller::EXIT_CODE_NORMAL;

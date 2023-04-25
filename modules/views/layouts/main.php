@@ -68,7 +68,21 @@ AppAsset::register($this);
             ['label' => 'Users', 'url' => ['/admin/admin/index'], 'active' => Yii::$app->controller->id == 'admin'],
             ['label' => 'Region', 'url' => ['/admin/region/index'], 'active' => Yii::$app->controller->id == 'region'],
             ['label' => 'Language', 'url' => ['/admin/language/index'], 'active' => Yii::$app->controller->id == 'language'],
-            ['label' => 'Group', 'url' => ['/admin/group/index'], 'active' => Yii::$app->controller->id == 'group'],
+            [
+                'label' => 'Groups & Regions',
+                'items' => [
+                    '<div class="dropdown-header" style="background-color: #ff8900;margin-top: -16px;"></div>',
+                    [
+                        'label' => '<div class="submenu_item"><span>Groups</span></div>',
+                        'url' => '/admin/group/index'
+                    ],
+                    [
+                        'label' => '<div class="submenu_item"><span>Regions</span></div>',
+                        'url' => '/admin/regions/index'
+                    ],
+                ],
+                'active' => in_array(Yii::$app->controller->id, array('groups', 'regions'))
+            ],
             ['label' => 'Hi, <b>' . Yii::$app->admin->getIdentity()->username . '</b>', 'options' => ['class' => 'underlined-nav-link']],
             ['label' => '<i class="fa fa-sign-out" aria-hidden="true" style="font-size: 23px; padding-left: 0; margin-left: -16px;"></i>', 'url' => ['/admin/logout']],
         ] : []
@@ -84,13 +98,6 @@ AppAsset::register($this);
         <?= $content ?>
     </div>
 </main>
-
-<footer class="footer mt-auto py-3 text-muted">
-    <div class="container">
-        <p class="float-left">&copy; My Company <?= date('Y') ?></p>
-        <p class="float-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
 <?php  Yii::$app->getView()->registerJsFile(
     '@web/js/admin.js',
     ['depends' => [\yii\web\JqueryAsset::class]]

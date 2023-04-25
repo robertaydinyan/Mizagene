@@ -24,6 +24,16 @@ class ItemColors extends \yii\db\ActiveRecord
         2 => 'W'
     );
 
+    private static $COLOR_RANGE = array(
+        0 => '',
+        1 => 'critical',
+        2 => 'bad',
+        3 => 'notenough',
+        4 => 'neutral',
+        5 => 'good',
+        6 => 'verygood'
+    );
+
     /**
      * {@inheritdoc}
      */
@@ -63,5 +73,13 @@ class ItemColors extends \yii\db\ActiveRecord
 
     public function getStatusT() {
         return self::$statuses[$this->status];
+    }
+
+    public static function getColorRange() {
+        return self::$COLOR_RANGE;
+    }
+
+    public function getColor() {
+        return self::$COLOR_RANGE[$this->color_id];
     }
 }

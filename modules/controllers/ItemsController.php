@@ -262,10 +262,14 @@ class ItemsController extends Controller
 
     public function actionDeclineProfessor() {
         $item = Items::findOne(Yii::$app->request->post('itemID'));
-        $item->returned = 1;
-        $item->check2 = 2;
-        $item->check3 = 1;
-        $item->check4 = 2;
+        if ($item->getStep() == 5) {
+            $item->check2 -= 1;
+        } else {
+            $item->returned = 1;
+            $item->check2 = 2;
+            $item->check3 = 1;
+            $item->check4 = 2;
+        }
         $item->save();
     }
     /**

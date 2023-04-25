@@ -10,9 +10,9 @@ use Yii;
  * @property int $id
  * @property int|null $e2e_item_id
  * @property int $item_id
- * @property int $i_usg_type
+ * @property string $i_usg_type
  * @property int $i_type
- * @property int $i_comb_type_id
+ * @property string $i_comb_type_id
  * @property int|null $source
  * @property int $check1
  * @property int $check2
@@ -26,15 +26,7 @@ use Yii;
  */
 class Items extends \yii\db\ActiveRecord
 {
-    private static $COLOR_RANGE = array(
-        0 => '',
-        '' => '',
-        'critical' => 'critical',
-        'bad' => 'bad',
-        'notenough' => 'notenough',
-        'good' => 'good',
-        'verygood' => 'verygood'
-    );
+
 
     private static $tabs = array(
         1 => array('Active Items', 'active.png'),
@@ -63,29 +55,36 @@ class Items extends \yii\db\ActiveRecord
     );
 
     private static $IUsgTypes = array(
-        0 => 'not set',
-        16 => 'Single (general)',
-        17 => 'Single (food&diet)',
-        18 => 'Single (health)',
-        1 => 'Single (children only)',
-        2 => 'Single (adults only)',
-        3 => 'Single (talents)',
-        4 => 'Single (sports)',
-        5 => 'Single (science)',
-        6 => 'Single (profession)',
-        7 => 'Single (study)',
-        8 => 'Single (intimate preferences)',
-        9 => 'Friendship',
-        10 => 'Love',
-        11 => 'Relationships in Family',
-        12 => 'Relationships at Work',
-        13 => 'Relationships in Business',
-        14 => 'Intimate',
-        15 => 'Child',
+        1 => 'Caharacter (general)',
+        2 => 'Character (positive)',
+        3 => 'Character (negative)',
+        4 => 'Psyche',
+        5 => 'Emotion',
+        6 => 'Intellect',
+        7 => 'Communication',
+        8 => 'Food&Diet',
+        9 => 'Health',
+        10 => 'Job & Career',
+        11 => 'Children only',
+        12 => 'Adult only',
+        13 => 'Talents',
+        14 => 'Sports',
+        15 => 'Science',
+        16 => 'Profession',
+        17 => 'Study',
+        18 => 'Single (intimate preferences)',
+        19 => 'Industrial',
+        20 => 'HR',
+        21 => 'Friendship',
+        22 => 'Love',
+        23 => 'Relationships in Family',
+        24 => 'Relationships at Work',
+        25 => 'Relationships in Business',
+        26 => 'Intimate',
+        27 => 'Child',
     );
 
     private static $ICombTypes = array(
-        0 => 'not set',
         35 => 'single',
         1 => 'friend-friend',
         2 => 'partner-partner',
@@ -148,8 +147,9 @@ class Items extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['e2e_item_id', 'item_id', 'i_usg_type', 'i_type', 'i_comb_type_id', 'source', 'check1', 'check2', 'check3', 'check4', 'deleted', 'priority'], 'integer'],
+            [['e2e_item_id', 'item_id', 'i_type', 'source', 'check1', 'check2', 'check3', 'check4', 'deleted', 'priority', 'returned'], 'integer'],
             [['item_id'], 'required'],
+            [['i_usg_type', 'i_comb_type_id', 'activated_at'], 'safe'],
             [['comment'], 'string'],
         ];
     }
@@ -174,6 +174,8 @@ class Items extends \yii\db\ActiveRecord
             'deleted' => 'Deleted',
             'comment' => 'Comment',
             'priority' => 'Priority',
+            'returned' => 'Returned',
+            'activated_at' => 'Activated At',
         ];
     }
 
@@ -220,17 +222,12 @@ class Items extends \yii\db\ActiveRecord
                 return array(
                     array(
                         'item_id',
-//                        'persian',
-//                        'russian',
-//                        'title_temp_english',
-//                        'description_temp_english',
-//                        '',
-//                        'title_russian',
-//                        'title_english',
-//                        'description_russian',
-//                        'description_english'
+                        'persian',
+                        'russian',
+                        'english',
+                        'results_description'
                     ),
-                    '{view} {save} {delete}'
+                    ''
                 );
             case 2;
                 break;
@@ -304,9 +301,8 @@ class Items extends \yii\db\ActiveRecord
                                 'results',
                                 'types'
                             ),
-                            '{delete} {save} {checkmarkProfessor}'
+                            '{delete} {save} {declineProfessor} {checkmarkProfessor}'
                         );
-
                     case 6:
                         return array(
                             array(
@@ -395,6 +391,8 @@ class Items extends \yii\db\ActiveRecord
                         }
                     }
                     return 1;
+                } else {
+                    var_dump($this->errors);
                 }
             }
             return false;
@@ -403,10 +401,6 @@ class Items extends \yii\db\ActiveRecord
 
     public function getCheck() {
         return $this->{'check' . Yii::$app->admin->getIdentity()->role};
-    }
-
-    public static function getColorRange() {
-        return self::$COLOR_RANGE;
     }
 
     public static function getSteps() {
@@ -476,29 +470,30 @@ class Items extends \yii\db\ActiveRecord
         return self::$ICombTypes;
     }
 
+    public function getUsgType() {
+        $result = '';
+        foreach ($this->i_usg_type as $type)
+            $result .= self::$IUsgTypes[$type] . ' ';
+
+        return $result;
+    }
+
     public function getCombType() {
-        return self::$ICombTypes[$this->i_comb_type_id];
+        $result = '';
+        foreach ($this->i_comb_type_id as $type)
+            $result .= self::$ICombTypes[$type] . ' ';
+        return $result;
     }
 
     public static function getIUsgTypes() {
         return self::$IUsgTypes;
     }
 
-    public function getUsgType() {
-        return self::$IUsgTypes[$this->i_usg_type];
-    }
 
     public function getIType() {
         return self::$ITypes[$this->i_type];
     }
 
-    public function getICombType() {
-        return self::$ICombTypes[$this->i_comb_type_id];
-    }
-
-    public function getIUsgType() {
-        return self::$IUsgTypes[$this->i_usg_type];
-    }
 
     public function getStep() {
         if ($this->check2 == 0 AND $this->check3 == 0 AND $this->check4 == 0) return 1;
@@ -521,7 +516,7 @@ class Items extends \yii\db\ActiveRecord
         $query = Items::find();
         $searchModel = new ItemsSearch();
         $searchModel->filterPills($query, $pill);
-        $searchModel->filterSteps($query, $step);
+        $searchModel->filterSteps($query, $step, $pill);
 
         return $query->count();
     }
