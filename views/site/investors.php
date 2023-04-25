@@ -2,11 +2,16 @@
 
 <div class="container-fluid firstContainer" style="min-height: 450px">
     <div id="particles-js" style="height: 450px"></div>
-    <div class="container" style="padding-top: 155px">
-        <h1 class="title" style="font-family: 'Nunito Sans', sans-serif;"><span style="color: #003C46">Инвесторам</span></h1>
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-5" style="text-align: start">
-            <p class="" style="font-size: 19px;color: rgb(114, 114, 114);">Команда Youmee Technologies предлагает Вам инвестировать в отраслевые продукты на базе технологии Mizagene. Сферы применения технологии самые разнообразные и затрагивают как B2B рынок, так и B2C.</p>
-            <p class="" style="font-size: 19px;color: rgb(114, 114, 114);">Но главное, наша уникальная запатентованная технология Mizagene не имеет равноценных и сопоставимых в точности результата аналогов.</p>
+    <div class="container d-flex" style="padding-top: 155px">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-5 text-center">
+            <h1 class="title" style="font-family: 'Nunito Sans', sans-serif;"><span style="color: #003C46">Инвесторам</span></h1>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5" style="text-align: start">
+                <p class="" style="font-size: 19px;color: rgb(114, 114, 114);">Команда Youmee Technologies предлагает Вам инвестировать в отраслевые продукты на базе технологии Mizagene. Сферы применения технологии самые разнообразные и затрагивают как B2B рынок, так и B2C.</p>
+                <p class="" style="font-size: 19px;color: rgb(114, 114, 114);">Но главное, наша уникальная запатентованная технология Mizagene не имеет равноценных и сопоставимых в точности результата аналогов.</p>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-5 text-center">
+            <img src="/images/protection.png" alt=""width="250">
         </div>
     </div>
 </div>
@@ -14,13 +19,18 @@
 <div class="container mt-5 mb-5">
     <div class="container row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center mb-5">
-            <h1 style="color: #003C46">Предложение</h1>
+            <h1 style="color: #003C46">Уникальные продукты</h1>
         </div>
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5" style="text-align: start">
-            <p class="" style="font-size: 19px;color: rgb(114, 114, 114);">Конечно, аналитические продукты на базе ИИ – не новость. Более того, мы сами используем готовые решения. Но суть технологии не в применяемом искусственном интеллекте, а в аналитическом ядре, способном обработать координаты контрольных точек и дать отчет на более чем 1500 параметров.</p>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-5" style="text-align: start">
+            <p class="" style="font-size: 19px;color: rgb(114, 114, 114);">Самые значимые технологии будущего лежат под пылью прошлого. Мы сдуваем эту пыль.</p>
+            <p class="" style="font-size: 19px;color: rgb(114, 114, 114);">Конечно, аналитические продукты на базе ИИ распознавания лица – не новость. Более того, мы и сами используем сторонние решения на базе AI.</p>
+            <p style="font-size: 19px;color: rgb(114, 114, 114);">Но суть технологии не в применяемом искусственном интеллекте, а в аналитическом ядре, способном обработать координаты контрольных точек и дать отчет на более чем 1500 параметров.</p>
             <div class="callout callout-success">
                 Иными словами, - получить контрольные точки на лице могут многие, но только мы знаем, что они означают и как их анализировать.
             </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-5" style="text-align: start">
+            <img src="/images/face_collage.png" style="width: 600px">
         </div>
     </div>
 </div>
@@ -41,7 +51,7 @@
             </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5" style="text-align: start">
                 <div class="callout callout-success">
-                    И если социальная инженерия – это совокупность технологий для достижения целей манипулирования общественным мнением без учета мнения отдельно взятой единицы, то наши решения – это своего рода дешифратор для предиктивного SWOT анализа, позволяющий идентифицировать сильные и слабые стороны, выявить возможности и угрозы на уровне личности.
+                    И если социальная инженерия – это совокупность технологий для достижения целей манипулирования общественным мнением без учета мнения отдельно взятой единицы, то <span style="font-weight: 500; color: #003C46">наши решения – это своего рода <span style="font-weight: 500; color: rgb(210, 58, 225);">дешифратор</span> для предиктивного SWOT анализа</span>, позволяющий идентифицировать сильные и слабые стороны, выявить возможности и угрозы на уровне личности.
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-5" style="text-align: start">
@@ -51,9 +61,75 @@
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-5" style="text-align: start">
                 <p class="" style="font-size: 19px;color: rgb(114, 114, 114);">Приблизительно то же самое обстоит и с клиентской базой. Например, игровая онлайн платформа типа «онлайн казино», использующая процессы верификации клиентов (KYC), за счет эффективной сегментации новых клиентов, с одной стороны, может значительно повысить прибыль, а с другой – еще на этапе верификации определить людей, потенциально склонных к мошенничеству и принять дополнительные меры мониторинга поведения данного пользователя. При этом, анализ поведения клиента возможен только в ретроспективе, то есть на основании уже совершенных операций.</p>
             </div>
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5" style="text-align: start">
-                <div class="callout callout-success">
-                    Но все эти вызовы можно решить благодаря одной технологии – Mizagene.
+<!--            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5" style="text-align: start">-->
+<!--                <div class="callout callout-success" style="display: inline">-->
+<!--                    Но все эти вызовы можно решить благодаря одной технологии.-->
+<!--                </div>-->
+<!--                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-5 text-center" style="display: inline">-->
+<!--                    <img src="/images/mizagene_black.png" alt=""width="300">-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="container row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex text-center justify-content-center mb-5">
+            <h1 style="color: #003C46">Преимущества инвестиции в продукты <br>на базе технологии Mizagene</h1>
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5" style="text-align: start">
+            <p class="" style="font-size: 19px;color: rgb(114, 114, 114);">Инвестиции в продукты на базе Mizagene на данном этапе развития технологии – это высокорентабельный бизнес, не подвергающейся ценностной амортизации.</p>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 mb-5">
+            <div class="row d-flex">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2 text-center">
+                    <img src="/images/technology.png" alt="" width="120px">
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5 text-center">
+                    <h4 style="color: #003C46; margin-bottom: 0; padding-bottom: 0">Рабочая технология готовая к использованию</h4>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align: start">
+                    <p class="" style="font-size: 19px;color: rgb(114, 114, 114);">Это не стартап – технологии более 17 лет. Она уже широко применяется в сфере безопасности дорожного движения и страхования. Подробнее об истории создания технологии Mizagene – здесь.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 mb-5">
+            <div class="row d-flex">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2 text-center">
+                    <img src="/images/b2b.png" alt="" width="120px">
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5 text-center">
+                    <h4 style="color: #003C46; margin-bottom: 0; padding-bottom: 0">Широкие возможности на B2B рынке</h4>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align: start">
+                    <p class="" style="font-size: 19px;color: rgb(114, 114, 114);">Технология широко применима во всех сферах деятельности человека: HR, менеджмент, маркетинг, безопасность, спорт, обучение, личные отношения, развитие талантов и т.д. Каждая из названных ниш – это обширный рынок, не имеющий языковых и географических ограничений для продвижения.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 mb-5">
+            <div class="row d-flex">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2 text-center">
+                    <img src="/images/profits.png" alt="" width="120px">
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5 text-center">
+                    <h4 style="color: #003C46; margin-bottom: 0; padding-bottom: 0">Высокая рентабельность на B2C рынке</h4>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align: start">
+                    <p class="" style="font-size: 19px;color: rgb(114, 114, 114);">Низкая себестоимость разработки новых программных решений за счет наличия готовой технологии, эксклюзивность и обширные возможности для вирусного продвижения B2C продуктов делают инвестиции в этом направлении сверхприбыльными (от 400% в течение 2 лет)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 mb-5">
+            <div class="row d-flex">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-2 text-center">
+                    <img src="/images/umbrella.png" alt="" width="120px">
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5 text-center">
+                    <h4 style="color: #003C46; margin-bottom: 0; padding-bottom: 0">Низкие риски, высокая ликвидность</h4>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align: start">
+                    <p class="" style="font-size: 19px;color: rgb(114, 114, 114);">Проверьте работоспособность технологии, проанализировав в качестве субъектов анализа себя и своих близких – тех, кого, как вам кажется, вы знаете лучше всего. Результат анализа ответит сам за себя. Все остальное будет отражено в бизнес-плане интересующего вас направления. Разумеется, мы предоставим гарантии, соразмерные Вашим инвестициям.</p>
                 </div>
             </div>
         </div>
@@ -61,7 +137,7 @@
 </div>
 
 
-<div class="container mt-5 mb-5">
+<div class="container">
     <div class="container row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center mb-5">
             <h1 style="color: #003C46">Во что Вы можете инвестировать?</h1>
@@ -115,7 +191,7 @@
     </div>
 </div>
 
-<div class="container mt-5 mb-5">
+<div class="container mb-5">
     <div class="container row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center mb-5">
             <h1 style="color: #003C46">Варианты инвестиций</h1>
@@ -138,6 +214,80 @@
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5" style="text-align: start">
             <p class="" style="font-size: 19px;color: rgb(114, 114, 114);">Подать заявку можете по этой форме. Мы свяжемся с Вами в ближайшее время, вышлем презентацию и бизнес-план</p>
         </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="container row" style="text-align: start; background-color: rgba(75, 173, 233, 0.2); border-radius: 10px; padding: 15px;">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center mb-3">
+            <h1 style="color: #003C46">Клиентский отдел</h1>
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="text-align: start">
+            <p class="" style="font-size: 16px;color: rgb(114, 114, 114);">Готовы сделать первый шаг к сотрудничеству? Заполните форму ниже, выберите формат и в поле «комментарий» напишите суть вашего запроса. Мы оперативно свяжемся с Вами и обсудим все возможные варианты сотрудничества.</p>
+        </div>
+
+        <!--            <form method="post" action="/site/become-partners">-->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: start">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Имя Фамилия*</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Имя Фамилия" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput2" class="form-label">Должность*</label>
+                <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="Должность" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput3" class="form-label">Название компании*</label>
+                <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="Название компании" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput4" class="form-label">Сайт компании*</label>
+                <input type="text" class="form-control" id="exampleFormControlInput4" placeholder="Сайт компании" required>
+            </div>
+        </div>
+
+
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: start">
+            <div class="mb-3">
+
+                <label for="exampleFormControlInput5" class="form-label">Тип инвестиции</label>
+                <select class="form-select" aria-label="Тип сотрудничества*">
+                    <option value="1">Youmee App</option>
+                    <option value="2">Отраслевые решения</option>
+                    <option value="3">Научно-исследовательская деятельность</option>
+                    <option value="4">Пока не решил(а)</option>
+                </select>
+                <!--                        <label for="exampleFormControlInput5" class="form-label">Тип сотрудничества*</label>-->
+                <!--                        <input type="text" class="form-control" id="exampleFormControlInput5" placeholder="Тип сотрудничества">-->
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput6" class="form-label">Страна*</label>
+                <input type="text" class="form-control" id="exampleFormControlInput6" placeholder="Страна" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput7" class="form-label">Телефон*</label>
+                <input type="text" class="form-control" id="exampleFormControlInput7" placeholder="Телефон" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput8" class="form-label">Email address*</label>
+                <input type="email" class="form-control" id="exampleFormControlInput8" placeholder="name@example.com" required>
+            </div>
+        </div>
+
+
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-3" style="text-align: start">
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Комментарий*</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+            </div>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-3 d-flex justify-content-center" style="text-align: start; margin-top: auto">
+            <div class="mb-3 w-100">
+                <button class="btn fillGreenButton w-100">Отправить</button>
+            </div>
+        </div>
+        <!--            </form>-->
     </div>
 </div>
 
