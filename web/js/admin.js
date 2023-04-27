@@ -315,7 +315,7 @@ $(document).ready(function() {
         } else if ($(el).val() == 2) {
             !$(ict).next().hasClass('select2') && $(ict).select2();
             $(ict).show().addClass('required');
-            let single_usg_types_ = {...single_usg_types}
+            let single_usg_types_ = {...single_usg_types};
             ust.select2('destroy').html(createOptions($.extend(single_usg_types_, multiple_usg_types))).val(usg_type).select2();
         }
     }
