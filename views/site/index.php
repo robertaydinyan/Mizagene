@@ -1,30 +1,38 @@
-<?php include('header.php') ?>
+<?php include('header.php') ;
+use yii\helpers\Url;
+
+?>
 
 
 <div class="container-fluid firstContainer">
     <div id="particles-js"></div>
     <img src="images/collage.jpg" class="testBack">
-    <img src="images/chineese.png" class="backImage">
+    <img src="images/chineese.png" class="backImage img-fluid">
     <div class="container" style="padding-top: 21%">
-        <h1 class="title" style="font-family: 'Nunito Sans', sans-serif;"><span style="color: #003C46;"><?= $data['title1_1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span><br><span style="color: #003C46;"><?= $data['title1_2'][isset($_GET['lang']) ? 'en' : 'ru'] ?> </span><br><span style="color: rgb(210, 58, 225);"> <?= $data['title1_3'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></h1>
-        <div class="container d-grid gap-2 d-md-block col-12 mx-auto" style="margin: 0!important; margin-top: 4rem!important; padding: 0!important; z-index: 10; position: relative">
-            <button class="btn fillButton" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="margin-left: 0!important;"><?= $data['button1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
-            <button class="btn outlineButton"><?= $data['button2'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
+        <h1 class="title" style="font-family: 'Nunito Sans', sans-serif;"><span class="main-title" style="color: #003C46;"><?= $data['title1_1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span><br><span style="color: #003C46;"><?= $data['title1_2'][isset($_GET['lang']) ? 'en' : 'ru'] ?> </span><br><span style="color: rgb(210, 58, 225);"> <?= $data['title1_3'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></h1>
+        <div class="container d-grid gap-2 d-none d-md-block col-12 mx-auto" style="margin: 0!important; margin-top: 4rem!important; padding: 0!important; z-index: 10; position: relative">
+            <button class="btn fillButton mx-auto" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="margin-left: 0!important;"><?= $data['button1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
+            <button class="btn outlineButton mx-auto" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions"><?= $data['button2'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
         </div>
     </div>
 </div>
 
-<div class="container mt-5 mb-5">
+    <div class="container d-md-none col-12 mx-auto px-0 text-center" style="margin: 0!important;margin-top: 1rem!important;padding: 0!important;z-index: 10;position: relative">
+        <button class="btn fillButton mx-auto" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="margin-left: 0!important;"><?= $data['button1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
+        <button class="btn outlineButton mx-auto mt-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions"><?= $data['button2'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
+    </div>
+
+<div class="container mt-5 mb-5" id="how-it-works">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center mb-5">
         <h1 style="color: #003C46"><?= $data['menu2'][isset($_GET['lang']) ? 'en' : 'ru'] ?></h1>
     </div>
     <div class="container row m-0 p-0">
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 d-flex justify-content-start mb-5 ps-0 pe-0">
-            <img src="images/PC.png" alt="">
+            <img src="images/PC.png" alt="" class="img-fluid" style="height: max-content!important;align-self: center">
         </div>
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 d-flex flex-column mb-5 ps-0 pe-0">
             <p class="subtitle" style="color: #464646!important;">
-                <span><?= $data['title2_1'][isset($_GET['lang']) ? 'en' : 'ru'] ?> <a href="/site/about-technology" style="color: #003C46; font-weight: 400"><?= $data['технология Mizagene'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a> <?= $data['title2_1_1'][isset($_GET['lang']) ? 'en' : 'ru'] ?> <?= $data['title2_1_2'][isset($_GET['lang']) ? 'en' : 'ru'] ?> </span>
+                <span><?= $data['title2_1'][isset($_GET['lang']) ? 'en' : 'ru'] ?> <a href="/about-technology" style="color: #003C46; font-weight: 400"><?= $data['технология Mizagene'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a> <?= $data['title2_1_1'][isset($_GET['lang']) ? 'en' : 'ru'] ?> <?= $data['title2_1_2'][isset($_GET['lang']) ? 'en' : 'ru'] ?> </span>
                 <span class="" >
                             <span  style="" class="mt-3 d-block">
                                 <img src="images/face_index.png" width="20px">
@@ -59,10 +67,10 @@
             <h1 style="color: #003C46"><?= $data['menu3'][isset($_GET['lang']) ? 'en' : 'ru'] ?></h1>
         </div>
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5 " style="font-size: 19px;">
-            <p class="m-0" style="font-size: 19px;color: rgb(114, 114, 114);"><a href="/site/serive" style="color: #003C46; font-weight: 400"><?= $data['Youmee Technologies'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a><?= $data[' –  эксклюзивный партнер Mizagene'][isset($_GET['lang']) ? 'en' : 'ru'] ?> <?= $data['Technologies и вендор программного обеспечения типов SAAS и'][isset($_GET['lang']) ? 'en' : 'ru'] ?> <?= $data['PAAS в  области разработки наукоемких AI решений на базе'][isset($_GET['lang']) ? 'en' : 'ru'] ?> <?= $data['запатентованной технологии Mizagene.'][isset($_GET['lang']) ? 'en' : 'ru'] ?></p>
+            <p class="m-0" style="font-size: 19px;color: rgb(114, 114, 114);"><a href="/serive" style="color: #003C46; font-weight: 400"><?= $data['Youmee Technologies'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a><?= $data[' –  эксклюзивный партнер Mizagene'][isset($_GET['lang']) ? 'en' : 'ru'] ?> <?= $data['Technologies и вендор программного обеспечения типов SAAS и'][isset($_GET['lang']) ? 'en' : 'ru'] ?> <?= $data['PAAS в  области разработки наукоемких IT решений на базе'][isset($_GET['lang']) ? 'en' : 'ru'] ?> <?= $data['запатентованной технологии Mizagene.'][isset($_GET['lang']) ? 'en' : 'ru'] ?></p>
             <p class="m-0" style="font-size: 19px;color: rgb(114, 114, 114);"><?= $data['Наши технологические и программные решения помогают'][isset($_GET['lang']) ? 'en' : 'ru'] ?><?= $data['людям осознать свой потенциал, понять сильные и слабые'][isset($_GET['lang']) ? 'en' : 'ru'] ?><?= $data['стороны личности, а также найти  своевременное применение'][isset($_GET['lang']) ? 'en' : 'ru'] ?> <?= $data['врожденным талантам. Экономьте драгоценные годы жизни –'][isset($_GET['lang']) ? 'en' : 'ru'] ?> <?= $data['как своей, так и окружающих, выстраивая эффективную'][isset($_GET['lang']) ? 'en' : 'ru'] ?> <?= $data['коммуникацию и повышая общую эффективность вместе с'][isset($_GET['lang']) ? 'en' : 'ru'] ?> <?= $data['Youmee.'][isset($_GET['lang']) ? 'en' : 'ru'] ?></p>
         </div>
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 d-flex justify-content-center">
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 d-flex justify-content-center my-3">
             <div class="flip-card">
                 <div class="flip-card-inner" style="border-radius: 5px;">
                     <div class="flip-card-front" style="border-radius: 5px; display: flex; flex-direction: column; text-align: center; justify-content: center;">
@@ -72,13 +80,13 @@
                     <div class="flip-card-back text-center" style="border-radius: 5px; background: rgb(75, 173, 233)">
                         <img width="90" height="90" src="images/individual_white.png" class="mt-1 attachment-full size-full" alt="a" decoding="async" loading="lazy">
                         <p style="padding: 15px 20px 0 20px;font-size: 15px;"><?= $data['card1_desc'][isset($_GET['lang']) ? 'en' : 'ru'] ?></p>
-                        <a href="#" class="learnMore IButton" style="position: absolute; bottom: 10px;"><?= $data['learnMore'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
+                        <a href="/individual-solutions" class="learnMore IButton" style="position: absolute; bottom: 10px;"><?= $data['learnMore'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 d-flex justify-content-center">
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 d-flex justify-content-center my-3">
             <div class="flip-card">
                 <div class="flip-card-inner" style="border-radius: 5px;">
                     <div class="flip-card-front" style="border-radius: 5px;  display: flex; flex-direction: column; text-align: center; justify-content: center;">
@@ -88,13 +96,13 @@
                     <div class="flip-card-back text-center" style="border-radius: 5px; background: rgb(234, 51, 61)">
                         <img width="80" height="80" src="images/talent_white.png" class="mt-2 attachment-full size-full" alt="a" decoding="async" loading="lazy">
                         <p style="padding: 15px 20px 0 20px;font-size: 15px;"><?= $data['card2_desc'][isset($_GET['lang']) ? 'en' : 'ru'] ?></p>
-                        <a href="#" class="learnMore PButton" style="position: absolute; bottom: 10px;"><?= $data['learnMore'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
+                        <a href="/personal-solutions" class="learnMore PButton" style="position: absolute; bottom: 10px;"><?= $data['learnMore'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 d-flex justify-content-center">
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 d-flex justify-content-center my-3">
             <div class="flip-card">
                 <div class="flip-card-inner" style="border-radius: 5px;">
                     <div class="flip-card-front" style="border-radius: 5px;  display: flex; flex-direction: column; text-align: center; justify-content: center;">
@@ -104,13 +112,13 @@
                     <div class="flip-card-back text-center" style="border-radius: 5px; background: #003C46">
                         <img width="90" height="90" src="images/kyc_white.png" class="mt-1 attachment-full size-full" alt="a" decoding="async" loading="lazy">
                         <p style="padding: 15px 20px 0 20px;font-size: 15px;"><?= $data['card3_desc'][isset($_GET['lang']) ? 'en' : 'ru'] ?></p>
-                        <a href="#" class="learnMore KYCButton" style="position: absolute; bottom: 10px;"><?= $data['learnMore'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
+                        <a href="/kyc-solutions" class="learnMore KYCButton" style="position: absolute; bottom: 10px;"><?= $data['learnMore'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 d-flex justify-content-center">
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 d-flex justify-content-center my-3">
             <div class="flip-card">
                 <div class="flip-card-inner" style="border-radius: 5px;">
                     <div class="flip-card-front" style="border-radius: 5px;  display: flex; flex-direction: column; text-align: center; justify-content: center;">
@@ -120,7 +128,7 @@
                     <div class="flip-card-back text-center" style="border-radius: 5px; background: rgb(210, 58, 225);">
                         <img width="90" height="90" src="images/HR_white.png" class="mt-2 attachment-full size-full" alt="a" decoding="async" loading="lazy">
                         <p style="padding: 15px 20px 0 20px;font-size: 15px;"><?= $data['card4_desc'][isset($_GET['lang']) ? 'en' : 'ru'] ?></p>
-                        <a href="#" class="learnMore HRButton" style="position: absolute; bottom: 10px;"><?= $data['learnMore'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
+                        <a href="/hr-solutions" class="learnMore HRButton" style="position: absolute; bottom: 10px;"><?= $data['learnMore'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
                     </div>
                 </div>
             </div>
@@ -137,7 +145,7 @@
             <p class="text-center" style="font-size: 19px;color: rgb(114, 114, 114);"><?= $data['analysis_text1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></p>
         </div>
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-between mb-5">
-            <ul class="analysis-pill nav nav-pills nav-justified mb-5" id="pills-tab" role="tablist">
+            <ul class="analysis-pill nav nav-pills nav-justified mb-5 flex-column flex-sm-row" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button style="border-radius: 5px 0px 0px 5px!important" class="nav-link active" id="pills-1" data-bs-toggle="pill" data-bs-target="#pills-tab-1" type="button" role="tab" aria-controls="pills-tab-1" aria-selected="true"><?= $data['analysis_tab1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
                 </li>
@@ -380,14 +388,14 @@
 
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
                             <div><i class="fa-solid fa-circle-check me-2" style="color: rgb(210, 58, 225)!important;"></i><span><?= $data['The desire to be the head of the family'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                            <div><i class="fa-solid fa-circle-check me-2" style="color: rgb(210, 58, 225)!important;"></i><span><?= $data['Desire for financial independence'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                            <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: rgb(210, 58, 225)!important;"></i><span><?= $data['Desire for financial independence'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
                             <div><i class="fa-solid fa-circle-check me-2" style="color: rgb(210, 58, 225)!important;"></i><span><?= $data['Conflict Management'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
                             <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: rgb(210, 58, 225)!important;"></i><span><?= $data['Willingness to sacrifice others for a good goal'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
                             <div><i class="fa-solid fa-circle-check me-2" style="color: rgb(210, 58, 225)!important;"></i><span><?= $data['Ambitiousness'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
                             <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: rgb(210, 58, 225)!important;"></i><span><?= $data['Readiness to make the consequences of decisions made'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                            <div><i class="fa-solid fa-circle-check me-2" style="color: rgb(210, 58, 225)!important;"></i><span><?= $data['The ability to obey if necessary'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                            <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: rgb(210, 58, 225)!important;"></i><span><?= $data['The ability to obey if necessary'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
                             <div><i class="fa-solid fa-circle-check me-2" style="color: rgb(210, 58, 225)!important;"></i><span><?= $data['Active participation in activities'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                            <div><i class="fa-solid fa-circle-check me-2" style="color: rgb(210, 58, 225)!important;"></i><span><?= $data['A tendency to distance from the team'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                            <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: rgb(210, 58, 225)!important;"></i><span><?= $data['A tendency to distance from the team'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
                         </div>
 
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
@@ -471,10 +479,10 @@
 
     <div class="container-fluid firstContainer mb-3" style="min-height: 150px">
         <div id="particles-js-footer" style="height: 150px"></div>
-        <div class="container">
+        <div class="container mx-auto px-0">
             <div class="container d-grid gap-2 d-md-block col-12 mx-auto text-center" style="margin: 0!important; margin-top: 2rem!important; padding: 0!important; z-index: 10; position: absolute; top: 20px">
-                <button class="btn fillButton" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="margin-left: 0!important;"><?= $data['button1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
-                <button class="btn outlineButton"><?= $data['button2'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
+                <button class="btn fillButton mx-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="margin-left: 0!important;"><?= $data['button1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
+                <button class="btn outlineButton" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions"><?= $data['button2'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
             </div>
         </div>
     </div>

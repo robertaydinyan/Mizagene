@@ -1,62 +1,78 @@
 </body>
 
 <footer style="background: rgb(27,27,27);">
-    <div class="container row" style="background: rgb(27,27,27); color: white; margin: 0 auto">
-        <div class="vertical-line px-0" style="border-left:1px solid rgb(44, 44, 44);height: 320px;width: 1.11111px; margin-top: 55px">
+    <div class="container row d-flex justify-content-between pb-5" style="background: rgb(27,27,27); color: white; margin: 0 auto">
+        <div class="vertical-line px-0" style="border-left:1px solid rgb(44, 44, 44);height: 180px;width: 1.11111px; margin-top: 55px">
         </div>
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center p-5 pt-1">
+        <div class="col-xl-5 col-lg-5 col-md-11 col-sm-11 col-11 d-flex justify-content-center pt-1 px-0">
             <div class="d-flex flex-column mb-3 w-100">
-                <div class="p-2 pt-5"><img class="navbar-brand" src="/images/logo_white.png" alt="Logo" width="215" height="50"></div>
-                <div class="ps-2" style="margin-top: 15px">ООО "ЮМИИ"</div>
-                <div class="p-2 pt-0">г.Ереван, Армения, ул.Грибоедова 24/1</div>
-                <div class="" style="margin-top: auto">
-                    <div class="p-2" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);">Цели и принципы Сервиса</div>
-                    <div class="p-2" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);">Форма обратной связи</div>
-                    <div class="p-2" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);">Инвесторам</div>
-                    <div class="p-2" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);">Партнерам</div>
+                <div class="row d-flex mx-between px-0 mt-5">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" style="display: inherit; align-items: center">
+                        <img class="navbar-brand footer_logo1" src="/images/logo_white.png" alt="Logo" width="215" height="50">
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 ps-5" style="display: inherit; align-items: center">
+                        <img class="navbar-brand footer_logo2" src="/images/logo_mizagene.png" alt="Logo" width="180" height="50">
+                    </div>
+
+                </div>
+
+
+                <div class="row d-flex mx-between px-0" style="margin-top: 22px">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pe-5">
+                        <div class="p-2 text-start" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);">
+                            <a href="/service"><?= $data['О компании'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a></div>
+                        <div class="p-2 text-start" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);"><a href="#"><?= $data['Цели и принципы работы'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a></div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 ps-5">
+                        <div class="p-2 text-start" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);"><a href="/about-technology"><?= $data['О Технологии'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a></div>
+                        <div class="p-2 text-start" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);"><a href="/faq"><?= $data['FAQ'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a></div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="vertical-line px-0" style="border-left:1px solid rgb(44, 44, 44);height: 320px;width: 1.11111px; margin-top: 55px">
-        </div>
-
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center p-5 pt-1" style="">
-            <div class="d-flex flex-column mb-3 w-100">
-                <div class="text-center mt-5"><img class="navbar-brand" src="/images/logo_mizagene.png" alt="Logo" width="215" height="50"></div>
-                <div class="" style="margin-top: auto">
-                    <div class="p-2" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);">О Технологии</div>
-                    <div class="p-2" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);">Истоки создания</div>
-                    <div class="p-2" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);">Суть технологии</div>
-                    <div class="p-2" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);">Основные направления</div>
-                    <div class="p-2" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);">Безопасность</div>
-                    <div class="p-2" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);">Точность анализа</div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="vertical-line px-0" style="border-left:1px solid rgb(44, 44, 44);height: 320px;width: 1.11111px; margin-top: 55px">
-        </div>
-
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 d-flex p-5 justify-content-center">
-            <div class="d-flex flex-column mb-3 w-100" style="margin-top: auto">
-                <p class="ps-2 m-0" style="color: white">Live Demo</p>
-                <p class="ps-2 m-0" style="color: white">Вход</p>
-<!--                <div class="ps-2" style="color: rgb(114, 114, 114);">Физическое лицо</div>-->
-<!--                <div class="ps-2" style="color: rgb(114, 114, 114);">Компания</div>-->
-                <p class="ps-2 m-0" style="color: white;">Регистрация</p>
-                <!--                <div class="ps-2" style="color: rgb(114, 114, 114);">Физическое лицо</div>-->
-                <!--                <div class="ps-2" style="color: rgb(114, 114, 114);">Компания</div>-->
-                <p class="ps-2 m-0" style="color: white">FAQ</p>
-                <p class="ps-2" style="color: white">Связаться с нами</p>
-                <div class="d-flex ps-2">
-                    <span style="padding: 5px 10px; border: 1px solid white;"><i class="fa-brands fa-facebook-f" style="color: #ffffff;"></i></span>
-                    <span style="padding: 5px 10px; border: 1px solid white;"><i class="fa-brands fa-whatsapp fa-lg" style="color: #ffffff;"></i></span>
-                </div>
+        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-flex justify-content-center p-0" style="width: 0%">
+            <div class="vertical-line px-0" style="border-left:1px solid rgb(44, 44, 44);height: 180px;width: 1.11111px; margin-top: 55px">
             </div>
         </div>
-        <div class="vertical-line px-0" style="border-left:1px solid rgb(44, 44, 44);height: 320px;width: 1.11111px; margin-top: 55px; margin-left: auto">
+
+
+
+        <div class="col-xl-5 col-lg-5 col-md-11 col-sm-11 col-11 d-flex justify-content-center pt-1 px-0">
+            <div class="row d-flex mt-5">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pe-0" style="height: min-content">
+                    <div class="d-flex">
+                        <img src="/images/individual_white.png" alt="" width="40px" height="40px" style="align-self: center">
+                        <span style="align-self: center; margin: 0 0 0 10px;"><?= $data['solutions1'][isset($_GET['lang']) ? 'en' : 'ru'];?> </span>
+                    </div>
+                    <div class="d-flex mt-2">
+                        <img src="/images/kyc_white.png" alt="" width="35px" height="35px" style="align-self: center; margin-left: 3px">
+                        <span style="align-self: center; margin: 0 0 0 15px;"><?= $data['solutions3'][isset($_GET['lang']) ? 'en' : 'ru'];?> </span>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pe-0"  style="height: min-content">
+                    <div class="d-flex ps-3">
+                        <img src="/images/talent_white.png" alt="" width="30px" height="30px" style="align-self: center">
+                        <span style="align-self: center; margin: 0 0 0 10px;"><?= $data['card2_title'][isset($_GET['lang']) ? 'en' : 'ru'];?> </span>
+                    </div>
+                    <div class="d-flex ps-3" style="margin-top: 28px">
+                        <img src="/images/HR_white.png" alt="" width="30px" height="30px" style="align-self: center">
+                        <span style="align-self: center; margin: 0 0 0 10px;">Youmee HR</span>
+                    </div>
+                </div>
+                <div class="row d-flex col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="height: min-content">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pe-5" style="height: min-content">
+                        <div class="p-2 pt-0" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);"><a href="/investors"><?= $data['subtitle3'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a></div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 ps-5" style="height: min-content">
+                        <div class="p-2 pt-0" style="color: rgb(114, 114, 114); border-bottom: 1px dotted  rgb(114, 114, 114);"><a href="/partners"><?= $data['subtitle6'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="vertical-line px-0" style="border-left:1px solid rgb(44, 44, 44);height: 180px;width: 1.11111px; margin-top: 55px">
         </div>
     </div>
     <div class="container-fluid row text-center m-0" style="background: rgb(44,44,44); color: rgb(114, 114, 114)">

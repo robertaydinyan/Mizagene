@@ -32,7 +32,7 @@ AppAsset::register($this);
 <header>
     <?php
     NavBar::begin([
-        'brandLabel' => '<img src="/images/icons/Mizagene_logo.png" alt="Logo" style="width: 200px;"/>',
+        'brandLabel' => '<img src="/images/icons/Mizagene_logo.png" alt="Logo" style="width: 150px;"/>',
         'brandUrl' => '/admin',
         'options' => [
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',

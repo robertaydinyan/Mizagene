@@ -1,6 +1,7 @@
 <?php
 include 'translations.php';
 use yii\helpers\Url;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,17 +16,33 @@ use yii\helpers\Url;
 </head>
 <body>
 <header>
-        <div class="container-fluid pre-header">
-            <div class="container d-flex ">
-                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-12 d-flex ">
+        <div class="container-fluid pre-header d-none d-md-flex align-items-center">
+            <div class="container row mx-auto my-auto px-0 d-flex ">
+                <div class="col-xl-7 col-lg-7 col-md-10 col-sm-11 col-12 d-flex ">
 
-                    <a href="/site/service" class="<?= Yii::$app->controller->action->id == 'service' ? 'active' : '' ?>"><?= $data['subtitle1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
+                    <a href="<?php
+                    $lang = Yii::$app->request->get('lang');
+                    $newUrl = Url::toRoute(['/service', 'lang' => $lang]);
+                    echo $newUrl;
+                    ?>" class="<?= Yii::$app->controller->action->id == 'service' ? 'active' : '' ?>"><?= $data['subtitle1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
                     <label>|</label>
-                    <a href="/site/about-technology" class="<?= Yii::$app->controller->action->id == 'about-technology' ? 'active' : '' ?>"> <?= $data['subtitle2'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
+                    <a href="<?php
+                    $lang = Yii::$app->request->get('lang');
+                    $newUrl = Url::toRoute(['/about-technology', 'lang' => $lang]);
+                    echo $newUrl;
+                    ?>" class="<?= Yii::$app->controller->action->id == 'about-technology' ? 'active' : '' ?>"> <?= $data['subtitle2'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
                     <label>|</label>
-                    <a href="/site/investors" class="<?= Yii::$app->controller->action->id == 'investors' ? 'active' : '' ?>"> <?= $data['subtitle3'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
+                    <a href="<?php
+                    $lang = Yii::$app->request->get('lang');
+                    $newUrl = Url::toRoute(['/investors', 'lang' => $lang]);
+                    echo $newUrl;
+                    ?>" class="<?= Yii::$app->controller->action->id == 'investors' ? 'active' : '' ?>"> <?= $data['subtitle3'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
                     <label>|</label>
-                    <a href="/site/partners" class="<?= Yii::$app->controller->action->id == 'partners' ? 'active' : '' ?>"> <?= $data['subtitle6'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
+                    <a href="<?php
+                    $lang = Yii::$app->request->get('lang');
+                    $newUrl = Url::toRoute(['/partners', 'lang' => $lang]);
+                    echo $newUrl;
+                    ?>" class="<?= Yii::$app->controller->action->id == 'partners' ? 'active' : '' ?>"> <?= $data['subtitle6'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
                     <label>|</label>
 
                     <span style="color: white">
@@ -34,11 +51,12 @@ use yii\helpers\Url;
                             <i class="fa-solid fa-globe" style="color: #ffffff;"></i>                      </button>
                           <ul class="dropdown-menu" style="z-index: 999999999999!important; min-width: 20px!important; color: black!important;">
                             <li><a class="dropdown-item" href="<?php
-                                $currentUrl = Yii::$app->request->url;
-                                if (Yii::$app->controller->route == 'site/index') {
-                                    $currentUrl = Yii::$app->getUrlManager()->getBaseUrl();
-                                }
-                                echo $currentUrl;?>/?lang=en">En</a></li>
+                                        $currentUrl = Yii::$app->request->url;
+                                        if (Yii::$app->controller->route == 'site/index') {
+                                            $currentUrl = Yii::$app->getUrlManager()->getBaseUrl();
+                                        }
+                                        echo $currentUrl;?>?lang=en">
+                                                                  En</a></li>
                             <li><a class="dropdown-item" href="/">Ru</a></li>
                           </ul>
                         </div>
@@ -46,14 +64,14 @@ use yii\helpers\Url;
 
                 </div>
 
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 d-flex justify-content-end me-4">
-                    <label><?= $data['subtitle4'][isset($_GET['lang']) ? 'en' : 'ru'] ?>
-                        <i class="fa-brands fa-facebook" style="color: #fff;width: 15px; height: 15px; margin-left: 10px;"></i>
-                        <i class="fa-brands fa-whatsapp fa-lg" style="color: #ffffff;width: 15px; height: 15px; margin-left: 10px;"></i>
-                    </label>
-                </div>
+<!--                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 d-flex justify-content-end">-->
+<!--                    <label>--><?//= $data['subtitle4'][isset($_GET['lang']) ? 'en' : 'ru'] ?>
+<!--                        <i class="fa-brands fa-facebook" style="color: #fff;width: 15px; height: 15px; margin-left: 10px;"></i>-->
+<!--                        <i class="fa-brands fa-whatsapp fa-lg" style="color: #ffffff;width: 15px; height: 15px; margin-left: 10px;"></i>-->
+<!--                    </label>-->
+<!--                </div>-->
 
-                <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-12 d-flex justify-content-end">
+                <div class="col-xl-5 col-lg-5 col-md-2 col-sm-1 col-1 d-flex justify-content-end">
                     <button class="signUpBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions"><?= $data['subtitle5'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
                 </div>
 
@@ -61,42 +79,79 @@ use yii\helpers\Url;
         </div>
 
     <nav class="container-fluid navbar fixed-top navbar-expand-lg header-menu">
-        <div class="container d-flex">
+        <div class="container d-flex" style="background: white;">
             <div class="w-50">
-                <a href="/"><img class="navbar-brand" src="/images/logo.png" alt="Logo" width="222" height="60"></a>
+                <a href="<?php
+                $lang = Yii::$app->request->get('lang');
+                $newUrl = Url::toRoute(['/', 'lang' => $lang]);
+                $currentUrl = Yii::$app->request->url;
+                echo $newUrl;
+                ?>"><img class="navbar-brand" src="/images/logo.png" alt="Logo" width="222" height="60"></a>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="container collapse navbar-collapse justify-content-end pr-0" id="navbarSupportedContent" style="padding-right: 0;">
+            <div class="container collapse navbar-collapse justify-content-end p-0" id="navbarSupportedContent" style="padding-right: 0;">
                 <ul class="navbar-nav mb-2 mb-lg-0" style="font-size: 19px!important;">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#"><?= $data['menu1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
+                        <a class="nav-link" aria-current="page" href="/"><?= $data['menu1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works"><?= $data['menu2'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" style="color: rgb(114, 114, 114);" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <?= $data['menu3'][isset($_GET['lang']) ? 'en' : 'ru'] ?>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="p-2"><a class="dropdown-item" href="/site/individual-solutions"><img src="/images/individual.png" alt="" width="35px" class="me-2"><?= $data['solutions1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a></li>
-                            <li class="p-2"><a class="dropdown-item" href="/site/personal-solutions"><img src="/images/talents.png" alt=""  width="35px" class="me-2"><?= $data['solutions2'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a></li>
-                            <li class="p-2"><a class="dropdown-item" href="/site/kyc-solutions"><img src="/images/kyc.png" alt=""  width="35px" class="me-2"><?= $data['solutions3'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a></li>
-                            <li class="p-2"><a class="dropdown-item" href="/site/hr-solutions"><img src="/images/hr.png" alt=""  width="35px" class="me-2"><?= $data['solutions4'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a></li>
+                            <li class="p-2"><a class="dropdown-item" href="/individual-solutions"><img src="/images/individual.png" alt="" width="35px" class="me-2"><?= $data['card1_title'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a></li>
+                            <li class="p-2"><a class="dropdown-item" href="/personal-solutions"><img src="/images/talents.png" alt=""  width="35px" class="me-2"><?= $data['card2_title'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a></li>
+                            <li class="p-2"><a class="dropdown-item" href="/kyc-solutions"><img src="/images/kyc.png" alt=""  width="35px" class="me-2"><?= $data['card3_title'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a></li>
+                            <li class="p-2"><a class="dropdown-item" href="/hr-solutions"><img src="/images/hr.png" alt=""  width="35px" class="me-2"><?= $data['card4_title'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><?= $data['menu2'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
+                        <a class="nav-link" href="/faq"><?= $data['menu4'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
                     </li>
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" href="/site/faq">--><?//= $data['menu4'][isset($_GET['lang']) ? 'en' : 'ru'] ?><!--</a>-->
-<!--                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="#" style="color: rgb(210, 58, 225)"><?= $data['menu5'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
                     </li>
+                    <li class="nav-item d-md-none">
+                        <a class="nav-link" href="/service"><?= $data['subtitle1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
+                    </li>
+                    <li class="nav-item d-md-none">
+                        <a class="nav-link" href="/about-technology"><?= $data['subtitle2'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
+                    </li>
+                    <li class="nav-item d-md-none">
+                        <a class="nav-link" href="/investors"><?= $data['subtitle3'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
+                    </li>
+                    <li class="nav-item d-md-none">
+                        <a class="nav-link" href="/partners"><?= $data['subtitle6'][isset($_GET['lang']) ? 'en' : 'ru'] ?></a>
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link loginLink" href="#"  style="padding: 5px 0!important;margin-right: 0!important;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                        <a class="nav-link loginLink" href="#"  style="margin-right: 0!important;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                             <?= $data['menu6'][isset($_GET['lang']) ? 'en' : 'ru'] ?>
                         </a>
+                    </li>
+                    <li class="nav-item d-md-none">
+                        <a class="nav-link" href="#"  style="margin-right: 0!important;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions">
+                            <?= $data['subtitle5'][isset($_GET['lang']) ? 'en' : 'ru'] ?>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown d-md-none">
+                        <a class="nav-link dropdown-toggle" style="color: rgb(114, 114, 114);" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-globe" style="color: grey;"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="<?php
+                                $currentUrl = Yii::$app->request->url;
+                                if (Yii::$app->controller->route == 'site/index') {
+                                    $currentUrl = Yii::$app->getUrlManager()->getBaseUrl();
+                                }
+                                echo $currentUrl;?>?lang=en">
+                                    En</a></li>
+                            <li><a class="dropdown-item" href="/">Ru</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>

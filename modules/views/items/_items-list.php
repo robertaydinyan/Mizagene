@@ -20,19 +20,19 @@ $columns = [
     'item_id' => [
         'header' => '<div><span>ID</span></div>',
         'format' => 'raw',
+        'headerOptions' => ['style' => 'max-width: 55px;'],
         'value' => function($model) {
             return sprintf('
-                <div class="d-flex justify-content-between">
+                    <span>%s</span>
                     <div class="d-flex flex-column">
                         %s
                         %s
                     </div>
-                    <span>%s</span>
-                </div>',
+                ',
 
+                $model->item_id,
                 $model->priority ? ('<div class="icon m-icon priority-' . $model->priority . '"></div>') : '',
-                in_array($model->getStep(), [2, 3])  ? ($model->comment ? ('<div class="icon m-icon comment"  data-toggle="tooltip" title="' . $model->comment . '"></div>') : '') : '',
-                $model->item_id
+                in_array($model->getStep(), [2, 3])  ? ($model->comment ? ('<div class="icon m-icon comment"  data-toggle="tooltip" title="' . $model->comment . '"></div>') : '') : ''
             );
         }
     ],

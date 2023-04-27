@@ -115,7 +115,7 @@ a.desc:after {
 }
 
 main {
-    margin-top: 126px;
+    margin-top: 66px;
 }
 
 .color-spector {
@@ -463,7 +463,7 @@ a.nav-link {
     padding: 8px 0 !important;
 }
 .steps-container {
-    padding: 20px;
+    padding: 4px;
     background: #f7f7f7;
 }
 
@@ -619,4 +619,15 @@ a.nav-link {
 
 .group-index {
     height: calc(100vh - 200px);
+}
+
+.grid-view {
+    height: calc(100vh - 200px);
+    overflow: auto;
+}
+
+.grid-view thead {
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }

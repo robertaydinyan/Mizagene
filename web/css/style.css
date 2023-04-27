@@ -5,6 +5,26 @@ body {
     font: normal 75% Arial, Helvetica, sans-serif;
 }
 
+.personalContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255,255,0.1);
+    background-size: cover;
+    background-image: url("/images/personal_back.jpg");
+    opacity: 0.5;
+}
+
+.faqContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255,255,0.1);
+    background-size: cover;
+    background-image: url("/images/faq_back.png");
+    opacity: 0.5;
+}
+
 canvas {
     display: block;
     vertical-align: bottom;
@@ -72,7 +92,7 @@ header {
 
 .pre-header {
     position: fixed;
-    height: 90px;
+    height: 40px;
     z-index: 999;
     background: #003C46;
 }
@@ -125,7 +145,6 @@ header {
 }
 
 .title {
-    font-size: 40px!important;
     line-height: 55px;
     font-weight: 800;
     letter-spacing: 0px;
@@ -395,5 +414,77 @@ header {
     border-left: 10px solid rgb(210, 58, 225)!important;
     color: #003C46!important;
     font-size: 19px;
+}
+
+footer a {
+    text-decoration: none;
+    color: unset;
+    cursor: pointer;
+}
+
+#offcanvasSignUp .nav-link {
+    background: none;
+    color: rgb(210, 58, 225);
+}
+
+#offcanvasSignUp .nav .active {
+    background: rgb(210, 58, 225);
+    color: white;
+}
+
+@media (min-width: 0px) and (max-width: 810px){
+    .firstContainer {
+    padding-top: 80px!important;
+    }
+}
+
+@media (max-width: 991px){
+
+    .technologyParticles #particles-js-team {
+        height: 600px!important;
+
+    }
+
+    .serviceParticles #particles-js-team {
+        height: 600px!important;
+
+    }
+}
+
+@media (max-width: 767px){
+    .vertical-line {
+        display: none;
+    }
+
+    .firstContainer .container {
+        padding-top: 50px!important;
+    }
+
+    .technologyParticles #particles-js-team {
+        height: 900px!important;
+
+    }
+
+    .serviceParticles #particles-js-team {
+        height: 700px!important;
+
+    }
+
+    .header-menu {
+        top: 0!important;
+    }
+
+}
+
+@media (max-width: 430px){
+    .footer_logo1 {
+        width: 190px!important;
+        height: 40px!important;
+    }
+
+    .footer_logo2 {
+        width: 170px!important;
+        height: 40px!important;
+    }
 }
 

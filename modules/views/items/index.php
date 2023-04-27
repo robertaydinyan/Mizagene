@@ -37,11 +37,9 @@ $this->params['breadcrumbs'][] = $this->title;
         $active_pill = $tabs[$pill]; ?>
         <div class="steps-container d-flex">
             <div class="d-flex col-2">
-                <img class="b-icon" src="/images/icons/<?php echo $active_pill[1]; ?>" alt="">
+                <img class="m-icon" src="/images/icons/<?php echo $active_pill[1]; ?>" alt="">
                 <div>
                     <h4><?php echo $active_pill[0];?></h4>
-                    <span style="color: #2384ec"><?php echo Admin::$ROLES[Yii::$app->admin->getIdentity()->role]; ?></span>
-                    <span>View</span>
                 </div>
             </div>
             <ul class="nav nav-pills nav-pills-steps col-10" role="tablist">
