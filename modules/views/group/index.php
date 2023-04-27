@@ -23,10 +23,10 @@ $usg_types = Items::getIUsgTypes();
             <div>
                 <span>Parameters</span>
                 <img src="/images/icons/flag2.png" class="flag-icon flag-changeable">
-                <input type="hidden" name="language">
+                <input type="hidden" name="language" value="2">
             </div>
             <div class="d-flex">
-                <select class="select2" multiple="multiple">
+                <select class="select2" multiple="multiple" name="usg_types[]">
                     <optgroup label="Single">
                         <?php if ($usg_types) {
                             foreach ($usg_types as $value => $type) {
@@ -43,7 +43,11 @@ $usg_types = Items::getIUsgTypes();
                         } ?>
                     </optgroup>
                 </select>
-                <a href="javascript:;" class="icon label ajax-call" style="font-size: 24px; margin: -4px 4px;"><i class="fa fa-filter icon"></i></a>
+                <a href="javascript:;" class="icon label update-items" data-query="GET" data-container=".group-config" data-path="/admin/items/get-active-items" style="font-size: 24px; margin: -4px 4px;"><i class="fa fa-filter icon"></i></a>
+            </div>
+
+            <div class="items-container">
+
             </div>
         </div>
         <div class="col-10 group-content">

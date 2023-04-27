@@ -573,7 +573,6 @@ $columns = [
         'headerOptions' => ['class' => 'join-left'],
         'format' => 'raw',
         'value' => function($model) use ($form) {
-    var_dump($model->i_usg_type);
             return sprintf('<div class="d-flex col-12">
                     <div class="col-6">%s</div> 
                     <div class="col-6">%s</div>

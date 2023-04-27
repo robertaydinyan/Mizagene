@@ -3,6 +3,7 @@
 namespace app\modules\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "items".
@@ -463,7 +464,7 @@ class Items extends \yii\db\ActiveRecord
     }
 
     public function getType() {
-        return self::$ITypes[$this->i_type];
+        return self::$ITypes[$this->i_type ?: 0];
     }
 
     public static function getICombTypes() {
@@ -540,4 +541,11 @@ class Items extends \yii\db\ActiveRecord
     public function getColorSectors() {
         return $this->hasMany(ItemColors::class, ['item_id' => 'item_id']);
     }
+
+    public function fields() {
+        $fields = parent::fields();
+        $fields[] = 'type';
+        return $fields;
+    }
+
 }

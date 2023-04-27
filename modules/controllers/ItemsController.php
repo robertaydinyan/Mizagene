@@ -7,6 +7,7 @@ use app\modules\models\Items;
 use app\modules\models\ItemsSearch;
 use app\modules\models\ItemTitle;
 use app\modules\models\Language;
+use yii\db\Expression;
 use yii\web\Response;
 use Yii;
 use yii\rbac\Item;
@@ -79,6 +80,34 @@ class ItemsController extends Controller
             'step' => $step,
             'status' => $status
         ]);
+    }
+
+    public function actionGetActiveItems($search) {
+//        Yii::$app->response->format = Response::FORMAT_JSON;
+        $model = Items::find()->select('id, item_id, i_type');
+        $search = json_decode($search);
+        if ($search) {
+            if (isset($search->usg_types)) {
+                is_string($search->usg_types) && $search->usg_types = array($search->usg_types);
+                foreach ($search->usg_types as $usg_type) {
+                    $type = explode('-', $usg_type);
+                    $model->orfilterWhere(['and', [
+                        'i_type' => $type[0],
+                        'JSON_CONTAINS(i_usg_type, ' . $type[1] . ' , "$")' => 1
+                    ]]);
+                }
+            }
+            $language =$search->language;
+            $model->with([
+                'itemTitles' => function ($query) use ($language) {
+                    $query->select('title, itemID');
+                    return $query->andFilterWhere(['languageID' => $language]);
+                },
+            ]);
+        }
+        $model->andFilterWhere(['check1' => 1]);
+        var_dump($model->createCommand()->getRawSql());
+        return json_encode($model->asArray()->all());
     }
 
     /**

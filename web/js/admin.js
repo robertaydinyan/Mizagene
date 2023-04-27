@@ -32,6 +32,12 @@ $(document).ready(function() {
         27: 'Child',
     }
 
+    let item_types = {
+        0: '',
+        1: 'single',
+        2: 'multiple'
+    }
+
     // general
     $('.grid-view input, select, textarea').removeAttr('id');
 
@@ -162,7 +168,6 @@ $(document).ready(function() {
             $(this).closest('tr').remove();
         });
     });
-
     $('.item-search-bar').on('change', (el) => {
         $.get('/admin/items/getitemslist' + window.location.search, {
              "search": $(el.target).val()
@@ -171,13 +176,26 @@ $(document).ready(function() {
              colResizable($('.grid-view table'));
         });
     });
+    $('.item-usage-type').on('change', function () {
+        let type = $(this).closest('tr').find('.item-type');
+        if (type.val() == 0) {
+            let isSingle = false;
+            $.each($(this).val(), (v) => {
+                if (single_usg_types[v]) {
+                    isSingle = true;
+                }
+            });
 
+            isSingle && type.val(1);
+        }
+    }).change();
     $('.grid-view input, textarea, select').change(function() {
         $(this).closest('tr').find('.save-filled, .save-green-filled').removeClass('save-filled').removeClass('save-green-filled').addClass('save-green');
     });
 
     function saveRowData(el, id) {
         let data = takeFormData(el);
+        console.log(data)
         $.get('/admin/items/update?id=' + id, {
             'Items': JSON.stringify(data)
         }).done((data) => {
@@ -285,19 +303,6 @@ $(document).ready(function() {
         saveRowData($(this).closest('tr'), $(this).closest('tr').data('key'));
     });
 
-    $('.item-usage-type').on('change', function () {
-        let type = $(this).closest('tr').find('.item-type');
-        if (type.val() == 0) {
-            let isSingle = false;
-            $.each($(this).val(), (v) => {
-                if (single_usg_types[v]) {
-                    isSingle = true;
-                }
-            });
-
-            isSingle && type.val(1);
-        }
-    }).change();
 
     function itemTypeChange(el) {
         let ict = el.find('.item-comb-type');
@@ -329,6 +334,22 @@ $(document).ready(function() {
         } else {
             $(this).attr('src', '/images/icons/flag1.jpg')
             $(this).next().val(1);
+        }
+    });
+
+    $(document).on('click', '.update-items', function () {
+        if ($(this).data('query')) {
+            let data = takeFormData($(this).closest($(this).attr('data-container')));
+            console.log(data)
+            $.get($(this).data("path"), {
+                'search': JSON.stringify(data),
+            }).done((res) => {
+                let data = JSON.parse(res);
+                $('.items-container').empty();
+                $.each(data, (i, k) => {
+                    $('.items-container').append('<div class="item"><span>' + k['id'] + '</span><span>' + k['itemTitles'][0]['title'] + '</span><span>' + item_types[k['i_type']] + '</span></div>');
+                });
+            });
         }
     });
 });
