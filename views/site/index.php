@@ -1,8 +1,6 @@
 <?php include('header.php') ;
 use yii\helpers\Url;
-
 ?>
-
 
 <div class="container-fluid firstContainer">
     <div id="particles-js"></div>
@@ -17,10 +15,6 @@ use yii\helpers\Url;
     </div>
 </div>
 
-    <div class="container d-md-none col-12 mx-auto px-0 text-center" style="margin: 0!important;margin-top: 1rem!important;padding: 0!important;z-index: 10;position: relative">
-        <button class="btn fillButton mx-auto" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="margin-left: 0!important;"><?= $data['button1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
-        <button class="btn outlineButton mx-auto mt-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions"><?= $data['button2'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
-    </div>
 
 <div class="container mt-5 mb-5" id="how-it-works">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center mb-5">
@@ -469,22 +463,9 @@ use yii\helpers\Url;
                     </div>
                 </div>
             </div>
-<!--            <div class="w-100 pt-3 d-flex flex-column align-items-end pe-0" style="color: rgb(114, 114, 114);">-->
-<!--                <label class="mb-1">--><?//= $data['try_now'][isset($_GET['lang']) ? 'en' : 'ru'] ?><!--</label>-->
-<!--                <button class="btn fillButton mt-1 w-50 me-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="margin-left: 0!important;">--><?//= $data['button1'][isset($_GET['lang']) ? 'en' : 'ru'] ?><!--</button>-->
-<!--            </div>-->
         </div>
     </div>
 </div>
 
-    <div class="container-fluid firstContainer mb-3" style="min-height: 150px">
-        <div id="particles-js-footer" style="height: 150px"></div>
-        <div class="container mx-auto px-0">
-            <div class="container d-grid gap-2 d-md-block col-12 mx-auto text-center" style="margin: 0!important; margin-top: 2rem!important; padding: 0!important; z-index: 10; position: absolute; top: 20px">
-                <button class="btn fillButton mx-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="margin-left: 0!important;"><?= $data['button1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
-                <button class="btn outlineButton" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions"><?= $data['button2'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
-            </div>
-        </div>
-    </div>
 
 <?php include('footer.php') ?>
