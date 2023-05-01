@@ -4,8 +4,7 @@ import numpy as np
 import sys
 import json
 import math
-from Main import Main
-from paliz_point import Paliz3DPoint, Paliz2DPoint
+from paliz.paliz_point import Paliz3DPoint, Paliz2DPoint
 from paliz.paliz_pfm import PalizFaceMesh
 
 mp_drawing = mp.solutions.drawing_utils

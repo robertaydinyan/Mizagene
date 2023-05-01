@@ -157,7 +157,6 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-
     public function actionAboutTechnology()
     {
         return $this->render('technology');
@@ -214,5 +213,10 @@ class SiteController extends Controller
             'tableData' => $tableData,
             'datasearch' => $datasearch,
         ]);
+    }
+
+    public function actionAddprofile()
+    {
+        return $this->render('addprofile');
     }
 }
