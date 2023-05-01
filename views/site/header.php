@@ -202,14 +202,24 @@ use yii\helpers\Url;
                         <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
                         <label for="floatingInput"><?= $data['nickname'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
                     </div>
+
                     <div class="form-floating mb-3">
                         <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                         <label for="floatingInput"><?= $data['email'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
                     </div>
+
+                    <div class="form-floating mb-3">
+                        <select class="form-control select2" name="country">
+                            <option>Armenia</option>
+                        </select>
+                        <label for="floatingInput"><?= $data['country'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                    </div>
+
                     <div class="form-floating mb-3">
                         <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword"><?= $data['password'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
                     </div>
+
                     <div class="form-floating mb-3">
                         <input type="password" name="confirm_password" class="form-control" id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword"><?= $data['confirm_password'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
@@ -292,7 +302,7 @@ use yii\helpers\Url;
 <!--                <label class="form-check-label" for="flexSwitchCheckDefault">--><?php //= $data['is_company'][isset($_GET['lang']) ? 'en' : 'ru'] ?><!--</label>-->
 <!--            </div>-->
 
-            <div class="col-6 mt-3">
+            <div class="col-12 mt-3">
                 <p class="">* <?= $data['signup_text1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></p>
             </div>
             <div class="col-6 mt-3">
@@ -302,7 +312,5 @@ use yii\helpers\Url;
     </div>
 
 </header>
-
-
 
 <body>

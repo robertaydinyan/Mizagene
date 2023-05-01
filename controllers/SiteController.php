@@ -215,8 +215,8 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionAddprofile()
-    {
-        return $this->render('addprofile');
-    }
+//    public function actionAddprofile()
+//    {
+//        return $this->render('addprofile');
+//    }
 }

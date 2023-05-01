@@ -161,99 +161,68 @@
             </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-between mb-5">
                 <ul class="analysis-pill nav nav-pills nav-justified mb-5 flex-column flex-sm-row" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button style="border-radius: 5px 0px 0px 5px!important" class="nav-link active" id="pills-1" data-bs-toggle="pill" data-bs-target="#pills-tab-1" type="button" role="tab" aria-controls="pills-tab-1" aria-selected="true"><?= $data['analysis_tab1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
+                    <li class="nav-item d-flex" role="presentation">
+                        <button style="border-radius: 5px 0px 0px 5px!important" class="nav-link active" id="pills-1" data-bs-toggle="pill" data-bs-target="#pills-tab-1" type="button" role="tab" aria-controls="pills-tab-1" aria-selected="true"><?= $data['Черты характера'][isset($_GET['lang']) ? 'en' : 'ru']?>
+                        </button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-2" data-bs-toggle="pill" data-bs-target="#pills-tab-2" type="button" role="tab" aria-controls="pills-tab-2" aria-selected="true"><?= $data['analysis_tab2'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
+                    <li class="nav-item d-flex" role="presentation">
+                        <button class="nav-link" id="pills-2" data-bs-toggle="pill" data-bs-target="#pills-tab-2" type="button" role="tab" aria-controls="pills-tab-2" aria-selected="true"><?= $data['Интеллект'][isset($_GET['lang']) ? 'en' : 'ru']?>
+                        </button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-3" data-bs-toggle="pill" data-bs-target="#pills-tab-3" type="button" role="tab" aria-controls="pills-tab-3" aria-selected="true"><?= $data['analysis_tab3'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
+                    <li class="nav-item d-flex" role="presentation">
+                        <button class="nav-link" id="pills-3" data-bs-toggle="pill" data-bs-target="#pills-tab-3" type="button" role="tab" aria-controls="pills-tab-3" aria-selected="true"><?= $data['Зависимости'][isset($_GET['lang']) ? 'en' : 'ru']?>
+                        </button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-4" data-bs-toggle="pill" data-bs-target="#pills-tab-4" type="button" role="tab" aria-controls="pills-tab-4" aria-selected="true"><?= $data['analysis_tab4_5'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
+                    <li class="nav-item d-flex" role="presentation">
+                        <button class="nav-link" id="pills-4" data-bs-toggle="pill" data-bs-target="#pills-tab-4" type="button" role="tab" aria-controls="pills-tab-4" aria-selected="true"><?= $data['Отношение к деньгам и ресурсам'][isset($_GET['lang']) ? 'en' : 'ru']?>
+                        </button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button style="border-radius: 0px 5px 5px 0px!important" class="nav-link" id="pills-6" data-bs-toggle="pill" data-bs-target="#pills-tab-6" type="button" role="tab" aria-controls="pills-tab-6" aria-selected="true"><?= $data['analysis_tab6'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
+                    <li class="nav-item d-flex" role="presentation">
+                        <button style="border-radius: 0px 5px 5px 0px!important" class="nav-link" id="pills-6" data-bs-toggle="pill" data-bs-target="#pills-tab-6" type="button" role="tab" aria-controls="pills-tab-6" aria-selected="true"><?= $data['Закон'][isset($_GET['lang']) ? 'en' : 'ru']?>
+                        </button>
+                    </li>
+                    <li class="nav-item d-flex" role="presentation">
+                        <button style="border-radius: 0px 5px 5px 0px!important" class="nav-link" id="pills-7" data-bs-toggle="pill" data-bs-target="#pills-tab-7" type="button" role="tab" aria-controls="pills-tab-7" aria-selected="true"><?= $data['Психика и неврология'][isset($_GET['lang']) ? 'en' : 'ru']?>
+                        </button>
+                    </li>
+                    <li class="nav-item d-flex" role="presentation">
+                        <button style="border-radius: 0px 5px 5px 0px!important;" class="nav-link" id="pills-8" data-bs-toggle="pill" data-bs-target="#pills-tab-8" type="button" role="tab" aria-controls="pills-tab-8" aria-selected="true"><?= $data['Игра'][isset($_GET['lang']) ? 'en' : 'ru']?>
+                        </button>
                     </li>
                 </ul>
                 <div class="tab-content mt-5" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-tab-1" role="tabpanel" aria-labelledby="pills-tab-1" tabindex="0">
                         <div class="container row m-0 p-0">
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Extraversion'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Introversion'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Courage'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Courage'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Persistence'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Strength of will'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><div class="text-sm"><?= $data['Willpower (in the fight against temptations)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></div></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Willpower (in achieving the goals)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Willpower (with an application of physical effort)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Physical endurance'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Self - sacrifice'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Generosity'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Optimism'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Mercy and compassion'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Inborn kindness'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Greatness (ability to forgive)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Экстраверсия'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Интроверсия'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Смелость'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Храбрость'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Упорство'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
 
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Mental endurance'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Determination'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Flexibility'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Modesty'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Fidelity to principles and beliefs'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Self-esteem'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Anxiety'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Tolerance'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Patience'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Processing'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Sincerity (directness)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Impulse control (ability to resist spontaneous desires)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Responsibility and sense of duty'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Selflessness (readiness to help without calculation to gain benefits)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Talent for disinterested friendship'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Responsiveness (attentiveness to the problems of others)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Настойчивость'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Соблюдение договоренностей'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Расчетливость'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Терпение'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Решительность'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
 
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Idealism'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Arrogance in relation to others'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Envying'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The ability to be content with small'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Meticulousness'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Skepticism'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Suspicion (negative views, to complete confidence)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Caution'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Adventurism'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Acceptance of risk'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The ability to console'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Consolation of others during grief'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Pessimism'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Expression of discontent (dissatisfaction)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Nagging in case of discontent'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Aggressiveness (the possibility of aggression in conversations,  especially raising the voice)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Сила воли (в борьбе с соблазнами)'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Сила воли (в достижении поставленных целей)'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Сила воли (при приложении физических усилий)'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Жадность'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Зависть'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
 
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Discipline alone with you'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Discipline in work'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Accuracy in personal things'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Desire (internal need) to wealth'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Unproductiveness'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Stubbornness (irrational insistence of your opinion)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Following the law (can a person endure the law if necessary)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Dependence on the opinion of the spouse/spouse'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Dependence on the opinion of society'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Physical pain resistance'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Revenge (desire for retaliation for someone else\'s evil)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Health vulnerability as a result of prolonged stress'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Vulnerability to bad habits'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Guilt (take the blame for your own and other people\'s mistakes)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Hatred on the basis of envy'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Hatred on the basis of an infringed pride'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Максимализм'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Фатализм'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Склонность обвинять других в собственных проблемах'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Чувство вины (брать вину на себя за свои и чужие ошибки)'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Верность принципам и убеждениям'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
 
                             </div>
                         </div>
@@ -288,126 +257,151 @@
                     <div class="tab-pane fade" id="pills-tab-3" role="tabpanel" aria-labelledby="pills-tab-3" tabindex="2">
                         <div class="container row m-0 p-0">
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Sociability'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Friendliness'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The ability to hide emotions'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The ability to defend one\'s own interests'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The ability to compromise'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Compliance with agreements'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Игромания (гемблинг, лудомания)'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к алкогольной зависимости'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
                             </div>
 
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['The ability to subordinate others to their will'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Verbal humiliation and mockery of others'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['The ability to encourage and inspire others'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The ability to be cruel'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The ability to manipulate'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Ability to understand people'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к наркотической зависимости (легкие наркотики)'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к наркотической зависимости (тяжелые наркотики)'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+
                             </div>
 
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Flattery'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The ability to calm'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Demonstrativeness in the expression of hatred'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Emotionality in communication'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Manipulation by emotions of others'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Demonstrativeness in the expression of emotions'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                            </div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Адреналиновая зависимость'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Зависимость от мнения супруга/супруги'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                           </div>
 
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Adaptability (talent to find a common language with different people)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Talent to look at the situation through the eyes of the interlocutor'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Talent to negotiate'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Warmth during negotiations'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Talent to conduct hard negotiations'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['The probability of using blackmail during negotiations'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Зависимость от мнения общества'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-tab-4" role="tabpanel" aria-labelledby="pills-tab-4" tabindex="3">
                         <div class="container row m-0 p-0">
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Emotionality'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Empathy'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Emotional stability (regarding feelings for other people)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Emotional vulnerability'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Nervous excitability'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Стремление к роскоши'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Стремление к быстрому обогащению'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
                             </div>
 
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['A tendency to nostalgia'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The need for attention'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Dependence on motivation in the form of emotional stimulation on other'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Vulnerability due to contempt of others regarding themselves'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['The possibility of conflict behavior in certain situations'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Расточительство'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Чрезмерное потребление ресурсов'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
                             </div>
 
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Predisposition to physical violence'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Short -term control of emotions'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Long -term control of emotions'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The ability to hide hatred'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Regret for actions that caused damage to others'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Спонтанные покупки'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Умение распоряжаться деньгами'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
                             </div>
 
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Readiness for radical life changes'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['The need for personal space in the family'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['The speed of bringing to a state of irritability (temper)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The speed of bringing to anger state'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['The speed of bringing to a state of affect'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                            </div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Умение торговаться'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Талант к накопительству'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                              </div>
 
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-tab-6" role="tabpanel" aria-labelledby="pills-tab-6" tabindex="5">
                         <div class="container row m-0 p-0">
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Independence'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['The desire to lead (in comparison with the most outstanding leaders)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The talent of other management'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Perception of oral speech'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Be under the influence of the words of others'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Team spirit'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Competition'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Visual perception of information'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Perception of written text (the best assimilates written information than images or oral speech)'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Следование закону (может ли человек преступить закон в случае необходимости)'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность преступить закон с целью быстрого обогащения'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
                             </div>
 
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The ability to concentrate'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Short -term planning'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Initiative'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Emotionality in work'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Abuse of influence on other people to achieve their own goals'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Orientation on the result'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['The need for the approval of the leadership (\'praise me\')'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The desire for separatism'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Protection of the interests of subordinates before the leadership'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Талант к обману, фальсификации и мошенничеству'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
                             </div>
 
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The desire to be the head of the family'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Desire for financial independence'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Conflict Management'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Willingness to sacrifice others for a good goal'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Ambitiousness'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div class="d-flex align-items-start "><i class="fa-solid fa-circle-check mt-2 me-2" style="color: #003C46!important"></i><span><?= $data['Readiness to make the consequences of decisions made'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['The ability to obey if necessary'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Active participation in activities'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['A tendency to distance from the team'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Вероятность незаконного использования дополнительного программного обеспечения'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
                             </div>
 
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Hard work'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Stress resistance'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Orientation to the process'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Careerism'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Readiness \'go on the head\''][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Oppositionist'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Perfectionism'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Attitude to money and resources'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
-                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Excessive resource consumption'][isset($_GET['lang']) ? 'en' : 'ru'] ?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к нечестной игре'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-tab-7" role="tabpanel" aria-labelledby="pills-tab-7" tabindex="6">
+                        <div class="container row m-0 p-0">
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Психическая выносливость'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Физическая выносливость'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к меланхолии'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к психопатии'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к социопатии'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к эпилепсии'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к быстрому эмоциональному выгоранию'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                            </div>
+
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Невротизм'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Эмоциональная уязвимость'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Нервная возбудимость'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Контроль импульсов (умение сопротивляться спонтанным желаниям)'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Одержимость идеей'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к не желаемому одиночеству'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к тоске (душевной тревоге в совокупности с грустью и скукой)'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                            </div>
+
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к самоуничижению (неудовлетворенность собой)'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Самооценка'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Бегство от проблем'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Эмоциональная пустота'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Упрямство (иррациональное настаивание на своем мнении)'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Лень'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Склонность к мистицизму (вера в потусторонние силы, символы)'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                            </div>
+
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Принятие решения на основе веры в потусторонние силы и влияния символизма'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Склонность к сублимации эмоций в какую-то деятельность'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Уязвимость по причине презрения других в отношении себя'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Внушаемость'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Скорость доведения до состояния раздражительности (вспыльчивость)'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Скорость доведения до состояния гнева'][isset($_GET['lang']) ? 'en' : 'ru']?></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Скорость доведения до состояния аффекта'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade" id="pills-tab-8" role="tabpanel" aria-labelledby="pills-tab-8" tabindex="7">
+                        <div class="container row m-0 p-0">
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Азарт'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Авантюризм'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Принятие риска'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Талант считать карты'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Усидчивость'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+
+                            </div>
+
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Чувство меры в игре (контроль жадности, умение вовремя остановиться, оказавшись в плюсе)'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Чувство меры в игре (контроль над желанием отыграться, оказавшись в глубоком минусе)'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Желание форсировать ход игры (игра ва-банк)'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Восприимчивость к визуальным манипуляциям, сулящим выгоду'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Восприимчивость к звуковым манипуляциям, сулящим выгоду'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+
+                            </div>
+
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Дисциплина в игре (следование заранее составленному плану)'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Импульсное поведение во время игры'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Отношение к необходимости принятия решения в условиях ограниченного времени'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к аркадным играм'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к беттингу'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+
+                            </div>
+
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к онлайн слотам'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к карточным играм'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к осторожной игре'][isset($_GET['lang']) ? 'en' : 'ru']?></span></div>
+                                <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Предрасположенность к крупным ставкам'][isset($_GET['lang']) ? 'en' : 'ru']?>   </span></div>
+
                             </div>
 
 

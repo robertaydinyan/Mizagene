@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800&display=swap');
 
+input, input:active, input:focus, select, select:active, select:focus {
+    box-shadow: none!important;
+}
+
 body {
     margin: 0;
     font: normal 75% Arial, Helvetica, sans-serif;
@@ -345,6 +349,12 @@ header {
     border: 1px solid rgb(210, 58, 225)!important;
 }
 
+.subject-pills .active {
+    background: rgb(210, 58, 225)!important;
+    color: white!important;
+    border: 1px solid rgb(210, 58, 225)!important;
+}
+
 .analysis-pill .nav-link {
     color: #003C46;
     font-weight: 500;
@@ -356,6 +366,14 @@ header {
     color: rgb(210, 58, 225);
     font-weight: 500;
     border: 1px solid rgb(114, 114, 114);
+    border-radius: 0!important;
+}
+
+.subject-pills .nav-link {
+    color: rgb(210, 58, 225);
+    font-weight: 500;
+    border: 1px solid rgb(210, 58, 225)!important;
+    background: none;
     border-radius: 0!important;
 }
 
@@ -396,6 +414,10 @@ header {
     color: rgb(210, 58, 225);
 }
 
+.subject-pills .nav-link:hover {
+    color: rgb(210, 58, 225);
+}
+
 .investors-pill .active:hover {
     color: white!important;
 }
@@ -431,6 +453,62 @@ footer a {
     background: rgb(210, 58, 225);
     color: white;
 }
+
+.subjectProps input, select {
+    width: 330px!important;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(210, 58, 225); /* Set the color of the thumb */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+    background-color: rgb(210, 58, 225);
+    box-shadow: none;
+}
+
+/* Style the thumb (circle) on click */
+input[type="range"]:active::-webkit-slider-thumb {
+    background-color: rgb(210, 58, 225);
+    box-shadow: none;
+}
+
+.add-subject-icons:hover {
+    color: rgb(210, 58, 225)!important;
+}
+
+.add-subject-icons i:hover {
+    color: rgb(210, 58, 225)!important;
+}
+
+.sidebar a {
+    border-radius: unset!important;
+}
+
+.sidebar .active {
+    background: rgb(119, 154, 161)!important;
+    border-radius: 3px;
+}
+
+.sidebar img {
+    padding: 10px;
+}
+
+.dtsb-title {
+    display: none!important;
+}
+
+.dataTables_filter {
+    text-align: start!important;
+}
+
 
 @media (min-width: 0px) and (max-width: 810px){
     .firstContainer {

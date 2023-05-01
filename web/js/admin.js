@@ -174,6 +174,8 @@ $(document).ready(function() {
         }).done((data) => {
              $('#w1').html(data);
              colResizable($('.grid-view table'));
+             $('.grid-view input, select, textarea').removeAttr('id');
+             $('.select2').select2();
         });
     });
     $('.item-usage-type').on('change', function () {

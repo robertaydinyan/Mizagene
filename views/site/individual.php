@@ -58,7 +58,7 @@
     <div class="container mt-3">
         <div class="container row mx-auto px-0">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center mb-5">
-                <h2 style="color: rgba(0, 177, 243)"><img src="/images/youmee_me.png" alt="" width="70px" style="margin-right: 20px">Youmee Me</h2>
+                <h2 style="color: rgba(0, 177, 243)"><img src="/images/youmee_me.png" alt="" width="70px" style="margin-right: 20px"><span class="text-dark">Youmee</span> Me</h2>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-4" style="text-align: start; padding-right: 30px!important; background-color: white; border-radius: 10px; padding: 15px;">
                 <img src="/images/me_back.jpg" alt="" width="100%">
@@ -103,7 +103,7 @@
     <div class="container mt-5">
         <div class="container row mx-auto px-0">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center mb-5">
-                <h1 style="color: rgb(234, 51, 61)"><img src="/images/youmee_family.png" alt="" width="70px" style="margin-right: 20px">Youmee Family</h1>
+                <h1 style="color: rgb(234, 51, 61)"><img src="/images/youmee_family.png" alt="" width="70px" style="margin-right: 20px"><span class="text-dark">Youmee</span> Family</h1>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-4" style="text-align: start;padding-left: 30px!important; background-color: white; border-radius: 10px; padding: 15px;">
                 <p class="" style="font-size: 19px;color: rgb(114, 114, 114);">
@@ -236,7 +236,7 @@
     <div class="container mt-3 mb-5">
         <div class="container row mx-auto px-0">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center mb-5">
-                <h2 style="color: rgba(0, 177, 243)"><img src="/images/youmee_verse.png" alt="" width="50px" style="margin-right: 20px"><span style="color: rgb(210, 58, 225)">Youmee Verse</h2>
+                <h2 style="color: rgba(0, 177, 243)"><img src="/images/youmee_verse.png" alt="" width="50px" style="margin-right: 20px"><span style="color: rgb(210, 58, 225)"><span class="text-dark">Youmee</span> Verse</h2>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-4" style="text-align: start; padding-right: 30px!important; background-color: white; border-radius: 10px; padding: 15px;">
                 <img src="/images/verse_back.jpg" alt="" width="100%">

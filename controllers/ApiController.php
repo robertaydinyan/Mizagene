@@ -53,13 +53,11 @@ class ApiController extends Controller {
             chmod($uploadFile, 0755);
 
             $command = 'cd /var/www/html/Mizagene/python/landmarks/ && /usr/bin/python index.py ' . $uploadFile . ' 2>&1';
-            var_dump($command);die();
-            exec($command);
+            $output = exec($command);
             // if ($returnCode !== 0) {
             //     var_dump($outputArray);
             //     var_dump($returnCode);
             // }
-            // var_dump($output);
 
             return json_encode(file_get_contents(\Yii::getAlias('@webroot') . DS . '..' . DS . 'python' . DS . 'landmarks' . DS . 'json' . DS . $file_name . '.json'));
         } else {

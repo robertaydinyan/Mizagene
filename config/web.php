@@ -73,6 +73,8 @@ $config = [
                 'kyc-solutions' => 'site/kyc-solutions',
                 'hr-solutions' => 'site/hr-solutions',
                 'faq' => 'site/faq',
+                'add-subject' => 'user/add-subject',
+                'all-subjects' => 'user/all-subjects',
             ],
         ],
         'session' => [
