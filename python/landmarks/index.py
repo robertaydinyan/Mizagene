@@ -58,15 +58,15 @@ with mp_face_detection.FaceDetection(
                 bbox = detection.location_data.relative_bounding_box
                 image_height, image_width, _ = image.shape
                 xmin = int(bbox.xmin * w)
-                ymin = int(bbox.ymin * h)
+                ymin = int(bbox.ymin * h) - int(0.1 * w)
                 xmax = int((bbox.xmin + bbox.width) * w)
                 ymax = int((bbox.ymin + bbox.height) * h)
 
                 # Draw rectangle around face.
-                cv2.rectangle(image, (xmin, ymin - 40), (xmax, ymax), color, 2)
+                cv2.rectangle(image, (xmin, ymin), (xmax, ymax), color, 2)
 
                 # Extract face ROI.
-                face_roi = image[ymin - 40:ymax, xmin:xmax]
+                face_roi = image[ymin:ymax, xmin:xmax]
                 result["result"]["imageWidth"] = face_roi.shape[1]
                 result["result"]["imageHeight"] = face_roi.shape[0]
                 # Run face mesh on the face ROI.
@@ -98,8 +98,8 @@ with mp_face_detection.FaceDetection(
                         text_y = y - text_height // 2
                         cv2.putText(face_roi, text, (text_x, text_y + text_height - 5), font, font_scale, text_color, font_thickness, cv2.LINE_AA)
 
-
-        cv2.imwrite('annotated_image{}.png'.format(idx), image)
+        file = IMAGE_FILES[0].split('.')[0].split('/')[-1].strip()
+        cv2.imwrite('images/' + file + '{}.jpg'.format(idx), image)
 
 pfm1 = PalizFaceMesh()
 result_ = pfm1.getFacialLandmarks(IMAGE_FILES[0])
@@ -110,5 +110,7 @@ result["result"]["yawError"] = result_["yawError"]
 result["result"]["pitchError"] = result_["pitchError"]
 result["result"]["irisRatio"] = result_["mIrisRatio"]
 result["result"]["mmpp"] = 0.11505014737087698446921939300186
-with open('json/' + IMAGE_FILES[0].split('.')[0] + '.json', 'w') as f:
+
+print('json/' + file + '.json')
+with open('json/' + file + '.json', 'w') as f:
     json.dump(result, f)

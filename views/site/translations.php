@@ -271,20 +271,20 @@ $data = [
         'en' => 'Your position',
         'ru' => 'Ваша должность'
     ], 'direction' => [
-        'en' => 'Интересующее направление',
+        'en' => 'Direction of interest',
         'ru' => 'Интересующее направление'
     ], 'employees' => [
         'en' => 'Employees',
         'ru' => 'Кол-во сотрудников'
     ], 'company_link' => [
-        'en' => 'Сайт компании',
+        'en' => 'Company\'s site' ,
         'ru' => 'Сайт компании'
     ], 'phone' => [
         'en' => 'Phone',
         'ru' => 'Телефон'
     ], 'signup_text1' => [
-        'en' => 'Нажимая на кнопку, Вы подтверждаете, что ознакомились с',
-        'ru' => 'Нажимая на кнопку, Вы подтверждаете, что ознакомились с'
+        'en' => 'By clicking on the button, you confirm that you have read <a href="#">"User Agreement"</a> and <a href="#">"Privacy Policy"</a>',
+        'ru' => 'Нажимая на кнопку, Вы подтверждаете, что ознакомились с <a href="#">«Пользовательским соглашением»</a> и <a href="#">«Политикой конфиденциальности»</a>'
     ], 'and' => [
         'en' => 'and',
         'ru' => 'и'
@@ -1164,7 +1164,7 @@ $data = [
 
     "secure-tile" => [
         "en" => "Data transmission and storage security",
-        "ru" => "Безопасность храниния данных"],
+        "ru" => "Безопасность передачи и хранения данных"],
     "secure-tile1" => [
         "en" => "Only depersonalized data",
         "ru" => "Только обезличенные данные"],
@@ -1177,8 +1177,8 @@ $data = [
         "en" => "Software delivery options",
         "ru" => "Варианты поствки ПО"],
     "os-tile1" => [
-        "en" => "Depending on the size of companies, as well as the goals they pursue, for corporate solutions we provide 2 options for supplying technology:",
-        "ru" => "В зависимости от размеров компаний, а также целей, которые они преследуют, для корпоративных решений мы предоставляем 2 варианта поставки технологии:"],
+        "en" => "Depending on the size of companies, as well as the goals they pursue, for corporate solutions we provide 3 options for supplying technology:",
+        "ru" => "В зависимости от размеров компаний, а также целей, которые они преследуют, для корпоративных решений мы предоставляем 3 варианта поставки технологии:"],
     "os-tile2" => [
         "en" => "The Client or Partner integrates our system with their software and receives the scoring results directly in it.",
         "ru" => "Клиент или Партнер интегрирует нашу систему со своим программным обеспечением и получает результаты скоринга прямо в нем."],
@@ -1264,14 +1264,14 @@ $data = [
 
     "Уникальные продукты" => ["en" => "Unique Products", "ru" => "Уникальные продукты"],
     "Самые значимые технологии будущего лежат под пылью прошлого. Мы сдуваем эту пыль." => ["en" => "The most significant technologies of the future lie under the dust of the past. We blow off this dust.", "ru" => "Самые значимые технологии будущего лежат под пылью прошлого. Мы сдуваем эту пыль."],
-    "Конечно, аналитические продукты на базе ИИ распознавания лица – не новость. Более того, мы и сами используем сторонние решения на базе AI." => ["en" => "Of course, analytics products based on facial recognition AI are nothing new. Moreover, we ourselves partly use third-party AI-based solutions.", "ru" => "Конечно, аналитические продукты на базе ИИ распознавания лица – не новость. Более того, мы и сами используем сторонние решения на базе AI."],
+    "Конечно, аналитические продукты на базе ИИ распознавания лица – не новость. Более того, мы и сами используем сторонние решения на базе AI." => ["en" => "Of course, analytics products based on facial recognition AI are nothing new. Moreover, we ourselves partly use third-party AI-based solutions.", "ru" => "Конечно, аналитические продукты на базе ИИ распознавания лица – не новость. Более того, мы и сами частично используем сторонние решения на базе AI."],
     "Но суть технологии не в применяемом искусственном интеллекте, а в аналитическом ядре, способном обработать координаты контрольных точек и дать отчет на более чем 1500 параметров." => ["en" => "But the essence of the technology is not in the artificial intelligence used, but in the analytical core capable of processing the coordinates of control points and reporting on more than 1500 parameters.", "ru" => "Но суть технологии не в применяемом искусственном интеллекте, а в аналитическом ядре, способном обработать координаты контрольных точек и дать отчет на более чем 1500 параметров."],
     "Иными словами, - получить контрольные точки на лице могут многие, но только мы знаем, что они означают и как их анализировать." => ["en" => "In other words, many people can get control points on the face, but only we know what they mean and how to analyze them.", "ru" => "Иными словами, - получить контрольные точки на лице могут многие, но только мы знаем, что они означают и как их анализировать."],
 
     "Почему технология сегодня актуальна как никогда" => ["en" => "Why this Technology is relevant today more than ever", "ru" => "Почему технология сегодня актуальна как никогда"],
     "Мир сегодня перенасыщен информацией и переживает четвертую технологическую революцию, которая сопровождается как новыми возможностями, так и вытекающими из нее цивилизационными вызовами. Основные из них – это глобализация, интеграция и деперсонализация личности." => ["en" => "The world today is oversaturated with information and is experiencing the fourth technological revolution, which is accompanied by both new opportunities and civilizational challenges arising from it. The main ones are globalization, integration and depersonalization of personality.", "ru" => "Мир сегодня перенасыщен информацией и переживает четвертую технологическую революцию, которая сопровождается как новыми возможностями, так и вытекающими из нее цивилизационными вызовами. Основные из них – это глобализация, интеграция и деперсонализация личности."],
     "Для бизнеса – это необходимость адаптировать процессы в условиях цифрового и информационного бума, динамично меняющихся «правил игры», а также высокой конкуренции как на рынке в целом, так и на рынке труда в частности." => ["en" => "For business, this is the need to adapt processes in the context of a digital and information boom, dynamically changing “rules of the game”, as well as high competition both in the market in general and in the labor market in particular.", "ru" => "Для бизнеса – это необходимость адаптировать процессы в условиях цифрового и информационного бума, динамично меняющихся «правил игры», а также высокой конкуренции как на рынке в целом, так и на рынке труда в частности."],
-    "Несмотря на общую тенденцию, мы убеждены, что любые, самые глобальные задачи в конечном итоге выполняются людьми, имеющими свои характер, «потолок возможностей», индивидуальное восприятие мира и т.д." => ["en" => "Despite the general trend, we are convinced that any most global tasks are ultimately carried out by people who have their own character, \"ceiling of opportunities\", individual perception of the world, etc.", "ru" => "Несмотря на общую тенденцию, мы убеждены, что любые, самые глобальные задачи в конечном итоге выполняются людьми, имеющими свои характер, «потолок возможностей», индивидуальное восприятие мира и т.д."],
+    "Несмотря на общую тенденцию, мы убеждены, что любые, самые глобальные задачи в конечном итоге выполняются людьми, имеющими свои характер, «потолок возможностей», индивидуальное восприятие мира и т.д." => ["en" => "Despite the general trend, we are convinced that any most global tasks are ultimately carried out by people who have their own character, \"ceiling of opportunities\", individual perception of the world, etc.", "ru" => "Несмотря на общую тенденцию, мы убеждены, что любые самые глобальные задачи в конечном итоге выполняются людьми, имеющими свои характер, «потолок возможностей», индивидуальное восприятие мира и т.д."],
     "И если социальная инженерия – это совокупность технологий для достижения целей манипулирования общественным мнением без учета мнения отдельно взятой единицы, то " => ["en" => "And if social engineering is a set of technologies for achieving the goals of manipulating public opinion without taking into account the opinion of a single individual,", "ru" => "И если социальная инженерия – это совокупность технологий для достижения целей манипулирования общественным мнением без учета мнения отдельно взятой единицы, то "],
     "наши решения – это своего рода" => ["en" => "then our solutions are a kind of ", "ru" => "наши решения – это своего рода"],
     "дешифратор" => ["en" => "decoder ", "ru" => "дешифратор"],
@@ -1280,13 +1280,13 @@ $data = [
 
     "Польза от такого подхода отнюдь не виртуальная и выражается в конкретных цифрах." => ["en" => "The benefits of such an approach are not virtual and can be expressed in concrete figures.", "ru" => "Польза от такого подхода отнюдь не виртуальная и выражается в конкретных цифрах."],
     "Например, превентивные меры по упреждению случаев промышленного шпионажа или снижение показателя оттока кадров среди инженеров на заводе уровня «Мерседес Бенс» благодаря персонализированному подходу к сотруднику не просто экономит бюджет компании на привлечение, обучение и длительную адаптацию нового специалиста, но и может упредить риски и сопутствующие им издержки в миллионы долларов." => ["en" => "For example, preventive measures to prevent cases of industrial espionage or a decrease in the outflow of personnel among engineers at a Mercedes-Benz plant due to a personalized approach to an employee not only save the company's budget for attracting, training and long-term adaptation of a new specialist, but can also prevent risks and related costs in millions of dollars.", "ru" => "Например, превентивные меры по упреждению случаев промышленного шпионажа или снижение показателя оттока кадров среди инженеров на заводе уровня «Мерседес Бенс» благодаря персонализированному подходу к сотруднику не просто экономит бюджет компании на привлечение, обучение и длительную адаптацию нового специалиста, но и может упредить риски и сопутствующие им издержки в миллионы долларов."],
-    "Приблизительно то же самое обстоит и с клиентской базой. Например, игровая онлайн платформа типа «онлайн казино», использующая процессы верификации клиентов (KYC), за счет эффективной сегментации новых клиентов, с одной стороны, может значительно повысить прибыль, а с другой – еще на этапе верификации определить людей, потенциально склонных к мошенничеству и принять дополнительные меры мониторинга поведения данного пользователя. При этом, анализ поведения клиента возможен только в ретроспективе, то есть на основании уже совершенных операций." => ["en" => "Approximately the same is the case with the client base. For example, an online gambling platform using customer verification processes (KYC), due to the effective segmentation of new customers, on the one hand, can significantly increase profits, and on the other hand, identify people potentially prone to fraud at the verification stage and take additional measures to monitor the behavior of this user.", "ru" => "Приблизительно то же самое обстоит и с клиентской базой. Например, игровая онлайн платформа типа «онлайн казино», использующая процессы верификации клиентов (KYC), за счет эффективной сегментации новых клиентов, с одной стороны, может значительно повысить прибыль, а с другой – еще на этапе верификации определить людей, потенциально склонных к мошенничеству и принять дополнительные меры мониторинга поведения данного пользователя. При этом, анализ поведения клиента возможен только в ретроспективе, то есть на основании уже совершенных операций."],
+    "Приблизительно то же самое обстоит и с клиентской базой. Например, игровая онлайн платформа типа «онлайн казино», использующая процессы верификации клиентов (KYC), за счет эффективной сегментации новых клиентов, с одной стороны, может значительно повысить прибыль, а с другой – еще на этапе верификации определить людей, потенциально склонных к мошенничеству и принять дополнительные меры мониторинга поведения данного пользователя. При этом, анализ поведения клиента возможен только в ретроспективе, то есть на основании уже совершенных операций." => ["en" => "Approximately the same is the case with the client base. For example, an online gambling platform using customer verification processes (KYC), due to the effective segmentation of new customers, on the one hand, can significantly increase profits, and on the other hand, identify people potentially prone to fraud at the verification stage and take additional measures to monitor the behavior of this user. At the same time, in the case of using other solutions based on existing KYC, the analysis of the client's behavior is possible only in retrospect, that is, on the basis of already completed transactions. In the case of using our technology, the analysis will be predictive.", "ru" => "Приблизительно то же самое обстоит и с клиентской базой. Например, игровая онлайн платформа типа «онлайн казино», использующая процессы верификации клиентов (KYC), за счет эффективной сегментации новых клиентов, с одной стороны, может значительно повысить прибыль, а с другой – еще на этапе верификации определить людей, потенциально склонных к мошенничеству и принять дополнительные меры мониторинга поведения данного пользователя. При этом, в случае применения других решений на базе существующих KYC, анализ поведения клиента возможен только в ретроспективе, то есть на основании уже совершенных операций. В случае с применением нашей технологии, анализ будет предиктивным."],
 
     "Преимущества инвестиции в продукты" => ["en" => "Benefits of investing in products ", "ru" => "Преимущества инвестиции в продукты"],
     "на базе технологии Mizagene" => ["en" => "based on Mizagene Technology", "ru" => "на базе технологии Mizagene"],
     "Инвестиции в продукты на базе Mizagene на данном этапе развития технологии – это высокорентабельный бизнес, не подвергающейся ценностной амортизации." => ["en" => "Investing in Mizagene-based products at this stage of technology development is a highly profitable business that is not subject to value depreciation.", "ru" => "Инвестиции в продукты на базе Mizagene на данном этапе развития технологии – это высокорентабельный бизнес, не подвергающейся ценностной амортизации."],
     "Рабочая технология готовая к использованию" => ["en" => "Working technology ready to use", "ru" => "Рабочая технология готовая к использованию"],
-    "Это не стартап – технологии более 17 лет. Она уже широко применяется в сфере безопасности дорожного движения и страхования. Подробнее об истории создания технологии Mizagene – здесь." => ["en" => "This is not a startup – the technology has been around for over 17 years. It is already widely used in the field of road safety and insurance. Read more about the history of the creation of Mizagene technology here.", "ru" => "Это не стартап – технологии более 17 лет. Она уже широко применяется в сфере безопасности дорожного движения и страхования. Подробнее об истории создания технологии Mizagene – здесь."],
+    "Это не стартап – технологии более 17 лет. Она уже широко применяется в сфере безопасности дорожного движения и страхования. Подробнее об истории создания технологии Mizagene – здесь." => ["en" => "This is not a startup – the technology has been around for over 17 years. It is already widely used in the field of road safety and insurance. <a href='/about-technology'>Read more</a> about the history of the creation of Mizagene technology here.", "ru" => "Это не стартап – технологии более 17 лет. Она уже широко применяется в сфере безопасности дорожного движения и страхования. Подробнее об истории создания технологии Mizagene – <a href='/about-technology'>здесь</a>."],
     "Широкие возможности на B2B рынке" => ["en" => "Extensive opportunities in the B2B market", "ru" => "Широкие возможности на B2B рынке"],
     "Технология широко применима во всех сферах деятельности человека: HR, менеджмент, маркетинг, безопасность, спорт, обучение, личные отношения, развитие талантов и т.д. Каждая из названных ниш – это обширный рынок, не имеющий языковых и географических ограничений для продвижения." => ["en" => "The Technology is widely applicable in all areas of human activity: HR, management, marketing, security, sports, training, personal relationships, talent development, etc. Each of these niches is a vast market that does not have language and geographical restrictions for promotion.", "ru" => "Технология широко применима во всех сферах деятельности человека: HR, менеджмент, маркетинг, безопасность, спорт, обучение, личные отношения, развитие талантов и т.д. Каждая из названных ниш – это обширный рынок, не имеющий языковых и географических ограничений для продвижения."],
     "Высокая рентабельность на B2C рынке" => ["en" => "High profitability in the B2C market", "ru" => "Высокая рентабельность на B2C рынке"],
@@ -1319,17 +1319,17 @@ $data = [
     "Варианты инвестиций" => ["en" => "Investment options", "ru" => "Варианты инвестиций"],
 
     "Процентный заем под гарантии" => ["en" => "Guaranteed loan", "ru" => "Процентный заем под гарантии"],
-    "Вы вкладываете деньги под 50%-70% годовых (зависит от объема инвестиций)." => ["en" => "You invest money at 20% -50% per annum (depending on the amount of investment).", "ru" => "Вы вкладываете деньги под 50%-70% годовых (зависит от объема инвестиций)."],
+    "Вы вкладываете деньги под 50%-70% годовых (зависит от объема инвестиций)." => ["en" => "You invest money at 20% -50% per annum (depending on the amount of investment).", "ru" => "Вы вкладываете деньги под 20%-50% годовых (зависит от объема инвестиций)."],
     "Минимальный пакет – 200.000 USD" => ["en" => "Minimum package - 200.000 USD", "ru" => "Минимальный пакет – 200.000 USD"],
     "Долевое участие" => ["en" => "Shareholding", "ru" => "Долевое участие"],
     "В зависимости от объема инвестиций, Вы получаете % от бизнеса, который может составлять от 5 до 30%." => ["en" => "Depending on the amount of investment, you receive a share of the business, which can range from 5 to 30%.", "ru" => "В зависимости от объема инвестиций, Вы получаете % от бизнеса, который может составлять от 5 до 30%."],
-    "До 01 июля 2023 года в качестве бонуса мы предоставим Вам Welcome Shar Warranty – гарантию долевого участия во всех мобильных приложениях, разработанных с использованием технологии в будущем." => ["en" => "Until July 01, 2023, as a bonus, we will provide you with a Welcome Share Warranty - a guarantee of equity participation in all mobile applications developed using the technology in the future", "ru" => "До 01 июля 2023 года в качестве бонуса мы предоставим Вам Welcome Shar Warranty – гарантию долевого участия во всех мобильных приложениях, разработанных с использованием технологии в будущем."],
+    "До 01 июля 2023 года в качестве бонуса мы предоставим Вам Welcome Shar Warranty – гарантию долевого участия во всех мобильных приложениях, разработанных с использованием технологии в будущем." => ["en" => "Until July 01, 2023, as a bonus, we will provide you with a <b>Welcome Share Warranty</b> - a guarantee of equity participation in all mobile applications developed using the technology in the future", "ru" => "До 01 июля 2023 года в качестве бонуса мы предоставим Вам <b>Welcome Shar Warranty</b> – гарантию долевого участия во всех мобильных приложениях, разработанных с использованием технологии в будущем."],
     "Долевое участие с гарантией выкупа" => ["en" => "Shareholding with a buyback guarantee", "ru" => "Долевое участие с гарантией выкупа"],
     "В зависимости от объема инвестиций, Вы получаете % от бизнеса с гарантией выкупа Компанией по заранее оговоренной цене." => ["en" => "Depending on the amount of investment, you receive a share of the business with a guarantee of repurchase by the Company at a predetermined price.", "ru" => "В зависимости от объема инвестиций, Вы получаете % от бизнеса с гарантией выкупа Компанией по заранее оговоренной цене."],
     "Право на получение дивидендов до выкупа, разумеется, остается за Вами. Срок выкупа обсуждается дополнительно." => ["en" => "The right to receive dividends before share buyback, of course, remains with you. The terms will be discussed additionally.", "ru" => "Право на получение дивидендов до выкупа, разумеется, остается за Вами. Срок выкупа обсуждается дополнительно."],
     "Подать заявку можете по этой форме. Мы свяжемся с Вами в ближайшее время, вышлем презентацию и бизнес-план" => ["en" => "You can apply using this form. We will contact you shortly and send you a presentation and a business plan", "ru" => "Подать заявку можете по этой форме. Мы свяжемся с Вами в ближайшее время, вышлем презентацию и бизнес-план"],
 
-    "Клиентский отдел" => ["en" => "Business Development department", "ru" => "Клиентский отдел"],
+    "Клиентский отдел" => ["en" => "Business Development department", "ru" => "Отдел Развития"],
     "Готовы сделать первый шаг к сотрудничеству? Заполните форму ниже, выберите формат и в поле «комментарий» напишите суть вашего запроса. Мы оперативно свяжемся с Вами и обсудим все возможные варианты сотрудничества." => ["en" => "Ready to take the first step towards cooperation? Fill out the form below, select the format and write the essence of your request in the \"comment\" field. We will promptly contact you and discuss all possible options for cooperation.", "ru" => "Готовы сделать первый шаг к сотрудничеству? Заполните форму ниже, выберите формат и в поле «комментарий» напишите суть вашего запроса. Мы оперативно свяжемся с Вами и обсудим все возможные варианты сотрудничества."],
 
     "Имя Фамилия*" => ["en" => "Name Surname*", "ru" => "Имя Фамилия*"],
@@ -1484,7 +1484,7 @@ $data = [
     "процессинга информации в рамках KYC" => ["en" => "information processing within the framework of KYC", "ru" => "процессинга информации в рамках KYC"],
     "Обработка документа" => ["en" => "Document processing", "ru" => "Обработка документа"],
     "Сбор биометрической информации в рамках фото и видео съемки" => ["en" => "Collection of biometric information within the framework of photo and video shooting", "ru" => "Сбор биометрической информации в рамках фото и видео съемки"],
-    "Сопоставление фото с документом (FaceMatching)" => ["en" => "Matching a photo with a document (Face Matching)", "ru" => "Сопоставление фото с документом (FaceMatching)"],
+    "Сопоставление фото с документом (FaceMatching)" => ["en" => "Matching a photo with a document (Face Matching)", "ru" => "Сопоставление фото с документом (Face Matching)"],
     "Проверка по AML (Anti-Money Laundering) и другим базам" => ["en" => "Checking against AML (Anti-Money Laundering) and other bases", "ru" => "Проверка по AML (Anti-Money Laundering) и другим базам"],
     "(в некоторых случаях) обеспечение OTP входа в сервис через биометрическую верификацию лица клиента" => ["en" => "(in some cases) providing OTP login to the service through biometric verification of the client's face", "ru" => "(в некоторых случаях) обеспечение OTP входа в сервис через биометрическую верификацию лица клиента"],
 
@@ -1499,7 +1499,7 @@ $data = [
 
     "Чего" => ["en" => "What ", "ru" => "Чего"],
     "ни одна KYC система" => ["en" => "no KYC system in the world ", "ru" => "ни одна KYC система"],
-    " в мире дать вам не сможет:" => ["en" => "can give you", "ru" => " в мире дать вам не сможет:"],
+    " в мире дать вам не сможет:" => ["en" => "can give you", "ru" => " в мире дать вам не сможет"],
     "Определение целевого клиента уже на этапе верификации" => ["en" => "Definition of the target client already at the stage of verification", "ru" => "Определение целевого клиента уже на этапе верификации"],
     "Предиктивный анализ поведения клиента в вашей системе" => ["en" => "Predictive analysis of client behavior in your system", "ru" => "Предиктивный анализ поведения клиента в вашей системе"],
     "Отраслевой скоринг рисков (разработанный под требования Вашей отрасли)" => ["en" => "Industry risk scoring (tailored to suit your industry)", "ru" => "Отраслевой скоринг рисков (разработанный под требования Вашей отрасли)"],
@@ -1539,14 +1539,116 @@ $data = [
     "Только обезличенные данные" => ["en" => "Only depersonalized data", "ru" => "Только обезличенные данные"],
     "Для обезличенных данных о лице субъекта (координаты контрольных точек и их расстояние относительно друг друга) используется тот же программный код на базе AI, что и при создании визуальных эффектов наложения. Это решение было продиктовано необходимостью быть максимально «прозрачными» в случае использования нашей Технологии с размещением части программного кода на серверах корпоративных пользователей." => ["en" => "Anonymized data about the face of the subject (the coordinates of the control points and their distance from each other) uses the same AI-based program code as when creating the visual effects of the overlay. This decision was dictated by the need to be as \"transparent\" as possible in the case of using our Technology with the placement of a part of the program code on the servers of corporate users.", "ru" => "Для обезличенных данных о лице субъекта (координаты контрольных точек и их расстояние относительно друг друга) используется тот же программный код на базе AI, что и при создании визуальных эффектов наложения. Это решение было продиктовано необходимостью быть максимально «прозрачными» в случае использования нашей Технологии с размещением части программного кода на серверах корпоративных пользователей."],
     "Варианты поствки ПО" => ["en" => "Software delivery options", "ru" => "Варианты поствки ПО"],
-    "В зависимости от размеров компаний, а также целей, которые они преследуют, для корпоративных решений мы предоставляем 2 варианта поставки технологии:" => ["en" => "Depending on the size of companies, as well as the goals they pursue, for corporate solutions we provide 2 options for supplying technology:", "ru" => "В зависимости от размеров компаний, а также целей, которые они преследуют, для корпоративных решений мы предоставляем 2 варианта поставки технологии:"],
+    "В зависимости от размеров компаний, а также целей, которые они преследуют, для корпоративных решений мы предоставляем 2 варианта поставки технологии:" => ["en" => "Depending on the size of companies, as well as the goals they pursue, for corporate solutions we provide 3 options for supplying technology:", "ru" => "В зависимости от размеров компаний, а также целей, которые они преследуют, для корпоративных решений мы предоставляем 3 варианта поставки технологии:"],
     "Клиент или Партнер интегрирует нашу систему со своим программным обеспечением и получает результаты скоринга прямо в нем." => ["en" => "The Client or Partner integrates our system with their software and receives the scoring results directly in it.", "ru" => "Клиент или Партнер интегрирует нашу систему со своим программным обеспечением и получает результаты скоринга прямо в нем."],
     "инсталлируется на сервере Клиента." => ["en" => "is installed on the Client's server.", "ru" => "инсталлируется на сервере Клиента."],
     "Фотографии субъектов анализа остаются на этом сервере без передачи нам. SDK от Youmee  передает всю необходимую, но при этом обезличенную информацию о контрагенте в виде JSON файла с координатами контрольных точек на лице. Результаты анализа посредством API передаются в систему Клиента." => ["en" => "Photos of the subjects of analysis remain on this server without being transferred to us. SDK by Youmee transmits all the necessary, but at the same time depersonalized information about the counterparty in the form of a JSON file with coordinates of control points on the face. The results of the analysis are transmitted to the Client's system via the API.", "ru" => "Фотографии субъектов анализа остаются на этом сервере без передачи нам. SDK от Youmee  передает всю необходимую, но при этом обезличенную информацию о контрагенте в виде JSON файла с координатами контрольных точек на лице. Результаты анализа посредством API передаются в систему Клиента."],
     "Клиентский отдел2" => ["en" => "Customer Department", "ru" => "Клиентский отдел"],
     "Продукт Youmee" => ["en" => "Youmee product", "ru" => "Продукт Youmee"],
 
-    //---------------------
+    "Черты характера" => ["en" => "Character traits", "ru" => "Черты характера"],
+    "Зависимости" => ["en" => "Dependencies", "ru" => "Зависимости"],
+    "Отношение к деньгам и ресурсам" => ["en" => "Attitude to money and resources", "ru" => "Отношение к деньгам и ресурсам"],
+    "Закон" => ["en" => "Law", "ru" => "Закон"],
+    "Психика и неврология" => ["en" => "Psyche and neurology", "ru" => "Психика и неврология"],
+    "Игра" => ["en" => "Game", "ru" => "Игра"],
+
+    "Экстраверсия" => ["en" => "Extraversion", "ru" => "Экстраверсия"],
+    "Интроверсия" => ["en" => "Introversion", "ru" => "Интроверсия"],
+    "Смелость" => ["en" => "Courage", "ru" => "Смелость"],
+    "Храбрость" => ["en" => "Bravery", "ru" => "Храбрость"],
+    "Упорство" => ["en" => "Perseverance", "ru" => "Упорство"],
+    "Настойчивость" => ["en" => "Persistence", "ru" => "Настойчивость"],
+    "Соблюдение договоренностей" => ["en" => "Compliance with agreements", "ru" => "Соблюдение договоренностей"],
+    "Расчетливость" => ["en" => "Prudence", "ru" => "Расчетливость"],
+    "Терпение" => ["en" => "Patience", "ru" => "Терпение"],
+    "Решительность" => ["en" => "Determination", "ru" => "Решительность"],
+    "Сила воли (в борьбе с соблазнами)" => ["en" => "Willpower (in the fight against temptations)", "ru" => "Сила воли (в борьбе с соблазнами)"],
+    "Сила воли (в достижении поставленных целей)" => ["en" => "Willpower (in achieving goals)", "ru" => "Сила воли (в достижении поставленных целей)"],
+    "Сила воли (при приложении физических усилий)" => ["en" => "Willpower (when applying physical effort)", "ru" => "Сила воли (при приложении физических усилий)"],
+    "Жадность" => ["en" => "Greed", "ru" => "Жадность"],
+    "Зависть" => ["en" => "Envy", "ru" => "Зависть"],
+    "Максимализм" => ["en" => "Maximalism", "ru" => "Максимализм"],
+    "Фатализм" => ["en" => "Fatalism", "ru" => "Фатализм"],
+    "Склонность обвинять других в собственных проблемах" => ["en" => "Tendency to blame others for one's own problems", "ru" => "Склонность обвинять других в собственных проблемах"],
+    "Чувство вины (брать вину на себя за свои и чужие ошибки)" => ["en" => "Feelings of guilt (take the blame for your own and others' mistakes)", "ru" => "Чувство вины (брать вину на себя за свои и чужие ошибки)"],
+    "Верность принципам и убеждениям" => ["en" => "Loyalty to principles and beliefs", "ru" => "Верность принципам и убеждениям"],
+
+    "Игромания (гемблинг, лудомания)" => ["en" => "Gambling (gambling, ludomania)", "ru" => "Игромания (гемблинг, лудомания)"],
+    "Предрасположенность к алкогольной зависимости" => ["en" => "Predisposition to alcohol addiction", "ru" => "Предрасположенность к алкогольной зависимости"],
+    "Предрасположенность к наркотической зависимости (легкие наркотики)" => ["en" => "Predisposition to drug addiction (soft drugs)", "ru" => "Предрасположенность к наркотической зависимости (легкие наркотики)"],
+    "Предрасположенность к наркотической зависимости (тяжелые наркотики)" => ["en" => "Predisposition to drug addiction (hard drugs)", "ru" => "Предрасположенность к наркотической зависимости (тяжелые наркотики)"],
+    "Адреналиновая зависимость" => ["en" => "Adrenaline addiction", "ru" => "Адреналиновая зависимость"],
+    "Зависимость от мнения супруга/супруги" => ["en" => "Dependence on the opinion of the spouse", "ru" => "Зависимость от мнения супруга/супруги"],
+    "Зависимость от мнения общества" => ["en" => "Dependence on public opinion", "ru" => "Зависимость от мнения общества"],
+
+    "Стремление к роскоши" => ["en" => "Pursuit of luxury", "ru" => "Стремление к роскоши"],
+    "Стремление к быстрому обогащению" => ["en" => "Striving for a quick get-rich-quick", "ru" => "Стремление к быстрому обогащению"],
+    "Расточительство" => ["en" => "Waste", "ru" => "Расточительство"],
+    "Чрезмерное потребление ресурсов" => ["en" => "Excessive resource consumption", "ru" => "Чрезмерное потребление ресурсов"],
+    "Спонтанные покупки" => ["en" => "Spontaneous purchases", "ru" => "Спонтанные покупки"],
+    "Умение распоряжаться деньгами" => ["en" => "Ability to manage money", "ru" => "Умение распоряжаться деньгами"],
+    "Умение торговаться" => ["en" => "Bargaining", "ru" => "Умение торговаться"],
+    "Талант к накопительству" => ["en" => "Talent for hoarding", "ru" => "Талант к накопительству"],
+
+    "Следование закону (может ли человек преступить закон в случае необходимости)" => ["en" => "Following the law (whether a person can break the law if necessary) ", "ru" => "Следование закону (может ли человек преступить закон в случае необходимости)"],
+    "Предрасположенность преступить закон с целью быстрого обогащения" => ["en" => "Tendency to break the law to get rich quick", "ru" => "Предрасположенность преступить закон с целью быстрого обогащения"],
+    "Талант к обману, фальсификации и мошенничеству" => ["en" => "Talent for deceit, falsification and fraud", "ru" => "Талант к обману, фальсификации и мошенничеству"],
+    "Вероятность незаконного использования дополнительного программного обеспечения" => ["en" => "Possibility of illegal use of additional software", "ru" => "Вероятность незаконного использования дополнительного программного обеспечения"],
+    "Предрасположенность к нечестной игре" => ["en" => "Predisposition to foul play", "ru" => "Предрасположенность к нечестной игре"],
+
+    "Психическая выносливость" => ["en" => "Mental endurance", "ru" => "Психическая выносливость"],
+    "Физическая выносливость" => ["en" => "Physical Endurance", "ru" => "Физическая выносливость"],
+    "Предрасположенность к меланхолии" => ["en" => "Predisposition to melancholy", "ru" => "Предрасположенность к меланхолии"],
+    "Предрасположенность к психопатии" => ["en" => "Predisposition to psychopathy", "ru" => "Предрасположенность к психопатии"],
+    "Предрасположенность к социопатии" => ["en" => "Predisposition to Sociopathy", "ru" => "Предрасположенность к социопатии"],
+    "Предрасположенность к эпилепсии" => ["en" => "Predisposition to epilepsy", "ru" => "Предрасположенность к эпилепсии"],
+    "Предрасположенность к быстрому эмоциональному выгоранию" => ["en" => "Predisposition to rapid emotional burnout", "ru" => "Предрасположенность к быстрому эмоциональному выгоранию"],
+    "Невротизм" => ["en" => "Neuroticism", "ru" => "Невротизм"],
+    "Эмоциональная уязвимость" => ["en" => "Emotional Vulnerability", "ru" => "Эмоциональная уязвимость"],
+    "Нервная возбудимость" => ["en" => "Nervous excitability", "ru" => "Нервная возбудимость"],
+    "Контроль импульсов (умение сопротивляться спонтанным желаниям)" => ["en" => "Impulse control (ability to resist spontaneous desires)", "ru" => "Контроль импульсов (умение сопротивляться спонтанным желаниям)"],
+    "Одержимость идеей" => ["en" => "Obsession with an idea", "ru" => "Одержимость идеей"],
+    "Предрасположенность к не желаемому одиночеству" => ["en" => "Predisposition to unwanted loneliness", "ru" => "Предрасположенность к не желаемому одиночеству"],
+    "Предрасположенность к тоске (душевной тревоге в совокупности с грустью и скукой)" => ["en" => "Predisposition to melancholy (mental anxiety combined with sadness and boredom)", "ru" => "Предрасположенность к тоске (душевной тревоге в совокупности с грустью и скукой)"],
+    "Предрасположенность к самоуничижению (неудовлетворенность собой)" => ["en" => "Predisposition to self-abasement (dissatisfaction with oneself)", "ru" => "Предрасположенность к самоуничижению (неудовлетворенность собой)"],
+    "Самооценка" => ["en" => "Self-esteem", "ru" => "Самооценка"],
+    "Бегство от проблем" => ["en" => "Escape from problems", "ru" => "Бегство от проблем"],
+    "Эмоциональная пустота" => ["en" => "Emotional emptiness", "ru" => "Эмоциональная пустота"],
+    "Упрямство (иррациональное настаивание на своем мнении)" => ["en" => "Stubbornness (irrational insistence on one's opinion)", "ru" => "Упрямство (иррациональное настаивание на своем мнении)"],
+    "Лень" => ["en" => "Laziness", "ru" => "Лень"],
+    "Склонность к мистицизму (вера в потусторонние силы, символы)" => ["en" => "A penchant for mysticism (belief in otherworldly forces, symbols)", "ru" => "Склонность к мистицизму (вера в потусторонние силы, символы)"],
+    "Принятие решения на основе веры в потусторонние силы и влияния символизма" => ["en" => "Making a decision based on belief in otherworldly forces and the influence of symbolism", "ru" => "Принятие решения на основе веры в потусторонние силы и влияния символизма"],
+    "Склонность к сублимации эмоций в какую-то деятельность" => ["en" => "Tendency to sublimate emotions into some kind of activity", "ru" => "Склонность к сублимации эмоций в какую-то деятельность"],
+    "Уязвимость по причине презрения других в отношении себя" => ["en" => "Vulnerability due to others' contempt for themselves", "ru" => "Уязвимость по причине презрения других в отношении себя"],
+    "Внушаемость" => ["en" => "Suggestibility", "ru" => "Внушаемость"],
+    "Скорость доведения до состояния раздражительности (вспыльчивость)" => ["en" => "The speed of bringing to a state of irritability (temper)", "ru" => "Скорость доведения до состояния раздражительности (вспыльчивость)"],
+    "Скорость доведения до состояния гнева" => ["en" => "The speed of bringing to a state of anger", "ru" => "Скорость доведения до состояния гнева"],
+    "Скорость доведения до состояния аффекта" => ["en" => "The speed of bringing to the state of passion", "ru" => "Скорость доведения до состояния аффекта"],
+
+    "Азарт" => ["en" => "Excitement", "ru" => "Азарт"],
+    "Авантюризм" => ["en" => "Adventurism", "ru" => "Авантюризм"],
+    "Принятие риска" => ["en" => "Risk taking", "ru" => "Принятие риска"],
+    "Талант считать карты" => ["en" => "Ability to count cards", "ru" => "Талант считать карты"],
+    "Усидчивость" => ["en" => "perseverance", "ru" => "Усидчивость"],
+    "Чувство меры в игре (контроль жадности, умение вовремя остановиться, оказавшись в плюсе)" => ["en" => "Sense of proportion in the game (control of greed, the ability to stop in time, being in the black)", "ru" => "Чувство меры в игре (контроль жадности, умение вовремя остановиться, оказавшись в плюсе)"],
+    "Чувство меры в игре (контроль над желанием отыграться, оказавшись в глубоком минусе)" => ["en" => "Sense of proportion in the game (control over the desire to recoup, being in a deep minus)", "ru" => "Чувство меры в игре (контроль над желанием отыграться, оказавшись в глубоком минусе)"],
+    "Желание форсировать ход игры (игра ва-банк)" => ["en" => "The desire to force the course of the game (all-in game)", "ru" => "Желание форсировать ход игры (игра ва-банк)"],
+    "Восприимчивость к визуальным манипуляциям, сулящим выгоду" => ["en" => "Susceptibility to visual manipulation that promises benefits", "ru" => "Восприимчивость к визуальным манипуляциям, сулящим выгоду"],
+    "Восприимчивость к звуковым манипуляциям, сулящим выгоду" => ["en" => "Susceptibility to sound manipulation that promises benefits", "ru" => "Восприимчивость к звуковым манипуляциям, сулящим выгоду"],
+    "Дисциплина в игре (следование заранее составленному плану)" => ["en" => "Discipline in the game (following a predetermined plan)", "ru" => "Дисциплина в игре (следование заранее составленному плану)"],
+    "Импульсное поведение во время игры" => ["en" => "Impulse behavior while playing", "ru" => "Импульсное поведение во время игры"],
+    "Отношение к необходимости принятия решения в условиях ограниченного времени" => ["en" => "Attitude to the need to make a decision in a limited time", "ru" => "Отношение к необходимости принятия решения в условиях ограниченного времени"],
+    "Предрасположенность к аркадным играм" => ["en" => "Predisposition to arcade games", "ru" => "Предрасположенность к аркадным играм"],
+    "Предрасположенность к беттингу" => ["en" => "Predisposition to betting", "ru" => "Предрасположенность к беттингу"],
+    "Предрасположенность к онлайн слотам" => ["en" => "Predisposition to online slots", "ru" => "Предрасположенность к онлайн слотам"],
+    "Предрасположенность к карточным играм" => ["en" => "Predisposition to card games", "ru" => "Предрасположенность к карточным играм"],
+    "Предрасположенность к осторожной игре" => ["en" => "Predisposition to play cautiously", "ru" => "Предрасположенность к осторожной игре"],
+    "Предрасположенность к крупным ставкам" => ["en" => "Predisposition to big bets", "ru" => "Предрасположенность к крупным ставкам"],
+
+
+
+//---------------------
     //Youmee HR
     "Сервис Youmee Tech для HR отделов и кадровых агентств  –" => ["en" => "The Youmee Tech service for HR departments and recruitment agencies ", "ru" => "Сервис Youmee Tech для HR отделов и кадровых агентств  –"],
     "ваша личная система кадровой безопасности" => ["en" => "is your personal personnel security system ", "ru" => "ваша личная система кадровой безопасности"],
@@ -1566,7 +1668,7 @@ $data = [
     "Найм эффективных кадров" => ["en" => "Effective hiring", "ru" => "Найм эффективных кадров"],
     "Каждая вакансия подразумевает перечень критически важных особенностей личности, необходимых для найма на ту или иную должность. И далеко не на все позиции нужен «хороший» в широком понимании слова человек. Каждая должность имеет свое представление идеального характера, и на сколько кандидат соответствует этому представлению, на сколько он «задержится» у Вас и как он поладит с коллективом – вот неочевидные, но важнейшие критерии выбора." => ["en" => "Each vacancy implies a list of critical personality traits necessary for hiring for a particular position. And not all positions require a “good” person in the broadest sense of the word. Each position has its own idea of an ideal character, and how much the candidate corresponds to this idea, how long he will “stay” with you and how he will get along with the team - these are non-obvious, but the most important selection criteria.", "ru" => "Каждая вакансия подразумевает перечень критически важных особенностей личности, необходимых для найма на ту или иную должность. И далеко не на все позиции нужен «хороший» в широком понимании слова человек. Каждая должность имеет свое представление идеального характера, и на сколько кандидат соответствует этому представлению,на сколько он «задержится» у Вас и как он поладит с коллективом – вот неочевидные, но важнейшие критерии выбора."],
 
-    "Группы параметров для анализа сотрудника/кандидата:" => ["en" => "Parameter groups for employee/candidate analysis", "ru" => "Группы параметров для анализа сотрудника/кандидата:"],
+    "Группы параметров для анализа сотрудника/кандидата:" => ["en" => "Parameter groups for employee/candidate analysis", "ru" => "Группы параметров для анализа сотрудника/кандидата"],
     "Группы автономного анализа" => ["en" => "Offline Analysis Groups", "ru" => "Группы автономного анализа"],
     "Группы комбинированного анализа" => ["en" => "Combined Analysis Groups", "ru" => "Группы комбинированного анализа"],
 

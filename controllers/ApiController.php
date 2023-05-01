@@ -17,8 +17,8 @@ class ApiController extends Controller {
     public $enableCsrfValidation = false;
 
     public function beforeAction($action) {
-        // Yii::$app->response->format = Response::FORMAT_JSON;
-        // error_reporting(0);
+         Yii::$app->response->format = Response::FORMAT_JSON;
+         error_reporting(0);
         $secret = '2YUmrIyqgY8wyHbcZPoaWw6YsiSQFS';
         $auth_header = $_SERVER['HTTP_AUTHORIZATION'];
         if (preg_match('/Bearer\s(\S+)/', $auth_header, $matches)) {
@@ -53,13 +53,11 @@ class ApiController extends Controller {
             chmod($uploadFile, 0755);
 
             $command = 'cd /var/www/html/Mizagene/python/landmarks/ && /usr/bin/python index.py ' . $uploadFile . ' 2>&1';
-            var_dump($command);die();
-            exec($command);
+            $output = exec($command);
             // if ($returnCode !== 0) {
             //     var_dump($outputArray);
             //     var_dump($returnCode);
             // }
-            // var_dump($output);
 
             return json_encode(file_get_contents(\Yii::getAlias('@webroot') . DS . '..' . DS . 'python' . DS . 'landmarks' . DS . 'json' . DS . $file_name . '.json'));
         } else {
