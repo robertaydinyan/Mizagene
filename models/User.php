@@ -22,6 +22,7 @@ use yii\web\IdentityInterface;
  * @property string $company_link
  * @property string $phone
  * @property int $status
+ * @property int $year_of_birth
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -64,6 +65,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'company_link' => 'company_link',
             'phone' => 'phone',
             'status' => 'status',
+            'year_of_birth' => 'Year of birth'
         ];
     }
 

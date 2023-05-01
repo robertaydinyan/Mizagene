@@ -12,12 +12,18 @@
     window.addEventListener('load', function () {
         $(document).ready(function () {
             $('#subjectsTable').DataTable({
-                dom: 'Qfrtip',
+                // dom: 'Qfrtip',
                 "bLengthChange": false,
+                language: {
+                    paginate: {
+                        previous: '<',
+                        next: '>',
+                    }
+                }
             });
 
-            $('.dtsb-titleRow').remove();
-            $('.dtsb-searchBuilder').detach().appendTo('.filterBox');
+            // $('.dtsb-titleRow').remove();
+            // $('.dtsb-searchBuilder').detach().appendTo('.filterBox');
             // let parent = $('.dataTables_filter').parent().parent();
             // $('.dataTables_filter').detach().appendTo($(parent));
         });

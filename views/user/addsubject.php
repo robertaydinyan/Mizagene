@@ -106,16 +106,19 @@ use yii\helpers\Url;
 
 <div class="mb-3 mx-auto px-0">
     <div class="row mx-auto px-0" style="padding-top: 25px!important">
-<!--        <h3 style="font-family: 'Nunito Sans', sans-serif;">New Profile</h3>-->
-        <h3 class="text-center">Hi <span style="color: rgb(210, 58, 225)"><?= 'George' ?></span>! Let's start.</h3>
-        <p style="font-size: 19px" class="text-center">Whom shall we analyze first?</p>
-        <div class="d-flex justify-content-center px-0 mb-5">
+        <h3>Add New Subject for analysis</h3>
+<!--        <h3 class="text-center">Hi <span style="color: rgb(210, 58, 225)">--><?//= 'George' ?><!--</span>! Let's start.</h3>-->
+        <div class="d-flex justify-content-start px-0 mb-5 align-items-center" style="margin-left: 12px; margin-top: 12px">
+<!--            <p style="font-size: 19px" class="text-center me-3">Whom shall we analyze first?</p>-->
             <ul class="nav nav-pills mb-3 subject-pills" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="pills-me-tab" data-bs-toggle="pill" data-bs-target="#pills-me" type="button" role="tab" aria-controls="pills-me" aria-selected="true">Me</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-other-tab" data-bs-toggle="pill" data-bs-target="#pills-other" type="button" role="tab" aria-controls="pills-other" aria-selected="false">Other Subject</button>
+                    <button class="nav-link" id="pills-other-tab" data-bs-toggle="pill" data-bs-target="#pills-other" type="button" role="tab" aria-controls="pills-other" aria-selected="false" style="border-right: none; border-left: none">Other Subject</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-multiple-tab" type="button" role="tab" aria-controls="pills-other" aria-selected="false">Multiple Subjects</button>
                 </li>
             </ul>
         </div>
@@ -132,7 +135,7 @@ use yii\helpers\Url;
                                 </div>
                                 <img class="img-fluid align-self-center my-auto" src="/images/facial-recognition_1.png" alt="" style="" width="300" >
                                 <div class="d-flex justify-content-center align-items-center" style="height: 50px;">
-                                    <button class="btn fillButton mx-auto bg-dark w-100 h-100 d-flex justify-content-center align-items-center" style="border-radius: unset!important;" data-bs-toggle="modal" data-bs-target="#photoRequirementsModal"><i class="fa-solid fa-triangle-exclamation pe-3" style="font-size: 25px; cursor: pointer; color: #fff;"></i>Photo requirements</button>
+                                    <button class="btn fillButton mx-auto bg-dark w-100 h-100 d-flex justify-content-center align-items-center" style="border-radius: unset!important;border-bottom-left-radius: 5px!important; border-bottom-right-radius: 5px!important;" data-bs-toggle="modal" data-bs-target="#photoRequirementsModal"><i class="fa-solid fa-triangle-exclamation pe-3" style="font-size: 25px; cursor: pointer; color: #fff;"></i>Photo requirements</button>
                                 </div>
                             </div>
                         </div>
@@ -176,8 +179,8 @@ use yii\helpers\Url;
                         </div>
 
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-flex flex-column mx-auto px-0 ps-1" style="margin: 0!important;  z-index: 10; position: relative">
-                            <div class="mb-4" style="border-radius: 5px; border: 1px dashed grey; width: 85%; padding-bottom: 51%!important;">
-                                <div class="d-flex justify-content-center align-items-center" style="background: black; height: 50px;">
+                            <div class="mb-4" style="border-radius: 5px; border: 1px dashed grey; width: 330px; padding-bottom: 51%!important;">
+                                <div class="d-flex justify-content-center align-items-center" style="background: black; height: 50px; border-top-left-radius: 5px; border-top-right-radius: 5px">
                                     <h6 style="font-family: 'Nunito Sans', sans-serif; color: white; margin: 0"><i class="fa-solid fa-id-card pe-3" style="color: white"></i>Available Reports</h6>
                                 </div>
 
@@ -208,7 +211,7 @@ use yii\helpers\Url;
 
                             </div>
 
-                            <div style="width: 85%; margin-top: auto; margin-bottom: 20px; text-align: end;">
+                            <div style="width: 330px; margin-top: auto; margin-bottom: 20px; text-align: end;">
 <!--                                <p >Your photo will be entered into the automatic process for review and approval.-->
 <!--                                    So please, check one more time if your photo meets our requirements and get the result.</p>-->
                                 <button class="btn fillButton mx-auto" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="padding: 10px 17px!important;" disabled>Get the Reports</button>
@@ -227,7 +230,7 @@ use yii\helpers\Url;
                                 </div>
                                 <img class="img-fluid align-self-center my-auto" src="/images/facial-recognition_1.png" alt="" style="" width="300" >
                                 <div class="d-flex justify-content-center align-items-center" style="height: 50px;">
-                                    <button class="btn fillButton mx-auto bg-dark w-100 h-100 d-flex justify-content-center align-items-center" style="border-radius: unset!important;" data-bs-toggle="modal" data-bs-target="#photoRequirementsModal"><i class="fa-solid fa-triangle-exclamation pe-3" style="font-size: 25px; cursor: pointer; color: #fff;"></i>Photo requirements</button>
+                                    <button class="btn fillButton mx-auto bg-dark w-100 h-100 d-flex justify-content-center align-items-center" style="border-radius: unset!important;border-bottom-left-radius: 5px!important; border-bottom-right-radius: 5px!important;" data-bs-toggle="modal" data-bs-target="#photoRequirementsModal"><i class="fa-solid fa-triangle-exclamation pe-3" style="font-size: 25px; cursor: pointer; color: #fff;"></i>Photo requirements</button>
                                 </div>
                             </div>
                         </div>
@@ -271,8 +274,8 @@ use yii\helpers\Url;
                         </div>
 
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-flex flex-column mx-auto px-0 ps-1" style="margin: 0!important;  z-index: 10; position: relative">
-                            <div class="mb-4" style="border-radius: 5px; border: 1px dashed grey; width: 85%; padding-bottom: 51%!important;">
-                                <div class="d-flex justify-content-center align-items-center" style="background: black; height: 50px;">
+                            <div class="mb-4" style="border-radius: 5px; border: 1px dashed grey; width: 330px; padding-bottom: 51%!important;">
+                                <div class="d-flex justify-content-center align-items-center" style="background: black; height: 50px; border-top-left-radius: 5px; border-top-right-radius: 5px">
                                     <h6 style="font-family: 'Nunito Sans', sans-serif; color: white; margin: 0"><i class="fa-solid fa-id-card pe-3" style="color: white"></i>Available Reports</h6>
                                 </div>
 
@@ -303,7 +306,7 @@ use yii\helpers\Url;
 
                             </div>
 
-                            <div style="width: 85%; margin-top: auto; margin-bottom: 20px; text-align: end;">
+                            <div style="width: 330px; margin-top: auto; margin-bottom: 20px; text-align: end;">
                                 <!--                                <p >Your photo will be entered into the automatic process for review and approval.-->
                                 <!--                                    So please, check one more time if your photo meets our requirements and get the result.</p>-->
                                 <button class="btn fillButton mx-auto" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="padding: 10px 17px!important;" disabled>Get the Reports</button>

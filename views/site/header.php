@@ -1,6 +1,13 @@
 <?php
 include 'translations.php';
 use yii\helpers\Url;
+use yii\helpers\Html;
+
+/** @var yii\web\View $this */
+/** @var yii\bootstrap5\ActiveForm $form */
+/** @var app\models\LoginForm $model */
+
+use yii\bootstrap5\ActiveForm;
 
 ?>
 <!DOCTYPE html>
@@ -197,101 +204,129 @@ use yii\helpers\Url;
 
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <form action="/site/signup" method="post">
 
-                    <div class="form-floating mb-3">
-                        <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
-                        <label for="floatingInput"><?= $data['nickname'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
+                            <label for="floatingInput"><?= $data['nickname'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                            <?php if(isset($model) && $model->getErrors()['username']) { ?>
+                                <p class="error_feedback"><?= $model->getErrors()['username'][0] ?></p>
+                           <?php  } ?>
+                        </div>
 
-                    <div class="form-floating mb-3">
-                        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput"><?= $data['email'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput"><?= $data['email'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                        </div>
 
-                    <div class="form-floating mb-3">
-                        <select class="form-control select2" name="country">
-                            <option>Armenia</option>
-                        </select>
-                        <label for="floatingInput"><?= $data['country'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-control select2" name="country">
+                                <option>Armenia</option>
+                            </select>
+                            <label for="floatingInput"><?= $data['country'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                        </div>
 
-                    <div class="form-floating mb-3">
-                        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword"><?= $data['password'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword"><?= $data['password'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                        </div>
 
-                    <div class="form-floating mb-3">
-                        <input type="password" name="confirm_password" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword"><?= $data['confirm_password'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" name="password_repeat" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword"><?= $data['confirm_password'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                        </div>
 
+                        <input type="hidden" name="_csrf" value="<?= Yii::$app->getRequest()->getCsrfToken();?>">
+
+
+                        <div class="col-12 mt-3">
+                            <p class="">* <?= $data['signup_text1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></p>
+                        </div>
+                        <div class="col-6 mt-3">
+                            <button type="submit" class="btn fillButton"><?= $data['signup'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
+                        </div>
+
+                    </form>
                 </div>
 
+<!--                --------------------------------------------------------------------------->
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 
-                    <div class="form-floating mb-3">
-                        <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
-                        <label for="floatingInput"><?= $data['nickname'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput"><?= $data['email'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
+                    <form action="/site/signup" method="post">
+
+                        <div class="form-floating mb-3">
+                            <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
+                            <label for="floatingInput"><?= $data['nickname'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput"><?= $data['email'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                        </div>
 
 
-                    <div class="form-floating mb-3">
-                        <input type="text" name="company_name" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword"><?= $data['company_name'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <select class="form-control select2" name="country">
-                            <option>Armenia</option>
-                        </select>
-                        <label for="floatingInput"><?= $data['country'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" name="position" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput"><?= $data['position'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <select class="form-control select2" name="direction">
-                            <option>KYC решения (Youmee KYC)</option>
-                            <option>Управление персоналом (Youmee HR)</option>
-                            <option>Управление талантами (Youmee Child, Youmee Science, Youmee Sport)</option>
-                            <option>Партнерство (интеграция с вашим ПО)</option>
-                        </select>
-                        <label for="floatingInput"><?= $data['direction'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <select class="form-control select2" name="employees">
-                            <option>1-15</option>
-                            <option>15-50</option>
-                            <option>50-100</option>
-                            <option>100-250</option>
-                            <option>250-500</option>
-                            <option>500-1000</option>
-                            <option>более 1000</option>
-                        </select>
-                        <label for="floatingInput"><?= $data['employees'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" name="company_link" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput"><?= $data['company_link'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" name="phone" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput"><?= $data['phone'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="company_name" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword"><?= $data['company_name'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-control select2" name="country">
+                                <option>Armenia</option>
+                            </select>
+                            <label for="floatingInput"><?= $data['country'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="position" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput"><?= $data['position'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-control select2" name="direction">
+                                <option>KYC решения (Youmee KYC)</option>
+                                <option>Управление персоналом (Youmee HR)</option>
+                                <option>Управление талантами (Youmee Child, Youmee Science, Youmee Sport)</option>
+                                <option>Партнерство (интеграция с вашим ПО)</option>
+                            </select>
+                            <label for="floatingInput"><?= $data['direction'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-control select2" name="employees">
+                                <option>1-15</option>
+                                <option>15-50</option>
+                                <option>50-100</option>
+                                <option>100-250</option>
+                                <option>250-500</option>
+                                <option>500-1000</option>
+                                <option>более 1000</option>
+                            </select>
+                            <label for="floatingInput"><?= $data['employees'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="company_link" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput"><?= $data['company_link'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="phone" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput"><?= $data['phone'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                        </div>
 
-                    <div class="form-floating mb-3">
-                        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword"><?= $data['password'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" name="confirm_password" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword"><?= $data['confirm_password'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
-                    </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword"><?= $data['password'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" name="confirm_password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword"><?= $data['confirm_password'][isset($_GET['lang']) ? 'en' : 'ru'] ?></label>
+                        </div>
 
+                        <input type="hidden" name="is_company" value="1">
+                        <input type="hidden" name="_csrf" value="<?= Yii::$app->getRequest()->getCsrfToken();?>">
+
+                        <div class="col-12 mt-3">
+                            <p class="">* <?= $data['signup_text1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></p>
+                        </div>
+                        <div class="col-6 mt-3">
+                            <button type="submit" class="btn fillButton"><?= $data['signup'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
+                        </div>
+                    </form>
                 </div>
 
             </div>
@@ -302,12 +337,7 @@ use yii\helpers\Url;
 <!--                <label class="form-check-label" for="flexSwitchCheckDefault">--><?php //= $data['is_company'][isset($_GET['lang']) ? 'en' : 'ru'] ?><!--</label>-->
 <!--            </div>-->
 
-            <div class="col-12 mt-3">
-                <p class="">* <?= $data['signup_text1'][isset($_GET['lang']) ? 'en' : 'ru'] ?></p>
-            </div>
-            <div class="col-6 mt-3">
-                <button class="btn fillButton"><?= $data['signup'][isset($_GET['lang']) ? 'en' : 'ru'] ?></button>
-            </div>
+
         </div>
     </div>
 

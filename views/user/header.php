@@ -16,7 +16,7 @@ use yii\helpers\Url;
     <link href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.4/b-2.3.6/sb-1.4.2/sp-2.1.2/datatables.min.css" rel="stylesheet"/>
 </head>
 <header>
-    <nav class="navbar navbar-dark bg-light" style="height: 60px">
+    <nav class="navbar navbar-dark bg-light" style="height: 73px">
         <div class="container-fluid">
                 <a class="" style="margin-left: 33px" href="<?php
                 $lang = Yii::$app->request->get('lang');
@@ -27,13 +27,24 @@ use yii\helpers\Url;
 <!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">-->
 <!--                <span class="navbar-toggler-icon"></span>-->
 <!--            </button>-->
+                        <div class="dropdown me-3">
+                            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                                <span>Hi, <strong>George</strong>!</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end text-small shadow">
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            </ul>
+                        </div>
         </div>
     </nav>
 </header>
-<body>
-<div class="container-fluid row" style="height: 100vh">
-        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-flex flex-column flex-shrink-0 p-3 px-0 bg-light" >
-            <ul class="nav nav-pills flex-column mb-auto pt-3 sidebar">
+<body style="height: 100vh; display: flex; flex-direction: column">
+<div class="container-fluid row">
+        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-flex flex-column flex-shrink-0 p-3 pt-2 px-0 bg-light" style="width: 90px">
+            <ul class="nav nav-pills flex-column mb-auto sidebar">
                 <li class="nav-item text-center">
                     <a href="/add-subject" class="nav-link link-dark pe-2" aria-current="page">
                         <img src="/images/add-photo_<?= Yii::$app->controller->action->id == 'add-subject' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'add-subject' ? 'active' : '' ?>">
@@ -52,11 +63,6 @@ use yii\helpers\Url;
                 <li class="nav-item text-center">
                     <a href="#" class="nav-link link-dark pe-2">
                         <img src="/images/HR_<?= Yii::$app->controller->action->id == 'service' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'service' ? 'active' : '' ?>">
-                    </a>
-                </li>
-                <li class="nav-item text-center">
-                    <a href="#" class="nav-link link-dark pe-2">
-                        <img src="/images/add-photo_<?= Yii::$app->controller->action->id == 'service' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'service' ? 'active' : '' ?>">
                     </a>
                 </li>
             </ul>

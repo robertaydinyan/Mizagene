@@ -29,16 +29,6 @@ class SiteController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
-                    [
-                        'actions' => ['about'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    [
-                        'actions' => ['about'],
-                        'allow' => false,
-                        'roles' => ['?'],
-                    ]
                 ],
             ],
             'verbs' => [
@@ -93,7 +83,7 @@ class SiteController extends Controller
         }
 
         $model->password = '';
-        return $this->render('login', [
+        return $this->render('index', [
             'model' => $model,
         ]);
     }
@@ -101,22 +91,26 @@ class SiteController extends Controller
     public function actionSignup(){
         $model = new SignupForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->signup()){
-            return $this->redirect(Yii::$app->homeUrl);
+        $post = Yii::$app->request->post();
+        if (isset($post['is_company'])) {
+            $model = new SignupcompanyForm();
         }
 
-        return $this->render(view: 'signup', params: ['model' => $model]);
-    }
-
-    public function actionSignupcompany(){
-        $model = new SignupcompanyForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->signupcompany()){
+        if ($model->load($post, '') && $model->validate() && $model->signup()){
             return $this->redirect(Yii::$app->homeUrl);
         }
-
-        return $this->render(view: 'signupcompany', params: ['model' => $model]);
+        return $this->render('index', ['model' => $model]);
     }
+
+//    public function actionSignupcompany(){
+//        $model = new SignupcompanyForm();
+//
+//        if ($model->load(Yii::$app->request->post()) && $model->signupcompany()){
+//            return $this->redirect(Yii::$app->homeUrl);
+//        }
+//
+//        return $this->render(view: 'signupcompany', params: ['model' => $model]);
+//    }
 
     /**
      * Logout action.
@@ -219,4 +213,6 @@ class SiteController extends Controller
 //    {
 //        return $this->render('addprofile');
 //    }
+
+
 }

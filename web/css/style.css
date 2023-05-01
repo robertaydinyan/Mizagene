@@ -505,9 +505,83 @@ input[type="range"]:active::-webkit-slider-thumb {
     display: none!important;
 }
 
-.dataTables_filter {
-    text-align: start!important;
+.error_feedback {
+    font-size: .875em;
+    color: red;
 }
+
+.dataTables_wrapper .pagination .paginate_button.active a {
+    background-color: #003C46;
+    border: 1px solid #003C46;
+    box-shadow: none;
+}
+
+.dataTables_wrapper .pagination .paginate_button.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.color-radio {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+    top: 4px;
+}
+
+.color-radio:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 50%;
+}
+
+.color-radio.red:before {
+    border: 1px solid red;
+}
+
+.color-radio.green:before {
+    border: 1px solid green;
+}
+
+.color-radio.blue:before {
+    border: 1px solid blue;
+}
+
+.color-radio.black:before {
+    border: 1px solid black;
+}
+
+input[type="radio"]:checked + .color-radio.red:before {
+    background-color: red;
+}
+
+input[type="radio"]:checked + .color-radio.green:before {
+    background-color: green;
+}
+
+input[type="radio"]:checked + .color-radio.blue:before {
+    background-color: blue;
+}
+
+input[type="radio"]:checked + .color-radio.black:before {
+    background-color: black;
+}
+
+
+/*.dataTables_filter {*/
+/*    text-align: start!important;*/
+/*}*/
 
 
 @media (min-width: 0px) and (max-width: 810px){

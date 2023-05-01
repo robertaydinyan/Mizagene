@@ -28,6 +28,17 @@ class SignupForm extends Model
         $user->password = \Yii::$app->security->generatePasswordHash($this->password);
         $user->access_token = \Yii::$app->security->generateRandomString();
         $user->auth_key = \Yii::$app->security->generateRandomString();
+        $user->email = $this->email;
+        $user->company_name = $this->company_name;
+        $user->country = $this->country;
+        $user->position = $this->position;
+        $user->direction = $this->direction;
+        $user->employees = $this->employees;
+        $user->company_link = $this->company_link;
+        $user->phone = $this->phone;
+        $user->status = $this->status;
+        $user->year_of_birth = $this->year_of_birth;
+
 
         if($user->save()){
             return true;
