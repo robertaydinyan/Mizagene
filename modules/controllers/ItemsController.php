@@ -201,8 +201,7 @@ class ItemsController extends Controller
         if (in_array(Yii::$app->admin->getIdentity()->role, [1, 3])) {
             $item->deleted = 1;
         }
-        $item->save();
-        return $this->redirect(Yii::$app->request->referrer);
+        return $item->save();
     }
     /**
      * Restores an existing Items model.

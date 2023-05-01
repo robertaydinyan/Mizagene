@@ -690,14 +690,10 @@ foreach ($cl[0] as $column) {
                 'delete' => function ($url, $model, $key) {
                     return in_array(Yii::$app->admin->getIdentity()->role, [1, 3]) ?
                         Html::a('',
-                            $url,
-                            [
-                                'class' => 'icon archive archive-red label',
-                                'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
-                                'data-method' => 'post',
-                            ]
+                            'javascript:;',
+                            ['class' => 'icon archive archive-red label ajax-call', 'data-path' => $url, 'data-confirm_' => Yii::t('yii', 'Are you sure you want to delete this item?')]
                         )
-                        : '';
+                    : '';
                 },
                 'save' => function ($url, $model, $key) {
                     return Html::a('',
