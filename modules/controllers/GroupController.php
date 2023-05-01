@@ -5,9 +5,11 @@ namespace app\modules\controllers;
 use app\modules\models\Group;
 use app\modules\models\GroupSearch;
 use app\modules\models\Items;
+use app\modules\models\Region;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * GroupController implements the CRUD actions for Group model.
@@ -71,17 +73,27 @@ class GroupController extends Controller
         $model = new Group();
 
         if ($this->request->isPost) {
-            $model->items = json_encode($this->request->post('item'));
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                $iconFile = UploadedFile::getInstance($model, 'icon');
+                if ($iconFile) {
+                    $iconContent = file_get_contents($iconFile->tempName);
+                    $model->icon = $iconContent;
+                }
+                if ($model->save()) {
+                    return $this->redirect(['create']);
+                }
             }
         } else {
             $model->loadDefaultValues();
         }
+        $regions = Region::find()->asArray()->all();
+        $regions = \yii\helpers\ArrayHelper::map($regions, 'id', 'name');
+
         $items = Items::find()->all();
         return $this->render('create', [
             'model' => $model,
-            'items' => $items
+            'items' => $items,
+            'regions' => $regions
         ]);
     }
 

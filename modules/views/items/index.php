@@ -15,7 +15,6 @@ use yii\helpers\Url;
 $this->title = 'Items';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="items-index">
 
 <!--    <ul class="nav nav-pills mb-3" role="tablist">-->
 <!--        --><?php
@@ -88,7 +87,6 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
     <?php ActiveForm::end(); ?>
 
-</div>
 <style>
     td {
         position: relative;
