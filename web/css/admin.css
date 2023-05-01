@@ -608,11 +608,11 @@ a.nav-link {
 }
 
 .flag-changeable {
+    margin-top: -5px;
     cursor: pointer;
 }
 
 .group-config, .group-content {
-    border: 1px solid;
     height: 100%;
     min-height: 300px;
 }
@@ -630,4 +630,111 @@ a.nav-link {
     position: sticky;
     top: 0;
     z-index: 2;
+}
+
+.fa-circle.active {
+    color: #00ba00;
+}
+
+.fa-circle.disabled {
+    color: red;
+}
+
+.group-item {
+    margin: 8px 0;
+    background-color: #f8f8f8;
+    padding: 12px;
+}
+
+.group-item-content {
+    padding: 0 12px;
+}
+
+.group-item-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    height: 48px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.group-item-description:not(:last-child)::after {
+    content: "...";
+    margin-left: 2px;
+}
+
+.group-item-rule {
+    background: #ff0000;
+    color: white;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+}
+
+.group-item-template {
+    display: none !important;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+}
+
+.custom-radio input[type="radio"] {
+    display: none; /* hide the actual checkbox */
+}
+
+.custom-radio label:before {
+    content: ' ';
+    width: 14px;
+    height: 14px;
+    background-color: white;
+    border: 1px solid #003c47;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.custom-radio input[type="radio"]:checked + label:before {
+    background-color: #003c47; /* fill the checkbox when checked */
+}
+
+.btn-dark-blue {
+    background: #003c47;
+    color: white;
+}
+
+.btn-reset {
+    color: red;
+    text-decoration: underline;
+}
+
+.pagination {
+    display: flex;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pagination li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.pagination li a, .pagination li span {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    color: #333;
+    text-decoration: none;
+}
+
+.pagination li.active a {
+    background-color: #337ab7;
+    color: #fff;
+    border-color: #337ab7;
 }

@@ -596,7 +596,9 @@ foreach ($cl[0] as $column) {
 ?>
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
-    'layout' => '{items}',
+    'pager' => [
+        'hideOnSinglePage' => true,
+    ],
     'columns' => [
         ...$columns_filtered,
         [

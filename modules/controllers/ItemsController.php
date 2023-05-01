@@ -84,29 +84,45 @@ class ItemsController extends Controller
 
     public function actionGetActiveItems($search) {
 //        Yii::$app->response->format = Response::FORMAT_JSON;
-        $model = Items::find()->select('id, item_id, i_type');
+        $model = Items::find();//->select('items.id, item_id, i_type, source, check1');
         $search = json_decode($search);
+        $search_model = new ItemsSearch();
+        $search_model->filterByText($model, $search->search, false);
+
+        $model->andFilterWhere(['deleted' => 0]);
+        $model->groupBy(['items.id']);
         if ($search) {
             if (isset($search->usg_types)) {
+                $usg_types = "";
                 is_string($search->usg_types) && $search->usg_types = array($search->usg_types);
-                foreach ($search->usg_types as $usg_type) {
-                    $type = explode('-', $usg_type);
-                    $model->orfilterWhere(['and', [
-                        'i_type' => $type[0],
-                        'JSON_CONTAINS(i_usg_type, ' . $type[1] . ' , "$")' => 1
-                    ]]);
+                foreach ($search->usg_types as $i => $usg_type) {
+                    $usg_types .= 'JSON_CONTAINS(i_usg_type, \'["' . $usg_type . '"]\', \'$\') or ';
                 }
+                $usg_types = substr($usg_types, 0, -3);
+
+                $model->andWhere($usg_types);
             }
-            $language =$search->language;
+            if (isset($search->usg_comb_types)) {
+                $usg_comb_types = "";
+                is_string($search->usg_comb_types) && $search->usg_comb_types = array($search->usg_comb_types);
+                foreach ($search->usg_comb_types as $i => $usg_comb_type) {
+                    $usg_comb_types .= 'JSON_CONTAINS(i_comb_type_id, \'["' . $usg_comb_type . '"]\', \'$\') or ';
+                }
+                $usg_comb_types = substr($usg_comb_types, 0, -3);
+
+                $model->andWhere($usg_comb_types);
+            }
+            if (isset($search->type)) {
+                $model->andFilterWhere(['i_type' => $search->type]);
+            }
+            $language = $search->language;
             $model->with([
                 'itemTitles' => function ($query) use ($language) {
-                    $query->select('title, itemID');
+                    $query->select('title, description, itemID');
                     return $query->andFilterWhere(['languageID' => $language]);
                 },
             ]);
         }
-        $model->andFilterWhere(['check1' => 1]);
-        var_dump($model->createCommand()->getRawSql());
         return json_encode($model->asArray()->all());
     }
 

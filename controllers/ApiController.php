@@ -64,6 +64,7 @@ class ApiController extends Controller {
         } else {
             API::returnError(500, "Something is wrong with file");
         }
+        return "";
     }
 
     public function actionGetItems() {

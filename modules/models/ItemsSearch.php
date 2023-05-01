@@ -57,12 +57,16 @@ class ItemsSearch extends Items
 
         $this->filterPills($query, $pill);
         $this->filterSteps($query, $step, $pill, $status);
+        $this->filterByText($query, $search);
+        return $dataProvider;
+    }
 
+    public function filterByText($query, $search, $t = true) {
         if ($search) {
             if (is_numeric($search)) {
                 $query->andFilterWhere(['like', 'item_id', $search]);
             } else {
-                $query->joinWith(['itemtitle']);
+                $query->joinWith(['itemtitle'], $t);
                 $query->andFilterWhere(['or', ['like', 'title', $search], ['like', 'description', $search]]);
             }
         } else {
@@ -71,7 +75,6 @@ class ItemsSearch extends Items
                 'item_id' => SORT_ASC
             ]);
         }
-        return $dataProvider;
     }
 
     public function filterPills($query, $pill) {

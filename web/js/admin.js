@@ -1,35 +1,37 @@
 $(document).ready(function() {
     let single_usg_types = {
-        1: 'Caharacter (general)',
+        1: 'Cհaracter (general)',
         2: 'Character (positive)',
         3: 'Character (negative)',
-        4: 'Psyche',
-        5: 'Emotion',
-        6: 'Intellect',
-        7: 'Communication',
-        8: 'Food&Diet',
-        9: 'Health',
-        10: 'Job & Career',
-        11: 'Children only',
-        12: 'Adult only',
-        13: 'Talents',
-        14: 'Sports',
-        15: 'Science',
-        16: 'Profession',
-        17: 'Study',
-        18: 'Single (intimate preferences)',
-        19: 'Industrial',
-        20: 'HR'
+        4: 'Psyche (general)',
+        5: 'Psyche (endurance)',
+        6: 'Psyche (dependence)',
+        7: 'Psyche (emotion)',
+        8: 'Psyche (behavior)',
+        9: 'Psyche (wp&control)',
+        10: 'Preferences',
+        11: 'Intellect',
+        12: 'Communication',
+        13: 'Food&Diet',
+        14: 'Health',
+        15: 'Job & Career',
+        16: 'Talents',
+        17: 'Sports',
+        18: 'Science',
+        19: 'Profession',
+        20: 'Study',
+        21: 'Industrial',
+        22: 'HR',
     }
 
     let multiple_usg_types = {
-        21: 'Friendship',
-        22: 'Love',
-        23: 'Relationships in Family',
-        24: 'Relationships at Work',
-        25: 'Relationships in Business',
-        26: 'Intimate',
-        27: 'Child',
+        23: 'Friendship',
+        24: 'Love',
+        25: 'Relationships in Family',
+        26: 'Relationships at Work',
+        27: 'Relationships in Business',
+        28: 'Intimate',
+        29: 'Child',
     }
 
     let item_types = {
@@ -89,7 +91,8 @@ $(document).ready(function() {
         } else {
             let missed_value = false;
             $.each($(row).find('.required'), (j, t) => {
-                if (!$(t).val() || $(t).val() === '0') missed_value = true;
+                if (!$(t).val() || $(t).val() === '0' || $(t).val() === []) missed_value = true;
+                if (typeof $(t).val() == "object" && Object.keys($(t).val()).length === 0) missed_value = true;
             });
 
             if (missed_value) {
@@ -137,27 +140,32 @@ $(document).ready(function() {
     colResizable($('.grid-view table'));
 
     // groups events
-    $('.items-list').change(function() {
-        let option = $(this).find('option[value=' + $(this).val() + ']');
-        let item_template = $('.item-template');
-        let new_item = item_template.clone().appendTo(item_template.parent()).removeClass('item-template').addClass('item-disabled');
-        new_item.find('input').val(option.val());
-        new_item.find('span').text(option.text());
-        option.remove();
-        itemEvents();
-    });
-    itemEvents();
-    function itemEvents() {
-        $('.item-disabled').draggable();
-        $('.items-container').sortable().droppable({
-            drop: function(event, ui) {
-                if (ui.draggable.hasClass('item-disabled')) {
-                    ui.draggable.draggable('disable').appendTo($(this));
-                    ui.draggable.removeClass('item-disabled').find('input').removeAttr('disabled');
-                    ui.draggable.css({'left': 0, 'top': 0});
-                }
-            }
+    // $('.items-list').change(function() {
+    //     let option = $(this).find('option[value=' + $(this).val() + ']');
+    //     let item_template = $('.item-template');
+    //     let new_item = item_template.clone().appendTo(item_template.parent()).removeClass('item-template').addClass('item-disabled');
+    //     new_item.find('input').val(option.val());
+    //     new_item.find('span').text(option.text());
+    //     option.remove();
+    // });
+    groupItemEvents();
+    function groupItemEvents() {
+        // $('.group-item').off().draggable({
+        //     handle: '.drag-event',
+        // })
+        $('.group-item-container').sortable({
+            connectWith: ".group-item",
+            handle: '.drag-event'
         });
+        //     ;.droppable({
+        //     drop: function(event, ui) {
+        //         if (ui.draggable.hasClass('item-disabled')) {
+        //             ui.draggable.draggable('disable').appendTo($(this));
+        //             ui.draggable.removeClass('item-disabled').find('input').removeAttr('disabled');
+        //             ui.draggable.css({'left': 0, 'top': 0});
+        //         }
+        //     }
+        // });
     }
     $('.select2').select2();
     // items events
@@ -168,15 +176,17 @@ $(document).ready(function() {
             $(this).closest('tr').remove();
         });
     });
-    $('.item-search-bar').on('change', (el) => {
+    $(document).on('change', '.item-search-bar', (el) => {
         $.get('/admin/items/getitemslist' + window.location.search, {
              "search": $(el.target).val()
         }).done((data) => {
              $('#w1').html(data);
              colResizable($('.grid-view table'));
+            $('.grid-view input, select, textarea').removeAttr('id');
+            $('.select2').select2();
         });
     });
-    $('.item-usage-type').on('change', function () {
+    $(document).on('change', '.item-usage-type', function () {
         let type = $(this).closest('tr').find('.item-type');
         if (type.val() == 0) {
             let isSingle = false;
@@ -189,7 +199,7 @@ $(document).ready(function() {
             isSingle && type.val(1);
         }
     }).change();
-    $('.grid-view input, textarea, select').change(function() {
+    $(document).on('change', '.grid-view input, textarea, select', function() {
         $(this).closest('tr').find('.save-filled, .save-green-filled').removeClass('save-filled').removeClass('save-green-filled').addClass('save-green');
     });
 
@@ -206,7 +216,7 @@ $(document).ready(function() {
         });
     }
 
-    $('.save-item').on('click', function() {
+    $(document).on('click', '.save-item', function() {
         if ($(this).hasClass('save-green')) {
             saveRowData($(this).closest('tr'), $(this).closest('tr').data('key'));
         }
@@ -262,7 +272,7 @@ $(document).ready(function() {
         });
     });
 
-    $('.result-description').on('change', function() {
+    $(document).on('change', '.result-description', function() {
          $(this).closest('.color-spector-detailed').find('.save-result-description').text('save');
     });
 
@@ -305,9 +315,9 @@ $(document).ready(function() {
 
 
     function itemTypeChange(el) {
-        let ict = el.find('.item-comb-type');
-        let ust = el.find('.item-usage-type');
-        let usg_type = el.find('.item-usage-type').val();
+        let ict = el.closest('tr').find('.item-comb-type');
+        let ust = el.closest('tr').find('.item-usage-type');
+        let usg_type = el.closest('tr').find('.item-usage-type').val();
         if ($(el).val() == 1) {
             $(ict).next().hasClass('select2') && $(ict).select2('destroy');
             $(ict).hide().removeClass('required');
@@ -320,11 +330,9 @@ $(document).ready(function() {
         }
     }
 
-    $('.item-type').on('change', function() {
+    $(document).on('change', '.item-type', function() {
         itemTypeChange($(this));
     });
-
-
 
     // groups
     $('.flag-changeable').on('click', function() {
@@ -337,19 +345,31 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on('click', '.update-items', function () {
-        if ($(this).data('query')) {
-            let data = takeFormData($(this).closest($(this).attr('data-container')));
-            console.log(data)
-            $.get($(this).data("path"), {
-                'search': JSON.stringify(data),
-            }).done((res) => {
-                let data = JSON.parse(res);
-                $('.items-container').empty();
-                $.each(data, (i, k) => {
-                    $('.items-container').append('<div class="item"><span>' + k['id'] + '</span><span>' + k['itemTitles'][0]['title'] + '</span><span>' + item_types[k['i_type']] + '</span></div>');
-                });
+    $(document).on('click', '.update-group-items', function () {
+        let data = takeFormData($(this).closest($(this).closest('.group-config')));
+        $.get('/admin/items/get-active-items', {
+            'search': JSON.stringify(data),
+        }).done((res) => {
+            let data = JSON.parse(res);
+            let template = $('.group-item-template');
+            $('.group-item:not(.group-item-template)').remove();
+            let clone;
+            $.each(data, (i, k) => {
+                clone = template.clone().appendTo(template.parent());
+                clone.find('.fa-circle').addClass(k['check1'] ? 'active' : 'disabled');
+                clone.find('.group-item-id').text(k['id'])
+                clone.find('.group-item-title').text(k['itemTitles'][0]['title'])
+                clone.find('.group-item-description').text(k['itemTitles'][0]['description'])
+                clone.find('.group-item-description').attr('title', k['itemTitles'][0]['description'])
+                clone.find('.group-item-source-' + k['source']).removeClass('d-none');
+                clone.removeClass('group-item-template');
+                // $('.items-container').append('<div class="item"><span>' +  + ' </span><span> ' +  + ' </span><span> ' + item_types[k['i_type']] + '</span></div>');
             });
-        }
+            groupItemEvents();
+        });
     });
+
+    $('.dropdown-menu').on('click', function(el) {
+        !$(el.target).hasClass('update-group-items') && el.stopPropagation();
+    })
 });
