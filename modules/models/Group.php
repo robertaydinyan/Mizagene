@@ -8,8 +8,13 @@ use Yii;
  * This is the model class for table "group".
  *
  * @property int $id
- * @property string $name
- * @property string|null $items
+ * @property string $title_russian
+ * @property string $title_english
+ * @property string $description_russian
+ * @property string $description_english
+ * @property string $region
+ * @property int $adult
+ * @property resource|null $icon
  */
 class Group extends \yii\db\ActiveRecord
 {
@@ -27,9 +32,11 @@ class Group extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['items'], 'safe'],
-            [['name'], 'string', 'max' => 255],
+            [['title_russian', 'title_english', 'description_russian', 'description_english', 'region'], 'required'],
+            [['region'], 'safe'],
+            [['adult'], 'integer'],
+            [['icon'], 'string'],
+            [['title_russian', 'title_english', 'description_russian', 'description_english'], 'string', 'max' => 255],
         ];
     }
 
@@ -40,17 +47,13 @@ class Group extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'items' => 'Items',
+            'title_russian' => 'Title Russian',
+            'title_english' => 'Title English',
+            'description_russian' => 'Description Russian',
+            'description_english' => 'Description English',
+            'region' => 'Region',
+            'adult' => 'Adult',
+            'icon' => 'Icon',
         ];
-    }
-    public function getItems() {
-        $itemsList = array();
-        if ($this->items) {
-            foreach(json_decode($this->items) as $item) {
-                array_push($itemsList, Items::findOne($item)->e2e_item_en);
-            }
-        }
-        return $itemsList;
     }
 }

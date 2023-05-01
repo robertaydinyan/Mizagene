@@ -348,11 +348,6 @@ main {
     padding: 8px !important;
     padding-top: 20px !important;
 }
-.JPadding > tbody > tr > td, .JPadding > tbody > tr > th {
-    padding-left: 8!important;
-    padding-right: 8!important;
-}
-
 .nav-pill {
     color: black;
     padding: 8px;
@@ -699,9 +694,33 @@ a.nav-link {
     background-color: #003c47; /* fill the checkbox when checked */
 }
 
-.btn-dark-blue {
-    background: #003c47;
-    color: white;
+
+.custom-checkbox input[type="checkbox"] {
+    display: none; /* hide the actual checkbox */
+}
+
+.custom-checkbox label:before {
+    content: ' ';
+    width: 14px;
+    height: 14px;
+    background-color: white;
+    border: 1px solid #003c47;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + label:before {
+    background-color: #003c47; /* fill the checkbox when checked */
+}
+
+.btn-dark-blue, .btn-dark-blue:hover, .btn-dark-blue:active {
+    background: #003c47 !important;
+    color: white !important;
+}
+
+.nav-link-dark-blue.active {
+    background: #003c47 !important;
+    color: white !important;
 }
 
 .btn-reset {
@@ -737,4 +756,32 @@ a.nav-link {
     background-color: #337ab7;
     color: #fff;
     border-color: #337ab7;
+}
+
+.group-content {
+    width: 100%;
+}
+
+.group-tabs {
+    background: #f8f8f8;
+}
+
+.tab-pane {
+    padding: 8px 20px;
+}
+
+.group-save {
+    width: 140px;
+    padding: 2px;
+    margin-top: 20px;
+    float: right;
+}
+
+.group-content {
+    margin-left: 20px;
+}
+
+.group-content .nav-link.active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
