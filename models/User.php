@@ -23,6 +23,8 @@ use yii\web\IdentityInterface;
  * @property string $phone
  * @property int $status
  * @property int $year_of_birth
+ * @property string $ip
+
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -41,7 +43,9 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['username', 'password', 'auth_key', 'access_token', 'email'], 'required'],
-            [['username', 'password', 'auth_key', 'access_token', 'company_name'], 'string', 'max' => 255],
+            [['username', 'password', 'auth_key', 'access_token', 'company_name','email'], 'string', 'max' => 255],
+            [['email'], 'string', 'max' => 255],
+            [['email'], 'email'],
         ];
     }
 
@@ -65,7 +69,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'company_link' => 'company_link',
             'phone' => 'phone',
             'status' => 'status',
-            'year_of_birth' => 'Year of birth'
+            'year_of_birth' => 'year_of_birth',
+            'ip' => 'Ip',
         ];
     }
 
@@ -80,6 +85,9 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
     public static function findByUsername($username){
         return self::findOne(['username' => $username]);
+    }
+    public static function findByEmail($email){
+        return self::findOne(['email' => $email]);
     }
     public function getId(){
         return $this->id;

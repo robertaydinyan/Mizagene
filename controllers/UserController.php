@@ -12,6 +12,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
+
 class UserController extends Controller
 {
     /**
@@ -74,6 +75,38 @@ class UserController extends Controller
     public function actionAllSubjects()
     {
         return $this->render('allsubjects');
+    }
+
+    public function actionSettings()
+    {
+        return $this->render('settings');
+    }
+
+    public function actionConnections()
+    {
+        return $this->render('connections');
+    }
+
+    public function actionMail()
+    {
+        $message = Yii::$app->mailer->compose();
+        $message->setTo('mikayelkotanjyan@gmail.com')
+            ->setFrom('mikayelkotanjyan@gmail.com')
+            ->setSubject('Email Subject')
+            ->setHtmlBody('Email Body');
+
+// Send the message using the mailer component
+        $mailer = Yii::$app->mailer;
+        if ($mailer->send($message)) {
+            echo 'Email sent successfully';
+        } else {
+            echo 'Error sending email';
+        }
+    }
+
+    public function actionUser()
+    {
+        return $this->render('user');
     }
 
 

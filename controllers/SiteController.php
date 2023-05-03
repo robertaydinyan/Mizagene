@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\SignupForm;
+use app\models\User;
 use app\models\SignupcompanyForm;
 use Yii;
 use yii\filters\AccessControl;
@@ -76,9 +77,11 @@ class SiteController extends Controller
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
+        $post = Yii::$app->request->post();
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+
+        if ($model->load($post,'') && $model->login()) {
+
             return $this->goBack();
         }
 
@@ -97,8 +100,17 @@ class SiteController extends Controller
         }
 
         if ($model->load($post, '') && $model->validate() && $model->signup()){
+
+            $model = new LoginForm();
+            if ($model->load(Yii::$app->request->post(), '') && $model->login()) {
+                return $this->redirect(['/add-subject']);
+            } else {
+                return $this->render('index');
+            }
+
             return $this->redirect(Yii::$app->homeUrl);
         }
+
         return $this->render('index', ['model' => $model]);
     }
 
@@ -213,6 +225,16 @@ class SiteController extends Controller
 //    {
 //        return $this->render('addprofile');
 //    }
-
+    public function actionChangeLang($lang) {
+        $cookies = Yii::$app->response->cookies;
+        $cookies->add(new \yii\web\Cookie([
+            'name' => 'lang',
+            'value' => $lang,
+            'expire' => time() + 360000,
+        ]));
+        $response = Yii::$app->response;
+        $response->redirect(Yii::$app->request->referrer);
+        return $response;
+    }
 
 }

@@ -80,7 +80,7 @@ class GroupController extends Controller
                     $model->icon = $iconContent;
                 }
                 if ($model->save()) {
-                    return $this->redirect(['create']);
+                    return $this->redirect(['index']);
                 }
             }
         } else {
