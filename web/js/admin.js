@@ -153,10 +153,28 @@ $(document).ready(function() {
         // $('.group-item').off().draggable({
         //     handle: '.drag-event',
         // })
-        $('.group-item-container').sortable({
-            connectWith: ".group-item",
+        // $('.group-item-container').sortable({
+        //     connectWith: ".group-item",
+        //     handle: '.drag-event'
+        // });
+        // $('.group-item-container').draggable({
+        //     connectWith: ".group-item",
+        //     handle: '.drag-event'
+        // });
+        $(".group-item-container, .droppable").sortable({
+            placeholder: "group-item",
+            connectWith: ".droppable",
             handle: '.drag-event'
-        });
+        }).disableSelection();
+        // $("").droppable({
+        //     drop: function( event, ui ) {
+        //         debugger
+        //         $( this )
+        //             .addClass( "ui-state-highlight" )
+        //             .find( "p" )
+        //             .html( "Dropped!" );
+        //     }
+        // });
         //     ;.droppable({
         //     drop: function(event, ui) {
         //         if (ui.draggable.hasClass('item-disabled')) {
@@ -322,17 +340,16 @@ $(document).ready(function() {
         let ust = el.closest('tr').find('.item-usage-type');
         let usg_type = el.closest('tr').find('.item-usage-type').val();
         $.get('/admin/usg-type/get-types', {'type': $(el).val()}).done((res) => {
-            single_usg_types = JSON.parse(res);
+            usg_types = JSON.parse(res);
         })
         if ($(el).val() == 1) {
             $(ict).next().hasClass('select2') && $(ict).select2('destroy');
             $(ict).hide().removeClass('required');
-            ust.select2('destroy').html(createOptions(single_usg_types)).val(usg_type).select2();
+            $(ust).select2('destroy').html(createOptions(usg_types)).val(usg_type).select2();
         } else if ($(el).val() == 2) {
             !$(ict).next().hasClass('select2') && $(ict).select2();
             $(ict).show().addClass('required');
-            let single_usg_types_ = {...single_usg_types};
-            ust.select2('destroy').html(createOptions($.extend(single_usg_types_, multiple_usg_types))).val(usg_type).select2();
+            $(ust).select2('destroy').html(createOptions(usg_types)).val(usg_type).select2();
         }
     }
 

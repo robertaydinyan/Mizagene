@@ -117,10 +117,11 @@ class UsgTypeController extends Controller
     }
 
     public function actionGetTypes($type) {
-        $types = UsgType::find();
+        $types = UsgType::find()->select('id, name');
         $type == 1 && $types->andFilterWhere(['single' => 1]);
         $type == 2 && $types->andFilterWhere(['multiple' => 1]);
-        return json_encode($types->select('id, name')->all());
+        $types = \yii\helpers\ArrayHelper::map($types->asArray()->all(), 'id', 'name');
+        return json_encode($types);
     }
 
     /**

@@ -28,12 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
         </ul>
     </div>
     <?php $form = ActiveForm::begin(); ?>
-    <?= Yii::$app->controller->renderPartial('_form.php', [
-        'regions' => $regions,
-        'model' => $model,
-        'items' => $items,
-        'form' => $form
-    ]);
+        <?= Yii::$app->controller->renderPartial('_form.php', [
+            'regions' => $regions,
+            'model' => $model,
+            'items' => $items,
+            'form' => $form,
+            'step' => $step
+        ]);
     $form::end(); ?>
 
 </div>

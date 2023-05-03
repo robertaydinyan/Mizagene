@@ -636,6 +636,7 @@ a.nav-link {
 }
 
 .group-item {
+    height: 126px;
     margin: 8px 0;
     background-color: #f8f8f8;
     padding: 12px;
@@ -793,4 +794,12 @@ a.nav-link {
     display: inline-block;
     padding: 8px;
     text-decoration: none;
+}
+
+.droppable .group-item {
+    flex: 0 0 auto;
+    width: calc(33.33333333% - 4px);
+    margin-left: 4px;
+    float: left;
+    border: 3px solid #d333e6;
 }

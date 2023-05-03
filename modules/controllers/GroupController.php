@@ -70,8 +70,12 @@ class GroupController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Group();
-
+        $step = $this->request->get('step') ?: 1;
+        if ($step == 1) {
+            $model = new Group();
+        } else {
+            $model = $this->findModel($this->request->get('id'));
+        }
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 $iconFile = UploadedFile::getInstance($model, 'icon');
@@ -80,11 +84,9 @@ class GroupController extends Controller
                     $model->icon = $iconContent;
                 }
                 if ($model->save()) {
-                    return $this->redirect(['index']);
+                    return $this->redirect(['create?step=' . ($step + 1) . '&id=' . $model->id]);
                 }
             }
-        } else {
-            $model->loadDefaultValues();
         }
         $regions = Region::find()->asArray()->all();
         $regions = \yii\helpers\ArrayHelper::map($regions, 'id', 'name');
@@ -93,7 +95,8 @@ class GroupController extends Controller
         return $this->render('create', [
             'model' => $model,
             'items' => $items,
-            'regions' => $regions
+            'regions' => $regions,
+            'step' => $step
         ]);
     }
 
