@@ -114,7 +114,7 @@ class ApiController extends Controller {
         return $items;
     }
 
-    public function getUsgTypes() {
+    public function actionGetUsgTypes() {
         if ($_SERVER['REQUEST_METHOD'] !== 'GET')
             API::returnError(403, "Wrong request method");
 
