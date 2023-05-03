@@ -63,6 +63,12 @@ $data = [
     ], 'menu6' => [
         'en' => 'Sign In',
         'ru' => 'Войти'
+    ],'menu7' => [
+        'en' => 'Logout',
+        'ru' => 'Выйти'
+    ],'menu8' => [
+        'en' => 'Email address',
+        'ru' => 'Электронная почта'
     ],
 
 
@@ -252,6 +258,9 @@ $data = [
     ], 'email' => [
         'en' => 'Email',
         'ru' => 'Эл. Адрес'
+    ],'year_of_birth' => [
+        'en' => 'Year of Birth',
+        'ru' => 'Год рождения'
     ], 'password' => [
         'en' => 'Password',
         'ru' => 'Пароль'

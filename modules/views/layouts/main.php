@@ -23,6 +23,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <?php $this->registerCssFile('/css/admin.css', ['depends' => ['app\assets\AppAsset']]); ?>
+    <link rel="icon" href="/images/icons/Mizagene_small.png" type="image/x-icon">
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
