@@ -66,6 +66,7 @@ AppAsset::register($this);
             ],
 //            ['label' => '', 'url' => ['/admin/items/index'], ],
             ['label' => 'Users', 'url' => ['/admin/admin/index'], 'active' => Yii::$app->controller->id == 'admin'],
+            ['label' => 'Usage types', 'url' => ['/admin/usg-type/index'], 'active' => Yii::$app->controller->id == 'usg-type'],
             ['label' => 'Region', 'url' => ['/admin/region/index'], 'active' => Yii::$app->controller->id == 'region'],
             ['label' => 'Language', 'url' => ['/admin/language/index'], 'active' => Yii::$app->controller->id == 'language'],
             [

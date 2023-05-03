@@ -72,9 +72,9 @@ $comb_types = Items::getICombTypes();
                         </div>
                     </div>
                 </div>
-<!--                <a href="javascript:;" class="icon label update-items" data-query="GET" data-container=".group-config" data-path="" style="font-size: 24px; margin: -4px 4px;">-->
-<!--                    <i class="fa fa-sliders icon"></i>-->
-<!--                </a>-->
+                <!--                <a href="javascript:;" class="icon label update-items" data-query="GET" data-container=".group-config" data-path="" style="font-size: 24px; margin: -4px 4px;">-->
+                <!--                    <i class="fa fa-sliders icon"></i>-->
+                <!--                </a>-->
             </div>
 
             <div class="group-item-container">
@@ -112,20 +112,7 @@ $comb_types = Items::getICombTypes();
                     <?= Html::a('Groups', [""], ['class' => 'nav-link btn ' . (Yii::$app->controller->action->id == "aaa" ? 'btn-dark-blue' : '')]) ?>
                 </li>
                 <li class="nav-item">
-                    <?= Html::a('<i class="fa fa-plus"></i> Create Group', [""], ['class' => 'nav-link btn ' . (Yii::$app->controller->action->id == "create" ? 'btn-dark' : '')]) ?>
-                </li>
-            </ul>
-        </div>
-        <div class="col-9 group-content">
-            <ul class="nav">
-                <li class="nav-item">
-                    <?= Html::a('In process', [""], ['class' => 'nav-link btn ' . (Yii::$app->controller->action->id == "index" ? 'btn-dark-blue' : '')]) ?>
-                </li>
-                <li class="nav-item">
-                    <?= Html::a('Published', [""], ['class' => 'nav-link btn ' . (Yii::$app->controller->action->id == 1 ? 'btn-dark' : '')]) ?>
-                </li>
-                <li class="nav-item">
-                    <?= Html::a('<i class="fa fa-plus"></i> Create Group', [""], ['class' => 'nav-link btn ' . (Yii::$app->controller->action->id == 1 ? 'btn-dark' : '')]) ?>
+                    <?= Html::a('<i class="fa fa-plus"></i> Create Group', ["create"], ['class' => 'nav-link btn ' . (Yii::$app->controller->action->id == "create" ? 'btn-dark' : '')]) ?>
                 </li>
             </ul>
         </div>

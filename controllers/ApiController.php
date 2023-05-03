@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\API;
 use app\modules\models\Items;
+use app\modules\models\UsgType;
 use Exception;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
@@ -111,6 +112,13 @@ class ApiController extends Controller {
         }
 
         return $items;
+    }
+
+    public function getUsgTypes() {
+        if ($_SERVER['REQUEST_METHOD'] !== 'GET')
+            API::returnError(403, "Wrong request method");
+
+        return UsgType::find()->asArray()->all();
     }
 
     public function actionError() {

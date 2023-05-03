@@ -317,9 +317,13 @@ $(document).ready(function() {
 
 
     function itemTypeChange(el) {
+        let single_usg_types;
         let ict = el.closest('tr').find('.item-comb-type');
         let ust = el.closest('tr').find('.item-usage-type');
         let usg_type = el.closest('tr').find('.item-usage-type').val();
+        $.get('/admin/usg-type/get-types', {'type': $(el).val()}).done((res) => {
+            single_usg_types = JSON.parse(res);
+        })
         if ($(el).val() == 1) {
             $(ict).next().hasClass('select2') && $(ict).select2('destroy');
             $(ict).hide().removeClass('required');

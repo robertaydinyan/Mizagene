@@ -45,7 +45,7 @@ class ItemsSearch extends Items
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pageSize' => 200
+                'pageSize' => 20
             ],
         ]);
 

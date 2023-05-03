@@ -4,12 +4,12 @@ namespace app\modules\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\models\Group;
+use app\modules\models\UsgType;
 
 /**
- * GroupSearch represents the model behind the search form of `app\modules\models\Group`.
+ * UsgTypeSearch represents the model behind the search form of `app\modules\models\UsgType`.
  */
-class GroupSearch extends Group
+class UsgTypeSearch extends UsgType
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,8 @@ class GroupSearch extends Group
     public function rules()
     {
         return [
-            [['id'], 'integer']
+            [['id', 'single', 'multiple'], 'integer'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -39,7 +40,7 @@ class GroupSearch extends Group
      */
     public function search($params)
     {
-        $query = Group::find();
+        $query = UsgType::find();
 
         // add conditions that should always apply here
 
@@ -58,7 +59,11 @@ class GroupSearch extends Group
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'single' => $this->single,
+            'multiple' => $this->multiple,
         ]);
+
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

@@ -88,41 +88,29 @@ class Items extends \yii\db\ActiveRecord
     );
 
     private static $ICombTypes = array(
-        35 => 'single',
-        1 => 'friends',
-        2 => 'intimate partners',
-        3 => 'spouses',
-        4 => 'spouse and father in law',
-        5 => 'spouse and mother in law',
-        6 => 'child\'s spouse',
-        7 => 'child\'s spouse',
-        8 => 'child, child\'s spouse',
-        9 => 'child, child\'s spouse',
-        10 => 'child & parents',
-        11 => 'child & parents',
-        12 => 'child & parents',
-        13 => 'child & parents',
-        14 => 'child & foster parents',
-        15 => 'child & foster parents',
-        16 => 'child & foster parents',
-        17 => 'foster child',
-        18 => 'child & foster parents',
-        19 => 'foster child',
-        20 => 'brothers & sisters',
-        21 => 'stepbrothers & stepsisters',
-        22 => 'brothers & sisters',
-        23 => 'stepbrothers & stepsisters',
-        24 => 'brothers & sisters',
-        25 => 'stepbrothers & stepsisters',
-        26 => 'brothers & sisters',
-        27 => 'stepbrothers & stepsisters',
-        28 => 'relatives',
-        29 => 'job ( with manager)',
-        30 => 'job (with subordinate)',
-        31 => 'job (with collegue)',
-        32 => 'business (with partner)',
-        33 => 'business (with customer)',
-        34 => 'business (with contractor)',
+        1 => 'friend',
+        2 => 'partner',
+        3 => 'spouse',
+        4 => 'child',
+        5 => 'foster child',
+        6 => 'biological father',
+        7 => 'biological mother',
+        8 => 'foster father',
+        9 => 'foster mother',
+        10 => 'father in law',
+        11 => 'mother in law',
+        12 => 'daughter or son in law',
+        13 => 'biological brother',
+        14 => 'biological syster',
+        15 => 'stepbrother',
+        16 => 'stepsister',
+        17 => 'relative',
+        18 => 'subordinate',
+        19 => 'manager',
+        20 => 'colleague',
+        21 => 'business partner',
+        22 => 'customer',
+        23 => 'contractor',
     );
 
     private static $priorities = array(
@@ -237,20 +225,20 @@ class Items extends \yii\db\ActiveRecord
             case 3;
                 switch ($step) {
                     case 1:
-                        return array(
+                        $res = array(
                             array(
                                 'item_id',
                                 'persian',
                                 'russian_temp',
                                 'english_temp',
                                 'comment',
-                                'usg_type',
                                 'priority'
                             ),
                             '{delete} {save} {translate}'
                         );
+                        break;
                     case 2:
-                        return array(
+                        $res = array(
                             array(
                                 'item_id',
                                 'persian',
@@ -261,8 +249,9 @@ class Items extends \yii\db\ActiveRecord
                             ),
                             '{delete} {save} {checkmarkTranslator}'
                         );
+                        break;
                     case 3:
-                        return $role == 4 ?
+                        $res = $role == 4 ?
                             array(
                                 array(
                                     'item_id',
@@ -282,8 +271,9 @@ class Items extends \yii\db\ActiveRecord
                                 ),
                                 '{delete} {save} {declinePsychologist} {checkmarkPsychologist}'
                             );
+                        break;
                     case 4:
-                        return array(
+                        $res = array(
                             array(
                                 'item_id',
                                 'persian',
@@ -294,8 +284,9 @@ class Items extends \yii\db\ActiveRecord
                             ),
                             '{delete} {save} {colors}'
                         );
+                        break;
                     case 5:
-                        return array(
+                        $res = array(
                             array(
                                 'item_id',
                                 'persian',
@@ -306,8 +297,9 @@ class Items extends \yii\db\ActiveRecord
                             ),
                             '{delete} {save} {declineProfessor} {checkmarkProfessor}'
                         );
+                        break;
                     case 6:
-                        return array(
+                        $res = array(
                             array(
                                 'item_id',
                                 'persian',
@@ -317,8 +309,9 @@ class Items extends \yii\db\ActiveRecord
                             ),
                             '{delete} {checkmarkPsychologist}'
                         );
+                        break;
                     case 7:
-                        return array(
+                        $res = array(
                             array(
                                 'item_id',
                                 'persian',
@@ -328,8 +321,9 @@ class Items extends \yii\db\ActiveRecord
                             ),
                             '{delete} {checkmarkTranslator}'
                         );
+                        break;
                     case 8:
-                        return array(
+                        $res = array(
                             array(
                                 'item_id',
                                 'persian',
@@ -339,8 +333,9 @@ class Items extends \yii\db\ActiveRecord
                             ),
                             '{delete} {declineProfessor} {checkmarkProfessor}'
                         );
+                        break;
                     case 9:
-                        return array(
+                        $res = array(
                             array(
                                 'item_id',
                                 'persian',
@@ -350,8 +345,12 @@ class Items extends \yii\db\ActiveRecord
                             ),
                             '{delete} {declineProfessor} {checkmarkAdmin}'
                         );
+                        break;
                 }
-                break;
+                if ($role == 1 and array_search('types', $res[0]) === false) {
+                    $res[0][] = 'types';
+                }
+                return $res;
             case 4;
                 return array($titles, '{restore}');
         }
@@ -481,6 +480,7 @@ class Items extends \yii\db\ActiveRecord
 
     public function getUsgType() {
         $result = '';
+        is_string($this->i_usg_type) && $this->i_usg_type = array($this->i_usg_type);
         foreach ($this->i_usg_type as $type)
             $result .= self::$IUsgTypes[$type] . ' ';
 
@@ -489,6 +489,7 @@ class Items extends \yii\db\ActiveRecord
 
     public function getCombType() {
         $result = '';
+        is_string($this->i_comb_type_id) && $this->i_comb_type_id = array($this->i_comb_type_id);
         foreach ($this->i_comb_type_id as $type)
             $result .= self::$ICombTypes[$type] . ' ';
         return $result;

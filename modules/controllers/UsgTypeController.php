@@ -2,19 +2,16 @@
 
 namespace app\modules\controllers;
 
-use app\modules\models\Group;
-use app\modules\models\GroupSearch;
-use app\modules\models\Items;
-use app\modules\models\Region;
+use app\modules\models\UsgType;
+use app\modules\models\UsgTypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * GroupController implements the CRUD actions for Group model.
+ * UsgTypeController implements the CRUD actions for UsgType model.
  */
-class GroupController extends Controller
+class UsgTypeController extends Controller
 {
     /**
      * @inheritDoc
@@ -35,13 +32,13 @@ class GroupController extends Controller
     }
 
     /**
-     * Lists all Group models.
+     * Lists all UsgType models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new GroupSearch();
+        $searchModel = new UsgTypeSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -51,7 +48,7 @@ class GroupController extends Controller
     }
 
     /**
-     * Displays a single Group model.
+     * Displays a single UsgType model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -64,41 +61,29 @@ class GroupController extends Controller
     }
 
     /**
-     * Creates a new Group model.
+     * Creates a new UsgType model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Group();
+        $model = new UsgType();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                $iconFile = UploadedFile::getInstance($model, 'icon');
-                if ($iconFile) {
-                    $iconContent = file_get_contents($iconFile->tempName);
-                    $model->icon = $iconContent;
-                }
-                if ($model->save()) {
-                    return $this->redirect(['index']);
-                }
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
         }
-        $regions = Region::find()->asArray()->all();
-        $regions = \yii\helpers\ArrayHelper::map($regions, 'id', 'name');
 
-        $items = Items::find()->all();
         return $this->render('create', [
             'model' => $model,
-            'items' => $items,
-            'regions' => $regions
         ]);
     }
 
     /**
-     * Updates an existing Group model.
+     * Updates an existing UsgType model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -108,22 +93,17 @@ class GroupController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost) {
-            $model->items = json_encode($this->request->post('item'));
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            return $this->redirect(['create']);
         }
-        $items = Items::find()->all();
 
         return $this->render('update', [
             'model' => $model,
-            'items' => $items
         ]);
     }
 
     /**
-     * Deletes an existing Group model.
+     * Deletes an existing UsgType model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -136,16 +116,23 @@ class GroupController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionGetTypes($type) {
+        $types = UsgType::find();
+        $type == 1 && $types->andFilterWhere(['single' => 1]);
+        $type == 2 && $types->andFilterWhere(['multiple' => 1]);
+        return json_encode($types->select('id, name')->all());
+    }
+
     /**
-     * Finds the Group model based on its primary key value.
+     * Finds the UsgType model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Group the loaded model
+     * @return UsgType the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Group::findOne(['id' => $id])) !== null) {
+        if (($model = UsgType::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

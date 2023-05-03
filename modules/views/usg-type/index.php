@@ -1,24 +1,24 @@
 <?php
 
-use app\modules\models\Region;
+use app\modules\models\UsgType;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var app\modules\models\RegionSearch $searchModel */
+/** @var app\modules\models\UsgTypeSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Regions';
+$this->title = 'Usg Types';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="region-index">
+<div class="usg-type-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Region', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Usg Type', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -30,9 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             'id',
             'name',
+            'single',
+            'multiple',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Region $model, $key, $index, $column) {
+                'urlCreator' => function ($action, UsgType $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
