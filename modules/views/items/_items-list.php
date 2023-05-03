@@ -578,7 +578,7 @@ $columns = [
                     <div class="col-6">%s</div>
                 </div> 
                 <div>%s</div>',
-                $form->field($model, 'i_type')->dropDownList(Items::getITypes(), ['class' => 'required item-type'])->label(false),
+                $form->field($model, 'i_type')->dropDownList(Items::getITypes(), ['multiple' => 'multiple', 'class' => 'required form-control item-type select2'])->label(false),
                 $form->field($model, 'i_usg_type')->dropDownList(
                     \yii\helpers\ArrayHelper::map(\app\modules\models\UsgType::find()->asArray()->all(), 'id', 'name'),
                     ['multiple' => 'multiple', 'class' => 'required form-control item-usage-type select2', 'value' => $model->i_usg_type]

@@ -50,7 +50,6 @@ class Items extends \yii\db\ActiveRecord
     );
 
     private static $ITypes = array(
-        0 => 'not set',
         1 => 'single',
         2 => 'multiple'
     );
@@ -138,9 +137,9 @@ class Items extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['e2e_item_id', 'item_id', 'i_type', 'source', 'check1', 'check2', 'check3', 'check4', 'deleted', 'priority', 'returned'], 'integer'],
+            [['e2e_item_id', 'item_id', 'source', 'check1', 'check2', 'check3', 'check4', 'deleted', 'priority', 'returned'], 'integer'],
             [['item_id'], 'required'],
-            [['i_usg_type', 'i_comb_type_id', 'activated_at'], 'safe'],
+            [['i_type', 'i_usg_type', 'i_comb_type_id', 'activated_at'], 'safe'],
             [['comment'], 'string'],
         ];
     }
@@ -471,7 +470,13 @@ class Items extends \yii\db\ActiveRecord
     }
 
     public function getType() {
-        return self::$ITypes[$this->i_type ?: 0];
+        $types = '';
+        is_string($this->i_usg_type) && $this->i_usg_type = array($this->i_usg_type);
+        foreach ($this->i_type as $type) {
+            $types .= self::$ITypes[$type ?: 0] . ' ';
+        }
+
+        return $types;
     }
 
     public static function getICombTypes() {

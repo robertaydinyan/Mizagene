@@ -335,22 +335,24 @@ $(document).ready(function() {
 
 
     function itemTypeChange(el) {
-        let single_usg_types;
+        var usg_types;
         let ict = el.closest('tr').find('.item-comb-type');
         let ust = el.closest('tr').find('.item-usage-type');
         let usg_type = el.closest('tr').find('.item-usage-type').val();
-        $.get('/admin/usg-type/get-types', {'type': $(el).val()}).done((res) => {
+        $.get('/admin/usg-type/get-types', { 'type': JSON.stringify($(el).val()) }).done((res) => {
             usg_types = JSON.parse(res);
+            if ($(el).val().includes('1')) {
+                $(ict).next().hasClass('select2') && $(ict).select2('destroy');
+                $(ict).hide().removeClass('required');
+                $(ust).select2('destroy').empty().html(createOptions(usg_types)).val(usg_type).select2();
+            }
+            if ($(el).val().includes('2')) {
+                !$(ict).next().hasClass('select2') && $(ict).select2();
+                $(ict).show().addClass('required');
+                $(ust).select2('destroy').empty().html(createOptions(usg_types)).val(usg_type).select2();
+            }
         })
-        if ($(el).val() == 1) {
-            $(ict).next().hasClass('select2') && $(ict).select2('destroy');
-            $(ict).hide().removeClass('required');
-            $(ust).select2('destroy').html(createOptions(usg_types)).val(usg_type).select2();
-        } else if ($(el).val() == 2) {
-            !$(ict).next().hasClass('select2') && $(ict).select2();
-            $(ict).show().addClass('required');
-            $(ust).select2('destroy').html(createOptions(usg_types)).val(usg_type).select2();
-        }
+
     }
 
     $(document).on('change', '.item-type', function() {
