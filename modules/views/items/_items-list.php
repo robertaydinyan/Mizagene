@@ -580,7 +580,7 @@ $columns = [
                 <div>%s</div>',
                 $form->field($model, 'i_type')->dropDownList(Items::getITypes(), ['class' => 'required item-type'])->label(false),
                 $form->field($model, 'i_usg_type')->dropDownList(
-                    Items::getIUsgTypes(),
+                    \yii\helpers\ArrayHelper::map(\app\modules\models\UsgType::find()->asArray()->all(), 'id', 'name'),
                     ['multiple' => 'multiple', 'class' => 'required form-control item-usage-type select2', 'value' => $model->i_usg_type]
                 )->label(false),
                 $form->field($model, 'i_comb_type_id')->dropDownList(Items::getICombTypes(), ['multiple' => 'multiple', 'class' => 'item-comb-type select2'])->label(false)
