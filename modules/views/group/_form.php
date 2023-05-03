@@ -31,12 +31,12 @@ $comb_types = Items::getICombTypes();
                                 <input type="hidden" name="language" value="2">
                             </div>
                             <div class="d-flex col-10 justify-content-around">
-                                <div class="custom-radio">
-                                    <input type="radio" id="SingleCheckbox" class="item-type" value="1" name="type" checked>
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="SingleCheckbox" class="item-type-checkbox" value="1" name="type" checked>
                                     <label for="SingleCheckbox">Single</label>
                                 </div>
-                                <div class="custom-radio">
-                                    <input type="radio" id="MultipleCheckbox" class="item-type" value="2" name="type">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="MultipleCheckbox" class="item-type-checkbox" value="2" name="type">
                                     <label for="MultipleCheckbox">Multiple</label>
                                 </div>
                             </div>
