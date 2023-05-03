@@ -341,16 +341,15 @@ $(document).ready(function() {
         let usg_type = el.closest('tr').find('.item-usage-type').val();
         $.get('/admin/usg-type/get-types', { 'type': JSON.stringify($(el).val()) }).done((res) => {
             usg_types = JSON.parse(res);
+            !$(ict).next().hasClass('select2') && $(ict).select2();
+
             if ($(el).val().includes('1')) {
-                $(ict).next().hasClass('select2') && $(ict).select2('destroy');
                 $(ict).hide().removeClass('required');
-                $(ust).select2('destroy').empty().html(createOptions(usg_types)).val(usg_type).select2();
             }
             if ($(el).val().includes('2')) {
-                !$(ict).next().hasClass('select2') && $(ict).select2();
                 $(ict).show().addClass('required');
-                $(ust).select2('destroy').empty().html(createOptions(usg_types)).val(usg_type).select2();
             }
+            $(ust).select2('destroy').empty().html(createOptions(usg_types)).val(usg_type).select2();
         })
 
     }
