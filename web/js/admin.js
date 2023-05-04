@@ -163,8 +163,16 @@ $(document).ready(function() {
         // });
         $(".group-item-container, .droppable").sortable({
             placeholder: "group-item",
-            connectWith: ".droppable",
-            handle: '.drag-event'
+            connectWith: ".group-item-container, .droppable",
+            handle: '.drag-event',
+            stop: function(event, ui) {
+                ui = $(ui.item);
+                if (ui.closest(".group-item-container").length > 0) {
+                    ui.find('input').attr('disabled', 'disabled');
+                } else {
+                    ui.find('input').removeAttr('disabled');
+                }
+            }
         }).disableSelection();
         // $("").droppable({
         //     drop: function( event, ui ) {
@@ -226,7 +234,7 @@ $(document).ready(function() {
     function saveRowData(el, id) {
         let data = takeFormData(el);
         console.log(data)
-        $.get('/admin/items/update?id=' + id, {
+        $.post('/admin/items/update?id=' + id, {
             'Items': JSON.stringify(data)
         }).done((data) => {
             if (data) {
@@ -282,7 +290,7 @@ $(document).ready(function() {
         let index = $(this).closest('.color-spector-detailed').index();
         let data = takeFormData($(this).parent().parent().next());
         rowValidation($(this).closest('tr'));
-        $.get('/admin/items/update?id=' + $(this).closest('tr').data('key'), {
+        $.post('/admin/items/update?id=' + $(this).closest('tr').data('key'), {
             'Items': JSON.stringify(data)
         }).done((result) => {
             if (result) {
@@ -339,19 +347,20 @@ $(document).ready(function() {
         let ict = el.closest('tr').find('.item-comb-type');
         let ust = el.closest('tr').find('.item-usage-type');
         let usg_type = el.closest('tr').find('.item-usage-type').val();
-        $.get('/admin/usg-type/get-types', { 'type': JSON.stringify($(el).val()) }).done((res) => {
-            usg_types = JSON.parse(res);
-            !$(ict).next().hasClass('select2') && $(ict).select2();
+        if ($(el).val()) {
+            $.get('/admin/usg-type/get-types', { 'type': JSON.stringify($(el).val()) }).done((res) => {
+                usg_types = JSON.parse(res);
+                !$(ict).next().hasClass('select2') && $(ict).select2();
 
-            if ($(el).val().includes('1')) {
-                $(ict).hide().removeClass('required');
-            }
-            if ($(el).val().includes('2')) {
-                $(ict).show().addClass('required');
-            }
-            $(ust).select2('destroy').empty().html(createOptions(usg_types)).val(usg_type).select2();
-        })
-
+                if ($(el).val().includes('1')) {
+                    $(ict).hide().removeClass('required');
+                }
+                if ($(el).val().includes('2')) {
+                    $(ict).show().addClass('required');
+                }
+                $(ust).select2('destroy').empty().html(createOptions(usg_types)).val(usg_type).select2();
+            });
+        }
     }
 
     $(document).on('change', '.item-type', function() {
@@ -381,10 +390,11 @@ $(document).ready(function() {
             $.each(data, (i, k) => {
                 clone = template.clone().appendTo(template.parent());
                 clone.find('.fa-circle').addClass(k['check1'] ? 'active' : 'disabled');
-                clone.find('.group-item-id').text(k['id'])
-                clone.find('.group-item-title').text(k['itemTitles'][0]['title'])
-                clone.find('.group-item-description').text(k['itemTitles'][0]['description'])
-                clone.find('.group-item-description').attr('title', k['itemTitles'][0]['description'])
+                clone.find('.group-item-id').text(k['id']);
+                clone.find('.item-id').val(k['id']);
+                clone.find('.group-item-title').text(k['itemTitles'][0]['title']);
+                clone.find('.group-item-description').text(k['itemTitles'][0]['description']);
+                clone.find('.group-item-description').attr('title', k['itemTitles'][0]['description']);
                 clone.find('.group-item-source-' + k['source']).removeClass('d-none');
                 clone.removeClass('group-item-template');
                 // $('.items-container').append('<div class="item"><span>' +  + ' </span><span> ' +  + ' </span><span> ' + item_types[k['i_type']] + '</span></div>');
@@ -398,7 +408,10 @@ $(document).ready(function() {
     });
 
     $('.btn-reset').on('click', function() {
-        debugger
         $(this).closest('.dropdown').find('select').val([]).change();
-    })
+    });
+
+    $('.active-item-disable').on('click', function() {
+        $.post('/admin/items/disable', { 'id': $(this).closest('tr').attr('data-key') });
+    });
 });

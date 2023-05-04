@@ -78,13 +78,19 @@ class GroupController extends Controller
         }
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+                if (isset($this->request->post('Group')['push'])) {
+                    $model->pushed = 1;
+                    $model->save();
+                }
                 $iconFile = UploadedFile::getInstance($model, 'icon');
                 if ($iconFile) {
                     $iconContent = file_get_contents($iconFile->tempName);
                     $model->icon = $iconContent;
                 }
                 if ($model->save()) {
-                    return $this->redirect(['create?step=' . ($step + 1) . '&id=' . $model->id]);
+                    $step = min(2, $step + 1);
+
+                    return $this->redirect(['create?step=' . ($step) . '&id=' . $model->id]);
                 }
             }
         }

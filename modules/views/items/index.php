@@ -32,35 +32,38 @@ $this->params['breadcrumbs'][] = $this->title;
 //            }
 //        }?>
 <!--    </ul>-->
-    <?php if ($steps):
-        $active_pill = $tabs[$pill]; ?>
-        <div class="steps-container d-flex">
-            <div class="d-flex col-2">
-                <img class="m-icon" src="/images/icons/<?php echo $active_pill[1]; ?>" alt="">
-                <div>
-                    <h4><?php echo $active_pill[0];?></h4>
+    <?php
+        if ($pill == 3):
+            if ($steps):
+            $active_pill = $tabs[$pill]; ?>
+            <div class="steps-container d-flex">
+                <div class="d-flex col-2">
+                    <img class="m-icon" src="/images/icons/<?php echo $active_pill[1]; ?>" alt="">
+                    <div>
+                        <h4><?php echo $active_pill[0];?></h4>
+                    </div>
                 </div>
+                <ul class="nav nav-pills nav-pills-steps col-10" role="tablist">
+                    <?php
+                        $active_steps = Items::getActiveSteps();
+                        foreach ($steps as $i => $title) {
+                            echo sprintf('
+                                <li class="nav-pills">
+                                    <a class="nav-pill %s" href="?pill=%s&step=%s">%s <span class="pill-badge %s">%s</span></a>
+                                </li>',
+                                $step == $i ? "active" : "",
+                                $pill,
+                                $i,
+                                $title,
+                                isset($active_steps[$i]) ? "pill-badge-primary" : "pill-badge-dark",
+                                Items::getStepElCount($pill, $i)
+                            );
+                        }
+                    ?>
+                </ul>
             </div>
-            <ul class="nav nav-pills nav-pills-steps col-10" role="tablist">
-                <?php
-                    $active_steps = Items::getActiveSteps();
-                    foreach ($steps as $i => $title) {
-                        echo sprintf('
-                            <li class="nav-pills">
-                                <a class="nav-pill %s" href="?pill=%s&step=%s">%s <span class="pill-badge %s">%s</span></a>
-                            </li>',
-                            $step == $i ? "active" : "",
-                            $pill,
-                            $i,
-                            $title,
-                            isset($active_steps[$i]) ? "pill-badge-primary" : "pill-badge-dark",
-                            Items::getStepElCount($pill, $i)
-                        );
-                    }
-                ?>
-            </ul>
-        </div>
-    <?php endif; ?>
+        <?php endif;
+    endif; ?>
     <div class="grid-header mt-4 col-12 d-flex justify-content-between">
         <div class="form-group col-6 d-flex">
             <div class="form-group col-6 ">

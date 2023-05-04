@@ -50,7 +50,7 @@ AppAsset::register($this);
                 'label' => sprintf('<div class="submenu_item"><img src="/images/icons/%s" class="icon" style="margin-top: 0"><span>%s</span> %s</div>',
                     $title[1],
                     $title[0],
-                    Items::getTabElCount($i) == 0 ? "" : '<span style="position: absolute; right: 8px" class="pill-badge ' . ($i != 4 ? 'pill-badge-primary' : 'pill-badge-grey') . '">' . Items::getTabElCount($i) . '</span>'
+                    Items::getTabElCount($i) == 0 ? "" : '<span style="position: absolute; right: 8px" class="pill-badge ' . (($i != 4 AND $i != 5) ? 'pill-badge-primary' : 'pill-badge-grey') . '">' . Items::getTabElCount($i) . '</span>'
                 ),
                 'url' => '/admin/items/index?pill=' . $i
             ];
@@ -68,7 +68,6 @@ AppAsset::register($this);
 //            ['label' => '', 'url' => ['/admin/items/index'], ],
             ['label' => 'Users', 'url' => ['/admin/admin/index'], 'active' => Yii::$app->controller->id == 'admin'],
             ['label' => 'Usage types', 'url' => ['/admin/usg-type/index'], 'active' => Yii::$app->controller->id == 'usg-type'],
-            ['label' => 'Region', 'url' => ['/admin/region/index'], 'active' => Yii::$app->controller->id == 'region'],
             ['label' => 'Language', 'url' => ['/admin/language/index'], 'active' => Yii::$app->controller->id == 'language'],
             [
                 'label' => 'Groups & Regions',
@@ -80,10 +79,10 @@ AppAsset::register($this);
                     ],
                     [
                         'label' => '<div class="submenu_item"><span>Regions</span></div>',
-                        'url' => '/admin/regions/index'
+                        'url' => '/admin/region/index'
                     ],
                 ],
-                'active' => in_array(Yii::$app->controller->id, array('groups', 'regions'))
+                'active' => in_array(Yii::$app->controller->id, array('group', 'region'))
             ],
             ['label' => 'Hi, <b>' . Yii::$app->admin->getIdentity()->username . '</b>', 'options' => ['class' => 'underlined-nav-link']],
             ['label' => '<i class="fa fa-sign-out" aria-hidden="true" style="font-size: 23px; padding-left: 0; margin-left: -16px;"></i>', 'url' => ['/admin/logout']],

@@ -590,6 +590,18 @@ $columns = [
             );
         }
     ],
+    'delete_date' => [
+        'header' => '<div><span>Delete date</span></div>',
+        'format' => 'raw',
+        'value' => function($model) {
+            return sprintf('
+                        <span>%s</span>
+                    ',
+
+                $model->delete_date
+            );
+        }
+    ]
 ];
 $columns_filtered = array();
 $cl = Items::attributeLabelsCustom($pill, $step);
@@ -682,10 +694,12 @@ foreach ($cl[0] as $column) {
                         '';
                 },
                 'restore' => function ($url, $model, $key) {
-                    return Html::a('<i class="fa fa-refresh"></i>', $url, [
-                        'title' => 'Restore',
-                        'data-pjax' => '1',
-                    ]);
+                    return in_array(Yii::$app->admin->getIdentity()->role, [1, 3]) ?
+                        Html::a('',
+                            'javascript:;',
+                            ['class' => 'icon restore label ajax-call', 'data-path' => $url]
+                        ) :
+                        '';
                 },
                 'view' => function ($url, $model, $key) {
                     return  Html::a('<i class="fa fa-gear"></i>', $url, ['class' => 'bg-blue label']);
@@ -702,6 +716,22 @@ foreach ($cl[0] as $column) {
                     return Html::a('',
                         'javascript:;',
                         ['class' => 'icon save-item save-filled label',]
+                    );
+                },
+                'disable' => function($url, $model, $key) {
+                    return sprintf('
+                        <label class="switch">
+                            <input type="checkbox" %s>
+                            <span class="slider round active-item-disable"></span>
+                        </label><br>',
+
+                        !$model->disabled ? "checked" : ""
+                    );
+                },
+                'update' => function($url, $model, $key) {
+                    return Html::a('',
+                        $url,
+                        ['class' => 'icon update label']
                     );
                 }
             ],

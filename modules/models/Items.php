@@ -27,13 +27,12 @@ use yii\helpers\ArrayHelper;
  */
 class Items extends \yii\db\ActiveRecord
 {
-
-
     private static $tabs = array(
         1 => array('Active Items', 'active.png'),
         3 => array('Migrated Base', 'migrate.png'),
         2 => array('Creation', 'create.png'),
         4 => array('Archive', 'archive.png'),
+        5 => array('Deleted', 'archive.png'),
     );
 
     private static $steps = array(
@@ -217,7 +216,7 @@ class Items extends \yii\db\ActiveRecord
                         'english',
                         'results_description'
                     ),
-                    ''
+                    '{disable} {update}'
                 );
             case 2;
                 break;
@@ -351,7 +350,23 @@ class Items extends \yii\db\ActiveRecord
                 }
                 return $res;
             case 4;
-                return array($titles, '{restore}');
+                return array(array(
+                    'item_id',
+                    'persian',
+                    'russian',
+                    'english',
+                    'results_description',
+                    'delete_date'
+                ), '{restore} {delete}');
+            case 5;
+                return array(array(
+                    'item_id',
+                    'persian',
+                    'russian',
+                    'english',
+                    'results_description',
+                    'delete_date'
+                ), '');
         }
     }
 
@@ -367,22 +382,22 @@ class Items extends \yii\db\ActiveRecord
         return $it ?: new ItemTitle();
     }
 
-    public function saveData($post) {
-        if (isset($post['Items'])) {
-            if ($this->load($post, 'Items')) {
+    public function saveData($items) {
+        if (isset($items)) {
+            if ($this->load($items, '')) {
                 if ($this->save()) {
-                    if (isset($post['Items']['title'])) {
-                        foreach ($post['Items']['title'] as $i => $t) {
+                    if (isset($items['title'])) {
+                        foreach ($items['title'] as $i => $t) {
                             $it = ItemTitle::find()->where(['itemID' => $this->id, 'languageID' => $i])->one() ?: new ItemTitle();
-                            $it->description = $post['Items']['description'][$i];
+                            $it->description = $items['description'][$i];
                             $it->title = $t;
                             $it->itemID = $this->id;
                             $it->languageID = $i;
                             $it->save();
                         }
                     }
-                    if (isset($post['Items']['colorSectors'])) {
-                        $colorSectors = $post['Items']['colorSectors'];
+                    if (isset($items['colorSectors'])) {
+                        $colorSectors = $items['colorSectors'];
                         for ($i = 0; $i < 10; $i++) {
                             $ic = ItemColors::find()->where(['item_id' => $this->item_id, 'sector_id' => ($i + 1)])->one();
                             isset($colorSectors['color_id']) && isset($colorSectors['color_id'][$i]) && $ic->color_id = $colorSectors['color_id'][$i];

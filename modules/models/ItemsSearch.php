@@ -45,7 +45,7 @@ class ItemsSearch extends Items
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pageSize' => 200
+                'pageSize' => 100
             ],
         ]);
 
@@ -90,6 +90,9 @@ class ItemsSearch extends Items
                 break;
             case 4:
                 $query->andFilterWhere(['deleted' => 1]);
+                break;
+            case 5:
+                $query->andFilterWhere(['deleted' => 2]);
                 break;
         }
     }

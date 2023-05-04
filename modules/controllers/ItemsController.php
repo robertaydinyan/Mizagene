@@ -83,7 +83,7 @@ class ItemsController extends Controller
     }
 
     public function actionGetActiveItems($search) {
-        Yii::$app->response->format = Response::FORMAT_JSON;
+//        Yii::$app->response->format = Response::FORMAT_JSON;
         $model = Items::find()->select('items.id, item_id, i_type, source, check1');
         $search = json_decode($search);
         $search_model = new ItemsSearch();
@@ -113,7 +113,13 @@ class ItemsController extends Controller
                 $model->andWhere($usg_comb_types);
             }
             if (isset($search->type)) {
-                $model->andFilterWhere(['i_type' => $search->type]);
+                $type_sql = "";
+                is_string($search->type) && $search->type = array($search->type);
+                foreach ($search->type as $i => $type) {
+                    $type_sql .= 'JSON_CONTAINS(i_type, \'["' . $type . '"]\', \'$\') and ';
+                }
+                $type_sql = substr($type_sql, 0, -4);
+                $model->andWhere($type_sql);
             }
             $language = $search->language;
             $model->with([
@@ -166,27 +172,22 @@ class ItemsController extends Controller
         ]);
     }
 
-    public function actionUpdate($id)
-    {
-//        if ($this->request->isPost) {
-            $model = $this->findModel($id);
-//            echo "<pre>";
-//            var_dump(json_decode(Yii::$app->request->get('Items'), true));
-//            die();
-            return $model->saveData(json_decode(Yii::$app->request->get('Items'), true));
-//            $description = Yii::$app->request->post('Items')['description'];
-//            if ($description) {
-//                foreach (Yii::$app->request->post('Items')['title'] as $j => $t) {
-//                    $it = ItemTitle::find()->where(['itemID' => $model->id, 'languageID' => $j])->one() ?: new ItemTitle();
-//                    $it->description = $description[$j][$i];
-//                    $it->title = $t[$i];
-//                    $it->itemID = $model->id;
-//                    $it->languageID = $j;
-//                    $it->save();
-//                }
-//            }
-//        }
-//        return $this->redirect(Yii::$app->request->referrer);
+    public function actionUpdate($id) {
+        $model = $this->findModel($id);
+        if ($this->request->isPost) {
+            $items = Yii::$app->request->post('Items');
+            if (!is_array($items)) {
+                $items = json_decode($items, true)['Items'];
+                $model->saveData($items);
+            } else {
+                $model->saveData($items);
+                return $this->redirect(Yii::$app->request->referrer);
+            }
+        }
+
+        return $this->render('update', [
+            'model' => $model
+        ]);
     }
 
     /**
@@ -199,7 +200,8 @@ class ItemsController extends Controller
     public function actionDelete($id) {
         $item = $this->findModel($id);
         if (in_array(Yii::$app->admin->getIdentity()->role, [1, 3])) {
-            $item->deleted = 1;
+            $item->deleted += 1;
+            $item->delete_date = date('Y-m-d H:i:s');
         }
         return $item->save();
     }
@@ -214,8 +216,7 @@ class ItemsController extends Controller
     {
         $item = $this->findModel($id);
         $item->deleted = 0;
-        $item->save();
-        return $this->redirect(Yii::$app->request->referrer);
+        return $item->save();
     }
 
     public function actionFixtranslation() {
@@ -316,6 +317,16 @@ class ItemsController extends Controller
         }
         $item->save();
     }
+
+    public function actionDisable() {
+        $id = Yii::$app->request->post('id');
+        if ($id) {
+            $item = Items::findOne($id);
+            $item->disabled = 1 - $item->disabled;
+            $item->save();
+        }
+    }
+
     /**
      * Finds the Items model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
