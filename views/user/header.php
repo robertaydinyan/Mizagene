@@ -77,7 +77,7 @@ use yii\helpers\Url;
 <!--                </ul>-->
 <!--            </div>-->
         </div>
-        <div class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-11 pe-0" style="width: calc(100% - 90px)">
+        <div class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-11 pe-0 mb-3" style="background-color:#F3F3F3; width: calc(100% - 90px)">
 
 
 
