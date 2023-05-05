@@ -1,7 +1,7 @@
 <?php
 //include 'translations.php';
 use yii\helpers\Url;
-
+use yii\bootstrap5\ActiveForm;
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,19 +18,33 @@ use yii\helpers\Url;
 <header>
     <nav class="navbar navbar-dark bg-light" style="height: 73px">
         <div class="container-fluid">
-                <a class="" style="margin-left: 11px" href="/"><img class="navbar-brand mx-0" src="/images/logo.png" alt="Logo" width="200" height="55"></a>
+                <a class="" style="margin-left: 11px" href="/">
+                    <img class="navbar-brand mx-0 dashLogoMax" src="/images/logo.png" alt="Logo" width="200" height="55">
+                    <img class="navbar-brand mx-0 dashLogoMin ms-2" src="/images/favicon.png" alt="Logo" width="45" height="55" style="display: none;">
+                </a>
 <!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">-->
 <!--                <span class="navbar-toggler-icon"></span>-->
 <!--            </button>-->
-                        <div class="dropdown me-3">
+                        <div class="dropdown me-3 menuDrop">
                             <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                                <span>Hi, <strong>George</strong>!</span>
+                                <span>Hi, <strong><?= Yii::$app->user->identity->username ?></strong>!</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end text-small shadow">
                                 <li><a class="dropdown-item" href="/settings">Settings</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                                <li>
+                                    <?php $form = ActiveForm::begin([
+                                'class' => 'logout-form',
+                                'action' => ['site/logout'],
+                                'method' => 'post',
+                            ]);
+                            ?>
+
+                                    <button type="submit" class="dropdown-item">Sign Out</button>
+
+                            <?php ActiveForm::end(); ?>
+                                </li>
                             </ul>
                         </div>
         </div>
@@ -38,26 +52,26 @@ use yii\helpers\Url;
 </header>
 <body style="height: 100vh; display: flex; flex-direction: column">
 <div class="container-fluid">
-    <div class="row w-100">
-        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-flex flex-column flex-shrink-0 p-3 pt-2 px-0 bg-light" style="width: 90px">
+    <div class="row w-100 ms-0">
+        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 flex-column flex-shrink-0 p-3 pt-2 px-0 bg-light bigMenu" style="width: 90px; display: flex">
             <ul class="nav nav-pills flex-column mb-auto sidebar">
                 <li class="nav-item text-center">
-                    <a href="/add-subject" class="nav-link link-dark pe-2" aria-current="page">
+                    <a href="/add-subject" class="nav-link link-dark px-2" aria-current="page">
                         <img src="/images/add-photo_<?= Yii::$app->controller->action->id == 'add-subject' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'add-subject' ? 'active' : '' ?>">
                     </a>
                 </li>
                 <li class="nav-item text-center">
-                    <a href="/all-subjects" class="nav-link link-dark pe-2">
+                    <a href="/all-subjects" class="nav-link link-dark px-2">
                         <img src="/images/list_<?= Yii::$app->controller->action->id == 'all-subjects' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'all-subjects' ? 'active' : '' ?>">
                     </a>
                 </li>
                 <li class="nav-item text-center">
-                    <a href="/connections" class="nav-link link-dark pe-2">
+                    <a href="/connections" class="nav-link link-dark px-2">
                         <img src="/images/connections_<?= Yii::$app->controller->action->id == 'connections' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'connections' ? 'active' : '' ?>">
                     </a>
                 </li>
                 <li class="nav-item text-center">
-                    <a href="#" class="nav-link link-dark pe-2">
+                    <a href="#" class="nav-link link-dark px-2">
                         <img src="/images/HR_<?= Yii::$app->controller->action->id == 'service' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'service' ? 'active' : '' ?>">
                     </a>
                 </li>
@@ -77,7 +91,7 @@ use yii\helpers\Url;
 <!--                </ul>-->
 <!--            </div>-->
         </div>
-        <div class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-11 pe-0 mb-3" style="background-color:#F3F3F3; width: calc(100% - 90px)">
+        <div class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-12 pe-0 mb-3 mobileCol ps-0 ps-sm-2" style="width: calc(100% - 90px)">
 
 
 

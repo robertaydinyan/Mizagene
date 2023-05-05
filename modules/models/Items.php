@@ -486,9 +486,11 @@ class Items extends \yii\db\ActiveRecord
 
     public function getType() {
         $types = '';
-        is_string($this->i_usg_type) && $this->i_usg_type = array($this->i_usg_type);
-        foreach ($this->i_type as $type) {
-            $types .= self::$ITypes[$type ?: 0] . ' ';
+        is_string($this->i_type) && $this->i_type = array($this->i_type);
+        if ($this->i_type) {
+            foreach ($this->i_type as $type) {
+                $types .= self::$ITypes[$type ?: 0] . ' ';
+            }
         }
 
         return $types;

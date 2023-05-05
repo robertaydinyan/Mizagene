@@ -81,11 +81,11 @@ class SiteController extends Controller
         $model = new LoginForm();
 
         if ($model->load($post,'') && $model->login()) {
-
-            return $this->goBack();
+            return $this->redirect(['/add-subject']);
         }
 
         $model->password = '';
+
         return $this->render('index', [
             'model' => $model,
         ]);

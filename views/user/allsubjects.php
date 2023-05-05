@@ -1,10 +1,10 @@
 <?php
-    include('header.php');
-    use yii\helpers\Url;
+include('header.php');
+use yii\helpers\Url;
 ?>
 
-<div class="row">
-    <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12">
+<div class="row d-flex mx-auto px-0">
+    <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12 px-0 px-sm-2">
         <div class="mb-3 mx-auto px-0">
             <div class="row mx-auto px-0" style="padding-top: 25px!important; padding-left: 30px">
                 <h3>Subjects List</h3>
@@ -50,16 +50,16 @@
                         <td>Aram</td>
                         <td>30.04.2023 12:15</td>
                         <td>100</td>
-                        <td>Male</td>
+                        <td><i class="fa-solid fa-mars" style="color: #000000;"></i></td>
                         <td>180</td>
                         <td>40</td>
                         <td><img src="/images/aram.jpg" alt="" width="30px" height="30px" style="object-fit: cover; border-radius: 100%; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"> 10+</td>
                         <td>0</td>
                         <td>0</td>
                         <td>
-                            <img src="/images/yes_no.png" alt="" width="25px">
+                            <img src="/images/yes_no.png" alt="" width="25px" class="mx-sm-0 mx-3">
                             <img src="/images/share.png" alt="" width="20px" class="mx-3">
-                            <img src="/images/wrong.png" alt="" width="15px" class="me-2">
+                            <img src="/images/wrong.png" alt="" width="15px" class="me-sm-2 mx-3">
                         </td>
                     </tr>
                     <tr>
@@ -75,9 +75,63 @@
                         <td>0</td>
                         <td>0</td>
                         <td>
-                            <img src="/images/yes_no.png" alt="" width="25px">
+                            <img src="/images/yes_no.png" alt="" width="25px" class="mx-sm-0 mx-3">
                             <img src="/images/share.png" alt="" width="20px" class="mx-3">
-                            <img src="/images/wrong.png" alt="" width="15px" class="me-2">
+                            <img src="/images/wrong.png" alt="" width="15px" class="me-sm-2 mx-3">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-start ps-2">1</td>
+                        <td class="text-start"><img src="/images/aram.jpg" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></td>
+                        <td>Aram</td>
+                        <td>30.04.2023 12:15</td>
+                        <td>100</td>
+                        <td>Male <i class="fa-solid fa-transgender" style="color: #000000;"></i></td>
+                        <td>180</td>
+                        <td>40</td>
+                        <td><img src="/images/aram.jpg" alt="" width="30px" height="30px" style="object-fit: cover; border-radius: 100%; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"> 10+</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>
+                            <img src="/images/yes_no.png" alt="" width="25px" class="mx-sm-0 mx-3">
+                            <img src="/images/share.png" alt="" width="20px" class="mx-3">
+                            <img src="/images/wrong.png" alt="" width="15px" class="me-sm-2 mx-3">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-start ps-2">1</td>
+                        <td class="text-start"><img src="/images/aram.jpg" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></td>
+                        <td>Aram</td>
+                        <td>30.04.2023 12:15</td>
+                        <td>100</td>
+                        <td>Female <i class="fa-solid fa-transgender" style="color: #000000;"></i></td>
+                        <td>180</td>
+                        <td>40</td>
+                        <td><img src="/images/aram.jpg" alt="" width="30px" height="30px" style="object-fit: cover; border-radius: 100%; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"> 10+</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>
+                            <img src="/images/yes_no.png" alt="" width="25px" class="mx-sm-0 mx-3">
+                            <img src="/images/share.png" alt="" width="20px" class="mx-3">
+                            <img src="/images/wrong.png" alt="" width="15px" class="me-sm-2 mx-3">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-start ps-2">1</td>
+                        <td class="text-start"><img src="/images/aram.jpg" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></td>
+                        <td>Aram</td>
+                        <td>30.04.2023 12:15</td>
+                        <td>100</td>
+                        <td><i class="fa-solid fa-venus" style="color: #000000;"></i></td>
+                        <td>180</td>
+                        <td>40</td>
+                        <td><img src="/images/aram.jpg" alt="" width="30px" height="30px" style="object-fit: cover; border-radius: 100%; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"> 10+</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>
+                            <img src="/images/yes_no.png" alt="" width="25px" class="mx-sm-0 mx-3">
+                            <img src="/images/share.png" alt="" width="20px" class="mx-3">
+                            <img src="/images/wrong.png" alt="" width="15px" class="me-sm-2 mx-3">
                         </td>
                     </tr>
                     <tr>
@@ -93,9 +147,9 @@
                         <td>0</td>
                         <td>0</td>
                         <td>
-                            <img src="/images/yes_no.png" alt="" width="25px">
+                            <img src="/images/yes_no.png" alt="" width="25px" class="mx-sm-0 mx-3">
                             <img src="/images/share.png" alt="" width="20px" class="mx-3">
-                            <img src="/images/wrong.png" alt="" width="15px" class="me-2">
+                            <img src="/images/wrong.png" alt="" width="15px" class="me-sm-2 mx-3">
                         </td>
                     </tr>
                     <tr>
@@ -111,9 +165,9 @@
                         <td>0</td>
                         <td>0</td>
                         <td>
-                            <img src="/images/yes_no.png" alt="" width="25px">
+                            <img src="/images/yes_no.png" alt="" width="25px" class="mx-sm-0 mx-3">
                             <img src="/images/share.png" alt="" width="20px" class="mx-3">
-                            <img src="/images/wrong.png" alt="" width="15px" class="me-2">
+                            <img src="/images/wrong.png" alt="" width="15px" class="me-sm-2 mx-3">
                         </td>
                     </tr>
                     <tr>
@@ -129,9 +183,9 @@
                         <td>0</td>
                         <td>0</td>
                         <td>
-                            <img src="/images/yes_no.png" alt="" width="25px">
+                            <img src="/images/yes_no.png" alt="" width="25px" class="mx-sm-0 mx-3">
                             <img src="/images/share.png" alt="" width="20px" class="mx-3">
-                            <img src="/images/wrong.png" alt="" width="15px" class="me-2">
+                            <img src="/images/wrong.png" alt="" width="15px" class="me-sm-2 mx-3">
                         </td>
                     </tr>
                     <tr>
@@ -147,63 +201,9 @@
                         <td>0</td>
                         <td>0</td>
                         <td>
-                            <img src="/images/yes_no.png" alt="" width="25px">
+                            <img src="/images/yes_no.png" alt="" width="25px" class="mx-sm-0 mx-3">
                             <img src="/images/share.png" alt="" width="20px" class="mx-3">
-                            <img src="/images/wrong.png" alt="" width="15px" class="me-2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-start ps-2">1</td>
-                        <td class="text-start"><img src="/images/aram.jpg" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></td>
-                        <td>Aram</td>
-                        <td>30.04.2023 12:15</td>
-                        <td>100</td>
-                        <td>Male</td>
-                        <td>180</td>
-                        <td>40</td>
-                        <td><img src="/images/aram.jpg" alt="" width="30px" height="30px" style="object-fit: cover; border-radius: 100%; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"> 10+</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>
-                            <img src="/images/yes_no.png" alt="" width="25px">
-                            <img src="/images/share.png" alt="" width="20px" class="mx-3">
-                            <img src="/images/wrong.png" alt="" width="15px" class="me-2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-start ps-2">1</td>
-                        <td class="text-start"><img src="/images/aram.jpg" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></td>
-                        <td>Aram</td>
-                        <td>30.04.2023 12:15</td>
-                        <td>100</td>
-                        <td>Male</td>
-                        <td>180</td>
-                        <td>40</td>
-                        <td><img src="/images/aram.jpg" alt="" width="30px" height="30px" style="object-fit: cover; border-radius: 100%; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"> 10+</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>
-                            <img src="/images/yes_no.png" alt="" width="25px">
-                            <img src="/images/share.png" alt="" width="20px" class="mx-3">
-                            <img src="/images/wrong.png" alt="" width="15px" class="me-2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-start ps-2">1</td>
-                        <td class="text-start"><img src="/images/aram.jpg" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></td>
-                        <td>Aram</td>
-                        <td>30.04.2023 12:15</td>
-                        <td>100</td>
-                        <td>Male</td>
-                        <td>180</td>
-                        <td>40</td>
-                        <td><img src="/images/aram.jpg" alt="" width="30px" height="30px" style="object-fit: cover; border-radius: 100%; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"> 10+</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>
-                            <img src="/images/yes_no.png" alt="" width="25px">
-                            <img src="/images/share.png" alt="" width="20px" class="mx-3">
-                            <img src="/images/wrong.png" alt="" width="15px" class="me-2">
+                            <img src="/images/wrong.png" alt="" width="15px" class="me-sm-2 mx-3">
                         </td>
                     </tr>
                     </tbody>
@@ -219,28 +219,28 @@
                 <input type="text" style="width: 100%; border: 1px solid #dee2e6; border-radius: 5px">
                 <button type="button" class="btn" style="padding: 0; margin: 0; margin-left: 36px!important;"><img src="/images/filter.png" alt="" width="30px"></button>
             </div>
-<!--            <div class="d-flex">-->
-<!--                <label for="color-black">-->
-<!--                    <input type="radio" id="color-black" name="color" value="black" checked/>-->
-<!--                    <span class="color-radio black"></span>-->
-<!--                </label>-->
-<!---->
-<!--                <label for="color-red">-->
-<!--                    <input type="radio" id="color-red" name="color" value="red" />-->
-<!--                    <span class="color-radio red"></span>-->
-<!--                </label>-->
-<!---->
-<!--                <label for="color-green">-->
-<!--                    <input type="radio" id="color-green" name="color" value="green" />-->
-<!--                    <span class="color-radio green"></span>-->
-<!--                </label>-->
-<!---->
-<!--                <label for="color-blue">-->
-<!--                    <input type="radio" id="color-blue" name="color" value="blue" />-->
-<!--                    <span class="color-radio blue"></span>-->
-<!--                </label>-->
-<!---->
-<!--            </div>-->
+            <!--            <div class="d-flex">-->
+            <!--                <label for="color-black">-->
+            <!--                    <input type="radio" id="color-black" name="color" value="black" checked/>-->
+            <!--                    <span class="color-radio black"></span>-->
+            <!--                </label>-->
+            <!---->
+            <!--                <label for="color-red">-->
+            <!--                    <input type="radio" id="color-red" name="color" value="red" />-->
+            <!--                    <span class="color-radio red"></span>-->
+            <!--                </label>-->
+            <!---->
+            <!--                <label for="color-green">-->
+            <!--                    <input type="radio" id="color-green" name="color" value="green" />-->
+            <!--                    <span class="color-radio green"></span>-->
+            <!--                </label>-->
+            <!---->
+            <!--                <label for="color-blue">-->
+            <!--                    <input type="radio" id="color-blue" name="color" value="blue" />-->
+            <!--                    <span class="color-radio blue"></span>-->
+            <!--                </label>-->
+            <!---->
+            <!--            </div>-->
             <div class="d-flex flex-column mt-3">
                 <div class="d-flex align-items-center justify-content-start">
                     <img class="me-2" src="/images/aram.jpg" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;">

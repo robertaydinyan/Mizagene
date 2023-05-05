@@ -240,7 +240,7 @@ if (!$lang) {
                                 $yearOptions[$i] = $i;
                             }
                             ?>
-                            <?= Html::label('Year of birth', 'floatingInput') ?>
+<!--                            --><?//= Html::label('Year of birth', 'floatingInput') ?>
                             <?= Html::dropDownList('year_of_birth', null, $yearOptions, ['class' => 'form-control select2', 'prompt' => 'Year of birth']) ?>
 
                             <?php if(isset($model) && isset($model->getErrors()['year_of_birth'])) { ?>
