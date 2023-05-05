@@ -11,29 +11,67 @@ use yii\grid\GridView;
 /** @var app\modules\models\GroupSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Groups';
+$this->title = 'Drafts';
 $this->params['breadcrumbs'][] = $this->title;
 $usg_types = Items::getIUsgTypes();
 $comb_types = Items::getICombTypes();
 ?>
 <div class="group-index">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <?= Yii::$app->controller->renderPartial('_menu.php'); ?>
 
-    <div class="group-container d-flex">
-        <?php echo $this->renderFile('@app/modules/views/group/_group-config.php'); ?>
-
-        <div class="col-9 group-content">
-            <ul class="nav">
-                <li class="nav-item">
-                    <?= Html::a('Drafts', [""], ['class' => 'nav-link btn ' . (Yii::$app->controller->action->id == "index" ? 'btn-dark-blue' : '')]) ?>
-                </li>
-                <li class="nav-item">
-                    <?= Html::a('Groups', [""], ['class' => 'nav-link btn ' . (Yii::$app->controller->action->id == "aaa" ? 'btn-dark-blue' : '')]) ?>
-                </li>
-                <li class="nav-item">
-                    <?= Html::a('<i class="fa fa-plus"></i> Create Group', ["create"], ['class' => 'nav-link btn ' . (Yii::$app->controller->action->id == "create" ? 'btn-dark' : '')]) ?>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <?= GridView::widget([
+        'tableOptions' => ['class' => 'table table-striped table-bordered simple-grid'],
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            'id',
+            'title_russian',
+            'title_english',
+            'description_russian',
+            'description_english',
+            [
+                'header' => '<div>Adult</div>',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return $model->adult ? 'yes' : 'no';
+                }
+            ],
+            [
+                'header' => '<div>Regions</div>',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return $model->getRegions();
+                }
+            ],
+            [
+                'header' => '<div>items</div>',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return $model->getItems();
+                }
+            ],
+            [
+                'class' => ActionColumn::className(),
+                'template' => '{update} {delete}',
+                'buttons' => [
+                    'delete' => function ($url, $model, $key) {
+                        return Html::a('',
+                            $url,
+                            [
+                                'class' => 'icon archive archive-red label',
+                                'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+                                'data-method' => 'post',
+                            ]
+                        );
+                    },
+                    'update' => function($url, $model, $key) {
+                        return Html::a('',
+                            $url,
+                            ['class' => 'icon update label']
+                        );
+                    }
+                ]
+            ],
+        ],
+    ]); ?>
 </div>

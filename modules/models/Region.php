@@ -2,6 +2,7 @@
 
 namespace app\modules\models;
 
+use app\models\Country;
 use Yii;
 
 /**
@@ -9,6 +10,7 @@ use Yii;
  *
  * @property int $id
  * @property string $name
+ * @property string|null $countries
  */
 class Region extends \yii\db\ActiveRecord
 {
@@ -27,6 +29,7 @@ class Region extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
+            [['countries'], 'safe'],
             [['name'], 'string', 'max' => 255],
         ];
     }
@@ -39,6 +42,17 @@ class Region extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
+            'countries' => 'Countries',
         ];
+    }
+
+    public function getCountries() {
+        $result = '';
+        if ($this->countries) {
+            is_string($this->countries) && $this->countries = array($this->countries);
+            foreach ($this->countries as $country)
+                $result .= Country::getCountries()[$country] . ', ';
+        }
+        return $result;
     }
 }

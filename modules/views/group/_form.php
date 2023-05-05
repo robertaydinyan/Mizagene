@@ -82,7 +82,36 @@ $comb_types = Items::getICombTypes();
                         </div>
                     </div>
                     <hr style="color: white;">
-                    <div class="droppable" style="min-height: 300px">
+                    <div class="group-droppable droppable" style="min-height: 300px">
+                        <?php if ($model->items):
+                            foreach ($model->items as $item_id):
+                                $item = Items::findOne($item_id); ?>
+                                <div class="group-item d-flex">
+                                    <div class="col-1 position-relative" style="border-right: 1px solid #d8d8d8;">
+                                        <img class="absolute-center drag-event" src="/images/icons/dots-menu.png" alt="">
+                                        <input class="item-id" type="hidden" name="Group[items][]" value="<?php echo $item->id; ?>" >
+                                    </div>
+                                    <div class="col-11 group-item-content">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <span><i class="fa fa-circle <?php echo $item->check1 ? 'active' : 'disabled'; ?>"></i></span>
+                                                <span class="group-item-id" style="color: #b4b4b4"><?php echo $item->id; ?></span>
+                                            </div>
+                                            <div class="group-item-source-1 col-8 <?php echo $item->source == 0 ? 'd-none' : ''; ?>">
+                                                <img src="/images/icons/Mizagene_small.png" alt="" height="16">
+                                                <span style="color: #b4b4b4">migrated</span>
+                                            </div>
+                                            <div class="group-item-source-0 col-8 <?php echo $item->source == 1 ? 'd-none' : ''; ?>">
+                                                <img src="/images/icons/youmee_small.png" alt="" height="16">
+                                            </div>
+                                            <span class="group-item-rule">18</span>
+                                        </div>
+                                        <span class="group-item-title" style="color: #cc33e6; font-weight: 600;"><?php echo $item->getTitle(2)->title; ?></span><br>
+                                        <span class="group-item-description" data-toggle="tooltip" title=""><?php echo $item->getTitle(2)->description; ?></span>
+                                    </div>
+                                </div>
+                        <?php endforeach;
+                    endif; ?>
                     </div>
                 </div>
             </div>

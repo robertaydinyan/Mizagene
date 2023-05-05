@@ -31,10 +31,36 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             [
+                'header' => '<div>Countries</div>',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return $model->getCountries();
+                }
+            ],
+            [
                 'class' => ActionColumn::className(),
+                'template' => '{update} {delete}',
                 'urlCreator' => function ($action, Region $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                },
+                'buttons' => [
+                    'delete' => function ($url, $model, $key) {
+                        return Html::a('',
+                            $url,
+                            [
+                                'class' => 'icon archive archive-red label',
+                                'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+                                'data-method' => 'post',
+                            ]
+                        );
+                    },
+                    'update' => function($url, $model, $key) {
+                        return Html::a('',
+                            $url,
+                            ['class' => 'icon update label']
+                        );
+                    }
+                ]
             ],
         ],
     ]); ?>
