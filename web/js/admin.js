@@ -385,19 +385,24 @@ $(document).ready(function() {
         }).done((res) => {
             let data = JSON.parse(res);
             let template = $('.group-item-template');
-            $('.group-item:not(.group-item-template)').remove();
+            $('.group-item-container .group-item:not(.group-item-template)').remove();
             let clone;
+            let selectedValues = $('.droppable .item-id').map(function() {
+                return $(this).val();
+            }).get();
             $.each(data, (i, k) => {
-                clone = template.clone().appendTo(template.parent());
-                clone.find('.fa-circle').addClass(k['check1'] ? 'active' : 'disabled');
-                clone.find('.group-item-id').text(k['id']);
-                clone.find('.item-id').val(k['id']);
-                clone.find('.group-item-title').text(k['itemTitles'][0]['title']);
-                clone.find('.group-item-description').text(k['itemTitles'][0]['description']);
-                clone.find('.group-item-description').attr('title', k['itemTitles'][0]['description']);
-                clone.find('.group-item-source-' + k['source']).removeClass('d-none');
-                clone.removeClass('group-item-template');
-                // $('.items-container').append('<div class="item"><span>' +  + ' </span><span> ' +  + ' </span><span> ' + item_types[k['i_type']] + '</span></div>');
+                if (!selectedValues.includes(k['id'].toString())) {
+                    clone = template.clone().appendTo(template.parent());
+                    clone.find('.fa-circle').addClass(k['check1'] ? 'active' : 'disabled');
+                    clone.find('.group-item-id').text(k['id']);
+                    clone.find('.item-id').val(k['id']);
+                    clone.find('.group-item-title').text(k['itemTitles'][0]['title']);
+                    clone.find('.group-item-description').text(k['itemTitles'][0]['description']);
+                    clone.find('.group-item-description').attr('title', k['itemTitles'][0]['description']);
+                    clone.find('.group-item-source-' + k['source']).removeClass('d-none');
+                    clone.removeClass('group-item-template');
+                    // $('.items-container').append('<div class="item"><span>' +  + ' </span><span> ' +  + ' </span><span> ' + item_types[k['i_type']] + '</span></div>');
+                }
             });
             groupItemEvents();
         });

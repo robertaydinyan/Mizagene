@@ -6,6 +6,7 @@ use app\modules\models\Group;
 use app\modules\models\GroupSearch;
 use app\modules\models\Items;
 use app\modules\models\Region;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -78,7 +79,7 @@ class GroupController extends Controller
         }
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                if (isset($this->request->post('Group')['push'])) {
+                if ($this->request->post('push') !== null) {
                     $model->pushed = 1;
                     $model->save();
                 }
@@ -116,18 +117,35 @@ class GroupController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $step = 2;
 
         if ($this->request->isPost) {
-            $model->items = json_encode($this->request->post('item'));
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                if ($this->request->post('push') !== null) {
+                    $model->pushed = 1;
+                    $model->save();
+                }
+                $iconFile = UploadedFile::getInstance($model, 'icon');
+                if ($iconFile) {
+                    $iconContent = file_get_contents($iconFile->tempName);
+                    $model->icon = $iconContent;
+                }
+                if ($model->save()) {
+                    $step = min(2, $step + 1);
+
+                    return $this->redirect(['create?step=' . ($step) . '&id=' . $model->id]);
+                }
             }
         }
-        $items = Items::find()->all();
+        $regions = Region::find()->asArray()->all();
+        $regions = \yii\helpers\ArrayHelper::map($regions, 'id', 'name');
 
+        $items = Items::find()->all();
         return $this->render('update', [
             'model' => $model,
-            'items' => $items
+            'items' => $items,
+            'regions' => $regions,
+            'step' => $step
         ]);
     }
 
@@ -142,7 +160,17 @@ class GroupController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(Yii::$app->request->referrer);
+    }
+
+    public function actionDrafts() {
+        $searchModel = new GroupSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams, 0);
+
+        return $this->render('drafts', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider
+        ]);
     }
 
     /**

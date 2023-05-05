@@ -1,3 +1,10 @@
+<?php
+
+use yii\bootstrap5\Html;
+
+?>
+
+
 <div class="col-3 group-config">
     <div class="d-flex">
         <input type="text" class="form-control" placeholder="Search by ID or text" name="search">

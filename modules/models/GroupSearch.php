@@ -37,12 +37,12 @@ class GroupSearch extends Group
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $page = 1)
     {
         $query = Group::find();
 
         // add conditions that should always apply here
-
+        $query->andFilterWhere(['pushed' => $page]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);

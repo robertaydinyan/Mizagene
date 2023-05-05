@@ -66,4 +66,30 @@ class Group extends \yii\db\ActiveRecord
             'accepted' => 'Accepted',
         ];
     }
+
+    public function getRegions() {
+        $result = '';
+        if ($this->region) {
+            is_string($this->region) && $this->region = array($this->region);
+            foreach ($this->region as $region_id) {
+                $region = Region::findOne($region_id);
+                $result .= $region ? $region->name . ', ' : '';
+            }
+            $result = substr($result, 0, -2);
+        }
+        return $result;
+    }
+
+    public function getItems() {
+        $result = '';
+        if ($this->items) {
+            is_string($this->items) && $this->items = array($this->items);
+            foreach ($this->items as $items_id) {
+                $item = Items::findOne($items_id);
+                $result .= $item ? '<span>' . $item->getTitle(2)->title . '</span><br>' : '';
+            }
+            $result = substr($result, 0, -2);
+        }
+        return $result;
+    }
 }

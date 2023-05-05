@@ -1,5 +1,6 @@
 <?php
 
+use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
@@ -12,12 +13,16 @@ $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' 
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="group-update">
+    <?= Yii::$app->controller->renderPartial('_menu.php'); ?>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
+    <?php $form = ActiveForm::begin(); ?>
+    <?= Yii::$app->controller->renderPartial('_form.php', [
+        'regions' => $regions,
         'model' => $model,
-        'items' => $items
-    ]) ?>
+        'items' => $items,
+        'form' => $form,
+        'step' => $step
+    ]);
+    $form::end(); ?>
 
 </div>
