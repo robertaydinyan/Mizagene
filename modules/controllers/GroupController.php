@@ -49,7 +49,7 @@ class GroupController extends Controller
         $searchModel = new GroupSearch();
         $dataProvider = $searchModel->search($this->request->queryParams, 0);
 
-        return $this->render('drafts', [
+        return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider
         ]);

@@ -22,7 +22,6 @@ $comb_types = Items::getICombTypes();
     <?= GridView::widget([
         'tableOptions' => ['class' => 'table table-striped table-bordered simple-grid'],
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
             'id',
             'title_russian',
@@ -47,7 +46,7 @@ $comb_types = Items::getICombTypes();
                 'header' => '<div>items</div>',
                 'format' => 'raw',
                 'value' => function($model) {
-                    return $model->getItems();
+                    return $model->getItemsCount();
                 }
             ],
             [
