@@ -590,6 +590,25 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataT
     background-color: #003C46!important;
 }
 
+table.dataTable>tbody>tr.child ul.dtr-details {
+    width: 100%!important;
+}
+
+table.dataTable>tbody>tr.child ul.dtr-details li {
+    display: flex;!important;
+    justify-content: space-between!important;
+    padding: 10px!important;
+}
+
+.custom-file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    opacity: 0;
+}
+
+
 /*.dataTables_filter {*/
 /*    text-align: start!important;*/
 /*}*/
@@ -614,7 +633,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataT
     }
 }
 
-@media (max-width: 500px){
+@media (max-width: 576px){
     .dashLogoMax {
         display: none;
     }
@@ -637,6 +656,14 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataT
 
     .centeredDiv {
         justify-content: center!important;
+    }
+
+    .maxTd {
+        min-width: 165px!important;
+    }
+
+    #v-pills-subject2 img {
+        width: 250px!important;
     }
 }
 
@@ -680,6 +707,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataT
     }
 
 }
+
 
 @media (max-width: 430px){
     .footer_logo1 {

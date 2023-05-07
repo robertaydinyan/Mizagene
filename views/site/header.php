@@ -182,7 +182,7 @@ if (!$lang) {
                 'action' => ['site/login'],
                 'method' => 'post',
             ]);
-            $login = $data['menu6'][$lang];
+            $login_lang = $data['menu6'][$lang];
             ?>
             <div class="form-floating mb-3">
                 <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -192,8 +192,11 @@ if (!$lang) {
                 <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword"><?= $data['password'][$lang] ?></label>
             </div>
+            <?php if(isset($login_model) && isset($login_model->getErrors()['password'])) { ?>
+                <p class="error_feedback"><?= $login_model->getErrors()['password'][0] ?></p>
+            <?php  } ?>
             <div class="col-6 mt-3">
-                <?= Html::submitButton($login, ['class' => 'btn fillButton']) ?>
+                <?= Html::submitButton($login_lang, ['class' => 'btn fillButton']) ?>
             </div>
             <?php ActiveForm::end();?>
         </div>
@@ -227,20 +230,12 @@ if (!$lang) {
                             <?php  } ?>
                         </div>
                         <div class="form-floating mb-3">
-                            <!--                            <select class="form-control select2" name="year_of_birth">-->
-                            <!--                                <option value="">Year of birth</option>-->
-                            <!--                                --><?php //for ($i = 2021; $i >= 1903; $i--): ?>
-                            <!--                                    <option value="--><?php //= $i ?><!--">--><?php //= $i ?><!--</option>-->
-                            <!--                                --><?php //endfor; ?>
-                            <!--                            </select>-->
-                            <!--                            <label for="floatingInput">--><?php //= $data['year_of_birth'][$lang] ?><!--</label>-->
                             <?php
                             $yearOptions = [];
                             for ($i = date('Y'); $i >= 1903; $i--) {
                                 $yearOptions[$i] = $i;
                             }
                             ?>
-<!--                            --><?//= Html::label('Year of birth', 'floatingInput') ?>
                             <?= Html::dropDownList('year_of_birth', null, $yearOptions, ['class' => 'form-control select2', 'prompt' => 'Year of birth']) ?>
 
                             <?php if(isset($model) && isset($model->getErrors()['year_of_birth'])) { ?>
@@ -303,35 +298,53 @@ if (!$lang) {
                         <div class="form-floating mb-3">
                             <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
                             <label for="floatingInput"><?= $data['nickname'][$lang] ?></label>
+                            <?php if(isset($isCompany) && isset($isCompany->getErrors()['username'])) { ?>
+                                <p class="error_feedback"><?= $isCompany->getErrors()['username'][0] ?></p>
+                            <?php  } ?>
                         </div>
                         <div class="form-floating mb-3">
                             <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                             <label for="floatingInput"><?= $data['email'][$lang] ?></label>
+                            <?php if(isset($isCompany) && isset($isCompany->getErrors()['email'])) { ?>
+                                <p class="error_feedback"><?= $isCompany->getErrors()['email'][0] ?></p>
+                            <?php  } ?>
                         </div>
 
 
                         <div class="form-floating mb-3">
                             <input type="text" name="company_name" class="form-control" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword"><?= $data['company_name'][$lang] ?></label>
+                            <?php if(isset($isCompany) && isset($isCompany->getErrors()['company_name'])) { ?>
+                                <p class="error_feedback"><?= $isCompany->getErrors()['company_name'][0] ?></p>
+                            <?php  } ?>
                         </div>
                         <div class="form-floating mb-3">
                             <select class="form-control select2" name="country">
                                 <option>Armenia</option>
                             </select>
                             <label for="floatingInput"><?= $data['country'][$lang] ?></label>
+                            <?php if(isset($isCompany) && isset($isCompany->getErrors()['country'])) { ?>
+                                <p class="error_feedback"><?= $isCompany->getErrors()['country'][0] ?></p>
+                            <?php  } ?>
                         </div>
                         <div class="form-floating mb-3">
                             <input type="text" name="position" class="form-control" id="floatingInput" placeholder="name@example.com">
                             <label for="floatingInput"><?= $data['position'][$lang] ?></label>
+                            <?php if(isset($isCompany) && isset($isCompany->getErrors()['position'])) { ?>
+                                <p class="error_feedback"><?= $isCompany->getErrors()['position'][0] ?></p>
+                            <?php  } ?>
                         </div>
                         <div class="form-floating mb-3">
                             <select class="form-control select2" name="direction">
-                                <option>KYC решения (Youmee KYC)</option>
-                                <option>Управление персоналом (Youmee HR)</option>
-                                <option>Управление талантами (Youmee Child, Youmee Science, Youmee Sport)</option>
-                                <option>Партнерство (интеграция с вашим ПО)</option>
+                                <option><?= $data['KYC решения'][$lang] ?></option>
+                                <option><?= $data['Управление персоналом'][$lang] ?></option>
+                                <option><?= $data['Управление талантами'][$lang] ?></option>
+                                <option><?= $data['Партнерство'][$lang] ?></option>
                             </select>
                             <label for="floatingInput"><?= $data['direction'][$lang] ?></label>
+                            <?php if(isset($isCompany) && isset($isCompany->getErrors()['direction'])) { ?>
+                                <p class="error_feedback"><?= $isCompany->getErrors()['direction'][0] ?></p>
+                            <?php  } ?>
                         </div>
                         <div class="form-floating mb-3">
                             <select class="form-control select2" name="employees">
@@ -341,29 +354,45 @@ if (!$lang) {
                                 <option>100-250</option>
                                 <option>250-500</option>
                                 <option>500-1000</option>
-                                <option>более 1000</option>
+                                <option>1000+</option>
                             </select>
                             <label for="floatingInput"><?= $data['employees'][$lang] ?></label>
+                            <?php if(isset($isCompany) && isset($isCompany->getErrors()['employees'])) { ?>
+                                <p class="error_feedback"><?= $isCompany->getErrors()['employees'][0] ?></p>
+                            <?php  } ?>
                         </div>
                         <div class="form-floating mb-3">
                             <input type="text" name="company_link" class="form-control" id="floatingInput" placeholder="name@example.com">
                             <label for="floatingInput"><?= $data['company_link'][$lang] ?></label>
+                            <?php if(isset($isCompany) && isset($isCompany->getErrors()['company_link'])) { ?>
+                                <p class="error_feedback"><?= $isCompany->getErrors()['company_link'][0] ?></p>
+                            <?php  } ?>
                         </div>
                         <div class="form-floating mb-3">
                             <input type="text" name="phone" class="form-control" id="floatingInput" placeholder="name@example.com">
                             <label for="floatingInput"><?= $data['phone'][$lang] ?></label>
+                            <?php if(isset($isCompany) && isset($isCompany->getErrors()['phone'])) { ?>
+                                <p class="error_feedback"><?= $isCompany->getErrors()['phone'][0] ?></p>
+                            <?php  } ?>
                         </div>
 
                         <div class="form-floating mb-3">
                             <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword"><?= $data['password'][$lang] ?></label>
+                            <?php if(isset($isCompany) && isset($isCompany->getErrors()['password'])) { ?>
+                                <p class="error_feedback"><?= $isCompany->getErrors()['password'][0] ?></p>
+                            <?php  } ?>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" name="confirm_password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <input type="password" name="password_repeat" class="form-control" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword"><?= $data['confirm_password'][$lang] ?></label>
+                            <?php if(isset($isCompany) && isset($isCompany->getErrors()['password_repeat'])) { ?>
+                                <p class="error_feedback"><?= $isCompany->getErrors()['password_repeat'][0] ?></p>
+                            <?php  } ?>
                         </div>
 
                         <input type="hidden" name="is_company" value="1">
+                        <input type="hidden" name="status" value="1">
                         <input type="hidden" name="_csrf" value="<?= Yii::$app->getRequest()->getCsrfToken();?>">
 
                         <div class="col-12 mt-3">
@@ -390,3 +419,8 @@ if (!$lang) {
 </header>
 
 <body>
+
+
+
+
+
