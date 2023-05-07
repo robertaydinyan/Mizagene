@@ -9,11 +9,11 @@ use yii\helpers\Url;
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
                     <form action="/user/updateProfile" method="post">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?= 'Yii::$app->user->email' ?>">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?= Yii::$app->user->identity->email ?>">
                             <label for="floatingInput">Email address</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingName" placeholder="Name/Nickname" value="<?= 'Yii::$app->user->username' ?>">
+                            <input type="text" class="form-control" id="floatingName" placeholder="Name/Nickname" value="<?= Yii::$app->user->identity->username ?>">
                             <label for="floatingPassword">Name/Nickname</label>
                         </div>
                         <div class="form-floating mb-3">

@@ -586,6 +586,10 @@ input[type="radio"]:checked + .color-radio.black:before {
     justify-content: end!important;
 }
 
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
+    background-color: #003C46!important;
+}
+
 /*.dataTables_filter {*/
 /*    text-align: start!important;*/
 /*}*/
@@ -607,6 +611,32 @@ input[type="radio"]:checked + .color-radio.black:before {
     .serviceParticles #particles-js-team {
         height: 600px!important;
 
+    }
+}
+
+@media (max-width: 500px){
+    .dashLogoMax {
+        display: none;
+    }
+
+    .dashLogoMin {
+        display: block!important;
+    }
+
+    .mobileCol {
+        width: 100%!important;
+    }
+
+    .bigMenu {
+        display: none!important;
+    }
+
+    .menuDrop {
+        display: none!important;
+    }
+
+    .centeredDiv {
+        justify-content: center!important;
     }
 }
 
@@ -639,6 +669,14 @@ input[type="radio"]:checked + .color-radio.black:before {
 
     .addSubCenter {
         justify-content: center!important;
+    }
+
+    .w100 {
+        width: 100%!important;
+    }
+
+    .alignCenter {
+        align-items: center!important;
     }
 
 }

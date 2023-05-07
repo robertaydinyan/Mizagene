@@ -107,7 +107,7 @@ use yii\helpers\Url;
     <div class="row mx-auto px-0" style="padding-top: 25px!important">
         <h3>Add New Subject for analysis</h3>
 <!--        <h3 class="text-center">Hi <span style="color: rgb(210, 58, 225)">--><?//= 'George' ?><!--</span>! Let's start.</h3>-->
-        <div class="d-flex justify-content-start px-0 mb-5 align-items-center" style="margin-left: 12px; margin-top: 12px">
+        <div class="d-flex centeredDiv px-0 mb-5 align-items-center" style="padding-left: 12px!important; margin-top: 12px; justify-content: start">
 <!--            <p style="font-size: 19px" class="text-center me-3">Whom shall we analyze first?</p>-->
             <ul class="nav nav-pills mb-3 flex-sm-row flex-column subject-pills" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -177,8 +177,8 @@ use yii\helpers\Url;
                             </div>
                         </div>
 
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-flex flex-column mx-auto px-0 ps-1 addSubCenter" style="margin: 0!important;  z-index: 10; position: relative">
-                            <div class="mb-4" style="border-radius: 5px; border: 1px dashed grey; max-width: 330px; padding-bottom: 51%!important;">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-flex flex-column mx-auto px-0 ps-1 addSubCenter alignCenter" style="margin: 0!important;  z-index: 10; position: relative">
+                            <div class="mb-4 w100" style="border-radius: 5px; border: 1px dashed grey; max-width: 330px; padding-bottom: 51%!important;">
                                 <div class="d-flex justify-content-center align-items-center" style="background: black; height: 50px; border-top-left-radius: 5px; border-top-right-radius: 5px">
                                     <h6 style="font-family: 'Nunito Sans', sans-serif; color: white; margin: 0"><i class="fa-solid fa-id-card pe-3" style="color: white"></i>Available Reports</h6>
                                 </div>

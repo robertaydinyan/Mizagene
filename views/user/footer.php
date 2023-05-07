@@ -24,7 +24,8 @@
                 },
                 columnDefs: [
                     { targets: [1, 11], orderable: false },
-
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 2, targets: -1 }
                 ]
             });
 
