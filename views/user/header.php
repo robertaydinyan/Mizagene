@@ -18,7 +18,7 @@ use yii\bootstrap5\ActiveForm;
 <header>
     <nav class="navbar navbar-dark bg-light" style="height: 73px">
         <div class="container-fluid">
-                <a class="" style="margin-left: 11px" href="/">
+                <a class="" style="margin-left: 11px" href="#">
                     <img class="navbar-brand mx-0 dashLogoMax" src="/images/logo.png" alt="Logo" width="200" height="55">
                     <img class="navbar-brand mx-0 dashLogoMin ms-2" src="/images/favicon.png" alt="Logo" width="45" height="55" style="display: none;">
                 </a>
@@ -47,13 +47,16 @@ use yii\bootstrap5\ActiveForm;
                                 </li>
                             </ul>
                         </div>
+                        <button class="d-sm-none me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#smallMenu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background: none; border: none">
+                            <i class="fa-solid fa-bars fa-xl" style="color: #d23ae1;"></i>
+                        </button>
         </div>
     </nav>
 </header>
 <body style="height: 100vh; display: flex; flex-direction: column">
 <div class="container-fluid">
     <div class="row w-100 ms-0">
-        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 flex-column flex-shrink-0 p-3 pt-2 px-0 bg-light bigMenu" style="width: 90px; display: flex">
+        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 flex-column flex-shrink-0 p-3 pt-2 px-0 bg-light bigMenu"  style="width: 90px; display: flex">
             <ul class="nav nav-pills flex-column mb-auto sidebar">
                 <li class="nav-item text-center">
                     <a href="/add-subject" class="nav-link link-dark px-2" aria-current="page">
@@ -90,6 +93,59 @@ use yii\bootstrap5\ActiveForm;
 <!--                    <li><a class="dropdown-item" href="#">Sign out</a></li>-->
 <!--                </ul>-->
 <!--            </div>-->
+        </div>
+        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 flex-column flex-shrink-0 p-3 pt-2 px-0 bg-light offcanvas offcanvas-end" id="smallMenu" style="width: 90px; display: flex">
+            <ul class="nav nav-pills flex-column mb-auto sidebar">
+                <li class="nav-item text-center">
+                    <a href="#" class="nav-link link-dark px-2" aria-current="page">
+                        <img src="/images/favicon.png" alt="Logo" width="70">
+                    </a>
+                </li>
+                <li class="nav-item text-center">
+                    <a href="/add-subject" class="nav-link link-dark px-2" aria-current="page">
+                        <img src="/images/add-photo_<?= Yii::$app->controller->action->id == 'add-subject' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'add-subject' ? 'active' : '' ?>">
+                    </a>
+                </li>
+                <li class="nav-item text-center">
+                    <a href="/all-subjects" class="nav-link link-dark px-2">
+                        <img src="/images/list_<?= Yii::$app->controller->action->id == 'all-subjects' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'all-subjects' ? 'active' : '' ?>">
+                    </a>
+                </li>
+                <li class="nav-item text-center">
+                    <a href="/connections" class="nav-link link-dark px-2">
+                        <img src="/images/connections_<?= Yii::$app->controller->action->id == 'connections' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'connections' ? 'active' : '' ?>">
+                    </a>
+                </li>
+                <li class="nav-item text-center">
+                    <a href="#" class="nav-link link-dark px-2">
+                        <img src="/images/HR_<?= Yii::$app->controller->action->id == 'service' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'service' ? 'active' : '' ?>">
+                    </a>
+                </li>
+                <li class="nav-item text-center d-sm-none">
+                    <a href="/settings" class="nav-link link-dark px-2">
+                        <img src="/images/setting_<?= Yii::$app->controller->action->id == 'settings' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'settings' ? 'active' : '' ?>">
+                    </a>
+                </li>
+                <li class="nav-item text-center d-sm-none">
+                    <a href="/settings" class="nav-link link-dark px-2">
+                        <img src="/images/logout.png" alt="" width="50"">
+                    </a>
+                </li>
+            </ul>
+            <!--            <hr>-->
+            <!--            <div class="dropdown">-->
+            <!--                <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">-->
+            <!--                    <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">-->
+            <!--                    <strong>mdo</strong>-->
+            <!--                </a>-->
+            <!--                <ul class="dropdown-menu text-small shadow">-->
+            <!--                    <li><a class="dropdown-item" href="#">New project...</a></li>-->
+            <!--                    <li><a class="dropdown-item" href="#">Settings</a></li>-->
+            <!--                    <li><a class="dropdown-item" href="#">Profile</a></li>-->
+            <!--                    <li><hr class="dropdown-divider"></li>-->
+            <!--                    <li><a class="dropdown-item" href="#">Sign out</a></li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
         </div>
         <div class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-12 pe-0 mb-3 mobileCol ps-0 ps-sm-2" style="width: calc(100% - 90px)">
 

@@ -161,16 +161,29 @@
             </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-between mb-5">
                 <ul class="analysis-pill nav nav-pills nav-justified mb-5 flex-column flex-sm-row" id="pills-tab" role="tablist">
+
                     <li class="nav-item d-flex" role="presentation">
-                        <button style="border-radius: 5px 0px 0px 5px!important" class="nav-link active" id="pills-1" data-bs-toggle="pill" data-bs-target="#pills-tab-1" type="button" role="tab" aria-controls="pills-tab-1" aria-selected="true"><?= $data['Черты характера'][$lang]?>
+                        <button style="border-radius: 0px 5px 5px 0px!important;" class="nav-link active" id="pills-8" data-bs-toggle="pill" data-bs-target="#pills-tab-8" type="button" role="tab" aria-controls="pills-tab-8" aria-selected="true"><?= $data['Игра'][$lang]?>
                         </button>
                     </li>
+
                     <li class="nav-item d-flex" role="presentation">
                         <button class="nav-link" id="pills-2" data-bs-toggle="pill" data-bs-target="#pills-tab-2" type="button" role="tab" aria-controls="pills-tab-2" aria-selected="true"><?= $data['Интеллект'][$lang]?>
                         </button>
                     </li>
+
                     <li class="nav-item d-flex" role="presentation">
                         <button class="nav-link" id="pills-3" data-bs-toggle="pill" data-bs-target="#pills-tab-3" type="button" role="tab" aria-controls="pills-tab-3" aria-selected="true"><?= $data['Зависимости'][$lang]?>
+                        </button>
+                    </li>
+
+                    <li class="nav-item d-flex" role="presentation">
+                        <button style="border-radius: 0px 5px 5px 0px!important" class="nav-link" id="pills-7" data-bs-toggle="pill" data-bs-target="#pills-tab-7" type="button" role="tab" aria-controls="pills-tab-7" aria-selected="true"><?= $data['Психика и неврология'][$lang]?>
+                        </button>
+                    </li>
+
+                    <li class="nav-item d-flex" role="presentation">
+                        <button style="border-radius: 5px 0px 0px 5px!important" class="nav-link" id="pills-1" data-bs-toggle="pill" data-bs-target="#pills-tab-1" type="button" role="tab" aria-controls="pills-tab-1" aria-selected="true"><?= $data['Черты характера'][$lang]?>
                         </button>
                     </li>
                     <li class="nav-item d-flex" role="presentation">
@@ -181,17 +194,9 @@
                         <button style="border-radius: 0px 5px 5px 0px!important" class="nav-link" id="pills-6" data-bs-toggle="pill" data-bs-target="#pills-tab-6" type="button" role="tab" aria-controls="pills-tab-6" aria-selected="true"><?= $data['Закон'][$lang]?>
                         </button>
                     </li>
-                    <li class="nav-item d-flex" role="presentation">
-                        <button style="border-radius: 0px 5px 5px 0px!important" class="nav-link" id="pills-7" data-bs-toggle="pill" data-bs-target="#pills-tab-7" type="button" role="tab" aria-controls="pills-tab-7" aria-selected="true"><?= $data['Психика и неврология'][$lang]?>
-                        </button>
-                    </li>
-                    <li class="nav-item d-flex" role="presentation">
-                        <button style="border-radius: 0px 5px 5px 0px!important;" class="nav-link" id="pills-8" data-bs-toggle="pill" data-bs-target="#pills-tab-8" type="button" role="tab" aria-controls="pills-tab-8" aria-selected="true"><?= $data['Игра'][$lang]?>
-                        </button>
-                    </li>
                 </ul>
                 <div class="tab-content mt-5" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-tab-1" role="tabpanel" aria-labelledby="pills-tab-1" tabindex="0">
+                    <div class="tab-pane fade " id="pills-tab-1" role="tabpanel" aria-labelledby="pills-tab-1" tabindex="0">
                         <div class="container row m-0 p-0">
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
                                 <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Экстраверсия'][$lang]?></span></div>
@@ -367,7 +372,7 @@
                         </div>
 
                     </div>
-                    <div class="tab-pane fade" id="pills-tab-8" role="tabpanel" aria-labelledby="pills-tab-8" tabindex="7">
+                    <div class="tab-pane fade show active" id="pills-tab-8" role="tabpanel" aria-labelledby="pills-tab-8" tabindex="7">
                         <div class="container row m-0 p-0">
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 m-0 p-0">
                                 <div><i class="fa-solid fa-circle-check me-2" style="color: #003C46!important"></i><span><?= $data['Азарт'][$lang]?></span></div>

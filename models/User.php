@@ -89,6 +89,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public static function findByEmail($email){
         return self::findOne(['email' => $email]);
     }
+    public static function findByPhone($phone){
+        return self::findOne(['phone_number' => $phone]);
+    }
+
     public function getId(){
         return $this->id;
     }
@@ -104,4 +108,15 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function validatePassword($password){
         return Yii::$app->security->validatePassword($password,$this->password);
     }
+
+    public function getSubjects()
+    {
+        return $this->hasMany(Subject::class, ['user_id' => 'id'])->orderBy('id', 'desc');
+    }
+    public function getMe()
+    {
+        return $this->hasOne(Subject::class, ['user_id' => 'id'])
+            ->where(['is_me' => 1]);
+    }
+
 }

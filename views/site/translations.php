@@ -69,7 +69,22 @@ $data = [
     ],'menu8' => [
         'en' => 'Email address',
         'ru' => 'Электронная почта'
+    ],'KYC решения' => [
+        'en' => 'KYC solutions (Youmee KYC)',
+        'ru' => 'KYC решения (Youmee KYC)'
+    ],'Управление персоналом' => [
+        'en' => 'Personnel Management (Youmee HR)',
+        'ru' => 'Управление персоналом (Youmee HR)'
+    ],'Управление талантами' => [
+        'en' => 'Talent management (Youmee Child, Youmee Science, Youmee Spor)',
+        'ru' => 'Управление талантами (Youmee Child, Youmee Science, Youmee Sport)'
+    ],'Партнерство' => [
+        'en' => 'Partnership (integration with your software)',
+        'ru' => 'Партнерство (интеграция с вашим ПО)'
     ],
+
+
+
 
 
     'title1_1' => [

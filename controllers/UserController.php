@@ -11,10 +11,25 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Subject;
+use yii\helpers\Url;
 
 
 class UserController extends Controller
 {
+    public function beforeAction($action)
+    {
+        if (Yii::$app->user->isGuest)  {
+            $this->redirect(['/site/index']);
+        }else {
+            if ($action->id == 'delete-subject') {
+                $this->enableCsrfValidation = false;
+            }
+
+            return parent::beforeAction($action);
+        }
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -51,6 +66,7 @@ class UserController extends Controller
         ];
     }
 
+
     /**
      * {@inheritdoc}
      */
@@ -70,6 +86,32 @@ class UserController extends Controller
     public function actionAddSubject()
     {
         return $this->render('addsubject');
+    }
+
+    public function actionCreateSubject()
+    {
+        $post = Yii::$app->request->post();
+        $subject = new Subject();
+        $post['user_id'] = Yii::$app->user->id;
+        $post['image'] = '';
+        $post['created_at'] = date('Y-m-d H:i:s', time());
+        $post['is_me'] = $post['is_me'] ?? 0;
+
+        if(isset($_FILES['image'])){
+            $path = Yii::getAlias('@webroot') . '/images/subjects/';
+            $file = $path .time().basename($_FILES['image']['name']);
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $file)) {
+                $post['image'] = $file;
+            }
+        }
+
+        if ($subject->load($post, '') && $subject->save()) {
+//            $command = 'cd /var/www/html/Mizagene/python/landmarks/ && /usr/bin/python index.py ' . $post['image'] . ' 2>&1';
+
+            return $this->redirect(['/all-subjects']);
+        }
+
+        return $this->redirect(['/add-subject']);
     }
 
     public function actionAllSubjects()
@@ -104,9 +146,24 @@ class UserController extends Controller
         }
     }
 
-    public function actionUser()
+    public function actionSubject($id)
     {
-        return $this->render('user');
+        $subject = Subject::find()->where(['id' => $id])->andWhere(['deleted_at' => null])->one();
+        if ($subject) {
+            return $this->render('user', ['subject' => $subject]);
+        } else {
+            return $this->redirect(['/all-subjects']);
+        }
+    }
+
+    public function actionDeleteSubject()
+    {
+        $post = Yii::$app->request->post();
+        $subject = Subject::findOne($post['subject']);
+        $subject->deleted_at = date('Y-m-d H:i:s', time());
+        $subject->save();
+
+        return 200;
     }
 
 

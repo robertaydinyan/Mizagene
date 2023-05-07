@@ -42,15 +42,16 @@ class GroupController extends Controller
      * Lists all Group models.
      *
      * @return string
-     */
-    public function actionIndex()
-    {
-        $searchModel = new GroupSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+     */ 
+    
 
-        return $this->render('index', [
+    public function actionIndex() {
+        $searchModel = new GroupSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams, 0);
+
+        return $this->render('drafts', [
             'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'dataProvider' => $dataProvider
         ]);
     }
 

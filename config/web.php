@@ -81,6 +81,7 @@ $config = [
                 'all-subjects' => 'user/all-subjects',
                 'settings' => 'user/settings',
                 'connections' => 'user/connections',
+                'subject' => 'user/subject',
             ],
         ],
         'session' => [

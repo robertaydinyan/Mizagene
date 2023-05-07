@@ -80,49 +80,58 @@ class SiteController extends Controller
         $post = Yii::$app->request->post();
         $model = new LoginForm();
 
-        if ($model->load($post,'') && $model->login()) {
+        if ($model->load($post,'') && $model->login() && $model->validate()) {
             return $this->redirect(['/add-subject']);
+        }else {
+            Yii::$app->session->setFlash('error', 'Invalid login credentials');
         }
 
         $model->password = '';
 
-        return $this->render('index', [
-            'model' => $model,
+        return $this->redirect('index', [
+            'login_model' => $model,
         ]);
     }
 
     public function actionSignup(){
-        $model = new SignupForm();
-
         $post = Yii::$app->request->post();
+
         if (isset($post['is_company'])) {
             $model = new SignupcompanyForm();
-        }
+            if ($model->load($post, '') && $model->validate() && $model->signup()){
 
-        if ($model->load($post, '') && $model->validate() && $model->signup()){
+                $model = new LoginForm();
+                if ($model->load(Yii::$app->request->post(), '') && $model->login()) {
+                    return $this->redirect(['/add-subject']);
+                } else {
+                    return $this->render('index');
+                }
 
-            $model = new LoginForm();
-            if ($model->load(Yii::$app->request->post(), '') && $model->login()) {
-                return $this->redirect(['/add-subject']);
-            } else {
-                return $this->render('index');
+                return $this->redirect(Yii::$app->homeUrl);
             }
-
-            return $this->redirect(Yii::$app->homeUrl);
+            $fakemodel = new SignupcompanyForm();
+            return $this->render('index', ['isCompany' => $model,
+                'model' => $fakemodel]);
         }
+        else{
+            $model = new SignupForm();
+            if ($model->load($post, '') && $model->validate() && $model->signup()){
 
-        return $this->render('index', ['model' => $model]);
+                $model = new LoginForm();
+                if ($model->load(Yii::$app->request->post(), '') && $model->login()) {
+                    return $this->redirect(['/add-subject']);
+                } else {
+                    return $this->render('index');
+                }
+
+                return $this->redirect(Yii::$app->homeUrl);
+            }
+            $fakemodel = new SignupForm();
+            return $this->render('index', ['model' => $model,
+                'isCompany'=> $fakemodel]);
+        }
+        
     }
-
-//    public function actionSignupcompany(){
-//        $model = new SignupcompanyForm();
-//
-//        if ($model->load(Yii::$app->request->post()) && $model->signupcompany()){
-//            return $this->redirect(Yii::$app->homeUrl);
-//        }
-//
-//        return $this->render(view: 'signupcompany', params: ['model' => $model]);
-//    }
 
     /**
      * Logout action.

@@ -91,9 +91,7 @@ class SignupForm extends Model
         if($user->save()){
             return true;
         }
-
-
-
+        
     }
 
     public function validatePassword($attribute, $params)

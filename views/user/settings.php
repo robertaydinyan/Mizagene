@@ -6,7 +6,7 @@ use yii\helpers\Url;
         <div class="mb-3 mx-auto px-0">
             <div class="row mx-auto px-0" style="padding-top: 25px!important; padding-left: 30px">
                 <h3>Settings</h3>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
+                <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12">
                     <form action="/user/updateProfile" method="post">
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?= Yii::$app->user->identity->email ?>">
