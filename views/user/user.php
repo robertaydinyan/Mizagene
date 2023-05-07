@@ -15,8 +15,8 @@ use yii\helpers\Url;
                     <div class="firstStep row d-flex m-3" style="border: 1px dashed #003C46; border-radius: 5px">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 px-0 py-3" style="border-right: 1px dashed #003C46;">
                             <div class="d-flex flex-column p-3 align-items-center">
-                                <div style="border-radius: 5px; background-image: url('/images/subjects/1683379628chineese.png'); background-size: cover; width: 100px; height: 100px"></div>
-                                <p class="text-center mt-2">Janie</p>
+                                <div style="border-radius: 5px; background-image: url('<?= str_replace("/var/www/html/Mizagene/web/", "", $subject->image) ?>'); background-size: cover; width: 100px; height: 100px"></div>
+                                <p class="text-center mt-2"><?= $subject->name ?></p>
                                 <select name="subject_type" id="" style="border: 1px dashed #003C46; border-radius: 5px; padding: 5px">
                                     <option value="">Select Subject Type</option>
                                     <option value="1">friend</option>
@@ -106,13 +106,13 @@ use yii\helpers\Url;
 <div class="w-100 d-block px-3" style="background-color:#f3f3f3;">
     <h4 class="p-3 ps-0"><?= $subject->name ?></h4>
 
-    <div class="d-flex h-100 pb-4">
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
+    <div class="row d-flex h-100 pb-4">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
             <div class="card mb-3 h-70">
                 <div class="card-body text-center">
                     <div class="mx-auto" style="width: 200px; height: 200px; background-size: cover; border-radius: 10px; background-image: url('<?= str_replace("/var/www/html/Mizagene/web/", "", $subject->image) ?>')"></div>
 
-                    <div class="card-body">
+                    <div class="card-body px-4">
                         <div class="row" style="border-bottom: 1px solid lightgrey; padding-bottom: 5px;">
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 px-0 text-start">
                                 <p class="mb-0">Height</p>
@@ -163,26 +163,26 @@ use yii\helpers\Url;
                     </div>
                     <ul class="list-group list-group-flush rounded-3">
                         <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                            <p class="m-1">ID</p>
-                            <p class="mb-0">001564</p>
+                            <p class="m-0">ID</p>
+                            <p class="mb-0"><?= $subject->id ?></p>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                            <p class="m-1">Uploaded</p>
-                            <p class="mb-0">2023-04-22 19:29</p>
+                            <p class="m-0">Uploaded</p>
+                            <p class="mb-0"><?= date('Y-m-d', strtotime($subject->created_at)) ?></p>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                            <p class="m-1">By</p>
+                            <p class="m-0">By</p>
                             <p class="mb-0">Aram Sarkisyan </p>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                            <p class="m-1" >Mizagene</p>
-                            <p class="mb-0">ver 1.2 (2023-04-22)</p>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center p-1">
-                            <p class="mb-0 px-0 me">Product type</p>
-                            <p class="mb-0">Youmee App</p>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Izumi_group_logo_youme_2015.svg/300px-Izumi_group_logo_youme_2015.svg.png?20180813043019" style="width: 30px;" class="px-0">
-                        </li>
+<!--                        <li class="list-group-item d-flex justify-content-between align-items-center p-1">-->
+<!--                            <p class="m-1" >Mizagene</p>-->
+<!--                            <p class="mb-0">ver 1.2 (2023-04-22)</p>-->
+<!--                        </li>-->
+<!--                        <li class="list-group-item d-flex justify-content-between align-items-center p-1">-->
+<!--                            <p class="mb-0 px-0 me">Product type</p>-->
+<!--                            <p class="mb-0">Youmee App</p>-->
+<!--                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Izumi_group_logo_youme_2015.svg/300px-Izumi_group_logo_youme_2015.svg.png?20180813043019" style="width: 30px;" class="px-0">-->
+<!--                        </li>-->
                     </ul>
                 </div>
             </div>
@@ -190,32 +190,25 @@ use yii\helpers\Url;
 
         </div>
 
-        <div class="col-2 px-2">
+        <div class="d-flex flex-column col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 px-2">
 
-            <div class="card mb-4 mb-md-3  h-50">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 card mb-4 mb-md-3  h-50">
                 <div class="card-body">
-                    <p class="mb-2"><span class="text-primary font-italic me-1">Personal</span>reports</p>
-                    <p class="mb-1" style="font-size: .77rem;">My nature and temperament</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">My attitude towards family</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">Me and sports</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">Me and my talents</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">Me and science</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">Me and my parents</p>
-
-                </div>
-
-                <div class="card-body">
-                    <p class="mb-2 "><span class="text-primary font-italic me-1">Me</span>and my friends</p>
-                    <p class="mb-1" style="font-size: .77rem;">Friends nature and temperament</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">My and friends compatability</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">Friendship and buisness with my friends</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">Third party influence on my friends</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">Conflicts with my friends</p>
+                    <p class="mb-1" style="font-size: .77rem;">Character traits</p>
+                    <p class="mt-1 mb-1" style="font-size: .77rem;">Psyche and Communication</p>
+                    <p class="mt-1 mb-1" style="font-size: .77rem;">Child report</p>
+                    <p class="mt-1 mb-1" style="font-size: .77rem;">Study</p>
+                    <p class="mt-1 mb-1" style="font-size: .77rem;">Talent to science</p>
+                    <p class="mt-1 mb-1" style="font-size: .77rem;">Talent to sports</p>
+                    <p class="mt-1 mb-1" style="font-size: .77rem;">Career guidance</p>
+                    <p class="mt-1 mb-1" style="font-size: .77rem;">HR profile</p>
+                    <p class="mt-1 mb-1" style="font-size: .77rem;">Intimate report</p>
+                    <p class="mt-1 mb-1" style="font-size: .77rem;">KYC Casino</p>
+                    <p class="mt-1 mb-1" style="font-size: .77rem;">Specialized talent assessment in football</p>
 
                 </div>
             </div>
-
-            <div class="card">
+            <div class="card col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card-body">
                     <div class="row mt-2">
                         <p class=" col-8"><span class="text-primary font-italic me-1">Connections</span> </p>
@@ -277,10 +270,9 @@ use yii\helpers\Url;
                     </table>
                 </div>
             </div>
-
         </div>
 
-        <div class="col-8 h-50 bg-white" style="border-radius: 5px; border:1px solid #d2d2d2;">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 bg-white mx-auto px-0 mt-4 mt-sm-0" style="border-radius: 5px; border:1px solid #d2d2d2;">
 
 
             <div class="flex-column d-flex justify-content-between">
@@ -308,7 +300,7 @@ use yii\helpers\Url;
                         <div class="card card-body" style="border: none!important;">
 
                             <div class="row d-flex">
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
                                     <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
                                         <div class="test" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
                                         <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
@@ -322,7 +314,7 @@ use yii\helpers\Url;
                                     </div>
                                 </div>
 
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
                                     <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
                                         <div class="test" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
                                         <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
@@ -336,7 +328,7 @@ use yii\helpers\Url;
                                     </div>
                                 </div>
 
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
                                     <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
                                         <div class="test" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
                                         <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
@@ -350,7 +342,7 @@ use yii\helpers\Url;
                                     </div>
                                 </div>
 
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
                                     <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
                                         <div class="test" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
                                         <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">

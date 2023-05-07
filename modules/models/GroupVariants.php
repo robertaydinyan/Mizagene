@@ -47,4 +47,15 @@ class GroupVariants extends \yii\db\ActiveRecord
             'items' => 'Items',
         ];
     }
+
+    public function getItemsCount() {
+        $result = 0;
+        if ($this->items) {
+            $items = json_decode($this->items);
+            foreach ($items as $items_id) {
+                $result += 1;
+            }
+        }
+        return $result;
+    }
 }

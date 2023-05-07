@@ -51,7 +51,11 @@ $comb_types = Items::getICombTypes();
                 'header' => '<div>items</div>',
                 'format' => 'raw',
                 'value' => function($model) {
-                    return $model->getItemsCount();
+                    $vols = $model->getItemsCount() . '<br>';
+                    foreach ($model->vols as $vol) {
+                        $vols .= $vol->getItemsCount() . '<br>';
+                    }
+                    return $vols;
                 }
             ],
             [

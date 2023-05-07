@@ -47,7 +47,7 @@ class GroupController extends Controller
 
     public function actionIndex() {
         $searchModel = new GroupSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams, 0);
+        $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
