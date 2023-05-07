@@ -54,8 +54,8 @@ use yii\bootstrap5\ActiveForm;
     </nav>
 </header>
 <body style="height: 100vh; display: flex; flex-direction: column">
-<div class="container-fluid">
-    <div class="row w-100 ms-0">
+<div class="container-fluid h-100">
+    <div class="row w-100 ms-0 h-100">
         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 flex-column flex-shrink-0 p-3 pt-2 px-0 bg-light bigMenu"  style="width: 90px; display: flex">
             <ul class="nav nav-pills flex-column mb-auto sidebar">
                 <li class="nav-item text-center">
@@ -147,7 +147,7 @@ use yii\bootstrap5\ActiveForm;
             <!--                </ul>-->
             <!--            </div>-->
         </div>
-        <div class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-12 pe-0 mb-3 mobileCol ps-0 ps-sm-2" style="width: calc(100% - 90px)">
+        <div class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-12 pe-0 mb-3 mobileCol ps-0 ps-sm-2 h-100" style="width: calc(100% - 90px)">
 
 
 

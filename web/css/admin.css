@@ -412,7 +412,7 @@ textarea.form-control {
 }
 
 .grid-view tbody {
-    font-size: 12px !important;
+    font-size: 14px !important;
 }
 
 .grid-view tbody textarea, select, input {

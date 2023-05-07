@@ -103,11 +103,11 @@ use yii\helpers\Url;
         </div>
     </div>
 
-<div class="w-100 d-block px-3" style="background-color:#f3f3f3;">
+<div class="w-100 d-block px-3 h-100" style="background-color:#f3f3f3;">
     <h4 class="p-3 ps-0"><?= $subject->name ?></h4>
 
-    <div class="row d-flex h-100 pb-4">
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
+    <div class="row d-flex pb-4">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 pe-2">
             <div class="card mb-3 h-70">
                 <div class="card-body text-center">
                     <div class="mx-auto" style="width: 200px; height: 200px; background-size: cover; border-radius: 10px; background-image: url('<?= str_replace("/var/www/html/Mizagene/web/", "", $subject->image) ?>')"></div>
@@ -190,7 +190,7 @@ use yii\helpers\Url;
 
         </div>
 
-        <div class="d-flex flex-column col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 px-2">
+        <div class="d-flex flex-column col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 mx-0 ps-0 pe-2">
 
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 card mb-4 mb-md-3  h-50">
                 <div class="card-body">
@@ -210,7 +210,7 @@ use yii\helpers\Url;
             </div>
             <div class="card col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card-body">
-                    <div class="row mt-2">
+                    <div class="row mt-2 align-items-baseline">
                         <p class=" col-8"><span class="text-primary font-italic me-1">Connections</span> </p>
                         <button type="button" class="btn btn-dark col-4" data-bs-toggle="modal" data-bs-target="#addConnection">+ add</button>
                     </div>
@@ -398,6 +398,7 @@ use yii\helpers\Url;
 
     </div>
     </div>
+</div>
 
 <script>
     window.addEventListener('load', function () {

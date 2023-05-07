@@ -104,9 +104,9 @@ use yii\helpers\Url;
 
 <div class="mb-3 mx-auto px-0">
     <div class="row mx-auto px-0" style="padding-top: 25px!important">
-        <h3>Add New Subject</h3>
+        <h3 class="text-center text-sm-start mb-4 mb-sm-0">Add New Subject</h3>
 <!--        <h3 class="text-center">Hi <span style="color: rgb(210, 58, 225)">--><?//= 'George' ?><!--</span>! Let's start.</h3>-->
-        <div class="d-flex centeredDiv px-0 mb-5 align-items-center" style="padding-left: 12px!important; margin-top: 12px; justify-content: start">
+        <div class="d-flex centeredDiv px-0 mb-5 align-items-center <?= Yii::$app->user->identity->me ? 'd-none' : '' ?>" style="padding-left: 12px!important; margin-top: 12px; justify-content: start">
 <!--            <p style="font-size: 19px" class="text-center me-3">Whom shall we analyze first?</p>-->
             <ul class="nav nav-pills mb-3 flex-sm-row flex-column subject-pills" id="pills-tab" role="tablist">
                 <li class="nav-item <?= Yii::$app->user->identity->me ? 'd-none' : '' ?>" role="presentation">
@@ -123,11 +123,11 @@ use yii\helpers\Url;
         <div class="container row mx-auto px-0">
             <div class="tab-content mx-auto px-0" id="pills-tabContent">
                 <div class="tab-pane fade show  <?= Yii::$app->user->identity->me ? 'd-none' : 'active show' ?>" id="pills-me" role="tabpanel" aria-labelledby="pills-me-tab" tabindex="0">
-                    <div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mx-0">
-                        <form action="/user/create-subject" method="post" class="row"  enctype="multipart/form-data">
+                    <div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mx-0 justify-content-center">
+                        <form action="/user/create-subject" method="post" class="row d-flex justify-content-center"  enctype="multipart/form-data">
                             <input type="hidden" name="_csrf" value="<?= Yii::$app->getRequest()->getCsrfToken();?>">
                             <input type="hidden" name="is_me" value="1">
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 d-flex addSubjectCenter">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 d-flex justify-content-center addSubjectCenter">
                             <div class="col-12 d-flex flex-column mb-3" style="max-width: 330px; height: 465px; border: 1px dashed grey; border-radius: 5px;">
                                 <div class="d-flex justify-content-start align-items-center ps-3" style="height: 50px;">
                                     <input type="file" name="image" required class="custom-file-input" id="file-input">
@@ -142,7 +142,7 @@ use yii\helpers\Url;
                             </div>
                         </div>
 
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center subjectProps" style="">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 d-flex justify-content-center subjectProps" style="">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex flex-column align-items-center" style="text-align: start; max-width: 330px">
                                 <div class="mb-4 w-100">
                                     <label for="exampleFormControlInput1" class="form-label" style="font-weight: 500">Name/Nickname</label>
@@ -179,7 +179,8 @@ use yii\helpers\Url;
                                 </div>
                             </div>
                         </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 d-flex justify-content-start ms-4" style="">
+
+                        <div class="col-xl-7 col-lg-6 col-md-6 col-sm-12 col-12 d-flex justify-content-start ms-4" style="">
                                 <button class="btn fillButton" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="padding: 10px 17px!important;; width: 91%" type="submit">Get the Reports</button>
                             </div>
 
@@ -227,10 +228,10 @@ use yii\helpers\Url;
                     </div>
                 </div>
                 <div class="tab-pane fade <?= Yii::$app->user->identity->me ? 'active show' : '' ?>" id="pills-other" role="tabpanel" aria-labelledby="pills-other-tab" tabindex="0">
-                    <div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mx-0">
-                        <form action="/user/create-subject" method="post" class="row"  enctype="multipart/form-data">
+                    <div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mx-0 justify-content-center">
+                        <form action="/user/create-subject" method="post" class="row d-flex justify-content-center"  enctype="multipart/form-data">
                             <input type="hidden" name="_csrf" value="<?= Yii::$app->getRequest()->getCsrfToken();?>">
-                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 d-flex justify-content-start addSubjectCenter">
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 d-flex justify-content-center addSubjectCenter">
                                 <div class="col-12 d-flex flex-column mb-3" style="max-width: 330px; height: 465px; border: 1px dashed grey; border-radius: 5px;">
                                     <div class="d-flex justify-content-start align-items-center ps-3" style="height: 50px;">
                                         <input type="file" name="image" required class="custom-file-input" id="file-input-other">
@@ -245,7 +246,7 @@ use yii\helpers\Url;
                                 </div>
                             </div>
 
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-start subjectProps" style="">
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 d-flex justify-content-center subjectProps" style="">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex flex-column align-items-center" style="text-align: start; max-width: 330px">
                                     <div class="mb-4 w-100">
                                         <label for="exampleFormControlInput1" class="form-label" style="font-weight: 500">Name/Nickname</label>
@@ -282,8 +283,10 @@ use yii\helpers\Url;
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 d-flex justify-content-start">
-                                <button class="btn fillButton" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="padding: 10px 17px!important; margin: 0!important;" type="submit">Get the Reports</button>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 d-flex justify-content-center">
+                                    <button class="btn fillButton" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="padding: 10px 17px!important; margin: 0!important; width: 100%" type="submit">Get the Reports</button>
+                                </div>
                             </div>
 
 

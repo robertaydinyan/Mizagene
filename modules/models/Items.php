@@ -232,7 +232,7 @@ class Items extends \yii\db\ActiveRecord
                                 'comment',
                                 'priority'
                             ),
-                            '{delete} {save} {translate}'
+                            '{delete} {save} {translate} {checkmarkAdmin}'
                         );
                         break;
                     case 2:
@@ -245,7 +245,7 @@ class Items extends \yii\db\ActiveRecord
                                 'english_temp',
                                 'english_editable'
                             ),
-                            '{delete} {save} {checkmarkTranslator}'
+                            '{delete} {save} {checkmarkTranslator} {checkmarkAdmin}'
                         );
                         break;
                     case 3:
@@ -267,7 +267,7 @@ class Items extends \yii\db\ActiveRecord
                                     'english',
                                     'comment'
                                 ),
-                                '{delete} {save} {declinePsychologist} {checkmarkPsychologist}'
+                                '{delete} {save} {declinePsychologist} {checkmarkPsychologist} {checkmarkAdmin}'
                             );
                         break;
                     case 4:
@@ -280,7 +280,7 @@ class Items extends \yii\db\ActiveRecord
                                 'results',
                                 'types'
                             ),
-                            '{delete} {save} {colors}'
+                            '{delete} {save} {colors} {checkmarkAdmin}'
                         );
                         break;
                     case 5:
@@ -293,7 +293,7 @@ class Items extends \yii\db\ActiveRecord
                                 'results',
                                 'types'
                             ),
-                            '{delete} {save} {declineProfessor} {checkmarkProfessor}'
+                            '{delete} {save} {declineProfessor} {checkmarkProfessor} {checkmarkAdmin}'
                         );
                         break;
                     case 6:
@@ -305,7 +305,7 @@ class Items extends \yii\db\ActiveRecord
                                 'english',
                                 'results_description_ru_editable'
                             ),
-                            '{delete} {checkmarkPsychologist}'
+                            '{delete} {checkmarkPsychologist} {checkmarkAdmin}'
                         );
                         break;
                     case 7:
@@ -317,7 +317,7 @@ class Items extends \yii\db\ActiveRecord
                                 'english',
                                 'results_description_en_editable'
                             ),
-                            '{delete} {checkmarkTranslator}'
+                            '{delete} {checkmarkTranslator} {checkmarkAdmin}'
                         );
                         break;
                     case 8:
@@ -329,7 +329,7 @@ class Items extends \yii\db\ActiveRecord
                                 'english',
                                 'results_description_en_check'
                             ),
-                            '{delete} {declineProfessor} {checkmarkProfessor}'
+                            '{delete} {declineProfessor} {checkmarkProfessor} {checkmarkAdmin}'
                         );
                         break;
                     case 9:
