@@ -654,6 +654,12 @@ a.nav-link {
     padding: 0 12px;
 }
 
+.group-item-description-editable {
+    height: 48px;
+    width: 100%;
+    resize: none;
+}
+
 .group-item-description {
     display: -webkit-box;
     -webkit-box-orient: vertical;

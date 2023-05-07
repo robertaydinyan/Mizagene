@@ -80,16 +80,18 @@ class Group extends \yii\db\ActiveRecord
         return $result;
     }
 
-    public function getItems() {
-        $result = '';
+    public function getItemsCount() {
+        $result = 0;
         if ($this->items) {
             is_string($this->items) && $this->items = array($this->items);
             foreach ($this->items as $items_id) {
-                $item = Items::findOne($items_id);
-                $result .= $item ? '<span>' . $item->getTitle(2)->title . '</span><br>' : '';
+                $result += 1;
             }
-            $result = substr($result, 0, -2);
         }
         return $result;
+    }
+
+    public function getVols() {
+        return $this->hasMany(GroupVariants::class, ['group_id' => 'id']);
     }
 }

@@ -574,18 +574,15 @@ $columns = [
         'format' => 'raw',
         'value' => function($model) use ($form) {
             return sprintf('<div class="d-flex col-12">
-                    <div class="col-6">%s %s</div> 
-                    <div class="col-6">%s %s</div>
+                    <div class="col-6">%s</div> 
+                    <div class="col-6">%s</div>
                 </div> 
-                <div>%s %s</div>',
-                $form->field($model, 'i_type')->hiddenInput(['value' => '[]'])->label(false),
+                <div>%s</div>',
                 $form->field($model, 'i_type')->dropDownList(Items::getITypes(), ['multiple' => 'multiple', 'class' => 'required form-control item-type select2'])->label(false),
-                $form->field($model, 'i_usg_type')->hiddenInput(['value' => '[]'])->label(false),
                 $form->field($model, 'i_usg_type')->dropDownList(
                     \yii\helpers\ArrayHelper::map(\app\modules\models\UsgType::find()->asArray()->all(), 'id', 'name'),
                     ['multiple' => 'multiple', 'class' => 'required form-control item-usage-type select2', 'value' => $model->i_usg_type]
                 )->label(false),
-                $form->field($model, 'i_comb_type_id')->hiddenInput(['value' => '[]'])->label(false),
                 $form->field($model, 'i_comb_type_id')->dropDownList(Items::getICombTypes(), ['multiple' => 'multiple', 'class' => 'item-comb-type select2'])->label(false)
             );
         }

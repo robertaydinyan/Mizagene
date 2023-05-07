@@ -2,6 +2,8 @@
 
 namespace app\modules\controllers;
 
+use app\models\API;
+use app\models\Mizagene;
 use app\modules\models\ItemColors;
 use app\modules\models\Items;
 use app\modules\models\ItemsSearch;
@@ -241,11 +243,60 @@ class ItemsController extends Controller
 
     public function actionCheckadmin() {
         if (Yii::$app->admin->getIdentity()->role == 1) {
-            $itemID = Yii::$app->request->post('itemID');
-            $item = Items::findOne($itemID);
-            $item->check1 = 1;
-            $item->activated_at = date('Y-m-d h:i:s');
-            $item->save();
+            $itemID = Yii::$app->request->get('itemID');
+            $item_obj = Items::findOne($itemID);
+            $item =
+                Items::find()
+                    ->select([
+                        'items.id',
+                        'items.item_id as item_ID',
+                        'items.i_usg_type as i_usage_type',
+                        'items.i_type',
+                        'items.i_comb_type_id as subject_i_role',
+                        'items.i_comb_type_id as object_i_role',
+                        'item_title.title as i_title',
+                        'item_title.description as i_description',
+                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 1) as i_zone_1_colour',
+                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 2) as i_zone_2_colour',
+                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 3) as i_zone_3_colour',
+                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 4) as i_zone_4_colour',
+                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 5) as i_zone_5_colour',
+                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 6) as i_zone_6_colour',
+                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 7) as i_zone_7_colour',
+                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 8) as i_zone_8_colour',
+                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 9) as i_zone_9_colour',
+                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 10) as i_zone_10_colour',
+                    ])
+                    ->joinWith([
+                        'itemTitles' => function ($query) {
+                            $query->where(['languageID' => 3]);
+                        },
+                    ], false)
+                    ->where(['items.id' => $itemID])
+                    ->asArray()->one();
+
+            $item['i_usage_type'] = array_filter(json_decode($item['i_usage_type']), function($value) {
+                return $value !== "[]";
+            });
+            $item['i_type'] = array_filter(json_decode($item['i_type']), function($value) {
+                return $value !== "[]";
+            });
+            $item['subject_i_role'] = array_filter(json_decode($item['subject_i_role']), function($value) {
+                return $value !== "[]";
+            })[0];
+            $item['object_i_role'] = array_filter(json_decode($item['object_i_role']), function($value) {
+                return $value !== "[]";
+            })[0];
+            $mz = new Mizagene();
+//            echo "<pre>";
+//            var_dump($item);
+//            die();
+            $result = $mz->setItem($item);
+            if ($result != false) {
+                $item_obj->check1 = 1;
+                $item_obj->activated_at = date('Y-m-d h:i:s');
+                return $item_obj->save();
+            }
         }
     }
 

@@ -12,9 +12,9 @@ class Mizagene {
     public $date;
     private $token;
 
-    public function __construct($date, $token) {
+    public function __construct($date = null) {
         $this->date = $date;
-        $this->token = $token;
+        $this->token = API::getToken();
     }
 
     public function getItems() {
@@ -72,5 +72,12 @@ class Mizagene {
 //            $item->i_result_sector9_colorid = $sector->i_result_sector9_colorid;
 //            $item->i_result_sector10_colorid = $sector->i_result_sector10_colorid;
         }
+    }
+
+    public function setItem($items) {
+        $ch = CURL::init(API::getLink(), $this->token, 0);
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode($items));
+        $result = curl_exec($ch);
+        return $result;
     }
 }

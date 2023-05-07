@@ -19,4 +19,63 @@ $comb_types = Items::getICombTypes();
 <div class="group-index">
     <?= Yii::$app->controller->renderPartial('_menu.php'); ?>
 
+    <?= GridView::widget([
+        'tableOptions' => ['class' => 'table table-striped table-bordered simple-grid'],
+        'dataProvider' => $dataProvider,
+        'columns' => [
+            'id',
+            'title_russian',
+            'title_english',
+            'description_russian',
+            'description_english',
+            'datetime',
+            [
+                'header' => '<div>Reports</div>',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return '';
+                }
+            ],
+            [
+                'header' => '<div>Variants</div>',
+                'format' => 'raw',
+                'value' => function($model) {
+                    $vols = sprintf('<a href="/admin/group/create-variant?id=%s&variant_id=%s">Vol. 1</a><br>', $model->id, null);
+                    foreach ($model->vols as $vol) {
+                        $vols .= sprintf('<a href="/admin/group/create-variant?id=%s&variant_id=%s">%s</a><br>', $model->id, $vol->id, $vol->name);
+                    }
+                    return $vols;
+                }
+            ],
+            [
+                'header' => '<div>items</div>',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return $model->getItemsCount();
+                }
+            ],
+            [
+                'class' => ActionColumn::className(),
+                'template' => '{update} {delete}',
+                'buttons' => [
+                    'delete' => function ($url, $model, $key) {
+                        return Html::a('',
+                            $url,
+                            [
+                                'class' => 'icon archive archive-red label',
+                                'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+                                'data-method' => 'post',
+                            ]
+                        );
+                    },
+                    'update' => function($url, $model, $key) {
+                        return Html::a('',
+                            $url,
+                            ['class' => 'icon update label']
+                        );
+                    }
+                ]
+            ],
+        ],
+    ]); ?>
 </div>

@@ -1,7 +1,6 @@
 <?php
 
 use yii\bootstrap5\Html;
-
 ?>
 
 
@@ -84,7 +83,11 @@ use yii\bootstrap5\Html;
                     <span class="group-item-rule">18</span>
                 </div>
                 <span class="group-item-title" style="color: #cc33e6; font-weight: 600;"></span><br>
-                <span class="group-item-description" data-toggle="tooltip" title=""></span>
+                <?php if (isset($description_editable)): ?>
+                    <textarea name="Group[item_description][]" cols="50" rows="2" class="group-item-description-editable" disabled></textarea>
+                <?php else: ?>
+                    <span class="group-item-description" data-toggle="tooltip" title=""></span>
+                <?php endif; ?>
             </div>
         </div>
     </div>

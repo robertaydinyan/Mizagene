@@ -1,12 +1,6 @@
 <?php
 
-use app\modules\models\Group;
 use app\modules\models\Items;
-use yii\bootstrap5\ActiveForm;
-use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\grid\ActionColumn;
-use yii\grid\GridView;
 
 /** @var app\modules\models\Items $model */
 
@@ -16,7 +10,10 @@ $usg_types = Items::getIUsgTypes();
 $comb_types = Items::getICombTypes();
 ?>
 <div class="group-container d-flex">
-    <?php echo $this->renderFile('@app/modules/views/group/_group-config.php'); ?>
+    <?php echo $this->renderFile('@app/modules/views/group/_group-config.php', [
+        'usg_types' => $usg_types,
+        'comb_types' => $comb_types
+    ]); ?>
 
     <div class="group-content">
         <div class="group-tabs">

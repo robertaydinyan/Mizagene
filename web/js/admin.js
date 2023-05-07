@@ -168,9 +168,9 @@ $(document).ready(function() {
             stop: function(event, ui) {
                 ui = $(ui.item);
                 if (ui.closest(".group-item-container").length > 0) {
-                    ui.find('input').attr('disabled', 'disabled');
+                    ui.find('input, textarea').attr('disabled', 'disabled');
                 } else {
-                    ui.find('input').removeAttr('disabled');
+                    ui.find('input, textarea').removeAttr('disabled');
                 }
             }
         }).disableSelection();
@@ -350,6 +350,7 @@ $(document).ready(function() {
         if ($(el).val()) {
             $.get('/admin/usg-type/get-types', { 'type': JSON.stringify($(el).val()) }).done((res) => {
                 usg_types = JSON.parse(res);
+                console.log(usg_types)
                 !$(ict).next().hasClass('select2') && $(ict).select2();
 
                 if ($(el).val().includes('1')) {
@@ -397,6 +398,7 @@ $(document).ready(function() {
                     clone.find('.group-item-id').text(k['id']);
                     clone.find('.item-id').val(k['id']);
                     clone.find('.group-item-title').text(k['itemTitles'][0]['title']);
+                    clone.find('.group-item-description-editable').val(k['itemTitles'][0]['description']);
                     clone.find('.group-item-description').text(k['itemTitles'][0]['description']);
                     clone.find('.group-item-description').attr('title', k['itemTitles'][0]['description']);
                     clone.find('.group-item-source-' + k['source']).removeClass('d-none');
@@ -407,6 +409,7 @@ $(document).ready(function() {
             groupItemEvents();
         });
     });
+    $('.update-group-items').click();
 
     $('.dropdown-menu').on('click', function(el) {
         !$(el.target).hasClass('update-group-items') && el.stopPropagation();

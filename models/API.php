@@ -6,31 +6,32 @@ use Yii;
 
 class API {
     private static $links = [
-        'items' => 'https://api.mizagene.com/items',
-        'sectors' => 'https://api.mizagene.com/Sectors'
+        'getItems' => 'https://api.mizagene.com/items',
+        'getSectors' => 'https://api.mizagene.com/Sectors',
+        'setItem' => 'https://api.mizagene.com/End2End_Items'
     ];
 
     public static function getToken() {
-        $token = file_get_contents(\Yii::getAlias('@webroot') . DS . 'api_token.txt');
-        if (!$token) {
-            $ch = CURL::init("https://api.mizagene.com/Authentication");
+//        $token = file_get_contents(\Yii::getAlias('@rootdir') . DS . 'api_token.txt');
+//        if (!$token) {
+        $ch = CURL::init("https://api.mizagene.com/Authentication");
 
-            $configs = require \Yii::getAlias('@webroot') . '/config/cron.php';
-            $postData = [
-                'email' => $configs['email'],
-                'password' => $configs['password']
-            ];
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postData));
-            $token = json_decode(curl_exec($ch))->value;
+        $configs = require \Yii::getAlias('@root_dir') . '/config/cron.php';
 
-            file_put_contents('api_token.txt', $token);
-            CURL::close($ch);
-        }
+        $postData = [
+            'email' => $configs['email'],
+            'password' => $configs['password']
+        ];
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postData));
+        $token = json_decode(curl_exec($ch))->value;
+        file_put_contents('api_token.txt', $token);
+        CURL::close($ch);
+//        }
         return $token;
     }
 
     public static function getLink() {
-        $link = self::$links[strtolower(substr(debug_backtrace()[1]['function'], 3))];
+        $link = self::$links[debug_backtrace()[1]['function']];
         return $link ?: new \Exception('missing table');
     }
 

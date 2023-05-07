@@ -27,13 +27,12 @@ class CronController extends Controller {
         // divide to days
         $dates = CronJob::getDateRange($start, $end);
         $command = CronJob::run($this->id, $this->action->id, 0, CronJob::countDateRange($dates));
-        $token = API::getToken();
         if ($command === false){
             return Controller::EXIT_CODE_ERROR;
         } else{
             foreach ($dates as $date) {
-                $mz = new Mizagene($date, $token);
-                $mz->getItems();
+                $mz = new Mizagene();
+//                $mz->getItems();
 //                $mz->getSectors();
             }
             $command->finish();

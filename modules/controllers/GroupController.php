@@ -4,9 +4,12 @@ namespace app\modules\controllers;
 
 use app\modules\models\Group;
 use app\modules\models\GroupSearch;
+use app\modules\models\GroupVariants;
 use app\modules\models\Items;
 use app\modules\models\Region;
+use app\modules\models\UsgType;
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -81,6 +84,7 @@ class GroupController extends Controller
             if ($model->load($this->request->post()) && $model->save()) {
                 if ($this->request->post('push') !== null) {
                     $model->pushed = 1;
+                    $model->datetime = date('Y-m-d H:i:s');
                     $model->save();
                 }
                 $iconFile = UploadedFile::getInstance($model, 'icon');
@@ -170,6 +174,38 @@ class GroupController extends Controller
         return $this->render('drafts', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider
+        ]);
+    }
+
+    public function actionCreateVariant($id, $variant_id = null) {
+        $model = $this->findModel($id);
+        $variant = $variant_id ? GroupVariants::findOne($variant_id) : null;
+        $usg_types = ArrayHelper::map(UsgType::find()->asArray()->all(), 'id', 'name');
+        $comb_types = Items::getICombTypes();
+
+        if ($this->request->isPost) {
+            $model = new GroupVariants();
+            $data = Yii::$app->request->post('Group');
+            $model->items = json_encode($data['items']);
+            $model->item_description = json_encode($data['item_description']);
+            $model->group_id = $id;
+            if ($variant_id) {
+                $original_name = GroupVariants::findOne($variant_id)->name;
+            } else {
+                $original_name = 'Vol 1';
+            }
+            $model->depth = (GroupVariants::find()->select('max(depth) as depth')->where(['group_id' => $id, 'parent_id' => $variant_id])->one()['depth'] ?: 0) + 1;
+            $model->parent_id = $variant_id;
+            $model->name = $original_name . '.' . $model->depth;
+            $model->save();
+            return $this->redirect('/admin/group/index');
+        }
+
+        return $this->render('create-variant', [
+            'model' => $model,
+            'usg_types' => $usg_types,
+            'comb_types' => $comb_types,
+            'variant' => $variant
         ]);
     }
 
