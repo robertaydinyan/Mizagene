@@ -57,11 +57,17 @@
             // $('.dataTables_filter').detach().appendTo($(parent));
         });
 
+        const screenWidth = window.screen.width;
+        if (screenWidth <= 991) {
+            $('.desktopResult').removeClass('test');
+            $('.mobileResult').addClass('test');
+        }
 
         var chartsDom = $('.test');
         $.each(chartsDom, function (i, k) {
             let myChart = echarts.init(k);
             let option;
+            let value = parseFloat($(this).data('result'))/100;
 
             option = {
                 color: ['#EB4228', '#F3B86B', '#F3E5B2', '#D1D690', '#A0AD63'],
@@ -135,7 +141,7 @@
                         },
                         data: [
                             {
-                                value: 0.74,
+                                value: value,
                                 name: '',
 
                                 title: {

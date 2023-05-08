@@ -71,7 +71,7 @@ class ReportsController extends Controller
     {
         $step = $this->request->get('step') ?: 1;
         if ($step == 1) {
-            $model = new Group();
+            $model = new Reports();
         } else {
             $model = $this->findModel($this->request->get('id'));
         }

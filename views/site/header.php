@@ -196,7 +196,7 @@ if (!$lang) {
                                 'action' => ['site/logout'],
                                 'method' => 'post',
                             ]);
-                            $logout = $data['menu7'][$lang] .' (' .Yii::$app->user->identity->username . ') ';
+                            $logout = $data['menu7'][$lang];
                             ?>
 
                             <?= Html::submitButton($logout, ['class' => 'nav-link btn btn-link logout loginLink',
@@ -212,10 +212,15 @@ if (!$lang) {
                         <?php }
                         ?>
                     </li>
+                    <?php if(Yii::$app->user->isGuest) { ?>
                     <li class="nav-item d-md-none">
                         <a class="nav-link" href="#"  style="margin-right: 0!important;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions">
                             <?= $data['subtitle5'][$lang] ?>
                         </a>
+                    </li>
+                    <?php } ?>
+                    <li class="nav-item d-md-none">
+                        <a class="nav-link" href="/all-subjects"><?= 'Личный кабинет' ?></a>
                     </li>
                     <li class="nav-item dropdown d-md-none">
                         <a class="nav-link dropdown-toggle" style="color: rgb(114, 114, 114);" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
