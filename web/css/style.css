@@ -61,6 +61,10 @@ header {
     bottom: 0;
 }
 
+.heightError {
+    height: 100%;
+}
+
 #particles-js {
     position: absolute;
     width: 100%;
@@ -620,6 +624,12 @@ table.dataTable>tbody>tr.child ul.dtr-details li {
     }
 }
 
+@media (max-width: 1100px){
+    .heightError {
+        height: unset!important;
+    }
+}
+
 @media (max-width: 991px){
 
     .technologyParticles #particles-js-team {
@@ -630,40 +640,6 @@ table.dataTable>tbody>tr.child ul.dtr-details li {
     .serviceParticles #particles-js-team {
         height: 600px!important;
 
-    }
-}
-
-@media (max-width: 576px){
-    .dashLogoMax {
-        display: none;
-    }
-
-    .dashLogoMin {
-        display: block!important;
-    }
-
-    .mobileCol {
-        width: 100%!important;
-    }
-
-    .bigMenu {
-        display: none!important;
-    }
-
-    .menuDrop {
-        display: none!important;
-    }
-
-    .centeredDiv {
-        justify-content: center!important;
-    }
-
-    .maxTd {
-        min-width: 165px!important;
-    }
-
-    #v-pills-subject2 img {
-        width: 250px!important;
     }
 }
 
@@ -707,6 +683,47 @@ table.dataTable>tbody>tr.child ul.dtr-details li {
     }
 
 }
+
+@media (max-width: 576px){
+    .dashLogoMax {
+        display: none;
+    }
+
+    .dashLogoMin {
+        display: block!important;
+    }
+
+    .mobileCol {
+        width: 100%!important;
+    }
+
+    .bigMenu {
+        display: none!important;
+    }
+
+    .menuDrop {
+        display: none!important;
+    }
+
+    .centeredDiv {
+        justify-content: center!important;
+    }
+
+    .maxTd {
+        min-width: 165px!important;
+    }
+
+    #v-pills-subject2 img {
+        width: 250px!important;
+    }
+
+    .rightBorder {
+        border-right: none!important;
+        border-bottom: 1px dashed #003C46!important;
+    }
+}
+
+
 
 
 @media (max-width: 430px){

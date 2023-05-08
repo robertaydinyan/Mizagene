@@ -2,7 +2,7 @@
     </div>
 </div>
 
-</body>
+        </body>
 
 <footer style="background: rgb(27,27,27);" class="mt-auto">
     <div class="container-fluid row text-center m-0" style="background: rgb(44,44,44); color: rgb(114, 114, 114)">
@@ -135,8 +135,8 @@
                         },
                         data: [
                             {
-                                value: 0.7,
-                                name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+                                value: 0.74,
+                                name: '',
 
                                 title: {
                                     show: true,

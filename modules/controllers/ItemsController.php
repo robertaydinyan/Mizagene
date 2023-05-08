@@ -243,7 +243,7 @@ class ItemsController extends Controller
 
     public function actionCheckadmin() {
         if (Yii::$app->admin->getIdentity()->role == 1) {
-            $itemID = Yii::$app->request->get('itemID');
+            $itemID = Yii::$app->request->post('itemID');
             $item_obj = Items::findOne($itemID);
             $item =
                 Items::find()
@@ -275,18 +275,37 @@ class ItemsController extends Controller
                     ->where(['items.id' => $itemID])
                     ->asArray()->one();
 
-            $item['i_usage_type'] = array_filter(json_decode($item['i_usage_type']), function($value) {
-                return $value !== "[]";
-            });
-            $item['i_type'] = array_filter(json_decode($item['i_type']), function($value) {
-                return $value !== "[]";
-            });
-            $item['subject_i_role'] = array_filter(json_decode($item['subject_i_role']), function($value) {
-                return $value !== "[]";
-            })[0];
-            $item['object_i_role'] = array_filter(json_decode($item['object_i_role']), function($value) {
-                return $value !== "[]";
-            })[0];
+            if ($item['i_usage_type']) {
+                $item['i_usage_type'] = array_filter(json_decode($item['i_usage_type']), function($value) {
+                    return $value !== "[]";
+                });
+            } else {
+                $item['i_usage_type'] = [];
+            }
+            
+            if ($item['i_type']) {
+                $item['i_type'] = array_filter(json_decode($item['i_type']), function($value) {
+                    return $value !== "[]";
+                });
+            } else {
+                $item['i_type'] = [];
+            }
+            if ($item['subject_i_role'] AND $item['subject_i_role'] != '[]') {
+                $item['subject_i_role'] = array_filter(json_decode($item['subject_i_role']), function($value) {
+                    return $value !== "[]";
+                });
+            } else {
+                $item['subject_i_role'] = 0;
+            }
+
+            if ($item['object_i_role'] AND $item['object_i_role'] != '[]') {
+                $item['object_i_role'] = array_filter(json_decode($item['object_i_role']), function($value) {
+                    return $value !== "[]";
+                });
+            } else {
+                $item['object_i_role'] = 0;
+            }
+
             $mz = new Mizagene();
 //            echo "<pre>";
 //            var_dump($item);

@@ -13,6 +13,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Subject;
 use yii\helpers\Url;
+use app\models\Mizagene;
 
 
 class UserController extends Controller
@@ -106,8 +107,33 @@ class UserController extends Controller
         }
 
         if ($subject->load($post, '') && $subject->save()) {
-//            $command = 'cd /var/www/html/Mizagene/python/landmarks/ && /usr/bin/python index.py ' . $post['image'] . ' 2>&1';
+            $command = 'cd /var/www/html/Mizagene/python/landmarks/ && /usr/bin/python index.py ' . $post['image'] . ' 2>&1';
+            exec($command);
+            $output = file_get_contents(\Yii::getAlias('@webroot') . DS . '..' . DS . 'python' . DS . 'landmarks' . DS . 'json' . DS . str_replace('/var/www/html/Mizagene/web/images/subjects/', '', str_replace('.jpg', '', $post['image'])) . '.json');
+            $output = json_decode($output)->result;
+            $output->subject_id = $subject->id;
+            $output->subject_photo_id = 1;
+            $output->subject_data = [
+                "name" => $subject->name ,
+                "surname" => $subject->name   ,
+                "b_year" => $subject->year_of_birth  ,
+                "wrist_size" => $subject->wrist_size  ,
+                "height" =>  $subject->height  ,
+                "gender" => $subject->gender
 
+            ];
+
+            $mz = new Mizagene();
+            $resultID = $mz->addSubject($output);
+            $send = '{
+                "subject_ID" : ' . $resultID . ' ,
+                "subject_i_role" : 0,
+                "object_ID" : 0,
+                "object_i_role" : 0
+            }';
+            $result = $mz->getResult(json_decode($send));
+            var_dump('<pre>');
+            var_dump(json_decode($result));die;
             return $this->redirect(['/all-subjects']);
         }
 

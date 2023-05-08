@@ -20,6 +20,8 @@ if (!$lang) {
     $lang = 'en';
 }
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,9 +32,68 @@ if (!$lang) {
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <script src="https://kit.fontawesome.com/a262c03b8a.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<!--    <style>-->
+<!---->
+<!--        #info-->
+<!--        {-->
+<!--            font-size: 18px;-->
+<!--            color: #555;-->
+<!--            text-align: center;-->
+<!--            margin-bottom: 25px;-->
+<!--        }-->
+<!---->
+<!--        a{-->
+<!--            color: #074E8C;-->
+<!--        }-->
+<!---->
+<!--        .scrollbar-->
+<!--        {-->
+<!--            margin-left: 30px;-->
+<!--            float: left;-->
+<!--            background: #F5F5F5;-->
+<!--            overflow-y: scroll;-->
+<!--            margin-bottom: 25px;-->
+<!--        }-->
+<!---->
+<!--        .force-overflow-->
+<!--        {-->
+<!--            min-height: 450px;-->
+<!--        }-->
+<!---->
+<!--        /*-->
+<!--         *  STYLE 1-->
+<!--         */-->
+<!---->
+<!--        #style-1::-webkit-scrollbar-track-->
+<!--        {-->
+<!--            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);-->
+<!--            border-radius: 10px;-->
+<!--            background-color: #F5F5F5;-->
+<!--        }-->
+<!---->
+<!--        #style-1::-webkit-scrollbar-->
+<!--        {-->
+<!--            width: 9px;-->
+<!--            background-color: #F5F5F5;-->
+<!--        }-->
+<!---->
+<!--        #style-1::-webkit-scrollbar-thumb-->
+<!--        {-->
+<!--            border-radius: 10px;-->
+<!--            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);-->
+<!--            background-color: #555;-->
+<!--        }-->
+<!--    </style>-->
 </head>
+
+
+
 <body>
+<div class="scrollbar" id="style-1">
+    <div class="force-overflow">
 <header>
+
+
     <div class="container-fluid pre-header d-none d-md-flex align-items-center">
         <div class="container row mx-auto my-auto px-0 d-flex ">
             <div class="col-xl-7 col-lg-7 col-md-10 col-sm-11 col-12 d-flex ">
@@ -171,7 +232,7 @@ if (!$lang) {
     </nav>
 
 
-    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas offcanvas-end <?php if (isset($activeTabLog)) echo 'show'; ?>" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><?= $data['menu6'][$lang] ?></h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -195,6 +256,8 @@ if (!$lang) {
             <?php if(isset($login_model) && isset($login_model->getErrors()['password'])) { ?>
                 <p class="error_feedback"><?= $login_model->getErrors()['password'][0] ?></p>
             <?php  } ?>
+
+            <input type="hidden" name="activeTab" value="">
             <div class="col-6 mt-3">
                 <?= Html::submitButton($login_lang, ['class' => 'btn fillButton']) ?>
             </div>
@@ -202,7 +265,7 @@ if (!$lang) {
         </div>
     </div>
 
-    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasSignUp" aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas offcanvas-end <?php if (isset($activeTabSignup) || isset($activeTabSignupCompany)) echo 'show'; ?>" data-bs-scroll="true" tabindex="-1" id="offcanvasSignUp" aria-labelledby="offcanvasWithBothOptionsLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><?= $data['signup'][$lang] ?></h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -219,8 +282,8 @@ if (!$lang) {
                 </li>
             </ul>
 
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="tab-content " id="pills-tabContent">
+                <div class="tab-pane fade <?php if (isset($activeTabSignup) || !isset($activeTabSignupCompany)) echo 'show active'; ?> " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <form action="/site/signup" method="post">
                         <div class="form-floating mb-3">
                             <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
@@ -277,8 +340,10 @@ if (!$lang) {
                             <?php  } ?>
                         </div>
 
+
                         <input type="hidden" name="_csrf" value="<?= Yii::$app->getRequest()->getCsrfToken();?>">
 
+                        <input type="hidden" name="activeTab" value="">
 
                         <div class="col-12 mt-3">
                             <p class="">* <?= $data['signup_text1'][$lang] ?></p>
@@ -291,7 +356,7 @@ if (!$lang) {
                 </div>
 
                 <!--                --------------------------------------------------------------------------->
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="tab-pane fade <?php if (isset($activeTabSignupCompany)) echo 'show active'; ?>" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 
                     <form action="/site/signup" method="post">
 
@@ -328,7 +393,7 @@ if (!$lang) {
                             <?php  } ?>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" name="position" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <input type="text" name="position" class="form-control" id="floatingInput" placeholder="position">
                             <label for="floatingInput"><?= $data['position'][$lang] ?></label>
                             <?php if(isset($isCompany) && isset($isCompany->getErrors()['position'])) { ?>
                                 <p class="error_feedback"><?= $isCompany->getErrors()['position'][0] ?></p>
@@ -362,14 +427,14 @@ if (!$lang) {
                             <?php  } ?>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" name="company_link" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <input type="text" name="company_link" class="form-control" id="floatingInput" placeholder="company_link">
                             <label for="floatingInput"><?= $data['company_link'][$lang] ?></label>
                             <?php if(isset($isCompany) && isset($isCompany->getErrors()['company_link'])) { ?>
                                 <p class="error_feedback"><?= $isCompany->getErrors()['company_link'][0] ?></p>
                             <?php  } ?>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" name="phone" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <input type="text" name="phone" class="form-control" id="floatingInput" placeholder="phone">
                             <label for="floatingInput"><?= $data['phone'][$lang] ?></label>
                             <?php if(isset($isCompany) && isset($isCompany->getErrors()['phone'])) { ?>
                                 <p class="error_feedback"><?= $isCompany->getErrors()['phone'][0] ?></p>
@@ -390,6 +455,8 @@ if (!$lang) {
                                 <p class="error_feedback"><?= $isCompany->getErrors()['password_repeat'][0] ?></p>
                             <?php  } ?>
                         </div>
+
+                        <input type="hidden" name="activeTab" value="">
 
                         <input type="hidden" name="is_company" value="1">
                         <input type="hidden" name="status" value="1">
@@ -417,7 +484,6 @@ if (!$lang) {
     </div>
 
 </header>
-
 <body>
 
 
