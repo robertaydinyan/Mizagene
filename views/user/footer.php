@@ -13,6 +13,14 @@
 <script>
 
     window.addEventListener('load', function () {
+        const zoomableImages = document.querySelectorAll(".zoomable");
+
+        for (let i = 0; i < zoomableImages.length; i++) {
+            zoomableImages[i].addEventListener("click", function() {
+                this.classList.toggle("zoomed");
+            });
+        }
+
         $(document).ready(function () {
             $('#subjectsTable').DataTable({
                 // dom: 'Qfrtip',

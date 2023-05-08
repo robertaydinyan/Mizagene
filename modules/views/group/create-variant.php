@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </div>
                         <hr style="color: white;">
-                        <div class="group-droppable droppable" style="min-height: 300px">
+                        <div class="group-droppable droppable" style="min-height: 300px; display: inline-block;">
                             <?php
                             $items = $variant ? (is_array($variant->items) ? $variant->items : json_decode($variant->items)) : $model->items;
                             $item_description = $variant ? (is_array($variant->item_description) ? $variant->item_description : json_decode($variant->item_description)) : null;

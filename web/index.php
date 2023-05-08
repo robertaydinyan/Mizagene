@@ -1,6 +1,9 @@
 <?php
 
 // comment out the following two lines when deployed to production
+ini_set('upload_max_filesize', '50M');
+ini_set('post_max_size', '50M');
+
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
 

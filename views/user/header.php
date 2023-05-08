@@ -10,6 +10,7 @@ use yii\bootstrap5\ActiveForm;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/scrollbar.css">
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <script src="https://kit.fontawesome.com/a262c03b8a.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -57,7 +58,7 @@ use yii\bootstrap5\ActiveForm;
         </div>
     </nav>
 </header>
-<body style="height: 100vh; display: flex; flex-direction: column">
+<body style="height: 100vh; display: flex; flex-direction: column; overflow-x: hidden">
 <div class="container-fluid heightError">
     <div class="row w-100 ms-0 h-100">
         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 flex-column flex-shrink-0 p-3 pt-2 px-0 bg-light bigMenu"  style="width: 90px; display: flex">

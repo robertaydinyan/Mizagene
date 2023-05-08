@@ -199,6 +199,13 @@ $(document).ready(function() {
              colResizable($('.grid-view table'));
             $('.grid-view input, select, textarea').removeAttr('id');
             $('.select2').select2();
+
+            $.each($('.grid-view tbody tr'), (i, v) => {
+                rowValidation($(v));
+                rowValidation($(v), 1);
+                itemTypeChange($(v).find('.item-type'));
+            });
+
         });
     });
     $(document).on('change', '.item-usage-type', function () {
@@ -220,7 +227,7 @@ $(document).ready(function() {
 
     function saveRowData(el, id) {
         let data = takeFormData(el);
-        console.log(data)
+        $(el).find('.forward-black').removeClass('forward-black').addClass('forward-gray');
         $.post('/admin/items/update?id=' + id, {
             'Items': JSON.stringify(data)
         }).done((data) => {
@@ -337,7 +344,6 @@ $(document).ready(function() {
         if ($(el).val()) {
             $.get('/admin/usg-type/get-types', { 'type': JSON.stringify($(el).val()) }).done((res) => {
                 usg_types = JSON.parse(res);
-                console.log(usg_types)
                 !$(ict).next().hasClass('select2') && $(ict).select2();
 
                 if ($(el).val().includes('1')) {
@@ -366,8 +372,8 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on('click', '.update-group-items', function () {
-        let data = takeFormData($(this).closest($(this).closest('.group-config')));
+    function getActiveItems(el) {
+        let data = takeFormData($(el).closest('.group-config'));
         $.get('/admin/items/get-active-items', {
             'search': JSON.stringify(data),
         }).done((res) => {
@@ -395,7 +401,16 @@ $(document).ready(function() {
             });
             groupItemEvents();
         });
+    }
+
+    $(document).on('click', '.update-group-items', function () {
+        getActiveItems($(this));
     });
+
+    $(document).on('keydown', '.group-input-search', function () {
+        getActiveItems($(this));
+    });
+
     $('.update-group-items').click();
 
     $(document).on('click', '.update-report-groups', function () {

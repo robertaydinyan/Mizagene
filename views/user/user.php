@@ -139,9 +139,21 @@ use app\modules\models\Items;
     <div class="row d-flex pb-4">
         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 pe-lg-2">
             <div class="card mb-3 h-70" style="border: none">
-                <div class="card-body text-center">
-                    <div class="mx-auto" style="width: 200px; height: 200px; background-size: cover; border-radius: 10px; background-image: url('<?= str_replace("/var/www/html/Mizagene/web/", "", $subject->image) ?>')"></div>
-
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <img src="<?= str_replace("/var/www/html/Mizagene/web/", "", $subject->image) ?>" class="ms-2 zoomable" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px;">
+                        <div class="d-flex flex-column px-2">
+                            <i class="fa-solid fa-pen pb-3" style="cursor: pointer"></i>
+                            <?php if ($subject->gender == 1 || $subject->gender == 3): ?>
+                                <img src="/images/scan_white_men.png" alt="" width="30px" class="mb-3" style="cursor: pointer; background: rgb(210, 58, 225); border-radius: 5px; padding: 5px">
+                                <img src="/images/wscan_men.png" alt="" width="30px" style="cursor: pointer; background: white; border-radius: 5px; padding: 5px">
+                            <?php endif; ?>
+                            <?php if ($subject->gender == 2 || $subject->gender == 4): ?>
+                                <img src="/images/wscan_woman.png" alt="" width="30px" class="mb-3" style="cursor: pointer; background: rgb(210, 58, 225); border-radius: 5px; padding: 5px">
+                                <img src="/images/scan_woman.png" alt="" width="30px" style="cursor: pointer; background: white; border-radius: 5px; padding: 5px">
+                            <?php endif; ?>
+                        </div>
+                    </div>
                     <div class="card-body px-4">
                         <div class="row" style="border-bottom: 1px solid lightgrey; padding-bottom: 5px;">
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 px-0 text-start">
@@ -210,7 +222,7 @@ use app\modules\models\Items;
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center p-1">
                             <p class="m-0">By</p>
-                            <p class="mb-0">Mikayel Kotanjyan </p>
+                            <p class="mb-0"><?= $subject->user->username ?></p>
                         </li>
 <!--                        <li class="list-group-item d-flex justify-content-between align-items-center p-1">-->
 <!--                            <p class="m-1" >Mizagene</p>-->
@@ -234,17 +246,17 @@ use app\modules\models\Items;
                 <div class="card-body">
                     <p class=" col-8"><span class="font-italic me-1" style="color: rgb(210, 58, 225)">Available Reports</span></p>
                     <div style="overflow-y: scroll; height: 270px;">
-                        <p class="mb-1" style="cursor: pointer; color: #003C46">Character traits</p>
+                        <p class="mb-1" style="cursor: pointer; color: #003C46"><b>Character traits</b></p>
                         <p class="mt-1 mb-1" style="cursor: pointer;">Psyche and Communication</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">Child report</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">Study</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">Talent to science</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">Talent to sports</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">Career guidance</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">HR profile</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">Intimate report</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">KYC Casino</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">Specialized talent assessment in football</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Child report</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Study</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Talent to science</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Talent to sports</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Career guidance</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> HR profile</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Intimate report</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> KYC Casino</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Specialized talent assessment in football</p>
                     </div>
                 </div>
             </div>
@@ -339,17 +351,17 @@ use app\modules\models\Items;
                 <div class="card-body">
                     <p class=" col-8"><span class="font-italic me-1" style="color: rgb(210, 58, 225)">Available Reports</span></p>
                     <div style="overflow-y: scroll; height: 210px;">
-                        <p class="mb-1" style="cursor: pointer; color: #003C46">Character traits</p>
+                        <p class="mb-1" style="cursor: pointer; color: #003C46"><b>Character traits</b></p>
                         <p class="mt-1 mb-1" style="cursor: pointer;">Psyche and Communication</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">Child report</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">Study</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">Talent to science</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">Talent to sports</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">Career guidance</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">HR profile</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">Intimate report</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">KYC Casino</p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">Specialized talent assessment in football</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Child report</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Study</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Talent to science</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Talent to sports</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Career guidance</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> HR profile</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Intimate report</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> KYC Casino</p>
+                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Specialized talent assessment in football</p>
                     </div>
                 </div>
             </div>
@@ -386,7 +398,7 @@ use app\modules\models\Items;
                     <div class="collapse show px-0" id="collapseExample">
                         <div class="card card-body" style="border: none!important;">
 
-                            <div class="row d-flex parentResult" style="height: 350px; overflow-y: scroll;">
+                            <div class="row d-flex parentResult" style="height: 360px; overflow-y: scroll;">
                                 <div id="carouselExample" class="carousel slide carousel-dark d-block d-md-none">
                                     <div class="carousel-inner">
                                         <?php
@@ -431,7 +443,7 @@ use app\modules\models\Items;
                                         <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px; height: 330px">
                                             <div class="test desktopResult d-flex justify-content-center" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;" data-result="<?= $res->subject_item_result ?>"></div>
                                             <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -90px"><?= $item->getTitle(2)->title ?></div>
-                                            <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; height: 125px">
+                                            <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; height: 100px">
                                                 <i><?= $item->getTitle(2)->description ?></i>
                                                <br> <b>Result:</b> <?= $res->subject_item_result ?>
                                             </p>

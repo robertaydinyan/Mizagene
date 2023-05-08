@@ -32,6 +32,7 @@ if (!$lang) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/scrollbar.css">
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <script src="https://kit.fontawesome.com/a262c03b8a.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -63,37 +64,13 @@ if (!$lang) {
 <!--            min-height: 450px;-->
 <!--        }-->
 <!---->
-<!--        /*-->
-<!--         *  STYLE 1-->
-<!--         */-->
-<!---->
-<!--        #style-1::-webkit-scrollbar-track-->
-<!--        {-->
-<!--            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);-->
-<!--            border-radius: 10px;-->
-<!--            background-color: #F5F5F5;-->
-<!--        }-->
-<!---->
-<!--        #style-1::-webkit-scrollbar-->
-<!--        {-->
-<!--            width: 9px;-->
-<!--            background-color: #F5F5F5;-->
-<!--        }-->
-<!---->
-<!--        #style-1::-webkit-scrollbar-thumb-->
-<!--        {-->
-<!--            border-radius: 10px;-->
-<!--            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);-->
-<!--            background-color: #555;-->
-<!--        }-->
-<!--    </style>-->
 </head>
 
 
 
 <body>
-<div class="scrollbar" id="style-1">
-    <div class="force-overflow">
+<div class="scroll-container">
+    <div class="scroll-content">
 <header>
 
 
@@ -500,6 +477,33 @@ if (!$lang) {
     </div>
 
 </header>
+
+        <script>
+            const scrollContainer = document.querySelector('.scroll-container');
+            const scrollbar = document.querySelector('.scrollbar');
+            const scrollbarThumb = document.querySelector('.scrollbar-thumb');
+            const scrollContent = document.querySelector('.scroll-content');
+
+            scrollContainer.addEventListener('mousemove', () => {
+                const isScrollable = scrollContent.scrollHeight > scrollContent.clientHeight;
+
+                if (isScrollable) {
+                    scrollbar.style.opacity = '1';
+                }
+            });
+
+            scrollContainer.addEventListener('mouseleave', () => {
+                scrollbar.style.opacity = '0';
+            });
+
+            scrollContent.addEventListener('scroll', () => {
+                const scrollTop = scrollContent.scrollTop;
+                const maxScrollTop = scrollContent.scrollHeight - scrollContent.clientHeight;
+                const scrollPercentage = (scrollTop / maxScrollTop) * 100;
+                scrollbarThumb.style.transform = `translateY(${scrollPercentage}%)`;
+            });
+
+        </script>
 <body>
 
 

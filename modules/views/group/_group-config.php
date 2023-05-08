@@ -6,9 +6,9 @@ use yii\bootstrap5\Html;
 
 <div class="col-3 group-config">
     <div class="d-flex">
-        <input type="text" class="form-control" placeholder="Search by ID or text" name="search">
+        <input type="text" class="form-control group-input-search" placeholder="Search by ID or text" name="search" style="box-shadow: unset;">
         <div class="dropdown">
-            <a type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 24px; margin: -4px 4px;">
+            <a type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 24px; margin: -4px 0px -4px 12px;">
                 <i class="fa fa-sliders icon" style="color: #003c47"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="width: 300px;">

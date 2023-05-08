@@ -612,6 +612,20 @@ table.dataTable>tbody>tr.child ul.dtr-details li {
     opacity: 0;
 }
 
+.zoomable {
+    cursor: zoom-in;
+    max-width: 100%;
+    transition: transform 0.3s;
+}
+.zoomable.zoomed {
+    transform: scale(1.5);
+    z-index: 100;
+    position: fixed;
+    cursor: zoom-out;
+    margin: auto;
+}
+
+
 
 /*.dataTables_filter {*/
 /*    text-align: start!important;*/

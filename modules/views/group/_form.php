@@ -79,7 +79,7 @@ $comb_types = Items::getICombTypes();
                         </div>
                     </div>
                     <hr style="color: white;">
-                    <div class="group-droppable droppable" style="min-height: 300px">
+                    <div class="group-droppable droppable" style="min-height: 300px; display: inline-block;">
                         <?php if ($model->items):
                             foreach ($model->items as $item_id):
                                 $item = Items::findOne($item_id); ?>
