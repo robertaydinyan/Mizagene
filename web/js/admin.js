@@ -220,7 +220,7 @@ $(document).ready(function() {
 
     function saveRowData(el, id) {
         let data = takeFormData(el);
-        console.log(data)
+        $(el).find('.forward-black').removeClass('forward-black').addClass('forward-gray');
         $.post('/admin/items/update?id=' + id, {
             'Items': JSON.stringify(data)
         }).done((data) => {
