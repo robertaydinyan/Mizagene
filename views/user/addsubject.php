@@ -135,7 +135,7 @@ use yii\helpers\Url;
                                     <a href="#" style="text-decoration: none; color: black" class="add-subject-icons d-none d-sm-block"><i class="fa-solid fa-camera" style="padding: 10px; font-size: 20px; cursor: pointer; color: #000;"></i>Camera</a>
 <!--                                    <i class="add-subject-icons fa-solid fa-triangle-exclamation" style="padding: 10px; font-size: 25px; cursor: pointer; color: #fff;"></i>-->
                                 </div>
-                                <img class="img-fluid align-self-center my-auto" src="/images/facial-recognition_1.png" alt="" style="" width="300" id="preview-image">
+                                <img class="img-fluid align-self-center my-auto" src="/images/facial-recognition_1.png"  alt="" style="object-fit: cover; width: 300px; height: 300px" width="300" height="300" id="preview-image">
                                 <div class="d-flex justify-content-center align-items-center" style="height: 50px;">
                                     <button class="btn fillButton mx-auto bg-dark w-100 h-100 d-flex justify-content-center align-items-center" style="border-radius: unset!important;border-bottom-left-radius: 5px!important; border-bottom-right-radius: 5px!important;" data-bs-toggle="modal" data-bs-target="#photoRequirementsModal"><i class="fa-solid fa-triangle-exclamation pe-3" style="font-size: 25px; cursor: pointer; color: #fff;"></i>Photo requirements</button>
                                 </div>
@@ -241,7 +241,7 @@ use yii\helpers\Url;
                                         <a href="#" style="text-decoration: none; color: black" class="add-subject-icons d-none d-sm-block"><i class="fa-solid fa-camera" style="padding: 10px; font-size: 20px; cursor: pointer; color: #000;"></i>Camera</a>
                                         <!--                                    <i class="add-subject-icons fa-solid fa-triangle-exclamation" style="padding: 10px; font-size: 25px; cursor: pointer; color: #fff;"></i>-->
                                     </div>
-                                    <img class="img-fluid align-self-center my-auto" src="/images/facial-recognition_1.png" alt="" style="" width="300" id="preview-image-other">
+                                    <img class="img-fluid align-self-center my-auto" src="/images/facial-recognition_1.png" alt="" style="object-fit: cover; width: 300px; height: 300px" width="300" height="300" id="preview-image-other">
                                     <div class="d-flex justify-content-center align-items-center" style="height: 50px;">
                                         <button class="btn fillButton mx-auto bg-dark w-100 h-100 d-flex justify-content-center align-items-center" style="border-radius: unset!important;border-bottom-left-radius: 5px!important; border-bottom-right-radius: 5px!important;" data-bs-toggle="modal" data-bs-target="#photoRequirementsModal"><i class="fa-solid fa-triangle-exclamation pe-3" style="font-size: 25px; cursor: pointer; color: #fff;"></i>Photo requirements</button>
                                     </div>

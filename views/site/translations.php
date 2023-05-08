@@ -82,6 +82,10 @@ $data = [
         'en' => 'Partnership (integration with your software)',
         'ru' => 'Партнерство (интеграция с вашим ПО)'
     ],
+    'Личный кабинет' => [
+        'en' => 'My account',
+        'ru' => 'Личный кабинет'
+    ],
 
 
 

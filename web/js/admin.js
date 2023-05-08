@@ -381,15 +381,15 @@ $(document).ready(function() {
             $.each(data, (i, k) => {
                 if (!selectedValues.includes(k['id'].toString())) {
                     clone = template.clone().appendTo(template.parent());
+                    clone.removeClass('group-item-template');
                     clone.find('.fa-circle').addClass(k['check1'] ? 'active' : 'disabled');
                     clone.find('.group-item-id').text(k['item_id']);
                     clone.find('.item-id').val(k['id']);
-                    clone.find('.group-item-title').text(k['itemTitles'][0]['title']);
-                    clone.find('.group-item-description-editable').val(k['itemTitles'][0]['description']);
-                    clone.find('.group-item-description').text(k['itemTitles'][0]['description']);
-                    clone.find('.group-item-description').attr('title', k['itemTitles'][0]['description']);
+                    clone.find('.group-item-title').text(k['itemTitles'][0] ? k['itemTitles'][0]['title'] : '');
+                    clone.find('.group-item-description-editable').val(k['itemTitles'][0] ? k['itemTitles'][0]['description'] : '');
+                    clone.find('.group-item-description').text(k['itemTitles'][0] ? k['itemTitles'][0]['description'] : '');
+                    clone.find('.group-item-description').attr('title', k['itemTitles'][0] ? k['itemTitles'][0]['description'] : '');
                     clone.find('.group-item-source-' + k['source']).removeClass('d-none');
-                    clone.removeClass('group-item-template');
                     // $('.items-container').append('<div class="item"><span>' +  + ' </span><span> ' +  + ' </span><span> ' + item_types[k['i_type']] + '</span></div>');
                 }
             });

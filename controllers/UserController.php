@@ -110,7 +110,25 @@ class UserController extends Controller
         if ($subject->load($post, '') && $subject->save()) {
             $command = 'cd /var/www/html/Mizagene/python/landmarks/ && /usr/bin/python index.py ' . $post['image'] . ' 2>&1';
             exec($command);
-            $output = file_get_contents(\Yii::getAlias('@webroot') . DS . '..' . DS . 'python' . DS . 'landmarks' . DS . 'json' . DS . str_replace('/var/www/html/Mizagene/web/images/subjects/', '', str_replace('.jpg', '', $post['image'])) . '.json');
+            $extensions = array(
+                'bmp',
+                'gif',
+                'ico',
+                'jpeg',
+                'jpg',
+                'png',
+                'svg',
+                'tif',
+                'tiff',
+                'webp',
+                'heic',
+                'heif',
+            );
+            $string = $post['image'];
+            foreach ($extensions as $ext) {
+                $string = str_replace('.' . $ext, '', $string);
+            }
+            $output = file_get_contents(\Yii::getAlias('@webroot') . DS . '..' . DS . 'python' . DS . 'landmarks' . DS . 'json' . DS . str_replace('/var/www/html/Mizagene/web/images/subjects/', '',$string) . '.json');
             $output = json_decode($output)->result;
             $output->subject_id = $subject->id;
             $output->subject_photo_id = 1;

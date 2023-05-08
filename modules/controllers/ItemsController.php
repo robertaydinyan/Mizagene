@@ -131,6 +131,7 @@ class ItemsController extends Controller
                 },
             ]);
         }
+        $model->limit(9999);
         return json_encode($model->asArray()->all());
     }
 
