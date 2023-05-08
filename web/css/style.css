@@ -641,6 +641,11 @@ table.dataTable>tbody>tr.child ul.dtr-details li {
         height: 600px!important;
 
     }
+
+    .parentResult {
+        height: auto!important;
+        overflow-y: unset!important;
+    }
 }
 
 @media (max-width: 767px){

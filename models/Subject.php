@@ -56,4 +56,9 @@ class Subject extends \yii\db\ActiveRecord
             'is_me' => 'Is Me',
         ];
     }
+
+    public function getResult()
+    {
+        return $this->hasOne(Tresult::class, ['subject_id' => 'id']);
+    }
 }

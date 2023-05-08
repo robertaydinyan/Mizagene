@@ -14,6 +14,7 @@ use app\models\ContactForm;
 use app\models\Subject;
 use yii\helpers\Url;
 use app\models\Mizagene;
+use app\models\Tresult;
 
 
 class UserController extends Controller
@@ -132,8 +133,11 @@ class UserController extends Controller
                 "object_i_role" : 0
             }';
             $result = $mz->getResult(json_decode($send));
-            var_dump('<pre>');
-            var_dump(json_decode($result));die;
+            $mod = new Tresult();
+            $mod->subject_id = $subject->id;
+            $mod->result = $result;
+            $mod->save();
+
             return $this->redirect(['/all-subjects']);
         }
 

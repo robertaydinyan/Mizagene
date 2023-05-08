@@ -1,6 +1,7 @@
 <?php
 include('header.php');
 use yii\helpers\Url;
+use app\modules\models\Items;
 ?>
     <style>
         .mobileCol {
@@ -209,7 +210,7 @@ use yii\helpers\Url;
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center p-1">
                             <p class="m-0">By</p>
-                            <p class="mb-0">Aram Sarkisyan </p>
+                            <p class="mb-0">Mikayel Kotanjyan </p>
                         </li>
 <!--                        <li class="list-group-item d-flex justify-content-between align-items-center p-1">-->
 <!--                            <p class="m-1" >Mizagene</p>-->
@@ -385,143 +386,62 @@ use yii\helpers\Url;
                     <div class="collapse show px-0" id="collapseExample">
                         <div class="card card-body" style="border: none!important;">
 
-                            <div class="row d-flex">
+                            <div class="row d-flex parentResult" style="height: 350px; overflow-y: scroll;">
                                 <div id="carouselExample" class="carousel slide carousel-dark d-block d-md-none">
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
-                                                    <div class="test d-flex justify-content-center mx-auto" style="height: 230px; width: 280px; position:relative; margin-bottom: -35px;"></div>
-                                                    <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -80px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
-                                                    <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
-                                                        <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
-                                                        <br> <b>Result:</b> Lorem Ipsum
-                                                    </p>
+                                        <?php
+                                            $result = $subject->result;
+                                            foreach (json_decode($result['result']) as $k => $res):
+                                                if ($k == 1000) break;
+                                                $item = Items::findOne($res->item_ID); if ($item): ?>
+                                                <div class="carousel-item <?= $k == 1 ? 'active' : '' ?>">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px; height: 330px">
+                                                            <div class="mobileResult d-flex justify-content-center mx-auto" style="height: 230px; width: 280px; position:relative; margin-bottom: -35px;" data-result="<?= $res->subject_item_result ?>"></div>
+                                                            <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -80px"><?= $item->getTitle(2)->title ?></div>
+                                                            <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; height: 100px">
+                                                                <i><?= $item->getTitle(2)->description ?></i>
+                                                                <br> <b>Result:</b> <?= $res->subject_item_result ?>
+                                                            </p>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between px-4 align-items-center mt-2">
+                                                            <i class="fa-solid fa-check" style="color: #97df2a;"></i> Agree
+                                                            <i class="fa-solid fa-xmark" style="color: red;"></i> Disagree
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="d-flex justify-content-between px-4 align-items-center mt-2">
-                                                    <i class="fa-solid fa-check" style="color: #97df2a;"></i> Agree
-                                                    <i class="fa-solid fa-xmark" style="color: red;"></i> Disagree
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
-                                                    <div class="test d-flex justify-content-center mx-auto" style="height: 230px; width: 280px; position:relative; margin-bottom: -35px;"></div>
-                                                    <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -80px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
-                                                    <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
-                                                        <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
-                                                        <br> <b>Result:</b> Lorem Ipsum
-                                                    </p>
-                                                </div>
-                                                <div class="d-flex justify-content-between px-4 align-items-center mt-2">
-                                                    <i class="fa-solid fa-check" style="color: #97df2a;"></i> Agree
-                                                    <i class="fa-solid fa-xmark" style="color: red;"></i> Disagree
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
-                                                    <div class="test d-flex justify-content-center mx-auto" style="height: 230px; width: 280px; position:relative; margin-bottom: -35px;"></div>
-                                                    <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -80px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
-                                                    <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
-                                                        <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
-                                                        <br> <b>Result:</b> Lorem Ipsum
-                                                    </p>
-                                                </div>
-                                                <div class="d-flex justify-content-between px-4 align-items-center mt-2">
-                                                    <i class="fa-solid fa-check" style="color: #97df2a;"></i> Agree
-                                                    <i class="fa-solid fa-xmark" style="color: red;"></i> Disagree
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px; width: 100%">
-                                                    <div class="test d-flex justify-content-center mx-auto" style="height: 230px; width: 280px; position:relative; margin-bottom: -35px;"></div>
-                                                    <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -80px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
-                                                    <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
-                                                        <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
-                                                        <br> <b>Result:</b> Lorem Ipsum
-                                                    </p>
-                                                </div>
-                                                <div class="d-flex justify-content-between px-4 align-items-center mt-2">
-                                                    <i class="fa-solid fa-check" style="color: #97df2a;"></i> Agree
-                                                    <i class="fa-solid fa-xmark" style="color: red;"></i> Disagree
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <?php endif; endforeach; ?>
+
                                     </div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" style="left: -35px">
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" style="left: -28px">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                         <span class="visually-hidden">Previous</span>
                                     </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" style="right: -35px">
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" style="right: -28px">
                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                         <span class="visually-hidden">Next</span>
                                     </button>
                                 </div>
-
-                                <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-md-block">
-                                    <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
-                                        <div class="test d-flex justify-content-center" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
-                                        <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -90px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
-                                        <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
-                                            <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
-                                           <br> <b>Result:</b> Lorem Ipsum
-                                        </p>
+                                <?php
+                                $result = $subject->result;
+                                foreach (json_decode($result['result']) as $k => $res):
+                                if ($k == 1000) break;
+                                $item = Items::findOne($res->item_ID); if ($item): ?>
+                                    <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-md-block">
+                                        <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px; height: 330px">
+                                            <div class="test desktopResult d-flex justify-content-center" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;" data-result="<?= $res->subject_item_result ?>"></div>
+                                            <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -90px"><?= $item->getTitle(2)->title ?></div>
+                                            <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; height: 125px">
+                                                <i><?= $item->getTitle(2)->description ?></i>
+                                               <br> <b>Result:</b> <?= $res->subject_item_result ?>
+                                            </p>
+                                        </div>
+                                        <div class="d-flex justify-content-between px-4 align-items-center mt-2">
+                                            <i class="fa-solid fa-check" style="color: #97df2a;"></i> Agree
+                                            <i class="fa-solid fa-xmark" style="color: red;"></i> Disagree
+                                        </div>
                                     </div>
-                                    <div class="d-flex justify-content-between px-4 align-items-center mt-2">
-                                        <i class="fa-solid fa-check" style="color: #97df2a;"></i> Agree
-                                        <i class="fa-solid fa-xmark" style="color: red;"></i> Disagree
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-md-block">
-                                    <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
-                                        <div class="test d-flex justify-content-center" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
-                                        <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -90px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
-                                        <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
-                                            <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
-                                            <br><b>Result:</b> Lorem Ipsum
-                                        </p>
-                                    </div>
-                                    <div class="d-flex justify-content-between px-4 align-items-center mt-2">
-                                        <i class="fa-solid fa-check" style="color: #97df2a;"></i> Agree
-                                        <i class="fa-solid fa-xmark" style="color: red;"></i> Disagree
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-md-block">
-                                    <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
-                                        <div class="test d-flex justify-content-center" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
-                                        <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -90px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
-                                        <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
-                                            <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
-                                            <br><b>Result:</b> Lorem Ipsum
-                                        </p>
-                                    </div>
-                                    <div class="d-flex justify-content-between px-4 align-items-center mt-2">
-                                        <i class="fa-solid fa-check" style="color: #97df2a;"></i> Agree
-                                        <i class="fa-solid fa-xmark" style="color: red;"></i> Disagree
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-md-block">
-                                    <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
-                                        <div class="test d-flex justify-content-center" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
-                                        <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -90px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
-                                        <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
-                                            <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
-                                           <br> <b>Result:</b> Lorem Ipsum
-                                        </p>
-                                    </div>
-                                    <div class="d-flex justify-content-between px-4 align-items-center mt-2">
-                                        <i class="fa-solid fa-check" style="color: #97df2a;"></i> Agree
-                                        <i class="fa-solid fa-xmark" style="color: red;"></i> Disagree
-                                    </div>
-                                </div>
+                                <?php endif; endforeach; ?>
                             </div>
                         </div>
                     </div>
