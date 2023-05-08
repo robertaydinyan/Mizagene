@@ -520,7 +520,7 @@ class Items extends \yii\db\ActiveRecord
     }
 
     public static function getIUsgTypes() {
-        return self::$IUsgTypes;
+        return ArrayHelper::map(UsgType::find()->asArray()->all(), 'id', 'name');
     }
 
 

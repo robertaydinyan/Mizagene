@@ -382,7 +382,7 @@ $(document).ready(function() {
                 if (!selectedValues.includes(k['id'].toString())) {
                     clone = template.clone().appendTo(template.parent());
                     clone.find('.fa-circle').addClass(k['check1'] ? 'active' : 'disabled');
-                    clone.find('.group-item-id').text(k['id']);
+                    clone.find('.group-item-id').text(k['item_id']);
                     clone.find('.item-id').val(k['id']);
                     clone.find('.group-item-title').text(k['itemTitles'][0]['title']);
                     clone.find('.group-item-description-editable').val(k['itemTitles'][0]['description']);
@@ -439,4 +439,10 @@ $(document).ready(function() {
     $('.active-item-disable').on('click', function() {
         $.post('/admin/items/disable', { 'id': $(this).closest('tr').attr('data-key') });
     });
+
+    $('.group-config').on('keydown', function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+        }
+    })
 });

@@ -294,6 +294,10 @@ main {
     background-image: url("/images/icons/archive_red.png");
 }
 
+.remove {
+    background-image: url("/images/icons/delete.png");
+}
+
 .archive-white {
     margin-top: 0;
     width: 28px;

@@ -57,7 +57,7 @@ $comb_types = Items::getICombTypes();
                         return Html::a('',
                             $url,
                             [
-                                'class' => 'icon archive archive-red label',
+                                'class' => 'icon delete label',
                                 'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
                                 'data-method' => 'post',
                             ]
