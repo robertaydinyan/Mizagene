@@ -25,28 +25,32 @@ use yii\bootstrap5\ActiveForm;
 <!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">-->
 <!--                <span class="navbar-toggler-icon"></span>-->
 <!--            </button>-->
-                        <div class="dropdown me-3 menuDrop">
-                            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                                <span>Hi, <strong><?= Yii::$app->user->identity->username ?></strong>!</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end text-small shadow">
-                                <li><a class="dropdown-item" href="/settings">Settings</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li>
-                                    <?php $form = ActiveForm::begin([
-                                'class' => 'logout-form',
-                                'action' => ['site/logout'],
-                                'method' => 'post',
-                            ]);
-                            ?>
+                        <?php if (Yii::$app->user->identity): ?>
+                            <div class="dropdown me-3 menuDrop">
+                                <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i>
+<!--                                    <img src="" alt="" width="32" height="32" class="rounded-circle me-2">-->
+                                    <span>Hi, <strong><?= Yii::$app->user->identity->username ?></strong>!</span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end text-small shadow">
+                                    <li><a class="dropdown-item" href="/settings">Settings</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <?php $form = ActiveForm::begin([
+                                    'class' => 'logout-form',
+                                    'action' => ['site/logout'],
+                                    'method' => 'post',
+                                ]);
+                                ?>
 
-                                    <button type="submit" class="dropdown-item">Sign Out</button>
+                                        <button type="submit" class="dropdown-item">Sign Out</button>
 
-                            <?php ActiveForm::end(); ?>
-                                </li>
-                            </ul>
-                        </div>
+                                <?php ActiveForm::end(); ?>
+                                    </li>
+                                </ul>
+                            </div>
+
+                         <?php endif; ?>
                         <button class="d-sm-none me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#smallMenu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background: none; border: none">
                             <i class="fa-solid fa-bars fa-xl" style="color: #d23ae1;"></i>
                         </button>

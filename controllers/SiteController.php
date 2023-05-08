@@ -81,7 +81,12 @@ class SiteController extends Controller
         $model = new LoginForm();
 
         if ($model->load($post,'') && $model->login() && $model->validate()) {
-            return $this->redirect(['/add-subject']);
+            if (count(Yii::$app->user->identity->subjects) > 0)
+            {
+                return $this->redirect(['/all-subjects']);
+            } else {
+                return $this->redirect(['/add-subject']);
+            }
         }else {
             Yii::$app->session->setFlash('error', 'Invalid login credentials');
         }
@@ -97,6 +102,7 @@ class SiteController extends Controller
 
     public function actionSignup(){
         $post = Yii::$app->request->post();
+        $post['ip'] = $_SERVER['REMOTE_ADDR'];
 
         $activeTab = Yii::$app->request->post('activeTab', null);
         if (isset($post['is_company'])) {

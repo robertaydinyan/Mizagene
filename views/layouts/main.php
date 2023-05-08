@@ -17,7 +17,7 @@ $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_k
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/images/favicon.png')]);
 $this->registerCssFile('css/site.css');
 $this->registerJsFile('js/script.js');
-?>
+$this->registerCssFile('@web/css/scrollbar.css');?>
 <?php $this->beginPage() ?>
 
 <?= $content ?>

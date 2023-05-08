@@ -2,6 +2,7 @@
 include 'translations.php';
 use yii\helpers\Url;
 use yii\helpers\Html;
+use app\models\Country;
 
 /** @var yii\web\View $this */
 /** @var yii\bootstrap5\ActiveForm $form */
@@ -10,6 +11,8 @@ use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm;
 
 $cookies = Yii::$app->response->cookies;
+$countries = new Country();
+$countries = $countries->getCountries();
 
 $lang = Yii::$app->request->cookies->getValue('lang');
 if (!$lang) {
@@ -145,7 +148,7 @@ if (!$lang) {
 
     <nav class="container-fluid navbar fixed-top navbar-expand-lg header-menu">
         <div class="container d-flex" style="background: white;">
-            <div class="w-50">
+            <div class="">
                 <a href="/"><img class="navbar-brand" src="/images/logo.png" alt="Logo" width="222" height="60"></a>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -188,6 +191,11 @@ if (!$lang) {
                     <li class="nav-item d-md-none">
                         <a class="nav-link" href="/partners"><?= $data['subtitle6'][$lang] ?></a>
                     </li>
+                    <?php if(!Yii::$app->user->isGuest) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/all-subjects"><?= $data['Личный кабинет'][$lang] ?></a>
+                        </li>
+                    <?php } ?>
                     <li class="nav-item">
                         <?php if(!Yii::$app->user->isGuest){
                             ?>
@@ -219,9 +227,6 @@ if (!$lang) {
                         </a>
                     </li>
                     <?php } ?>
-                    <li class="nav-item d-md-none">
-                        <a class="nav-link" href="/all-subjects"><?= 'Личный кабинет' ?></a>
-                    </li>
                     <li class="nav-item dropdown d-md-none">
                         <a class="nav-link dropdown-toggle" style="color: rgb(114, 114, 114);" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-globe" style="color: grey;"></i>
@@ -321,7 +326,10 @@ if (!$lang) {
 
                         <div class="form-floating mb-3">
                             <select class="form-control select2" name="country">
-                                <option>Armenia</option>
+                                <option value="">Select country</option>
+                                <?php foreach ($countries as $key => $country) { ?>
+                                    <option value="<?= $key ?>"><?=$country ?></option>
+                                <?php } ?>
                             </select>
                             <label for="floatingInput"><?= $data['country'][$lang] ?></label>
                             <?php if(isset($model) && isset($model->getErrors()['country'])) { ?>
@@ -390,7 +398,10 @@ if (!$lang) {
                         </div>
                         <div class="form-floating mb-3">
                             <select class="form-control select2" name="country">
-                                <option>Armenia</option>
+                                <option value="">Select country</option>
+                                <?php foreach ($countries as $key => $country) { ?>
+                                    <option value="<?= $key ?>"><?=$country ?></option>
+                                <?php } ?>
                             </select>
                             <label for="floatingInput"><?= $data['country'][$lang] ?></label>
                             <?php if(isset($isCompany) && isset($isCompany->getErrors()['country'])) { ?>
