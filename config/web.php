@@ -82,6 +82,8 @@ $config = [
                 'settings' => 'user/settings',
                 'connections' => 'user/connections',
                 'subject' => 'user/subject',
+//                '' => 'site/login',
+//                'signup' => 'site/signup',
             ],
         ],
         'session' => [

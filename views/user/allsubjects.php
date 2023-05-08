@@ -29,8 +29,8 @@ use yii\helpers\Url;
                         <?php foreach (Yii::$app->user->identity->subjects as $key => $subject): ?>
                             <tr style="<?= isset($subject->deleted_at) ? 'pointer-events: none; background: #ff000052' : '' ?>" class="text-center">
                                 <td class="text-start ps-2"><a href="/subject?id=<?= $subject->id ?>"><?= $key+1 ?></a></td>
-                                <td class=""><img src="<?= str_replace('/var/www/html/Mizagene/web/', '', $subject->image) ?>" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></td>
-                                <td><?= $subject->name ?></td>
+                                <td class=""><a href="/subject?id=<?= $subject->id ?>"><img src="<?= str_replace('/var/www/html/Mizagene/web/', '', $subject->image) ?>" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></a></td>
+                                <td><a href="/subject?id=<?= $subject->id ?>"><?= $subject->name ?></a></td>
                                 <td><?= $subject->created_at ?></td>
                                 <td><?= date('Y') - $subject->year_of_birth ?></td>
                                 <td><?= $subject->gender == 1 ? '<i class="fa-solid fa-mars" style="color: #000000;"></i>' : ($subject->gender == 2 ? '<i class="fa-solid fa-venus" style="color: #000000;"></i>' : ($subject->gender == 3 ? 'Male <i class="fa-solid fa-transgender" style="color: #000000;"></i>' : ($subject->gender == 4 ? 'Female <i class="fa-solid fa-transgender" style="color: #000000;"></i>' : ''))) ?></td>
@@ -41,7 +41,7 @@ use yii\helpers\Url;
                                 <td>0</td>
                                 <td class="">
                                     <div class="<?= isset($subject->deleted_at) ? 'd-none' : '' ?>">
-                                        <img src="/images/truefalse.png" alt="" width="20px" class="mx-sm-0 mx-3">
+                                        <img src="/images/truefalse.png" alt="" width="20px" class="mx-sm-0 ms-3">
                                         <img src="/images/share.png" alt="" width="20px" class="mx-3">
                                         <img src="/images/wrong.png" alt="" width="15px" class="me-sm-2 deleteSubject" style="cursor: pointer" data-id="<?= $subject->id ?>">
                                     </div>

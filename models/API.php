@@ -8,7 +8,9 @@ class API {
     private static $links = [
         'getItems' => 'https://api.mizagene.com/items',
         'getSectors' => 'https://api.mizagene.com/Sectors',
-        'setItem' => 'https://api.mizagene.com/End2End_Items'
+        'setItem' => 'https://api.mizagene.com/End2End_Items',
+        'addSubject' => 'https://api.mizagene.com/Subject',
+        'getResult' => 'https://api.mizagene.com/ReportShow'
     ];
 
     public static function getToken() {

@@ -328,6 +328,10 @@ main {
     background-image: url("/images/icons/forward_black.png");
 }
 
+.push-black {
+    background-image: url("/images/icons/push_black.png");
+}
+
 .priority-1 {
     background-image: url("/images/icons/high_priority.png");
 }

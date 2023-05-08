@@ -88,14 +88,17 @@ class SiteController extends Controller
 
         $model->password = '';
 
-        return $this->redirect(['index',
+        $activeTab = Yii::$app->request->post('activeTab', null);
+        return $this->render('index', [
             'login_model' => $model,
+            'activeTabLog' => $activeTab,
         ]);
     }
 
     public function actionSignup(){
         $post = Yii::$app->request->post();
 
+        $activeTab = Yii::$app->request->post('activeTab', null);
         if (isset($post['is_company'])) {
             $model = new SignupcompanyForm();
             if ($model->load($post, '') && $model->validate() && $model->signup()){
@@ -110,8 +113,11 @@ class SiteController extends Controller
                 return $this->redirect(Yii::$app->homeUrl);
             }
             $fakemodel = new SignupcompanyForm();
-            return $this->render('index', ['isCompany' => $model,
-                'model' => $fakemodel]);
+            return $this->render('index', [
+                'isCompany' => $model,
+                'model' => $fakemodel,
+                'activeTabSignupCompany' => $activeTab,
+                ]);
         }
         else{
             $model = new SignupForm();
@@ -127,8 +133,11 @@ class SiteController extends Controller
                 return $this->redirect(Yii::$app->homeUrl);
             }
             $fakemodel = new SignupForm();
-            return $this->render('index', ['model' => $model,
-                'isCompany'=> $fakemodel]);
+            return $this->render('index', [
+                'model' => $model,
+                'isCompany'=> $fakemodel,
+                'activeTabSignup' => $activeTab,
+            ]);
         }
         
     }

@@ -503,8 +503,10 @@ class Items extends \yii\db\ActiveRecord
     public function getUsgType() {
         $result = '';
         is_string($this->i_usg_type) && $this->i_usg_type = array($this->i_usg_type);
-        foreach ($this->i_usg_type as $type)
-            $result .= self::$IUsgTypes[$type] . ' ';
+        foreach ($this->i_usg_type as $type) {
+            $usg_type = UsgType::findOne(['id' => $type]);
+            $result .= ($usg_type ? $usg_type->name : '') . ' ';
+        }
 
         return $result;
     }

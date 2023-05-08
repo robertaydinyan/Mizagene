@@ -13,38 +13,67 @@ use yii\helpers\Url;
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="firstStep row d-flex m-3" style="border: 1px dashed #003C46; border-radius: 5px">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 px-0 py-3" style="border-right: 1px dashed #003C46;">
-                            <div class="d-flex flex-column p-3 align-items-center">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-0 py-3 rightBorder" style="border-right: 1px dashed #003C46;">
+                            <div class="text-end pe-3 d-block">
+                                <i class="fa-solid fa-check fa-lg me-2 addSubject d-sm-none d-inlne" style="color: rgb(240, 240, 240);cursor: pointer"></i>
+                                <i class="fa-solid fa-xmark fa-lg d-sm-none d-inlne" data-bs-dismiss="modal" style="color: red; cursor: pointer"></i>
+                            </div>
+                            <div class="d-flex flex-column p-3 pt-sm-3 pt-1 align-items-center">
                                 <div style="border-radius: 5px; background-image: url('<?= str_replace("/var/www/html/Mizagene/web/", "", $subject->image) ?>'); background-size: cover; width: 100px; height: 100px"></div>
                                 <p class="text-center mt-2"><?= $subject->name ?></p>
-                                <select name="subject_type" id="" style="border: 1px dashed #003C46; border-radius: 5px; padding: 5px">
+                                <select name="subject_type" id="subjectTypeSelect" style="border: 1px dashed #003C46; border-radius: 5px; padding: 5px">
                                     <option value="">Select Subject Type</option>
-                                    <option value="1">friend</option>
-                                    <option value="2">mother</option>
-                                    <option value="3">father</option>
+                                    <option value="1" class="" disabled>friend</option>
+                                    <option value="2" class="">partner</option>
+                                    <option value="3" class="">spouse</option>
+                                    <option value="4" class="">child</option>
+                                    <option value="5" class="" disabled>foster child</option>
+                                    <option value="6" class="<?= $subject->gender == 2 ? 'd-none' : '' ?>">biological father</option>
+                                    <option value="7" class="<?= $subject->gender == 1 ? 'd-none' : '' ?>">biological mother</option>
+                                    <option value="8" class="<?= $subject->gender == 2 ? 'd-none' : '' ?>" disabled>foster father</option>
+                                    <option value="9" class="<?= $subject->gender == 1 ? 'd-none' : '' ?>" disabled>foster mother</option>
+                                    <option value="10" class="<?= $subject->gender == 2 ? 'd-none' : '' ?>" disabled>father in law</option>
+                                    <option value="11" class="<?= $subject->gender == 1 ? 'd-none' : '' ?>" disabled>mother in law</option>
+                                    <option value="12" class="" disabled>daughter or son in law</option>
+                                    <option value="13" class="<?= $subject->gender == 2 ? 'd-none' : '' ?>" disabled>biological brother</option>
+                                    <option value="14" class="<?= $subject->gender == 1 ? 'd-none' : '' ?>" disabled>biological syster</option>
+                                    <option value="15" class="<?= $subject->gender == 2 ? 'd-none' : '' ?>" disabled>stepbrother</option>
+                                    <option value="16" class="<?= $subject->gender == 1 ? 'd-none' : '' ?>" disabled>stepsister</option>
+                                    <option value="17" class="" disabled>relative</option>
+                                    <option value="18" class="" disabled>subordinate</option>
+                                    <option value="19" class="" disabled>manager</option>
+                                    <option value="20" class="" disabled>colleague</option>
+                                    <option value="21" class="" disabled>business partner</option>
+                                    <option value="22" class="" disabled>customer</option>
+                                    <option value="23" class="" disabled>contractor</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pt-1 pb-3">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 pt-4 pt-sm-1 pb-3">
                             <div class="text-end">
-                                <i class="fa-solid fa-check fa-lg me-2 addSubject" style="color: rgb(240, 240, 240);cursor: pointer"></i>
-                                <i class="fa-solid fa-xmark fa-lg" data-bs-dismiss="modal" style="color: red; cursor: pointer"></i>
+                                <i class="fa-solid fa-check fa-lg me-2 addSubject d-none d-sm-inline" style="color: rgb(240, 240, 240);cursor: pointer"></i>
+                                <i class="fa-solid fa-xmark fa-lg d-none d-sm-inline" data-bs-dismiss="modal" style="color: red; cursor: pointer"></i>
                             </div>
 
                             <div class="d-flex flex-column p-3 pt-1 align-items-center">
-                                <div style="width: 100px; height: 100px; border: 1px dashed #003C46; border-radius: 5px; display: flex">
+                                <div style="width: 100px; height: 100px; border: 1px dashed #003C46; border-radius: 5px; display: flex" class="chooseIcon">
                                     <div class="mx-auto my-auto objectImage" style="background-image: url('/images/favicon.png'); background-size: cover; width: 70px; height: 70px; opacity: 0.5"></div>
                                 </div>
                                 <p class="text-center mt-2 choose" style="cursor:pointer; color: #178fd6">Choose</p>
-                                <select name="subject_type" id="" style="border: 1px dashed #003C46; border-radius: 5px; padding: 5px">
+                                <select name="subject_type" id="objectTypeSelect" style="border: 1px dashed #003C46; border-radius: 5px; padding: 5px">
                                     <option value="">Select Object Type</option>
+                                    <option value="1" class="">partner</option>
+                                    <option value="2" class="">spouse</option>
+                                    <option value="3" class="">child</option>
+                                    <option value="4" class="">biological father</option>
+                                    <option value="5" class="">biological mother</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="secondStep row d-none d-flex m-3" style="border: 1px dashed #003C46; border-radius: 5px">
                         <div class="d-flex justify-content-between col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 p-3">
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 backwards" style="color: #003C46; cursor: pointer">
+                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5 backwards" style="color: #003C46; cursor: pointer">
                                 <i class="fa-solid fa-angles-left" style="color: #003C46"></i> Backwards
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 text-end">
@@ -107,8 +136,8 @@ use yii\helpers\Url;
     <h4 class="p-3 ps-0"><?= $subject->name ?></h4>
 
     <div class="row d-flex pb-4">
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 pe-2">
-            <div class="card mb-3 h-70">
+        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 pe-lg-2">
+            <div class="card mb-3 h-70" style="border: none">
                 <div class="card-body text-center">
                     <div class="mx-auto" style="width: 200px; height: 200px; background-size: cover; border-radius: 10px; background-image: url('<?= str_replace("/var/www/html/Mizagene/web/", "", $subject->image) ?>')"></div>
 
@@ -134,7 +163,7 @@ use yii\helpers\Url;
                                 <p class="mb-0">Gender</p>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 px-0 text-end">
-                                <p class="text-muted mb-0"><?= $subject->gender ?></p>
+                                <p class="text-muted mb-0"><?= $subject->gender == 1 ? 'Male' : ($subject->gender == 2 ? 'Female' : ($subject->gender == 3 ? 'Other (born as a male)' : ($subject->gender == 4 ? 'Other (born as a female)' : ''))) ?></p>
                             </div>
                         </div>
                         <div class="row" style="border-bottom: 1px solid lightgrey; padding-bottom: 5px;">
@@ -147,16 +176,24 @@ use yii\helpers\Url;
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-center my-2">
-                        <button type="button" class="btn btn-warning p-1">15.3%</button>
-                        <button type="button" class="btn btn-danger ms-1 p-1">24.7%</button>
-                        <button type="button" class="btn btn-primary ms-1 p-1">30.5%</button>
-                        <button type="button" class="btn btn-secondary ms-1 p-1">48.3%</button>
+                    <div class="d-flex my-2 px-2">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 px-1">
+                            <span style="background: rgb(243, 194, 67)!important; color: white!important; border: none!important;font-size: 10px; width: 100%; display: block; border-radius: 5px;" class="p-1">15.3%</span>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 px-1">
+                            <span style="background: rgb(236, 84, 73)!important; color: white!important; border: none!important;font-size: 10px; width: 100%; display: block; border-radius: 5px;" class="p-1">24.7%</span>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 px-1">
+                            <span style="background: rgb(54, 130, 180)!important; color: white!important; border: none!important;font-size: 10px; width: 100%; display: block; border-radius: 5px;" class="p-1">30.5%</span>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 px-1">
+                            <span style="background: rgb(208, 174, 101)!important; color: white!important; border: none!important;font-size: 10px; width: 100%; display: block; border-radius: 5px;" class="p-1">48.3%</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card mb-4 mb-lg-0">
+            <div class="card mb-4 mb-lg-0 d-none d-sm-block" style="border: none">
                 <div class="card-body p-3 mb-3">
                     <div>
                         <h6 class="mb-0 mx-3 mt-3">Meta information</h6>
@@ -190,29 +227,31 @@ use yii\helpers\Url;
 
         </div>
 
-        <div class="d-flex flex-column col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 mx-0 ps-0 pe-2">
+        <div class="d-flex flex-column col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 mx-0 ps-md-0 pe-lg-2">
 
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 card mb-4 mb-md-3  h-50">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 card mb-4 mb-md-3 d-lg-flex d-none" style="border: none; height: 345px">
                 <div class="card-body">
-                    <p class="mb-1" style="font-size: .77rem;">Character traits</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">Psyche and Communication</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">Child report</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">Study</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">Talent to science</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">Talent to sports</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">Career guidance</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">HR profile</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">Intimate report</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">KYC Casino</p>
-                    <p class="mt-1 mb-1" style="font-size: .77rem;">Specialized talent assessment in football</p>
-
+                    <p class=" col-8"><span class="font-italic me-1" style="color: rgb(210, 58, 225)">Available Reports</span></p>
+                    <div style="overflow-y: scroll; height: 270px;">
+                        <p class="mb-1" style="cursor: pointer; color: #003C46">Character traits</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Psyche and Communication</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Child report</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Study</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Talent to science</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Talent to sports</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Career guidance</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">HR profile</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Intimate report</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">KYC Casino</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Specialized talent assessment in football</p>
+                    </div>
                 </div>
             </div>
-            <div class="card col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="border: none">
                 <div class="card-body">
                     <div class="row mt-2 align-items-baseline">
-                        <p class=" col-8"><span class="text-primary font-italic me-1">Connections</span> </p>
-                        <button type="button" class="btn btn-dark col-4" data-bs-toggle="modal" data-bs-target="#addConnection">+ add</button>
+                        <p class=" col-8"><span class="font-italic me-1" style="color: rgb(234, 51, 61)">Connections</span> </p>
+                        <button type="button" class="btn btn-dark p-0 col-3 mx-2" data-bs-toggle="modal" data-bs-target="#addConnection">+ add</button>
                     </div>
 
                     <div class="row d-flex align-items-center">
@@ -226,83 +265,208 @@ use yii\helpers\Url;
                         </div>
 
                         <div class="col-2 p-0">
-                                    <button class="btn btn-outline-secondary search-icon" type="button">
+                                    <button class="btn btn-outline-secondary search-icon ms-1" type="button" style="border: 1px solid #dee2e6">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </button>
                         </div>
                     </div>
 
-                    <table class="table align-middle mb-0 bg-white">
-                        <tbody>
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle"/>
 
-                                    <div class="ms-3">
-                                        <p class="fw-bold mb-1">John Doe</p>
-                                        <p class="text-muted mb-0">Father</p>
-                                    </div>
 
-                                    <a href="#" class="text-dark ms-auto">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </a>
+                    <div class="card-body px-4" style="overflow-y: scroll; height: 210px!important;">
+                        <div class="row mb-3" style="border-bottom: 1px solid lightgrey; padding-bottom: 5px;">
+                            <div class="d-flex col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 px-0 text-start">
+                                <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle"/>
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1">Mary Doe</p>
+                                    <p class="text-muted mb-0">Mother</p>
                                 </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <img src="https://images.pexels.com/photos/839633/pexels-photo-839633.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" style="width: 45px; height: 45px" class="rounded-circle"/>
-
-                                    <div class="ms-3">
-                                        <p class="fw-bold mb-1">Mary Doe</p>
-                                        <p class="text-muted mb-0">Mother</p>
-                                    </div>
-
-                                    <a href="#" class="text-dark ms-auto">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </a>
+                            </div>
+                            <div class="d-flex align-items-center col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 px-0 text-end">
+                                <a href="#" class="text-dark ms-auto">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row mb-3" style="border-bottom: 1px solid lightgrey; padding-bottom: 5px;">
+                            <div class="d-flex col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 px-0 text-start">
+                                <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle"/>
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1">Mary Doe</p>
+                                    <p class="text-muted mb-0">Mother</p>
                                 </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                            </div>
+                            <div class="d-flex align-items-center col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 px-0 text-end">
+                                <a href="#" class="text-dark ms-auto">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row mb-3" style="border-bottom: 1px solid lightgrey; padding-bottom: 5px;">
+                            <div class="d-flex col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 px-0 text-start">
+                                <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle"/>
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1">Mary Doe</p>
+                                    <p class="text-muted mb-0">Mother</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 px-0 text-end">
+                                <a href="#" class="text-dark ms-auto">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row mb-3" style="border-bottom: 1px solid lightgrey; padding-bottom: 5px;">
+                            <div class="d-flex col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 px-0 text-start">
+                                <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle"/>
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1">Mary Doe</p>
+                                    <p class="text-muted mb-0">Mother</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 px-0 text-end">
+                                <a href="#" class="text-dark ms-auto">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 card mt-3 d-flex d-lg-none" style="border: none">
+                <div class="card-body">
+                    <p class=" col-8"><span class="font-italic me-1" style="color: rgb(210, 58, 225)">Available Reports</span></p>
+                    <div style="overflow-y: scroll; height: 210px;">
+                        <p class="mb-1" style="cursor: pointer; color: #003C46">Character traits</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Psyche and Communication</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Child report</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Study</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Talent to science</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Talent to sports</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Career guidance</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">HR profile</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Intimate report</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">KYC Casino</p>
+                        <p class="mt-1 mb-1" style="cursor: pointer;">Specialized talent assessment in football</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 bg-white mx-auto px-0 mt-4 mt-sm-0" style="border-radius: 5px; border:1px solid #d2d2d2;">
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 px-lg-0">
 
 
-            <div class="flex-column d-flex justify-content-between">
-                <div class="d-flex align-items-center">
-                    <div class="col-3 ms-auto me-2 p-0">
-                        <select class="form-select my-2 col-10" aria-label="Default select example">
+            <div class="flex-column d-flex justify-content-between bg-white mx-auto mt-3 mt-lg-0" style="border-radius: 5px;">
+                <div class="row d-flex align-items-center">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+                        <h4 class="mb-0 p-4">Character traits</h4>
+                    </div>
+                    <div class="d-flex col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 align-items-center px-4">
+                        <select class="form-select my-2 " aria-label="Default select example">
                             <option selected>All</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                         </select>
+                        <a href="#" class="text-dark text-end px-2">
+                            <img src="/images/filter.png" alt="" width="30px">
+                        </a>
                     </div>
-                <a href="#" class="text-dark text-end pe-4">
-                    <i class="fa-solid fa-filter"></i>
-                </a>
+
 
 
             </div>
             <div class="row ms-3">
                 <div class="row">
-                    <span class="my-3" style="width:10rem;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
-                        Group 1
+                    <span class="my-3" style="cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+                        	<i class="fa-solid fa-face-smile" style="color: #003C46"></i> Positive character traits
                     </span>
-                    <div class="collapse show" id="collapseExample">
+                    <div class="collapse show px-0" id="collapseExample">
                         <div class="card card-body" style="border: none!important;">
 
                             <div class="row d-flex">
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                <div id="carouselExample" class="carousel slide carousel-dark d-block d-md-none">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
+                                                    <div class="test d-flex justify-content-center mx-auto" style="height: 230px; width: 280px; position:relative; margin-bottom: -35px;"></div>
+                                                    <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -80px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
+                                                    <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
+                                                        <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
+                                                        <br> <b>Result:</b> Lorem Ipsum
+                                                    </p>
+                                                </div>
+                                                <div class="d-flex justify-content-between px-4 align-items-center mt-2">
+                                                    <i class="fa-solid fa-check" style="color: #97df2a;"></i> Agree
+                                                    <i class="fa-solid fa-xmark" style="color: red;"></i> Disagree
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
+                                                    <div class="test d-flex justify-content-center mx-auto" style="height: 230px; width: 280px; position:relative; margin-bottom: -35px;"></div>
+                                                    <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -80px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
+                                                    <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
+                                                        <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
+                                                        <br> <b>Result:</b> Lorem Ipsum
+                                                    </p>
+                                                </div>
+                                                <div class="d-flex justify-content-between px-4 align-items-center mt-2">
+                                                    <i class="fa-solid fa-check" style="color: #97df2a;"></i> Agree
+                                                    <i class="fa-solid fa-xmark" style="color: red;"></i> Disagree
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
+                                                    <div class="test d-flex justify-content-center mx-auto" style="height: 230px; width: 280px; position:relative; margin-bottom: -35px;"></div>
+                                                    <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -80px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
+                                                    <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
+                                                        <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
+                                                        <br> <b>Result:</b> Lorem Ipsum
+                                                    </p>
+                                                </div>
+                                                <div class="d-flex justify-content-between px-4 align-items-center mt-2">
+                                                    <i class="fa-solid fa-check" style="color: #97df2a;"></i> Agree
+                                                    <i class="fa-solid fa-xmark" style="color: red;"></i> Disagree
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px; width: 100%">
+                                                    <div class="test d-flex justify-content-center mx-auto" style="height: 230px; width: 280px; position:relative; margin-bottom: -35px;"></div>
+                                                    <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -80px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
+                                                    <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
+                                                        <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
+                                                        <br> <b>Result:</b> Lorem Ipsum
+                                                    </p>
+                                                </div>
+                                                <div class="d-flex justify-content-between px-4 align-items-center mt-2">
+                                                    <i class="fa-solid fa-check" style="color: #97df2a;"></i> Agree
+                                                    <i class="fa-solid fa-xmark" style="color: red;"></i> Disagree
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" style="left: -35px">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" style="right: -35px">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+
+                                <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-md-block">
                                     <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
-                                        <div class="test" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
+                                        <div class="test d-flex justify-content-center" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
+                                        <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -90px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
                                         <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
                                             <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
                                            <br> <b>Result:</b> Lorem Ipsum
@@ -314,9 +478,10 @@ use yii\helpers\Url;
                                     </div>
                                 </div>
 
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-md-block">
                                     <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
-                                        <div class="test" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
+                                        <div class="test d-flex justify-content-center" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
+                                        <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -90px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
                                         <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
                                             <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
                                             <br><b>Result:</b> Lorem Ipsum
@@ -328,9 +493,10 @@ use yii\helpers\Url;
                                     </div>
                                 </div>
 
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-md-block">
                                     <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
-                                        <div class="test" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
+                                        <div class="test d-flex justify-content-center" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
+                                        <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -90px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
                                         <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
                                             <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
                                             <br><b>Result:</b> Lorem Ipsum
@@ -342,9 +508,10 @@ use yii\helpers\Url;
                                     </div>
                                 </div>
 
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-md-block">
                                     <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px">
-                                        <div class="test" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
+                                        <div class="test d-flex justify-content-center" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;"></div>
+                                        <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -90px">Lorem Ipsum hlksbf kjadfkja kjasdjkas kjahsd</div>
                                         <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; max-height: 160px">
                                             <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
                                            <br> <b>Result:</b> Lorem Ipsum
@@ -361,7 +528,7 @@ use yii\helpers\Url;
                 </div>
 
                 <div class="row">
-                    <span class="my-3" style="width:10rem;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="my-3" style="cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
                         Group 2
                     </span>
                     <div class="collapse" id="collapseExample2">
@@ -372,7 +539,7 @@ use yii\helpers\Url;
                 </div>
 
                 <div class="row">
-                    <span class="my-3" style="width:10rem;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="my-3" style="cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
                         Group 3
                     </span>
                     <div class="collapse" id="collapseExample3">
@@ -383,7 +550,7 @@ use yii\helpers\Url;
                 </div>
 
                 <div class="row">
-                    <span class="my-3" style="width:10rem;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="my-3" style="cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
                         Group 4
                     </span>
                     <div class="collapse" id="collapseExample4">
@@ -402,7 +569,7 @@ use yii\helpers\Url;
 
 <script>
     window.addEventListener('load', function () {
-        $('body').on('click', '.choose', function (){
+        $('body').on('click', '.choose, .chooseIcon', function (){
             $('.firstStep').addClass('d-none');
             $('.secondStep').removeClass('d-none');
             // $.post( "/user/delete-subject", { subject: subject} )
@@ -424,6 +591,25 @@ use yii\helpers\Url;
             $('.choose').text($(this).text());
             $('.addSubject').css('color', '#afe029');
         });
+        $('body').on('change', '#subjectTypeSelect', function (){
+            if ($(this).val() == 2) {
+                // $.each('#objectTypeSelect option', function (i, e) {
+                //     console.log($(e));
+                //     if ($(e).val() != 1)
+                //         $(e).attr('disabled', 'disabled');
+                // })
+            } else if ($(this).val() == 3) {
+                $('#objectTypeSelect').val(2);
+            } else if ($(this).val() == 4) {
+                $('#objectTypeSelect').val(3);
+            } else if ($(this).val() == 6) {
+                $('#objectTypeSelect').val(4);
+            } else if ($(this).val() == 7) {
+                $('#objectTypeSelect').val(5);
+            }
+        });
+
+
     })
 </script>
 

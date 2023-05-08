@@ -50,7 +50,8 @@ class Mizagene {
         }
     }
 
-    public function getSectors() {
+    public function getSectors()
+    {
         $ch = CURL::init(API::getLink(), $this->token, 1);
         $sectors = json_decode(curl_exec($ch));
         foreach ($sectors as $sector) {
@@ -74,9 +75,26 @@ class Mizagene {
         }
     }
 
-    public function setItem($items) {
+    public function setItem($items)
+    {
         $ch = CURL::init(API::getLink(), $this->token, 0);
         curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode($items));
+        $result = curl_exec($ch);
+        return $result;
+    }
+
+    public function addSubject($subject)
+    {
+        $ch = CURL::init(API::getLink(), $this->token, 0);
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode($subject));
+        $result = curl_exec($ch);
+        return $result;
+    }
+
+    public function getResult($id)
+    {
+        $ch = CURL::init(API::getLink(), $this->token, 0);
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode($id));
         $result = curl_exec($ch);
         return $result;
     }

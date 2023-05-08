@@ -677,7 +677,7 @@ foreach ($cl[0] as $column) {
                     return in_array(Yii::$app->admin->getIdentity()->role, [1]) ?
                         Html::a('',
                             'javascript:;', [
-                                'class' => 'icon forward-black label ajax-call',
+                                'class' => 'icon push-black label ajax-call',
                                 'data-path' => '/admin/items/checkadmin'
                             ])
                         : '';
