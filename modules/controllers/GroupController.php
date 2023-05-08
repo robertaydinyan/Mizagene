@@ -87,6 +87,14 @@ class GroupController extends Controller
                     $model->pushed = 1;
                     $model->datetime = date('Y-m-d H:i:s');
                     $model->save();
+
+                    $variant = new GroupVariants();
+                    $variant->group_id = $model->id;
+                    $variant->depth = 1;
+                    $variant->name = 'Vol 1';
+                    $variant->items = $model->items;
+                    $variant->item_description = Yii::$app->request->post('Group')['item_description'];
+                    $variant->save();
                 }
                 $iconFile = UploadedFile::getInstance($model, 'icon');
                 if ($iconFile) {
@@ -110,6 +118,37 @@ class GroupController extends Controller
             'regions' => $regions,
             'step' => $step
         ]);
+    }
+
+    public function actionGetActiveGroups($search) {
+        $variants = GroupVariants::find()
+            ->select([
+                'group_variants.id',
+                'adult',
+                'title_english',
+                'name',
+                'JSON_LENGTH(JSON_EXTRACT(group_variants.items, \'$\')) as el_count',
+                'IFNULL((SELECT max(depth) from group_variants as gv WHERE gv.parent_id = group_variants.id), 0) as variants_count',
+//                '(
+//                  SELECT COUNT(*)
+//                  FROM items
+//                  WHERE check1 = 1
+//                    AND FIND_IN_SET(items.id, REPLACE(REPLACE(group_variants.items, \'[\', \'\'), \']\', \'\'))
+//                ) AS active_items',
+//                '(
+//                  SELECT COUNT(*)
+//                  FROM items
+//                  WHERE check1 = 0
+//                    AND FIND_IN_SET(items.id, REPLACE(REPLACE(group_variants.items, \'[\', \'\'), \']\', \'\'))
+//                ) AS disable_items',
+            ])
+            ->joinWith(['group' => function($model) use ($search){
+                $search_model = new GroupSearch();
+                $search_model->filterByText($model, $search);
+                $model->andFilterWhere(['pushed' => 1]);
+            }], false);
+
+        return json_encode($variants->asArray()->all());
     }
 
     /**
@@ -187,8 +226,8 @@ class GroupController extends Controller
         if ($this->request->isPost) {
             $model = new GroupVariants();
             $data = Yii::$app->request->post('Group');
-            $model->items = json_encode($data['items']);
-            $model->item_description = json_encode($data['item_description']);
+            $model->items = $data['items'];
+            $model->item_description = $data['item_description'];
             $model->group_id = $id;
             if ($variant_id) {
                 $original_name = GroupVariants::findOne($variant_id)->name;

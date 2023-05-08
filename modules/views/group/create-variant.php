@@ -51,8 +51,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         <hr style="color: white;">
                         <div class="group-droppable droppable" style="min-height: 300px">
                             <?php
-                            $items = $variant ? json_decode($variant->items) : $model->items;
-                            $item_description = $variant ? json_decode($variant->item_description) : null;
+                            $items = $variant ? (is_array($variant->items) ? $variant->items : json_decode($variant->items)) : $model->items;
+                            $item_description = $variant ? (is_array($variant->item_description) ? $variant->item_description : json_decode($variant->item_description)) : null;
                             if ($items):
                                 foreach ($items as $i => $item_id):
                                     $item = Items::findOne($item_id); ?>

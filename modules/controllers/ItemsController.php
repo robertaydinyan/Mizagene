@@ -85,7 +85,7 @@ class ItemsController extends Controller
     }
 
     public function actionGetActiveItems($search) {
-//        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->format = Response::FORMAT_JSON;
         $model = Items::find()->select('items.id, item_id, i_type, source, check1');
         $search = json_decode($search);
         $search_model = new ItemsSearch();

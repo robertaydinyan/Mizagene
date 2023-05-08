@@ -149,18 +149,8 @@ $(document).ready(function() {
     //     option.remove();
     // });
     groupItemEvents();
+    reportGroupEvents();
     function groupItemEvents() {
-        // $('.group-item').off().draggable({
-        //     handle: '.drag-event',
-        // })
-        // $('.group-item-container').sortable({
-        //     connectWith: ".group-item",
-        //     handle: '.drag-event'
-        // });
-        // $('.group-item-container').draggable({
-        //     connectWith: ".group-item",
-        //     handle: '.drag-event'
-        // });
         $(".group-item-container, .droppable").sortable({
             placeholder: "group-item",
             connectWith: ".group-item-container, .droppable",
@@ -174,24 +164,21 @@ $(document).ready(function() {
                 }
             }
         }).disableSelection();
-        // $("").droppable({
-        //     drop: function( event, ui ) {
-        //         debugger
-        //         $( this )
-        //             .addClass( "ui-state-highlight" )
-        //             .find( "p" )
-        //             .html( "Dropped!" );
-        //     }
-        // });
-        //     ;.droppable({
-        //     drop: function(event, ui) {
-        //         if (ui.draggable.hasClass('item-disabled')) {
-        //             ui.draggable.draggable('disable').appendTo($(this));
-        //             ui.draggable.removeClass('item-disabled').find('input').removeAttr('disabled');
-        //             ui.draggable.css({'left': 0, 'top': 0});
-        //         }
-        //     }
-        // });
+    }
+    function reportGroupEvents() {
+        $(".report-group-container, .droppable").sortable({
+            placeholder: "report-group",
+            connectWith: ".report-group-container, .droppable",
+            handle: '.drag-event',
+            stop: function(event, ui) {
+                ui = $(ui.item);
+                if (ui.closest(".group-item-container").length > 0) {
+                    ui.find('input, textarea').attr('disabled', 'disabled');
+                } else {
+                    ui.find('input, textarea').removeAttr('disabled');
+                }
+            }
+        }).disableSelection();
     }
     $('.select2').select2();
     // items events
@@ -410,6 +397,36 @@ $(document).ready(function() {
         });
     });
     $('.update-group-items').click();
+
+    $(document).on('click', '.update-report-groups', function () {
+        $.get('/admin/group/get-active-groups', {
+            'search': $(this).prev().val(),
+        }).done((res) => {
+            let data = JSON.parse(res);
+            let template = $('.report-group-template');
+            $('.report-group-container .report-group:not(.report-group-template)').remove();
+            let clone;
+            let selectedValues = $('.droppable .item-id').map(function() {
+                return $(this).val();
+            }).get();
+            $.each(data, (i, k) => {
+                if (!selectedValues.includes(k['id'].toString())) {
+                    clone = template.clone().appendTo(template.parent());
+                    clone.removeClass('report-group-template');
+                    clone.find('.item-id').val(k['id']);
+                    clone.find('.report-group-rule').toggle(k['adult'] == 1);
+                    clone.find('.report-group-title').text(k['title_english'] + ' ' + k['name']);
+                    clone.find('.report-group-items-count').text(k['el_count']);
+                    clone.find('.report-group-versions').text('versions ' + k['variants_count']);
+
+                    // $('.items-container').append('<div class="item"><span>' +  + ' </span><span> ' +  + ' </span><span> ' + item_types[k['i_type']] + '</span></div>');
+                }
+            });
+            groupItemEvents();
+        });
+    });
+    $('.update-report-groups').click();
+
 
     $('.dropdown-menu').on('click', function(el) {
         !$(el.target).hasClass('update-group-items') && el.stopPropagation();

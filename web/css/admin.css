@@ -650,17 +650,28 @@ a.nav-link {
     padding: 12px;
 }
 
-.group-item-content {
+.report-group {
+    height: 60px;
+    margin: 8px 0;
+    background-color: #f8f8f8;
+    padding: 12px;
+}
+
+.report-group-main {
+    width: 91.66666667%;
+}
+
+.group-item-content, .report-group-content {
     padding: 0 12px;
 }
 
-.group-item-description-editable {
+.group-item-description-editable, .report-group-description-editable {
     height: 48px;
     width: 100%;
     resize: none;
 }
 
-.group-item-description {
+.group-item-description, .report-group-description {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -669,12 +680,12 @@ a.nav-link {
     text-overflow: ellipsis;
 }
 
-.group-item-description:not(:last-child)::after {
+.group-item-description:not(:last-child)::after, .report-group-description:not(:last-child)::after {
     content: "...";
     margin-left: 2px;
 }
 
-.group-item-rule {
+.group-item-rule, .report-group-rule {
     background: #ff0000;
     color: white;
     width: 22px;
@@ -682,7 +693,7 @@ a.nav-link {
     text-align: center;
 }
 
-.group-item-template {
+.group-item-template, .report-group-template {
     display: none !important;
 }
 
@@ -773,11 +784,11 @@ a.nav-link {
     border-color: #337ab7;
 }
 
-.group-content {
+.group-content, .report-content {
     width: 100%;
 }
 
-.group-tabs {
+.group-tabs, .report-tabs {
     background: #f8f8f8;
 }
 
@@ -794,11 +805,11 @@ a.nav-link {
     margin-right: 12px;
 }
 
-.group-content {
+.group-content, .report-content {
     margin-left: 20px;
 }
 
-.group-content .nav-link.active {
+.group-content .nav-link.active, .report-content .nav-link.active {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -819,6 +830,16 @@ a.nav-link {
     margin-left: 4px;
     float: left;
     border: 1px solid #003c47;
+}
+
+.droppable .report-group {
+    flex: 0 0 auto;
+    margin-left: 4px;
+    border: 1px solid #003c47;
+}
+
+.droppable .report-group-main {
+    width: 25% !important;
 }
 
 .switch {

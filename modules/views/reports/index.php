@@ -11,7 +11,7 @@ use yii\grid\GridView;
 /** @var app\modules\models\GroupSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Groups';
+$this->title = 'Reports';
 $this->params['breadcrumbs'][] = $this->title;
 $usg_types = Items::getIUsgTypes();
 $comb_types = Items::getICombTypes();
@@ -30,28 +30,10 @@ $comb_types = Items::getICombTypes();
             'description_english',
             'datetime',
             [
-                'header' => '<div>Reports</div>',
-                'format' => 'raw',
-                'value' => function($model) {
-                    return '';
-                }
-            ],
-            [
-                'header' => '<div>Variants</div>',
-                'format' => 'raw',
-                'value' => function($model) {
-                    $vols = "";
-                    foreach ($model->vols as $vol) {
-                        $vols .= sprintf('<a href="/admin/group/create-variant?id=%s&variant_id=%s">%s</a><br>', $model->id, $vol->id, $vol->name);
-                    }
-                    return $vols;
-                }
-            ],
-            [
                 'header' => '<div>items</div>',
                 'format' => 'raw',
                 'value' => function($model) {
-                    $vols = "";
+                    $vols = $model->getItemsCount() . '<br>';
                     foreach ($model->vols as $vol) {
                         $vols .= $vol->getItemsCount() . '<br>';
                     }

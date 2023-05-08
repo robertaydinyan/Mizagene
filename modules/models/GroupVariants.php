@@ -51,11 +51,19 @@ class GroupVariants extends \yii\db\ActiveRecord
     public function getItemsCount() {
         $result = 0;
         if ($this->items) {
-            $items = json_decode($this->items);
+            $items = is_array($this->items) ? $this->items : json_decode($this->items);
             foreach ($items as $items_id) {
                 $result += 1;
             }
         }
         return $result;
+    }
+
+    public function getGroup() {
+        return $this->hasOne(Group::class, ['id' => 'group_id']);
+    }
+
+    public function getVariantsCount() {
+        return GroupVariants::find()->select('max(depth) as max_depth')->where(['parent_id' => $this->id])->asArray()->one()['max_depth'] ?: 0;
     }
 }

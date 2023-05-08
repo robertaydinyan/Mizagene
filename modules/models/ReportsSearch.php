@@ -4,12 +4,12 @@ namespace app\modules\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\models\Group;
+use app\modules\models\Reports;
 
 /**
- * GroupSearch represents the model behind the search form of `app\modules\models\Group`.
+ * ReportsSearch represents the model behind the search form of `app\modules\models\Reports`.
  */
-class GroupSearch extends Group
+class ReportsSearch extends Reports
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,8 @@ class GroupSearch extends Group
     public function rules()
     {
         return [
-            [['id'], 'integer']
+            [['id', 'title_russian', 'title_english'], 'integer'],
+            [['groups', 'datetime'], 'safe'],
         ];
     }
 
@@ -37,12 +38,12 @@ class GroupSearch extends Group
      *
      * @return ActiveDataProvider
      */
-    public function search($params, $page = 1)
+    public function search($params)
     {
-        $query = Group::find();
+        $query = Reports::find();
 
         // add conditions that should always apply here
-        $query->andFilterWhere(['pushed' => $page]);
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -58,17 +59,13 @@ class GroupSearch extends Group
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'title_russian' => $this->title_russian,
+            'title_english' => $this->title_english,
+            'datetime' => $this->datetime,
         ]);
 
+        $query->andFilterWhere(['like', 'groups', $this->groups]);
+
         return $dataProvider;
-    }
-
-
-    public function filterByText($query, $search, $t = true) {
-        if (is_numeric($search)) {
-            $query->andFilterWhere(['like', 'id', $search]);
-        } else {
-            $query->andFilterWhere(['or', ['like', 'title_russian', $search], ['like', 'title_english', $search], ['like', 'description_english', $search], ['like', 'description_russian', $search]]);
-        }
     }
 }

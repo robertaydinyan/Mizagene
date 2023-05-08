@@ -86,6 +86,7 @@ use yii\bootstrap5\Html;
                 <?php if (isset($description_editable)): ?>
                     <textarea name="Group[item_description][]" cols="50" rows="2" class="group-item-description-editable" disabled></textarea>
                 <?php else: ?>
+                    <input type="hidden" name="Group[item_description][]" class="group-item-description-editable" disabled>
                     <span class="group-item-description" data-toggle="tooltip" title=""></span>
                 <?php endif; ?>
             </div>
