@@ -85,7 +85,7 @@ class ItemsController extends Controller
     }
 
     public function actionGetActiveItems($search) {
-        Yii::$app->response->format = Response::FORMAT_JSON;
+//        Yii::$app->response->format = Response::FORMAT_JSON;
         $model = Items::find()->select('items.id, item_id, i_type, source, check1');
         $search = json_decode($search);
         $search_model = new ItemsSearch();
@@ -125,9 +125,11 @@ class ItemsController extends Controller
             }
             $language = $search->language;
             $model->with([
-                'itemTitles' => function ($query) use ($language) {
+                'russian' => function ($query) use ($language) {
                     $query->select('title, description, itemID');
-                    return $query->andFilterWhere(['languageID' => $language]);
+                },
+                'english' => function ($query) use ($language) {
+                    $query->select('title, description, itemID');
                 },
             ]);
         }
@@ -276,33 +278,49 @@ class ItemsController extends Controller
                     ->where(['items.id' => $itemID])
                     ->asArray()->one();
 
-            if ($item['i_usage_type']) {
-                $item['i_usage_type'] = array_filter(json_decode($item['i_usage_type']), function($value) {
-                    return $value !== "[]";
-                });
+            if (isset($item['i_usage_type'])) {
+                if (is_string($item['i_usage_type'])) {
+                    $item['i_usage_type'] = array($item['i_usage_type']);
+                } else {
+                    $item['i_usage_type'] = array_filter(json_decode($item['i_usage_type']), function($value) {
+                        return $value !== "[]";
+                    });
+                }
             } else {
                 $item['i_usage_type'] = [];
             }
             
-            if ($item['i_type']) {
-                $item['i_type'] = array_filter(json_decode($item['i_type']), function($value) {
-                    return $value !== "[]";
-                });
+            if (isset($item['i_type'])) {
+                if (is_string($item['i_type'])) {
+                    $item['i_type'] = array($item['i_type']);
+                } else {
+                    $item['i_type'] = array_filter(json_decode($item['i_type']), function ($value) {
+                        return $value !== "[]";
+                    });
+                }
             } else {
                 $item['i_type'] = [];
             }
-            if ($item['subject_i_role'] AND $item['subject_i_role'] != '[]') {
-                $item['subject_i_role'] = array_filter(json_decode($item['subject_i_role']), function($value) {
-                    return $value !== "[]";
-                });
+            if (isset($item['subject_i_role']) AND $item['subject_i_role'] != '[]') {
+                if (is_string($item['subject_i_role'])) {
+                    $item['subject_i_role'] = array($item['subject_i_role']);
+                } else {
+                    $item['subject_i_role'] = array_filter(json_decode($item['subject_i_role']), function ($value) {
+                        return $value !== "[]";
+                    });
+                }
             } else {
                 $item['subject_i_role'] = 0;
             }
 
-            if ($item['object_i_role'] AND $item['object_i_role'] != '[]') {
-                $item['object_i_role'] = array_filter(json_decode($item['object_i_role']), function($value) {
-                    return $value !== "[]";
-                });
+            if (isset($item['object_i_role']) AND $item['object_i_role'] != '[]') {
+                if (is_string($item['object_i_role'])) {
+                    $item['object_i_role'] = array($item['object_i_role']);
+                } else {
+                    $item['object_i_role'] = array_filter(json_decode($item['object_i_role']), function ($value) {
+                        return $value !== "[]";
+                    });
+                }
             } else {
                 $item['object_i_role'] = 0;
             }

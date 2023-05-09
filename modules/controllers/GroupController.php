@@ -87,13 +87,13 @@ class GroupController extends Controller
                     $model->pushed = 1;
                     $model->datetime = date('Y-m-d H:i:s');
                     $model->save();
-
                     $variant = new GroupVariants();
                     $variant->group_id = $model->id;
                     $variant->depth = 1;
                     $variant->name = 'Vol 1';
                     $variant->items = $model->items;
-                    $variant->item_description = Yii::$app->request->post('Group')['item_description'];
+                    $variant->item_description_ru = Yii::$app->request->post('Group')['item_description_ru'];
+                    $variant->item_description_en = Yii::$app->request->post('Group')['item_description_en'];
                     $variant->save();
                 }
                 $iconFile = UploadedFile::getInstance($model, 'icon');
@@ -227,7 +227,8 @@ class GroupController extends Controller
             $model = new GroupVariants();
             $data = Yii::$app->request->post('Group');
             $model->items = $data['items'];
-            $model->item_description = $data['item_description'];
+            $model->item_description_ru = $data['item_description_ru'];
+            $model->item_description_en = $data['item_description_en'];
             $model->group_id = $id;
             if ($variant_id) {
                 $original_name = GroupVariants::findOne($variant_id)->name;

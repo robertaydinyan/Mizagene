@@ -567,6 +567,16 @@ class Items extends \yii\db\ActiveRecord
         return $this->hasMany(ItemTitle::class, ['itemID' => 'id']);
     }
 
+    public function getRussian() {
+        return $this->hasOne(ItemTitle::class, ['itemID' => 'id'])
+            ->where(['languageID' => 1]);
+    }
+
+    public function getEnglish() {
+        return $this->hasOne(ItemTitle::class, ['itemID' => 'id'])
+            ->where(['languageID' => 2]);
+    }
+
     public function getColorSector($i) {
         return ItemColors::find()->where(['item_id' => $this->item_id, 'sector_id' => $i])->one();
     }

@@ -9,8 +9,12 @@ use Yii;
  *
  * @property int $id
  * @property int $group_id
+ * @property int $depth
+ * @property string|null $parent_id
  * @property string $name
  * @property string $items
+ * @property string $item_description_ru
+ * @property string|null $item_description_en
  */
 class GroupVariants extends \yii\db\ActiveRecord
 {
@@ -28,10 +32,10 @@ class GroupVariants extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['group_id', 'name', 'items'], 'required'],
-            [['group_id'], 'integer'],
-            [['items'], 'safe'],
-            [['name'], 'string', 'max' => 255],
+            [['group_id', 'depth', 'name', 'items', 'item_description_ru'], 'required'],
+            [['group_id', 'depth'], 'integer'],
+            [['items', 'item_description_ru', 'item_description_en'], 'safe'],
+            [['parent_id', 'name'], 'string', 'max' => 255],
         ];
     }
 
@@ -43,8 +47,12 @@ class GroupVariants extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'group_id' => 'Group ID',
+            'depth' => 'Depth',
+            'parent_id' => 'Parent ID',
             'name' => 'Name',
             'items' => 'Items',
+            'item_description_ru' => 'Item Description Ru',
+            'item_description_en' => 'Item Description En',
         ];
     }
 

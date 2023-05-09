@@ -15,13 +15,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= Yii::$app->controller->renderPartial('_menu.php'); ?>
 
     <?php $form = ActiveForm::begin(); ?>
-        <?= Yii::$app->controller->renderPartial('_form.php', [
-            'regions' => $regions,
-            'model' => $model,
-            'items' => $items,
-            'form' => $form,
-            'step' => $step
-        ]);
+    <?= Yii::$app->controller->renderPartial('_form.php', [
+        'regions' => $regions,
+        'model' => $model,
+        'items' => $items,
+        'form' => $form,
+        'step' => $step
+    ]);
     $form::end(); ?>
 
 </div>

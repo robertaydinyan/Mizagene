@@ -12,7 +12,8 @@ use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 use yii\helpers\Url;
 
-$this->title = 'Items';
+$tabs = Items::getTabs();
+$this->title = $tabs[$pill][0];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -32,63 +33,64 @@ $this->params['breadcrumbs'][] = $this->title;
 //            }
 //        }?>
 <!--    </ul>-->
-    <?php
-        if ($pill == 3):
-            if ($steps):
-            $active_pill = $tabs[$pill]; ?>
-            <div class="steps-container d-flex">
-                <div class="d-flex col-2">
-                    <img class="m-icon" src="/images/icons/<?php echo $active_pill[1]; ?>" alt="">
-                    <div>
-                        <h4><?php echo $active_pill[0];?></h4>
-                    </div>
+<h1><?= Html::encode($this->title) ?></h1>
+<?php
+if ($pill == 3):
+    if ($steps):
+        $active_pill = $tabs[$pill]; ?>
+        <div class="steps-container d-flex">
+            <div class="d-flex col-2">
+                <img class="m-icon" src="/images/icons/<?php echo $active_pill[1]; ?>" alt="">
+                <div>
+                    <h4><?php echo $active_pill[0];?></h4>
                 </div>
-                <ul class="nav nav-pills nav-pills-steps col-10" role="tablist">
-                    <?php
-                        $active_steps = Items::getActiveSteps();
-                        foreach ($steps as $i => $title) {
-                            echo sprintf('
+            </div>
+            <ul class="nav nav-pills nav-pills-steps col-10" role="tablist">
+                <?php
+                $active_steps = Items::getActiveSteps();
+                foreach ($steps as $i => $title) {
+                    echo sprintf('
                                 <li class="nav-pills">
                                     <a class="nav-pill %s" href="?pill=%s&step=%s">%s <span class="pill-badge %s">%s</span></a>
                                 </li>',
-                                $step == $i ? "active" : "",
-                                $pill,
-                                $i,
-                                $title,
-                                isset($active_steps[$i]) ? "pill-badge-primary" : "pill-badge-dark",
-                                Items::getStepElCount($pill, $i)
-                            );
-                        }
-                    ?>
-                </ul>
-            </div>
-        <?php endif;
-    endif; ?>
-    <div class="grid-header mt-4 col-12 d-flex justify-content-between">
-        <div class="form-group col-6 d-flex">
-            <div class="form-group col-6 ">
-                <input type="text" class="form-control item-search-bar" placeholder="search by parameter ID, or any language">
-            </div>
-            <?php if (in_array($step, [6, 7])): ?>
-                <div class="col-6">
-                    <?= Html::a('In process', ["?pill=$pill&step=$step&status=1"], ['class' => 'btn ' . ($status == 1 ? 'btn-dark' : '')]) ?>
-                    <?= Html::a('Returned', ["?pill=$pill&step=$step&status=2"], ['class' => 'btn ' . ($status == 2 ? 'btn-dark' : '')]) ?>
-                </div>
-            <?php endif; ?>
+                        $step == $i ? "active" : "",
+                        $pill,
+                        $i,
+                        $title,
+                        isset($active_steps[$i]) ? "pill-badge-primary" : "pill-badge-dark",
+                        Items::getStepElCount($pill, $i)
+                    );
+                }
+                ?>
+            </ul>
         </div>
-        <div>
-            <?= Html::a(' <i class="fa fa-plus"></i> Create Parameter', ['create'], ['class' => 'btn btn-dark']) ?>
+    <?php endif;
+endif; ?>
+<div class="grid-header mt-4 col-12 d-flex justify-content-between">
+    <div class="form-group col-6 d-flex">
+        <div class="form-group col-6 ">
+            <input type="text" class="form-control item-search-bar" placeholder="search by parameter ID, or any language">
         </div>
+        <?php if (in_array($step, [6, 7])): ?>
+            <div class="col-6">
+                <?= Html::a('In process', ["?pill=$pill&step=$step&status=1"], ['class' => 'btn ' . ($status == 1 ? 'btn-dark' : '')]) ?>
+                <?= Html::a('Returned', ["?pill=$pill&step=$step&status=2"], ['class' => 'btn ' . ($status == 2 ? 'btn-dark' : '')]) ?>
+            </div>
+        <?php endif; ?>
     </div>
-    <?php $form = ActiveForm::begin(); ?>
-    <?= Yii::$app->controller->renderFile('@app/modules/views/items/_items-list.php', [
-        'form' => $form,
-        'dataProvider' => $dataProvider,
-        'pill' => $pill,
-        'step' => $step,
-        'status' => $status
-    ]); ?>
-    <?php ActiveForm::end(); ?>
+    <div>
+        <?= Html::a(' <i class="fa fa-plus"></i> Create Parameter', ['create'], ['class' => 'btn btn-dark']) ?>
+    </div>
+</div>
+<?php $form = ActiveForm::begin(); ?>
+<?= Yii::$app->controller->renderFile('@app/modules/views/items/_items-list.php', [
+    'form' => $form,
+    'dataProvider' => $dataProvider,
+    'pill' => $pill,
+    'step' => $step,
+    'status' => $status
+]); ?>
+<?php ActiveForm::end(); ?>
 
 <style>
     td {
