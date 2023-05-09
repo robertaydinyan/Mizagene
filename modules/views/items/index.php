@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            }
 //        }?>
 <!--    </ul>-->
+<<<<<<< HEAD
 <h1><?= Html::encode($this->title) ?></h1>
 <?php
 if ($pill == 3):

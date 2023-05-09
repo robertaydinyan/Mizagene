@@ -612,6 +612,32 @@ table.dataTable>tbody>tr.child ul.dtr-details li {
     opacity: 0;
 }
 
+.zoomable {
+    cursor: zoom-in;
+    max-width: 100%;
+    transition: transform 0.3s;
+}
+.zoomable.zoomed {
+    transform: scale(3.0);
+    z-index: 100;
+    position: fixed;
+    left: 16%;
+    top: 40%;
+    cursor: zoom-out;
+    margin: auto;
+}
+
+.searchButton_male:hover {
+    background-color: rgb(75, 173, 233)!important;
+    border: none;
+}
+
+.searchButton_female:hover {
+    background-color: rgb(210, 58, 225)!important;
+    border: none;
+}
+
+
 
 /*.dataTables_filter {*/
 /*    text-align: start!important;*/

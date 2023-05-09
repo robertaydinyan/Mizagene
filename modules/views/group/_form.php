@@ -35,6 +35,7 @@ $comb_types = Items::getICombTypes();
                             <?= $form->field($model, 'title_russian', ['options' => ['style' => 'width: 100%']])->textInput(['placeholder' => 'Group Title (Russian)'])->label(false); ?>
                         </div>
                         <div class="col-5 d-flex" style="padding: 10px;">
+                            <input type="submit" class="btn btn-dark-blue group-save" value="push" name="push">
                             <img class="flag-icon" src="/images/icons/flag2.png" alt="English" style="margin: 8px;">
                             <?= $form->field($model, 'title_english', ['options' => ['style' => 'width: 100%']])->textInput(['placeholder' => 'Group Title (English)'])->label(false); ?>
                         </div>

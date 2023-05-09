@@ -85,7 +85,7 @@ class ItemsController extends Controller
     }
 
     public function actionGetActiveItems($search) {
-//        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->format = Response::FORMAT_JSON;
         $model = Items::find()->select('items.id, item_id, i_type, source, check1');
         $search = json_decode($search);
         $search_model = new ItemsSearch();
@@ -98,7 +98,7 @@ class ItemsController extends Controller
                 $usg_types = "";
                 is_string($search->usg_types) && $search->usg_types = array($search->usg_types);
                 foreach ($search->usg_types as $i => $usg_type) {
-                    $usg_types .= 'JSON_CONTAINS(i_usg_type, \'["' . $usg_type . '"]\', \'$\') or ';
+                    $usg_types .= 'JSON_CONTAINS(i_usg_type, \'"' . $usg_type . '"\', \'$\') or ';
                 }
                 $usg_types = substr($usg_types, 0, -3);
 
@@ -108,7 +108,7 @@ class ItemsController extends Controller
                 $usg_comb_types = "";
                 is_string($search->usg_comb_types) && $search->usg_comb_types = array($search->usg_comb_types);
                 foreach ($search->usg_comb_types as $i => $usg_comb_type) {
-                    $usg_comb_types .= 'JSON_CONTAINS(i_comb_type_id, \'["' . $usg_comb_type . '"]\', \'$\') or ';
+                    $usg_comb_types .= 'JSON_CONTAINS(i_comb_type_id, \'"' . $usg_comb_type . '"\', \'$\') or ';
                 }
                 $usg_comb_types = substr($usg_comb_types, 0, -3);
 
@@ -118,7 +118,7 @@ class ItemsController extends Controller
                 $type_sql = "";
                 is_string($search->type) && $search->type = array($search->type);
                 foreach ($search->type as $i => $type) {
-                    $type_sql .= 'JSON_CONTAINS(i_type, \'["' . $type . '"]\', \'$\') and ';
+                    $type_sql .= 'JSON_CONTAINS(i_type, \'"' . $type . '"\', \'$\') and ';
                 }
                 $type_sql = substr($type_sql, 0, -4);
                 $model->andWhere($type_sql);
@@ -134,6 +134,7 @@ class ItemsController extends Controller
             ]);
         }
         $model->limit(9999);
+        // var_dump($model->createCommand()->getRawSql());die();
         return json_encode($model->asArray()->all());
     }
 
@@ -289,7 +290,7 @@ class ItemsController extends Controller
             } else {
                 $item['i_usage_type'] = [];
             }
-            
+
             if (isset($item['i_type'])) {
                 if (is_string($item['i_type'])) {
                     $item['i_type'] = array($item['i_type']);

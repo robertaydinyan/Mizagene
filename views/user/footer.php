@@ -13,6 +13,14 @@
 <script>
 
     window.addEventListener('load', function () {
+        const zoomableImages = document.querySelectorAll(".zoomable");
+
+        for (let i = 0; i < zoomableImages.length; i++) {
+            zoomableImages[i].addEventListener("click", function() {
+                this.classList.toggle("zoomed");
+            });
+        }
+
         $(document).ready(function () {
             $('#subjectsTable').DataTable({
                 // dom: 'Qfrtip',
@@ -68,6 +76,9 @@
             let myChart = echarts.init(k);
             let option;
             let value = parseFloat($(this).data('result'))/100;
+            let colors = $(this).data('colors').replace(/{/g, "[");
+            colors = colors.replace(/}/g, "]");
+            colors = JSON.parse(colors);
 
             option = {
                 color: ['#EB4228', '#F3B86B', '#F3E5B2', '#D1D690', '#A0AD63'],
@@ -83,17 +94,11 @@
                         radius: '90%',
                         min: 0,
                         max: 1,
-                        splitNumber: 8,
+                        splitNumber: 10,
                         axisLine: {
                             lineStyle: {
                                 width: 5,
-                                color: [
-                                    [0.2, '#EB4228'],
-                                    [0.4, '#F3B86B'],
-                                    [0.6, '#F3E5B2'],
-                                    [0.8, '#D1D690'],
-                                    [1, '#A0AD63']
-                                ]
+                                color: colors
                             }
                         },
                         pointer: {

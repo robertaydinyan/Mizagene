@@ -32,7 +32,7 @@ class ItemTitle extends \yii\db\ActiveRecord
     {
         return [
             [['languageID', 'itemID'], 'integer'],
-            [['title', 'description', 'title_temp', 'description_temp'], 'string', 'max' => 255],
+            [['title', 'description', 'title_temp', 'description_temp'], 'string'],
         ];
     }
 

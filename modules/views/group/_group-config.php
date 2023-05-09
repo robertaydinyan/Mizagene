@@ -68,33 +68,6 @@ use yii\bootstrap5\Html;
                 'variant' => isset($variant)
             ]);
         ?>
-<!--        <div class="group-item group-item-template d-flex">-->
-<!--            <div class="col-1 position-relative" style="border-right: 1px solid #d8d8d8;">-->
-<!--                <img class="absolute-center drag-event" src="/images/icons/dots-menu.png" alt="">-->
-<!--                <input class="item-id" type="hidden" name="Group[items][]" value="" disabled>-->
-<!--            </div>-->
-<!--            <div class="col-11 group-item-content">-->
-<!--                <div class="d-flex justify-content-between">-->
-<!--                    <div>-->
-<!--                        <span><i class="fa fa-circle"></i></span>-->
-<!--                        <span class="group-item-id" style="color: #b4b4b4"></span>-->
-<!--                    </div>-->
-<!--                    <div class="group-item-source-1 col-8 d-none">-->
-<!--                        <img src="/images/icons/Mizagene_small.png" alt="" height="16">-->
-<!--                        <span style="color: #b4b4b4">migrated</span>-->
-<!--                    </div>-->
-<!--                    <div class="group-item-source-0 col-8 d-none">-->
-<!--                        <img src="/images/icons/youmee_small.png" alt="" height="16">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <span class="group-item-title" style="color: #cc33e6; font-weight: 600;"></span><br>-->
-<!--                --><?php //if (isset($description_editable)): ?>
-<!--                    <textarea name="Group[item_description][]" cols="50" rows="2" class="group-item-description-editable" disabled></textarea>-->
-<!--                --><?php //else: ?>
-<!--                    <input type="hidden" name="Group[item_description][]" class="group-item-description-editable" disabled>-->
-<!--                    <span class="group-item-description" data-toggle="tooltip" title=""></span>-->
-<!--                --><?php //endif; ?>
-<!--            </div>-->
-<!--        </div>-->
+
     </div>
 </div>

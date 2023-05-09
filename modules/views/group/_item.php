@@ -5,6 +5,14 @@ use app\modules\models\Items;
 if (!isset($item)) {
     $item = new Items();
 }
+
+if (!isset($description_ru)) {
+    $description_ru = null;
+}
+
+if (!isset($description_en)) {
+    $description_en = null;
+}
 ?>
 
 <div class="group-item <?php echo $template ? 'group-item-template' : ''; ?> d-flex">
@@ -30,16 +38,16 @@ if (!isset($item)) {
         <span class="group-item-title-en" style="color: #cc33e6; font-weight: 600;"><?php echo $item->getTitle(2)->title; ?></span>
         <br>
         <?php if ($variant): ?>
-            <textarea name="Group[item_description_ru][]" rows="2" class="group-item-description-ru-editable" <?php echo $template ? 'disabled' : ''; ?> style="display: none;width: 100%"><?php echo $item->getTitle(1)->description; ?></textarea>
-            <textarea name="Group[item_description_en][]" rows="2" class="group-item-description-en-editable" <?php echo $template ? 'disabled' : ''; ?> style="width: 100%"><?php echo $item->getTitle(2)->description; ?></textarea>
+            <textarea name="Group[item_description_ru][]" rows="2" class="group-item-description-ru-editable" <?php echo $template ? 'disabled' : ''; ?> style="display: none;width: 100%"><?php echo $description_ru ?: $item->getTitle(1)->description; ?></textarea>
+            <textarea name="Group[item_description_en][]" rows="2" class="group-item-description-en-editable" <?php echo $template ? 'disabled' : ''; ?> style="width: 100%"><?php echo $description_en ?: $item->getTitle(2)->description; ?></textarea>
         <?php else: ?>
             <div>
-                <input type="hidden" name="Group[item_description_ru][]" class="group-item-description-ru-editable" <?php echo $template ? 'disabled' : ''; ?> value="<?php echo $item->getTitle(1)->description; ?>">
-                <span class="group-item-description-ru" data-toggle="tooltip" title="<?php echo $item->getTitle(1)->description; ?>" style="display: none;"><?php echo $item->getTitle(1)->description; ?></span>
+                <input type="hidden" name="Group[item_description_ru][]" class="group-item-description-ru-editable" <?php echo $template ? 'disabled' : ''; ?> value="<?php echo $description_ru ?: $item->getTitle(1)->description; ?>">
+                <span class="group-item-description-ru" data-toggle="tooltip" title="<?php echo $description_ru ?: $item->getTitle(1)->description; ?>" style="display: none;"><?php echo $description_ru ?: $item->getTitle(1)->description; ?></span>
             </div>
             <div>
-                <input type="hidden" name="Group[item_description_en][]" class="group-item-description-en-editable" <?php echo $template ? 'disabled' : ''; ?> value="<?php echo $item->getTitle(2)->description; ?>">
-                <span class="group-item-description-en" data-toggle="tooltip" title="<?php echo $item->getTitle(2)->description; ?>"><?php echo $item->getTitle(2)->description; ?></span>
+                <input type="hidden" name="Group[item_description_en][]" class="group-item-description-en-editable" <?php echo $template ? 'disabled' : ''; ?> value="<?php echo $description_en ?: $item->getTitle(2)->description; ?>">
+                <span class="group-item-description-en" data-toggle="tooltip" title="<?php echo $description_en ?: $item->getTitle(2)->description; ?>"><?php echo $description_en ?: $item->getTitle(2)->description; ?></span>
             </div>
         <?php endif; ?>
     </div>

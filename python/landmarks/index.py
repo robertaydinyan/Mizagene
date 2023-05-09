@@ -99,7 +99,7 @@ with mp_face_detection.FaceDetection(
                         cv2.putText(face_roi, text, (text_x, text_y + text_height - 5), font, font_scale, text_color, font_thickness, cv2.LINE_AA)
 
         file = IMAGE_FILES[0].split('.')[0].split('/')[-1].strip()
-        cv2.imwrite('images/' + file + '{}.jpg'.format(idx), image)
+        cv2.imwrite('../../web/landmarks/' + file + '{}.jpg'.format(idx), image)
 
 pfm1 = PalizFaceMesh()
 result_ = pfm1.getFacialLandmarks(IMAGE_FILES[0])

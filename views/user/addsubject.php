@@ -1,6 +1,9 @@
 <?php include('header.php');
 
 use yii\helpers\Url;
+ini_set('upload_max_filesize', '50M');
+ini_set('post_max_size', '50M');
+
 ?>
 
     <div class="modal modal-xl fade" id="photoRequirementsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

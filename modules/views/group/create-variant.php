@@ -57,7 +57,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             if (isset($items)) {
                                 foreach ($items as $i => $item_id) {
                                     $item = Items::findOne($item_id);
-
                                     echo $this->renderFile('@app/modules/views/group/_item.php', [
                                         'template' => false,
                                         'item' => $item,
@@ -67,6 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     ]);
                                 }
                             } ?>
+
 
                         </div>
                     </div>
