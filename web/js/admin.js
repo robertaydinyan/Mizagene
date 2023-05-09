@@ -154,7 +154,6 @@ $(document).ready(function() {
         $(".group-item-container, .droppable").sortable({
             placeholder: "group-item",
             connectWith: ".group-item-container, .droppable",
-            handle: '.drag-event',
             stop: function(event, ui) {
                 ui = $(ui.item);
                 if (ui.closest(".group-item-container").length > 0) {
@@ -169,7 +168,6 @@ $(document).ready(function() {
         $(".report-group-container, .droppable").sortable({
             placeholder: "report-group",
             connectWith: ".report-group-container, .droppable",
-            handle: '.drag-event',
             stop: function(event, ui) {
                 ui = $(ui.item);
                 if (ui.closest(".group-item-container").length > 0) {

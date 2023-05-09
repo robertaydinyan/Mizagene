@@ -16,6 +16,11 @@ use yii\bootstrap5\ActiveForm;
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.4/b-2.3.6/r-2.4.1/sb-1.4.2/sp-2.1.2/datatables.min.css" rel="stylesheet"/>
 </head>
+<div class="text-center preloader d-none" style="width: 100%; height: 100%; z-index: 99999; position: absolute; background: #f5f5f5; justify-content: center; align-items: center">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
 <header>
     <nav class="navbar navbar-dark bg-light" style="height: 73px">
         <div class="container-fluid">

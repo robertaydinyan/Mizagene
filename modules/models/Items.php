@@ -516,8 +516,11 @@ class Items extends \yii\db\ActiveRecord
     public function getCombType() {
         $result = '';
         !is_array($this->i_comb_type_id) && $this->i_comb_type_id = array($this->i_comb_type_id);
-        foreach ($this->i_comb_type_id as $type)
-            $result .= self::$ICombTypes[$type] . ' ';
+        foreach ($this->i_comb_type_id as $type) {
+            if ($type AND $type != '[]') {
+                $result .= self::$ICombTypes[$type] . ' ';
+            }
+        }
         return $result;
     }
 

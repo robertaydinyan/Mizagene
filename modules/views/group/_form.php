@@ -35,6 +35,7 @@ $comb_types = Items::getICombTypes();
                             <?= $form->field($model, 'title_russian', ['options' => ['style' => 'width: 100%']])->textInput(['placeholder' => 'Group Title (Russian)'])->label(false); ?>
                         </div>
                         <div class="col-5 d-flex" style="padding: 10px;">
+                            <input type="submit" class="btn btn-dark-blue group-save" value="push" name="push">
                             <img class="flag-icon" src="/images/icons/flag2.png" alt="English" style="margin: 8px;">
                             <?= $form->field($model, 'title_english', ['options' => ['style' => 'width: 100%']])->textInput(['placeholder' => 'Group Title (English)'])->label(false); ?>
                         </div>
@@ -79,7 +80,7 @@ $comb_types = Items::getICombTypes();
                         </div>
                     </div>
                     <hr style="color: white;">
-                    <div class="group-droppable droppable" style="min-height: 300px; display: inline-block;">
+                    <div class="group-droppable droppable" style="min-height: 300px; display: flow-root;">
                         <?php if ($model->items):
                             foreach ($model->items as $item_id):
                                 $item = Items::findOne($item_id); ?>
@@ -92,7 +93,7 @@ $comb_types = Items::getICombTypes();
                                         <div class="d-flex justify-content-between">
                                             <div>
                                                 <span><i class="fa fa-circle <?php echo $item->check1 ? 'active' : 'disabled'; ?>"></i></span>
-                                                <span class="group-item-id" style="color: #b4b4b4"><?php echo $item->id; ?></span>
+                                                <span class="group-item-id" style="color: #b4b4b4"><?php echo $item->item_id; ?></span>
                                             </div>
                                             <div class="group-item-source-1 col-8 <?php echo $item->source == 0 ? 'd-none' : ''; ?>">
                                                 <img src="/images/icons/Mizagene_small.png" alt="" height="16">
@@ -101,7 +102,7 @@ $comb_types = Items::getICombTypes();
                                             <div class="group-item-source-0 col-8 <?php echo $item->source == 1 ? 'd-none' : ''; ?>">
                                                 <img src="/images/icons/youmee_small.png" alt="" height="16">
                                             </div>
-                                            <span class="group-item-rule">18</span>
+                                            <!-- <span class="group-item-rule">18</span> -->
                                         </div>
                                         <span class="group-item-title" style="color: #cc33e6; font-weight: 600;"><?php echo $item->getTitle(2)->title; ?></span><br>
                                         <input type="hidden" name="Group[item_description][]" class="group-item-description-editable" value="<?php echo $item->getTitle(2)->description; ?>">

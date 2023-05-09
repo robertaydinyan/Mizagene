@@ -13,7 +13,7 @@ use yii\helpers\Url;
                     <tr>
                         <td class="text-center" >ID</td>
                         <td class="text-center" >Photo</td>
-                        <td class="text-center" >Name/Nickname</td>
+                        <td class="text-start" >Name/Nickname</td>
                         <td class="text-center" >Date & Time</td>
                         <td class="text-center" >Age</td>
                         <td class="text-center" >Gender</td>
@@ -28,9 +28,9 @@ use yii\helpers\Url;
                     <tbody>
                         <?php foreach (Yii::$app->user->identity->subjects as $key => $subject): ?>
                             <tr style="<?= isset($subject->deleted_at) ? 'pointer-events: none; background: #ff000052' : '' ?>" class="text-center">
-                                <td class="text-start ps-2"><a href="/subject?id=<?= $subject->id ?>"><?= $key+1 ?></a></td>
+                                <td class="text-start ps-2"><a href="/subject?id=<?= $subject->id ?>" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"><?= $key+1 ?></a></td>
                                 <td class=""><a href="/subject?id=<?= $subject->id ?>"><img src="<?= str_replace('/var/www/html/Mizagene/web/', '', $subject->image) ?>" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></a></td>
-                                <td><a href="/subject?id=<?= $subject->id ?>"><?= $subject->name ?></a></td>
+                                <td class="text-start"><a href="/subject?id=<?= $subject->id ?>" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"><?= $subject->name ?></a></td>
                                 <td><?= $subject->created_at ?></td>
                                 <td><?= date('Y') - $subject->year_of_birth ?></td>
                                 <td><?= $subject->gender == 1 ? '<i class="fa-solid fa-mars" style="color: #000000;"></i>' : ($subject->gender == 2 ? '<i class="fa-solid fa-venus" style="color: #000000;"></i>' : ($subject->gender == 3 ? 'Male <i class="fa-solid fa-transgender" style="color: #000000;"></i>' : ($subject->gender == 4 ? 'Female <i class="fa-solid fa-transgender" style="color: #000000;"></i>' : ''))) ?></td>

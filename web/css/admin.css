@@ -679,6 +679,14 @@ a.nav-link {
     resize: none;
 }
 
+.group-item-title {
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
 .group-item-description, .report-group-description {
     display: -webkit-box;
     -webkit-box-orient: vertical;

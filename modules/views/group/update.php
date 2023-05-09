@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /** @var app\modules\models\Group $model */
 /** @var app\modules\models\Items[] $items */
 
-$this->title = 'Update Group: ' . $model->id;
+$this->title = 'Update ' . ($model->pushed == 1 ? 'Group' : 'Draft') . ': ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Groups', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';

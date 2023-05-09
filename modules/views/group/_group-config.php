@@ -80,7 +80,7 @@ use yii\bootstrap5\Html;
                     <div class="group-item-source-0 col-8 d-none">
                         <img src="/images/icons/youmee_small.png" alt="" height="16">
                     </div>
-                    <span class="group-item-rule">18</span>
+                    <!-- <span class="group-item-rule">18</span> -->
                 </div>
                 <span class="group-item-title" style="color: #cc33e6; font-weight: 600;"></span><br>
                 <?php if (isset($description_editable)): ?>

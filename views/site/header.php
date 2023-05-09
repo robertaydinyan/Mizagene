@@ -229,16 +229,19 @@ if (!$lang) {
                 'class' => 'login-form',
                 'action' => ['site/login'],
                 'method' => 'post',
+                'options' => ['id' => 'login-form']
             ]);
             $login_lang = $data['menu6'][$lang];
             ?>
             <div class="form-floating mb-3">
-                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput"><?= $data['menu8'][$lang] ?></label>
+                <input type="email" name="email" class="form-control" id="email-input" placeholder="name@example.com" required>
+                <label for="email-input"><?= $data['menu8'][$lang] ?></label>
+                <div class="invalid-feedback">Please enter a valid email address.</div>
             </div>
             <div class="form-floating">
-                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword"><?= $data['password'][$lang] ?></label>
+                <input type="password" name="password" class="form-control" id="password-input" placeholder="Password" required>
+                <label for="password-input"><?= $data['password'][$lang] ?></label>
+                <div class="invalid-feedback">Please enter a password.</div>
             </div>
             <?php if(isset($login_model) && isset($login_model->getErrors()['password'])) { ?>
                 <p class="error_feedback"><?= $login_model->getErrors()['password'][0] ?></p>
@@ -250,6 +253,39 @@ if (!$lang) {
             </div>
             <?php ActiveForm::end();?>
         </div>
+
+        <script>
+            const form = document.querySelector('#login-form');
+            const emailInput = form.querySelector('#email-input');
+            const passwordInput = form.querySelector('#password-input');
+
+            emailInput.addEventListener('input', () => {
+                if (!emailInput.checkValidity()) {
+                    emailInput.classList.add('is-invalid');
+                } else {
+                    emailInput.classList.remove('is-invalid');
+                }
+            });
+
+            passwordInput.addEventListener('input', () => {
+                if (!passwordInput.checkValidity()) {
+                    passwordInput.classList.add('is-invalid');
+                } else {
+                    passwordInput.classList.remove('is-invalid');
+                }
+            });
+
+            form.addEventListener('submit', (event) => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    emailInput.classList.add('is-invalid');
+                    passwordInput.classList.add('is-invalid');
+                }
+                form.classList.add('was-validated');
+            });
+        </script>
+
     </div>
 
     <div class="offcanvas offcanvas-end <?php if (isset($activeTabSignup) || isset($activeTabSignupCompany)) echo 'show'; ?>" data-bs-scroll="true" tabindex="-1" id="offcanvasSignUp" aria-labelledby="offcanvasWithBothOptionsLabel">
@@ -271,10 +307,10 @@ if (!$lang) {
 
             <div class="tab-content " id="pills-tabContent">
                 <div class="tab-pane fade <?php if (isset($activeTabSignup) || !isset($activeTabSignupCompany)) echo 'show active'; ?> " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <form action="/site/signup" method="post">
+                    <form action="/site/signup" method="post" id="user-regForm">
                         <div class="form-floating mb-3">
-                            <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
-                            <label for="floatingInput"><?= $data['nickname'][$lang] ?></label>
+                            <input type="text" name="username" class="form-control" id="username-input" placeholder="Username">
+                            <label for="username-input"><?= $data['nickname'][$lang] ?></label>
                             <?php if(isset($model) && isset($model->getErrors()['username'])) { ?>
                                 <p class="error_feedback"><?= $model->getErrors()['username'][0] ?></p>
                             <?php  } ?>
@@ -286,7 +322,7 @@ if (!$lang) {
                                 $yearOptions[$i] = $i;
                             }
                             ?>
-                            <?= Html::dropDownList('year_of_birth', null, $yearOptions, ['class' => 'form-control select2', 'prompt' => 'Year of birth']) ?>
+                            <?= Html::dropDownList('year_of_birth', null, $yearOptions, ['class' => 'form-control select2','id' => 'year-input', 'prompt' => 'Year of birth']) ?>
 
                             <?php if(isset($model) && isset($model->getErrors()['year_of_birth'])) { ?>
                                 <p class="error_feedback"><?= $model->getErrors()['year_of_birth'][0] ?></p>
@@ -294,37 +330,37 @@ if (!$lang) {
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput"><?= $data['email'][$lang] ?></label>
+                            <input type="email" name="email" class="form-control" id="email-input" placeholder="name@example.com">
+                            <label for="email-input"><?= $data['email'][$lang] ?></label>
                             <?php if(isset($model) && isset($model->getErrors()['email'])) { ?>
                                 <p class="error_feedback"><?= $model->getErrors()['email'][0] ?></p>
                             <?php  } ?>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <select class="form-control select2" name="country">
+                            <select class="form-control select2" id="country-input" name="country">
                                 <option value="">Select country</option>
                                 <?php foreach ($countries as $key => $country) { ?>
                                     <option value="<?= $key ?>"><?=$country ?></option>
                                 <?php } ?>
                             </select>
-                            <label for="floatingInput"><?= $data['country'][$lang] ?></label>
+                            <label for="country-input"><?= $data['country'][$lang] ?></label>
                             <?php if(isset($model) && isset($model->getErrors()['country'])) { ?>
                                 <p class="error_feedback"><?= $model->getErrors()['country'][0] ?></p>
                             <?php  } ?>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword"><?= $data['password'][$lang] ?></label>
+                            <input type="password" name="password" class="form-control" id="password-input" placeholder="Password">
+                            <label for="password-input"><?= $data['password'][$lang] ?></label>
                             <?php if(isset($model) && isset($model->getErrors()['password'])) { ?>
                                 <p class="error_feedback"><?= $model->getErrors()['password'][0] ?></p>
                             <?php  } ?>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="password" name="password_repeat" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword"><?= $data['confirm_password'][$lang] ?></label>
+                            <input type="password" name="password_repeat" class="form-control" id="repeatPassword-input" placeholder="Password">
+                            <label for="repeatPassword-input"><?= $data['confirm_password'][$lang] ?></label>
                             <?php if(isset($model) && isset($model->getErrors()['password_repeat'])) { ?>
                                 <p class="error_feedback"><?= $model->getErrors()['password_repeat'][0] ?></p>
                             <?php  } ?>
@@ -345,10 +381,11 @@ if (!$lang) {
                     </form>
                 </div>
 
+
                 <!--                --------------------------------------------------------------------------->
                 <div class="tab-pane fade <?php if (isset($activeTabSignupCompany)) echo 'show active'; ?>" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 
-                    <form action="/site/signup" method="post">
+                    <form action="/site/signup" method="post" id="company-regForm">
 
                         <div class="form-floating mb-3">
                             <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
@@ -467,42 +504,151 @@ if (!$lang) {
             </div>
 
 
-            <!--            <div class="form-check form-switch mb-3">-->
-            <!--                <input class="form-check-input" type="checkbox" name="is_company" role="switch" id="flexSwitchCheckDefault" checked>-->
-            <!--                <label class="form-check-label" for="flexSwitchCheckDefault">--><?php //= $data['is_company'][$lang] ?><!--</label>-->
-            <!--            </div>-->
-
-
         </div>
     </div>
 
 </header>
 
         <script>
-            const scrollContainer = document.querySelector('.scroll-container');
-            const scrollbar = document.querySelector('.scrollbar');
-            const scrollbarThumb = document.querySelector('.scrollbar-thumb');
-            const scrollContent = document.querySelector('.scroll-content');
+            const form = document.querySelector('#user-regForm');
+            const usernameInput = form.querySelector('#username-input');
+            const emailInput = form.querySelector('#email-input');
+            const passwordInput = form.querySelector('#password-input');
+            const repeatPasswordInput = form.querySelector('#repeatPassword-input');
+            const yearInput = form.querySelector('#year-input');
+            const countryInput = form.querySelector('#country-input');
 
-            scrollContainer.addEventListener('mousemove', () => {
-                const isScrollable = scrollContent.scrollHeight > scrollContent.clientHeight;
 
-                if (isScrollable) {
-                    scrollbar.style.opacity = '1';
+            usernameInput.addEventListener('input', () => {
+                if (!usernameInput.checkValidity()) {
+                    usernameInput.classList.add('is-invalid');
+                } else {
+                    usernameInput.classList.remove('is-invalid');
+                }
+            });
+            emailInput.addEventListener('input', () => {
+                if (!emailInput.checkValidity()) {
+                    emailInput.classList.add('is-invalid');
+                } else {
+                    emailInput.classList.remove('is-invalid');
                 }
             });
 
-            scrollContainer.addEventListener('mouseleave', () => {
-                scrollbar.style.opacity = '0';
+            passwordInput.addEventListener('input', () => {
+                if (!passwordInput.checkValidity()) {
+                    passwordInput.classList.add('is-invalid');
+                } else {
+                    passwordInput.classList.remove('is-invalid');
+                }
             });
 
-            scrollContent.addEventListener('scroll', () => {
-                const scrollTop = scrollContent.scrollTop;
-                const maxScrollTop = scrollContent.scrollHeight - scrollContent.clientHeight;
-                const scrollPercentage = (scrollTop / maxScrollTop) * 100;
-                scrollbarThumb.style.transform = `translateY(${scrollPercentage}%)`;
+            repeatPasswordInput.addEventListener('input', () => {
+                if (!repeatPasswordInput.checkValidity()) {
+                    repeatPasswordInput.classList.add('is-invalid');
+                } else {
+                    repeatPasswordInput.classList.remove('is-invalid');
+                }
             });
 
+            yearInput.addEventListener('input', () => {
+                if (!yearInput.checkValidity()) {
+                    yearInput.classList.add('is-invalid');
+                } else {
+                    yearInput.classList.remove('is-invalid');
+                }
+            });
+
+            countryInput.addEventListener('input', () => {
+                if (!countryInput.checkValidity()) {
+                    countryInput.classList.add('is-invalid');
+                } else {
+                    countryInput.classList.remove('is-invalid');
+                }
+            });
+
+            form.addEventListener('submit', (event) => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    usernameInput.classList.add('is-invalid');
+                    emailInput.classList.add('is-invalid');
+                    passwordInput.classList.add('is-invalid');
+                    repeatPasswordInput.classList.add('is-invalid');
+                    yearInput.classList.add('is-invalid');
+                    countryInput.classList.add('is-invalid');
+                }
+                form.classList.add('was-validated');
+            });
+        </script>
+
+        <script>
+
+            const form = document.querySelector('#company-regForm');
+
+
+            const username = form.querySelector('input[name="username"]');
+            const yearOfBirth = form.querySelector('select[name="year_of_birth"]');
+            const email = form.querySelector('input[name="email"]');
+            const country = form.querySelector('select[name="country"]');
+            const password = form.querySelector('input[name="password"]');
+            const passwordRepeat = form.querySelector('input[name="password_repeat"]');
+
+
+            form.addEventListener('submit', (event) => {
+
+                event.preventDefault();
+
+                let isValid = true;
+
+                if (username.value.trim() === '') {
+                    username.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    username.classList.remove('is-invalid');
+                }
+
+                if (yearOfBirth.value === '') {
+                    yearOfBirth.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    yearOfBirth.classList.remove('is-invalid');
+                }
+
+                if (email.value.trim() === '') {
+                    email.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    email.classList.remove('is-invalid');
+                }
+
+                if (country.value === '') {
+                    country.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    country.classList.remove('is-invalid');
+                }
+
+                if (password.value.trim() === '') {
+                    password.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    password.classList.remove('is-invalid');
+                }
+
+                if (passwordRepeat.value.trim() === '') {
+                    passwordRepeat.classList.add('is-invalid');
+                    isValid = false;
+                } else if (password.value.trim() !== passwordRepeat.value.trim()) {
+                    passwordRepeat.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    passwordRepeat.classList.remove('is-invalid');
+                }
+
+                if (isValid) {
+                    form.submit();
+                }
+            });
         </script>
 <body>
 

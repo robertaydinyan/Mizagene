@@ -12,7 +12,8 @@ use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 use yii\helpers\Url;
 
-$this->title = 'Items';
+$tabs = Items::getTabs();
+$this->title = $tabs[$pill][0];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -32,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            }
 //        }?>
 <!--    </ul>-->
+    <h1><?= Html::encode($this->title) ?></h1>
     <?php
         if ($pill == 3):
             if ($steps):

@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </div>
                         <hr style="color: white;">
-                        <div class="group-droppable droppable" style="min-height: 300px; display: inline-block;">
+                        <div class="group-droppable droppable" style="min-height: 300px; display: flow-root;">
                             <?php
                             $items = $variant ? (is_array($variant->items) ? $variant->items : json_decode($variant->items)) : $model->items;
                             $item_description = $variant ? (is_array($variant->item_description) ? $variant->item_description : json_decode($variant->item_description)) : null;
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 <div class="group-item-source-0 col-8 <?php echo $item->source == 1 ? 'd-none' : ''; ?>">
                                                     <img src="/images/icons/youmee_small.png" alt="" height="16">
                                                 </div>
-                                                <span class="group-item-rule">18</span>
+                                                <!-- <span class="group-item-rule">18</span> -->
                                             </div>
                                             <span class="group-item-title"
                                                   style="color: #cc33e6; font-weight: 600;"><?php echo $item->getTitle(2)->title; ?></span><br>
