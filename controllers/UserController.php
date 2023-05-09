@@ -16,6 +16,7 @@ use yii\helpers\Url;
 use app\models\Mizagene;
 use app\models\Tresult;
 use app\models\Connection;
+use app\modules\models\Reports;
 
 
 class UserController extends Controller
@@ -25,7 +26,7 @@ class UserController extends Controller
         if (Yii::$app->user->isGuest)  {
             $this->redirect(['/site/index']);
         }else {
-            if ($action->id == 'delete-subject' || $action->id == 'update-subject-info' || $action->id == 'add-connection') {
+            if ($action->id == 'delete-subject' || $action->id == 'update-subject-info' || $action->id == 'add-connection' || $action->id == 'delete-connection') {
                 $this->enableCsrfValidation = false;
             }
 
@@ -208,11 +209,13 @@ class UserController extends Controller
         }
     }
 
-    public function actionSubject($id)
+    public function actionSubject($id, $rep)
     {
         $subject = Subject::find()->where(['id' => $id])->andWhere(['deleted_at' => null])->one();
         if ($subject) {
-            return $this->render('user', ['subject' => $subject]);
+            $reports = Reports::find()->all();
+            $rep = Reports::findOne($rep);
+            return $this->render('user', ['subject' => $subject, 'reports' => $reports, 'rep' => $rep]);
         } else {
             return $this->redirect(['/all-subjects']);
         }
@@ -247,11 +250,13 @@ class UserController extends Controller
     public function actionAddConnection()
     {
         $post = Yii::$app->request->post();
+
         $connection = new Connection();
         $connection->subject_id = $post['subject'];
         $connection->object_id = $post['object'];
         $connection->subject_type = $post['subject_type'];
         $connection->object_type = $post['object_type'];
+        $connection->created_at = date('Y-m-d H:i:s', time());
         $connection->save();
 
         $connectionReverse = new Connection();
@@ -259,7 +264,18 @@ class UserController extends Controller
         $connectionReverse->object_id = $post['subject'];
         $connectionReverse->subject_type = $post['object_type'];
         $connectionReverse->object_type = $post['subject_type'];
+        $connectionReverse->created_at = date('Y-m-d H:i:s', time());
         $connectionReverse->save();
+
+        return 200;
+    }
+
+    public function actionDeleteConnection()
+    {
+        $post = Yii::$app->request->post();
+        $con = Connection::findOne($post['con']);
+        Connection::deleteAll(['subject_id' => $con->object_id, 'object_id' => $con->subject_id]);
+        $con->delete();
 
         return 200;
     }

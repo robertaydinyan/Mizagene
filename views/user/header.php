@@ -21,7 +21,7 @@ use yii\bootstrap5\ActiveForm;
         <span class="visually-hidden">Loading...</span>
     </div>
 </div>
-<header>
+<header style="overflow-x: hidden!important;">
     <nav class="navbar navbar-dark bg-light" style="height: 73px">
         <div class="container-fluid">
                 <a class="" style="margin-left: 11px" href="#">
@@ -63,7 +63,7 @@ use yii\bootstrap5\ActiveForm;
         </div>
     </nav>
 </header>
-<body style="height: 100vh; display: flex; flex-direction: column; overflow-x: hidden">
+<body style="height: 100vh; display: flex; flex-direction: column; overflow-x: hidden!important;">
 <div class="container-fluid heightError">
     <div class="row w-100 ms-0 h-100">
         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 flex-column flex-shrink-0 p-3 pt-2 px-0 bg-light bigMenu"  style="width: 90px; display: flex">

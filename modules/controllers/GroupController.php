@@ -177,6 +177,11 @@ class GroupController extends Controller
                 if ($model->save()) {
                     $step = min(2, $step + 1);
 
+                    $variant = GroupVariants::find()->where(['group_id' => $id, 'depth' => 1])->one();
+                    $variant->items = $model->items;
+                    $variant->item_description_ru = Yii::$app->request->post('Group')['item_description_ru'];
+                    $variant->item_description_en = Yii::$app->request->post('Group')['item_description_en'];
+                    $variant->save();
                     return $this->redirect(['create?step=' . ($step) . '&id=' . $model->id]);
                 }
             }

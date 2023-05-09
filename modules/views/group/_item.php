@@ -37,7 +37,7 @@ if (!isset($description_en)) {
         <span class="group-item-title-ru" style="color: #cc33e6; font-weight: 600; display: none;"><?php echo $item->getTitle(1)->title; ?></span>
         <span class="group-item-title-en" style="color: #cc33e6; font-weight: 600;"><?php echo $item->getTitle(2)->title; ?></span>
         <br>
-        <?php if ($variant): ?>
+        <?php if (isset($variant) && $variant): ?>
             <textarea name="Group[item_description_ru][]" rows="2" class="group-item-description-ru-editable" <?php echo $template ? 'disabled' : ''; ?> style="display: none;width: 100%"><?php echo $description_ru ?: $item->getTitle(1)->description; ?></textarea>
             <textarea name="Group[item_description_en][]" rows="2" class="group-item-description-en-editable" <?php echo $template ? 'disabled' : ''; ?> style="width: 100%"><?php echo $description_en ?: $item->getTitle(2)->description; ?></textarea>
         <?php else: ?>

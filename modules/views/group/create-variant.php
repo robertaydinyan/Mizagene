@@ -61,8 +61,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                         'template' => false,
                                         'item' => $item,
                                         'variant' => true,
-                                        'description_ru' => $item_description_ru[$i],
-                                        'description_en' => $item_description_en[$i]
+                                        'description_ru' => $item_description_ru ? $item_description_ru[$i] : null,
+                                        'description_en' => $item_description_en ? $item_description_en[$i] : null
                                     ]);
                                 }
                             } ?>

@@ -2,6 +2,7 @@
 include('header.php');
 use yii\helpers\Url;
 use app\modules\models\Items;
+use app\models\Subject;
 $lastDotPosition = strrpos($subject->image, '.');
 $dotImage = substr($subject->image, 0, $lastDotPosition) . '0' . substr($subject->image, $lastDotPosition);
 $dotImage = '/landmarks' . DS . str_replace('/var/www/html/Mizagene/web/images/subjects/', '', $dotImage);
@@ -14,6 +15,12 @@ $scheme = [
         4 => '#808080',
         5 => '#D1D690',
         6 => '#A0AD63'
+];
+
+$cons = [
+  1 => 'Partner',
+  2 => 'Spouse',
+  3 => 'Child',
 ];
 ?>
     <style>
@@ -241,8 +248,9 @@ $scheme = [
                 <div class="card-body">
                     <h6 class=" col-8"><span class="font-italic me-1">Available Reports</span></h6>
                     <div style="overflow-y: scroll; height: 270px;">
-                        <p class="mb-1" style="cursor: pointer; color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>">Character traits <i class="fa-solid fa-caret-right" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"></i></p>
-                        <p class="mt-1 mb-1" style="cursor: pointer;">Psyche and Communication</p>
+                        <?php foreach ($reports as $key => $report): ?>
+                            <p class="my-1" style="cursor: pointer; <?php if ($key == 0) { ?> color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?> <?php } ?>"><span><?= $report->title_english ?></span> <?php if ($key == 0) { ?><i class="fa-solid fa-caret-right" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"></i><?php } ?></p>
+                        <?php endforeach; ?>
                         <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Child report</p>
                         <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Study</p>
                         <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Talent to science</p>
@@ -284,20 +292,24 @@ $scheme = [
 
 
                     <div class="card-body px-4" style="overflow-y: scroll; height: 210px!important;">
+                        <?php foreach ($subject->connections as $con):
+                            $object = Subject::findOne($con->object_id);?>
                         <div class="row mb-3" style="border-bottom: 1px solid lightgrey; padding-bottom: 5px;">
                             <div class="d-flex col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 px-0 text-start">
-                                <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle"/>
+                                <img src="<?= str_replace("/var/www/html/Mizagene/web/", "", $object->image) ?>" alt="" style="width: 45px; height: 45px; object-fit: cover" class="rounded-circle"/>
                                 <div class="ms-3">
-                                    <p class="fw-bold mb-1">Mary Doe</p>
-                                    <p class="text-muted mb-0">Mother</p>
+                                    <p class="fw-bold mb-1"><?= $object->name ?></p>
+                                    <p class="text-muted mb-0"><?= $cons[$con->object_type] ?></p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 px-0 text-end">
                                 <a href="#" class="text-dark ms-auto">
                                     <i class="fa-solid fa-pen"></i>
+                                    <i class="fa-solid fa-xmark deleteConnection" style="color: red; cursor: pointer" data-con="<?= $con->id ?>"></i>
                                 </a>
                             </div>
                         </div>
+                        <?php endforeach; ?>
                     </div>
 
                 </div>
@@ -327,7 +339,7 @@ $scheme = [
             <div class="flex-column d-flex justify-content-between bg-white mx-auto mt-3 mt-lg-0" style="border-radius: 5px;">
                 <div class="row d-flex align-items-center">
                     <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
-                        <h4 class="mb-0 p-4" style="">Character traits</h4>
+                        <h4 class="mb-0 p-4" style=""><?= $rep->title_english ?></h4>
                     </div>
                     <div class="d-flex col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 align-items-center px-4">
                         <select class="form-select my-2 " aria-label="Default select example">
@@ -345,7 +357,8 @@ $scheme = [
 
             </div>
             <div class="row ms-3">
-                <div class="row">
+                <?php foreach ($rep->groups as $group): var_dump($group); die;?>
+                    <div class="row">
                     <span class="my-3" style="cursor: pointer; color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
                         	<i class="fa-solid fa-face-smile" style="color: #003C46"></i> Positive character traits
                     </span>
@@ -358,7 +371,7 @@ $scheme = [
                                         <?php
                                             $result = $subject->result;
                                             foreach (json_decode($result['result']) as $k => $res):
-                                                if ($k == 100) break;
+                                                if ($k == 20) break;
                                                 $item = Items::findOne($res->item_ID); if ($item):
                                                 $colors = [];
                                                 for ($i = 1; $i <= 10; $i++) {
@@ -396,7 +409,7 @@ $scheme = [
                                 <?php
                                 $result = $subject->result;
                                 foreach (json_decode($result['result']) as $k => $res):
-                                if ($k == 100) break;
+                                if ($k == 20) break;
                                 $item = Items::findOne($res->item_ID); if ($item):
                                     $colors = [];
                                     for ($i = 1; $i <= 10; $i++) {
@@ -412,9 +425,9 @@ $scheme = [
                                                <br> <b>Result:</b> <?= $res->subject_item_result ?>
                                             </p>
                                         </div>
-                                        <div class="d-flex justify-content-between px-4 align-items-center mt-2">
-                                            <i class="fa-solid fa-check" style="color: #97df2a;"></i> Agree
-                                            <i class="fa-solid fa-xmark" style="color: red;"></i> Disagree
+                                        <div class="d-flex justify-content-between px-4 align-items-center mt-2" style="cursor:pointer;">
+                                            <i class="fa-solid fa-check agree" style="color: #97df2a;"></i> Agree
+                                            <i class="fa-solid fa-xmark disagree" style="color: red;"></i> Disagree
                                         </div>
                                     </div>
                                 <?php endif; endforeach; ?>
@@ -422,34 +435,13 @@ $scheme = [
                         </div>
                     </div>
                 </div>
+                <?php endforeach; ?>
 
                 <div class="row">
                     <span class="my-3" style="cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
                         Group 2
                     </span>
                     <div class="collapse" id="collapseExample2">
-                        <div class="card card-body">
-                            This is the content that will be shown and hidden when the button is clicked.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <span class="my-3" style="cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
-                        Group 3
-                    </span>
-                    <div class="collapse" id="collapseExample3">
-                        <div class="card card-body">
-                            This is the content that will be shown and hidden when the button is clicked.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <span class="my-3" style="cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
-                        Group 4
-                    </span>
-                    <div class="collapse" id="collapseExample4">
                         <div class="card card-body">
                             This is the content that will be shown and hidden when the button is clicked.
                         </div>
@@ -518,6 +510,16 @@ $scheme = [
         $('body').on('click', '.backwards', function (){
             $('.firstStep').removeClass('d-none');
             $('.secondStep').addClass('d-none');
+        });
+
+        $('body').on('click', '.deleteConnection', function (){
+            let con = $(this).data('con');
+            if (confirm('Are you sure?')) {
+                $.post( "/user/delete-connection", { con: con} )
+                    .done(function(data) {
+                        window.location.reload();
+                    });
+            }
         });
 
         $('body').on('click', '.closeBackwards', function (){

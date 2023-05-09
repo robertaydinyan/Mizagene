@@ -29,17 +29,17 @@ $comb_types = Items::getICombTypes();
             'description_russian',
             'description_english',
             'datetime',
-            [
-                'header' => '<div>items</div>',
-                'format' => 'raw',
-                'value' => function($model) {
-                    $vols = $model->getItemsCount() . '<br>';
-                    foreach ($model->vols as $vol) {
-                        $vols .= $vol->getItemsCount() . '<br>';
-                    }
-                    return $vols;
-                }
-            ],
+            // [
+            //     'header' => '<div>items</div>',
+            //     'format' => 'raw',
+            //     'value' => function($model) {
+            //         $vols = $model->getItemsCount() . '<br>';
+            //         foreach ($model->vols as $vol) {
+            //             $vols .= $vol->getItemsCount() . '<br>';
+            //         }
+            //         return $vols;
+            //     }
+            // ],
             [
                 'class' => ActionColumn::className(),
                 'template' => '{update} {delete}',

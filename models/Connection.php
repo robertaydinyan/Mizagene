@@ -20,7 +20,7 @@ class Connection extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'subjects';
+        return 'connections';
     }
 
     /**
@@ -47,6 +47,11 @@ class Connection extends \yii\db\ActiveRecord
             'object_type' => 'Object Type',
             'created_at' => 'Created At',
         ];
+    }
+
+    public function getObject()
+    {
+        return $this->hasOne(Subject::class, ['id' => ['object_id']]);
     }
 
 }
