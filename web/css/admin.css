@@ -448,7 +448,7 @@ textarea.form-control {
     --bs-table-accent-bg: #f7f7f7;
 }
 
-.collapse {
+nav .collapse {
     position: absolute;
     right: 0;
 }
@@ -668,7 +668,7 @@ a.nav-link {
     width: 91.66666667%;
 }
 
-.group-item-content, .report-group-content {
+.group-item-content {
     padding: 0 12px;
 }
 
@@ -860,11 +860,6 @@ a.nav-link {
 .droppable .report-group {
     flex: 0 0 auto;
     margin-left: 4px;
-    border: 1px solid #003c47;
-}
-
-.droppable .report-group-main {
-    width: 25% !important;
 }
 
 .change-group-item-language {
@@ -921,4 +916,13 @@ input:checked + .slider:before {
 }
 .slider.round:before {
     border-radius: 50%;
+}
+
+.accordion-item {
+    position: relative;
+}
+
+.accordion-body {
+    background: white;
+    padding: 12px;
 }

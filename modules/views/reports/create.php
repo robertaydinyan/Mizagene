@@ -19,7 +19,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'form' => $form,
         'step' => $step,
-        'group_variants' => $group_variants
+        'group_variants' => $group_variants,
+        'regions' => $regions
     ]);
     $form::end(); ?>
 

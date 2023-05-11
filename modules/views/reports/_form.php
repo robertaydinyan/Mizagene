@@ -12,7 +12,7 @@ $usg_types = Items::getIUsgTypes();
 $comb_types = Items::getICombTypes();
 ?>
 <div class="report-container d-flex">
-    <?php echo $this->renderFile('@app/modules/views/reports/_group-config.php', [
+    <?php echo $this->renderFile('@app/modules/views/reports/_report-config.php', [
         'usg_types' => $usg_types,
         'comb_types' => $comb_types
     ]); ?>
@@ -52,6 +52,27 @@ $comb_types = Items::getICombTypes();
                             <?= $form->field($model, 'description_english', ['options' => ['style' => 'width: 100%']])->textarea()->label(false); ?>
                         </div>
                     </div>
+                    <div class="d-flex">
+                        <div class="col-2"><span>Region</span></div>
+                        <div class="col-5 d-flex" style="padding: 10px;">
+                            <span class="flag-icon" style="margin: 8px;"></span>
+                            <?= $form->field($model, 'region', ['options' => ['style' => 'width: 100%']])->dropDownList($regions, ['multiple' => 'multiple', 'class' => 'select2', 'value' => array_keys($regions)])->label(false); ?>
+                        </div>
+                        <div class="col-5 d-flex" style="padding-left: 28px; padding-right: 8px; margin: 16px 0;">
+                            <div class="col-5"></div>
+                            <div class="col-7 d-flex justify-content-between">
+                                <span class="mr-2">Icon</span>
+                                <?= $form->field($model, 'icon')->fileInput()->label(false);?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="col-2"><span>Comment</span></div>
+                        <div class="col-5 d-flex" style="padding: 10px;">
+                            <span class="flag-icon" style="margin: 8px;"></span>
+                            <?= $form->field($model, 'comment', ['options' => ['style' => 'width: 100%']])->textarea()->label(false); ?>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane <?php echo $step == 2 ? 'show active' : '' ?>" id="tabContent2" role="tabpanel" aria-labelledby="tab2">
                     <div class="d-flex">
@@ -66,32 +87,18 @@ $comb_types = Items::getICombTypes();
                         </div>
                     </div>
                     <hr style="color: white;">
-                    <div class="group-droppable droppable" style="min-height: 300px">
-                        <?php if ($model->groups):
-                            foreach ($model->groups as $variant_id):
-                                $variant = GroupVariants::findOne($variant_id); ?>
-                                <div class="report-group d-flex">
-                                    <div class="col-1 position-relative" style="border-right: 1px solid #d8d8d8;">
-                                        <img class="absolute-center drag-event" src="/images/icons/dots-menu.png" alt="">
-                                        <input class="item-id" type="hidden" name="Group[items][]" value="<?php echo $variant->id; ?>">
-                                    </div>
-                                    <div class="col-11 report-group-content d-flex justify-content-between">
-                                        <div class="report-group-main">
-                                            <div class="d-flex justify-content-between">
-                                                <span class="report-group-rule <?php echo $variant->group->adult ? '' : 'd-none'?>">18</span>
-                                                <span class="report-group-title" style="font-weight: 600;"><?php echo $variant->group->title_english . ' ' . $variant->name; ?></span>
-                                                <span class="report-group-items-count" style="margin-left: 12px"><?php echo $variant->getItemsCount(); ?></span>
-                                                <span class="report-group-versions">versions <?php echo $variant->getVariantsCount(); ?></span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <span><i class="fa fa-caret-down" aria-hidden="true"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endforeach;
-                        endif; ?>
+                    <div class="group-droppable droppable accordion" id="accordion" style="min-height: 300px">
+                        <?php if ($model->groups) {
+                            foreach ($model->groups as $variant_id) {
+                                $variant = GroupVariants::findOne($variant_id);
+                                echo $this->renderFile('@app/modules/views/reports/_variant.php', [
+                                    'template' => false,
+                                    'variant' => $variant,
+                                ]);
+                            }
+                        } ?>
                     </div>
+
                 </div>
             </div>
         </div>

@@ -14,6 +14,9 @@ use Yii;
  * @property string $datetime
  * @property string $description_russian
  * @property string $description_english
+ * @property resource|null $icon
+ * @property string|null $region
+ * @property string $comment
  */
 class Reports extends \yii\db\ActiveRecord
 {
@@ -31,8 +34,9 @@ class Reports extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title_russian', 'title_english', 'description_russian', 'description_english'], 'required'],
-            [['groups', 'datetime'], 'safe'],
+            [['title_russian', 'title_english', 'description_russian', 'description_english', 'comment'], 'required'],
+            [['groups', 'datetime', 'region'], 'safe'],
+            [['icon', 'comment'], 'string'],
             [['title_russian', 'title_english', 'description_russian', 'description_english'], 'string', 'max' => 255],
         ];
     }
@@ -50,6 +54,30 @@ class Reports extends \yii\db\ActiveRecord
             'datetime' => 'Datetime',
             'description_russian' => 'Description Russian',
             'description_english' => 'Description English',
+            'icon' => 'Icon',
+            'region' => 'Region',
+            'comment' => 'Comment',
         ];
+    }
+
+    public function getGroupsCount() {
+        $result = 0;
+        if ($this->groups) {
+            is_string($this->groups) && $this->groups = array($this->groups);
+            foreach ($this->groups as $group_id) {
+                $result += 1;
+            }
+        }
+        return $result;
+    }
+
+    public function getGroupsNames() {
+        $result = [];
+        !is_array($this->groups) && $this->groups = array($this->groups);
+        foreach ($this->groups as $group_id) {
+            $group = Group::findOne(['id' => $group_id]);
+            $result[] = ($group ? $group->title_russian : '');
+        }
+        return $result;
     }
 }

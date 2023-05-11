@@ -63,9 +63,22 @@ class ReportsSearch extends Reports
             'title_english' => $this->title_english,
             'datetime' => $this->datetime,
         ]);
+        if (isset($params['message'])) {
+            if (is_numeric($params['message'])) {
+                $query->andFilterWhere(['id' => $params['message']]);
+            } else {
+                $query->andFilterWhere(['or',
+                    ['like', 'title_russian', $params['message']],
+                    ['like', 'title_english', $params['message']],
+                    ['like', 'description_english', $params['message']],
+                    ['like', 'description_russian', $params['message']],
+                    ['like', 'comment', $params['message']],
+                ]);
+            }
+        }
 
         $query->andFilterWhere(['like', 'groups', $this->groups]);
-
+        $query->orderBy('order');
         return $dataProvider;
     }
 }

@@ -99,6 +99,7 @@ class GroupController extends Controller
                 $iconFile = UploadedFile::getInstance($model, 'icon');
                 if ($iconFile) {
                     $iconContent = file_get_contents($iconFile->tempName);
+                    var_dump($iconContent);die();
                     $model->icon = $iconContent;
                 }
                 if ($model->save()) {
@@ -108,8 +109,7 @@ class GroupController extends Controller
                 }
             }
         }
-        $regions = Region::find()->asArray()->all();
-        $regions = \yii\helpers\ArrayHelper::map($regions, 'id', 'name');
+        $regions = \yii\helpers\ArrayHelper::map(Region::find()->asArray()->all(), 'id', 'name');
 
         $items = Items::find()->all();
         return $this->render('create', [
@@ -127,20 +127,21 @@ class GroupController extends Controller
                 'adult',
                 'title_english',
                 'name',
+                'group_variants.items',
                 'JSON_LENGTH(JSON_EXTRACT(group_variants.items, \'$\')) as el_count',
                 'IFNULL((SELECT max(depth) from group_variants as gv WHERE gv.parent_id = group_variants.id), 0) as variants_count',
-//                '(
-//                  SELECT COUNT(*)
-//                  FROM items
-//                  WHERE check1 = 1
-//                    AND FIND_IN_SET(items.id, REPLACE(REPLACE(group_variants.items, \'[\', \'\'), \']\', \'\'))
-//                ) AS active_items',
-//                '(
-//                  SELECT COUNT(*)
-//                  FROM items
-//                  WHERE check1 = 0
-//                    AND FIND_IN_SET(items.id, REPLACE(REPLACE(group_variants.items, \'[\', \'\'), \']\', \'\'))
-//                ) AS disable_items',
+                '(
+                  SELECT COUNT(*)
+                  FROM items
+                  WHERE check1 = 1
+                    AND JSON_CONTAINS(REPLACE(group_variants.items, \'"\', \'\'), CAST(id AS JSON), \'$\')
+                ) AS active_items',
+                '(
+                  SELECT COUNT(*)
+                  FROM items
+                  WHERE check1 = 0
+                    AND JSON_CONTAINS(REPLACE(group_variants.items, \'"\', \'\'), CAST(id AS JSON), \'$\')
+                ) AS disable_items',
             ])
             ->joinWith(['group' => function($model) use ($search){
                 $search_model = new GroupSearch();
@@ -148,6 +149,9 @@ class GroupController extends Controller
                 $model->andFilterWhere(['pushed' => 1]);
             }], false);
 
+//        echo "<pre>";
+//        var_dump($variants->asArray()->all());
+//        die();
         return json_encode($variants->asArray()->all());
     }
 

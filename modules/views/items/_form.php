@@ -48,7 +48,7 @@ $step = $model->getStep();
     <?= $form->field($model, 'i_comb_type_id')->dropDownList(Items::getICombTypes(), ['multiple' => 'multiple', 'class' => 'item-comb-type select2']); ?>
 
     <?php for($i = 1; $i <= 10; $i++) {
-        echo $form->field($model, 'colorSectors[color_id][]')->dropDownList(ItemColors::getColorRange(),['value' => $model->getColorSector(1)->color_id])->label('Sector ' . $i);
+        echo $form->field($model, 'colorSectors[color_id][]')->dropDownList(ItemColors::getColorRange(),['value' => $model->getColorSector($i)->color_id])->label('Sector ' . $i);
         echo $form->field($model, 'colorSectors[description_ru][' . ($i - 1) . ']')->textarea(['class' => 'form-control required result-description', 'value' => $model->getColorSector($i)->description_ru])->label('Description ru');
         echo $form->field($model, 'colorSectors[description_en][' . ($i - 1) . ']')->textarea(['class' => 'form-control required result-description', 'value' => $model->getColorSector($i)->description_en])->label('Description en');
     } ?>
