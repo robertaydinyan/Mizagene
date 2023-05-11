@@ -15,18 +15,19 @@ use yii\bootstrap5\ActiveForm;
     <script src="https://kit.fontawesome.com/a262c03b8a.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.4/b-2.3.6/r-2.4.1/sb-1.4.2/sp-2.1.2/datatables.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <div class="text-center preloader d-none" style="width: 100%; height: 100%; z-index: 99999; position: absolute; background: #f5f5f5; justify-content: center; align-items: center">
     <div class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
     </div>
 </div>
-<header style="overflow-x: hidden!important;">
+<header>
     <nav class="navbar navbar-dark bg-light" style="height: 73px">
         <div class="container-fluid">
                 <a class="" style="margin-left: 11px" href="#">
                     <img class="navbar-brand mx-0 dashLogoMax" src="/images/logo.png" alt="Logo" width="200" height="55">
-                    <img class="navbar-brand mx-0 dashLogoMin ms-2" src="/images/favicon.png" alt="Logo" width="45" height="55" style="display: none;">
+                    <img class="navbar-brand mx-0 dashLogoMin ms-2" src="/images/logo.png" alt="Logo" width="" height="55" style="display: none;">
                 </a>
 <!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">-->
 <!--                <span class="navbar-toggler-icon"></span>-->
@@ -34,7 +35,7 @@ use yii\bootstrap5\ActiveForm;
                         <?php if (Yii::$app->user->identity): ?>
                             <div class="dropdown me-3 menuDrop">
                                 <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i>
+                                    <?php if (Yii::$app->user->identity->me) { ?><img src="<?= str_replace("/var/www/html/Mizagene/web/", "", Yii::$app->user->identity->me->image) ?>" alt="" style="width: 25px; height: 25px; object-fit: cover; border-radius: 100%"> <?php } else { ?><i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i><?php } ?>
 <!--                                    <img src="" alt="" width="32" height="32" class="rounded-circle me-2">-->
                                     <span>Hi, <strong><?= Yii::$app->user->identity->username ?></strong>!</span>
                                 </a>
@@ -63,7 +64,7 @@ use yii\bootstrap5\ActiveForm;
         </div>
     </nav>
 </header>
-<body style="height: 100vh; display: flex; flex-direction: column; overflow-x: hidden!important;">
+<body style="height: 100vh; display: flex; flex-direction: column; overflow-x: hidden!important; background: #f5f5f5">
 <div class="container-fluid heightError">
     <div class="row w-100 ms-0 h-100">
         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 flex-column flex-shrink-0 p-3 pt-2 px-0 bg-light bigMenu"  style="width: 90px; display: flex">
@@ -137,9 +138,16 @@ use yii\bootstrap5\ActiveForm;
                     </a>
                 </li>
                 <li class="nav-item text-center d-sm-none">
-                    <a href="/settings" class="nav-link link-dark px-2">
+                    <?php $form = ActiveForm::begin([
+                        'class' => 'logout-form d-flex justify-content-center',
+                        'action' => ['site/logout'],
+                        'method' => 'post',
+                    ]);
+                    ?>
+                    <button type="submit " class="nav-link link-dark mx-auto">
                         <img src="/images/logout.png" alt="" width="50"">
-                    </a>
+                    </button>
+                    <?php ActiveForm::end(); ?>
                 </li>
             </ul>
             <!--            <hr>-->

@@ -1,13 +1,28 @@
 <?php
 include('header.php');
 use yii\helpers\Url;
+use app\models\Subject;
 ?>
+<style>
+    .dataTables_wrapper {
+        background: white!important;
+        border-radius: 5px!important;
+        padding: 15px!important;
+    }
+</style>
 
 <div class="row d-flex mx-auto px-0">
     <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12 px-0 px-sm-2">
         <div class="mb-3 mx-auto px-0">
             <div class="row mx-auto px-0" style="padding-top: 25px!important; padding-left: 30px">
-                <h3>Subjects List</h3>
+                <div class="d-flex justify-content-between align-items-center mb-4 mb-sm-0">
+                    <h3 class="d-flex align-items-center centeredTitle" style="color: #003C46"><img src="/images/list_1.png" alt="" width="30" class="me-2">Subjects List</h3>
+                    <?php if(Yii::$app->user->identity->me) { ?>
+                    <a  class="d-sm-none" style="text-decoration: none; color: #003C46;" href="/subject?id=<?php if(Yii::$app->user->identity->me) { echo Yii::$app->user->identity->me->id; } ?>&rep=3">
+                        <img src="<?= str_replace("/var/www/html/Mizagene/web/", "", ''. (Yii::$app->user->identity->me ? Yii::$app->user->identity->me->image : '') . '')  ?>" alt="" style="width: 40px; height: 40px; border-radius: 5px; object-fit: cover">
+                    </a>
+                        <?php } ?>
+                </div>
                 <table id="subjectsTable" class="hover table-striped w-100">
                     <thead>
                     <tr>
@@ -31,12 +46,12 @@ use yii\helpers\Url;
                                 <td class="text-start ps-2"><a href="/subject?id=<?= $subject->id ?>&rep=3" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"><?= $key+1 ?></a></td>
                                 <td class=""><a href="/subject?id=<?= $subject->id ?>&rep=3"><img src="<?= str_replace('/var/www/html/Mizagene/web/', '', $subject->image) ?>" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></a></td>
                                 <td class="text-start"><a href="/subject?id=<?= $subject->id ?>&rep=3" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"><?= $subject->name ?></a></td>
-                                <td><?= $subject->created_at ?></td>
+                                <td><?= date('d.m.Y', strtotime($subject->created_at)) ?></td>
                                 <td><?= date('Y') - $subject->year_of_birth ?></td>
                                 <td><?= $subject->gender == 1 ? '<i class="fa-solid fa-mars" style="color: #000000;"></i>' : ($subject->gender == 2 ? '<i class="fa-solid fa-venus" style="color: #000000;"></i>' : ($subject->gender == 3 ? 'Male <i class="fa-solid fa-transgender" style="color: #000000;"></i>' : ($subject->gender == 4 ? 'Female <i class="fa-solid fa-transgender" style="color: #000000;"></i>' : ''))) ?></td>
                                 <td><?= $subject->height ?></td>
                                 <td><?= $subject->wrist_size ?></td>
-                                <td><img src="/images/aram.jpg" alt="" width="30px" height="30px" style="object-fit: cover; border-radius: 100%; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"> 10+</td>
+                                <td><?php if (count($subject->connections) > 0) { $sub = Subject::findOne($subject->connections[0]->object_id); ?><img src="<?= str_replace("/var/www/html/Mizagene/web/", "", $sub->image) ?>" alt="" width="30px" height="30px" style="object-fit: cover; border-radius: 100%; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"> <?= count($subject->connections) ?><?php } ?></td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td class="">
@@ -55,7 +70,7 @@ use yii\helpers\Url;
         </div>
     </div>
 
-    <div class="col-xl-2 col-lg-12 col-md-12 col-sm-12 col-12" style="background: rgb(248,249,250); border-radius: 3px; height: 400px; margin-top: 3.8%">
+    <div class="col-xl-2 col-lg-12 col-md-12 col-sm-12 col-12" style="background: white; border-radius: 3px; height: auto; margin-top: 3.8%">
         <p class="text-center mt-2 pb-0 mb-0">Quick Parameter Search</p>
         <div class="p-3">
             <div class="d-flex">

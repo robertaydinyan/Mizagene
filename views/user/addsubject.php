@@ -154,12 +154,12 @@ ini_set('post_max_size', '50M');
                                 <div class="mb-4 d-flex flex-column w-100">
                                     <label for="customRange2" class="form-label" style="font-weight: 500">Height</label>
                                     <input type="range" class="form-range"  value="135" name="height" id="customRange2" min="40" max="230" step="1" oninput="this.nextElementSibling.value = this.value + 'cm' + ' (' + (parseInt(this.value) / 2.54).toFixed(1) + ' inches)'" required>
-                                    <output class="text-end" style="width: 72%;">135cm (53.1 inches)</output>
+                                    <output class="text-end">135cm (53.1 inches)</output>
                                 </div>
                                 <div class="mb-4 d-flex flex-column w-100">
                                     <label for="customRange1" class="form-label" style="font-weight: 500">Wrist size</label>
                                     <input type="range" class="form-range" value="18.5" name="wrist_size" id="customRange1" min="7" max="30" step="0.5" oninput="this.nextElementSibling.value = this.value + 'cm' + ' (' + (parseInt(this.value) / 2.54).toFixed(1) + ' inches)'" required>
-                                    <output class="text-end" style="width: 72%;">18.5cm (7.1 inches)</output>
+                                    <output class="text-end">18.5cm (7.1 inches)</output>
                                 </div>
                                 <div class="mb-4 w-100">
                                     <label for="exampleFormControlInput4" class="form-label" style="font-weight: 500">Year of birth</label>
@@ -260,12 +260,12 @@ ini_set('post_max_size', '50M');
                                     <div class="mb-4 d-flex flex-column w-100">
                                         <label for="customRange2" class="form-label" style="font-weight: 500">Height</label>
                                         <input type="range" class="form-range"  value="135" name="height" id="customRange2" min="40" max="230" step="1" oninput="this.nextElementSibling.value = this.value + 'cm' + ' (' + (parseInt(this.value) / 2.54).toFixed(1) + ' inches)'" required>
-                                        <output class="text-end" style="width: 72%;">135cm (53.1 inches)</output>
+                                        <output class="text-end">135cm (53.1 inches)</output>
                                     </div>
                                     <div class="mb-4 d-flex flex-column w-100">
                                         <label for="customRange1" class="form-label" style="font-weight: 500">Wrist size</label>
                                         <input type="range" class="form-range" value="18.5" name="wrist_size" id="customRange1" min="7" max="30" step="0.5" oninput="this.nextElementSibling.value = this.value + 'cm' + ' (' + (parseInt(this.value) / 2.54).toFixed(1) + ' inches)'" required>
-                                        <output class="text-end" style="width: 72%;">18.5cm (7.1 inches)</output>
+                                        <output class="text-end">18.5cm (7.1 inches)</output>
                                     </div>
                                     <div class="mb-4 w-100">
                                         <label for="exampleFormControlInput4" class="form-label" style="font-weight: 500">Year of birth</label>

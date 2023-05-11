@@ -16,6 +16,7 @@ use yii\helpers\Url;
 use app\models\Mizagene;
 use app\models\Tresult;
 use app\models\Connection;
+use app\models\ItemReview;
 use app\modules\models\Reports;
 
 
@@ -24,9 +25,9 @@ class UserController extends Controller
     public function beforeAction($action)
     {
         if (Yii::$app->user->isGuest)  {
-            $this->redirect(['/site/index']);
+            $this->redirect(['/']);
         }else {
-            if ($action->id == 'delete-subject' || $action->id == 'update-subject-info' || $action->id == 'add-connection' || $action->id == 'delete-connection') {
+            if ($action->id == 'delete-subject' || $action->id == 'update-subject-info' || $action->id == 'add-connection' || $action->id == 'delete-connection' || $action->id == 'agree' || $action->id == 'disagree') {
                 $this->enableCsrfValidation = false;
             }
 
@@ -235,10 +236,14 @@ class UserController extends Controller
     {
         $post = Yii::$app->request->post();
         $subject = Subject::findOne($post['subject']);
+        $age = $post['age'];
+        if ($subject->gender == $post['gender'] && $subject->height == $post['height'] && $subject->wrist_size == $post['wrist_size'] && $subject->year_of_birth == date('Y', strtotime("-$age years")))
+        {
+            return 200;
+        }
         $subject->gender = $post['gender'];
         $subject->height = $post['height'];
         $subject->wrist_size = $post['wrist_size'];
-        $age = $post['age'];
         $subject->year_of_birth = date('Y', strtotime("-$age years"));
         $subject->save();
 
@@ -280,6 +285,42 @@ class UserController extends Controller
         return 200;
     }
 
+    public function actionAllitems()
+    {
+        return $this->render('allitems');
+    }
+
+    public function actionAgree()
+    {
+        $post = Yii::$app->request->post();
+        $review = new ItemReview();
+        $review->item_id = $post['item'];
+        $review->subject_id = $post['subject'];
+        $review->agree = 1;
+        $review->save();
+
+        return 200;
+    }
+
+    public function actionDisagree()
+    {
+        $post = Yii::$app->request->post();
+        $review = new ItemReview();
+        $review->item_id = $post['item'];
+        $review->subject_id = $post['subject'];
+        $review->disagree = 1;
+        $review->disagree_value = $post['disagree'];
+        $review->save();
+
+        return 200;
+    }
+
+    public function actionChangeLang($lang = '2')
+    {
+        setcookie('subjectLang', $lang, time() + (86400 * 30), '/');
+
+        return $this->redirect(Yii::$app->request->referrer);
+    }
 
 
 }
