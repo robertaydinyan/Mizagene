@@ -214,7 +214,7 @@ class UserController extends Controller
     {
         $subject = Subject::find()->where(['id' => $id])->andWhere(['deleted_at' => null])->one();
         if ($subject) {
-            $reports = Reports::find()->all();
+            $reports = Reports::find()->where(['disabled' => 0])->all();
             $rep = Reports::findOne($rep);
             return $this->render('user', ['subject' => $subject, 'reports' => $reports, 'rep' => $rep]);
         } else {

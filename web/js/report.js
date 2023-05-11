@@ -63,6 +63,7 @@ $(document).ready(function() {
     });
 
     $('.active-report-disable').on('click', function() {
+        console.log($(this).closest('tr').attr('data-key'))
         $.post('/admin/reports/disable', { 'id': $(this).closest('tr').attr('data-key') });
     });
 

@@ -34,7 +34,7 @@ class Reports extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title_russian', 'title_english', 'description_russian', 'description_english', 'comment'], 'required'],
+            [['title_russian', 'title_english', 'description_russian', 'description_english'], 'required'],
             [['groups', 'datetime', 'region'], 'safe'],
             [['icon', 'comment'], 'string'],
             [['title_russian', 'title_english', 'description_russian', 'description_english'], 'string', 'max' => 255],
