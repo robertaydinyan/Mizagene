@@ -72,6 +72,8 @@
         }
 
         var chartsDom = $('.test');
+        var mycharts = $('.allitems');
+
         $.each(chartsDom, function (i, k) {
             let myChart = echarts.init(k);
             let option;
@@ -99,6 +101,100 @@
                             lineStyle: {
                                 width: 5,
                                 color: colors
+                            }
+                        },
+                        pointer: {
+                            icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
+                            length: '12%',
+                            width: 15,
+                            offsetCenter: [0, '-40%'],
+                            itemStyle: {
+                                color: 'inherit'
+                            }
+                        },
+                        axisTick: {
+                            length: 10,
+                            lineStyle: {
+                                color: 'inherit',
+                                width: 1,
+                                opacity: 0.5
+                            }
+                        },
+                        splitLine: {
+                            length: 15,
+                            lineStyle: {
+                                color: 'inherit',
+                                width: 2,
+                                type: "solid",
+                                opacity: 1
+                            }
+                        },
+                        axisLabel: {
+                            show: false
+                        },
+                        title: {
+                            offsetCenter: [0, '-10%'],
+                            fontSize: 15,
+                            overflow: "breakAll"
+                        },
+                        detail: {
+                            fontSize: 20,
+                            offsetCenter: [0, 0],
+                            valueAnimation: true,
+                            formatter: function (value) {
+                                return Math.round(value * 100) + '';
+                            },
+                            color: 'inherit'
+                        },
+                        data: [
+                            {
+                                value: value,
+                                name: '',
+
+                                title: {
+                                    show: true,
+                                    offsetCenter: ["0", "30%"],
+                                    overflow: "breakAll"
+                                },
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            option && myChart.setOption(option);
+        })
+
+        $.each(mycharts, function (i, k) {
+            let myChart = echarts.init(k);
+            let option;
+            let value = parseFloat($(this).data('result'))/100;
+
+            option = {
+                color: ['#EB4228', '#F3B86B', '#F3E5B2', '#D1D690', '#A0AD63'],
+                grid: {
+                    width: 100
+                },
+                series: [
+                    {
+                        type: 'gauge',
+                        startAngle: 180,
+                        endAngle: 0,
+                        center: ['50%', '55%'],
+                        radius: '90%',
+                        min: 0,
+                        max: 1,
+                        splitNumber: 10,
+                        axisLine: {
+                            lineStyle: {
+                                width: 5,
+                                color:  [
+                                    [0.2, '#EB4228'],
+                                    [0.4, '#F3B86B'],
+                                    [0.6, '#F3E5B2'],
+                                    [0.8, '#D1D690'],
+                                    [1, '#A0AD63']
+                                ]
                             }
                         },
                         pointer: {

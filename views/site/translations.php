@@ -160,10 +160,10 @@ $data = [
         "ru" => "Наши технологические и программные решения помогают"],
     "людям осознать свой потенциал, понять сильные и слабые" => [
         "en" => "people realize their potential, understand the strengths and weaknesses",
-        "ru" => "людям осознать свой потенциал, понять сильные и слабые"],
+        "ru" => " людям осознать свой потенциал, понять сильные и слабые"],
     "стороны личности, а также найти  своевременное применение" => [
         "en" => "of the individual, and also find the timely application of",
-        "ru" => "стороны личности, а также найти  своевременное применение"],
+        "ru" => " стороны личности, а также найти  своевременное применение"],
     "врожденным талантам. Экономьте драгоценные годы жизни –" => [
         "en" => "innate talents. Save precious years of life -",
         "ru" => "врожденным талантам. Экономьте драгоценные годы жизни –"],
@@ -369,7 +369,7 @@ $data = [
         'ru' => 'Параметр добавляется в окончательную версию репорта в случае достижения точности более 75%.'
     ], 'accuracy_text2' => [
         'en' => 'The average values are not taken into account.',
-        'ru' => 'При этом усредненные зночения в расчет не берутся.'
+        'ru' => 'При этом усредненные значения в расчет не берутся.'
     ], 'accuracy_text3' => [
         'en' => 'Technology is not interested in who you are and what role you play in society, it is indifferent to your
              marital status and political views. Sophisticated calculation algorithms have been tested thousands of times before
@@ -377,7 +377,7 @@ $data = [
              by the surgical intervention or the quality of the uploaded photo, then the result will most likely be correct.',
         'ru' => 'Технологии не интересно, кто Вы и какую роль в обществе играете, ей безразличны ваш семейный статус и политические взгляды.
              Сложные алгоритмы расчета тестировались тысячи раз до того, как дать результат анализа Вам. Поэтому если причина несогласия с результатом 
-             не может быть обьяснена хирургическим вмешательством или качеством загруженной фотографии, то наверняка результат будет верным.'
+             не может быть объяснена хирургическим вмешательством или качеством загруженной фотографии, то наверняка результат будет верным.'
     ], 'progress1' => [
         'en' => 'Individual reports and compatibility',
         'ru' => 'Индивидуальные репорты и совместимость'

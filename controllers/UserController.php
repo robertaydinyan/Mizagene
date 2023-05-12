@@ -24,7 +24,7 @@ class UserController extends Controller
 {
     public function beforeAction($action)
     {
-        if (Yii::$app->user->isGuest)  {
+        if (Yii::$app->user->isGuest && $action->id != 'subject' && $action->id != 'change-lang' && $action->id != 'allitems')  {
             $this->redirect(['/']);
         }else {
             if ($action->id == 'delete-subject' || $action->id == 'update-subject-info' || $action->id == 'add-connection' || $action->id == 'delete-connection' || $action->id == 'agree' || $action->id == 'disagree') {
@@ -155,9 +155,12 @@ class UserController extends Controller
     public function actionCreateSubject()
     {
         $post = Yii::$app->request->post();
+        $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        $rand_str = substr(str_shuffle($chars), 0, 25);
         $subject = new Subject();
         $post['user_id'] = Yii::$app->user->id;
         $post['image'] = '';
+        $post['public_id'] = $rand_str;
         $post['created_at'] = date('Y-m-d H:i:s', time());
         $post['is_me'] = $post['is_me'] ?? 0;
 
@@ -190,7 +193,15 @@ class UserController extends Controller
 
     public function actionConnections()
     {
-        return $this->render('connections');
+        $connection = Connection::find()->all();
+        $subject = Subject::find()->all();
+
+        $data = Connection::find()->with('subjects')->all();
+        return $this->render('connections', [
+            'connection' => $connection,
+            'subject' => $subject,
+            'data' => $data,
+        ]);
     }
 
     public function actionMail()
@@ -212,8 +223,28 @@ class UserController extends Controller
 
     public function actionSubject($id, $rep)
     {
-        $subject = Subject::find()->where(['id' => $id])->andWhere(['deleted_at' => null])->one();
+        $subject = Subject::find()->where(['public_id' => $id])->andWhere(['deleted_at' => null])->one();
         if ($subject) {
+            if (!Yii::$app->user->isGuest) {
+                $check = 1;
+                foreach (Yii::$app->user->identity->subjects as $sbs) {
+                    if ($sbs->image == $subject->image && $sbs->created_at == $subject->created_at) {
+                        $check = 0;
+                        break;
+                    }
+                }
+                if ($check == 1) {
+                    $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    $rand_str = substr(str_shuffle($chars), 0, 25);
+                    $clonedModel = new Subject();
+                    $clonedModel->attributes = $subject->attributes;
+                    $clonedModel->id = null;
+                    $clonedModel->user_id = Yii::$app->user->identity->id;
+                    $clonedModel->public_id = $rand_str;
+                    $clonedModel->is_me = 0;
+                    $clonedModel->save();
+                }
+            }
             $reports = Reports::find()->where(['disabled' => 0])->all();
             $rep = Reports::findOne($rep);
             return $this->render('user', ['subject' => $subject, 'reports' => $reports, 'rep' => $rep]);
@@ -285,9 +316,10 @@ class UserController extends Controller
         return 200;
     }
 
-    public function actionAllitems()
+    public function actionAllitems($id)
     {
-        return $this->render('allitems');
+        $subject = Subject::findOne($id);
+        return $this->render('allitems', ['subject' => $subject]);
     }
 
     public function actionAgree()
