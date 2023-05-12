@@ -3,7 +3,6 @@
 use app\modules\models\Items;
 
 if (!isset($variant)) $variant = new \app\modules\models\GroupVariants();
-
 ?>
 <div class="accordion-item report-group <?php echo $template ? 'report-group-template' : ''; ?>" style="padding: 4px;">
     <div class="report-group-content d-flex justify-content-between h-100 align-items-center"
@@ -13,7 +12,7 @@ if (!isset($variant)) $variant = new \app\modules\models\GroupVariants();
     >
         <div class="position-relative" style="border-right: 1px solid #d8d8d8;width: 20px;">
             <img class="drag-event" src="/images/icons/dots-menu.png" alt="" style="">
-            <input class="item-id" type="hidden" name="Group[items][]" value="<?php echo $variant->id; ?>" disabled>
+            <input class="item-id" type="hidden" name="Reports[groups][]" value="<?php echo $variant->id; ?>" <?php echo $template ? 'disabled' : ''?>>
         </div>
         <div class="report-group-main col-4">
             <div class="d-flex justify-content-between">
@@ -26,20 +25,20 @@ if (!isset($variant)) $variant = new \app\modules\models\GroupVariants();
             </div>
         </div>
     </div>
-    <div id="collapseItem<?php echo $template ? 'template' : $variant->id; ?>"
-         class="accordion-collapse collapse"
-         data-bs-parent="#accordion">
-        <div class="accordion-body d-flex">
-            <?php if (!$template && $variant->items) {
-                foreach ($variant->items as $item_id) {
-                    $item = Items::findOne($item_id);
-
-                    echo $this->renderFile('@app/modules/views/group/_item.php', [
-                        'template' => false,
-                        'item' => $item,
-                    ]);
-                }
-            } ?>
-        </div>
-    </div>
+<!--    <div id="collapseItem--><?php //echo $template ? 'template' : $variant->id; ?><!--"-->
+<!--         class="accordion-collapse collapse"-->
+<!--         data-bs-parent="#accordion">-->
+<!--        <div class="accordion-body d-flex">-->
+<!--            --><?php //if (!$template && $variant->items) {
+//                foreach ($variant->items as $item_id) {
+//                    $item = Items::findOne($item_id);
+//
+//                    echo $this->renderFile('@app/modules/views/group/_item.php', [
+//                        'template' => false,
+//                        'item' => $item,
+//                    ]);
+//                }
+//            } ?>
+<!--        </div>-->
+<!--    </div>-->
 </div>

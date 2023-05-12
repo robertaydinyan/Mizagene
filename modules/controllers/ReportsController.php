@@ -127,16 +127,33 @@ class ReportsController extends Controller
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
+        $step = $this->request->get('step') ?: 2;
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post())) {
+
+                $iconFile = UploadedFile::getInstance($model, 'icon');
+                if ($iconFile) {
+                    $iconContent = file_get_contents($iconFile->tempName);
+                    $model->icon = $iconContent;
+                }
+                if ($model->save()) {
+                    $step = min(2, $step + 1);
+
+                    return $this->redirect(['update?step=' . ($step) . '&id=' . $model->id]);
+                }
+            }
         }
+        $regions = \yii\helpers\ArrayHelper::map(Region::find()->asArray()->all(), 'id', 'name');
+        $group_variants = GroupVariants::find()->all();
 
         return $this->render('update', [
             'model' => $model,
+            'step' => $step,
+            'regions' => $regions,
+            'group_variants' => $group_variants
         ]);
     }
 

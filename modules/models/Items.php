@@ -208,7 +208,19 @@ class Items extends \yii\db\ActiveRecord
         );
         switch ($pill) {
             case 1:
-                return array(
+                return $role == 1 ?
+                    array(
+                        array(
+                            'item_id',
+                            'persian',
+                            'russian',
+                            'english',
+                            'results_description',
+                            'results'
+                        ),
+                        '{disable} {update} {save}'
+                    )
+                : array(
                     array(
                         'item_id',
                         'persian',

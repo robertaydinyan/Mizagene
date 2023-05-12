@@ -16,7 +16,9 @@ use Yii;
  * @property string $description_english
  * @property resource|null $icon
  * @property string|null $region
- * @property string $comment
+ * @property string|null $comment
+ * @property int $order
+ * @property int $disabled
  */
 class Reports extends \yii\db\ActiveRecord
 {
@@ -37,6 +39,7 @@ class Reports extends \yii\db\ActiveRecord
             [['title_russian', 'title_english', 'description_russian', 'description_english'], 'required'],
             [['groups', 'datetime', 'region'], 'safe'],
             [['icon', 'comment'], 'string'],
+            [['order', 'disabled'], 'integer'],
             [['title_russian', 'title_english', 'description_russian', 'description_english'], 'string', 'max' => 255],
         ];
     }
@@ -57,6 +60,8 @@ class Reports extends \yii\db\ActiveRecord
             'icon' => 'Icon',
             'region' => 'Region',
             'comment' => 'Comment',
+            'order' => 'Order',
+            'disabled' => 'Disabled',
         ];
     }
 
@@ -75,9 +80,10 @@ class Reports extends \yii\db\ActiveRecord
         $result = [];
         !is_array($this->groups) && $this->groups = array($this->groups);
         foreach ($this->groups as $group_id) {
-            $group = Group::findOne(['id' => $group_id]);
-            $result[] = ($group ? $group->title_russian : '');
+            $variant = GroupVariants::findOne(['id' => $group_id]);
+            $result[] = ($variant ? $variant->group->title_russian . ' ' . $variant->name : '');
         }
+        if ($this->id == 7)die();
         return $result;
     }
 }

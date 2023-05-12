@@ -94,4 +94,8 @@ class Group extends \yii\db\ActiveRecord
     public function getVols() {
         return $this->hasMany(GroupVariants::class, ['group_id' => 'id']);
     }
+
+    public function getReportsName() {
+        return [];
+    }
 }

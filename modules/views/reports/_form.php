@@ -91,10 +91,12 @@ $comb_types = Items::getICombTypes();
                         <?php if ($model->groups) {
                             foreach ($model->groups as $variant_id) {
                                 $variant = GroupVariants::findOne($variant_id);
-                                echo $this->renderFile('@app/modules/views/reports/_variant.php', [
-                                    'template' => false,
-                                    'variant' => $variant,
-                                ]);
+                                if ($variant) {
+                                    echo $this->renderFile('@app/modules/views/reports/_variant.php', [
+                                        'template' => false,
+                                        'variant' => $variant,
+                                    ]);
+                                }
                             }
                         } ?>
                     </div>

@@ -33,7 +33,9 @@ $comb_types = Items::getICombTypes();
                 'header' => '<div>Reports</div>',
                 'format' => 'raw',
                 'value' => function($model) {
-                    return '';
+                    return implode("", array_map(function ($elem) {
+                        return "<span>" . $elem . "</span><br>";
+                    }, $model->getReportsName()));
                 }
             ],
             [
