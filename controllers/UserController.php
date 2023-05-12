@@ -196,7 +196,7 @@ class UserController extends Controller
         $connection = Connection::find()->all();
         $subject = Subject::find()->all();
 
-        $data = Connection::find()->with('subjects')->all();
+        $data = Subject::find()->with('connections')->all();
         return $this->render('connections', [
             'connection' => $connection,
             'subject' => $subject,

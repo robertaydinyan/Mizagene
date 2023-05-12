@@ -24,13 +24,15 @@ use yii\helpers\Url;
                     <?php foreach ($data as $row): ?>
                     <tr>
                         <td><?= $row->id ?></td>
-                        <td><?= $row->image ?></td>
+                        <td><img src="<?= str_replace('/var/www/html/Mizagene/web/', '', $row->image) ?>" alt="" style="width: 40px;"></td>
                         <td><?= $row->name ?></td>
-                        <td><?= $row->subject_id ?></td>
-                        <td><?= $row->object_id ?></td>
-                        <td><?= $row->image ?></td>
-                        <td><?= $row->name ?></td>
-                        <td><?= $row->object_id ?></td>
+                        <td><?= $row->id ?></td>
+                        <td><?= $row->id ?></td>
+                        <td><img src="<?= $row->image ?>" alt="" style=""></td>
+                        <td></td>
+                        <td> <?php foreach ($row->connections as $connection): ?>
+                                <?= $connection['object_id'] ?>
+                            <?php endforeach; ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
