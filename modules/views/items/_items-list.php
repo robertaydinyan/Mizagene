@@ -21,18 +21,23 @@ $columns = [
         'header' => '<div><span>ID</span></div>',
         'format' => 'raw',
         'headerOptions' => ['style' => 'max-width: 55px;'],
-        'value' => function($model) {
+        'value' => function($model) use ($pill) {
             return sprintf('
                     <span>%s</span>
                     <div class="d-flex flex-column">
+                        %s
                         %s
                         %s
                     </div>
                 ',
 
                 $model->item_id,
-                $model->priority ? ('<div class="icon m-icon priority-' . $model->priority . '"></div>') : '',
-                in_array($model->getStep(), [2, 3])  ? ($model->comment ? ('<div class="icon m-icon comment"  data-toggle="tooltip" title="' . $model->comment . '"></div>') : '') : ''
+                $pill != 1 ? ($model->priority ? ('<div class="icon m-icon priority-' . $model->priority . '"></div>') : '') : '',
+                $pill != 1 ? (in_array($model->getStep(), [2, 3])  ? ($model->comment ? ('<div class="icon m-icon comment"  data-toggle="tooltip" title="' . $model->comment . '"></div>') : '') : '') : '',
+                $pill == 1 ? Html::a('',
+                    'javascript:;',
+                    ['class' => 'icon item-mark label ' . ($model->mark ? 'black-cat' : 'white-cat')]
+                ) : ''
             );
         }
     ],
@@ -707,7 +712,15 @@ foreach ($cl[0] as $column) {
                             'javascript:;',
                             ['class' => 'icon archive archive-red label ajax-call', 'data-path' => $url, 'data-confirm_' => Yii::t('yii', 'Are you sure you want to delete this item?')]
                         )
-                    : '';
+                        : '';
+                },
+                'remove' => function ($url, $model, $key) {
+                    return in_array(Yii::$app->admin->getIdentity()->role, [1, 3]) ?
+                        Html::a('',
+                            'javascript:;',
+                            ['class' => 'icon remove label ajax-call', 'data-path' => $url, 'data-confirm_' => Yii::t('yii', 'Are you sure you want to delete this item?')]
+                        )
+                        : '';
                 },
                 'save' => function ($url, $model, $key) {
                     return Html::a('',

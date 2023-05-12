@@ -24,22 +24,6 @@ $(document).ready(function() {
         22: 'HR',
     }
 
-    let multiple_usg_types = {
-        23: 'Friendship',
-        24: 'Love',
-        25: 'Relationships in Family',
-        26: 'Relationships at Work',
-        27: 'Relationships in Business',
-        28: 'Intimate',
-        29: 'Child',
-    }
-
-    let item_types = {
-        0: '',
-        1: 'single',
-        2: 'multiple'
-    }
-
     // general
     $('.grid-view input, select, textarea').removeAttr('id');
 
@@ -150,30 +134,23 @@ $(document).ready(function() {
     // });
     groupItemEvents();
     function groupItemEvents() {
-        $(".group-item-container, .droppable").sortable({
-            placeholder: "group-item",
-            connectWith: ".group-item-container, .droppable",
-            stop: function(event, ui) {
-                ui = $(ui.item);
-                if (ui.closest(".group-item-container").length > 0) {
-                    ui.find('input, textarea').attr('disabled', 'disabled');
-                } else {
-                    ui.find('input, textarea').removeAttr('disabled');
+        if ($(".group-item-container").length > 0) {
+            $(".group-item-container, .droppable").sortable({
+                placeholder: "group-item",
+                connectWith: ".group-item-container, .droppable",
+                stop: function(event, ui) {
+                    ui = $(ui.item);
+                    if (ui.closest(".group-item-container").length > 0) {
+                        ui.find('input, textarea').attr('disabled', 'disabled');
+                    } else {
+                        ui.find('input, textarea').removeAttr('disabled');
+                    }
                 }
-            }
-        }).disableSelection();
+            }).disableSelection();
+        }
     }
     $('.select2').select2();
     // items events
-    $(document).on('click', '.ajax-call', function () {
-        if (!$(this).data('confirm_') || ($(this).data('confirm_') && confirm($(this).data('confirm_')))) {
-            $.post($(this).data("path"), {
-                'itemID': $(this).closest('tr').attr('data-key'),
-            }).done(() => {
-                $(this).closest('tr').remove();
-            });
-        }
-    });
     $(document).on('change', '.item-search-bar', (el) => {
         $.get('/admin/items/getitemslist' + window.location.search, {
             "search": $(el.target).val()

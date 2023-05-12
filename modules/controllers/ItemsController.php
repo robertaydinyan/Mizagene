@@ -16,6 +16,7 @@ use yii\rbac\Item;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\View;
 
 /**
  * ItemsController implements the CRUD actions for Items model.
@@ -38,6 +39,12 @@ class ItemsController extends Controller
                 ],
             ]
         );
+    }
+
+    public function beforeAction($action) {
+        $this->view->registerJsFile('@web/js/items.js', ['position' => View::POS_END, 'depends' => [\yii\web\JqueryAsset::className()]]);
+
+        return parent::beforeAction($action);
     }
 
     /**
@@ -194,6 +201,15 @@ class ItemsController extends Controller
         return $this->render('update', [
             'model' => $model
         ]);
+    }
+
+    public function actionPutMark() {
+        $id = Yii::$app->request->post('id');
+        if ($id) {
+            $model = $this->findModel($id);
+            $model->mark = 1 - $model->mark;
+            return $model->save();
+        }
     }
 
     /**

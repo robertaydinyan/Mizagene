@@ -170,42 +170,7 @@ class Items extends \yii\db\ActiveRecord
 
     public static function attributeLabelsCustom($pill = 1, $step = 1) {
         $role = Yii::$app->admin->getIdentity()->role;
-        $titles = array('item_id', 'title_persian', 'title_russian', 'title_english', 'title_temp_russian', 'title_temp_english');
-        $configurations = array('i_usg_type', 'i_type', 'i_comb_type_id', 'color1', 'color2', 'color3', 'color4', 'color5', 'color6', 'color7', 'color8', 'color9', 'color10');
-//        $view1 = array(
-//            array(
-//                'item_id',
-//                'title_persian',
-//                'description_persian',
-//                '',
-//                'title_temp_russian',
-//                'title_temp_english',
-//                'description_temp_russian',
-//                'description_temp_english',
-//                '',
-//                'title_russian',
-//                'title_english',
-//                'description_russian',
-//                'description_english'
-//            ),
-//            '{view} {translate} {delete}'
-//        );
 
-        $view1_editable = array(
-            array(
-                'item_id',
-                'persian',
-                'russian',
-                'title_temp_english',
-                'description_temp_english',
-                '',
-                'title_russian_editable',
-                'title_english_editable',
-                'description_russian_editable',
-                'description_english_editable'
-            ),
-            '{view} {checkmarkTranslator} {delete}'
-        );
         switch ($pill) {
             case 1:
                 return $role == 1 ?
@@ -218,7 +183,7 @@ class Items extends \yii\db\ActiveRecord
                             'results_description',
                             'results'
                         ),
-                        '{disable} {update} {save}'
+                        '{disable} {update} {save} {mark}'
                     )
                 : array(
                     array(
@@ -369,7 +334,7 @@ class Items extends \yii\db\ActiveRecord
                     'english',
                     'results_description',
                     'delete_date'
-                ), '{restore} {delete}');
+                ), '{restore} {remove}');
             case 5;
                 return array(array(
                     'item_id',

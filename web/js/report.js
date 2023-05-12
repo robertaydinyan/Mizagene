@@ -2,7 +2,7 @@ $(document).ready(function() {
     // functions
     function reportGroupEvents() {
         $(".report-group-container, .droppable").sortable({
-            placeholder: "report-group",
+            placeholder: "accordion-item",
             connectWith: ".report-group-container, .droppable",
             stop: function(event, ui) {
                 ui = $(ui.item);
