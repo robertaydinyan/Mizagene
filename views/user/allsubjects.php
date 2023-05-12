@@ -18,7 +18,7 @@ use app\models\Subject;
                 <div class="d-flex justify-content-between align-items-center mb-4 mb-sm-0">
                     <h3 class="d-flex align-items-center centeredTitle" style="color: #003C46"><img src="/images/list_1.png" alt="" width="30" class="me-2">Subjects List</h3>
                     <?php if(Yii::$app->user->identity->me) { ?>
-                    <a  class="d-sm-none" style="text-decoration: none; color: #003C46;" href="/subject?id=<?php if(Yii::$app->user->identity->me) { echo Yii::$app->user->identity->me->id; } ?>&rep=3">
+                    <a  class="d-sm-none" style="text-decoration: none; color: #003C46;" href="/subject?id=<?php if(Yii::$app->user->identity->me) { echo Yii::$app->user->identity->me->public_id; } ?>&rep=3">
                         <img src="<?= str_replace("/var/www/html/Mizagene/web/", "", ''. (Yii::$app->user->identity->me ? Yii::$app->user->identity->me->image : '') . '')  ?>" alt="" style="width: 40px; height: 40px; border-radius: 5px; object-fit: cover">
                     </a>
                         <?php } ?>
@@ -43,9 +43,9 @@ use app\models\Subject;
                     <tbody>
                         <?php foreach (Yii::$app->user->identity->subjects as $key => $subject): ?>
                             <tr style="<?= isset($subject->deleted_at) ? 'pointer-events: none; background: #ff000052' : '' ?>" class="text-center">
-                                <td class="text-start ps-2"><a href="/subject?id=<?= $subject->id ?>&rep=3" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"><?= $key+1 ?></a></td>
-                                <td class=""><a href="/subject?id=<?= $subject->id ?>&rep=3"><img src="<?= str_replace('/var/www/html/Mizagene/web/', '', $subject->image) ?>" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></a></td>
-                                <td class="text-start"><a href="/subject?id=<?= $subject->id ?>&rep=3" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"><?= $subject->name ?></a></td>
+                                <td class="text-start ps-2"><a href="/subject?id=<?= $subject->public_id ?>&rep=3" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"><?= $key+1 ?></a></td>
+                                <td class=""><a href="/subject?id=<?= $subject->public_id ?>&rep=3"><img src="<?= str_replace('/var/www/html/Mizagene/web/', '', $subject->image) ?>" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></a></td>
+                                <td class="text-start"><a href="/subject?id=<?= $subject->public_id ?>&rep=3" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"><?= $subject->name ?></a></td>
                                 <td><?= date('d.m.Y', strtotime($subject->created_at)) ?></td>
                                 <td><?= date('Y') - $subject->year_of_birth ?></td>
                                 <td><?= $subject->gender == 1 ? '<i class="fa-solid fa-mars" style="color: #000000;"></i>' : ($subject->gender == 2 ? '<i class="fa-solid fa-venus" style="color: #000000;"></i>' : ($subject->gender == 3 ? 'Male <i class="fa-solid fa-transgender" style="color: #000000;"></i>' : ($subject->gender == 4 ? 'Female <i class="fa-solid fa-transgender" style="color: #000000;"></i>' : ''))) ?></td>
@@ -57,7 +57,7 @@ use app\models\Subject;
                                 <td class="">
                                     <div class="<?= isset($subject->deleted_at) ? 'd-none' : '' ?>">
                                         <img src="/images/truefalse.png" alt="" width="20px" class="mx-sm-0 ms-3">
-                                        <img src="/images/share.png" alt="" width="20px" class="mx-3">
+                                        <img title="Click to copy" src="/images/share.png" alt="" width="20px" class="mx-3 shareLink" style="cursor: pointer" data-link="http://youmee.tech/subject?id=<?= $subject->public_id ?>&rep=3">
                                         <img src="/images/wrong.png" alt="" width="15px" class="me-sm-2 deleteSubject" style="cursor: pointer" data-id="<?= $subject->id ?>">
                                     </div>
 
@@ -156,6 +156,16 @@ use app\models\Subject;
 
             }
 
+        });
+
+        $('body').on('click', '.shareLink', function (){
+            var link = $(this).data('link');
+            var tempInput = document.createElement('input');
+            tempInput.value = link;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
         });
     })
 </script>

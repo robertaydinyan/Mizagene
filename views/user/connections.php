@@ -21,16 +21,18 @@ use yii\helpers\Url;
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($data as $row): ?>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?= $row->id ?></td>
+                        <td><?= $row->image ?></td>
+                        <td><?= $row->name ?></td>
+                        <td><?= $row->subject_id ?></td>
+                        <td><?= $row->object_id ?></td>
+                        <td><?= $row->image ?></td>
+                        <td><?= $row->name ?></td>
+                        <td><?= $row->object_id ?></td>
                     </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

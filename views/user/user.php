@@ -143,10 +143,10 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 p-3">
                             <input type="text" style="border-radius: 5px; border: none; background-color: rgb(240, 240, 240); width: 100%">
                         </div>
+                        <?php if (!Yii::$app->user->isGuest): ?>
                         <div class="" style="height: 250px; overflow: scroll;">
                             <div class="row mx-auto px-0 d-flex col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 py-3">
-                                <!--                                && !isset($sub->deleted_at)-->
-                                <?php foreach (Yii::$app->user->identity->subjects as $key => $sub): if ($subject->id != $sub->id ): ?>
+                                <?php foreach (Yii::$app->user->identity->subjects as $key => $sub): if ($subject->id != $sub->id && !isset($sub->deleted_at)):  ?>
                                     <div class="mb-3 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-flex align-items-center">
                                         <img src="<?= str_replace("/var/www/html/Mizagene/web/", "", $sub->image) ?>" alt="" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
                                         <span class="objectUser mx-auto" style="cursor: pointer; color: #003C46" data-subject="<?= $sub->id ?>"><?= $sub->name ?></span>
@@ -154,7 +154,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                 <?php endif; endforeach;?>
                             </div>
                         </div>
-
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -180,8 +180,10 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                     <img src="/images/wscan_white_woman.png" alt="" width="40px" class="mb-3 normalFace" style="cursor: pointer; background: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>; border-radius: 3px; padding: 5px">
                                     <img src="/images/scan_woman.png" alt="" width="40px" class="mb-3 dotFace" style="cursor: pointer; background: white; border-radius: 3px; padding: 5px">
                                 <?php endif; ?>
+                                <?php if (!Yii::$app->user->isGuest): ?>
                                 <i class="fa-solid fa-pen pb-3 editInfo" style="cursor: pointer"></i>
                                 <i class="fa-solid fa-check fa-xl pb-3 saveInfo" style="cursor: pointer; display: none; color: #97df2a;" data-subject="<?= $subject->id ?>"></i>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <div class="card-body px-4 text-center">
@@ -287,7 +289,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                         <div style="overflow-y: scroll; height: 270px;">
                             <?php foreach ($reports as $key => $report): ?>
                                 <p class="my-1" style="cursor: pointer; <?php if ($report->id == $rep->id)  { ?> color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?> <?php } ?>">
-                                    <a href="http://youmee.tech/subject?id=<?= $subject->id ?>&rep=<?= $report->id ?>" style="text-decoration: none; color: unset"><span><?= $subjectLang == 2 ? $report->title_english : $report->title_russian ?></span> <?php if ($report->id == $rep->id) { ?><i class="fa-solid fa-caret-right" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"></i><?php } ?></a>
+                                    <a href="/subject?id=<?= $subject->public_id ?>&rep=<?= $report->id ?>" style="text-decoration: none; color: unset"><span><?= $subjectLang == 2 ? $report->title_english : $report->title_russian ?></span> <?php if ($report->id == $rep->id) { ?><i class="fa-solid fa-caret-right" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"></i><?php } ?></a>
                                 </p>
                             <?php endforeach; ?>
                             <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Child report</p>
@@ -302,6 +304,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                         </div>
                     </div>
                 </div>
+                <?php if (!Yii::$app->user->isGuest): ?>
                 <div class="card col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="border: none">
                     <div class="card-body">
                         <div class="row align-items-baseline">
@@ -350,13 +353,14 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
 
                     </div>
                 </div>
+                <?php endif; ?>
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 card mt-3 d-flex d-lg-none" style="border: none">
                     <div class="card-body">
                         <h6 class=" col-12 m-0"><h4 class="font-italic me-1 pb-3" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>">Available Reports</h4></h6>
                         <div style="overflow-y: scroll; height: 210px;">
                             <?php foreach ($reports as $key => $report): ?>
                                 <p class="my-1" style="cursor: pointer; <?php if ($report->id == $rep->id)  { ?> color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?> <?php } ?>">
-                                    <a href="http://youmee.tech/subject?id=<?= $subject->id ?>&rep=<?= $report->id ?>" style="text-decoration: none; color: unset"><span><?= $subjectLang == 2 ? $report->title_english : $report->title_russian ?></span> <?php if ($report->id == $rep->id) { ?><i class="fa-solid fa-caret-right" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"></i><?php } ?></a>
+                                    <a href="/subject?id=<?= $subject->public_id ?>&rep=<?= $report->id ?>" style="text-decoration: none; color: unset"><span><?= $subjectLang == 2 ? $report->title_english : $report->title_russian ?></span> <?php if ($report->id == $rep->id) { ?><i class="fa-solid fa-caret-right" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"></i><?php } ?></a>
                                 </p>
                             <?php endforeach; ?>
                             <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Child report</p>
@@ -496,15 +500,18 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                                                     </div>
                                                                     <?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); if (!$opinion) { ?>
                                                                         <div class="d-flex justify-content-between px-4 align-items-center my-2" style="cursor:pointer;">
+                                                                        <?php if (!Yii::$app->user->isGuest): ?>
                                                                             <span class="agree" data-item="<?= $item->id ?>" data-subject="<?= $subject->id ?>"><i class="fa-solid fa-check " style="color: #97df2a;"></i> Agree</span>
                                                                             <span class="disagree"> <i class="fa-solid fa-xmark " style="color: red;"></i> Disagree</span>
                                                                             <span class="d-flex numdisagree align-items-center" style="display: none!important;"><i class="me-2 fa-solid fa-check finalsubmit" style="color: #97df2a;" data-item="<?= $item->id ?>" data-subject="<?= $subject->id ?>"></i> <input type="number" class="disnum" style="border-radius: 5px; border: 1px solid #dee2e6" placeholder="0 - 100"></span>
+                                                                        <?php endif; ?>
                                                                         </div>
                                                                     <?php } ?>
                                                                     <div class="<?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo (isset($opinion) && $opinion->disagree == 1) ? 'd-flex' : 'd-none' ?> justify-content-between px-4 align-items-center mt-2 mb-4 finalOpinion" style="cursor:pointer;">
                                                                         <span class="d-flex align-items-center"><img src="/images/favicon.png" alt="" width="40" class="me-2"> <span><?= floor($res->subject_item_result) ?></span></span>
-                                                                        <span class="d-flex align-items-center"><?php if (Yii::$app->user->identity->me) { ?><img class="me-2" src=" <?= str_replace("/var/www/html/Mizagene/web/", "", Yii::$app->user->identity->me->image) ?>" alt="" class="" style="width: 40px; height: 40px; border-radius: 100%; object-fit: cover; filter: grayscale(100%);"><?php } else { ?> <i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i> <?php } ?> <span class="myopinion"><?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo isset($opinion) ? $opinion->disagree_value : '' ?></span></span>
+                                                                        <span class="d-flex align-items-center"><?php if ($subject->user->me) { ?><img class="me-2" src=" <?= str_replace("/var/www/html/Mizagene/web/", "", $subject->user->me->image) ?>" alt="" class="" style="width: 40px; height: 40px; border-radius: 100%; object-fit: cover; filter: grayscale(100%);"><?php } else { ?> <i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i> <?php } ?> <span class="myopinion"><?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo isset($opinion) ? $opinion->disagree_value : '' ?></span></span>
                                                                     </div>
+
                                                                 </div>
                                                             </div>
                                                         <?php $check = 1; endif; endforeach; ?>
@@ -549,17 +556,21 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                                                     <i><?= $item->getTitle($subjectLang)->description ?></i>
                                                                 </p>
                                                             </div>
+
                                                             <?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); if (!$opinion) { ?>
                                                             <div class="d-flex justify-content-between px-4 align-items-center mt-2 mb-4" style="cursor:pointer;">
+                                                            <?php if (!Yii::$app->user->isGuest): ?>
                                                                 <span class="agree" data-item="<?= $item->id ?>" data-subject="<?= $subject->id ?>"><i class="fa-solid fa-check " style="color: #97df2a;"></i> Agree</span>
                                                                 <span class="disagree"> <i class="fa-solid fa-xmark " style="color: red;"></i> Disagree</span>
                                                                 <span class="d-flex numdisagree align-items-center" style="display: none!important;"><i class="me-2 fa-solid fa-check finalsubmit" style="color: #97df2a;" data-item="<?= $item->id ?>" data-subject="<?= $subject->id ?>"></i> <input type="number" class="disnum" style="border-radius: 5px; border: 1px solid #dee2e6" placeholder="0 - 100"></span>
+                                                            <?php endif; ?>
                                                             </div>
                                                             <?php } ?>
                                                             <div class="<?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo (isset($opinion) && $opinion->disagree == 1) ? 'd-flex' : 'd-none' ?> justify-content-between px-4 align-items-center mt-2 mb-4 finalOpinion" style="cursor:pointer;">
                                                                 <span class="d-flex align-items-center"><img src="/images/favicon.png" alt="" width="40" class="me-2"> <span><?= floor($res->subject_item_result) ?></span></span>
-                                                                <span class="d-flex align-items-center"><?php if (Yii::$app->user->identity->me) { ?><img class="me-2" src=" <?= str_replace("/var/www/html/Mizagene/web/", "", Yii::$app->user->identity->me->image) ?>" alt="" class="" style="width: 40px; height: 40px; border-radius: 100%; object-fit: cover; filter: grayscale(100%);"><?php } else { ?> <i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i> <?php } ?> <span class="myopinion"><?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo isset($opinion) ? $opinion->disagree_value : '' ?></span></span>
+                                                                <span class="d-flex align-items-center"><?php if ($subject->user->me) { ?><img class="me-2" src=" <?= str_replace("/var/www/html/Mizagene/web/", "", $subject->user->me->image) ?>" alt="" class="" style="width: 40px; height: 40px; border-radius: 100%; object-fit: cover; filter: grayscale(100%);"><?php } else { ?> <i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i> <?php } ?> <span class="myopinion"><?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo isset($opinion) ? $opinion->disagree_value : '' ?></span></span>
                                                             </div>
+
                                                         </div>
                                                     </div>
                                                 <?php endif; endforeach; ?>

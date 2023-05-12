@@ -32,7 +32,7 @@ use yii\bootstrap5\ActiveForm;
 <!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">-->
 <!--                <span class="navbar-toggler-icon"></span>-->
 <!--            </button>-->
-                        <?php if (Yii::$app->user->identity): ?>
+                        <?php if (!Yii::$app->user->isGuest): ?>
                             <div class="dropdown me-3 menuDrop">
                                 <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                     <?php if (Yii::$app->user->identity->me) { ?><img src="<?= str_replace("/var/www/html/Mizagene/web/", "", Yii::$app->user->identity->me->image) ?>" alt="" style="width: 25px; height: 25px; object-fit: cover; border-radius: 100%"> <?php } else { ?><i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i><?php } ?>
