@@ -109,3 +109,9 @@ $step = $model->getStep();
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<style>
+    label {
+        font-weight: bold;
+    }
+</style>
