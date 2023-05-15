@@ -166,8 +166,8 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
 
         <div class="row d-flex pb-4">
             <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 pe-lg-2">
-                <div class="card mb-3 h-70" style="border: none">
-                    <div class="card-body pt-3" style="height: 428px;">
+                <div class="card mb-3" style="border: none">
+                    <div class="card-body pt-3 bigHeight" style="height: 428px;">
                         <div class="d-flex justify-content-between profilePictureContainer">
 
                             <img src="<?= str_replace("/var/www/html/Mizagene/web/", "", $subject->image) ?>" class="ms-2 zoomable profilePicture" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px;">
@@ -232,10 +232,10 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
 
                         <div class="d-flex my-2 text-center">
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 px-1">
-                                <span style="background: rgb(243, 194, 67)!important; color: white!important; border: none!important;font-size: 8px; width: 100%; display: block; border-radius: 5px;" class="p-1">D: 15.3%</span>
+                                <span style="background: rgb(243, 194, 67)!important; color: white!important; border: none!important;font-size: 8px; width: 100%; display: block; border-radius: 5px;" class="p-1">S: 15.3%</span>
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 px-1">
-                                <span style="background: rgb(236, 84, 73)!important; color: white!important; border: none!important;font-size: 8px; width: 100%; display: block; border-radius: 5px;" class="p-1">S: 24.7%</span>
+                                <span style="background: rgb(236, 84, 73)!important; color: white!important; border: none!important;font-size: 8px; width: 100%; display: block; border-radius: 5px;" class="p-1">D: 24.7%</span>
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 px-1">
                                 <span style="background: rgb(54, 130, 180)!important; color: white!important; border: none!important;font-size: 8px; width: 100%; display: block; border-radius: 5px;" class="p-1">B: 30.5%</span>
@@ -417,13 +417,15 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
 
                                     <div class="parameterSearch searchFilter" style="display: none;">
                                         <select name="form-select my-2" id="" class="select2" >
-                                            <?php foreach ($rep->groups as $gr):
+                                            <?php $checkItem = []; foreach ($rep->groups as $gr):
                                                 $group = GroupVariants::findOne($gr);
                                                 foreach ($group->items as $it):
                                                     $item = Items::findOne($it);
+                                                    if (!in_array($item->id, $checkItem)) {
+                                                    $checkItem[] = $item->id;
                                                     ?>
                                                     <option value="<?= $item->id ?>"><?= $item->getTitle($subjectLang)->title ?></option>
-                                                <?php endforeach; endforeach; ?>
+                                                <?php } endforeach; endforeach; ?>
                                         </select>
                                     </div>
 
@@ -476,29 +478,34 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                                     foreach ($group->items as $k => $g):
                                                             $item = Items::findOne($g);
                                                             if ($item):
+
                                                                 $subject_item_result = array_map(function($obj) use($item) {
                                                                     if ($obj->item_ID == $item->item_id) {
                                                                         return $obj->subject_item_result;
                                                                     }
                                                                 }, $result);
-                                                            
+
+                                                                $subject_item_result = array_filter($subject_item_result);
+                                                                $subject_item_result = array_values($subject_item_result);
+
                                                             $colors = [];
                                                             for ($i = 1; $i <= 10; $i++) {
                                                                 $colors[] = [''.$i/10 => $scheme[$item->getColorSector($i)->color_id] ];
                                                             }
 
+
                                                             $color = null;
                                                             foreach ($colors as $element) {
-                                                                if (array_key_exists(''.(floor($subject_item_result[0]/10)/10).'', $element)) {
-                                                                    $color = $element[''.(floor($subject_item_result[0]/10)/10).''];
+                                                                if (array_key_exists(''.(floor($subject_item_result ? $subject_item_result[0] : 0/10)/10).'', $element)) {
+                                                                    $color = $element[''.(floor($subject_item_result ? $subject_item_result[0] : 0/10)/10).''];
                                                                     break;
                                                                 }
                                                             }
                                                             ?>
-                                                            <div class="carousel-item parameterItem opinionContainer <?= $check == 0 ? 'active' : '' ?>" data-res="<?= $subject_item_result[0] ?>" data-item="<?= $item->id ?>" data-color="<?= $reverse[$color] ?>">
+                                                            <div class="carousel-item parameterItem opinionContainer <?= $check == 0 ? 'active' : '' ?>" data-res="<?= $subject_item_result ? $subject_item_result[0] : 0 ?>" data-item="<?= $item->id ?>" data-color="<?= $color ? $reverse[$color] : 4 ?>">
                                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                                     <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px; height: 330px!important;">
-                                                                        <div class="mobileResult d-flex justify-content-center mx-auto" style="height: 230px!important; width: 280px!important; position:relative; margin-bottom: -35px;" data-result="<?= $subject_item_result[0] ?>" data-colors='<?= str_replace(':', ',', json_encode($colors)) ?>'></div>
+                                                                        <div class="mobileResult d-flex justify-content-center mx-auto" style="height: 230px!important; width: 280px!important; position:relative; margin-bottom: -35px;" data-result="<?= $subject_item_result ? $subject_item_result[0] : 0 ?>" data-colors='<?= str_replace(':', ',', json_encode($colors)) ?>'></div>
                                                                         <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -80px; font-weight: 500"><?= $item->getTitle($subjectLang)->title ?></div>
                                                                         <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; height: 100px; z-index: 8; position: relative">
                                                                             <i><?= $item->getTitle($subjectLang)->description ?></i>
@@ -514,7 +521,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                                                         </div>
                                                                     <?php } ?>
                                                                     <div class="<?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo (isset($opinion) && $opinion->disagree == 1) ? 'd-flex' : 'd-none' ?> justify-content-between px-4 align-items-center mt-2 mb-4 finalOpinion" style="cursor:pointer;">
-                                                                        <span class="d-flex align-items-center"><img src="/images/favicon.png" alt="" width="40" class="me-2"> <span><?= floor($subject_item_result[0]) ?></span></span>
+                                                                        <span class="d-flex align-items-center"><img src="/images/favicon.png" alt="" width="40" class="me-2"> <span><?= floor($subject_item_result ? $subject_item_result[0] : 0) ?></span></span>
                                                                         <span class="d-flex align-items-center"><?php if ($subject->user->me) { ?><img class="me-2" src=" <?= str_replace("/var/www/html/Mizagene/web/", "", $subject->user->me->image) ?>" alt="" class="" style="width: 40px; height: 40px; border-radius: 100%; object-fit: cover; filter: grayscale(100%);"><?php } else { ?> <i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i> <?php } ?> <span class="myopinion"><?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo isset($opinion) ? $opinion->disagree_value : '' ?></span></span>
                                                                     </div>
 
@@ -546,24 +553,28 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                                             return $obj->subject_item_result;
                                                         }
                                                     }, $result);
-                                                
+
+                                                    $subject_item_result = array_filter($subject_item_result);
+                                                    $subject_item_result = array_values($subject_item_result);
+
                                                     $colors = [];
 
                                                     for ($i = 1; $i <= 10; $i++) {
                                                         $colors[] = [''.$i/10 => $scheme[$item->getColorSector($i)->color_id] ];
                                                     }
                                                     $color = null;
+
                                                     foreach ($colors as $element) {
-                                                        if (array_key_exists(''.(floor($subject_item_result[0]/10)/10).'', $element)) {
-                                                            $color = $element[''.(floor($subject_item_result[0]/10)/10).''];
+                                                        if (array_key_exists(''.(floor($subject_item_result ? $subject_item_result[0] : 0/10)/10).'', $element)) {
+                                                            $color = $element[''.(floor($subject_item_result ? $subject_item_result[0] : 0/10)/10).''];
                                                             break;
                                                         }
                                                     }
                                                     ?>
                                                     <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-md-block" >
-                                                        <div class="parameterItem opinionContainer" data-res="<?= $subject_item_result[0] ?>" data-item="<?= $item->id ?>" data-color="<?= $reverse[$color] ?>">
+                                                        <div class="parameterItem opinionContainer" data-res="<?= $subject_item_result ? $subject_item_result[0] : 0 ?>" data-item="<?= $item->id ?>" data-color="<?= $color ? $reverse[$color] : 1 ?>">
                                                             <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px; height: 330px">
-                                                                <div class="test desktopResult d-flex justify-content-center" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;" data-result="<?= $subject_item_result[0] ?>" data-colors='<?= str_replace(':', ',', json_encode($colors)) ?>'></div>
+                                                                <div class="test desktopResult d-flex justify-content-center" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;" data-result="<?= $subject_item_result ? $subject_item_result[0] : 0 ?>" data-colors='<?= str_replace(':', ',', json_encode($colors)) ?>'></div>
                                                                 <div class="px-2 pt-0 pb-4 text-center dots" style="margin-top: -80px; font-weight: 500;"><?= $item->getTitle($subjectLang)->title ?></div>
                                                                 <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; height: 100px; z-index: 8; position: relative" >
                                                                     <i><?= $item->getTitle($subjectLang)->description ?></i>
@@ -580,7 +591,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                                             </div>
                                                             <?php } ?>
                                                             <div class="<?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo (isset($opinion) && $opinion->disagree == 1) ? 'd-flex' : 'd-none' ?> justify-content-between px-4 align-items-center mt-2 mb-4 finalOpinion" style="cursor:pointer;">
-                                                                <span class="d-flex align-items-center"><img src="/images/favicon.png" alt="" width="40" class="me-2"> <span><?= floor($subject_item_result[0]) ?></span></span>
+                                                                <span class="d-flex align-items-center"><img src="/images/favicon.png" alt="" width="40" class="me-2"> <span><?= floor($subject_item_result ? $subject_item_result[0] : 0) ?></span></span>
                                                                 <span class="d-flex align-items-center"><?php if ($subject->user->me) { ?><img class="me-2" src=" <?= str_replace("/var/www/html/Mizagene/web/", "", $subject->user->me->image) ?>" alt="" class="" style="width: 40px; height: 40px; border-radius: 100%; object-fit: cover; filter: grayscale(100%);"><?php } else { ?> <i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i> <?php } ?> <span class="myopinion"><?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo isset($opinion) ? $opinion->disagree_value : '' ?></span></span>
                                                             </div>
 
@@ -599,7 +610,6 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
             </div>
         </div>
     </div>
-
     <script>
         window.addEventListener('load', function () {
             $('.dotFace').click(function () {
@@ -617,6 +627,17 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                 $('.dotFace').attr('src', '<?= ($subject->gender == 1 || $subject->gender == 3) ? '/images/scan_men.png' : '/images/scan_woman.png' ?>');
                 $('.dotFace').css('background', 'white');
             })
+
+            $('.carousel').swipe({
+                swipeLeft:function(event, direction, distance, duration, fingerCount) {
+                    $(this).carousel('next', 1);
+                },
+                swipeRight:function(event, direction, distance, duration, fingerCount) {
+                    $(this).carousel('prev', 1);
+                },
+                allowPageScroll: 'vertical'
+            });
+
 
             $('.editInfo').click(function () {
                 $(this).hide();
