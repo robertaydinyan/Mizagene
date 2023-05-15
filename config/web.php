@@ -83,6 +83,7 @@ $config = [
                 'connections' => 'user/connections',
                 'subject' => 'user/subject',
                 'allitems' => 'user/allitems',
+                'analytics' => 'user/analytics',
 //                '' => 'site/login',
 //                'signup' => 'site/signup',
             ],

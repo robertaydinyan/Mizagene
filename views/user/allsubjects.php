@@ -2,6 +2,12 @@
 include('header.php');
 use yii\helpers\Url;
 use app\models\Subject;
+use app\modules\models\GroupVariants;
+use app\modules\models\Reports;
+use app\modules\models\Items;
+
+$subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
+$reports = Reports::find()->where(['disabled' => 0])->all();
 ?>
 <style>
     .dataTables_wrapper {
@@ -72,74 +78,69 @@ use app\models\Subject;
 
     <div class="col-xl-2 col-lg-12 col-md-12 col-sm-12 col-12" style="background: white; border-radius: 3px; height: auto; margin-top: 3.8%">
         <p class="text-center mt-2 pb-0 mb-0">Quick Parameter Search</p>
-        <div class="p-3">
+        <div class="py-3">
             <div class="d-flex">
-                <input type="text" style="width: 100%; border: 1px solid #dee2e6; border-radius: 5px">
-                <button type="button" class="btn" style="padding: 0; margin: 0; margin-left: 36px!important;"><img src="/images/filter.png" alt="" width="30px"></button>
+                <select name="form-select" id="" class="select2 selectFilterParam" >
+                    <option value="">Select Parameter</option>
+                    <?php
+                    $checkItem = [];
+                    foreach ($reports as $rep):
+                    foreach ($rep->groups as $gr):
+                        $group = GroupVariants::findOne($gr);
+                        foreach ($group->items as $it):
+                            $item = Items::findOne($it);
+                        if (!in_array($item->id, $checkItem)) {
+                            $checkItem[] = $item->id;
+                            ?>
+                            <option value="<?= $item->id ?>"><?= $item->getTitle($subjectLang)->title ?></option>
+                        <?php } endforeach; endforeach; endforeach; ?>
+                </select>
+                <div class="dropdown">
+                    <a href="#" class="text-dark text-end px-2 py-1 my-2 hideFilter" role="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
+                        <img src="/images/filter.png" alt="" width="30px">
+                    </a>
+<!--                    <button type="button" class="btn dropdown-toggle" style="padding: 0; margin: 0; margin-left: 15px!important;"><img src="/images/filter.png" alt="" width="30px" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false"></button>-->
+                    <div class="dropdown-menu mt-3 subjectFilterContainer" style="width: 250px; padding: 10px">
+                        <select class="form-select my-2 subjectFilterType" aria-label="Default select example">
+                            <option value="0">Select Filter Type</option>
+                            <option value="2">Color</option>
+                            <option value="3">Result range</option>
+                        </select>
+
+                        <div class="subjectColorSearch subjectSearchFilter px-1 justify-content-between" style="display: none!important;margin-top: 10px;">
+                            <input type="radio" value="#EB4228" name="colorSelect" id="accent_red" style="width: 20px; height: 20px">
+                            <input type="radio" value="#F3B86B" name="colorSelect" id="accent_orange" style="width: 20px; height: 20px">
+                            <input type="radio" value="#F3E5B2" name="colorSelect" id="accent_yellow" style="width: 20px; height: 20px">
+                            <input type="radio" value="#D1D690" name="colorSelect" id="accent_green" style="width: 20px; height: 20px">
+                            <input type="radio" value="#A0AD63" name="colorSelect" id="accent_dark" style="width: 20px; height: 20px">
+                        </div>
+
+                        <div class="input-group mb-3 subjectRangeSearch subjectSearchFilter" style="display: none;margin-top: 10px;">
+                            <input type="number" value="0" class="form-control minper" placeholder="0" aria-label="Recipient's username" aria-describedby="basic-addon2" min="0" max="100">
+                            <span class="input-group-text" id="basic-addon2">%</span>
+                            <input type="number" value="100" class="form-control maxper" placeholder="100" aria-label="Recipient's username" aria-describedby="basic-addon3" min="0" max="100">
+                            <span class="input-group-text" id="basic-addon3">%</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between subjectSearchButtons px-1" style="display: none!important; margin-top: 10px">
+                            <button type="button" class="btn mySubjectSearch" style="background: #003C46!important; color: white!important;width: 100px!important;">Search</button>
+                            <button type="button" class="btn mySubjectClear" style="background: rgb(234, 51, 61)!important; color: white!important;width: 100px!important;">Clear</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!--            <div class="d-flex">-->
-            <!--                <label for="color-black">-->
-            <!--                    <input type="radio" id="color-black" name="color" value="black" checked/>-->
-            <!--                    <span class="color-radio black"></span>-->
-            <!--                </label>-->
-            <!---->
-            <!--                <label for="color-red">-->
-            <!--                    <input type="radio" id="color-red" name="color" value="red" />-->
-            <!--                    <span class="color-radio red"></span>-->
-            <!--                </label>-->
-            <!---->
-            <!--                <label for="color-green">-->
-            <!--                    <input type="radio" id="color-green" name="color" value="green" />-->
-            <!--                    <span class="color-radio green"></span>-->
-            <!--                </label>-->
-            <!---->
-            <!--                <label for="color-blue">-->
-            <!--                    <input type="radio" id="color-blue" name="color" value="blue" />-->
-            <!--                    <span class="color-radio blue"></span>-->
-            <!--                </label>-->
-            <!---->
-            <!--            </div>-->
-            <div class="d-flex flex-column mt-3">
-<!--                <div class="d-flex align-items-center justify-content-start">-->
-<!--                    <img class="me-2" src="/images/aram.jpg" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;">-->
-<!--                    <span class="mx-2">Aram</span>-->
-<!--                    <div class="d-flex ms-auto align-items-center">-->
-<!--                        <div class="mx-2" style="width: 10px; height: 10px; background: black; border-radius: 3px"></div>-->
-<!--                        <span class="">43.54%</span>-->
-<!--                    </div>-->
-<!---->
-<!--                </div>-->
-<!--                <hr style="margin: 0.5rem 0!important;">-->
-<!--                <div class="d-flex align-items-center justify-content-start">-->
-<!--                    <img class="me-2" src="/images/aram.jpg" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;">-->
-<!--                    <span class="mx-2">Aram</span>-->
-<!--                    <div class="d-flex ms-auto align-items-center">-->
-<!--                        <div class="mx-2" style="width: 10px; height: 10px; background: black; border-radius: 3px"></div>-->
-<!--                        <span class="">43.54%</span>-->
-<!--                    </div>-->
-<!---->
-<!--                </div>-->
-<!--                <hr style="margin: 0.5rem 0!important;">-->
-<!--                <div class="d-flex align-items-center justify-content-start">-->
-<!--                    <img class="me-2" src="/images/aram.jpg" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;">-->
-<!--                    <span class="mx-2">Aram</span>-->
-<!--                    <div class="d-flex ms-auto align-items-center">-->
-<!--                        <div class="mx-2" style="width: 10px; height: 10px; background: black; border-radius: 3px"></div>-->
-<!--                        <span class="">43.54%</span>-->
-<!--                    </div>-->
-<!---->
-<!--                </div>-->
-<!--                <hr style="margin: 0.5rem 0!important;">-->
-<!--                <div class="d-flex align-items-center justify-content-start">-->
-<!--                    <img class="me-2" src="/images/aram.jpg" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;">-->
-<!--                    <span class="mx-2">Aram</span>-->
-<!--                    <div class="d-flex ms-auto align-items-center">-->
-<!--                        <div class="mx-2" style="width: 10px; height: 10px; background: black; border-radius: 3px"></div>-->
-<!--                        <span class="">43.54%</span>-->
-<!--                    </div>-->
-<!---->
-<!--                </div>-->
-            </div>
+            <table id="filteredTable" class="hover table-striped w-100">
+                <thead>
+                    <tr>
+                        <td class="text-center" >Photo</td>
+                        <td class="text-start" >Name</td>
+                        <td class="text-start" >Result</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
@@ -157,6 +158,97 @@ use app\models\Subject;
             }
 
         });
+
+        $('#filteredTable').DataTable({
+            order: [[2, 'desc']],
+            "bLengthChange": false,
+            dom: "lrtip",
+            responsive: true,
+            language: {
+                paginate: {
+                    previous: '<',
+                    next: '>',
+                }
+            },
+            columns: [
+                {
+                    data: 'image',
+                    render: function(data, type, row) {
+                        return '<img src="' + data + '" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;">';
+                    }
+                },
+                { data: 'name' },
+                {
+                    data: 'result',
+                    render: function(data, type, row) {
+                        return '<span style="color:' + data.clr + '">' + data.nmb + '</span>';
+                    }
+                }
+            ]
+        });
+
+        $('.subjectFilterType').change(function () {
+            $('.subjectSearchFilter').hide();
+            $('.subjectSearchButtons').hide();
+            $('.subjectColorSearch').removeClass('d-flex');
+            if ($(this).val() == 2) {
+                $('.subjectColorSearch').show();
+                $('.subjectColorSearch').addClass('d-flex');
+                $('.subjectSearchButtons').show();
+            } else if ($(this).val() == 3) {
+                $('.subjectRangeSearch').show();
+                $('.subjectSearchButtons').show();
+            } else {
+                $('.subjectSearchFilter').hide();
+                $('.subjectSearchButtons').hide();
+                $('.subjectColorSearch').removeClass('d-flex');
+            }
+        })
+
+        $(document).find('.select2').select2();
+
+        $('.selectFilterParam').change(function () {
+            let param = $(this).val();
+            $.post( "/user/filter-subjects", { param: param} )
+                .done(function(response) {
+                    var table = $('#filteredTable').DataTable();
+                    table.clear();
+                    table.rows.add(JSON.parse(response));
+                    table.draw();
+                });
+        })
+
+        $('.mySubjectClear').click(function () {
+            $('.subjectSearchFilter').hide();
+            $('.subjectSearchButtons').hide();
+            $('.subjectColorSearch').removeClass('d-flex');
+            $('.subjectFilterType').val(0);
+            $('.subjectFilterType').change();
+            $('.selectFilterParam').change();
+        })
+
+        $('.mySubjectSearch').click(function () {
+            let elem = $(this).closest('.subjectFilterContainer').find('.subjectSearchFilter:visible');
+            let color = '';
+            let param = $('.selectFilterParam').val();
+            let min = 0;
+            let max = 0;
+            if ($(elem).hasClass('subjectColorSearch')) {
+                color = $("input[name='colorSelect']:checked").val();
+            } else {
+                min = $('.minper').val();
+                max = $('.maxper').val();
+            }
+
+            $.post( "/user/filter-subjects", { param: param, color: color, min: min, max: max} )
+                .done(function(response) {
+                    var table = $('#filteredTable').DataTable();
+                    table.clear();
+                    table.rows.add(JSON.parse(response));
+                    table.draw();
+                });
+
+        })
 
         $('body').on('click', '.shareLink', function (){
             var link = $(this).data('link');

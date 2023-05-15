@@ -9,7 +9,7 @@
         <h6 style="padding: 15px 0">© 2023 Youmee LLC. All rights reserved.</h6>
     </div>
 </footer>
-
+<?php use yii\helpers\Url; ?>
 <script>
 
     window.addEventListener('load', function () {
@@ -50,7 +50,9 @@
 
             $('#connectionsTable').DataTable({
                 // dom: 'Qfrtip',
+                order: [[0, 'desc']],
                 "bLengthChange": false,
+                responsive: true,
                 language: {
                     paginate: {
                         previous: '<',
@@ -269,7 +271,8 @@
         <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
 
-<!--        <script src="node_modules/echarts" integrity="sha512-VdqgeoWrVJcsDXFlQEKqE5MyhaIgB9yXUVaiUa8DR2J4Lr1uWcFm+ZH/YnzV5WqgKf4GPyHQ64vVLgzqGIchyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+        <!--        <script src="node_modules/echarts" integrity="sha512-VdqgeoWrVJcsDXFlQEKqE5MyhaIgB9yXUVaiUa8DR2J4Lr1uWcFm+ZH/YnzV5WqgKf4GPyHQ64vVLgzqGIchyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
 </body>
 </html>

@@ -17,6 +17,8 @@ use Yii;
  * @property int $wrist_size
  * @property int $is_me
  * @property string|null $public_id
+ * @property int $status
+ * @property int $copied
  */
 class Subject extends \yii\db\ActiveRecord
 {
@@ -36,7 +38,7 @@ class Subject extends \yii\db\ActiveRecord
         return [
             [['user_id', 'name', 'year_of_birth', 'gender', 'height', 'wrist_size', 'image'], 'required'],
             [['is_me'], 'number'],
-            [['created_at', 'deleted_at', 'public_id'], 'safe']
+            [['created_at', 'deleted_at', 'public_id', 'status', 'copied'], 'safe']
         ];
     }
 
@@ -56,6 +58,8 @@ class Subject extends \yii\db\ActiveRecord
             'height' => 'Height',
             'is_me' => 'Is Me',
             'public_id' => 'Public ID',
+            'status' => 'Status',
+            'copied' => 'Copied',
             'created_at' => 'Created At',
             'deleted_at' => 'Deleted At',
         ];

@@ -103,6 +103,7 @@ if (!$lang) {
                           <ul class="dropdown-menu" style="z-index: 999999999999!important; min-width: 20px!important; color: black!important;">
                             <li><a class="dropdown-item" href="/site/change-lang?lang=en">En</a></li>
                             <li><a class="dropdown-item" href="/site/change-lang?lang=ru">Ru</a></li>
+                            <li><a class="dropdown-item" href="/site/change-lang?lang=es">Es</a></li>
                           </ul>
                         </div>
                     </span>
@@ -153,9 +154,9 @@ if (!$lang) {
                     <li class="nav-item">
                         <a class="nav-link" href="/faq"><?= $data['menu4'][$lang] ?></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: rgb(210, 58, 225)"><?= $data['menu5'][$lang] ?></a>
-                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="#" style="color: rgb(210, 58, 225)">--><?php //= $data['menu5'][$lang] ?><!--</a>-->
+<!--                    </li>-->
                     <li class="nav-item d-md-none">
                         <a class="nav-link" href="/service"><?= $data['subtitle1'][$lang] ?></a>
                     </li>

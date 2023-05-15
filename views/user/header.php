@@ -89,6 +89,13 @@ use yii\bootstrap5\ActiveForm;
                         <img src="/images/HR_<?= Yii::$app->controller->action->id == 'service' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'service' ? 'active' : '' ?>">
                     </a>
                 </li>
+                <?php if (!Yii::$app->user->isGuest && (Yii::$app->user->identity->id == 4 || Yii::$app->user->identity->id == 17)): ?>
+                    <li class="nav-item text-center mt-5">
+                        <a href="/analytics" class="nav-link link-dark px-2">
+                            <img src="/images/analysis_<?= Yii::$app->controller->action->id == 'analytics' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'analytics' ? 'active' : '' ?>">
+                        </a>
+                    </li>
+                <?php endif; ?>
             </ul>
 <!--            <hr>-->
 <!--            <div class="dropdown">-->

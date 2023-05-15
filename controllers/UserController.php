@@ -18,6 +18,8 @@ use app\models\Tresult;
 use app\models\Connection;
 use app\models\ItemReview;
 use app\modules\models\Reports;
+use app\modules\models\GroupVariants;
+use app\modules\models\Items;
 
 
 class UserController extends Controller
@@ -27,7 +29,7 @@ class UserController extends Controller
         if (Yii::$app->user->isGuest && $action->id != 'subject' && $action->id != 'change-lang' && $action->id != 'allitems')  {
             $this->redirect(['/']);
         }else {
-            if ($action->id == 'delete-subject' || $action->id == 'update-subject-info' || $action->id == 'add-connection' || $action->id == 'delete-connection' || $action->id == 'agree' || $action->id == 'disagree') {
+            if ($action->id == 'delete-subject' || $action->id == 'update-subject-info' || $action->id == 'add-connection' || $action->id == 'delete-connection' || $action->id == 'agree' || $action->id == 'disagree' || $action->id == 'filter-subjects' || $action->id == 'filter-analytics-subjects') {
                 $this->enableCsrfValidation = false;
             }
 
@@ -193,13 +195,9 @@ class UserController extends Controller
 
     public function actionConnections()
     {
-        $connection = Connection::find()->all();
-        $subject = Subject::find()->all();
+        $data = Subject::find()->where(['status' => 0])->andWhere(['user_id' => Yii::$app->user->identity->id])->all();
 
-        $data = Subject::find()->with('connections')->all();
         return $this->render('connections', [
-            'connection' => $connection,
-            'subject' => $subject,
             'data' => $data,
         ]);
     }
@@ -236,13 +234,22 @@ class UserController extends Controller
                 if ($check == 1) {
                     $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
                     $rand_str = substr(str_shuffle($chars), 0, 25);
+                    $res = Tresult::find()->where(['subject_id' => $subject->id])->one();
                     $clonedModel = new Subject();
                     $clonedModel->attributes = $subject->attributes;
                     $clonedModel->id = null;
                     $clonedModel->user_id = Yii::$app->user->identity->id;
                     $clonedModel->public_id = $rand_str;
                     $clonedModel->is_me = 0;
+                    $clonedModel->status = 0;
+                    $clonedModel->copied = 1;
                     $clonedModel->save();
+
+                    $cloneResult = new Tresult();
+                    $cloneResult->id = null;
+                    $cloneResult->subject_id = $clonedModel->id;
+                    $cloneResult->result = $res->result;
+                    $cloneResult->save();
                 }
             }
             $reports = Reports::find()->where(['disabled' => 0])->all();
@@ -352,6 +359,237 @@ class UserController extends Controller
         setcookie('subjectLang', $lang, time() + (86400 * 30), '/');
 
         return $this->redirect(Yii::$app->request->referrer);
+    }
+
+    public function actionFilterSubjects()
+    {
+        $scheme = [
+            0 => '#000',
+            1 => '#EB4228',
+            2 => '#F3B86B',
+            3 => '#F3E5B2',
+            4 => '#808080',
+            5 => '#D1D690',
+            6 => '#A0AD63'
+        ];
+
+        $post = Yii::$app->request->post();
+        $data = [];
+
+        if ($post['param'] != '') {
+            $subjects = Subject::find()->select('id, user_id, image, name')->where(['user_id' => Yii::$app->user->identity->id])->andWhere(['deleted_at' => null])->all();
+            $item = Items::findOne($post['param']);
+
+            foreach ($subjects as $subject) {
+                $result = $subject->result;
+                $result = json_decode($result['result']);
+
+                $subject_item_result = array_map(function($obj) use($item) {
+                    if ($obj->item_ID == $item->item_id) {
+                        return $obj->subject_item_result;
+                    }
+                }, $result);
+
+                $subject_item_result = array_filter($subject_item_result);
+                $subject_item_result = array_values($subject_item_result);
+
+                $colors = [];
+
+                for ($i = 1; $i <= 10; $i++) {
+                    $colors[] = [''.$i/10 => $scheme[$item->getColorSector($i)->color_id] ];
+                }
+                $color = null;
+
+                foreach ($colors as $element) {
+                    if (array_key_exists(''.(floor(($subject_item_result ? $subject_item_result[0] : 0)/10)/10).'', $element)) {
+                        $color = $element[''.(floor(($subject_item_result ? $subject_item_result[0] : 0)/10)/10).''];
+                        break;
+                    }
+                }
+
+                if (isset($post['color']) && $post['color'] != '') {
+                    if ($post['color'] == $color) {
+                        $data[] = [
+                            'image' => str_replace('/var/www/html/Mizagene/web/', '', $subject->image),
+                            'name' => $subject->name,
+                            'result' => [
+                                'clr' => $color,
+                                'nmb' => $subject_item_result ? floor($subject_item_result[0]) : 0,
+                            ]
+                        ];
+                    }
+                }else if (isset($post['min']) && $post['min'] != '' && isset($post['max']) && $post['max'] != '') {
+                    if (($subject_item_result ? floor($subject_item_result[0]) : 0) >= $post['min'] && ($subject_item_result ? floor($subject_item_result[0]) : 0) <= $post['max']) {
+                        $data[] = [
+                            'image' => str_replace('/var/www/html/Mizagene/web/', '', $subject->image),
+                            'name' => $subject->name,
+                            'result' => [
+                                'clr' => $color,
+                                'nmb' => $subject_item_result ? floor($subject_item_result[0]) : 0,
+                            ]
+                        ];
+                    }
+
+                } else {
+                    $data[] = [
+                        'image' => str_replace('/var/www/html/Mizagene/web/', '', $subject->image),
+                        'name' => $subject->name,
+                        'result' => [
+                            'clr' => $color,
+                            'nmb' => $subject_item_result ? floor($subject_item_result[0]) : 0,
+                        ]
+                    ];
+                }
+
+            }
+        }
+
+        return json_encode($data);
+    }
+
+    public function actionFilterAnalyticsSubjects()
+    {
+
+        $scheme = [
+            0 => '#000',
+            1 => '#EB4228',
+            2 => '#F3B86B',
+            3 => '#F3E5B2',
+            4 => '#808080',
+            5 => '#D1D690',
+            6 => '#A0AD63'
+        ];
+
+        $post = Yii::$app->request->post();
+        $data = [];
+
+        if ($post['param'] != '') {
+            $subjects = Subject::find()->select('id, user_id, image, name')->where(['deleted_at' => null])->andWhere(['status' => 0])->andWhere(['copied' => 0]);
+            if (isset($post['gender']) && $post['gender'] != '') {
+                if ($post['gender'] == 3) {
+                    $subjects = $subjects->andWhere(['between', 'gender', '3', '4']);
+                } else {
+                    $subjects = $subjects->andWhere(['gender' => $post['gender']]);
+                }
+            }
+
+            $subjects = $subjects->all();
+
+            $item = Items::findOne($post['param']);
+
+            foreach ($subjects as $subject) {
+                $result = $subject->result;
+                $result = json_decode($result['result']);
+
+                $subject_item_result = array_map(function($obj) use($item) {
+                    if ($obj->item_ID == $item->item_id) {
+                        return $obj->subject_item_result;
+                    }
+                }, $result);
+
+                $subject_item_result = array_filter($subject_item_result);
+                $subject_item_result = array_values($subject_item_result);
+
+                $colors = [];
+
+                for ($i = 1; $i <= 10; $i++) {
+                    $colors[] = [''.$i/10 => $scheme[$item->getColorSector($i)->color_id] ];
+                }
+                $color = null;
+
+                foreach ($colors as $element) {
+                    if (array_key_exists(''.(floor(($subject_item_result ? $subject_item_result[0] : 0)/10)/10).'', $element)) {
+                        $color = $element[''.(floor(($subject_item_result ? $subject_item_result[0] : 0)/10)/10).''];
+                        break;
+                    }
+                }
+
+                $data[] = [
+                    'id' => $subject->id,
+                    'image' => str_replace('/var/www/html/Mizagene/web/', '', $subject->image),
+                    'name' => $subject->name,
+                    'result' => [
+                        'clr' => $color,
+                        'nmb' => $subject_item_result ? floor($subject_item_result[0]) : 0,
+                    ]
+                ];
+            }
+        }
+
+        return json_encode($data);
+    }
+
+    public function actionAnalytics()
+    {
+        return $this->render('analytics');
+    }
+
+    public function actionAnalyticsTable($gender = 'null')
+    {
+        $subjects = Subject::find()->where(['status' => 0])->andWhere(['copied' => 0])->andWhere(['deleted_at' => null]);
+        if ($gender != 'null') {
+            if ($gender == 3) {
+                $subjects = $subjects->andWhere(['between', 'gender', '3', '4']);
+            } else {
+                $subjects = $subjects->andWhere(['gender' => $gender]);
+            }
+        }
+        $subjects = $subjects->all();
+        $reports = Reports::find()->where(['disabled' => 0])->all();
+        $itemIDs = [];
+        $data = [];
+
+        foreach ($reports as $rep) {
+            foreach ($rep->groups as $gr) {
+                $group = GroupVariants::findOne($gr);
+                foreach ($group->items as $it) {
+                    $item = Items::findOne($it);
+                    if (!in_array($item->id, $itemIDs)) {
+                        $itemIDs[] = $item->id;
+                    }
+                }
+            }
+        }
+
+        foreach ($itemIDs as $it) {
+            $item = Items::findOne($it);
+            $subRes = [];
+            $numbers = [];
+            foreach ($subjects as $subject) {
+                $result = $subject->result;
+                $result = json_decode($result['result']);
+
+                $subject_item_result = array_map(function($obj) use($item) {
+                    if ($obj->item_ID == $item->item_id) {
+                        return $obj->subject_item_result;
+                    }
+                }, $result);
+
+                $subject_item_result = array_filter($subject_item_result);
+                $subject_item_result = array_values($subject_item_result);
+                if (floor($subject_item_result ? $subject_item_result[0] : 0 /10) != 0) {
+                    $numbers[] = floor($subject_item_result ? $subject_item_result[0] : 0 /10);
+                }
+            }
+
+            $min = min(count($numbers) > 0 ? $numbers : [0]);
+            $max = max(count($numbers) > 0 ? $numbers : [0]);
+
+            $data[] = [
+                'id' => $item->id,
+                'item_title_ru' => $item->getTitle(1)->title,
+                'item_desc_ru' => $item->getTitle(1)->description,
+                'item_title_fa' => $item->getTitle(3)->title,
+                'item_desc_fa' => $item->getTitle(3)->description,
+                'min_result' => $min,
+                'max_result' => $max,
+                'max_min' => $max - $min,
+                'min_dead_zone' => '0 - ' . ($min - 1),
+                'max_dead_zone' => ($max + 1) . ' - 100',
+                'total_dead_zone' => 100 - ($max - $min),
+            ];
+        }
+        return json_encode($data);
     }
 
 
