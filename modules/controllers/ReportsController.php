@@ -103,7 +103,30 @@ class ReportsController extends Controller
                 }
                 if ($model->save()) {
                     $step = min(2, $step + 1);
+                    if ($step == 2 && $model->groups) {
+                        foreach ($model->groups as $i => $variant_id) {
+                            $variant = GroupVariants::findOne($variant_id);
+                            $group = Group::findOne($variant->group_id);
 
+
+                            $variant_m = new GroupVariants();
+                            $data = Yii::$app->request->post('Group');
+                            $variant_m->items = $data['items'];
+                            $variant_m->item_description_ru = $data['item_description_ru'];
+                            $variant_m->item_description_en = $data['item_description_en'];
+                            $variant_m->group_id = $group->id;
+                            $original_name = $variant->name;
+                            $variant_m->depth = (GroupVariants::find()->select('max(depth) as depth')->where(['group_id' => $variant->group_id, 'parent_id' => $variant_id])->one()['depth'] ?: 0) + 1;
+                            $variant_m->parent_id = $variant_id;
+                            $variant_m->name = $original_name . '.' . $variant_m->depth;
+                            $variant_m->save();
+                            $group_ids = $model->groups[$i];
+                            is_string($group_ids) && $group_ids = array($group_ids);
+                            $group_ids[$i] = $variant_m->id;
+                            $model->groups = $group_ids;
+                            $model->save();
+                        }
+                    }
                     return $this->redirect(['create?step=' . ($step) . '&id=' . $model->id]);
                 }
             }

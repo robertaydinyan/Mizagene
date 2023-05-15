@@ -78,16 +78,16 @@ $comb_types = Items::getICombTypes();
                     <div class="d-flex">
                         <div class="col-2"><span>ID <?php echo $model->id; ?></span></div>
                         <div class="col-5 d-flex" style="padding: 10px;">
-                            <img class="flag-icon" src="/images/icons/flag1.jpg" alt="Russian" style="margin: 8px;">
+                            <img class="flag-icon change-group-item-language language-russian" src="/images/icons/flag1.jpg" alt="Russian" style="margin: 8px;">
                             <span><?php echo $model->title_russian; ?></span>
                         </div>
                         <div class="col-5 d-flex" style="padding: 10px;">
-                            <img class="flag-icon" src="/images/icons/flag2.png" alt="English" style="margin: 8px;">
+                            <img class="flag-icon change-group-item-language language-english" src="/images/icons/flag2.png" alt="English" style="margin: 8px;">
                             <span><?php echo $model->title_english; ?></span>
                         </div>
                     </div>
                     <hr style="color: white;">
-                    <div class="group-droppable droppable accordion" id="accordion" style="min-height: 300px">
+                    <div class="group-droppable droppable" style="min-height: 300px">
                         <?php if ($model->groups) {
                             foreach ($model->groups as $variant_id) {
                                 $variant = GroupVariants::findOne($variant_id);

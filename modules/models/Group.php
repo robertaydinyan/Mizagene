@@ -61,7 +61,7 @@ class Group extends \yii\db\ActiveRecord
             'icon' => 'Icon',
             'items' => 'Items',
             'pushed' => 'Pushed',
-            'datetime' => 'Datetime',
+            'datetime' => 'Date and time',
             'created' => 'Created',
             'accepted' => 'Accepted',
         ];
@@ -93,9 +93,5 @@ class Group extends \yii\db\ActiveRecord
 
     public function getVols() {
         return $this->hasMany(GroupVariants::class, ['group_id' => 'id']);
-    }
-
-    public function getReportsName() {
-        return [];
     }
 }

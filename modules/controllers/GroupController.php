@@ -46,6 +46,9 @@ class GroupController extends Controller
     
 
     public function actionIndex() {
+        $item = Items::findOne(1);
+        $item->rangeCalculation(array(29, -5), array(53, 15));
+        die();
         $searchModel = new GroupSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
@@ -122,27 +125,27 @@ class GroupController extends Controller
 
     public function actionGetActiveGroups($search) {
         $variants = GroupVariants::find()
-            ->select([
-                'group_variants.id',
-                'adult',
-                'title_english',
-                'name',
-                'group_variants.items',
-                'JSON_LENGTH(JSON_EXTRACT(group_variants.items, \'$\')) as el_count',
-                'IFNULL((SELECT max(depth) from group_variants as gv WHERE gv.parent_id = group_variants.id), 0) as variants_count',
-                '(
-                  SELECT COUNT(*)
-                  FROM items
-                  WHERE check1 = 1
-                    AND JSON_CONTAINS(REPLACE(group_variants.items, \'"\', \'\'), CAST(id AS JSON), \'$\')
-                ) AS active_items',
-                '(
-                  SELECT COUNT(*)
-                  FROM items
-                  WHERE check1 = 0
-                    AND JSON_CONTAINS(REPLACE(group_variants.items, \'"\', \'\'), CAST(id AS JSON), \'$\')
-                ) AS disable_items',
-            ])
+//            ->select([
+//                'group_variants.id',
+//                'adult',
+//                'title_english',
+//                'name',
+//                'group_variants.items',
+//                'JSON_LENGTH(JSON_EXTRACT(group_variants.items, \'$\')) as el_count',
+//                'IFNULL((SELECT max(depth) from group_variants as gv WHERE gv.parent_id = group_variants.id), 0) as variants_count',
+//                '(
+//                  SELECT COUNT(*)
+//                  FROM items
+//                  WHERE check1 = 1
+//                    AND JSON_CONTAINS(REPLACE(group_variants.items, \'"\', \'\'), CAST(id AS JSON), \'$\')
+//                ) AS active_items',
+//                '(
+//                  SELECT COUNT(*)
+//                  FROM items
+//                  WHERE check1 = 0
+//                    AND JSON_CONTAINS(REPLACE(group_variants.items, \'"\', \'\'), CAST(id AS JSON), \'$\')
+//                ) AS disable_items',
+//            ])
             ->joinWith(['group' => function($model) use ($search){
                 $search_model = new GroupSearch();
                 $search_model->filterByText($model, $search);
@@ -152,7 +155,15 @@ class GroupController extends Controller
 //        echo "<pre>";
 //        var_dump($variants->asArray()->all());
 //        die();
-        return json_encode($variants->asArray()->all());
+        $result = [];
+        foreach ($variants->all() as $variant) {
+            $result[$variant->id] = $this->renderAjax('../reports/_variant', [
+                'variant' => $variant,
+                'template' => true
+            ]);
+        }
+
+        return json_encode($result);
     }
 
     /**

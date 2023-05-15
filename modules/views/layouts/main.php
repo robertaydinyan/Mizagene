@@ -85,8 +85,8 @@ AppAsset::register($this);
                     ],
                     'active' => in_array(Yii::$app->controller->id, array('group', 'region'))
                 ],
-                ['label' => 'Hi, <b>' . Yii::$app->admin->getIdentity()->username . '</b>', 'options' => ['class' => 'underlined-nav-link']],
-                ['label' => '<i class="fa fa-sign-out" aria-hidden="true" style="font-size: 23px; padding-left: 0; margin-left: -16px;"></i>', 'url' => ['/admin/logout']],
+                ['label' => '<span style="margin-left: 50px">Hi, <b>' . Yii::$app->admin->getIdentity()->username . '</b></span>'],
+                ['label' => '<img src="/images/icons/logout.png" style="width: 20px; margin-left: -12px; margin-top: -4px;">', 'url' => ['/admin/logout']],
             ] : []
         ]);
         NavBar::end();

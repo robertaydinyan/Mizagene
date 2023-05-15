@@ -592,16 +592,18 @@ $columns = [
             );
         }
     ],
+    'gender_editable' => [
+        'header' => '<div><span>Gender</span></div>',
+        'format' => 'raw',
+        'value' => function($model) use ($form) {
+            return $form->field($model, 'gender')->dropDownList(Items::getGenders())->label(false);
+        }
+    ],
     'delete_date' => [
         'header' => '<div><span>Delete date</span></div>',
         'format' => 'raw',
         'value' => function($model) {
-            return sprintf('
-                        <span>%s</span>
-                    ',
-
-                $model->delete_date
-            );
+            return $model->delete_date;
         }
     ]
 ];

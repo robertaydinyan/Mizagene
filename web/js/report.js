@@ -2,11 +2,12 @@ $(document).ready(function() {
     // functions
     function reportGroupEvents() {
         $(".report-group-container, .droppable").sortable({
-            placeholder: "accordion-item",
+            placeholder: "report-group",
             connectWith: ".report-group-container, .droppable",
+            tolerance: "pointer",
             stop: function(event, ui) {
                 ui = $(ui.item);
-                if (ui.closest(".group-item-container").length > 0) {
+                if (ui.closest(".report-group-container").length > 0) {
                     ui.find('input, textarea').attr('disabled', 'disabled');
                 } else {
                     ui.find('input, textarea').removeAttr('disabled');
@@ -36,26 +37,13 @@ $(document).ready(function() {
             'search': $(this).prev().val(),
         }).done((res) => {
             let data = JSON.parse(res);
-            let template = $('.report-group-template');
-            $('.report-group-container .report-group:not(.report-group-template)').remove();
-            let clone;
             let selectedValues = $('.droppable .item-id').map(function() {
                 return $(this).val();
             }).get();
+            $('.report-group-container').html('');
             $.each(data, (i, k) => {
-                if (!selectedValues.includes(k['id'].toString())) {
-                    clone = template.clone().appendTo(template.parent());
-                    clone.removeClass('report-group-template');
-                    clone.find('.item-id').val(k['id']);
-                    clone.find('.report-group-rule').toggle(k['adult'] == 1);
-                    clone.find('.report-group-title').text(k['title_english'] + ' ' + k['name']);
-                    clone.find('.report-group-items-count').html(
-                        k['el_count'] +
-                        '(<span style="color: green;">' + (k['active_items'] || 0) + '</span>, ' +
-                        '<span style="color: red;">' + (k['disable_items'] || 0) + '</span>)');
-                    clone.find('.report-group-versions').text('v. ' + k['variants_count']);
-
-                    // $('.items-container').append('<div class="item"><span>' +  + ' </span><span> ' +  + ' </span><span> ' + item_types[k['i_type']] + '</span></div>');
+                if (!selectedValues.includes(i.toString())) {
+                    $('.report-group-container').append(k);
                 }
             });
             reportGroupEvents();
@@ -63,7 +51,6 @@ $(document).ready(function() {
     });
 
     $('.active-report-disable').on('click', function() {
-        console.log($(this).closest('tr').attr('data-key'))
         $.post('/admin/reports/disable', { 'id': $(this).closest('tr').attr('data-key') });
     });
 
@@ -78,4 +65,14 @@ $(document).ready(function() {
 
     $('.update-report-groups').click();
     reportGroupEvents();
+
+    $(document).on('click', '.report-group-content', function (ev) {
+        $(this).next().slideToggle();
+        if ($(this).find('.fa-caret-down').length > 0) {
+            $(this).find('.fa-caret-down').addClass('fa-caret-up').removeClass('fa-caret-down');
+        } else {
+            $(this).find('.fa-caret-up').removeClass('fa-caret-up').addClass('fa-caret-down');
+        }
+        ev.preventDefault()
+    });
 });

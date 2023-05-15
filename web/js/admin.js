@@ -407,4 +407,23 @@ $(document).ready(function() {
         $('.droppable .group-item-description-en-editable').toggle(language);
 
     })
+
+    $('.accordion').on('hide.bs.collapse', function(e) {
+        // Get the number of items that are currently open
+        var openItems = $(this).find('.collapse.show');
+        // If there's only one open item, prevent it from being closed
+        if (openItems.length === 1) {
+            e.preventDefault();
+        }
+    });
+
+    $(document).on('click', '.custom-accordion-header', function (ev) {
+        $(this).next().slideToggle();
+        if ($(this).find('.fa-caret-down').length > 0) {
+            $(this).find('.fa-caret-down').addClass('fa-caret-up').removeClass('fa-caret-down');
+        } else {
+            $(this).find('.fa-caret-up').removeClass('fa-caret-up').addClass('fa-caret-down');
+        }
+        ev.preventDefault()
+    });
 });

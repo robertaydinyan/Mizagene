@@ -56,22 +56,28 @@ class GroupVariants extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getItemsCount() {
-        $result = 0;
-        if ($this->items) {
-            $items = is_array($this->items) ? $this->items : json_decode($this->items);
-            foreach ($items as $items_id) {
-                $result += 1;
-            }
-        }
-        return $result;
-    }
-
     public function getGroup() {
         return $this->hasOne(Group::class, ['id' => 'group_id']);
     }
 
     public function getVariantsCount() {
         return GroupVariants::find()->select('max(depth) as max_depth')->where(['parent_id' => $this->id])->asArray()->one()['max_depth'] ?: 0;
+    }
+
+    public function getItems() {
+        return Items::find()->where(['JSON_CONTAINS(REPLACE(\'' . json_encode($this->items) . '\', \'"\', \'\'), CAST(id AS JSON), \'$\')' => 1])->all();
+    }
+
+    public function getItemsCount($c1 = null) {
+        $items = Items::find()->where(['JSON_CONTAINS(REPLACE(\'' . json_encode($this->items) . '\', \'"\', \'\'), CAST(id AS JSON), \'$\')' => 1]);
+        if (!is_null($c1)) {
+            $items->andWhere(['check1' => $c1]);
+        }
+
+        return $items->count();
+    }
+
+    public function getReportsName() {
+        return Reports::find()->select('title_russian')->where(['JSON_CONTAINS(REPLACE(`groups`, \'"\', \'\'), CAST("' . $this->id . '" AS JSON), \'$\')' => 1])->asArray()->all();
     }
 }

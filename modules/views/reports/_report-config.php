@@ -14,8 +14,5 @@ use yii\bootstrap5\Html;
     </div>
 
     <div class="report-group-container">
-        <?php echo $this->renderFile('@app/modules/views/reports/_variant.php', [
-            'template' => true,
-        ]); ?>
     </div>
 </div>

@@ -265,13 +265,13 @@ main {
 }
 
 .icon {
-    background-position: center;
-    background-size: cover;
-    display: inline-block;
-    margin-right: 12px;
-    margin-top: 6px;
-    width: 22px;
-    height: 22px;
+    background-position: center !important;
+    background-size: cover !important;
+    display: inline-block !important;
+    margin-right: 12px !important;
+    margin-top: 6px !important;
+    width: 22px !important;
+    height: 22px !important;
 }
 
 .b-icon {
@@ -312,7 +312,8 @@ main {
 }
 
 .save-white {
-    background-image: url("/images/icons/save_white.png");
+    background-image: url("/images/icons/save_white.png") !important;
+    background-color: transparent !important;
 }
 
 .save-green-filled {
@@ -666,14 +667,16 @@ a.nav-link {
 }
 
 .report-group {
-    height: 60px;
-    margin: 8px 0;
     background-color: #f8f8f8;
-    padding: 12px;
 }
 
 .report-group-main {
     width: 91.66666667%;
+}
+
+.report-group-content {
+    height: 60px;
+    padding: 12px;
 }
 
 .group-item-content {
@@ -718,6 +721,10 @@ a.nav-link {
 
 .group-item-template, .report-group-template {
     display: none !important;
+}
+
+.report-group-container .group-item-template, .group-droppable .group-item-template {
+    display: flex !important;
 }
 
 .dropdown-menu {
@@ -848,7 +855,7 @@ a.nav-link {
 }
 
 .simple-grid th a {
-    background: white;
+    background-color: white;
     width: 100%;
     height: 100%;
     display: inline-block;
@@ -934,4 +941,28 @@ input:checked + .slider:before {
 .accordion-body {
     background: white;
     padding: 12px;
+}
+
+.collapse-none {
+    display: none !important;
+}
+
+.collapse-block {
+    display: block !important;
+}
+
+.report-group-container .group-item {
+    width: 100%;
+}
+
+.custom-accordion-header {
+    cursor: pointer;
+}
+
+.custom-accordion-collapse {
+    display: none;
+    border-radius: 9px;
+    padding: 8px;
+    background: rgb(0, 60, 71);
+    color: white;
 }

@@ -44,7 +44,6 @@ class Items extends \yii\db\ActiveRecord
         6 => 'Result',
         7 => 'Result Translation',
         8 => 'Result (Check)',
-//        9 => 'Results (Edits Translate)',
         9 => 'Push'
     );
 
@@ -122,6 +121,12 @@ class Items extends \yii\db\ActiveRecord
         2 => 'Returned'
     );
 
+    private static $genders = array(
+        0 => 'both',
+        1 => 'male',
+        2 => 'female'
+    );
+
     /**
      * {@inheritdoc}
      */
@@ -136,7 +141,7 @@ class Items extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['e2e_item_id', 'item_id', 'source', 'check1', 'check2', 'check3', 'check4', 'deleted', 'priority', 'returned'], 'integer'],
+            [['e2e_item_id', 'item_id', 'source', 'check1', 'check2', 'check3', 'check4', 'deleted', 'priority', 'returned', 'gender'], 'integer'],
             [['item_id'], 'required'],
             [['i_type', 'i_usg_type', 'i_comb_type_id', 'activated_at'], 'safe'],
             [['comment'], 'string'],
@@ -181,7 +186,8 @@ class Items extends \yii\db\ActiveRecord
                             'russian',
                             'english',
                             'results_description',
-                            'results'
+                            'results',
+                            'gender_editable'
                         ),
                         '{disable} {update} {save} {mark}'
                     )
@@ -567,10 +573,25 @@ class Items extends \yii\db\ActiveRecord
         return $this->hasMany(ItemColors::class, ['item_id' => 'item_id']);
     }
 
+    public static function getGenders() {
+        return self::$genders;
+    }
+
     public function fields() {
         $fields = parent::fields();
         $fields[] = 'type';
         return $fields;
     }
 
+    /*
+     * min - [29, -5]
+     * max - [53, 15]
+    */
+    public function rangeCalculation($min, $max) {
+        $this->min_r = $min[0];
+        $this->min_delta_r = $min[1];
+        $coefficient = ($max[1] - $min[1]) / ($max[0] - $min[0]);
+        $this->coefficient = $coefficient;
+        $this->save();
+    }
 }

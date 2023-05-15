@@ -24,18 +24,67 @@ $comb_types = Items::getICombTypes();
         'dataProvider' => $dataProvider,
         'columns' => [
             'id',
-            'title_russian',
-            'title_english',
-            'description_russian',
-            'description_english',
+            [
+                'header' => '<div class="title-label">
+                    <img class="flag-icon" src="/images/icons/flag1.jpg" alt="Russian">
+                    <div class="title-label-content">
+                        <span>Title</span>
+                        <span>Description</span>
+                    </div>
+                </div>',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return sprintf('<div class="title-value">
+                        <span>%s</span>
+                        <span>%s</span>
+                    </div>',
+
+                        $model->title_russian,
+                        $model->description_russian
+                    );
+                }
+            ],
+            [
+                'header' => '<div class="title-label">
+                    <img class="flag-icon" src="/images/icons/flag2.png" alt="English">
+                    <div class="title-label-content">
+                        <span>Title</span>
+                        <span>Description</span>
+                    </div>
+                </div>',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return sprintf('<div class="title-value">
+                        <span>%s</span>
+                        <span>%s</span>
+                    </div>',
+
+                        $model->title_english,
+                        $model->description_english
+                    );
+                }
+            ],
             'datetime',
             [
                 'header' => '<div>Reports</div>',
                 'format' => 'raw',
                 'value' => function($model) {
-                    return implode("", array_map(function ($elem) {
-                        return "<span>" . $elem . "</span><br>";
-                    }, $model->getReportsName()));
+                    $vols = "";
+                    foreach ($model->vols as $vol) {
+                        $vols .= sprintf(
+                            '<span>%s</span><br>',
+                            implode("",
+                                array_map(function ($report) {
+                                    return "<span>" . $report['title_russian'] . " </span>";
+                                }, $vol->getReportsName())
+                            )
+                        );
+                    }
+                    return $vols;
+                    return '<span>ddddddd</span> <br> <span>ddddddd</span>';
+//                    return implode("", array_map(function ($elem) {
+//                        return "<span>" . $elem . "</span><br>";
+//                    }, $model->getReportsName()));
                 }
             ],
             [
@@ -55,13 +104,42 @@ $comb_types = Items::getICombTypes();
                 'value' => function($model) {
                     $vols = "";
                     foreach ($model->vols as $vol) {
-                        $vols .= $vol->getItemsCount() . '<br>';
+                        $vols .= sprintf('
+                            <div class="custom-accordion">
+                                <div class="custom-accordion-item">
+                                    <div class="custom-accordion-header d-flex justify-content-between">
+                                        <div>
+                                            <span>%s(<span style="color: green">%s</span>, <span style="color: red">%s</span>)</span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:;"><i class="fa fa-caret-down"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="custom-accordion-collapse custom-collapse">%s</div>
+                                </div>
+                            </div>
+                            ',
+                            
+                            $vol->getItemsCount(),
+                            $vol->getItemsCount(1),
+                            $vol->getItemsCount(0),
+                            implode("",
+                                array_map(function ($item) {
+                                    return "<span>" . $item->id . " " . $item->getTitle(1)->title . "</span><br>";
+                                }, $vol->getItems())
+                            )
+                        );
                     }
                     return $vols;
                 }
             ],
             [
                 'class' => ActionColumn::className(),
+                'header' => Html::a('', 'javascript:;',
+                    [
+                        'class' => 'icon save-white label',
+                    ]
+                ),
                 'template' => '{update} {delete}',
                 'buttons' => [
                     'delete' => function ($url, $model, $key) {
