@@ -129,6 +129,7 @@ main {
 
 .color-for-0 {
     background: white;
+    border: 1px solid;
 }
 
 .color-for-1 {
@@ -657,6 +658,10 @@ a.nav-link {
 
 .fa-circle.disabled {
     color: red;
+}
+
+.fa-circle.passive {
+    color: grey;
 }
 
 .group-item {

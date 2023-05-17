@@ -39,26 +39,26 @@ $step = $model->getStep();
                 </div>',
 
 
-                    $model->getColorSector(1)->color_id,
-                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(1)->color_id])->label(false),
-                    $model->getColorSector(2)->color_id,
-                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(2)->color_id])->label(false),
-                    $model->getColorSector(3)->color_id,
-                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(3)->color_id])->label(false),
-                    $model->getColorSector(4)->color_id,
-                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(4)->color_id])->label(false),
-                    $model->getColorSector(5)->color_id,
-                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(5)->color_id])->label(false),
-                    $model->getColorSector(6)->color_id,
-                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(6)->color_id])->label(false),
-                    $model->getColorSector(7)->color_id,
-                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(7)->color_id])->label(false),
-                    $model->getColorSector(8)->color_id,
-                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(8)->color_id])->label(false),
-                    $model->getColorSector(9)->color_id,
-                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(9)->color_id])->label(false),
-                    $model->getColorSector(10)->color_id,
-                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(10)->color_id])->label(false)
+                    $model->getColorSector(1) ? $model->getColorSector(1)->color_id : 0,
+                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(1) ? $model->getColorSector(1)->color_id : 0])->label(false),
+                    $model->getColorSector(2) ? $model->getColorSector(2)->color_id : 0,
+                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(2) ? $model->getColorSector(2)->color_id : 0])->label(false),
+                    $model->getColorSector(3) ? $model->getColorSector(3)->color_id : 0,
+                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(3) ? $model->getColorSector(3)->color_id : 0])->label(false),
+                    $model->getColorSector(4) ? $model->getColorSector(4)->color_id : 0,
+                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(4) ? $model->getColorSector(4)->color_id : 0])->label(false),
+                    $model->getColorSector(5) ? $model->getColorSector(5)->color_id : 0,
+                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(5) ? $model->getColorSector(5)->color_id : 0])->label(false),
+                    $model->getColorSector(6) ? $model->getColorSector(6)->color_id : 0,
+                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(6) ? $model->getColorSector(6)->color_id : 0])->label(false),
+                    $model->getColorSector(7) ? $model->getColorSector(7)->color_id : 0,
+                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(7) ? $model->getColorSector(7)->color_id : 0])->label(false),
+                    $model->getColorSector(8) ? $model->getColorSector(8)->color_id : 0,
+                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(8) ? $model->getColorSector(8)->color_id : 0])->label(false),
+                    $model->getColorSector(9) ? $model->getColorSector(9)->color_id : 0,
+                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(9) ? $model->getColorSector(9)->color_id : 0])->label(false),
+                    $model->getColorSector(10) ? $model->getColorSector(10)->color_id : 0,
+                    $form->field($model, 'colorSectors[color_id][]')->hiddenInput(['class' => 'required', 'value' => $model->getColorSector(10) ? $model->getColorSector(10)->color_id : 0])->label(false)
 
                 );
                 ?>
@@ -97,8 +97,8 @@ $step = $model->getStep();
                     %s 
                 </div>',
                 10 * $i + 1 . '-' . 10 * ($i + 1),
-                $form->field($model, 'colorSectors[description_ru][' . $i . ']', ['options' => ['class' => 'col-5']])->textarea(['class' => 'form-control required result-description', 'value' => $model->getColorSector($i + 1)->description_ru])->label('Description ru'),
-                $form->field($model, 'colorSectors[description_en][' . $i . ']', ['options' => ['class' => 'col-5']])->textarea(['class' => 'form-control required result-description', 'value' => $model->getColorSector($i + 1)->description_en])->label('Description en')
+                $form->field($model, 'colorSectors[description_ru][' . $i . ']', ['options' => ['class' => 'col-5']])->textarea(['class' => 'form-control required result-description', 'value' => $model->getColorSector($i + 1) ? $model->getColorSector($i + 1)->description_ru : ''])->label('Description ru'),
+                $form->field($model, 'colorSectors[description_en][' . $i . ']', ['options' => ['class' => 'col-5']])->textarea(['class' => 'form-control required result-description', 'value' => $model->getColorSector($i + 1) ? $model->getColorSector($i + 1)->description_en : ''])->label('Description en')
             );
         } ?>
     </div>

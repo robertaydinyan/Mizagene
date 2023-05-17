@@ -349,7 +349,7 @@ $(document).ready(function() {
                 if (!selectedValues.includes(k['id'].toString())) {
                     clone = template.clone().appendTo(template.parent());
                     clone.removeClass('group-item-template');
-                    clone.find('.fa-circle').removeClass('disabled').addClass(k['check1'] ? 'active' : 'disabled');
+                    clone.find('.fa-circle').removeClass('disabled').addClass(k['check1'] ? (k['disabled'] ? 'passive' : 'active') : 'disabled');
                     clone.find('.group-item-id').text(k['item_id']);
                     clone.find('.item-id').val(k['id']);
                     clone.find('.group-item-title-ru').text(k['russian'] ? k['russian']['title'] : '').toggle(language == 1);

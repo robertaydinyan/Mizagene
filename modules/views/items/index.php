@@ -16,26 +16,9 @@ $tabs = Items::getTabs();
 $this->title = $tabs[$pill][0];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<!--    <ul class="nav nav-pills mb-3" role="tablist">-->
-<!--        --><?php
-//        if ($tabs) {
-//            foreach ($tabs as $i => $title) {
-//                echo sprintf('
-//                            <li class="nav-pills">
-//                                <a class="nav-pill %s" href="?pill=%s"><span>%s</span> %s</a>
-//                            </li>',
-//                    $pill == $i ? "active" : "",
-//                    $i,
-//                    $title,
-//                    Items::getTabElCount($i) == 0 ? "" : '<span class="pill-badge pill-badge-primary">' . Items::getTabElCount($i) . '</span>'
-//                );
-//            }
-//        }?>
-<!--    </ul>-->
 <h1><?= Html::encode($this->title) ?></h1>
 <?php
-if ($pill == 3):
+if (in_array($pill, [2, 3])):
     if ($steps):
         $active_pill = $tabs[$pill]; ?>
         <div class="steps-container d-flex">

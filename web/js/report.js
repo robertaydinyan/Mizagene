@@ -5,6 +5,7 @@ $(document).ready(function() {
             placeholder: "report-group",
             connectWith: ".report-group-container, .droppable",
             tolerance: "pointer",
+            handle: ".report-group-content",
             stop: function(event, ui) {
                 ui = $(ui.item);
                 if (ui.closest(".report-group-container").length > 0) {

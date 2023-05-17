@@ -35,7 +35,7 @@ class Items extends \yii\db\ActiveRecord
         5 => array('Deleted', 'archive.png'),
     );
 
-    private static $steps = array(
+    private static $migrated_steps = array(
         1 => 'Migrated Base',
         2 => 'Translation',
         3 => 'Translation (check)',
@@ -45,6 +45,12 @@ class Items extends \yii\db\ActiveRecord
         7 => 'Result Translation',
         8 => 'Result (Check)',
         9 => 'Push'
+    );
+
+    private static $created_steps = array(
+        1 => 'Creation Base',
+        2 => 'Item Check',
+        3 => 'Push'
     );
 
     private static $ITypes = array(
@@ -141,8 +147,7 @@ class Items extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['e2e_item_id', 'item_id', 'source', 'check1', 'check2', 'check3', 'check4', 'deleted', 'priority', 'returned', 'gender'], 'integer'],
-            [['item_id'], 'required'],
+            [['e2e_item_id', 'item_id', 'source', 'check1', 'check2', 'check3', 'check4', 'deleted', 'priority', 'returned', 'gender', 'rule_id'], 'integer'],
             [['i_type', 'i_usg_type', 'i_comb_type_id', 'activated_at'], 'safe'],
             [['comment'], 'string'],
         ];
@@ -187,7 +192,8 @@ class Items extends \yii\db\ActiveRecord
                             'english',
                             'results_description',
                             'results',
-                            'gender_editable'
+                            'gender_editable',
+                            'rule_editable'
                         ),
                         '{disable} {update} {save} {mark}'
                     )
@@ -202,7 +208,46 @@ class Items extends \yii\db\ActiveRecord
                     '{disable} {update}'
                 );
             case 2;
-                break;
+                switch ($step) {
+                    case 1:
+                        $res = array(
+                            array(
+                                'item_id',
+                                'persian',
+                                'russian',
+                                'english',
+                                'priority',
+                                'results_description'
+                            ),
+                            '{delete} {update} {save} {checkmarkPsychologist}'
+                        );
+                        break;
+                    case 2:
+                        $res = array(
+                            array(
+                                'item_id',
+                                'persian',
+                                'russian',
+                                'english',
+                                'results_description'
+                            ),
+                            '{delete} {update} {checkmarkProfessor}'
+                        );
+                        break;
+                    case 3:
+                        $res = array(
+                            array(
+                                'item_id',
+                                'persian',
+                                'russian',
+                                'english',
+                                'results_description'
+                            ),
+                            '{delete} {update} {save}  {checkmarkAdmin}'
+                        );
+                        break;
+                }
+                return $res;
             case 3;
                 switch ($step) {
                     case 1:
@@ -382,7 +427,9 @@ class Items extends \yii\db\ActiveRecord
                     if (isset($items['colorSectors'])) {
                         $colorSectors = $items['colorSectors'];
                         for ($i = 0; $i < 10; $i++) {
-                            $ic = ItemColors::find()->where(['item_id' => $this->item_id, 'sector_id' => ($i + 1)])->one();
+                            $ic = ItemColors::find()->where(['item_id' => $this->id, 'sector_id' => ($i + 1)])->one() ?: new ItemColors();
+                            $ic->item_id = $this->id;
+                            $ic->sector_id = $i + 1;
                             isset($colorSectors['color_id']) && isset($colorSectors['color_id'][$i]) && $ic->color_id = $colorSectors['color_id'][$i];
                             isset($colorSectors['description_ru']) && isset($colorSectors['description_ru'][$i]) && $ic->description_ru = $colorSectors['description_ru'][$i];
                             isset($colorSectors['description_en']) && isset($colorSectors['description_en'][$i]) && $ic->description_en = $colorSectors['description_en'][$i];
@@ -391,7 +438,7 @@ class Items extends \yii\db\ActiveRecord
                     }
                     return 1;
                 } else {
-                    var_dump($this->errors);
+                    var_dump($this->errors);die();
                 }
             }
             return false;
@@ -402,61 +449,72 @@ class Items extends \yii\db\ActiveRecord
         return $this->{'check' . Yii::$app->admin->getIdentity()->role};
     }
 
-    public static function getSteps() {
+    public static function getSteps($pill) {
         $role = Yii::$app->admin->getIdentity()->role;
-        $steps = self::$steps;
-        if ($role == 4) {
-            unset($steps[1]);
-            unset($steps[4]);
-            unset($steps[5]);
-            unset($steps[6]);
-            unset($steps[8]);
-            unset($steps[9]);
-        } else if ($role == 2) {
-            unset($steps[1]);
-            unset($steps[2]);
-            unset($steps[3]);
-            unset($steps[4]);
-            unset($steps[6]);
-            unset($steps[7]);
-            unset($steps[9]);
-        } else if ($role == 3) {
-            unset($steps[2]);
-            unset($steps[5]);
-            unset($steps[7]);
-            unset($steps[8]);
-            unset($steps[9]);
+        $migrated_steps = self::$migrated_steps;
+        $created_steps = self::$created_steps;
+        if ($pill == 3) {
+            if ($role == 4) {
+                unset($migrated_steps[1]);
+                unset($migrated_steps[4]);
+                unset($migrated_steps[5]);
+                unset($migrated_steps[6]);
+                unset($migrated_steps[8]);
+                unset($migrated_steps[9]);
+            } else if ($role == 2) {
+                unset($migrated_steps[1]);
+                unset($migrated_steps[2]);
+                unset($migrated_steps[3]);
+                unset($migrated_steps[4]);
+                unset($migrated_steps[6]);
+                unset($migrated_steps[7]);
+                unset($migrated_steps[9]);
+            } else if ($role == 3) {
+                unset($migrated_steps[2]);
+                unset($migrated_steps[5]);
+                unset($migrated_steps[7]);
+                unset($migrated_steps[8]);
+                unset($migrated_steps[9]);
+            }
+            return $migrated_steps;
+        } else if ($pill == 2) {
+            if ($role == 2) {
+                unset($created_steps[0]);
+                unset($created_steps[2]);
+            }
+
+            return $created_steps;
         }
 
-        return $steps;
+        return [];
     }
 
     public static function getActiveSteps() {
         $role = Yii::$app->admin->getIdentity()->role;
-        $steps = self::$steps;
+        $migrated_steps = self::$migrated_steps;
         if ($role == 4) {
-            unset($steps[1]);
-            unset($steps[3]);
-            unset($steps[4]);
-            unset($steps[5]);
-            unset($steps[7]);
-            unset($steps[8]);
+            unset($migrated_steps[1]);
+            unset($migrated_steps[3]);
+            unset($migrated_steps[4]);
+            unset($migrated_steps[5]);
+            unset($migrated_steps[7]);
+            unset($migrated_steps[8]);
         } else if ($role == 2) {
-            unset($steps[1]);
-            unset($steps[2]);
-            unset($steps[3]);
-            unset($steps[4]);
-            unset($steps[6]);
-            unset($steps[7]);
+            unset($migrated_steps[1]);
+            unset($migrated_steps[2]);
+            unset($migrated_steps[3]);
+            unset($migrated_steps[4]);
+            unset($migrated_steps[6]);
+            unset($migrated_steps[7]);
         } else if ($role == 3) {
-            unset($steps[2]);
-            unset($steps[5]);
-            unset($steps[6]);
+            unset($migrated_steps[2]);
+            unset($migrated_steps[5]);
+            unset($migrated_steps[6]);
         } else {
-            $steps = array();
+            $migrated_steps = array();
         }
 
-        return $steps;
+        return $migrated_steps;
     }
 
     public static function getTabs() {
@@ -566,11 +624,11 @@ class Items extends \yii\db\ActiveRecord
     }
 
     public function getColorSector($i) {
-        return ItemColors::find()->where(['item_id' => $this->item_id, 'sector_id' => $i])->one();
+        return ItemColors::find()->where(['item_id' => $this->id, 'sector_id' => $i])->one();
     }
 
     public function getColorSectors() {
-        return $this->hasMany(ItemColors::class, ['item_id' => 'item_id']);
+        return $this->hasMany(ItemColors::class, ['item_id' => 'id']);
     }
 
     public static function getGenders() {

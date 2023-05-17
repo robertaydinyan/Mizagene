@@ -130,6 +130,19 @@ class ItemsSearch extends Items
                     $query->andFilterWhere(['check2' => 3, 'check3' => 2, 'check4' => 3]);
                     break;
             }
+        } else if ($pill == 2) {
+            switch ($step) {
+                case 1:
+                    $query->andFilterWhere(['check2' => 0, 'check3' => 0, 'check4' => 0]);
+                    break;
+                case 2:
+                    $query->andFilterWhere(['check2' => 0, 'check3' => 1, 'check4' => 0]);
+                    break;
+                case 3:
+                    $query->andFilterWhere(['check2' => 1, 'check3' => 1, 'check4' => 0]);
+                    break;
+            }
+
         }
     }
 }

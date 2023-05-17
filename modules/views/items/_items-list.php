@@ -31,7 +31,7 @@ $columns = [
                     </div>
                 ',
 
-                $model->item_id,
+                $model->item_id ?: $model->id,
                 $pill != 1 ? ($model->priority ? ('<div class="icon m-icon priority-' . $model->priority . '"></div>') : '') : '',
                 $pill != 1 ? (in_array($model->getStep(), [2, 3])  ? ($model->comment ? ('<div class="icon m-icon comment"  data-toggle="tooltip" title="' . $model->comment . '"></div>') : '') : '') : '',
                 $pill == 1 ? Html::a('',
@@ -521,7 +521,7 @@ $columns = [
                     <div class="color-spector color-for-%s position-relative color-spector-description">
                    </div>',
 
-                    $model->getColorSector($i)->color_id
+                    $model->getColorSector($i) ? $model->getColorSector($i)->color_id : 0
                 );
             }
 
@@ -542,12 +542,12 @@ $columns = [
                    </div>',
 
                     $i == 1 ? '' : 'd-none',
-                    $model->getColorSector($i)->color,
-                    $model->getColorSector($i)->color,
+                    $model->getColorSector($i) ? $model->getColorSector($i)->color : 0,
+                    $model->getColorSector($i) ? $model->getColorSector($i)->color : 0,
                     $i,
                     ($i * 10 - 9) . '-' . ($i * 10),
-                    $model->getColorSector($i)->description_en,
-                    $model->getColorSector($i)->description_ru
+                    $model->getColorSector($i) ? $model->getColorSector($i)->description_en : null,
+                    $model->getColorSector($i) ? $model->getColorSector($i)->description_ru : null
                 );
             }
 
@@ -604,6 +604,15 @@ $columns = [
         'format' => 'raw',
         'value' => function($model) {
             return $model->delete_date;
+        }
+    ],
+    'rule_editable' => [
+        'header' => '<div><span>Rule</span></div>',
+        'format' => 'raw',
+        'value' => function($model) use ($form) {
+            return $form->field($model, 'rule_id')->dropDownList(
+                [0 => ''] + \yii\helpers\ArrayHelper::map(\app\modules\models\ItemRule::find()->all(), 'id', 'name')
+            )->label(false);
         }
     ]
 ];

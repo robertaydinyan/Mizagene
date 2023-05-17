@@ -53,9 +53,9 @@ class ItemsController extends Controller
      * @return string
      */
     public function actionIndex() {
-        $steps = Items::getSteps();
         $step = Yii::$app->request->get('step');
         $pill = Yii::$app->request->get('pill') ?: 1;
+        $steps = Items::getSteps($pill);
         $status = Yii::$app->request->get('status') ?: 1;
         $step = isset($steps[$step]) ? $step : min(array_keys($steps));
         $searchModel = new ItemsSearch();
@@ -67,7 +67,7 @@ class ItemsController extends Controller
             'pill' => $pill,
             'step' => $step,
             'tabs' => Items::getTabs(),
-            'steps' => Items::getSteps(),
+            'steps' => $steps,
             'status' => $status
         ]);
     }
@@ -93,7 +93,7 @@ class ItemsController extends Controller
 
     public function actionGetActiveItems($search) {
         Yii::$app->response->format = Response::FORMAT_JSON;
-        $model = Items::find()->select('items.id, item_id, i_type, source, check1');
+        $model = Items::find()->select('items.id, item_id, i_type, source, check1, disabled');
         $search = json_decode($search);
         $search_model = new ItemsSearch();
         $search_model->filterByText($model, $search->search, false);
@@ -171,11 +171,10 @@ class ItemsController extends Controller
         $model = new Items();
 
         if ($this->request->isPost) {
-            if ($model->saveData($this->request->post())) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
+            $items = Yii::$app->request->post('Items');
+            $model->source = 0;
+            $model->saveData($items);
+            return $this->redirect('/admin/items/index?pill=2');
         }
 
         $languages = Language::find()->all();

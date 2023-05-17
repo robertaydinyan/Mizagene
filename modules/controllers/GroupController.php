@@ -46,9 +46,6 @@ class GroupController extends Controller
     
 
     public function actionIndex() {
-        $item = Items::findOne(1);
-        $item->rangeCalculation(array(29, -5), array(53, 15));
-        die();
         $searchModel = new GroupSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
