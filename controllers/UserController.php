@@ -29,7 +29,7 @@ class UserController extends Controller
         if (Yii::$app->user->isGuest && $action->id != 'subject' && $action->id != 'change-lang' && $action->id != 'allitems')  {
             $this->redirect(['/']);
         }else {
-            if ($action->id == 'delete-subject' || $action->id == 'update-subject-info' || $action->id == 'add-connection' || $action->id == 'delete-connection' || $action->id == 'agree' || $action->id == 'disagree' || $action->id == 'filter-subjects' || $action->id == 'filter-analytics-subjects') {
+            if ($action->id == 'delete-subject' || $action->id == 'update-subject-info' || $action->id == 'add-connection' || $action->id == 'delete-connection' || $action->id == 'agree' || $action->id == 'disagree' || $action->id == 'filter-subjects' || $action->id == 'filter-analytics-subjects' || $action->id == 'put-mark' || $action->id == 'set-range' || $action->id == 'restore-range' || $action->id == 'youmee-result') {
                 $this->enableCsrfValidation = false;
             }
 
@@ -226,7 +226,7 @@ class UserController extends Controller
             if (!Yii::$app->user->isGuest) {
                 $check = 1;
                 foreach (Yii::$app->user->identity->subjects as $sbs) {
-                    if ($sbs->image == $subject->image && $sbs->created_at == $subject->created_at) {
+                    if ($sbs->height == $subject->height && $sbs->wrist_size == $subject->wrist_size && $sbs->gender == $subject->gender && $sbs->year_of_birth == $subject->year_of_birth) {
                         $check = 0;
                         break;
                     }
@@ -392,6 +392,11 @@ class UserController extends Controller
 
                 $subject_item_result = array_filter($subject_item_result);
                 $subject_item_result = array_values($subject_item_result);
+                $subject_item_result  = $subject_item_result ? $subject_item_result[0] : 0;
+                $youmeeResult = 0;
+                if ($item->min_r != null) {
+                    $youmeeResult = floor(($subject_item_result + ($item->min_delta_r + ($subject_item_result - $item->min_r ) * ($item->coefficient))));
+                }
 
                 $colors = [];
 
@@ -401,8 +406,8 @@ class UserController extends Controller
                 $color = null;
 
                 foreach ($colors as $element) {
-                    if (array_key_exists(''.(floor(($subject_item_result ? $subject_item_result[0] : 0)/10)/10).'', $element)) {
-                        $color = $element[''.(floor(($subject_item_result ? $subject_item_result[0] : 0)/10)/10).''];
+                    if (array_key_exists(''.(floor(($youmeeResult == 0 ? $subject_item_result : $youmeeResult)/10)/10).'', $element)) {
+                        $color = $element[''.(floor(($youmeeResult == 0 ? $subject_item_result : $youmeeResult)/10)/10).''];
                         break;
                     }
                 }
@@ -414,7 +419,7 @@ class UserController extends Controller
                             'name' => $subject->name,
                             'result' => [
                                 'clr' => $color,
-                                'nmb' => $subject_item_result ? floor($subject_item_result[0]) : 0,
+                                'nmb' => floor($youmeeResult == 0 ? $subject_item_result : $youmeeResult),
                             ]
                         ];
                     }
@@ -425,7 +430,7 @@ class UserController extends Controller
                             'name' => $subject->name,
                             'result' => [
                                 'clr' => $color,
-                                'nmb' => $subject_item_result ? floor($subject_item_result[0]) : 0,
+                                'nmb' => floor($youmeeResult == 0 ? $subject_item_result : $youmeeResult),
                             ]
                         ];
                     }
@@ -436,7 +441,7 @@ class UserController extends Controller
                         'name' => $subject->name,
                         'result' => [
                             'clr' => $color,
-                            'nmb' => $subject_item_result ? floor($subject_item_result[0]) : 0,
+                            'nmb' => floor($youmeeResult == 0 ? $subject_item_result : $youmeeResult),
                         ]
                     ];
                 }
@@ -462,9 +467,10 @@ class UserController extends Controller
 
         $post = Yii::$app->request->post();
         $data = [];
+        $restore = 'set';
 
         if ($post['param'] != '') {
-            $subjects = Subject::find()->select('id, user_id, image, name')->where(['deleted_at' => null])->andWhere(['status' => 0])->andWhere(['copied' => 0]);
+            $subjects = Subject::find()->select('id, user_id, image, name, public_id')->where(['deleted_at' => null])->andWhere(['status' => 0])->andWhere(['copied' => 0]);
             if (isset($post['gender']) && $post['gender'] != '') {
                 if ($post['gender'] == 3) {
                     $subjects = $subjects->andWhere(['between', 'gender', '3', '4']);
@@ -476,6 +482,7 @@ class UserController extends Controller
             $subjects = $subjects->all();
 
             $item = Items::findOne($post['param']);
+            $restore = $item->min_r != null ? 'restore' : 'set';
 
             foreach ($subjects as $subject) {
                 $result = $subject->result;
@@ -506,17 +513,103 @@ class UserController extends Controller
 
                 $data[] = [
                     'id' => $subject->id,
-                    'image' => str_replace('/var/www/html/Mizagene/web/', '', $subject->image),
+                    'item_id' => $item->id,
+                    'image' => [
+                        'img' => str_replace('/var/www/html/Mizagene/web/', '', $subject->image),
+                        'publicID' => $subject->public_id
+                    ],
                     'name' => $subject->name,
                     'result' => [
                         'clr' => $color,
-                        'nmb' => $subject_item_result ? floor($subject_item_result[0]) : 0,
+                        'nmb' => $subject_item_result ? round($subject_item_result[0], 2) : 0,
+                        'status' => $item->min_r != null ? 'd-none' : ''
                     ]
                 ];
             }
         }
 
-        return json_encode($data);
+        return json_encode(['data' => $data, 'restore' => $restore]);
+    }
+
+    public function actionYoumeeResult()
+    {
+
+        $scheme = [
+            0 => '#000',
+            1 => '#EB4228',
+            2 => '#F3B86B',
+            3 => '#F3E5B2',
+            4 => '#808080',
+            5 => '#D1D690',
+            6 => '#A0AD63'
+        ];
+
+        $post = Yii::$app->request->post();
+        $data = [];
+        $restore = 'set';
+
+        if ($post['param'] != '') {
+            $subjects = Subject::find()->select('id, user_id, image, name, public_id')->where(['deleted_at' => null])->andWhere(['status' => 0])->andWhere(['copied' => 0]);
+            if (isset($post['gender']) && $post['gender'] != '') {
+                if ($post['gender'] == 3) {
+                    $subjects = $subjects->andWhere(['between', 'gender', '3', '4']);
+                } else {
+                    $subjects = $subjects->andWhere(['gender' => $post['gender']]);
+                }
+            }
+
+            $subjects = $subjects->all();
+
+            $item = Items::findOne($post['param']);
+            $restore = $item->min_r != null ? 'restore' : 'set';
+
+            foreach ($subjects as $subject) {
+                $result = $subject->result;
+                $result = json_decode($result['result']);
+
+                $subject_item_result = array_map(function($obj) use($item) {
+                    if ($obj->item_ID == $item->item_id) {
+                        return $obj->subject_item_result;
+                    }
+                }, $result);
+
+                $subject_item_result = array_filter($subject_item_result);
+                $subject_item_result = array_values($subject_item_result);
+
+                $colors = [];
+
+                for ($i = 1; $i <= 10; $i++) {
+                    $colors[] = [''.$i/10 => $scheme[$item->getColorSector($i)->color_id] ];
+                }
+                $color = null;
+
+                foreach ($colors as $element) {
+                    if (array_key_exists(''.(floor(($subject_item_result ? $subject_item_result[0] : 0)/10)/10).'', $element)) {
+                        $color = $element[''.(floor(($subject_item_result ? $subject_item_result[0] : 0)/10)/10).''];
+                        break;
+                    }
+                }
+
+                $subject_item_result = $subject_item_result ? round($subject_item_result[0], 2) : 0;
+
+                $data[] = [
+                    'id' => $subject->id,
+                    'item_id' => $item->id,
+                    'image' => [
+                        'img' => str_replace('/var/www/html/Mizagene/web/', '', $subject->image),
+                        'publicID' => $subject->public_id
+                    ],
+                    'name' => $subject->name,
+                    'result' => [
+                        'clr' => $color,
+                        'nmb' => round(($subject_item_result + ($item->min_delta_r + ($subject_item_result - $item->min_r ) * ($item->coefficient))), 2),
+                        'status' => $item->min_r != null ? 'd-none' : ''
+                    ]
+                ];
+            }
+        }
+
+        return json_encode(['data' => $data, 'restore' => $restore]);
     }
 
     public function actionAnalytics()
@@ -555,6 +648,7 @@ class UserController extends Controller
             $item = Items::findOne($it);
             $subRes = [];
             $numbers = [];
+            $changedNumbers = [];
             foreach ($subjects as $subject) {
                 $result = $subject->result;
                 $result = json_decode($result['result']);
@@ -569,11 +663,17 @@ class UserController extends Controller
                 $subject_item_result = array_values($subject_item_result);
                 if (floor($subject_item_result ? $subject_item_result[0] : 0 /10) != 0) {
                     $numbers[] = floor($subject_item_result ? $subject_item_result[0] : 0 /10);
+                    if ($item->min_r != null) {
+                        $sub_result = $subject_item_result ? round($subject_item_result[0], 2) : 0;
+                        $changedNumbers[] = round(($sub_result + ($item->min_delta_r + ($sub_result - $item->min_r ) * ($item->coefficient))), 2);
+                    }
                 }
             }
 
             $min = min(count($numbers) > 0 ? $numbers : [0]);
             $max = max(count($numbers) > 0 ? $numbers : [0]);
+            $changedMin = min(count($changedNumbers) > 0 ? $changedNumbers : [0]);
+            $changedMax = max(count($changedNumbers) > 0 ? $changedNumbers : [0]);
 
             $data[] = [
                 'id' => $item->id,
@@ -583,14 +683,59 @@ class UserController extends Controller
                 'item_desc_fa' => $item->getTitle(3)->description,
                 'min_result' => $min,
                 'max_result' => $max,
-                'max_min' => $max - $min,
+                'max_min' => $changedMax != 0 ? $max - $min . ' (' . $changedMax - $changedMin . ')' : $max - $min,
                 'min_dead_zone' => '0 - ' . ($min - 1),
                 'max_dead_zone' => ($max + 1) . ' - 100',
                 'total_dead_zone' => 100 - ($max - $min),
+                'cat' => $item->mark == 0 ? 'animal.png' : 'black-cat.png',
+                'flash' => $item->min_r != null ? '' : 'd-none',
+                'activated_at' => $item->activated_at ?? ''
             ];
         }
         return json_encode($data);
     }
 
+    public function actionPutMark() {
+        $id = Yii::$app->request->post('id');
+        if ($id) {
+            $model = Items::findOne($id);
+            $model->mark = 1 - $model->mark;
+            return $model->save();
+        }
+    }
+
+    public function actionSetRange()
+    {
+        $post = Yii::$app->request->post();
+        $item = Items::findOne($post['item']);
+        $max = [$post['subjects'][0], $post['numbers'][0]];
+        $min = [$post['subjects'][1], $post['numbers'][1]];
+        $item->rangeCalculation($min, $max);
+
+        return 200;
+    }
+
+    public function actionRestoreRange()
+    {
+        $post = Yii::$app->request->post();
+        $item = Items::findOne($post['item']);
+        $item->min_r = null;
+        $item->min_delta_r = null;
+        $item->coefficient = null;
+        $item->save();
+
+        return 200;
+    }
+
+    public function actionSetNumbers()
+    {
+        $subjects = Subject::find()->where(['deleted_at' => null])->all();
+        foreach ($subjects as $subject) {
+            $tresult = Tresult::find()->where(['subject_id' => $subject->id])->one();
+            $mz = new Mizagene();
+            $numbers = $mz->getNumbers($subject->id);
+            var_dump($numbers);die;
+        }
+    }
 
 }

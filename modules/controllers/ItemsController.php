@@ -43,7 +43,9 @@ class ItemsController extends Controller
 
     public function beforeAction($action) {
         $this->view->registerJsFile('@web/js/items.js', ['position' => View::POS_END, 'depends' => [\yii\web\JqueryAsset::className()]]);
-
+        if ($action->id == 'put-mark') {
+            $this->enableCsrfValidation = false;
+        }
         return parent::beforeAction($action);
     }
 

@@ -18,17 +18,12 @@ $reports = Reports::find()->where(['disabled' => 0])->all();
 </style>
 
 <div class="row d-flex mx-auto px-0">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex align-items-center mb-1 mt-3">
+        <h3 class="d-flex align-items-center centeredTitle" style="color: #003C46"><img src="/images/list_1.png" alt="" width="30" class="me-2">Subjects List</h3>
+    </div>
     <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12 px-0 px-sm-2">
         <div class="mb-3 mx-auto px-0">
-            <div class="row mx-auto px-0" style="padding-top: 25px!important; padding-left: 30px">
-                <div class="d-flex justify-content-between align-items-center mb-4 mb-sm-0">
-                    <h3 class="d-flex align-items-center centeredTitle" style="color: #003C46"><img src="/images/list_1.png" alt="" width="30" class="me-2">Subjects List</h3>
-                    <?php if(Yii::$app->user->identity->me) { ?>
-                    <a  class="d-sm-none" style="text-decoration: none; color: #003C46;" href="/subject?id=<?php if(Yii::$app->user->identity->me) { echo Yii::$app->user->identity->me->public_id; } ?>&rep=3">
-                        <img src="<?= str_replace("/var/www/html/Mizagene/web/", "", ''. (Yii::$app->user->identity->me ? Yii::$app->user->identity->me->image : '') . '')  ?>" alt="" style="width: 40px; height: 40px; border-radius: 5px; object-fit: cover">
-                    </a>
-                        <?php } ?>
-                </div>
+            <div class="row mx-auto px-0" style="padding-top: 10px!important; padding-left: 30px">
                 <table id="subjectsTable" class="hover table-striped w-100">
                     <thead>
                     <tr>
@@ -47,7 +42,7 @@ $reports = Reports::find()->where(['disabled' => 0])->all();
                     </tr>
                     </thead>
                     <tbody>
-                        <?php foreach (Yii::$app->user->identity->subjects as $key => $subject): ?>
+                        <?php foreach (Yii::$app->user->identity->subjects as $key => $subject): if($subject->deleted_at == null):?>
                             <tr style="<?= isset($subject->deleted_at) ? 'pointer-events: none; background: #ff000052' : '' ?>" class="text-center">
                                 <td class="text-start ps-2"><a href="/subject?id=<?= $subject->public_id ?>&rep=3" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"><?= $key+1 ?></a></td>
                                 <td class=""><a href="/subject?id=<?= $subject->public_id ?>&rep=3"><img src="<?= str_replace('/var/www/html/Mizagene/web/', '', $subject->image) ?>" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></a></td>
@@ -69,15 +64,15 @@ $reports = Reports::find()->where(['disabled' => 0])->all();
 
                                 </td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php endif; endforeach; ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-    <div class="col-xl-2 col-lg-12 col-md-12 col-sm-12 col-12" style="background: white; border-radius: 3px; height: auto; margin-top: 3.8%">
-        <p class="text-center mt-2 pb-0 mb-0">Quick Parameter Search</p>
+    <div class="col-xl-2 col-lg-12 col-md-12 col-sm-12 col-12" style="background: white; border-radius: 3px; height: min-content; margin-top: 10px">
+<!--        <p class="text-center mt-2 pb-0 mb-0">Quick Parameter Search</p>-->
         <div class="py-3">
             <div class="d-flex">
                 <select name="form-select" id="" class="select2 selectFilterParam" >
@@ -89,7 +84,7 @@ $reports = Reports::find()->where(['disabled' => 0])->all();
                         $group = GroupVariants::findOne($gr);
                         foreach ($group->items as $it):
                             $item = Items::findOne($it);
-                        if (!in_array($item->id, $checkItem)) {
+                        if (!in_array($item->id, $checkItem) && $item->mark == 0) {
                             $checkItem[] = $item->id;
                             ?>
                             <option value="<?= $item->id ?>"><?= $item->getTitle($subjectLang)->title ?></option>
@@ -183,7 +178,7 @@ $reports = Reports::find()->where(['disabled' => 0])->all();
                     render: function(data, type, row) {
                         return '<span style="color:' + data.clr + '">' + data.nmb + '</span>';
                     }
-                }
+                },
             ]
         });
 

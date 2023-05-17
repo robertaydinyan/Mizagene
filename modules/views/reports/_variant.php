@@ -19,9 +19,8 @@ if (!isset($variant)) $variant = new \app\modules\models\GroupVariants();
                 <div class="col-1">
                     <span class="report-group-rule <?php echo $variant->group ? $variant->group->adult ? '' : 'd-none' : ''; ?>">18</span>
                 </div>
-                <span class="col-7 report-group-title" style="font-weight: 600;"><?php echo $variant->group ? ($variant->group->title_english . ' ' . $variant->name) : ''; ?></span>
-                <span class="col-2 report-group-items-count" style="margin-left: 12px"><?php echo $variant->getItemsCount(); ?> (
-                    <span style="color: green;"><?php echo $variant->getItemsCount(1); ?></span>, <span style="color: red;"><?php echo $variant->getItemsCount(0); ?></span>)</span>
+                <span class="col-6 report-group-title" style="font-weight: 600;"><?php echo $variant->group ? ($variant->group->title_english . ' ' . $variant->name) : ''; ?></span>
+                <span class="col-3 report-group-items-count" style="margin-left: 12px"><?php echo $variant->getItemsCount(); ?>(<span style="color: green;"><?php echo $variant->getItemsCount(1); ?></span>,<span style="color: red;"><?php echo $variant->getItemsCount(0); ?></span>)</span>
                 <span class="col-1 report-group-versions">v<?php echo $variant->getVariantsCount(); ?></span>
                 <span class="col-1"><i class="fa fa-caret-up"></i></span>
             </div>

@@ -421,7 +421,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                                 $group = GroupVariants::findOne($gr);
                                                 foreach ($group->items as $it):
                                                     $item = Items::findOne($it);
-                                                    if (!in_array($item->id, $checkItem)) {
+                                                    if (!in_array($item->id, $checkItem)  && $item->mark == 0) {
                                                     $checkItem[] = $item->id;
                                                     ?>
                                                     <option value="<?= $item->id ?>"><?= $item->getTitle($subjectLang)->title ?></option>
@@ -434,8 +434,8 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                         <input type="radio" value="1" name="colorSelect" id="accent_red" style="width: 20px; height: 20px">
                                         <input type="radio" value="2" name="colorSelect" id="accent_orange" style="width: 20px; height: 20px">
                                         <input type="radio" value="3" name="colorSelect" id="accent_yellow" style="width: 20px; height: 20px">
-                                        <input type="radio" value="4" name="colorSelect" id="accent_green" style="width: 20px; height: 20px">
-                                        <input type="radio" value="5" name="colorSelect" id="accent_dark" style="width: 20px; height: 20px">
+                                        <input type="radio" value="5" name="colorSelect" id="accent_green" style="width: 20px; height: 20px">
+                                        <input type="radio" value="6" name="colorSelect" id="accent_dark" style="width: 20px; height: 20px">
                                     </div>
 
                                     <div class="input-group mb-3 rangeSearch searchFilter" style="display: none;margin-top: 10px;">
@@ -477,7 +477,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                                     $check = 0;
                                                     foreach ($group->items as $k => $g):
                                                             $item = Items::findOne($g);
-                                                            if ($item):
+                                                            if ($item && $item->mark == 0):
 
                                                                 $subject_item_result = array_map(function($obj) use($item) {
                                                                     if ($obj->item_ID == $item->item_id) {
@@ -487,6 +487,12 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
 
                                                                 $subject_item_result = array_filter($subject_item_result);
                                                                 $subject_item_result = array_values($subject_item_result);
+                                                                $subject_item_result  = $subject_item_result ? $subject_item_result[0] : 0;
+                                                                $youmeeResult = 0;
+                                                                if ($item->min_r != null) {
+                                                                    $youmeeResult = floor(($subject_item_result + ($item->min_delta_r + ($subject_item_result - $item->min_r ) * ($item->coefficient))));
+                                                                }
+
 
                                                             $colors = [];
                                                             for ($i = 1; $i <= 10; $i++) {
@@ -496,17 +502,17 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
 
                                                             $color = null;
                                                             foreach ($colors as $element) {
-                                                                if (array_key_exists(''.(floor($subject_item_result ? $subject_item_result[0] : 0/10)/10).'', $element)) {
-                                                                    $color = $element[''.(floor($subject_item_result ? $subject_item_result[0] : 0/10)/10).''];
+                                                                if (array_key_exists(''.(floor(($youmeeResult == 0 ? $subject_item_result : $youmeeResult)/10)/10).'', $element)) {
+                                                                    $color = $element[''.(floor(($youmeeResult == 0 ? $subject_item_result : $youmeeResult)/10)/10).''];
                                                                     break;
                                                                 }
                                                             }
                                                             ?>
-                                                            <div class="carousel-item parameterItem opinionContainer <?= $check == 0 ? 'active' : '' ?>" data-res="<?= $subject_item_result ? $subject_item_result[0] : 0 ?>" data-item="<?= $item->id ?>" data-color="<?= $color ? $reverse[$color] : 4 ?>">
+                                                            <div class="carousel-item parameterItem opinionContainer <?= $check == 0 ? 'active' : '' ?>" data-res="<?= floor($youmeeResult == 0 ? $subject_item_result : $youmeeResult) ?>" data-item="<?= $item->id ?>" data-color="<?= $color ? $reverse[$color] : 4 ?>">
                                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                                     <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px; height: 330px!important;">
-                                                                        <div class="mobileResult d-flex justify-content-center mx-auto" style="height: 230px!important; width: 280px!important; position:relative; margin-bottom: -35px;" data-result="<?= $subject_item_result ? $subject_item_result[0] : 0 ?>" data-colors='<?= str_replace(':', ',', json_encode($colors)) ?>'></div>
-                                                                        <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -80px; font-weight: 500"><?= $item->getTitle($subjectLang)->title ?></div>
+                                                                        <div class="mobileResult d-flex justify-content-center mx-auto" style="height: 230px!important; width: 280px!important; position:relative; margin-bottom: -35px;" data-result="<?= floor($youmeeResult == 0 ? $subject_item_result : $youmeeResult) ?>" data-colors='<?= str_replace(':', ',', json_encode($colors)) ?>'></div>
+                                                                        <div class="px-2 pt-0 pb-4 text-center" style="margin-top: -80px; font-weight: 500"><img src="/images/Mizagene_M_46.png" alt="" style="width: 20px;cursor: pointer;" title="<?= floor($subject_item_result) ?>" class="mizageneResult me-1 <?= $item->min_r == null ? 'd-none' : '' ?>"><?= $item->getTitle($subjectLang)->title ?></div>
                                                                         <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; height: 100px; z-index: 8; position: relative">
                                                                             <i><?= $item->getTitle($subjectLang)->description ?></i>
                                                                         </p>
@@ -521,7 +527,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                                                         </div>
                                                                     <?php } ?>
                                                                     <div class="<?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo (isset($opinion) && $opinion->disagree == 1) ? 'd-flex' : 'd-none' ?> justify-content-between px-4 align-items-center mt-2 mb-4 finalOpinion" style="cursor:pointer;">
-                                                                        <span class="d-flex align-items-center"><img src="/images/favicon.png" alt="" width="40" class="me-2"> <span><?= floor($subject_item_result ? $subject_item_result[0] : 0) ?></span></span>
+                                                                        <span class="d-flex align-items-center"><img src="/images/favicon.png" alt="" width="40" class="me-2"> <span><?= floor($youmeeResult == 0 ? $subject_item_result : $youmeeResult) ?></span></span>
                                                                         <span class="d-flex align-items-center"><?php if ($subject->user->me) { ?><img class="me-2" src=" <?= str_replace("/var/www/html/Mizagene/web/", "", $subject->user->me->image) ?>" alt="" class="" style="width: 40px; height: 40px; border-radius: 100%; object-fit: cover; filter: grayscale(100%);"><?php } else { ?> <i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i> <?php } ?> <span class="myopinion"><?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo isset($opinion) ? $opinion->disagree_value : '' ?></span></span>
                                                                     </div>
 
@@ -547,7 +553,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
 
                                             foreach ($group->items as $k => $g):
                                                 $item = Items::findOne($g);
-                                                if ($item):
+                                                if ($item && $item->mark == 0):
                                                     $subject_item_result = array_map(function($obj) use($item) {
                                                         if ($obj->item_ID == $item->item_id) {
                                                             return $obj->subject_item_result;
@@ -556,6 +562,11 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
 
                                                     $subject_item_result = array_filter($subject_item_result);
                                                     $subject_item_result = array_values($subject_item_result);
+                                                    $subject_item_result  = $subject_item_result ? $subject_item_result[0] : 0;
+                                                    $youmeeResult = 0;
+                                                    if ($item->min_r != null) {
+                                                        $youmeeResult = floor(($subject_item_result + ($item->min_delta_r + ($subject_item_result - $item->min_r ) * ($item->coefficient))));
+                                                    }
 
                                                     $colors = [];
 
@@ -565,17 +576,18 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                                     $color = null;
 
                                                     foreach ($colors as $element) {
-                                                        if (array_key_exists(''.(floor($subject_item_result ? $subject_item_result[0] : 0/10)/10).'', $element)) {
-                                                            $color = $element[''.(floor($subject_item_result ? $subject_item_result[0] : 0/10)/10).''];
+                                                        if (array_key_exists(''.(floor(($youmeeResult == 0 ? $subject_item_result : $youmeeResult)/10)/10).'', $element)) {
+                                                            $color = $element[''.(floor(($youmeeResult == 0 ? $subject_item_result : $youmeeResult)/10)/10).''];
                                                             break;
                                                         }
                                                     }
+
                                                     ?>
                                                     <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-md-block" >
-                                                        <div class="parameterItem opinionContainer" data-res="<?= $subject_item_result ? $subject_item_result[0] : 0 ?>" data-item="<?= $item->id ?>" data-color="<?= $color ? $reverse[$color] : 1 ?>">
+                                                        <div class="parameterItem opinionContainer" data-res="<?= floor($youmeeResult == 0 ? $subject_item_result : $youmeeResult) ?>" data-item="<?= $item->id ?>" data-color="<?= $color ? $reverse[$color] : 1 ?>">
                                                             <div class="" style="border: 1px solid #d2d2d2; border-radius: 5px; height: 330px">
-                                                                <div class="test desktopResult d-flex justify-content-center" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;" data-result="<?= $subject_item_result ? $subject_item_result[0] : 0 ?>" data-colors='<?= str_replace(':', ',', json_encode($colors)) ?>'></div>
-                                                                <div class="px-2 pt-0 pb-4 text-center dots" style="margin-top: -80px; font-weight: 500;"><?= $item->getTitle($subjectLang)->title ?></div>
+                                                                <div class="test desktopResult d-flex justify-content-center" style="height: 230px; width: 100%; position:relative; margin-bottom: -35px;" data-result="<?= floor($youmeeResult == 0 ? $subject_item_result : $youmeeResult) ?>" data-colors='<?= str_replace(':', ',', json_encode($colors)) ?>'></div>
+                                                                <div class="px-2 pt-0 pb-4 text-center dots" style="margin-top: -80px; font-weight: 500;"><img src="/images/Mizagene_M_46.png" alt="" style="width: 20px;cursor: pointer;" title="<?= floor($subject_item_result) ?>" class="mizageneResult me-1 <?= $item->min_r == null ? 'd-none' : '' ?>"><?= $item->getTitle($subjectLang)->title ?></div>
                                                                 <p style="padding-left: 10px; padding-right: 10px; overflow-y: scroll; height: 100px; z-index: 8; position: relative" >
                                                                     <i><?= $item->getTitle($subjectLang)->description ?></i>
                                                                 </p>
@@ -591,7 +603,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                                             </div>
                                                             <?php } ?>
                                                             <div class="<?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo (isset($opinion) && $opinion->disagree == 1) ? 'd-flex' : 'd-none' ?> justify-content-between px-4 align-items-center mt-2 mb-4 finalOpinion" style="cursor:pointer;">
-                                                                <span class="d-flex align-items-center"><img src="/images/favicon.png" alt="" width="40" class="me-2"> <span><?= floor($subject_item_result ? $subject_item_result[0] : 0) ?></span></span>
+                                                                <span class="d-flex align-items-center"><img src="/images/favicon.png" alt="" width="40" class="me-2"> <span><?= floor($youmeeResult == 0 ? $subject_item_result : $youmeeResult) ?></span></span>
                                                                 <span class="d-flex align-items-center"><?php if ($subject->user->me) { ?><img class="me-2" src=" <?= str_replace("/var/www/html/Mizagene/web/", "", $subject->user->me->image) ?>" alt="" class="" style="width: 40px; height: 40px; border-radius: 100%; object-fit: cover; filter: grayscale(100%);"><?php } else { ?> <i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i> <?php } ?> <span class="myopinion"><?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo isset($opinion) ? $opinion->disagree_value : '' ?></span></span>
                                                             </div>
 

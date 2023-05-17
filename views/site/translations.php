@@ -3,42 +3,42 @@ $data = [
     "user" => [
     "en" => "User",
     "ru" => "Пользователь",
-    "es" => ""],
+    "es" => "Usuar"],
 
     "О Сервисе Youmee" => [
     "en" => "ABOUT YOUMEE",
     "ru" => "О Сервисе Youmee",
-    "es" => ""],
+    "es" => "ACERCA DE USTED"],
 
     "subtitle1" => [
     "en" => "About Service",
     "ru" => "О Сервисе",
-    "es" => ""],
+    "es" => "Acerca del servicio"],
 
     "subtitle2" => [
     "en" => "About Technology",
     "ru" => "О Технологии",
-    "es" => ""],
+    "es" => "Acerca de la tecnología"],
 
     "subtitle3" => [
     "en" => "For Investors",
     "ru" => "Инвесторам",
-    "es" => ""],
+    "es" => "Para inversores"],
 
     "subtitle4" => [
     "en" => "Follow us:",
     "ru" => "Следите за нами:",
-    "es" => ""],
+    "es" => "Síganos:"],
 
     "subtitle5" => [
     "en" => "Sign Up",
     "ru" => "Регистрация",
-    "es" => ""],
+    "es" => "Inscribirse"],
 
     "subtitle6" => [
     "en" => "For Partners",
     "ru" => "Партнерам",
-    "es" => ""],
+    "es" => "Para Socios"],
 
     "solutions_text1" => [
     "en" => "",
@@ -58,22 +58,22 @@ $data = [
     "menu1" => [
     "en" => "Home",
     "ru" => "Главная",
-    "es" => ""],
+    "es" => "Hogar"],
 
     "menu2" => [
     "en" => "How It Works",
     "ru" => "Как это работает",
-    "es" => ""],
+    "es" => "Cómo funciona"],
 
     "menu3" => [
     "en" => "Solutions",
     "ru" => "Решения",
-    "es" => ""],
+    "es" => "Soluciones"],
 
     "menu4" => [
     "en" => "FAQ",
     "ru" => "FAQ",
-    "es" => ""],
+    "es" => "FAQ"],
 
     "menu5" => [
     "en" => "Live Demo",
@@ -83,17 +83,17 @@ $data = [
     "menu6" => [
     "en" => "Sign In",
     "ru" => "Войти",
-    "es" => ""],
+    "es" => "Iniciar sesión"],
 
     "menu7" => [
     "en" => "Logout",
     "ru" => "Выйти",
-    "es" => ""],
+    "es" => "Cerrar sesión"],
 
     "menu8" => [
     "en" => "Email address",
     "ru" => "Электронная почта",
-    "es" => ""],
+    "es" => "Dirección de correo electrónico"],
 
     "KYC решения" => [
     "en" => "KYC solutions (Youmee KYC)",
@@ -123,67 +123,67 @@ $data = [
     "title1_1" => [
     "en" => "FIND OUT EVERYTHING ",
     "ru" => "УЗНАЙ ВСЕ",
-    "es" => ""],
+    "es" => "DESCUBRE TODO SOBRE EL"],
 
     "title1_2" => [
     "en" => "ABOUT ANY PERSON'S CHARACTER",
     "ru" => " О ХАРАКТЕРЕ ЛЮБОГО ЧЕЛОВЕКА",
-    "es" => ""],
+    "es" => " CARÁCTER DE CUALQUIER PERSONA"],
 
     "title1_3" => [
     "en" => "IN 3 SECONDS",
     "ru" => " ЗА 3 СЕКУНДЫ",
-    "es" => ""],
+    "es" => "EN 3 SEGUNDOS"],
 
     "title2_1" => [
     "en" => "Based on ancient science and enhanced with AI elements,",
     "ru" => "Основанная на древней науке и дополненная элементами ИИ, запатентованная",
-    "es" => ""],
+    "es" => "Basada en la ciencia antigua y mejorada con elementos de inteligencia artificial,"],
 
     "технология Mizagene" => [
     "en" => "Mizagene's patented technology ",
     "ru" => "технология Mizagene",
-    "es" => ""],
+    "es" => "la tecnología patentada de Mizagene "],
 
     "title2_1_1" => [
     "en" => "helps to determine a person's character, behavior pattern, talents, abilities and preferences ",
     "ru" => " помогает определить характер человека, модель поведения, таланты, способности и предпочтения",
-    "es" => ""],
+    "es" => "ayuda a determinar el carácter, el patrón de comportamiento, los talentos, las habilidades y las preferencias de una persona "],
 
     "title2_1_2" => [
     "en" => "based on only 3 data:",
     "ru" => " только на основании 3 данных:",
-    "es" => ""],
+    "es" => "basándose en solo 3 datos:"],
 
     "title2_1_3" => [
     "en" => "portrait photo",
     "ru" => " портретное фото",
-    "es" => ""],
+    "es" => "foto de retrato"],
 
     "title2_1_4" => [
     "en" => "  height",
     "ru" => " рост",
-    "es" => ""],
+    "es" => "altura"],
 
     "title2_1_5" => [
     "en" => "wrist size",
     "ru" => " размер запястья",
-    "es" => ""],
+    "es" => "tamaño de la muñeca"],
 
     "title2_1_6" => [
     "en" => "The capabilities of the technology are very extensive and can be used in various industries.",
     "ru" => "Возможности Технологии очень обширны и могут быть использованы в различных отраслях.",
-    "es" => ""],
+    "es" => "Las capacidades de la tecnología son muy amplias y se pueden utilizar en diversas industrias."],
 
     "title2_1_7" => [
     "en" => "Dozens of prepared reports are widely applicable in business, security, HR,",
     "ru" => "Десятки подготовленных репортов широко применимы в бизнесе, безопасности, HR,",
-    "es" => ""],
+    "es" => "Docenas de informes preparados son ampliamente aplicables en negocios, seguridad, recursos humanos "],
 
     "title2_1_8" => [
     "en" => "and just in everyday life.",
     "ru" => " да и просто в повседневной жизни.",
-    "es" => ""],
+    "es" => "y simplemente en la vida cotidiana."],
 
     "title2_2" => [
     "en" => "Don't believe? Just",
@@ -193,67 +193,67 @@ $data = [
     "button1" => [
     "en" => "TRY FOR FREE",
     "ru" => "ПОПРОБОВАТЬ БЕСПЛАТНО",
-    "es" => ""],
+    "es" => "PRUEBA GRATIS"],
 
     "button2" => [
     "en" => "FOR COMPANIES",
     "ru" => "ДЛЯ КОМПАНИЙ",
-    "es" => ""],
+    "es" => "PARA COMPANIAS"],
 
     " –  эксклюзивный партнер Mizagene" => [
     "en" => " is the exclusive partner of Mizagene",
     "ru" => " –  эксклюзивный партнер Mizagene",
-    "es" => ""],
+    "es" => "es socio exclusivo de Mizagene"],
 
     "Technologies и вендор программного обеспечения типов SAAS и" => [
     "en" => "Technologies and a vendor of SAAS and ",
     "ru" => "Technologies и вендор программного обеспечения типов SAAS и",
-    "es" => ""],
+    "es" => "Technologies y proveedor de los software SAAS y "],
 
     "PAAS в  области разработки наукоемких IT решений на базе" => [
     "en" => "PAAS software in the development of knowledge intensive IT solutions based on",
     "ru" => "PAAS в  области разработки наукоемких IT решений на базе",
-    "es" => ""],
+    "es" => "PAAS en el campo del desarrollo de soluciones intensivas en conocimiento de tecnología de la información basadas en"],
 
     "запатентованной технологии Mizagene." => [
     "en" => "Mizagene's patented technology.",
     "ru" => "запатентованной технологии Mizagene.",
-    "es" => ""],
+    "es" => "la tecnología patentada de Mizagene."],
 
     "Наши технологические и программные решения помогают" => [
     "en" => "Our technological and software solutions help",
     "ru" => "Наши технологические и программные решения помогают",
-    "es" => ""],
+    "es" => "Nuestras soluciones tecnológicas y de software ayudan "],
 
     "людям осознать свой потенциал, понять сильные и слабые" => [
     "en" => "people realize their potential, understand the strengths and weaknesses",
     "ru" => " людям осознать свой потенциал, понять сильные и слабые",
-    "es" => ""],
+    "es" => "a las personas a desarrollar su potencial, comprender las fortalezas y debilidades "],
 
     "стороны личности, а также найти  своевременное применение" => [
     "en" => "of the individual, and also find the timely application of",
     "ru" => " стороны личности, а также найти  своевременное применение",
-    "es" => ""],
+    "es" => "del individuo y también encontrar la aplicación oportuna"],
 
     "врожденным талантам. Экономьте драгоценные годы жизни –" => [
     "en" => "innate talents. Save precious years of life -",
     "ru" => "врожденным талантам. Экономьте драгоценные годы жизни –",
-    "es" => ""],
+    "es" => "de talentos innatos. Ahorre valiosos años de vida,"],
 
     "как своей, так и окружающих, выстраивая эффективную" => [
     "en" => "both yours and those around you - by building effective",
     "ru" => "как своей, так и окружающих, выстраивая эффективную",
-    "es" => ""],
+    "es" => "tanto la suya como la de quienes le rodean, construyendo una comunicación efectiva"],
 
     "коммуникацию и повышая общую эффективность вместе с" => [
     "en" => "communication and increasing overall efficiency with",
     "ru" => "коммуникацию и повышая общую эффективность вместе с",
-    "es" => ""],
+    "es" => "y aumentando la eficiencia general con "],
 
     "Youmee." => [
     "en" => "Youmee.",
     "ru" => "Youmee.",
-    "es" => ""],
+    "es" => "Youmee."],
 
     "company" => [
     "en" => "Company",
@@ -263,12 +263,12 @@ $data = [
     "Youmee Technologies" => [
     "en" => "Youmee Technologies",
     "ru" => "Youmee Technologies",
-    "es" => ""],
+    "es" => "Youmee Technologies"],
 
     "solutions1" => [
     "en" => "Individual and joint reports",
     "ru" => "Индивидуальные и совместные репорты",
-    "es" => ""],
+    "es" => "Informes individuales y conjuntos"],
 
     "solutions1_1" => [
     "en" => "Youmee Me",
@@ -288,7 +288,7 @@ $data = [
     "solutions2" => [
     "en" => "Personal potential",
     "ru" => "Личностный потенциал",
-    "es" => ""],
+    "es" => "Potencial personal"],
 
     "solutions2_1" => [
     "en" => "Youmee Child",
@@ -308,7 +308,7 @@ $data = [
     "solutions3" => [
     "en" => "KYC solutions",
     "ru" => "KYC решения",
-    "es" => ""],
+    "es" => "Soluciones KYC"],
 
     "solutions3_1" => [
     "en" => "Financial Security",
@@ -358,47 +358,47 @@ $data = [
     "card1_title" => [
     "en" => "Individual and joint reports",
     "ru" => "Индивидуальные и совместные отчеты",
-    "es" => ""],
+    "es" => "Informes individuales y conjuntos"],
 
     "card1_desc" => [
     "en" => "Determine the character of the person you are interested in, find out everything about his talents, behavioral patterns, intelligence and preferences. More than 320 individual and combined analysis parameters available",
     "ru" => "Определите характер интересующего вас человека, узнайте все о его талантах, поведенческих моделях, интеллекте и предпочтениях. Доступно более 320 параметров индивидуального и совмещенного анализа",
-    "es" => ""],
+    "es" => "Determina el carácter de la persona que le interesa, averiguando todo sobre sus talentos, patrones de comportamiento, inteligencia y preferencias. Mas de 320 parámetros de análisis individuales y combinados disponibles."],
 
     "card2_title" => [
     "en" => "Personal potential",
     "ru" => "Личностный потенциал",
-    "es" => ""],
+    "es" => "Potencial personal"],
 
     "card2_desc" => [
     "en" => "Determine the character of the person you are interested in, find out everything about his talents, behavioral patterns, intelligence and preferences. More than 320 individual and combined analysis parameters available",
     "ru" => "У вас есть ребенок или, может быть, вы тренируете юношескую футбольную команду? Наши уникальные отчеты помогут вам использовать весь потенциал субъектов анализа! Раскройте их таланты, узнайте сильные и слабые стороны характера и сэкономьте их время",
-    "es" => ""],
+    "es" => "¿Tiene un hijo o tal vez entrena a un equipo de fútbol juvenil? ¡Nuestros informes únicos le ayudarán a utilizar todo el potencial de los sujetos de análisis! Destaca sus talentos, descubra las fortalezas y debilidades de su carácter y ahorre tiempo."],
 
     "card3_title" => [
     "en" => "KYC solutions",
     "ru" => "KYC-решения",
-    "es" => ""],
+    "es" => "Soluciones KYC"],
 
     "card3_desc" => [
     "en" => "Know your customer! Get the specific insight information about verified customers, adopt your marketing strategy according to their preferences and take care about the risks, that our System identifies for you",
     "ru" => "Узнайте своего клиента! Получите специфическую (несущую отраслевую ценность) информацию о прошедших аутентификацию клиентах, адоптируйте маркетинговую стратегию в соответствии с их личными предпочтениями и позаботьтесь о рисках, которые наша Система идентифицирует для вас",
-    "es" => ""],
+    "es" => "¡Conozca a su cliente! Obtenga información específica (valor de la industria) sobre clientes autenticados, adapte su estrategia de marketing a sus preferencias personales y maneje los riesgos que nuestro Sistema identifica para usted."],
 
     "card4_title" => [
     "en" => "HR solutions",
     "ru" => "HR решения",
-    "es" => ""],
+    "es" => "Soluciones de recursos humanos"],
 
     "card4_desc" => [
     "en" => "Group the teams according to their interpersonal communication, plan personnel policy based on possible risks and potential of employees and compare the results of applicants with the ideal result you’ve predictively set",
     "ru" => "Формируйте эффективные команды на основании межличностной коммуникации, планируйте кадровую политику с учетом возможных рисков и потенциала сотрудников, сравнивайте параметры личности соискателей с заранее заданным Вами требованиями",
-    "es" => ""],
+    "es" => "Forme equipos efectivos basados en la comunicación interpersonal, planifique la política de personal teniendo en cuenta los posibles riesgos y el potencial de los empleados, compare los parámetros personales de los solicitantes con los requisitos que usted preestablece."],
 
     "learnMore" => [
     "en" => "Learn More",
     "ru" => "Узнать Больше",
-    "es" => ""],
+    "es" => "Saber Más"],
 
     "signup" => [
     "en" => "Sign Up",
@@ -503,7 +503,7 @@ $data = [
     "analysis" => [
     "en" => "Analysis parameters",
     "ru" => "Параметры анализа",
-    "es" => ""],
+    "es" => "Parámetros de análisis"],
 
     "analysis_text1" => [
     "en" => "We analyze the innate characteristics of a person in more than 1500 parameters.
@@ -526,47 +526,52 @@ $data = [
     представлена только часть параметров, применяемых в рамках \"Основного\" репорта. Узкоспециализированные
     
     и отраслевые параметры, а также параметры категории 18+ здесь не указаны.",
-    "es" => ""],
+    "es" => "Analizamos las características innatas de una persona en más de 1500 parámetros. Los resultados del 
+    análisis afectan todos los aspectos posibles de una persona, comenzando con las características generales 
+    de su carácter y terminando con los detalles de la relación del sujeto de análisis con otras personas y el 
+    mundo exterior. A continuación puede ver solo una parte de los parámetros utilizados en el informe 
+    \"General\". Los parámetros altamente especializados y de la industria, así como los parámetros de la 
+    categoría 18+, no se enumeran aquí."],
 
     "analysis_tab1" => [
     "en" => "Character",
     "ru" => "Характер",
-    "es" => ""],
+    "es" => "Caracter"],
 
     "analysis_tab2" => [
     "en" => "Intelligence",
     "ru" => "Интелект",
-    "es" => ""],
+    "es" => "Inteligencia"],
 
     "analysis_tab3" => [
     "en" => "Communication",
     "ru" => "Коммуникация",
-    "es" => ""],
+    "es" => "Comunicación"],
 
     "analysis_tab4_5" => [
     "en" => "Psyche and Emotions",
     "ru" => "Психика и эмоции",
-    "es" => ""],
+    "es" => "Psique y emociones"],
 
     "analysis_tab6" => [
     "en" => "Job and Career",
     "ru" => "Работа и карьера",
-    "es" => ""],
+    "es" => "Trabajo y carrera"],
 
     "accuracy_title" => [
     "en" => "Accuracy of the analysis result by directions",
     "ru" => "Точность результата анализа по направлениям",
-    "es" => ""],
+    "es" => "Precisión del resultado del análisis por indicaciones"],
 
     "accuracy_text1" => [
     "en" => "The parameter is added to the final version of the report if the accuracy is more than 75%.",
     "ru" => "Параметр добавляется в окончательную версию репорта в случае достижения точности более 75%.",
-    "es" => ""],
+    "es" => "El parámetro se agrega a la versión final del informe si la precisión es superior al 75 %."],
 
     "accuracy_text2" => [
     "en" => "The average values are not taken into account.",
     "ru" => "При этом усредненные значения в расчет не берутся.",
-    "es" => ""],
+    "es" => "Los valores medios no se tienen en cuenta."],
 
     "accuracy_text3" => [
     "en" => "Technology is not interested in who you are and what role you play in society, it is indifferent to your
@@ -581,32 +586,32 @@ $data = [
     Сложные алгоритмы расчета тестировались тысячи раз до того, как дать результат анализа Вам. Поэтому если причина несогласия с результатом
     
     не может быть объяснена хирургическим вмешательством или качеством загруженной фотографии, то наверняка результат будет верным.",
-    "es" => ""],
+    "es" => "La tecnología no está interesada en quién eres y qué papel juegas en la sociedad, es indiferente a tu estado 
+    civil y opiniones políticas. Los sofisticados algoritmos de cálculo se han probado miles de veces antes de 
+    proporcionarle el resultado del análisis. Por lo tanto, si la razón por la que no está de acuerdo con el 
+    resultado no se puede explicar por la intervención quirúrgica o la calidad de la foto cargada, lo más 
+    probable es que el resultado sea correcto."],
 
     "progress1" => [
     "en" => "Individual reports and compatibility",
     "ru" => "Индивидуальные репорты и совместимость",
-    "es" => ""],
+    "es" => "Informes individuales y conjuntos"],
 
     "progress2" => [
     "en" => "Personal potential",
     "ru" => "Личностный потенциал",
-    "es" => ""],
+    "es" => "Potencial personal"],
 
     "progress3" => [
     "en" => "HR solutions",
     "ru" => "Решения для HR",
-    "es" => ""],
+    "es" => "Soluciones de recursos humanos"],
 
     "progress4" => [
     "en" => "KYC (know your customer)",
     "ru" => "KYC решения",
-    "es" => ""],
+    "es" => "KYC (Conozca a su cliente)"],
 
-    "try_now" => [
-    "en" => "Попробуй прямо сейчас и расскажи другим!",
-    "ru" => "Попробуй прямо сейчас и расскажи другим!",
-    "es" => ""],
 
     "CHARACTER" => [
     "en" => "CHARACTER",
@@ -1473,233 +1478,240 @@ $data = [
     "ru" => "Одержимость идеей мести",
     "es" => ""],
 
+
+
+
     "Цели и принципы Сервиса" => [
     "en" => "Goals and principles of work",
     "ru" => "Цели и принципы работы",
-    "es" => ""],
+    "es" => "Objetivos y principios de trabajo."],
 
     "Форма обратной связи" => [
     "en" => "About company",
     "ru" => "О компании",
-    "es" => ""],
+    "es" => "Acerca de la compañía"],
 
     "address" => [
     "en" => "Armenia, Yerevan, Moldovakan st. 36/1",
     "ru" => "Армения, г. Ереван, ул. Молдовакан 36/1",
-    "es" => ""],
+    "es" => "Armenia, Ereván, Moldovakan st. 36/1"],
 
     "О Технологии" => [
     "en" => "About Technology",
     "ru" => "О Технологии",
-    "es" => ""],
+    "es" => "Acerca de la tecnología"],
 
     "Истоки создания" => [
     "en" => "Origins of creation",
     "ru" => "Истоки создания",
-    "es" => ""],
+    "es" => "Orígenes de la creación"],
 
     "Суть технологии" => [
     "en" => "The essence of technology",
     "ru" => "Суть технологии",
-    "es" => ""],
+    "es" => "La esencia de la tecnología."],
 
     "Основные направления" => [
     "en" => "Main directions",
     "ru" => "Основные направления",
-    "es" => ""],
+    "es" => "Direcciones principales"],
 
     "Безопасность" => [
     "en" => "Security",
     "ru" => "Безопасность",
-    "es" => ""],
+    "es" => "Seguridad"],
 
     "Точность анализа" => [
     "en" => "Analysis Accuracy",
     "ru" => "Точность анализа",
-    "es" => ""],
+    "es" => "Precisión del análisis"],
 
     "ООО \"ЮМИИ\"" => [
     "en" => "LTD \"YOUMEE\"",
     "ru" => "ООО \"ЮМИИ\"",
-    "es" => ""],
+    "es" => "LTD \"YOUMEE\""],
 
     "Contact us" => [
     "en" => "Contact us",
     "ru" => "Связаться с нами",
-    "es" => ""],
+    "es" => "Contacta con nosotros"],
 
     "О компании" => [
     "en" => "About company",
     "ru" => "О компании",
-    "es" => ""],
+    "es" => "Acerca de la compañía"],
 
     "Цели и принципы работы" => [
     "en" => "Goals and principles of work",
     "ru" => "Цели и принципы работы",
-    "es" => ""],
+    "es" => "Objetivos y principios de trabajo."],
 
     "FAQ" => [
     "en" => "FAQ",
     "ru" => "FAQ",
-    "es" => ""],
+    "es" => "FAQ"],
 
     "service_card1" => [
     "en" => "is an exclusive partner of Mizagene Technologies and a vendor of SAAS and PAAS software
-    
     in the field of developing knowledge-intensive IT solutions based on Mizagene's patented technology.",
+
     "ru" => " – эксклюзивный партнер Mizagene Technologies и вендор программного обеспечения типов SAAS и PAAS в области
-    
     разработки наукоемких высокотехнологичных IT решений на базе запатентованной технологии Mizagene.",
-    "es" => ""],
+
+    "es" => "Youmee Technologies es socio exclusivo de Mizagene Technologies y proveedor de los software SAAS y PAAS
+    en el campo del desarrollo de soluciones intensivas en conocimiento de tecnología de la información
+    basadas en la tecnología patentada de Mizagene."],
 
     "command" => [
     "en" => "The Youmee Technologies team",
     "ru" => "Команда Youmee Technologies",
-    "es" => ""],
+    "es" => "El equipo de Youmee Technologies"],
 
     "service_card2" => [
     "en" => "consists of experienced engineers in the field of automation and development of BI
-    
     solutions, psychologists and consultants, united by the common principles.",
+
     "ru" => "  – это опытные инженеры в области автоматизации и разработки BI
-    
     решений, психологи и консультанты, объединенные общностью принципов.",
-    "es" => ""],
+
+    "es" => "El equipo de Youmee Technologies está formado por ingenieros experimentados en el campo de la
+    automatización y el desarrollo de soluciones de BI (Inteligencia Empresarial), psicólogos y consultores,
+    unidos por los principios comunes."],
 
     "founders" => [
     "en" => "Founders of Youmee Technologies",
     "ru" => "Основатели Youmee Technologies",
-    "es" => ""],
+    "es" => "Fundadores de Youmee Technologies"],
 
     "goals" => [
     "en" => "Goals and principles of Youmee Technologies",
     "ru" => "Цели и принципы",
-    "es" => ""],
+    "es" => "Objetivos y principios de Youmee Technologies:"],
 
     "s_tile1" => [
     "en" => "1. The principle of \"do no harm\"",
     "ru" => "1. Принцип «не навредить»",
-    "es" => ""],
+    "es" => "1. El principio de \"no hacer daño\""],
 
     "s_tile1_2" => [
     "en" => "The possibilities of technology can be directed both",
     "ru" => "Возможности технологии могут быть направлены",
-    "es" => ""],
+    "es" => "Las opciones de la tecnología pueden ser dirigidas tanto"],
 
     "s_tile1_3" => [
     "en" => " for the benefit of the individual, and for the purpose of causing harm to this individual. ",
     "ru" => " во благо личности, так и с целью причинения этой личности вреда.",
-    "es" => ""],
+    "es" => " para el beneficio del individuo como para causarle daño."],
 
     "s_tile1_4" => [
     "en" => ". The stunning accuracy of the analysis (from 75 to 93% depending on the analysis parameter and the quality of the portrait photo) makes it possible to identify not only strong, but also weak character traits, which makes the subject of analysis \“vulnerable\” in a sense.",
     "ru" => " Ошеломительная точность анализа (до 97% в зависимости от параметра анализа и качества портретного фото) позволяет выявить не только сильные, но и слабые черты характера, что делает субъект анализа в каком-то смысле «уязвимым». Именно в этом и заключается наша цель - не навредить.",
-    "es" => ""],
+    "es" => "La impresionante precisión del análisis (del 75 al 93 %, según el parámetro de análisis y la calidad de la foto del retrato) permite identificar no solo los rasgos fuertes de carácter, sino también los débiles, lo que hace que el sujeto de análisis sea \"vulnerable\" en cierto sentido."],
 
     "s_tile2" => [
     "en" => "2. Age restrictions",
     "ru" => "2. Возрастные ограничения",
-    "es" => ""],
+    "es" => "2. Restricciones de edad"],
 
     "s_tile2_2" => [
     "en" => "Our team members are supporters of family traditions, ",
     "ru" => " Вся наша команда - сторонники семейных традиций, а ",
-    "es" => ""],
+    "es" => "Los miembros de nuestro equipo son partidarios de las tradiciones familiares"],
 
     "s_tile2_3" => [
     "en" => " and we have to do everything to preserve children’s right to a safe childhood. ",
     "ru" => " дети должны сохранить свое право на безопасное детство.",
-    "es" => ""],
+    "es" => "y tenemos que hacer todo lo posible para preservar el derecho de los niños a una infancia segura."],
 
     "s_tile2_4" => [
     "en" => "That is why some of the parameters have age-related access restrictions that apply not only to the subject of analysis, but also to the user of the system who gets access to this information. At the same time, if you specify the wrong year of birth, the results of the analysis will not correspond to reality, which allows us to ensure that the conditions of age restrictions are met.",
     "ru" => "  Именно поэтому часть параметров имеют возрастные ограничения доступа, которые распространяются не только на субъект анализа, но и на пользователя системы, который получает доступ к этой информации.  При этом, если указать неправильный год рождения, результаты анализа не будут соответствовать действительности, что позволяет нам обеспечить выполнение условий возрастных ограничений.",
-    "es" => ""],
+    "es" => "Es por ello que algunos de los parámetros tienen restricciones de acceso relacionadas con la edad que aplican no solo al sujeto de análisis, sino también al usuario del sistema que accede a esta información. Al mismo tiempo, si especifica el año de nacimiento incorrecto, los resultados del análisis no se corresponderán con la realidad, lo que nos permite garantizar que se cumplan las condiciones de las restricciones de edad."],
 
     "s_tile3" => [
     "en" => "3. Respect for regional and cultural differences",
     "ru" => "3. Уважение региональных и культурных особенностей при разработке репортов",
-    "es" => ""],
+    "es" => "3. Respeto a las diferencias regionales y culturales"],
 
     "s_tile3_2" => [
     "en" => "We carefully analyze the parameters of the reports for a possible negative reaction of the bearers of certain cultural values. ",
     "ru" => " Мы тщательно анализируем параметры репортов на предмет возможной негативной реакции носителей тех или иных культурных ценностей. ",
-    "es" => ""],
+    "es" => "Analizamos cuidadosamente los parámetros de los informes por una posible reacción negativa de los portadores de ciertos valores culturales."],
 
     "s_tile3_3" => [
     "en" => " So, for example, the same report for a European audience will differ from its version developed for the Middle East or Asia region. ",
     "ru" => " Так, например, тот же репорт для европейской аудитории будет отличаться от его версии, разработанной для Ближневосточного или Азиатского региона. ",
-    "es" => ""],
+    "es" => "Entonces, por ejemplo, el mismo informe para una audiencia europea diferirá de su versión desarrollada para la región de Medio Oriente o Asia."],
 
     "s_tile4" => [
     "en" => "4. Providing information to users in an amount that is not more than really necessary",
     "ru" => "4. Предоставление информации пользователям в количестве, не большем, чем необходимо",
-    "es" => ""],
+    "es" => "4. Proporcionar información a los usuarios en un volumen no superior a la realmente necesaria"],
 
     "s_tile4_2" => [
     "en" => "Depending on the purpose for which the technology is used,  ",
     "ru" => " В зависимости от того, с какой целью используется технология, ",
-    "es" => ""],
+    "es" => "Dependiendo del propósito para el que se utilice la tecnología,"],
 
     "s_tile4_3" => [
     "en" => " corporate users receive only the information about the person that they really need. ",
     "ru" => " корпоративные пользователи получают только ту информацию о человеке, которая им действительно необходима.",
-    "es" => ""],
+    "es" => " los usuarios corporativos reciben solo la información sobre la persona que realmente necesitan."],
 
     "s_tile4_4" => [
     "en" => " For example, for Youmee HR users, we provide access only to employee and job applicant analysis parameters, the results of which may affect their professional activities. All other information about the identity of the subject of analysis will be closed.",
     "ru" => "  Так, например, пользователям Youmee HR мы предоставляем доступ только к тем параметрам анализа сотрудников и соискателях, результаты которых могут повлиять на их профессиональную деятельность. Вся остальная информация о личности субъекта анализа будет закрыта.",
-    "es" => ""],
+    "es" => " Por ejemplo, para los usuarios de Youmee HR, brindamos acceso solo a los parámetros de análisis de empleados y solicitantes de empleo, cuyos resultados pueden afectar sus actividades profesionales. Cualquier información adicional sobre la identidad del sujeto de análisis no será accesible."],
 
     "s_tile5" => [
     "en" => "5. Data security ",
     "ru" => "5. Безопасность данных",
-    "es" => ""],
+    "es" => "5. Seguridad de los datos"],
 
     "s_tile5_2" => [
     "en" => "Technology does not care about a person's name, his status in society, political or religious beliefs, marital status, even skin color. The personal data, such as phone number, address or mail, is not needed either. Even the role of photography is limited by the facial control points formation stage and can be removed after that. ",
     "ru" => " Технологии безразлично имя человека, его статус в обществе, политические или религиозные убеждения, семейный статус, даже цвет кожи. Не нужны и его личные данные, такие как номер телефона, адрес или почта. Даже роль фотографии ограничивается на этапе формирования контрольных точек на лице и может быть после этого удалена.",
-    "es" => ""],
+    "es" => "A la tecnología no le importa el nombre de una persona, su estatus en la sociedad, creencias políticas o religiosas, estado civil, ni siquiera el color de la piel. Los datos personales, como número de teléfono, dirección o correo, tampoco son necesarios. Incluso el papel de la fotografía está limitado por la etapa de formación de puntos de control facial y puede eliminarse después de eso."],
 
     "s_tile5_3" => [
     "en" => "All analysis results are objective and generated based on input data on a server that does not have access to the customers photos. ",
     "ru" => " Все результаты анализа несут объективный характер и генерируются на основании входных данных на сервере, у которого даже нет доступа к фотографиям. ",
-    "es" => ""],
+    "es" => "Todos los resultados de los análisis son objetivos y se generan a partir de datos de entrada en un servidor que no tiene acceso a las fotos de los clientes."],
 
     "s_tile5_4" => [
     "en" => " As an additional security, we offer corporate clients to host our ",
     "ru" => " В качестве дополнительной безопасности, мы предлагаем корпоративным клиентам разместить наше ",
-    "es" => ""],
+    "es" => "Como seguridad adicional, ofrecemos a los clientes corporativos alojar nuestra"],
 
     "s_tile5_5" => [
     "en" => "SDK solution, ",
     "ru" => "  SDK (Software Development Kit) решение с открытым кодом,",
-    "es" => ""],
+    "es" => " solución SDK, "],
 
     "s_tile5_6" => [
     "en" => "which aims to send us the coordinates of the subject's facial control points, height, wrist size, gender and year of birth. At the same time, we do not have access to the photos themselves: they remain on the user's corporate server.",
     "ru" => "  задача которого заключается в том, чтобы отправлять нам координаты контрольных точек на лице субъекта, рост, размер запястья в обхвате, пол и год рождения. При этом, доступа к самим фотографиям у нас нет: они остаются на корпоративном сервере пользователя.",
-    "es" => ""],
+    "es" => " que tiene como objetivo enviarnos las coordenadas de los puntos de control facial del sujeto, la altura, el tamaño de la muñeca, el sexo y el año de nacimiento. Asimismo, no tenemos acceso a las fotos en sí: permanecen en el servidor corporativo del usuario."],
 
     "s_tile6" => [
     "en" => "6. Reservation of the right to refuse to provide services ",
     "ru" => " 6. Сохранение за собой права на отказ в предоставлении услуг",
-    "es" => ""],
+    "es" => "6. La reserva del derecho a negarse a prestar servicios"],
 
     "s_tile6_2" => [
     "en" => "We always reserve the right to refuse to provide services in case of suspicion that users and/or corporate customers ",
     "ru" => " Мы всегда оставляем за собой право отказать предоставление услуг пользователям и корпоративным клиентам ",
-    "es" => ""],
+    "es" => "Siempre nos reservamos el derecho de negarnos a prestar servicios en caso de sospecha de que los usuarios y/o clientes corporativos"],
 
     "s_tile6_3" => [
     "en" => "are using information to",
     "ru" => "в случае подозрения,",
-    "es" => ""],
+    "es" => "están utilizando la información"],
 
     "s_tile6_4" => [
     "en" => "achieve goals that could harm people.",
     "ru" => " что они используют информацию для достижения целей, способных причинить вред людям.",
-    "es" => ""],
+    "es" => "para lograr fines que puedan perjudicar a las personas."],
 
     "s_tile7" => [
     "en" => "",

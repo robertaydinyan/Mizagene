@@ -98,4 +98,11 @@ class Mizagene {
         $result = curl_exec($ch);
         return $result;
     }
+
+    public function getNumbers($id)
+    {
+        $ch = CURL::init(API::getLink() . $id, $this->token, 1);
+        $result = curl_exec($ch);
+        return $result;
+    }
 }
