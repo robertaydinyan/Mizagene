@@ -10,7 +10,8 @@ class API {
         'getSectors' => 'https://api.mizagene.com/Sectors',
         'setItem' => 'https://api.mizagene.com/End2End_Items',
         'addSubject' => 'https://api.mizagene.com/Subject',
-        'getResult' => 'https://api.mizagene.com/ReportShow'
+        'getResult' => 'https://api.mizagene.com/ReportShow',
+        'getNumbers' => 'https://api.mizagene.com/Subject/'
     ];
 
     public static function getToken() {

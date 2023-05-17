@@ -123,15 +123,15 @@ ini_set('post_max_size', '50M');
 <!--                </li>-->
             </ul>
         </div>
-        <div class="container row mx-auto px-0">
+        <div class="container row mx-auto px-0 mt-md-5">
             <div class="tab-content mx-auto px-0" id="pills-tabContent">
                 <div class="tab-pane fade show  <?= Yii::$app->user->identity->me ? 'd-none' : 'active show' ?>" id="pills-me" role="tabpanel" aria-labelledby="pills-me-tab" tabindex="0">
                     <div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mx-0 justify-content-center">
                         <form action="/user/create-subject" method="post" class="row d-flex justify-content-center"  enctype="multipart/form-data">
                             <input type="hidden" name="_csrf" value="<?= Yii::$app->getRequest()->getCsrfToken();?>">
                             <input type="hidden" name="is_me" value="1">
-                        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 d-flex justify-content-center addSubjectCenter">
-                            <div class="col-12 d-flex flex-column mb-3" style="max-width: 330px; height: 465px; border: 1px dashed grey; border-radius: 5px;">
+                        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 d-flex justify-content-center addSubjectCenter" style="background: white; border-radius: 5px">
+                            <div class="col-12 d-flex flex-column my-4" style="max-width: 330px; height: 490px; border: 1px dashed grey; border-radius: 5px;">
                                 <div class="d-flex justify-content-start align-items-center ps-3" style="height: 50px;">
                                     <input type="file" name="image" required class="custom-file-input" id="file-input">
                                     <a href="#" onclick="document.getElementById('file-input').click();" style="text-decoration: none; color: black" class="add-subject-icons"><i class="fa-solid fa-arrow-up-from-bracket" style="padding: 10px; font-size: 20px; cursor: pointer; color: #000;"></i>Upload</a>
@@ -145,21 +145,25 @@ ini_set('post_max_size', '50M');
                             </div>
                         </div>
 
-                        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 d-flex justify-content-center subjectProps" style="">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex flex-column align-items-center" style="text-align: start; max-width: 330px">
+                        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 d-flex justify-content-center subjectProps" style="background: white; border-radius: 5px">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex flex-column align-items-center mt-4" style="text-align: start; max-width: 330px">
                                 <div class="mb-4 w-100">
                                     <label for="exampleFormControlInput1" class="form-label" style="font-weight: 500">Name/Nickname</label>
                                     <input type="text" class="form-control" value="<?= Yii::$app->user->identity->username ?>" name="name" id="exampleFormControlInput1" placeholder="Name/Nickname" required>
                                 </div>
                                 <div class="mb-4 d-flex flex-column w-100">
-                                    <label for="customRange2" class="form-label" style="font-weight: 500">Height</label>
-                                    <input type="range" class="form-range"  value="135" name="height" id="customRange2" min="40" max="230" step="1" oninput="this.nextElementSibling.value = this.value + 'cm' + ' (' + (parseInt(this.value) / 2.54).toFixed(1) + ' inches)'" required>
-                                    <output class="text-end">135cm (53.1 inches)</output>
+                                    <div class="d-flex justify-content-between">
+                                        <label for="customRange2" class="form-label" style="font-weight: 500">Height</label>
+                                        <output class="text-end">135cm (53.1 inches)</output>
+                                    </div>
+                                    <input type="range" class="form-range"  value="135" name="height" id="customRange2" min="40" max="230" step="1" oninput="$(this).parent().find('output').text($(this).val() + 'cm' + ' (' + (parseInt($(this).val()) / 2.54).toFixed(1) + ' inches)')" required>
                                 </div>
                                 <div class="mb-4 d-flex flex-column w-100">
-                                    <label for="customRange1" class="form-label" style="font-weight: 500">Wrist size</label>
-                                    <input type="range" class="form-range" value="18.5" name="wrist_size" id="customRange1" min="7" max="30" step="0.5" oninput="this.nextElementSibling.value = this.value + 'cm' + ' (' + (parseInt(this.value) / 2.54).toFixed(1) + ' inches)'" required>
-                                    <output class="text-end">18.5cm (7.1 inches)</output>
+                                    <div class="d-flex justify-content-between">
+                                        <label for="customRange1" class="form-label" style="font-weight: 500">Wrist size</label>
+                                        <output class="text-end">18.5cm (7.1 inches)</output>
+                                    </div>
+                                    <input type="range" class="form-range" value="18.5" name="wrist_size" id="customRange1" min="7" max="30" step="0.5" oninput="$(this).parent().find('output').text($(this).val() + 'cm' + ' (' + (parseInt($(this).val()) / 2.54).toFixed(1) + ' inches)')" required>
                                 </div>
                                 <div class="mb-4 w-100">
                                     <label for="exampleFormControlInput4" class="form-label" style="font-weight: 500">Year of birth</label>
@@ -180,14 +184,12 @@ ini_set('post_max_size', '50M');
                                         <option value="4">Other (born as a female)</option>
                                     </select>
                                 </div>
-                            </div>
-                        </div>
-
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center">
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-4">
+                                <div class="mb-4 w-100">
                                     <button class="btn fillButton" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="padding: 10px 17px!important; margin: 0!important; width: 100%" type="submit">Get the Reports</button>
                                 </div>
                             </div>
+                        </div>
+
 
 
                             <!--                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-flex flex-column mx-auto px-0 ps-1 addSubCenter alignCenter" style="margin: 0!important;  z-index: 10; position: relative">-->
@@ -236,8 +238,8 @@ ini_set('post_max_size', '50M');
                     <div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mx-0 justify-content-center">
                         <form action="/user/create-subject" method="post" class="row d-flex justify-content-center"  enctype="multipart/form-data">
                             <input type="hidden" name="_csrf" value="<?= Yii::$app->getRequest()->getCsrfToken();?>">
-                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 d-flex justify-content-center addSubjectCenter">
-                                <div class="col-12 d-flex flex-column mb-3" style="max-width: 330px; height: 465px; border: 1px dashed grey; border-radius: 5px;">
+                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 d-flex justify-content-center addSubjectCenter" style="background: white; border-radius: 5px">
+                                <div class="col-12 d-flex flex-column my-4" style="max-width: 330px; height: 490px; border: 1px dashed grey; border-radius: 5px;">
                                     <div class="d-flex justify-content-start align-items-center ps-3" style="height: 50px;">
                                         <input type="file" name="image" required class="custom-file-input" id="file-input-other">
                                         <a href="#" onclick="document.getElementById('file-input-other').click();" style="text-decoration: none; color: black" class="add-subject-icons"><i class="fa-solid fa-arrow-up-from-bracket" style="padding: 10px; font-size: 20px; cursor: pointer; color: #000;"></i>Upload</a>
@@ -251,21 +253,25 @@ ini_set('post_max_size', '50M');
                                 </div>
                             </div>
 
-                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 d-flex justify-content-center subjectProps" style="">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex flex-column align-items-center" style="text-align: start; max-width: 330px">
+                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 d-flex justify-content-center subjectProps" style="background: white; border-radius: 5px">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex flex-column align-items-center mt-4" style="text-align: start; max-width: 330px">
                                     <div class="mb-4 w-100">
                                         <label for="exampleFormControlInput1" class="form-label" style="font-weight: 500">Name/Nickname</label>
                                         <input type="text" class="form-control" name="name" id="exampleFormControlInput1" placeholder="Name/Nickname" required>
                                     </div>
                                     <div class="mb-4 d-flex flex-column w-100">
-                                        <label for="customRange2" class="form-label" style="font-weight: 500">Height</label>
-                                        <input type="range" class="form-range"  value="135" name="height" id="customRange2" min="40" max="230" step="1" oninput="this.nextElementSibling.value = this.value + 'cm' + ' (' + (parseInt(this.value) / 2.54).toFixed(1) + ' inches)'" required>
-                                        <output class="text-end">135cm (53.1 inches)</output>
+                                        <div class="d-flex justify-content-between">
+                                            <label for="customRange2" class="form-label" style="font-weight: 500">Height</label>
+                                            <output class="text-end">135cm (53.1 inches)</output>
+                                        </div>
+                                        <input type="range" class="form-range"  value="135" name="height" id="customRange2" min="40" max="230" step="1" oninput="$(this).parent().find('output').text($(this).val() + 'cm' + ' (' + (parseInt($(this).val()) / 2.54).toFixed(1) + ' inches)')" required>
                                     </div>
                                     <div class="mb-4 d-flex flex-column w-100">
-                                        <label for="customRange1" class="form-label" style="font-weight: 500">Wrist size</label>
-                                        <input type="range" class="form-range" value="18.5" name="wrist_size" id="customRange1" min="7" max="30" step="0.5" oninput="this.nextElementSibling.value = this.value + 'cm' + ' (' + (parseInt(this.value) / 2.54).toFixed(1) + ' inches)'" required>
-                                        <output class="text-end">18.5cm (7.1 inches)</output>
+                                        <div class="d-flex justify-content-between">
+                                            <label for="customRange1" class="form-label" style="font-weight: 500">Wrist size</label>
+                                            <output class="text-end">18.5cm (7.1 inches)</output>
+                                        </div>
+                                        <input type="range" class="form-range" value="18.5" name="wrist_size" id="customRange1" min="7" max="30" step="0.5" oninput="$(this).parent().find('output').text($(this).val() + 'cm' + ' (' + (parseInt($(this).val()) / 2.54).toFixed(1) + ' inches)')" required>
                                     </div>
                                     <div class="mb-4 w-100">
                                         <label for="exampleFormControlInput4" class="form-label" style="font-weight: 500">Year of birth</label>
@@ -286,11 +292,9 @@ ini_set('post_max_size', '50M');
                                             <option value="4">Other (born as a female)</option>
                                         </select>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-center mt-4">
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 px-4">
-                                    <button class="btn fillButton" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="padding: 10px 17px!important; margin: 0!important; width: 100%" type="submit">Get the Reports</button>
+                                    <div class="mb-4 w-100">
+                                        <button class="btn fillButton" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSignUp" aria-controls="offcanvasWithBothOptions" style="padding: 10px 17px!important; margin: 0!important; width: 100%" type="submit">Get the Reports</button>
+                                    </div>
                                 </div>
                             </div>
 

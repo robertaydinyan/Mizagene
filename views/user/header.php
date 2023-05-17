@@ -14,7 +14,7 @@ use yii\bootstrap5\ActiveForm;
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <script src="https://kit.fontawesome.com/a262c03b8a.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.4/b-2.3.6/r-2.4.1/sb-1.4.2/sp-2.1.2/datatables.min.css" rel="stylesheet"/>
+    <link href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/cr-1.6.2/fc-4.2.2/fh-3.3.2/kt-2.9.0/r-2.4.1/rg-1.3.1/rr-1.3.3/sc-2.1.1/sb-1.4.2/sp-2.1.2/sl-1.6.2/sr-1.2.2/datatables.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <div class="text-center preloader d-none" style="width: 100%; height: 100%; z-index: 99999; position: absolute; background: #f5f5f5; justify-content: center; align-items: center">
@@ -69,6 +69,13 @@ use yii\bootstrap5\ActiveForm;
     <div class="row w-100 ms-0 h-100">
         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 flex-column flex-shrink-0 p-3 pt-2 px-0 bg-light bigMenu"  style="width: 90px; display: flex">
             <ul class="nav nav-pills flex-column mb-auto sidebar">
+                <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->me): ?>
+                    <li class="nav-item text-center">
+                        <a href="/subject?id=<?= Yii::$app->user->identity->me->public_id ?>&rep=3" class="nav-link link-dark px-2">
+                            <img src="<?= str_replace('/var/www/html/Mizagene/web/', '', Yii::$app->user->identity->me->image) ?>" alt="" style="<?= Yii::$app->controller->action->id == 'subject' ? 'width: 60px; height: 60px;' : 'width: 50px; height: 50px;' ?> border-radius: 13px; object-fit: cover" ">
+                        </a>
+                    </li>
+                <?php endif; ?>
                 <li class="nav-item text-center">
                     <a href="/add-subject" class="nav-link link-dark px-2" aria-current="page">
                         <img src="/images/add-photo_<?= Yii::$app->controller->action->id == 'add-subject' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'add-subject' ? 'active' : '' ?>">
@@ -90,7 +97,7 @@ use yii\bootstrap5\ActiveForm;
                     </a>
                 </li>
                 <?php if (!Yii::$app->user->isGuest && (Yii::$app->user->identity->id == 4 || Yii::$app->user->identity->id == 17)): ?>
-                    <li class="nav-item text-center mt-5">
+                    <li class="nav-item text-center">
                         <a href="/analytics" class="nav-link link-dark px-2">
                             <img src="/images/analysis_<?= Yii::$app->controller->action->id == 'analytics' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'analytics' ? 'active' : '' ?>">
                         </a>
@@ -119,6 +126,13 @@ use yii\bootstrap5\ActiveForm;
                         <img src="/images/favicon.png" alt="Logo" width="70">
                     </a>
                 </li>
+                <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->me): ?>
+                    <li class="nav-item text-center">
+                        <a href="/subject?id=<?= Yii::$app->user->identity->me->public_id ?>&rep=3" class="nav-link link-dark px-2">
+                            <img src="<?= str_replace('/var/www/html/Mizagene/web/', '', Yii::$app->user->identity->me->image) ?>" alt="" style="<?= Yii::$app->controller->action->id == 'subject' ? 'width: 60px; height: 60px;' : 'width: 50px; height: 50px;' ?> border-radius: 13px; object-fit: cover" ">
+                        </a>
+                    </li>
+                <?php endif; ?>
                 <li class="nav-item text-center">
                     <a href="/add-subject" class="nav-link link-dark px-2" aria-current="page">
                         <img src="/images/add-photo_<?= Yii::$app->controller->action->id == 'add-subject' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'add-subject' ? 'active' : '' ?>">
