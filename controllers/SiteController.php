@@ -83,7 +83,11 @@ class SiteController extends Controller
         if ($model->load($post,'') && $model->login() && $model->validate()) {
             if (count(Yii::$app->user->identity->subjects) > 0)
             {
-                return $this->redirect(['/all-subjects']);
+                if (Yii::$app->user->identity->me) {
+                    return $this->redirect(['/subject?id=' . Yii::$app->user->identity->me->public_id . '&rep=3']);
+                } else {
+                    return $this->redirect(['/all-subjects']);
+                }
             } else {
                 return $this->redirect(['/add-subject']);
             }

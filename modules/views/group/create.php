@@ -20,7 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'items' => $items,
         'form' => $form,
-        'step' => $step
+        'step' => $step,
+        'mode' => 1
     ]);
     $form::end(); ?>
 

@@ -68,6 +68,7 @@ use yii\bootstrap5\ActiveForm;
 <div class="container-fluid heightError">
     <div class="row w-100 ms-0 h-100">
         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 flex-column flex-shrink-0 p-3 pt-2 px-0 bg-light bigMenu"  style="width: 90px; display: flex">
+        <?php if (!Yii::$app->user->isGuest): ?>
             <ul class="nav nav-pills flex-column mb-auto sidebar">
                 <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->me): ?>
                     <li class="nav-item text-center">
@@ -82,7 +83,7 @@ use yii\bootstrap5\ActiveForm;
                     </a>
                 </li>
                 <li class="nav-item text-center">
-                    <a href="/all-subjects" class="nav-link link-dark px-2">
+                    <a href="/all-subjects<?= (Yii::$app->user->identity->id == 17 || Yii::$app->user->identity->id == 4) ? '?type=my' : '' ?>" class="nav-link link-dark px-2">
                         <img src="/images/list_<?= Yii::$app->controller->action->id == 'all-subjects' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'all-subjects' ? 'active' : '' ?>">
                     </a>
                 </li>
@@ -91,11 +92,7 @@ use yii\bootstrap5\ActiveForm;
                         <img src="/images/connections_<?= Yii::$app->controller->action->id == 'connections' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'connections' ? 'active' : '' ?>">
                     </a>
                 </li>
-                <li class="nav-item text-center">
-                    <a href="#" class="nav-link link-dark px-2">
-                        <img src="/images/HR_<?= Yii::$app->controller->action->id == 'service' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'service' ? 'active' : '' ?>">
-                    </a>
-                </li>
+          
                 <?php if (!Yii::$app->user->isGuest && (Yii::$app->user->identity->id == 4 || Yii::$app->user->identity->id == 17)): ?>
                     <li class="nav-item text-center">
                         <a href="/analytics" class="nav-link link-dark px-2">
@@ -118,9 +115,11 @@ use yii\bootstrap5\ActiveForm;
 <!--                    <li><a class="dropdown-item" href="#">Sign out</a></li>-->
 <!--                </ul>-->
 <!--            </div>-->
+        <?php endif; ?>
         </div>
         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 flex-column flex-shrink-0 p-3 pt-2 px-0 bg-light offcanvas offcanvas-end" id="smallMenu" style="width: 90px; display: flex">
-            <ul class="nav nav-pills flex-column mb-auto sidebar">
+            <?php if (!Yii::$app->user->isGuest): ?>
+                <ul class="nav nav-pills flex-column mb-auto sidebar">
                 <li class="nav-item text-center">
                     <a href="#" class="nav-link link-dark px-2" aria-current="page">
                         <img src="/images/favicon.png" alt="Logo" width="70">
@@ -139,7 +138,7 @@ use yii\bootstrap5\ActiveForm;
                     </a>
                 </li>
                 <li class="nav-item text-center">
-                    <a href="/all-subjects" class="nav-link link-dark px-2">
+                    <a href="/all-subjects<?= (Yii::$app->user->identity->id == 17 || Yii::$app->user->identity->id == 4) ? '?type=my' : '' ?>" class="nav-link link-dark px-2">
                         <img src="/images/list_<?= Yii::$app->controller->action->id == 'all-subjects' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'all-subjects' ? 'active' : '' ?>">
                     </a>
                 </li>
@@ -148,11 +147,7 @@ use yii\bootstrap5\ActiveForm;
                         <img src="/images/connections_<?= Yii::$app->controller->action->id == 'connections' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'connections' ? 'active' : '' ?>">
                     </a>
                 </li>
-                <li class="nav-item text-center">
-                    <a href="#" class="nav-link link-dark px-2">
-                        <img src="/images/HR_<?= Yii::$app->controller->action->id == 'service' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'service' ? 'active' : '' ?>">
-                    </a>
-                </li>
+
                 <li class="nav-item text-center d-sm-none">
                     <a href="/settings" class="nav-link link-dark px-2">
                         <img src="/images/setting_<?= Yii::$app->controller->action->id == 'settings' ? '2' : '1' ?>.png" alt="" width="50" class="<?= Yii::$app->controller->action->id == 'settings' ? 'active' : '' ?>">
@@ -185,6 +180,8 @@ use yii\bootstrap5\ActiveForm;
             <!--                    <li><a class="dropdown-item" href="#">Sign out</a></li>-->
             <!--                </ul>-->
             <!--            </div>-->
+            <?php endif; ?>
+
         </div>
         <div class="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-12 pe-0 mb-3 mobileCol ps-0 ps-sm-2 h-100" style="width: calc(100% - 90px); background: #f5f5f5;">
 

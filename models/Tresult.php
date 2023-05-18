@@ -10,6 +10,11 @@ use Yii;
  * @property int $id
  * @property int $subject_id
  * @property string $result
+ * @property int $mizagene_id
+ * @property float $safra
+ * @property float $soda
+ * @property float $dam
+ * @property float $balgham
  */
 class Tresult extends \yii\db\ActiveRecord
 {
@@ -39,7 +44,12 @@ class Tresult extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'subject_id' => 'Subject ID',
-            'result' => 'Result'
+            'result' => 'Result',
+            'mizagene_id' => 'Mizagene ID',
+            'safra' => 'Safra',
+            'soda' => 'Soda',
+            'dam' => 'Dam',
+            'balgham' => 'Balgham'
         ];
     }
 }

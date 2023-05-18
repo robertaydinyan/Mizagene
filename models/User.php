@@ -113,6 +113,21 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return $this->hasMany(Subject::class, ['user_id' => 'id'])->orderBy('id', 'desc');
     }
+
+    public function getAllsubjects()
+    {
+        return Subject::find()->where(['status' => 0])->orderBy('id', 'desc')->all();
+    }
+
+    public function getMysubjects()
+    {
+        return $this->hasMany(Subject::class, ['user_id' => 'id'])->andWhere(['copied' => 0])->orderBy('id', 'desc');
+    }
+
+    public function getClonedsubjects()
+    {
+        return $this->hasMany(Subject::class, ['user_id' => 'id'])->andWhere(['copied' => 1])->orderBy('id', 'desc');
+    }
     public function getMe()
     {
         return $this->hasOne(Subject::class, ['user_id' => 'id'])

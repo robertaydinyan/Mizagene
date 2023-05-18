@@ -231,17 +231,17 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                         </div>
 
                         <div class="d-flex my-2 text-center">
-                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 px-1">
-                                <span style="background: rgb(243, 194, 67)!important; color: white!important; border: none!important;font-size: 8px; width: 100%; display: block; border-radius: 5px;" class="p-1">S: 15.3%</span>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 pe-1">
+                                <span style="background: rgb(243, 194, 67)!important; color: white!important; border: none!important;font-size: 8px; width: 100%; display: block; border-radius: 5px;" class="p-1">S: <?= $subject->result->safra ?>%</span>
                             </div>
-                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 px-1">
-                                <span style="background: rgb(236, 84, 73)!important; color: white!important; border: none!important;font-size: 8px; width: 100%; display: block; border-radius: 5px;" class="p-1">D: 24.7%</span>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 pe-1">
+                                <span style="background: rgb(236, 84, 73)!important; color: white!important; border: none!important;font-size: 8px; width: 100%; display: block; border-radius: 5px;" class="p-1">D: <?= $subject->result->dam ?>%</span>
                             </div>
-                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 px-1">
-                                <span style="background: rgb(54, 130, 180)!important; color: white!important; border: none!important;font-size: 8px; width: 100%; display: block; border-radius: 5px;" class="p-1">B: 30.5%</span>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 pe-1">
+                                <span style="background: rgb(54, 130, 180)!important; color: white!important; border: none!important;font-size: 8px; width: 100%; display: block; border-radius: 5px;" class="p-1">B: <?= $subject->result->balgham ?>%</span>
                             </div>
-                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 px-1">
-                                <span style="background: rgb(208, 174, 101)!important; color: white!important; border: none!important;font-size: 8px; width: 100%; display: block; border-radius: 5px;" class="p-1">S: 48.3%</span>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 pe-1">
+                                <span style="background: rgb(208, 174, 101)!important; color: white!important; border: none!important;font-size: 8px; width: 100%; display: block; border-radius: 5px;" class="p-1">S: <?= $subject->result->soda ?>%</span>
                             </div>
                         </div>
                     </div>

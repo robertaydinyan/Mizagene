@@ -5,7 +5,7 @@ use yii\bootstrap5\Html;
 ?>
 
 <div class="d-flex justify-content-between mt-1">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h4><?= Html::encode($this->title) ?></h4>
 
     <ul class="nav">
         <li class="nav-item">

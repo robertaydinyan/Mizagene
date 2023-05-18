@@ -15,12 +15,29 @@ $reports = Reports::find()->where(['disabled' => 0])->all();
         border-radius: 5px!important;
         padding: 15px!important;
     }
+
+    .customBut {
+        background: rgb(119, 154, 161)!important;
+        color: white!important;
+    }
+     .dataTables_length {
+         text-align: start!important;
+     }
 </style>
 
 <div class="row d-flex mx-auto px-0">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex align-items-center mb-1 mt-3">
         <h3 class="d-flex align-items-center centeredTitle" style="color: #003C46"><img src="/images/list_1.png" alt="" width="30" class="me-2">Subjects List</h3>
     </div>
+    <?php if (Yii::$app->user->identity->id == 17 || Yii::$app->user->identity->id == 4): ?>
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex align-items-center mb-1 mt-3">
+        <div class="d-flex">
+            <button type="button" class="btn <?= isset($_GET['type']) && $_GET['type'] == 'my' ? 'customBut' : ''  ?>" style="color: #003C46"><a style="text-decoration: none; color: unset" href="/all-subjects?type=my">My</a></button>
+            <button type="button" class="btn <?= isset($_GET['type'])  && $_GET['type'] == 'cloned' ? 'customBut' : ''  ?>" style="color: #003C46"><a style="text-decoration: none; color: unset" href="/all-subjects?type=cloned">Shared</a></button>
+            <button type="button" class="btn <?= !isset($_GET['type']) ? 'customBut' : ''  ?> me-2" style="color: #003C46"><a style="text-decoration: none; color: unset" href="/all-subjects">All</a></button>
+        </div>
+    </div>
+    <?php endif; ?>
     <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12 px-0 px-sm-2">
         <div class="mb-3 mx-auto px-0">
             <div class="row mx-auto px-0" style="padding-top: 10px!important; padding-left: 30px">
@@ -42,7 +59,17 @@ $reports = Reports::find()->where(['disabled' => 0])->all();
                     </tr>
                     </thead>
                     <tbody>
-                        <?php foreach (Yii::$app->user->identity->subjects as $key => $subject): if($subject->deleted_at == null):?>
+                        <?php
+                        if (isset($_GET['type']) && $_GET['type'] == 'my') {
+                            $subjects = Yii::$app->user->identity->mysubjects;
+                        } elseif (isset($_GET['type']) && $_GET['type'] == 'cloned') {
+                            $subjects = Yii::$app->user->identity->clonedsubjects;
+                        } else {
+                            $subjects = Yii::$app->user->identity->allsubjects;
+                        }
+                            foreach ($subjects as $key => $subject):
+                                if($subject->deleted_at == null):
+                        ?>
                             <tr style="<?= isset($subject->deleted_at) ? 'pointer-events: none; background: #ff000052' : '' ?>" class="text-center">
                                 <td class="text-start ps-2"><a href="/subject?id=<?= $subject->public_id ?>&rep=3" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"><?= $key+1 ?></a></td>
                                 <td class=""><a href="/subject?id=<?= $subject->public_id ?>&rep=3"><img src="<?= str_replace('/var/www/html/Mizagene/web/', '', $subject->image) ?>" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></a></td>

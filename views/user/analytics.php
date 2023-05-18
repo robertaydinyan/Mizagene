@@ -30,7 +30,7 @@ use app\models\Subject;
 <div class="row d-flex mx-auto px-0">
     <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12" >
         <div class="d-flex col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3 align-items-center">
-            <h3 class="d-flex centeredTitle ms-2 me-5 my-0" style="color: #003C46"><img src="/images/analysis_1.png" alt="" width="30" class="me-2">Analytics</h3>
+            <h3 class="d-flex centeredTitle ms-2 me-5 my-0" style="color: #003C46"><img src="/images/analysis_1.png" alt="" width="40" class="me-2">Analytics</h3>
             <div class="d-flex text-center justify-content-center align-items-center ms-5">
                 <span class="genderFilter d-flex justify-content-center" style="color: white; width: 45px; background: rgb(119, 154, 161); height: 35px; align-items: center; display: flex; border-radius: 3px; font-size: medium; cursor: pointer" data-gender="null">All</span><i class="fa-solid fa-mars genderFilter fa-xl p-2" data-gender="1" style="color: #003C46; background: #f5f5f5; height: 35px; align-items: center; display: flex; border-radius: 3px; font-size: x-large; cursor: pointer"></i> <i class="fa-solid fa-venus genderFilter fa-xl p-2" data-gender="2" style="color: #003C46; background: #f5f5f5; height: 35px; align-items: center; display: flex; border-radius: 3px; font-size: x-large; cursor: pointer"></i> <i class="fa-solid fa-transgender genderFilter fa-xl p-2" data-gender="3" style="color: #003C46; background: #f5f5f5; height: 35px; align-items: center; display: flex; border-radius: 3px; font-size: x-large; cursor: pointer"></i>
             </div>
@@ -70,7 +70,7 @@ use app\models\Subject;
                     <h6 class="itemTitle m-0 pe-2"></h6>
                     <div class="d-flex">
                         <button type="button" class="btn btn-light p-1 me-2"><img src="/images/favicon.png" alt="" style="width: 30px;cursor: pointer;height: 30px;filter: grayscale(100%);" class="youmeeResult"></button>
-                        <button type="button" class="btn btn-light p-1 me-3"><img src="/images/Mizagene_M_46.png" alt="" style="width: 30px;cursor: pointer;filter: grayscale(100%);" class="mizageneResult"></button>
+                        <button type="button" class="btn btn-light p-1 me-3"><img src="/images/Mizagene_M_46.png" alt="" style="width: 30px;cursor: pointer;" class="mizageneResult"></button>
                         <button type="button" class="saveRange btn btn-light">Set Range</button>
                         <button type="button" class="setRange d-none btn btn-info">Save Range</button>
                         <button type="button" class="restoreRange d-none btn btn-danger">Restore</button>
@@ -401,7 +401,7 @@ use app\models\Subject;
                             $('.restoreRange').attr('data-param', param);
                             $(document).find('.youmeeResult').attr('data-item', param);
                             $(document).find('.mizageneResult').attr('data-item', param);
-                            $('.mizageneResult').css('filter', 'grayscale(100%)');
+                            // $('.mizageneResult').css('filter', 'grayscale(100%)');
                             $('.youmeeResult').css('filter', 'grayscale(100%)');
                         });
                     row.child(format(row.data())).show();

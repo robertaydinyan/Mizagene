@@ -1,7 +1,9 @@
 main > .container {
     padding: 70px 15px 20px;
 }
-
+.form-control:focus {
+    box-shadow: 0 0 0 0.05rem rgba(13, 110, 253, 0.25) !important;
+}
 .footer {
     background-color: #f5f5f5;
     font-size: .9em;
@@ -483,7 +485,7 @@ a.nav-link {
     padding: 8px 0 !important;
 }
 .steps-container {
-    padding: 4px;
+    padding: 12px;
     background: #f7f7f7;
 }
 
@@ -667,12 +669,8 @@ a.nav-link {
 .group-item {
     height: 126px;
     margin: 8px 0;
-    background-color: #f8f8f8;
     padding: 12px;
-}
-
-.report-group {
-    background-color: #f8f8f8;
+    border-radius: 8px;
 }
 
 .report-group-main {
@@ -823,10 +821,6 @@ a.nav-link {
     width: 100%;
 }
 
-.group-tabs, .report-tabs {
-    background: #f8f8f8;
-}
-
 .tab-pane {
     padding: 8px 20px;
 }
@@ -839,6 +833,7 @@ a.nav-link {
 .group-item-container {
     height: calc(100vh - 180px);
     overflow: auto;
+    margin-top: 12px;
 }
 
 .group-save {
@@ -874,7 +869,6 @@ a.nav-link {
     width: calc(33.33333333% - 4px);
     margin-left: 4px;
     float: left;
-    border: 1px solid #003c47;
 }
 
 .droppable .report-group {

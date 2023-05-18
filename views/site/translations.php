@@ -1733,223 +1733,226 @@ $data = [
     "secure-tile" => [
     "en" => "Data transmission and storage security",
     "ru" => "Безопасность передачи и хранения данных",
-    "es" => ""],
+    "es" => "Seguridad en la transmisión y el almacenamiento de datos"],
 
     "secure-tile1" => [
     "en" => "Only depersonalized data",
     "ru" => "Только обезличенные данные",
-    "es" => ""],
+    "es" => "Solo datos despersonalizados"],
 
     "secure-tile2" => [
     "en" => "Anonymized data about the face of the subject (the coordinates of the control points and their distance from each other) uses the same AI-based program code as when creating the visual effects of the overlay. This decision was dictated by the need to be as \"transparent\" as possible in the case of using our Technology with the placement of a part of the program code on the servers of corporate users.",
     "ru" => " Для обезличенных данных о лице субъекта (координаты контрольных точек и их расстояние относительно друг друга) используется тот же программный код на базе AI, что и при создании визуальных эффектов наложения. Это решение было продиктовано необходимостью быть максимально «прозрачными» в случае использования нашей Технологии с размещением части программного кода на серверах корпоративных пользователей.",
-    "es" => ""],
+    "es" => "Los datos anónimos sobre la cara del sujeto (las coordenadas de los puntos de control y la distancia entre ellos) utilizan el mismo código de programa basado en IA que cuando se crean los efectos visuales de la superposición. Esta decisión fue dictada por la necesidad de ser lo más \"transparente\" posible en el caso de utilizar nuestra Tecnología con la colocación de una parte del código del programa en los servidores de los usuarios corporativos."],
 
     "os-tile" => [
     "en" => "Software delivery options",
     "ru" => "Варианты поствки ПО",
-    "es" => ""],
+    "es" => "Opciones de entrega de software"],
 
     "os-tile1" => [
     "en" => "Depending on the size of companies, as well as the goals they pursue, for corporate solutions we provide 3 options for supplying technology:",
     "ru" => "В зависимости от размеров компаний, а также целей, которые они преследуют, для корпоративных решений мы предоставляем 3 варианта поставки технологии:",
-    "es" => ""],
+    "es" => "Dependiendo del tamaño de las empresas, así como de los objetivos que persigan, para soluciones corporativas ofrecemos 2 opciones de suministro de tecnología:"],
 
     "os-tile2" => [
     "en" => "The Client or Partner integrates our system with their software and receives the scoring results directly in it.",
     "ru" => "Клиент или Партнер интегрирует нашу систему со своим программным обеспечением и получает результаты скоринга прямо в нем.",
-    "es" => ""],
+    "es" => "(interfaz de programación de aplicaciones). El Cliente o Socio integra nuestro sistema con su software y recibe los resultados de la valoración directamente en él."],
 
     "os-tile3" => [
     "en" => "SDK (software development kit) ",
     "ru" => "SDK (software development kit)",
-    "es" => ""],
+    "es" => "El SDK (kit de desarrollo de software)"],
 
     "os-tile4" => [
     "en" => "is installed on the Client's server.",
     "ru" => "инсталлируется на сервере Клиента.",
-    "es" => ""],
+    "es" => " está instalado en el servidor del Cliente."],
 
     "os-tile5" => [
     "en" => "Photos of the subjects of analysis remain on this server without being transferred to us. SDK by Youmee transmits all the necessary, but at the same time depersonalized information about the counterparty in the form of a JSON file with coordinates of control points on the face. The results of the analysis are transmitted to the Client's system via the API.",
     "ru" => "Фотографии субъектов анализа остаются на этом сервере без передачи нам. SDK от Youmee  передает всю необходимую, но при этом обезличенную информацию о контрагенте в виде JSON файла с координатами контрольных точек на лице. Результаты анализа посредством API передаются в систему Клиента.",
-    "es" => ""],
+    "es" => "Las fotos de los sujetos de análisis permanecen en este servidor sin ser transferidas a nosotros. SDK mediante Youmee transmite toda la información necesaria, pero a su vez despersonalizada, sobre la contraparte en forma de archivo JSON con coordenadas de puntos de control en la cara. Los resultados del análisis se transmiten al sistema del Cliente a través de la API."],
 
     "t_tile" => [
     "en" => "ABOUT MIZAGENE TECHNOLOGY",
     "ru" => "О Технологии Mizagene",
-    "es" => ""],
+    "es" => "SOBRE LA TECNOLOGÍA MIZAGENE"],
 
     "t_tile1" => [
     "en" => "Mizagene technology is the result of 17 years of hard work of its author Professor H. Sheikh Roshandel and his team.",
     "ru" => "Технология Mizagene - результат упорной 17-летней работы ее автора профессора Х. Шейх Рошанделя и его команды.",
-    "es" => ""],
+    "es" => "La tecnología Mizagene es el resultado de 17 años de arduo trabajo de su autor, el profesor H. Sheikh Roshandel y su equipo."],
 
     "t_tile2" => [
     "en" => "Dozens of prepared reports are widely applicable in  ",
     "ru" => "Десятки подготовленных репортов широко применимы в ",
-    "es" => ""],
+    "es" => "Mizagene consiste en docenas de informes preparados que son ampliamente aplicables en"],
 
     "t_tile3" => [
     "en" => " business",
     "ru" => "бизнесе",
-    "es" => ""],
+    "es" => " negocios,"],
 
     "t_tile4" => [
     "en" => " security",
     "ru" => "безопасности",
-    "es" => ""],
+    "es" => " seguridad,"],
 
     "t_tile5" => [
     "en" => "HR",
     "ru" => "HR",
-    "es" => ""],
+    "es" => " recursos humanos"],
 
     "t_tile6" => [
     "en" => "and everyday life ",
     "ru" => "повседневной жизни",
-    "es" => ""],
+    "es" => " y la vida cotidiana"],
 
     "t_tile7" => [
     "en" => " You can see a partial list of Technology analysis options on the main page of the site.",
     "ru" => " Вы можете ознакомиться с частичным списком параметров анализа Технологии на главной странице сайта.",
-    "es" => ""],
+    "es" => " En la pagina principal de la pagina web, puede ver una lista parcial de opciones de análisis de la Tecnología"],
 
     "command_m" => [
     "en" => "Mizagene Team",
     "ru" => "Команда Mizagene Technologies",
-    "es" => ""],
+    "es" => "Equipo Mizagene"],
 
     "Наука «Mizagene»" => [
     "en" => "Science of Mizagene",
     "ru" => "Наука «Mizagene»",
-    "es" => ""],
+    "es" => "Ciencia de Mizagene"],
 
     "В основе запатентованной технологии лежит одноименное ближневосточное научное учение Mizagene." => [
     "en" => "The patented technology is based on the eponymous Middle Eastern scientific doctrine of Mizagene.",
     "ru" => "В основе запатентованной технологии лежит одноименное ближневосточное научное учение Mizagene.",
-    "es" => ""],
+    "es" => "La tecnología patentada se basa en la doctrina científica homónima de Oriente Medio de Mizagene."],
 
     "Один из принципов этого учения в переносе на современный язык гласит следующее: «Человек рождается , таким какой он есть, а лицо человека, как открытая книга, отражает его суть»." => [
     "en" => "One of the principles of this teaching, translated into modern language, reads as follows: \"A person is born as he is, and a person\'s face, like an open book, reflects his essence.\"",
     "ru" => "Один из принципов этого учения в переносе на современный язык гласит следующее: «Человек рождается , таким какой он есть, а лицо человека, как открытая книга, отражает его суть».",
-    "es" => ""],
+    "es" => "Uno de los principios de esta enseñanza, traducido al lenguaje moderno, dice lo siguiente: \"Una persona nace tal como es, y el rostro de una persona, refleja su esencia como un libro abierto\"."],
 
     "Учение Mizagene утверждает, что человек в течение жизни не меняется, а любые изменения в его поведении объясняются сознательным выбором, то есть адаптацией личности к социальной среде под влиянием приобретенного опыта. При этом подсознание, отвечающее за неконтролируемые сознанием процессы сильных изменений не претерпевает." => [
     "en" => "Mizagene's doctrine claims that a person does not change during his life, and any changes in his behavior are explained by a conscious choice, that is, the adaptation of the individual to the social environment under the influence of the acquired experience. At the same time, the subconscious, which is responsible for the processes uncontrolled by consciousness, does not undergo strong changes.",
     "ru" => "Учение Mizagene утверждает, что человек в течение жизни не меняется, а любые изменения в его поведении объясняются сознательным выбором, то есть адаптацией личности к социальной среде под влиянием приобретенного опыта. При этом подсознание, отвечающее за неконтролируемые сознанием процессы сильных изменений не претерпевает.",
-    "es" => ""],
+    "es" => "La doctrina de Mizagene afirma que una persona no cambia durante su vida, y cualquier cambio en su comportamiento se explica por una elección consciente, es decir, la adaptación del individuo al entorno social bajo la influencia de la experiencia adquirida. Al mismo tiempo, el subconsciente, que es responsable de los procesos no controlados por la conciencia, no sufre cambios significativos."],
 
     "Учение на протяжение веков  сильно эволюционировало, и эпоха за эпохой вбирало знания лучших умов, которые искали закономерности во внешности людей и ее взаимосвязи с их врожденным здоровьем и характером." => [
     "en" => "The doctrine has evolved greatly over the centuries, and epoch after epoch absorbed the knowledge of the best minds who were looking for patterns in the appearance of people and its relationship with their innate health and character.",
     "ru" => "Учение на протяжение веков  сильно эволюционировало, и эпоха за эпохой вбирало знания лучших умов, которые искали закономерности во внешности людей и ее взаимосвязи с их врожденным здоровьем и характером.",
-    "es" => ""],
+    "es" => "La doctrina ha evolucionado mucho a lo largo de los siglos, y época tras época ha absorbido el conocimiento de las mejores mentes que buscaban patrones en la apariencia de las personas y su relación con su carácter y salud innatos."],
 
     "Технология: 3 фазы развития" => [
     "en" => "Technology: 3 phases of development",
     "ru" => "Технология: 3 фазы развития",
-    "es" => ""],
+    "es" => "Tecnología: 3 fases de desarrollo"],
 
     "Драгоценный опыт предков в условиях современного мироустройства оказался несколько примитивен и не смог в полной мере отразить природу современного человека." => [
     "en" => "The precious experience of ancestors in the conditions of the modern world order turned out to be somewhat primitive and could not fully reflect the nature of modern man.",
     "ru" => "Драгоценный опыт предков в условиях современного мироустройства оказался несколько примитивен и не смог в полной мере отразить природу современного человека.",
-    "es" => ""],
+    "es" => "La valiosa experiencia de los antepasados en las condiciones del orden mundial moderno resultó ser algo primitiva y no pudo reflejar completamente la naturaleza del hombre actual."],
 
     "Когда это стало очевидным, и родилась идея создания уникальной технологии, которая бы унаследовала название и суть учения, и вместе с тем вобрала бы в себя знания из сотен исторических и научных трудов и современной научной литературы в области психологии и медицины. Так" => [
     "en" => "When this became obvious, the idea of creating a unique technology was born. This Technology inherited the name and essence of the doctrine, and at the same time absorbed knowledge from hundreds of historical and scientific works and modern scientific literature in the field of psychology and medicine. So",
     "ru" => "Когда это стало очевидным, и родилась идея создания уникальной технологии, которая бы унаследовала название и суть учения, и вместе с тем вобрала бы в себя знания из сотен исторических и научных трудов и современной научной литературы в области психологии и медицины. Так",
-    "es" => ""],
+    "es" => "Cuando esto se hizo evidente, nació la idea de crear una tecnología única. Esta Tecnología heredó el nombre y la esencia de la doctrina, y al mismo tiempo absorbió conocimientos de cientos de obras históricas y científicas y literatura científica moderna en el campo de la psicología y la medicina. Entonces,"],
 
     "в 2006 году" => [
     "en" => "in 2006 ",
     "ru" => "в 2006 году",
-    "es" => ""],
+    "es" => "en 2006"],
 
     "сформировалась база, которая и" => [
     "en" => "a base was formed and ",
     "ru" => "сформировалась база, которая и",
-    "es" => ""],
+    "es" => "se formó una base y"],
 
     "легла в основу ядра Технологи." => [
     "en" => "became the basis of the core of Technology.",
     "ru" => "легла в основу ядра Технологи.",
-    "es" => ""],
+    "es" => "se convirtió en el fundamento del núcleo de la Tecnología."],
 
     "Вторая фаза" => [
     "en" => "The second phase",
     "ru" => "Вторая фаза",
-    "es" => ""],
+    "es" => "La segunda fase"],
 
     "создания Технологии заключалась в математическом обосновании и тестировании выявленных закономерностей" => [
     "en" => "phase of the creation of the Technology consisted of mathematical justification and testing of the identified patterns ",
     "ru" => "создания Технологии заключалась в математическом обосновании и тестировании выявленных закономерностей",
-    "es" => ""],
+    "es" => "de creación de la Tecnología consistió en la justificación matemática y ensayos de los patrones identificados en"],
 
     "на фокус-группе, составившей 200,000 человек." => [
     "en" => "patterns in a focus group of 200,000 people.",
     "ru" => "на фокус-группе, составившей 200,000 человек.",
-    "es" => ""],
+    "es" => "un grupo focal de 200.000 personas."],
 
     "Так появились первые, или" => [
     "en" => "This is how the first, or ",
     "ru" => "Так появились первые, или",
-    "es" => ""],
+    "es" => "Así aparecieron los primeros,"],
 
     "«первичные» параметры" => [
     "en" => "\"primary\" parameters ",
     "ru" => "«первичные» параметры",
-    "es" => ""],
+    "es" => "\"primarios\" parámetros,"],
 
     "выдававшие результат с ошеломительной точностью:" => [
     "en" => "appeared, giving the result with stunning accuracy: ",
     "ru" => "выдававшие результат с ошеломительной точностью:",
-    "es" => ""],
+    "es" => "dando el resultado con una precisión asombrosa de"],
 
     "Эти же параметры и легли в основу третьей фазы создания Технологии – выявления и математического обоснования «новых» параметров, отражающих современный уклад жизни человека и его взаимоотношений с другими." => [
     "en" => "The same parameters formed the basis of the third phase of the creation of the Technology - the identification and mathematical justification of \"new\" parameters that reflect the modern way of life of a person and his relationships with others.",
     "ru" => "Эти же параметры и легли в основу третьей фазы создания Технологии – выявления и математического обоснования «новых» параметров, отражающих современный уклад жизни человека и его взаимоотношений с другими.",
-    "es" => ""],
+    "es" => "Los mismos parámetros formaron la base de la tercera fase de la creación de la Tecnología: la identificación y justificación matemática de \"nuevos\" parámetros que reflejan la forma de vida moderna de una persona y sus relaciones con los demás."],
 
     "«Новые» параметры" => [
     "en" => "The \"new\" parameters, ",
     "ru" => "«Новые» параметры",
-    "es" => ""],
+    "es" => "Los parámetros \"nuevos\","],
 
     "как и «первичные» проходят тщательную проверку и рассчитываются исходным кодом программного ядра технологии под контролем психологов и психиатров. Это постоянный процесс, не имеющий конца, так как количество параметров со временем будет только расти." =>[
     "en" => "as well as the \"primary\" ones, are thoroughly tested and calculated by the source code of the technology's software core under the supervision of psychologists and psychiatrists. This is an ongoing process that has no end, as the number of parameters will only grow over time.",
     "ru" => "как и «первичные» проходят тщательную проверку и рассчитываются исходным кодом программного ядра технологии под контролем психологов и психиатров. Это постоянный процесс, не имеющий конца, так как количество параметров со временем будет только расти.",
-    "es" => ""],
+    "es" => "así como los \"primarios\", se prueban y se calculan minuciosamente mediante el código fuente del núcleo del software de la tecnología bajo la supervisión de psicólogos y psiquiatras. Este es un proceso continuo que no tiene fin, ya que la cantidad de parámetros solo crecerá con el tiempo."],
 
     "На сегодня разработано более 1500 параметров. При этом активно используются только 500 из них." => [
     "en" => "To date, more than 1500 parameters have been developed. At the same time, only 500 of them are actively used.",
     "ru" => "На сегодня разработано более 1500 параметров. При этом активно используются только 500 из них.",
-    "es" => ""],
+    "es" => "Hasta la fecha, se han desarrollado más de 1500 parámetros. Al mismo tiempo, solo 500 de ellos se usan activamente."],
 
     "Возможности технологии" => [
     "en" => "Technology Capabilities",
     "ru" => "Возможности технологии",
-    "es" => ""],
+    "es" => "Capacidades Tecnológicas"],
 
     "Технология Mizagene позволяет получить исходные данные о врожденных чертах характера, психических и физических особенностях, предрасположенностях, интеллекте, коммуникативных навыках и врожденных талантах только на основании портретного фото и нескольких исходных данных:" => [
     "en" => "Mizagene technology allows you to obtain initial data on innate character traits, mental and physical characteristics, predispositions, intelligence, communication skills and innate talents only on the basis of a portrait photo and several initial data:",
     "ru" => "Технология Mizagene позволяет получить исходные данные о врожденных чертах характера, психических и физических особенностях, предрасположенностях, интеллекте, коммуникативных навыках и врожденных талантах только на основании портретного фото и нескольких исходных данных:",
-    "es" => ""],
+    "es" => "La tecnología Mizagene le permite obtener datos iniciales sobre rasgos de personalidad innatos, características mentales y físicas, predisposiciones, inteligencia, habilidades de comunicación y talentos innatos solo partiendo de una foto de retrato y varios datos iniciales:"],
 
     "Технология получает обезличенную информацию о субъекте и выдает результат на основании алгоритмов программного ядра. Точность результата прошедших тестирование параметров составляет от 80 до 92%, а в некоторых случаях достигает 97%." => [
     "en" => "The technology receives impersonal information about the subject and gives the result based on the algorithms of the software kernel. The accuracy of the result of the tested parameters is from 80 to 92%, and in some cases reaches 97%.",
     "ru" => "Технология получает обезличенную информацию о субъекте и выдает результат на основании алгоритмов программного ядра. Точность результата прошедших тестирование параметров составляет от 80 до 92%, а в некоторых случаях достигает 97%.",
-    "es" => ""],
+    "es" => "La tecnología recibe información impersonal sobre la persona y da el resultado basado en los algoritmos del núcleo del software. La precisión del resultado de los parámetros probados es del 80 al 92% y, en algunos casos, alcanza el 97%."],
 
     "То есть для того, чтобы провести анализ личности, нам не нужно знать имя человека, расу, мейл, телефона или номер кредитной карты. В случае с SDK мы не храним даже фотографию контрагента. Но какой бы вариант доставки продукта Вы не предпочли, мы гарантируем, что не передаем информацию третьим лицам." => [
     "en" => "In order to conduct a personality analysis, we do not need to know the person's name, race, email, phone number or credit card number. In the case of the SDK, we do not even store a photo of the counterparty. But no matter which delivery option you prefer, we guarantee that we do not pass information on to third parties.",
     "ru" => "То есть для того, чтобы провести анализ личности, нам не нужно знать имя человека, расу, мейл, телефона или номер кредитной карты. В случае с SDK мы не храним даже фотографию контрагента. Но какой бы вариант доставки продукта Вы не предпочли, мы гарантируем, что не передаем информацию третьим лицам.",
-    "es" => ""],
+    "es" => "Para realizar un análisis de personalidad, no necesitamos saber el nombre, la raza, el correo electrónico, el número de teléfono o el número de tarjeta de crédito de la persona. En el caso del SDK (kit de desarrollo de software), ni siquiera almacenamos una foto del usuario. Pero independientemente de la opción de envío que prefiera, le garantizamos que no transmitiremos información a terceros."],
 
     "Также Mizagene можно адаптировать под любую конкретную потребность всего за несколько дней и интегрировать с другими программными продуктами, что делает наше решение очень востребованным и масштабируемым." => [
     "en" => "Also, Mizagene can be adapted to any specific need in just a few days and integrated with other software products, which makes our solution very scalable.",
     "ru" => "Также Mizagene можно адаптировать под любую конкретную потребность всего за несколько дней и интегрировать с другими программными продуктами, что делает наше решение очень востребованным и масштабируемым.",
-    "es" => ""],
+    "es" => "Además, Mizagene puede adaptarse a cualquier necesidad específica en tan solo unos días e integrarse con otros productos de software, lo que hace que nuestra solución sea muy escalable."],
 
+
+
+    
     "Команда Youmee Technologies предлагает Вам инвестировать в отраслевые продукты на базе технологии Mizagene. Сферы применения технологии самые разнообразные и затрагивают как B2B рынок, так и B2C." => [
     "en" => "The Youmee Technologies team invites you to invest in products based on Mizagene technology. The areas of application of the technology are very diverse and affect both the B2B market and B2C.",
     "ru" => "Команда Youmee Technologies предлагает Вам инвестировать в отраслевые продукты на базе технологии Mizagene. Сферы применения технологии самые разнообразные и затрагивают как B2B рынок, так и B2C.",

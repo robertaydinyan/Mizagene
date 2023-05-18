@@ -140,14 +140,30 @@ class UserController extends Controller
             }';
         $result = $mz->getResult(json_decode($send));
         $tresult = Tresult::find()->where(['subject_id' => $subject->id])->one();
+
+
+        $numbers = $mz->getNumbers($subject->id);
+        $numbers = json_decode($numbers);
+        $decodedResult = json_decode($result['result']);
+
         if ($tresult) {
             $tresult->subject_id = $subject->id;
             $tresult->result = $result;
+            $tresult->balgham = round($numbers->balgham, 1);
+            $tresult->soda = round($numbers->soda, 1);
+            $tresult->safra = round($numbers->safra, 1);
+            $tresult->dam = round($numbers->dam, 1);
+            $tresult->mizagene_id = $decodedResult[0]->subject_ID;
             $tresult->save();
         } else {
             $mod = new Tresult();
             $mod->subject_id = $subject->id;
             $mod->result = $result;
+            $mod->balgham = round($numbers->balgham, 1);
+            $mod->soda = round($numbers->soda, 1);
+            $mod->safra = round($numbers->safra, 1);
+            $mod->dam = round($numbers->dam, 1);
+            $mod->mizagene_id = $decodedResult[0]->subject_ID;
             $mod->save();
         }
 
@@ -249,6 +265,11 @@ class UserController extends Controller
                     $cloneResult->id = null;
                     $cloneResult->subject_id = $clonedModel->id;
                     $cloneResult->result = $res->result;
+                    $cloneResult->balgham = $res->balgham;
+                    $cloneResult->soda = $res->soda;
+                    $cloneResult->safra = $res->safra;
+                    $cloneResult->dam = $res->dam;
+                    $cloneResult->mizagene_id = $res->mizagene_id;
                     $cloneResult->save();
                 }
             }
@@ -377,7 +398,14 @@ class UserController extends Controller
         $data = [];
 
         if ($post['param'] != '') {
-            $subjects = Subject::find()->select('id, user_id, image, name')->where(['user_id' => Yii::$app->user->identity->id])->andWhere(['deleted_at' => null])->all();
+            if (!isset($_GET['type'])) {
+                $subjects = Yii::$app->user->identity->allsubjects;
+            } elseif (isset($_GET['type']) && $_GET['type'] == 'cloned') {
+                $subjects = Yii::$app->user->identity->clonedsubjects;
+            } else {
+                $subjects = Yii::$app->user->identity->mysubjects;
+            }
+
             $item = Items::findOne($post['param']);
 
             foreach ($subjects as $subject) {
@@ -729,13 +757,25 @@ class UserController extends Controller
 
     public function actionSetNumbers()
     {
-        $subjects = Subject::find()->where(['deleted_at' => null])->all();
+        $subjects = Subject::find()->where(['deleted_at' => null])->andWhere(['copied' => 0])->all();
         foreach ($subjects as $subject) {
             $tresult = Tresult::find()->where(['subject_id' => $subject->id])->one();
-            $mz = new Mizagene();
-            $numbers = $mz->getNumbers($subject->id);
-            var_dump($numbers);die;
+            if ($tresult && $tresult->soda == null) {
+                $mz = new Mizagene();
+                $numbers = $mz->getNumbers($subject->id);
+                $numbers = json_decode($numbers);
+                $tresult->balgham = round($numbers->balgham, 1);
+                $tresult->soda = round($numbers->soda, 1);
+                $tresult->safra = round($numbers->safra, 1);
+                $tresult->dam = round($numbers->dam, 1);
+                $result = $subject->result;
+                $result = json_decode($result['result']);
+                $tresult->mizagene_id = $result[0]->subject_ID;
+                $tresult->save();
+            }
         }
+
+        echo 200;
     }
 
 }

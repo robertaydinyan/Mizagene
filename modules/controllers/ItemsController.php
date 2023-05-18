@@ -57,7 +57,7 @@ class ItemsController extends Controller
         $pill = Yii::$app->request->get('pill') ?: 1;
         $steps = Items::getSteps($pill);
         $status = Yii::$app->request->get('status') ?: 1;
-        $step = isset($steps[$step]) ? $step : min(array_keys($steps));
+        $step = (isset($steps[$step])) ? $step : ($steps ? min(array_keys($steps)) : 1);
         $searchModel = new ItemsSearch();
         $dataProvider = $searchModel->search('', $pill, $step, $status);
 
@@ -74,9 +74,9 @@ class ItemsController extends Controller
 
     public function actionGetitemslist($search) {
         Yii::$app->response->format = Response::FORMAT_JSON;
-        $steps = Items::getSteps();
         $pill = Yii::$app->request->get('pill') ?: 1;
         $step = Yii::$app->request->get('step') ?: 1;
+        $steps = Items::getSteps($pill);
         $status = Yii::$app->request->get('status') ?: 1;
         $step = isset($steps[$step]) ? $step : min(array_keys($steps));
         $searchModel = new ItemsSearch();

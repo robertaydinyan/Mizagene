@@ -25,6 +25,7 @@ $columns = [
             return sprintf('
                     <span>%s</span>
                     <div class="d-flex flex-column">
+                        <img class="icon" src="/images/icons/%s.png">
                         %s
                         %s
                         %s
@@ -32,6 +33,7 @@ $columns = [
                 ',
 
                 $model->item_id ?: $model->id,
+                $model->source ? 'Mizagene_small' : 'youmee_small',
                 $pill != 1 ? ($model->priority ? ('<div class="icon m-icon priority-' . $model->priority . '"></div>') : '') : '',
                 $pill != 1 ? (in_array($model->getStep(), [2, 3])  ? ($model->comment ? ('<div class="icon m-icon comment"  data-toggle="tooltip" title="' . $model->comment . '"></div>') : '') : '') : '',
                 $pill == 1 ? Html::a('',
@@ -231,8 +233,8 @@ $columns = [
         }
     ],
     'results' => [
-        'header' => '<div><span>Results</span></div>',
-        'headerOptions' => ['class' => 'join-right'],
+        'header' => '<div><span>Quick edit</span></div>',
+        'headerOptions' => ['class' => ''],
         'label' => 'Results',
         'format' => 'raw',
         'value' => function($model) use ($form) {
@@ -535,9 +537,7 @@ $columns = [
                                <span class="align-super">%s | <b>zone %s</b> | %s%% </span>
                             </div>
                        </div>
-                       <p>en</p>
                        <p>%s</p>
-                       <p>ru</sp>
                        <p>%s</sp>
                    </div>',
 

@@ -15,40 +15,38 @@ use yii\helpers\Url;
 $tabs = Items::getTabs();
 $this->title = $tabs[$pill][0];
 $this->params['breadcrumbs'][] = $this->title;
+$active_pill = $tabs[$pill];
 ?>
-<h1><?= Html::encode($this->title) ?></h1>
-<?php
-if (in_array($pill, [2, 3])):
-    if ($steps):
-        $active_pill = $tabs[$pill]; ?>
-        <div class="steps-container d-flex">
-            <div class="d-flex col-2">
-                <img class="m-icon" src="/images/icons/<?php echo $active_pill[1]; ?>" alt="">
-                <div>
-                    <h4><?php echo $active_pill[0];?></h4>
-                </div>
+    <div class="steps-container d-flex">
+        <div class="d-flex col-2">
+            <img class="m-icon" src="/images/icons/<?php echo $active_pill[1]; ?>" alt="">
+            <div style="margin-left: 12px; margin-top: 4px">
+                <h4><?php echo $active_pill[0];?></h4>
             </div>
-            <ul class="nav nav-pills nav-pills-steps col-10" role="tablist">
-                <?php
-                $active_steps = Items::getActiveSteps();
-                foreach ($steps as $i => $title) {
-                    echo sprintf('
-                                <li class="nav-pills">
-                                    <a class="nav-pill %s" href="?pill=%s&step=%s">%s <span class="pill-badge %s">%s</span></a>
-                                </li>',
-                        $step == $i ? "active" : "",
-                        $pill,
-                        $i,
-                        $title,
-                        isset($active_steps[$i]) ? "pill-badge-primary" : "pill-badge-dark",
-                        Items::getStepElCount($pill, $i)
-                    );
-                }
-                ?>
-            </ul>
         </div>
-    <?php endif;
-endif; ?>
+        <ul class="nav nav-pills nav-pills-steps col-10" role="tablist">
+            <?php
+            if (in_array($pill, [2, 3])) {
+                if ($steps) {
+                    $active_steps = Items::getActiveSteps();
+                    foreach ($steps as $i => $title) {
+                        echo sprintf('
+                                    <li class="nav-pills">
+                                        <a class="nav-pill %s" href="?pill=%s&step=%s">%s <span class="pill-badge %s">%s</span></a>
+                                    </li>',
+                            $step == $i ? "active" : "",
+                            $pill,
+                            $i,
+                            $title,
+                            isset($active_steps[$i]) ? "pill-badge-primary" : "pill-badge-dark",
+                            Items::getStepElCount($pill, $i)
+                        );
+                    }
+                }
+            }
+            ?>
+        </ul>
+    </div>
 <div class="grid-header mt-4 col-12 d-flex justify-content-between">
     <div class="form-group col-6 d-flex">
         <div class="form-group col-6 ">
