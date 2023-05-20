@@ -222,7 +222,7 @@ use app\models\Subject;
                         data: null,
                         orderable: false,
                         render: function(data, type, row) {
-                            return '<div class="d-flex"><img class="cat me-2" style="width: 30px; cursor: pointer" data-item="' + data.id + '" src="/images/' + data.cat + '"><img style="width: 30px; cursor: pointer" class="' + data.flash + '" src="/images/flash.png" data-flash="' + data.id + '"></div>';
+                            return '<div class="d-flex"><img class="cat me-2" style="width: 30px; cursor: pointer" data-cat="' + data.catCode + '" data-item="' + data.id + '" src="/images/' + data.cat + '"><img style="width: 30px; cursor: pointer" class="' + data.flash + '" src="/images/flash.png" data-flash="' + data.id + '"></div>';
                         }
                     }
                 ],
@@ -273,13 +273,21 @@ use app\models\Subject;
 
             $(document).on('click', '.cat', function() {
                 let item = $(this).data('item');
-                $.post('/user/put-mark', {id: item})
+                let mark = 0;
+                if ($(this).attr('data-cat') == 0) {
+                    mark = 1;
+                } else if ($(this).attr('data-cat') == 1) {
+                    mark = 2;
+                } else if ($(this).attr('data-cat') == 2) {
+                    mark = 3;
+                } else {
+                    mark = 0;
+                }
+
+                $.post('/user/put-mark', {id: item, mark: mark})
                     .done((response) => {
-                        if ($(this).attr('src') == '/images/animal.png')  {
-                            $(this).attr('src', '/images/black-cat.png');
-                        } else {
-                            $(this).attr('src', '/images/animal.png');
-                        }
+                        $(this).attr('src', '/images/cat-' + response + '.png');
+                        $(this).attr('data-cat', mark);
                     })
             })
 
