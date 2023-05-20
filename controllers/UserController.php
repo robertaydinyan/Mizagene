@@ -402,6 +402,8 @@ class UserController extends Controller
                 $subjects = Yii::$app->user->identity->allsubjects;
             } elseif (isset($_GET['type']) && $_GET['type'] == 'cloned') {
                 $subjects = Yii::$app->user->identity->clonedsubjects;
+            } elseif (isset($_GET['type']) && $_GET['type'] == 'deleted') {
+                $subjects = Yii::$app->user->identity->deletedsubjects;
             } else {
                 $subjects = Yii::$app->user->identity->mysubjects;
             }
@@ -603,6 +605,12 @@ class UserController extends Controller
 
                 $subject_item_result = array_filter($subject_item_result);
                 $subject_item_result = array_values($subject_item_result);
+                $subject_item_result  = $subject_item_result ? $subject_item_result[0] : 0;
+                $youmeeResult = 0;
+                if ($item->min_r != null) {
+                    $youmeeResult = floor(($subject_item_result + ($item->min_delta_r + ($subject_item_result - $item->min_r ) * ($item->coefficient))));
+                    $youmee = round(($subject_item_result + ($item->min_delta_r + ($subject_item_result - $item->min_r ) * ($item->coefficient))), 2);
+                }
 
                 $colors = [];
 
@@ -612,13 +620,13 @@ class UserController extends Controller
                 $color = null;
 
                 foreach ($colors as $element) {
-                    if (array_key_exists(''.(floor(($subject_item_result ? $subject_item_result[0] : 0)/10)/10).'', $element)) {
-                        $color = $element[''.(floor(($subject_item_result ? $subject_item_result[0] : 0)/10)/10).''];
+                    if (array_key_exists(''.(floor(($youmeeResult == 0 ? $subject_item_result : $youmeeResult)/10)/10).'', $element)) {
+                        $color = $element[''.(floor(($youmeeResult == 0 ? $subject_item_result : $youmeeResult)/10)/10).''];
                         break;
                     }
                 }
 
-                $subject_item_result = $subject_item_result ? round($subject_item_result[0], 2) : 0;
+//                $subject_item_result = $subject_item_result ? round($subject_item_result[0], 2) : 0;
 
                 $data[] = [
                     'id' => $subject->id,
@@ -630,7 +638,8 @@ class UserController extends Controller
                     'name' => $subject->name,
                     'result' => [
                         'clr' => $color,
-                        'nmb' => round(($subject_item_result + ($item->min_delta_r + ($subject_item_result - $item->min_r ) * ($item->coefficient))), 2),
+                        'nmb' => $youmee,
+//                        'nmb' => round(($subject_item_result + ($item->min_delta_r + ($subject_item_result - $item->min_r ) * ($item->coefficient))), 2),
                         'status' => $item->min_r != null ? 'd-none' : ''
                     ]
                 ];
@@ -715,7 +724,8 @@ class UserController extends Controller
                 'min_dead_zone' => '0 - ' . ($min - 1),
                 'max_dead_zone' => ($max + 1) . ' - 100',
                 'total_dead_zone' => 100 - ($max - $min),
-                'cat' => $item->mark == 0 ? 'animal.png' : 'black-cat.png',
+                'cat' => 'cat-' . $item->mark . '.png',
+                'catCode' => $item->mark,
                 'flash' => $item->min_r != null ? '' : 'd-none',
                 'activated_at' => $item->activated_at ?? ''
             ];
@@ -727,8 +737,9 @@ class UserController extends Controller
         $id = Yii::$app->request->post('id');
         if ($id) {
             $model = Items::findOne($id);
-            $model->mark = 1 - $model->mark;
-            return $model->save();
+            $model->mark = Yii::$app->request->post('mark');
+            $model->save();
+            return Yii::$app->request->post('mark');
         }
     }
 

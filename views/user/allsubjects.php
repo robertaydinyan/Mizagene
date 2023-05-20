@@ -29,15 +29,17 @@ $reports = Reports::find()->where(['disabled' => 0])->all();
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex align-items-center mb-1 mt-3">
         <h3 class="d-flex align-items-center centeredTitle" style="color: #003C46"><img src="/images/list_1.png" alt="" width="30" class="me-2">Subjects List</h3>
     </div>
-    <?php if (Yii::$app->user->identity->id == 17 || Yii::$app->user->identity->id == 4): ?>
+
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex align-items-center mb-1 mt-3">
         <div class="d-flex">
             <button type="button" class="btn <?= isset($_GET['type']) && $_GET['type'] == 'my' ? 'customBut' : ''  ?>" style="color: #003C46"><a style="text-decoration: none; color: unset" href="/all-subjects?type=my">My</a></button>
             <button type="button" class="btn <?= isset($_GET['type'])  && $_GET['type'] == 'cloned' ? 'customBut' : ''  ?>" style="color: #003C46"><a style="text-decoration: none; color: unset" href="/all-subjects?type=cloned">Shared</a></button>
-            <button type="button" class="btn <?= !isset($_GET['type']) ? 'customBut' : ''  ?> me-2" style="color: #003C46"><a style="text-decoration: none; color: unset" href="/all-subjects">All</a></button>
+            <button type="button" class="btn <?= isset($_GET['type'])  && $_GET['type'] == 'deleted' ? 'customBut' : ''  ?>" style="color: #003C46"><a style="text-decoration: none; color: unset" href="/all-subjects?type=deleted">Deleted</a></button>
+            <?php if (Yii::$app->user->identity->id == 17 || Yii::$app->user->identity->id == 4): ?>
+                <button type="button" class="btn <?= !isset($_GET['type']) ? 'customBut' : ''  ?> me-2" style="color: #003C46"><a style="text-decoration: none; color: unset" href="/all-subjects">All</a></button>
+            <?php endif; ?>
         </div>
     </div>
-    <?php endif; ?>
     <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12 px-0 px-sm-2">
         <div class="mb-3 mx-auto px-0">
             <div class="row mx-auto px-0" style="padding-top: 10px!important; padding-left: 30px">
@@ -64,6 +66,8 @@ $reports = Reports::find()->where(['disabled' => 0])->all();
                             $subjects = Yii::$app->user->identity->mysubjects;
                         } elseif (isset($_GET['type']) && $_GET['type'] == 'cloned') {
                             $subjects = Yii::$app->user->identity->clonedsubjects;
+                        } elseif (isset($_GET['type']) && $_GET['type'] == 'deleted') {
+                            $subjects = Yii::$app->user->identity->deletedsubjects;
                         } else {
                             $subjects = Yii::$app->user->identity->allsubjects;
                         }
@@ -71,15 +75,15 @@ $reports = Reports::find()->where(['disabled' => 0])->all();
                                 if($subject->deleted_at == null):
                         ?>
                             <tr style="<?= isset($subject->deleted_at) ? 'pointer-events: none; background: #ff000052' : '' ?>" class="text-center">
-                                <td class="text-start ps-2"><a href="/subject?id=<?= $subject->public_id ?>&rep=3" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"><?= $key+1 ?></a></td>
+                                <td class="text-start ps-2"><?= (Yii::$app->user->identity->id == 17 || Yii::$app->user->identity->id == 4) ? $subject->id : $key+1 ?></td>
                                 <td class=""><a href="/subject?id=<?= $subject->public_id ?>&rep=3"><img src="<?= str_replace('/var/www/html/Mizagene/web/', '', $subject->image) ?>" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></a></td>
-                                <td class="text-start"><a href="/subject?id=<?= $subject->public_id ?>&rep=3" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"><?= $subject->name ?></a></td>
+                                <td class="text-start"><a href="/subject?id=<?= $subject->public_id ?>&rep=3" style="color: black"><?= $subject->name ?></a></td>
                                 <td><?= date('d.m.Y', strtotime($subject->created_at)) ?></td>
                                 <td><?= date('Y') - $subject->year_of_birth ?></td>
-                                <td><?= $subject->gender == 1 ? '<i class="fa-solid fa-mars" style="color: #000000;"></i>' : ($subject->gender == 2 ? '<i class="fa-solid fa-venus" style="color: #000000;"></i>' : ($subject->gender == 3 ? 'Male <i class="fa-solid fa-transgender" style="color: #000000;"></i>' : ($subject->gender == 4 ? 'Female <i class="fa-solid fa-transgender" style="color: #000000;"></i>' : ''))) ?></td>
+                                <td><?= $subject->gender == 1 ? '<i class="fa-solid fa-mars" style="color: rgb(75, 173, 233)"></i>' : ($subject->gender == 2 ? '<i class="fa-solid fa-venus" style="color: rgb(210, 58, 225);"></i>' : ($subject->gender == 3 ? '<span style="color: rgb(210, 58, 225)">M</span> <i class="fa-solid fa-transgender" style="color: rgb(75, 173, 233);"></i>' : ($subject->gender == 4 ? '<span style="color: rgb(210, 58, 225)">F</span> <i class="fa-solid fa-transgender" style="color: rgb(210, 58, 225);"></i>' : ''))) ?></td>
                                 <td><?= $subject->height ?></td>
                                 <td><?= $subject->wrist_size ?></td>
-                                <td><?php if (count($subject->connections) > 0) { $sub = Subject::findOne($subject->connections[0]->object_id); ?><img src="<?= str_replace("/var/www/html/Mizagene/web/", "", $sub->image) ?>" alt="" width="30px" height="30px" style="object-fit: cover; border-radius: 100%; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"> <?= count($subject->connections) ?><?php } ?></td>
+                                <td style="text-align: left"><?php if (count($subject->connections) > 0) { foreach ($subject->connections as $l => $sub) { if ($l == 3) { break; } $person = Subject::findOne($sub->object_id); ?><img src="<?= str_replace("/var/www/html/Mizagene/web/", "", $person->image) ?>" alt="" width="30px" height="30px" style="object-fit: cover; border-radius: 100%; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"><?php } ?> <?= count($subject->connections) > 3 ? '+' . count($subject->connections)-3 : '' ?><?php }  ?></td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td class="">
@@ -111,7 +115,7 @@ $reports = Reports::find()->where(['disabled' => 0])->all();
                         $group = GroupVariants::findOne($gr);
                         foreach ($group->items as $it):
                             $item = Items::findOne($it);
-                        if (!in_array($item->id, $checkItem) && $item->mark == 0) {
+                        if (!in_array($item->id, $checkItem) && $item->mark != 3) {
                             $checkItem[] = $item->id;
                             ?>
                             <option value="<?= $item->id ?>"><?= $item->getTitle($subjectLang)->title ?></option>

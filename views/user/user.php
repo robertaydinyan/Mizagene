@@ -421,7 +421,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                                 $group = GroupVariants::findOne($gr);
                                                 foreach ($group->items as $it):
                                                     $item = Items::findOne($it);
-                                                    if (!in_array($item->id, $checkItem)  && $item->mark == 0) {
+                                                    if (!in_array($item->id, $checkItem)  && $item->mark != 3) {
                                                     $checkItem[] = $item->id;
                                                     ?>
                                                     <option value="<?= $item->id ?>"><?= $item->getTitle($subjectLang)->title ?></option>
@@ -477,7 +477,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                                     $check = 0;
                                                     foreach ($group->items as $k => $g):
                                                             $item = Items::findOne($g);
-                                                            if ($item && $item->mark == 0):
+                                                            if ($item && $item->mark != 3):
 
                                                                 $subject_item_result = array_map(function($obj) use($item) {
                                                                     if ($obj->item_ID == $item->item_id) {
@@ -553,7 +553,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
 
                                             foreach ($group->items as $k => $g):
                                                 $item = Items::findOne($g);
-                                                if ($item && $item->mark == 0):
+                                                if ($item && $item->mark != 3):
                                                     $subject_item_result = array_map(function($obj) use($item) {
                                                         if ($obj->item_ID == $item->item_id) {
                                                             return $obj->subject_item_result;
