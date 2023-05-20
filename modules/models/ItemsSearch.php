@@ -54,10 +54,13 @@ class ItemsSearch extends Items
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        $query->andFilterWhere(['influence' => 0]);
         $this->filterPills($query, $pill);
         $this->filterSteps($query, $step, $pill, $status);
-        $this->filterByText($query, $search);
+        if ($search) {
+            $search->message && $this->filterByText($query, $search->message);
+            $search->usg_type && $this->filterByUsgTypes($query, $search->usg_type);
+        }
         return $dataProvider;
     }
 
@@ -74,6 +77,19 @@ class ItemsSearch extends Items
                 'priority' => SORT_DESC,
                 'item_id' => SORT_ASC
             ]);
+        }
+    }
+
+    public function filterByUsgTypes($query, $search) {
+        if ($search && isset($search)) {
+            $usg_types = "";
+            is_string($search) && $search = array($search);
+            foreach ($search as $i => $usg_type) {
+                $usg_types .= 'JSON_CONTAINS(i_usg_type, \'"' . $usg_type . '"\', \'$\') or ';
+            }
+            $usg_types = substr($usg_types, 0, -3);
+
+            $query->andWhere($usg_types);
         }
     }
 

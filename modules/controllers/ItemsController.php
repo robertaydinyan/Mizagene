@@ -2,14 +2,15 @@
 
 namespace app\modules\controllers;
 
-use app\models\API;
 use app\models\Mizagene;
 use app\modules\models\ItemColors;
 use app\modules\models\Items;
 use app\modules\models\ItemsSearch;
-use app\modules\models\ItemTitle;
 use app\modules\models\Language;
-use yii\db\Expression;
+use app\modules\models\UsgType;
+use yii\base\InvalidConfigException;
+use yii\web\BadRequestHttpException;
+use yii\web\JqueryAsset;
 use yii\web\Response;
 use Yii;
 use yii\rbac\Item;
@@ -41,8 +42,11 @@ class ItemsController extends Controller
         );
     }
 
+    /**
+     * @throws InvalidConfigException
+     */
     public function beforeAction($action) {
-        $this->view->registerJsFile('@web/js/items.js', ['position' => View::POS_END, 'depends' => [\yii\web\JqueryAsset::className()]]);
+        $this->view->registerJsFile('@web/js/items.js', ['position' => View::POS_END, 'depends' => [JqueryAsset::class]]);
 
         return parent::beforeAction($action);
     }
@@ -60,25 +64,26 @@ class ItemsController extends Controller
         $step = (isset($steps[$step])) ? $step : ($steps ? min(array_keys($steps)) : 1);
         $searchModel = new ItemsSearch();
         $dataProvider = $searchModel->search('', $pill, $step, $status);
+        $usgTypes = UsgType::find()->all();
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'pill' => $pill,
             'step' => $step,
-            'tabs' => Items::getTabs(),
             'steps' => $steps,
-            'status' => $status
+            'status' => $status,
+            'usgTypes' => $usgTypes
         ]);
     }
 
-    public function actionGetitemslist($search) {
-        Yii::$app->response->format = Response::FORMAT_JSON;
+    public function actionGetItemsList($search) {
+//        Yii::$app->response->format = Response::FORMAT_JSON;
+        $search = json_decode($search);
         $pill = Yii::$app->request->get('pill') ?: 1;
         $step = Yii::$app->request->get('step') ?: 1;
         $steps = Items::getSteps($pill);
         $status = Yii::$app->request->get('status') ?: 1;
-        $step = isset($steps[$step]) ? $step : min(array_keys($steps));
+        $step = (isset($steps[$step])) ? $step : ($steps ? min(array_keys($steps)) : 1);
         $searchModel = new ItemsSearch();
         $dataProvider = $searchModel->search($search, $pill, $step, $status);
 
@@ -97,20 +102,11 @@ class ItemsController extends Controller
         $search = json_decode($search);
         $search_model = new ItemsSearch();
         $search_model->filterByText($model, $search->search, false);
+        isset($search->usg_type) && $search_model->filterByUsgTypes($model, $search->usg_type);
 
         $model->andFilterWhere(['deleted' => 0]);
         $model->groupBy(['items.id']);
         if ($search) {
-            if (isset($search->usg_types)) {
-                $usg_types = "";
-                is_string($search->usg_types) && $search->usg_types = array($search->usg_types);
-                foreach ($search->usg_types as $i => $usg_type) {
-                    $usg_types .= 'JSON_CONTAINS(i_usg_type, \'"' . $usg_type . '"\', \'$\') or ';
-                }
-                $usg_types = substr($usg_types, 0, -3);
-
-                $model->andWhere($usg_types);
-            }
             if (isset($search->usg_comb_types)) {
                 $usg_comb_types = "";
                 is_string($search->usg_comb_types) && $search->usg_comb_types = array($search->usg_comb_types);
@@ -143,6 +139,10 @@ class ItemsController extends Controller
         $model->limit(9999);
         // var_dump($model->createCommand()->getRawSql());die();
         return json_encode($model->asArray()->all());
+    }
+
+    public function actionGetItem($id) {
+        return json_encode(Items::getDataById($id, 1));
     }
 
     /**
@@ -260,96 +260,27 @@ class ItemsController extends Controller
         $item->save();
     }
 
-    public function actionCheckadmin() {
+    public function actionCheckAdmin($influence, $type) {
         if (Yii::$app->admin->getIdentity()->role == 1) {
             $itemID = Yii::$app->request->post('itemID');
-            $item_obj = Items::findOne($itemID);
-            $item =
-                Items::find()
-                    ->select([
-                        'items.id',
-                        'items.item_id as item_ID',
-                        'items.i_usg_type as i_usage_type',
-                        'items.i_type',
-                        'items.i_comb_type_id as subject_i_role',
-                        'items.i_comb_type_id as object_i_role',
-                        'item_title.title as i_title',
-                        'item_title.description as i_description',
-                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 1) as i_zone_1_colour',
-                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 2) as i_zone_2_colour',
-                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 3) as i_zone_3_colour',
-                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 4) as i_zone_4_colour',
-                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 5) as i_zone_5_colour',
-                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 6) as i_zone_6_colour',
-                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 7) as i_zone_7_colour',
-                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 8) as i_zone_8_colour',
-                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 9) as i_zone_9_colour',
-                        '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 10) as i_zone_10_colour',
-                    ])
-                    ->joinWith([
-                        'itemTitles' => function ($query) {
-                            $query->where(['languageID' => 3]);
-                        },
-                    ], false)
-                    ->where(['items.id' => $itemID])
-                    ->asArray()->one();
+            $item_q = Items::find()->where(['items.id' => $itemID]);
 
-            if (isset($item['i_usage_type'])) {
-                if (is_string($item['i_usage_type'])) {
-                    $item['i_usage_type'] = array($item['i_usage_type']);
-                } else {
-                    $item['i_usage_type'] = array_filter(json_decode($item['i_usage_type']), function($value) {
-                        return $value !== "[]";
-                    });
-                }
-            } else {
-                $item['i_usage_type'] = [];
+            if ($influence == 1) {
+                $item = $item_q->one();
+                $item->influence = 1;
+                return $item->save();
             }
 
-            if (isset($item['i_type'])) {
-                if (is_string($item['i_type'])) {
-                    $item['i_type'] = array($item['i_type']);
-                } else {
-                    $item['i_type'] = array_filter(json_decode($item['i_type']), function ($value) {
-                        return $value !== "[]";
-                    });
-                }
-            } else {
-                $item['i_type'] = [];
+            if ($type == 1) {
+                $item_n = Items::getDataById($itemID, 3);
+                $mz = new Mizagene();
+                $result = $mz->setItem($item_n);
             }
-            if (isset($item['subject_i_role']) AND $item['subject_i_role'] != '[]') {
-                if (is_string($item['subject_i_role'])) {
-                    $item['subject_i_role'] = array($item['subject_i_role']);
-                } else {
-                    $item['subject_i_role'] = array_filter(json_decode($item['subject_i_role']), function ($value) {
-                        return $value !== "[]";
-                    });
-                }
-            } else {
-                $item['subject_i_role'] = 0;
-            }
-
-            if (isset($item['object_i_role']) AND $item['object_i_role'] != '[]') {
-                if (is_string($item['object_i_role'])) {
-                    $item['object_i_role'] = array($item['object_i_role']);
-                } else {
-                    $item['object_i_role'] = array_filter(json_decode($item['object_i_role']), function ($value) {
-                        return $value !== "[]";
-                    });
-                }
-            } else {
-                $item['object_i_role'] = 0;
-            }
-
-            $mz = new Mizagene();
-//            echo "<pre>";
-//            var_dump($item);
-//            die();
-            $result = $mz->setItem($item);
-            if ($result != false) {
-                $item_obj->check1 = 1;
-                $item_obj->activated_at = date('Y-m-d h:i:s');
-                return $item_obj->save();
+            if ($result) {
+                $item = $item_q->one();
+                $item->check1 = 1;
+                $item->activated_at = date('Y-m-d h:i:s');
+                return $item->save();
             }
         }
     }

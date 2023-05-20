@@ -2,6 +2,7 @@
 
 namespace app\modules\models;
 
+use app\models\Mizagene;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -213,25 +214,24 @@ class Items extends \yii\db\ActiveRecord
                         $res = array(
                             array(
                                 'item_id',
-                                'persian',
                                 'russian',
                                 'english',
                                 'priority',
                                 'results_description'
                             ),
-                            '{delete} {update} {save} {checkmarkPsychologist}'
+                            '{delete} {update} {save} {parameterInfluence} {checkmarkPsychologist}'
                         );
                         break;
                     case 2:
                         $res = array(
                             array(
                                 'item_id',
-                                'persian',
+                                'persian_editable',
                                 'russian',
                                 'english',
                                 'results_description'
                             ),
-                            '{delete} {update} {checkmarkProfessor}'
+                            '{delete} {update} {save} {parameterInfluence} {checkmarkProfessor}'
                         );
                         break;
                     case 3:
@@ -243,7 +243,7 @@ class Items extends \yii\db\ActiveRecord
                                 'english',
                                 'results_description'
                             ),
-                            '{delete} {update} {save}  {checkmarkAdmin}'
+                            '{delete} {update} {save} {parameterInfluence} {checkmarkAdmin}'
                         );
                         break;
                 }
@@ -651,5 +651,85 @@ class Items extends \yii\db\ActiveRecord
         $coefficient = ($max[1] - $min[1]) / ($max[0] - $min[0]);
         $this->coefficient = $coefficient;
         $this->save();
+    }
+
+    public static function getDataById($id, $language) {
+        $item = Items::find()
+            ->select([
+                'items.id',
+                'items.item_id as item_ID',
+                'items.i_usg_type as i_usage_type',
+                'items.i_type',
+                'items.i_comb_type_id as subject_i_role',
+                'items.i_comb_type_id as object_i_role',
+                'item_title.title as i_title',
+                'item_title.description as i_description',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 1) as i_zone_1_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 2) as i_zone_2_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 3) as i_zone_3_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 4) as i_zone_4_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 5) as i_zone_5_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 6) as i_zone_6_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 7) as i_zone_7_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 8) as i_zone_8_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 9) as i_zone_9_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 10) as i_zone_10_colour',
+            ])
+            ->joinWith([
+                'itemTitles' => function ($query) use ($language) {
+                    $query->where(['languageID' => $language]);
+                },
+            ], false)
+            ->where(['items.id' => $id])
+            ->asArray()->one();
+
+        if (isset($item['i_usage_type'])) {
+            if (is_string($item['i_usage_type'])) {
+                $item['i_usage_type'] = array($item['i_usage_type']);
+            } else {
+                $item['i_usage_type'] = array_filter(json_decode($item['i_usage_type']), function($value) {
+                    return $value !== "[]";
+                });
+            }
+        } else {
+            $item['i_usage_type'] = [];
+        }
+
+        if (isset($item['i_type'])) {
+            if (is_string($item['i_type'])) {
+                $item['i_type'] = array($item['i_type']);
+            } else {
+                $item['i_type'] = array_filter(json_decode($item['i_type']), function ($value) {
+                    return $value !== "[]";
+                });
+            }
+        } else {
+            $item['i_type'] = [];
+        }
+        if (isset($item['subject_i_role']) AND $item['subject_i_role'] != '[]') {
+            if (is_string($item['subject_i_role'])) {
+                $item['subject_i_role'] = array($item['subject_i_role']);
+            } else {
+                $item['subject_i_role'] = array_filter(json_decode($item['subject_i_role']), function ($value) {
+                    return $value !== "[]";
+                });
+            }
+        } else {
+            $item['subject_i_role'] = 0;
+        }
+
+        if (isset($item['object_i_role']) AND $item['object_i_role'] != '[]') {
+            if (is_string($item['object_i_role'])) {
+                $item['object_i_role'] = array($item['object_i_role']);
+            } else {
+                $item['object_i_role'] = array_filter(json_decode($item['object_i_role']), function ($value) {
+                    return $value !== "[]";
+                });
+            }
+        } else {
+            $item['object_i_role'] = 0;
+        }
+
+        return $item;
     }
 }

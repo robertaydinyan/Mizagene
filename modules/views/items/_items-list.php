@@ -63,6 +63,30 @@ $columns = [
             );
         }
     ],
+    'persian_editable' => [
+        'header' => '<div class="title-label">
+            <img class="flag-icon" src="/images/icons/flag3.jpg" alt="Persian">
+            <div class="title-label-content">
+                <span>Title</span>
+                <span>Description</span>
+            </div>
+        </div>',
+        'format' => 'raw',
+        'value' => function($model) use ($form) {
+            return '<div class="title-value">' .
+                $form->field($model, 'title[3]')->textarea([
+                    'maxlength' => true,
+                    'value' => $model->getTitle(3)->title,
+                    'class' => 'form-control required'
+                ])->label(false) .
+                $form->field($model, 'description[3]')->textarea([
+                    'maxlength' => true,
+                    'value' => $model->getTitle(3)->description,
+                    'class' => 'form-control required'
+                ])->label(false) .
+                '</div>';
+        }
+    ],
     'russian_temp' => [
         'header' => '<div class="title-label title-label-disabled">
             <img class="flag-icon-g" src="/images/icons/google.png" alt="Google">
@@ -689,12 +713,21 @@ foreach ($cl[0] as $column) {
                             ])
                         : '';
                 },
+                'parameterInfluence' => function ($url, $model, $key) use ($step) {
+                    return in_array(Yii::$app->admin->getIdentity()->role, [1]) ?
+                        Html::a('',
+                            'javascript:;', [
+                                'class' => 'icon tools label ajax-call',
+                                'data-path' => '/admin/items/check-admin?influence=1&type=0'
+                            ])
+                        : '';
+                },
                 'checkmarkAdmin' => function ($url, $model, $key) use ($step) {
                     return in_array(Yii::$app->admin->getIdentity()->role, [1]) ?
                         Html::a('',
                             'javascript:;', [
                                 'class' => 'icon push-black label ajax-call',
-                                'data-path' => '/admin/items/checkadmin'
+                                'data-path' => '/admin/items/check-admin?influence=0&type=' . $model->source
                             ])
                         : '';
                 },

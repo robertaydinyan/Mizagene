@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="item-rule-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h4><?= Html::encode($this->title) ?></h4>
 
     <?= Html::a(' <i class="fa fa-plus"></i> Create Rule', ['create'], ['class' => 'btn btn-dark']) ?>
 

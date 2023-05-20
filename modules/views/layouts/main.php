@@ -69,6 +69,7 @@ AppAsset::register($this);
                 ['label' => 'Users', 'url' => ['/admin/admin/index'], 'active' => Yii::$app->controller->id == 'admin'],
                 ['label' => 'Item Rules', 'url' => ['/admin/item-rule/index'], 'active' => Yii::$app->controller->id == 'item-rule'],
                 ['label' => 'Usage types', 'url' => ['/admin/usg-type/index'], 'active' => Yii::$app->controller->id == 'usg-type'],
+                ['label' => 'Parameter influence', 'url' => ['/admin/parameter-influence/index'], 'active' => Yii::$app->controller->id == 'usg-type'],
                 ['label' => 'Language', 'url' => ['/admin/language/index'], 'active' => Yii::$app->controller->id == 'language'],
                 ['label' => 'Reports', 'url' => ['/admin/reports/index'], 'active' => Yii::$app->controller->id == 'reports'],
                 [
@@ -101,6 +102,9 @@ AppAsset::register($this);
             <?= $content ?>
         </div>
     </main>
+
+    <div class="notification" id="copyNotification">Text copied!</div>
+
     <?php  Yii::$app->getView()->registerJsFile(
         '@web/js/admin.js',
         ['depends' => [\yii\web\JqueryAsset::class]]
