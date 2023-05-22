@@ -479,42 +479,52 @@ class Items extends \yii\db\ActiveRecord
             return $migrated_steps;
         } else if ($pill == 2) {
             if ($role == 2) {
-                unset($created_steps[0]);
-                unset($created_steps[2]);
+                unset($created_steps[1]);
+                unset($created_steps[3]);
+                unset($created_steps[4]);
             }
-
             return $created_steps;
         }
 
         return [];
     }
 
-    public static function getActiveSteps() {
+    public static function getActiveSteps($pill) {
         $role = Yii::$app->admin->getIdentity()->role;
         $migrated_steps = self::$migrated_steps;
-        if ($role == 4) {
-            unset($migrated_steps[1]);
-            unset($migrated_steps[3]);
-            unset($migrated_steps[4]);
-            unset($migrated_steps[5]);
-            unset($migrated_steps[7]);
-            unset($migrated_steps[8]);
-        } else if ($role == 2) {
-            unset($migrated_steps[1]);
-            unset($migrated_steps[2]);
-            unset($migrated_steps[3]);
-            unset($migrated_steps[4]);
-            unset($migrated_steps[6]);
-            unset($migrated_steps[7]);
-        } else if ($role == 3) {
-            unset($migrated_steps[2]);
-            unset($migrated_steps[5]);
-            unset($migrated_steps[6]);
-        } else {
-            $migrated_steps = array();
-        }
+        $created_steps = self::$created_steps;
 
-        return $migrated_steps;
+        if ($pill == 3) {
+            if ($role == 4) {
+                unset($migrated_steps[1]);
+                unset($migrated_steps[3]);
+                unset($migrated_steps[4]);
+                unset($migrated_steps[5]);
+                unset($migrated_steps[7]);
+                unset($migrated_steps[8]);
+            } else if ($role == 2) {
+                unset($migrated_steps[1]);
+                unset($migrated_steps[2]);
+                unset($migrated_steps[3]);
+                unset($migrated_steps[4]);
+                unset($migrated_steps[6]);
+                unset($migrated_steps[7]);
+            } else if ($role == 3) {
+                unset($migrated_steps[2]);
+                unset($migrated_steps[5]);
+                unset($migrated_steps[6]);
+            } else {
+                $migrated_steps = array();
+            }
+            return $migrated_steps;
+        } else if ($pill == 2) {
+            if ($role == 2) {
+                unset($created_steps[1]);
+                unset($created_steps[3]);
+                unset($created_steps[4]);
+            }
+            return $created_steps;
+        }
     }
 
     public static function getTabs() {

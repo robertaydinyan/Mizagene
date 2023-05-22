@@ -22,7 +22,6 @@ class ApiController extends Controller {
          error_reporting(0);
         $secret = '2YUmrIyqgY8wyHbcZPoaWw6YsiSQFS';
         $auth_header = $_SERVER['HTTP_AUTHORIZATION'];
-        var_dump();
         if (preg_match('/Bearer\s(\S+)/', $auth_header, $matches)) {
             $token = $matches[1];
             if ($secret != $token) {

@@ -28,7 +28,7 @@ $active_pill = $tabs[$pill];
         <?php
         if (in_array($pill, [2, 3])) {
             if ($steps) {
-                $active_steps = Items::getActiveSteps();
+                $active_steps = Items::getActiveSteps($pill);
                 foreach ($steps as $i => $title) {
                     echo sprintf('
                                 <li class="nav-pills">

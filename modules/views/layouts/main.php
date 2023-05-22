@@ -59,37 +59,48 @@ AppAsset::register($this);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav'],
             'encodeLabels' => false,
-            'items' => !Yii::$app->admin->isGuest ? [
-                [
-                    'label' => 'Parameters',
-                    'items' => $parameters_sub_menu,
-                    'active' => Yii::$app->controller->id == 'items'
-                ],
-//            ['label' => '', 'url' => ['/admin/items/index'], ],
-                ['label' => 'Users', 'url' => ['/admin/admin/index'], 'active' => Yii::$app->controller->id == 'admin'],
-                ['label' => 'Item Rules', 'url' => ['/admin/item-rule/index'], 'active' => Yii::$app->controller->id == 'item-rule'],
-                ['label' => 'Usage types', 'url' => ['/admin/usg-type/index'], 'active' => Yii::$app->controller->id == 'usg-type'],
-                ['label' => 'Parameter influence', 'url' => ['/admin/parameter-influence/index'], 'active' => Yii::$app->controller->id == 'usg-type'],
-                ['label' => 'Language', 'url' => ['/admin/language/index'], 'active' => Yii::$app->controller->id == 'language'],
-                ['label' => 'Reports', 'url' => ['/admin/reports/index'], 'active' => Yii::$app->controller->id == 'reports'],
-                [
-                    'label' => 'Groups & Regions',
-                    'items' => [
-                        '<div class="dropdown-header" style="background-color: #ff8900;margin-top: -16px;"></div>',
-                        [
-                            'label' => '<div class="submenu_item"><span>Groups</span></div>',
-                            'url' => '/admin/group/index'
-                        ],
-                        [
-                            'label' => '<div class="submenu_item"><span>Regions</span></div>',
-                            'url' => '/admin/region/index'
-                        ],
+            'items' => !Yii::$app->admin->isGuest ?
+                (Yii::$app->admin->identity->role == 1 ? [
+                    [
+                        'label' => 'Parameters',
+                        'items' => $parameters_sub_menu,
+                        'active' => Yii::$app->controller->id == 'items'
                     ],
-                    'active' => in_array(Yii::$app->controller->id, array('group', 'region'))
-                ],
-                ['label' => '<span style="margin-left: 50px">Hi, <b>' . Yii::$app->admin->getIdentity()->username . '</b></span>'],
-                ['label' => '<img src="/images/icons/logout.png" style="width: 20px; margin-left: -12px; margin-top: -4px;">', 'url' => ['/admin/logout']],
-            ] : []
+    //            ['label' => '', 'url' => ['/admin/items/index'], ],
+                    ['label' => 'Users', 'url' => ['/admin/admin/index'], 'active' => Yii::$app->controller->id == 'admin'],
+                    ['label' => 'Item Rules', 'url' => ['/admin/item-rule/index'], 'active' => Yii::$app->controller->id == 'item-rule'],
+                    ['label' => 'Usage types', 'url' => ['/admin/usg-type/index'], 'active' => Yii::$app->controller->id == 'usg-type'],
+                    ['label' => 'Parameter influence', 'url' => ['/admin/parameter-influence/index'], 'active' => Yii::$app->controller->id == 'usg-type'],
+                    ['label' => 'Language', 'url' => ['/admin/language/index'], 'active' => Yii::$app->controller->id == 'language'],
+                    ['label' => 'Reports', 'url' => ['/admin/reports/index'], 'active' => Yii::$app->controller->id == 'reports'],
+                    [
+                        'label' => 'Groups & Regions',
+                        'items' => [
+                            '<div class="dropdown-header" style="background-color: #ff8900;margin-top: -16px;"></div>',
+                            [
+                                'label' => '<div class="submenu_item"><span>Groups</span></div>',
+                                'url' => '/admin/group/index'
+                            ],
+                            [
+                                'label' => '<div class="submenu_item"><span>Regions</span></div>',
+                                'url' => '/admin/region/index'
+                            ],
+                        ],
+                        'active' => in_array(Yii::$app->controller->id, array('group', 'region'))
+                    ],
+                    ['label' => '<span style="margin-left: 50px">Hi, <b>' . Yii::$app->admin->getIdentity()->username . '</b></span>'],
+                    ['label' => '<img src="/images/icons/logout.png" style="width: 20px; margin-left: -12px; margin-top: -4px;">', 'url' => ['/admin/logout']],
+                ] : [
+                        [
+                            'label' => 'Parameters',
+                            'items' => $parameters_sub_menu,
+                            'active' => Yii::$app->controller->id == 'items'
+                        ],
+
+                        ['label' => '<span style="margin-left: 50px">Hi, <b>' . Yii::$app->admin->getIdentity()->username . '</b></span>'],
+                        ['label' => '<img src="/images/icons/logout.png" style="width: 20px; margin-left: -12px; margin-top: -4px;">', 'url' => ['/admin/logout']],
+                    ]
+            ): []
         ]);
         NavBar::end();
         ?>

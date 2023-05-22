@@ -773,20 +773,20 @@ foreach ($cl[0] as $column) {
                     );
                 },
                 'disable' => function($url, $model, $key) {
-                    return sprintf('
+                    return in_array(Yii::$app->admin->getIdentity()->role, [1, 3]) ? sprintf('
                         <label class="switch">
                             <input type="checkbox" %s>
                             <span class="slider round active-item-disable"></span>
                         </label><br>',
 
                         !$model->disabled ? "checked" : ""
-                    );
+                    ) : '';
                 },
                 'update' => function($url, $model, $key) {
-                    return Html::a('',
+                    return in_array(Yii::$app->admin->getIdentity()->role, [1, 3]) ? Html::a('',
                         $url,
                         ['class' => 'icon update label']
-                    );
+                    ) : '';
                 }
             ],
             'urlCreator' => function ($action, Items $model, $key, $index, $column) {
