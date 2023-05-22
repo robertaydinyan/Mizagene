@@ -656,7 +656,7 @@ class Items extends \yii\db\ActiveRecord
     public static function getDataById($id, $language) {
         $item = Items::find()
             ->select([
-                'items.id',
+                'items.id as e2e_id',
                 'items.item_id as item_ID',
                 'items.i_usg_type as i_usage_type',
                 'items.i_type',

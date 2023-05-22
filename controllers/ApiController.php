@@ -22,6 +22,7 @@ class ApiController extends Controller {
          error_reporting(0);
         $secret = '2YUmrIyqgY8wyHbcZPoaWw6YsiSQFS';
         $auth_header = $_SERVER['HTTP_AUTHORIZATION'];
+        var_dump();
         if (preg_match('/Bearer\s(\S+)/', $auth_header, $matches)) {
             $token = $matches[1];
             if ($secret != $token) {
@@ -119,6 +120,23 @@ class ApiController extends Controller {
             API::returnError(403, "Wrong request method");
 
         return UsgType::find()->asArray()->all();
+    }
+
+    public function actionActivateItem() {
+        if ($_SERVER['REQUEST_METHOD'] !== 'GET')
+            API::returnError(403, "Wrong request method");
+
+        $e2e_id = Yii::$app->request->get('e2e_id');
+        if (!$e2e_id)
+            API::returnError(403, "Missing required parameter e2e_id");
+
+        $item = Items::findOne($e2e_id);
+        if (!$item)
+            API::returnError(403, "Cant find item with e2e_id equal to " . $e2e_id);
+
+        $item->check1 = 1;
+        $item->activated_at = date('Y-m-d h:i:s');
+        $item->save();
     }
 
     public function actionError() {

@@ -275,12 +275,23 @@ class ItemsController extends Controller
                 $item_n = Items::getDataById($itemID, 3);
                 $mz = new Mizagene();
                 $result = $mz->setItem($item_n);
-            }
-            if ($result) {
-                $item = $item_q->one();
-                $item->check1 = 1;
-                $item->activated_at = date('Y-m-d h:i:s');
-                return $item->save();
+                if ($result) {
+                    $item = $item_q->one();
+                    $item->check1 = 1;
+                    $item->activated_at = date('Y-m-d h:i:s');
+                    return $item->save();
+                }
+            } else {
+                $item_n = Items::getDataById($itemID, 3);
+                unset($item_n['item_ID']);
+                $mz = new Mizagene();
+                $result = $mz->setItem($item_n);
+
+                if ($result) {
+                    $item = $item_q->one();
+                    $item->check2 += 1;
+                    return $item->save();
+                }
             }
         }
     }

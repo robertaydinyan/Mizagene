@@ -33,7 +33,7 @@ $columns = [
                 ',
 
                 $model->item_id ?: $model->id,
-                $model->source ? 'Mizagene_small' : 'youmee_small',
+                $model->source ? 'Mizagene_small' : 'youmee_small_gr',
                 $pill != 1 ? ($model->priority ? ('<div class="icon m-icon priority-' . $model->priority . '"></div>') : '') : '',
                 $pill != 1 ? (in_array($model->getStep(), [2, 3])  ? ($model->comment ? ('<div class="icon m-icon comment"  data-toggle="tooltip" title="' . $model->comment . '"></div>') : '') : '') : '',
                 $pill == 1 ? Html::a('',

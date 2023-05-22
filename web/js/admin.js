@@ -433,12 +433,26 @@ $(document).ready(function() {
         }
         ev.preventDefault()
     });
+    function unsecuredCopyToClipboard(text) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+            document.execCommand('copy');
+        } catch (err) {
+            console.error('Unable to copy to clipboard', err);
+        }
+        document.body.removeChild(textArea);
+    }
+
     $('td span').on('dblclick', function() {
         var textToCopy = $(this).text();
-
-        navigator.clipboard.writeText(textToCopy)
-            .then(function() {
+        unsecuredCopyToClipboard(textToCopy)
+        // navigator.clipboard.writeText(textToCopy)
+        //     .then(function() {
                 $('#copyNotification').fadeIn().delay(1500).fadeOut();
-            });
+            // });
     }).disableSelection();
 });
