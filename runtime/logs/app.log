@@ -13050,3 +13050,2241 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1684751467.3578
     'REQUEST_TIME' => 1684751467
 ]
+2023-05-22 10:31:51 [46.70.31.98][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:31:51 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:31:51 [46.70.31.98][-][-][info][application] $_GET = []
+
+$_POST = [
+    '_csrf' => 'YLBP7bvoMj4-XaQjj6plB1vxVZLBoKb_Kt0kZmgksugIwiG89It2am0H5Rvpzg0wHKJg1a7xxbVYmkEHMlyfhQ=='
+    'Items' => [
+        'i_type' => [
+            0 => '1'
+        ]
+        'i_usg_type' => [
+            0 => '1009'
+            1 => '1011'
+        ]
+        'colorSectors' => [
+            'color_id' => [
+                0 => '1'
+                1 => '2'
+                2 => '3'
+                3 => '3'
+                4 => '5'
+                5 => '5'
+                6 => '6'
+                7 => '6'
+                8 => '6'
+                9 => '6'
+            ]
+            'description_ru' => [
+                0 => ''
+                1 => ''
+                2 => ''
+                3 => ''
+                4 => ''
+                5 => ''
+                6 => ''
+                7 => ''
+                8 => ''
+                9 => ''
+            ]
+            'description_en' => [
+                0 => ''
+                1 => ''
+                2 => ''
+                3 => ''
+                4 => ''
+                5 => ''
+                6 => ''
+                7 => ''
+                8 => ''
+                9 => ''
+            ]
+        ]
+        'title' => [
+            1 => 'обучаемость тела'
+            2 => 'body learning'
+        ]
+        'description' => [
+            1 => 'врождённая относительная скорость, с которой формируются нейронные связи при обучении человека сложным движениям, требующим ловкости (например, спортивные танцы, жонглирование)'
+            2 => 'innate relative speed with which neural connections are formed when a person is taught complex movements that require dexterity (for example, sports dancing, juggling)'
+        ]
+    ]
+]
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '3029'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_ORIGIN' => 'https://youmee.tech'
+    'HTTP_DNT' => '1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/create'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53792'
+    'REDIRECT_URL' => '/admin/items/create'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/admin/items/create'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751511.0935
+    'REQUEST_TIME' => 1684751511
+]
+2023-05-22 10:31:51 [46.70.31.98][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:31:52 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+    in /var/www/youmee/modules/views/layouts/main.php:112
+    in /var/www/youmee/modules/controllers/ItemsController.php:69
+2023-05-22 10:31:52 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:31:51 [46.70.31.98][-][-][info][application] $_GET = [
+    'pill' => '2'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_DNT' => '1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/create'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53792'
+    'REDIRECT_URL' => '/admin/items/index'
+    'REDIRECT_QUERY_STRING' => 'pill=2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'pill=2'
+    'REQUEST_URI' => '/admin/items/index?pill=2'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751511.2789
+    'REQUEST_TIME' => 1684751511
+]
+2023-05-22 10:31:52 [46.70.31.98][-][s4dtv44kt7tdnthg7vp42ft6d5][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:31:52 [46.70.31.98][-][s4dtv44kt7tdnthg7vp42ft6d5][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "images/icons/youmee_small_gr.png". in /var/www/youmee/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /var/www/youmee/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction()
+#1 /var/www/youmee/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#2 /var/www/youmee/web/index.php(15): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/youmee/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /var/www/youmee/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#1 /var/www/youmee/web/index.php(15): yii\base\Application->run()
+#2 {main}
+2023-05-22 10:31:52 [46.70.31.98][-][s4dtv44kt7tdnthg7vp42ft6d5][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:31:52 [46.70.31.98][-][s4dtv44kt7tdnthg7vp42ft6d5][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_DNT' => '1'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_ACCEPT' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'no-cors'
+    'HTTP_SEC_FETCH_DEST' => 'image'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/index?pill=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53792'
+    'REDIRECT_URL' => '/images/icons/youmee_small_gr.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/images/icons/youmee_small_gr.png'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751512.5478
+    'REQUEST_TIME' => 1684751512
+]
+2023-05-22 10:32:30 [46.70.31.98][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:32:30 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+    in /var/www/youmee/modules/views/layouts/main.php:112
+    in /var/www/youmee/modules/controllers/ItemsController.php:181
+2023-05-22 10:32:30 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:32:30 [46.70.31.98][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/index?pill=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53797'
+    'REDIRECT_URL' => '/admin/items/create'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/admin/items/create'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751550.9073
+    'REQUEST_TIME' => 1684751550
+]
+2023-05-22 10:33:09 [46.70.31.98][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:33:09 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:33:09 [46.70.31.98][-][-][info][application] $_GET = [
+    'type' => '[\"1\"]'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_DNT' => '1'
+    'HTTP_X_CSRF_TOKEN' => 'kel8u6C9NDZA5tjxIuIu-u4_YQIV-07fReD_RMkpBcP5mxLq795wYhO8mclEhkbNqWxURXqqLZU3p5olk1Eorg=='
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/create'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53800'
+    'REDIRECT_URL' => '/admin/usg-type/get-types'
+    'REDIRECT_QUERY_STRING' => 'type=%5B%221%22%5D'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'type=%5B%221%22%5D'
+    'REQUEST_URI' => '/admin/usg-type/get-types?type=%5B%221%22%5D'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751589.0768
+    'REQUEST_TIME' => 1684751589
+]
+2023-05-22 10:33:29 [46.70.31.98][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:33:29 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:33:29 [46.70.31.98][-][-][info][application] $_GET = []
+
+$_POST = [
+    '_csrf' => 'kel8u6C9NDZA5tjxIuIu-u4_YQIV-07fReD_RMkpBcP5mxLq795wYhO8mclEhkbNqWxURXqqLZU3p5olk1Eorg=='
+    'Items' => [
+        'i_type' => [
+            0 => '1'
+        ]
+        'i_usg_type' => [
+            0 => '1009'
+            1 => '1011'
+        ]
+        'colorSectors' => [
+            'color_id' => [
+                0 => '1'
+                1 => '2'
+                2 => '3'
+                3 => '3'
+                4 => '5'
+                5 => '5'
+                6 => '6'
+                7 => '6'
+                8 => '6'
+                9 => '6'
+            ]
+            'description_ru' => [
+                0 => ''
+                1 => ''
+                2 => ''
+                3 => ''
+                4 => ''
+                5 => ''
+                6 => ''
+                7 => ''
+                8 => ''
+                9 => ''
+            ]
+            'description_en' => [
+                0 => ''
+                1 => ''
+                2 => ''
+                3 => ''
+                4 => ''
+                5 => ''
+                6 => ''
+                7 => ''
+                8 => ''
+                9 => ''
+            ]
+        ]
+        'title' => [
+            1 => 'координация (общая)'
+            2 => 'coordination (general)'
+        ]
+        'description' => [
+            1 => 'способность совершать точные и контролируемые движения за счёт синхронной работы разных групп мышц'
+            2 => 'the ability to make precise and controlled movements due to the synchronous work of different muscle groups'
+        ]
+    ]
+]
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '2566'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_ORIGIN' => 'https://youmee.tech'
+    'HTTP_DNT' => '1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/create'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53802'
+    'REDIRECT_URL' => '/admin/items/create'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/admin/items/create'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751609.6585
+    'REQUEST_TIME' => 1684751609
+]
+2023-05-22 10:33:29 [46.70.31.98][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:33:31 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+    in /var/www/youmee/modules/views/layouts/main.php:112
+    in /var/www/youmee/modules/controllers/ItemsController.php:69
+2023-05-22 10:33:31 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:33:29 [46.70.31.98][-][-][info][application] $_GET = [
+    'pill' => '2'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_DNT' => '1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/create'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53802'
+    'REDIRECT_URL' => '/admin/items/index'
+    'REDIRECT_QUERY_STRING' => 'pill=2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'pill=2'
+    'REQUEST_URI' => '/admin/items/index?pill=2'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751609.8424
+    'REQUEST_TIME' => 1684751609
+]
+2023-05-22 10:33:31 [46.70.31.98][-][s4dtv44kt7tdnthg7vp42ft6d5][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:33:31 [46.70.31.98][-][s4dtv44kt7tdnthg7vp42ft6d5][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "images/icons/youmee_small_gr.png". in /var/www/youmee/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /var/www/youmee/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction()
+#1 /var/www/youmee/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#2 /var/www/youmee/web/index.php(15): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/youmee/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /var/www/youmee/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#1 /var/www/youmee/web/index.php(15): yii\base\Application->run()
+#2 {main}
+2023-05-22 10:33:31 [46.70.31.98][-][s4dtv44kt7tdnthg7vp42ft6d5][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:33:31 [46.70.31.98][-][s4dtv44kt7tdnthg7vp42ft6d5][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_DNT' => '1'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_ACCEPT' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'no-cors'
+    'HTTP_SEC_FETCH_DEST' => 'image'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/index?pill=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53802'
+    'REDIRECT_URL' => '/images/icons/youmee_small_gr.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/images/icons/youmee_small_gr.png'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751611.3606
+    'REQUEST_TIME' => 1684751611
+]
+2023-05-22 10:33:55 [78.109.72.25][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 78.109.72.25: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:33:58 [78.109.72.25][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 78.109.72.25
+    in /var/www/youmee/modules/views/layouts/main.php:112
+    in /var/www/youmee/modules/controllers/ItemsController.php:69
+2023-05-22 10:33:58 [78.109.72.25][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 78.109.72.25
+2023-05-22 10:33:55 [78.109.72.25][-][-][info][application] $_GET = [
+    'pill' => '2'
+    'step' => '2'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    'PHPSESSID' => '7f6maau9hfsirulh1hktcmn7cp'
+    '_csrf' => '5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/index?pill=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => '_panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; PHPSESSID=7f6maau9hfsirulh1hktcmn7cp; _csrf=5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '78.109.72.25'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '58449'
+    'REDIRECT_URL' => '/admin/items/index'
+    'REDIRECT_QUERY_STRING' => 'pill=2&step=2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'pill=2&step=2'
+    'REQUEST_URI' => '/admin/items/index?pill=2&step=2'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751635.1892
+    'REQUEST_TIME' => 1684751635
+]
+2023-05-22 10:33:58 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 78.109.72.25: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:33:58 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "images/icons/youmee_small_gr.png". in /var/www/youmee/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /var/www/youmee/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction()
+#1 /var/www/youmee/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#2 /var/www/youmee/web/index.php(15): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/youmee/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /var/www/youmee/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#1 /var/www/youmee/web/index.php(15): yii\base\Application->run()
+#2 {main}
+2023-05-22 10:33:58 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 78.109.72.25
+2023-05-22 10:33:58 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    'PHPSESSID' => '7f6maau9hfsirulh1hktcmn7cp'
+    '_csrf' => '5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_ACCEPT' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'no-cors'
+    'HTTP_SEC_FETCH_DEST' => 'image'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/index?pill=2&step=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => '_panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; PHPSESSID=7f6maau9hfsirulh1hktcmn7cp; _csrf=5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '78.109.72.25'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '58514'
+    'REDIRECT_URL' => '/images/icons/youmee_small_gr.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/images/icons/youmee_small_gr.png'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751638.9629
+    'REQUEST_TIME' => 1684751638
+]
+2023-05-22 10:33:59 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 78.109.72.25: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:33:59 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "images/icons/youmee_small_gr.png". in /var/www/youmee/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /var/www/youmee/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction()
+#1 /var/www/youmee/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#2 /var/www/youmee/web/index.php(15): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/youmee/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /var/www/youmee/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#1 /var/www/youmee/web/index.php(15): yii\base\Application->run()
+#2 {main}
+2023-05-22 10:33:59 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 78.109.72.25
+2023-05-22 10:33:59 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    'PHPSESSID' => '7f6maau9hfsirulh1hktcmn7cp'
+    '_csrf' => '5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_ACCEPT' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'no-cors'
+    'HTTP_SEC_FETCH_DEST' => 'image'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/index?pill=2&step=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => '_panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; PHPSESSID=7f6maau9hfsirulh1hktcmn7cp; _csrf=5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '78.109.72.25'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '58514'
+    'REDIRECT_URL' => '/images/icons/youmee_small_gr.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/images/icons/youmee_small_gr.png'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751639.1336
+    'REQUEST_TIME' => 1684751639
+]
+2023-05-22 10:34:05 [46.70.31.98][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:34:05 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+    in /var/www/youmee/modules/views/layouts/main.php:112
+    in /var/www/youmee/modules/controllers/ItemsController.php:181
+2023-05-22 10:34:05 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:34:05 [46.70.31.98][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/index?pill=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53806'
+    'REDIRECT_URL' => '/admin/items/create'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/admin/items/create'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751645.8077
+    'REQUEST_TIME' => 1684751645
+]
+2023-05-22 10:34:45 [46.70.31.98][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:34:45 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:34:45 [46.70.31.98][-][-][info][application] $_GET = [
+    'type' => '[\"1\"]'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_DNT' => '1'
+    'HTTP_X_CSRF_TOKEN' => 'KH08z5c2qGmmBevEmT098Ohgx7rKTBgDRBHOO-YpluhAD1Ke2FXsPfVfqvz_WVXHrzPy_aUde0k2VqtavFG7hQ=='
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/create'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53809'
+    'REDIRECT_URL' => '/admin/usg-type/get-types'
+    'REDIRECT_QUERY_STRING' => 'type=%5B%221%22%5D'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'type=%5B%221%22%5D'
+    'REQUEST_URI' => '/admin/usg-type/get-types?type=%5B%221%22%5D'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751685.3125
+    'REQUEST_TIME' => 1684751685
+]
+2023-05-22 10:35:09 [46.70.31.98][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:35:09 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:35:09 [46.70.31.98][-][-][info][application] $_GET = []
+
+$_POST = [
+    '_csrf' => 'KH08z5c2qGmmBevEmT098Ohgx7rKTBgDRBHOO-YpluhAD1Ke2FXsPfVfqvz_WVXHrzPy_aUde0k2VqtavFG7hQ=='
+    'Items' => [
+        'i_type' => [
+            0 => '1'
+        ]
+        'i_usg_type' => [
+            0 => '1009'
+            1 => '1011'
+        ]
+        'colorSectors' => [
+            'color_id' => [
+                0 => '1'
+                1 => '2'
+                2 => '3'
+                3 => '3'
+                4 => '5'
+                5 => '5'
+                6 => '6'
+                7 => '6'
+                8 => '6'
+                9 => '6'
+            ]
+            'description_ru' => [
+                0 => ''
+                1 => ''
+                2 => ''
+                3 => ''
+                4 => ''
+                5 => ''
+                6 => ''
+                7 => ''
+                8 => ''
+                9 => ''
+            ]
+            'description_en' => [
+                0 => ''
+                1 => ''
+                2 => ''
+                3 => ''
+                4 => ''
+                5 => ''
+                6 => ''
+                7 => ''
+                8 => ''
+                9 => ''
+            ]
+        ]
+        'title' => [
+            1 => 'гибкость (общая)'
+            2 => 'flexibility (general)'
+        ]
+        'description' => [
+            1 => 'степень подвижности звеньев опорно-двигательного аппарата и способность выполнять движения с большой амплитудой (результат относительный, показывает врожденную предрасположенность)'
+            2 => 'the degree of mobility of the links of the musculoskeletal system and the ability to perform movements with a large amplitude (the result is relative, shows an innate predisposition)'
+        ]
+    ]
+]
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '3086'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_ORIGIN' => 'https://youmee.tech'
+    'HTTP_DNT' => '1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/create'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53812'
+    'REDIRECT_URL' => '/admin/items/create'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/admin/items/create'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751709.2265
+    'REQUEST_TIME' => 1684751709
+]
+2023-05-22 10:35:09 [46.70.31.98][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:35:10 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+    in /var/www/youmee/modules/views/layouts/main.php:112
+    in /var/www/youmee/modules/controllers/ItemsController.php:69
+2023-05-22 10:35:10 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:35:09 [46.70.31.98][-][-][info][application] $_GET = [
+    'pill' => '2'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_DNT' => '1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/create'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53812'
+    'REDIRECT_URL' => '/admin/items/index'
+    'REDIRECT_QUERY_STRING' => 'pill=2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'pill=2'
+    'REQUEST_URI' => '/admin/items/index?pill=2'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751709.3962
+    'REQUEST_TIME' => 1684751709
+]
+2023-05-22 10:35:10 [46.70.31.98][-][s4dtv44kt7tdnthg7vp42ft6d5][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:35:10 [46.70.31.98][-][s4dtv44kt7tdnthg7vp42ft6d5][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "images/icons/youmee_small_gr.png". in /var/www/youmee/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /var/www/youmee/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction()
+#1 /var/www/youmee/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#2 /var/www/youmee/web/index.php(15): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/youmee/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /var/www/youmee/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#1 /var/www/youmee/web/index.php(15): yii\base\Application->run()
+#2 {main}
+2023-05-22 10:35:10 [46.70.31.98][-][s4dtv44kt7tdnthg7vp42ft6d5][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:35:10 [46.70.31.98][-][s4dtv44kt7tdnthg7vp42ft6d5][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_DNT' => '1'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_ACCEPT' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'no-cors'
+    'HTTP_SEC_FETCH_DEST' => 'image'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/index?pill=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53812'
+    'REDIRECT_URL' => '/images/icons/youmee_small_gr.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/images/icons/youmee_small_gr.png'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751710.7556
+    'REQUEST_TIME' => 1684751710
+]
+2023-05-22 10:35:30 [46.70.31.98][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:35:30 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+    in /var/www/youmee/modules/views/layouts/main.php:112
+    in /var/www/youmee/modules/controllers/ItemsController.php:200
+2023-05-22 10:35:30 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:35:30 [46.70.31.98][-][-][info][application] $_GET = [
+    'id' => '1623'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/index?pill=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53815'
+    'REDIRECT_URL' => '/admin/items/update'
+    'REDIRECT_QUERY_STRING' => 'id=1623'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'id=1623'
+    'REQUEST_URI' => '/admin/items/update?id=1623'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751730.3251
+    'REQUEST_TIME' => 1684751730
+]
+2023-05-22 10:35:41 [46.70.31.98][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:35:41 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:35:41 [46.70.31.98][-][-][info][application] $_GET = [
+    'id' => '1623'
+]
+
+$_POST = [
+    '_csrf' => '7jHxgKVQIBzo-DgPVO1of1MdWb0Vnv97IyHPqnkaUWCGQ5_R6jNkSLuieTcyiQBIFE5s-nrPnDFRZqrLI2J8DQ=='
+    'Items' => [
+        'i_type' => [
+            0 => '1'
+        ]
+        'i_usg_type' => [
+            0 => '1011'
+        ]
+        'colorSectors' => [
+            'color_id' => [
+                0 => '1'
+                1 => '2'
+                2 => '3'
+                3 => '3'
+                4 => '5'
+                5 => '5'
+                6 => '6'
+                7 => '6'
+                8 => '6'
+                9 => '6'
+            ]
+            'description_ru' => [
+                0 => ''
+                1 => ''
+                2 => ''
+                3 => ''
+                4 => ''
+                5 => ''
+                6 => ''
+                7 => ''
+                8 => ''
+                9 => ''
+            ]
+            'description_en' => [
+                0 => ''
+                1 => ''
+                2 => ''
+                3 => ''
+                4 => ''
+                5 => ''
+                6 => ''
+                7 => ''
+                8 => ''
+                9 => ''
+            ]
+        ]
+        'title' => [
+            1 => 'кинестетический (тактильный или телесный) интеллект'
+            2 => 'kinesthetic (tactile or bodily) intelligence'
+        ]
+        'description' => [
+            1 => 'познание и осмысление реальности через ощущения, прикосновения, движения, умение чувствовать и понимать своё тело, управлять им'
+            2 => 'knowledge and understanding of reality through sensations, touches, movements, the ability to feel and understand one\'s body, control it'
+        ]
+    ]
+]
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '2918'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_ORIGIN' => 'https://youmee.tech'
+    'HTTP_DNT' => '1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/update?id=1623'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53816'
+    'REDIRECT_URL' => '/admin/items/update'
+    'REDIRECT_QUERY_STRING' => 'id=1623'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'id=1623'
+    'REQUEST_URI' => '/admin/items/update?id=1623'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751741.6448
+    'REQUEST_TIME' => 1684751741
+]
+2023-05-22 10:35:41 [46.70.31.98][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 46.70.31.98: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:35:41 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+    in /var/www/youmee/modules/views/layouts/main.php:112
+    in /var/www/youmee/modules/controllers/ItemsController.php:200
+2023-05-22 10:35:41 [46.70.31.98][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 46.70.31.98
+2023-05-22 10:35:41 [46.70.31.98][-][-][info][application] $_GET = [
+    'id' => '1623'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_ga_HHBB1WQ5FL' => 'GS1.1.1680163813.1.1.1680163819.0.0.0'
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    '_ga' => 'GA1.1.2096983604.1680163813'
+    '_ga_0950SNFPP3' => 'GS1.1.1684693996.2.1.1684696424.0.0.0'
+    'PHPSESSID' => 's4dtv44kt7tdnthg7vp42ft6d5'
+    '_csrf' => 'c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_DNT' => '1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/update?id=1623'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => '_ga_HHBB1WQ5FL=GS1.1.1680163813.1.1.1680163819.0.0.0; _panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; _ga=GA1.1.2096983604.1680163813; _ga_0950SNFPP3=GS1.1.1684693996.2.1.1684696424.0.0.0; PHPSESSID=s4dtv44kt7tdnthg7vp42ft6d5; _csrf=c943d71a62c2792f2fddbb8dcdb245f2947fab0589e74de69736c9d0766fd61fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22hrnQOcDTSZA8fdh7GS5GoQcJrGeaZx-m%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '46.70.31.98'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '53816'
+    'REDIRECT_URL' => '/admin/items/update'
+    'REDIRECT_QUERY_STRING' => 'id=1623'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'id=1623'
+    'REQUEST_URI' => '/admin/items/update?id=1623'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751741.7728
+    'REQUEST_TIME' => 1684751741
+]
+2023-05-22 10:35:53 [78.109.72.25][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 78.109.72.25: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:35:57 [78.109.72.25][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 78.109.72.25
+    in /var/www/youmee/modules/views/layouts/main.php:112
+    in /var/www/youmee/modules/controllers/ItemsController.php:69
+2023-05-22 10:35:57 [78.109.72.25][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 78.109.72.25
+2023-05-22 10:35:53 [78.109.72.25][-][-][info][application] $_GET = [
+    'pill' => '2'
+    'step' => '2'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    'PHPSESSID' => '7f6maau9hfsirulh1hktcmn7cp'
+    '_csrf' => '5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/index?pill=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => '_panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; PHPSESSID=7f6maau9hfsirulh1hktcmn7cp; _csrf=5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '78.109.72.25'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '58604'
+    'REDIRECT_URL' => '/admin/items/index'
+    'REDIRECT_QUERY_STRING' => 'pill=2&step=2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'pill=2&step=2'
+    'REQUEST_URI' => '/admin/items/index?pill=2&step=2'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751753.6847
+    'REQUEST_TIME' => 1684751753
+]
+2023-05-22 10:35:58 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 78.109.72.25: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:35:58 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "images/icons/youmee_small_gr.png". in /var/www/youmee/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /var/www/youmee/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction()
+#1 /var/www/youmee/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#2 /var/www/youmee/web/index.php(15): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/youmee/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /var/www/youmee/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#1 /var/www/youmee/web/index.php(15): yii\base\Application->run()
+#2 {main}
+2023-05-22 10:35:58 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 78.109.72.25
+2023-05-22 10:35:58 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    'PHPSESSID' => '7f6maau9hfsirulh1hktcmn7cp'
+    '_csrf' => '5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_ACCEPT' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'no-cors'
+    'HTTP_SEC_FETCH_DEST' => 'image'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/index?pill=2&step=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => '_panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; PHPSESSID=7f6maau9hfsirulh1hktcmn7cp; _csrf=5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '78.109.72.25'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '58399'
+    'REDIRECT_URL' => '/images/icons/youmee_small_gr.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/images/icons/youmee_small_gr.png'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751758.245
+    'REQUEST_TIME' => 1684751758
+]
+2023-05-22 10:36:12 [78.109.72.25][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 78.109.72.25: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:36:15 [78.109.72.25][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 78.109.72.25
+    in /var/www/youmee/modules/views/layouts/main.php:112
+    in /var/www/youmee/modules/controllers/ItemsController.php:69
+2023-05-22 10:36:15 [78.109.72.25][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 78.109.72.25
+2023-05-22 10:36:12 [78.109.72.25][-][-][info][application] $_GET = [
+    'pill' => '2'
+    'step' => '2'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    'PHPSESSID' => '7f6maau9hfsirulh1hktcmn7cp'
+    '_csrf' => '5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/index?pill=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => '_panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; PHPSESSID=7f6maau9hfsirulh1hktcmn7cp; _csrf=5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '78.109.72.25'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '9827'
+    'REDIRECT_URL' => '/admin/items/index'
+    'REDIRECT_QUERY_STRING' => 'pill=2&step=2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'pill=2&step=2'
+    'REQUEST_URI' => '/admin/items/index?pill=2&step=2'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751772.1601
+    'REQUEST_TIME' => 1684751772
+]
+2023-05-22 10:36:15 [78.109.72.25][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 78.109.72.25: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:36:19 [78.109.72.25][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 78.109.72.25
+    in /var/www/youmee/modules/views/layouts/main.php:112
+    in /var/www/youmee/modules/controllers/ItemsController.php:69
+2023-05-22 10:36:19 [78.109.72.25][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 78.109.72.25
+2023-05-22 10:36:15 [78.109.72.25][-][-][info][application] $_GET = [
+    'pill' => '2'
+    'step' => '2'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    'PHPSESSID' => '7f6maau9hfsirulh1hktcmn7cp'
+    '_csrf' => '5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/index?pill=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => '_panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; PHPSESSID=7f6maau9hfsirulh1hktcmn7cp; _csrf=5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '78.109.72.25'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '9956'
+    'REDIRECT_URL' => '/admin/items/index'
+    'REDIRECT_QUERY_STRING' => 'pill=2&step=2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'pill=2&step=2'
+    'REQUEST_URI' => '/admin/items/index?pill=2&step=2'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751775.0177
+    'REQUEST_TIME' => 1684751775
+]
+2023-05-22 10:36:20 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 78.109.72.25: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:36:20 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "images/icons/youmee_small_gr.png". in /var/www/youmee/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /var/www/youmee/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction()
+#1 /var/www/youmee/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#2 /var/www/youmee/web/index.php(15): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /var/www/youmee/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /var/www/youmee/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest()
+#1 /var/www/youmee/web/index.php(15): yii\base\Application->run()
+#2 {main}
+2023-05-22 10:36:20 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 78.109.72.25
+2023-05-22 10:36:20 [78.109.72.25][-][7f6maau9hfsirulh1hktcmn7cp][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    'PHPSESSID' => '7f6maau9hfsirulh1hktcmn7cp'
+    '_csrf' => '5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_ACCEPT' => 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'no-cors'
+    'HTTP_SEC_FETCH_DEST' => 'image'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/index?pill=2&step=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => '_panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; PHPSESSID=7f6maau9hfsirulh1hktcmn7cp; _csrf=5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '78.109.72.25'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '9795'
+    'REDIRECT_URL' => '/images/icons/youmee_small_gr.png'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/images/icons/youmee_small_gr.png'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751780.0472
+    'REQUEST_TIME' => 1684751780
+]
+2023-05-22 10:38:13 [35.203.210.194][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 35.203.210.194
+2023-05-22 10:38:13 [35.203.210.194][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'SCRIPT_URL' => '/'
+    'SCRIPT_URI' => 'http://52.28.155.196/'
+    'HTTP_HOST' => '52.28.155.196:80'
+    'HTTP_USER_AGENT' => 'Expanse, a Palo Alto Networks company, searches across the global IPv4 space multiple times per day to identify customers&#39; presences on the Internet. If you would like to be excluded from our scans, please send IP addresses/domains to: scaninfo@paloaltonetworks.com'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at 52.28.155.196 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => '52.28.155.196'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '35.203.210.194'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '61304'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684751893.3231
+    'REQUEST_TIME' => 1684751893
+]
+2023-05-22 10:40:27 [78.109.72.25][-][-][warning][yii\web\User::renewAuthStatus] Invalid session auth key attempted for user '1' from 78.109.72.25: JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg
+2023-05-22 10:40:31 [78.109.72.25][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 78.109.72.25
+    in /var/www/youmee/modules/views/layouts/main.php:112
+    in /var/www/youmee/modules/controllers/ItemsController.php:69
+2023-05-22 10:40:31 [78.109.72.25][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 78.109.72.25
+2023-05-22 10:40:27 [78.109.72.25][-][-][info][application] $_GET = [
+    'pill' => '2'
+    'step' => '2'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_panelAdmin' => 'cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda:2:{i:0;s:11:\"_panelAdmin\";i:1;s:46:\"[1,\"JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg\",2592000]\";}'
+    'subjectLang' => '1'
+    'PHPSESSID' => '7f6maau9hfsirulh1hktcmn7cp'
+    '_csrf' => '5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+    '__authKey' => 'JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg'
+]
+
+$_SERVER = [
+    'REDIRECT_HTTPS' => 'on'
+    'REDIRECT_SSL_TLS_SNI' => 'youmee.tech'
+    'REDIRECT_STATUS' => '200'
+    'HTTPS' => 'on'
+    'SSL_TLS_SNI' => 'youmee.tech'
+    'HTTP_HOST' => 'youmee.tech'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'https://youmee.tech/admin/items/index?pill=2'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9'
+    'HTTP_COOKIE' => '_panelAdmin=cdac3b00aed01e4e17f52539e9528e4a7a77182f72025e3a6c2b9ca7f807ffdda%3A2%3A%7Bi%3A0%3Bs%3A11%3A%22_panelAdmin%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22JPBQ95-w-pcTw2cQ4QnSzjKe31RtMEmg%22%2C2592000%5D%22%3B%7D; subjectLang=1; PHPSESSID=7f6maau9hfsirulh1hktcmn7cp; _csrf=5311cb8d0f7a55ea79f263583908fd80f5d57db074fdf2e0721742d3a5ef6168a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22bmK0XPXGNA-CLk2w_2wE6AcU2omxA6QD%22%3B%7D'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.52 (Ubuntu) Server at youmee.tech Port 443</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.52 (Ubuntu)'
+    'SERVER_NAME' => 'youmee.tech'
+    'SERVER_ADDR' => '172.31.6.205'
+    'SERVER_PORT' => '443'
+    'REMOTE_ADDR' => '78.109.72.25'
+    'DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'REQUEST_SCHEME' => 'https'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/youmee/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/youmee/web/index.php'
+    'REMOTE_PORT' => '9851'
+    'REDIRECT_URL' => '/admin/items/index'
+    'REDIRECT_QUERY_STRING' => 'pill=2&step=2'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'pill=2&step=2'
+    'REQUEST_URI' => '/admin/items/index?pill=2&step=2'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1684752027.2301
+    'REQUEST_TIME' => 1684752027
+]
