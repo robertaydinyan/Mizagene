@@ -122,10 +122,10 @@ class ApiController extends Controller {
     }
 
     public function actionActivateItem() {
-        if ($_SERVER['REQUEST_METHOD'] !== 'GET')
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST')
             API::returnError(403, "Wrong request method");
 
-        $e2e_id = Yii::$app->request->get('e2e_id');
+        $e2e_id = Yii::$app->request->post('e2e_id');
         if (!$e2e_id)
             API::returnError(403, "Missing required parameter e2e_id");
 
@@ -135,7 +135,7 @@ class ApiController extends Controller {
 
         $item->check1 = 1;
         $item->activated_at = date('Y-m-d h:i:s');
-        $item->save();
+        return $item->save();
     }
 
     public function actionError() {

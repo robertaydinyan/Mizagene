@@ -82,7 +82,7 @@ $columns = [
                 $form->field($model, 'description[3]')->textarea([
                     'maxlength' => true,
                     'value' => $model->getTitle(3)->description,
-                    'class' => 'form-control required'
+                    'class' => 'form-control'
                 ])->label(false) .
                 '</div>';
         }

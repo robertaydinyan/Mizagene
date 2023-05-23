@@ -157,6 +157,9 @@ class ItemsSearch extends Items
                 case 3:
                     $query->andFilterWhere(['check2' => 1, 'check3' => 1, 'check4' => 0]);
                     break;
+                case 4:
+                    $query->andFilterWhere(['check2' => 2, 'check3' => 1, 'check4' => 0]);
+                    break;
             }
 
         }

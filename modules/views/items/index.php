@@ -68,9 +68,11 @@ $active_pill = $tabs[$pill];
             </div>
         <?php endif; ?>
     </div>
-    <div>
-        <?= Html::a(' <i class="fa fa-plus"></i> Create Parameter', ['create'], ['class' => 'btn btn-dark']) ?>
-    </div>
+    <?php if (in_array(Yii::$app->admin->identity->role, [1, 3])): ?>
+        <div>
+            <?= Html::a(' <i class="fa fa-plus"></i> Create Parameter', ['create'], ['class' => 'btn btn-dark']) ?>
+        </div>
+    <?php endif; ?>
 </div>
 <?php $form = ActiveForm::begin(); ?>
 <?= Yii::$app->controller->renderFile('@app/modules/views/items/_items-list.php', [

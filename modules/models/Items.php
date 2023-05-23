@@ -51,7 +51,8 @@ class Items extends \yii\db\ActiveRecord
     private static $created_steps = array(
         1 => 'Creation Base',
         2 => 'Item Check',
-        3 => 'Push'
+        3 => 'Push',
+        4 => 'Waiting for configuration'
     );
 
     private static $ITypes = array(
@@ -244,6 +245,18 @@ class Items extends \yii\db\ActiveRecord
                                 'results_description'
                             ),
                             '{delete} {update} {save} {parameterInfluence} {checkmarkAdmin}'
+                        );
+                        break;
+                    case 4:
+                        $res = array(
+                            array(
+                                'item_id',
+                                'persian',
+                                'russian',
+                                'english',
+                                'results_description'
+                            ),
+                            ''
                         );
                         break;
                 }

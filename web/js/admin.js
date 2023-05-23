@@ -221,14 +221,14 @@ $(document).ready(function() {
         $(k).prev().remove();
     });
 
-    $('.color-spector-change').on('click', function() {
+    $(document).on('click', '.color-spector-change', function() {
         let next = parseInt($(this).find('input').val()) + 1;
         next = next === 7 ? 1 : next
-        $(this).attr('class', 'color-spector color-for-' + next);
+        $(this).attr('class', 'color-spector color-spector-change color-for-' + next);
         $(this).find('input').val(next).change();
     });
 
-    $('.color-spector-description').on('click', function() {
+    $(document).on('click', '.color-spector-description', function() {
         let old_val = $(this).closest('tr').find('.cp-detailed-container').children().eq($('.fa-circle').parent().index()).find('.save-result-description').attr('data-text');
         let circle = $(this).closest('tr').find('.fa-circle');
         circle.removeClass('fa-circle');
@@ -247,7 +247,7 @@ $(document).ready(function() {
         $(this).parent().find('.mid-container').children().eq($(this).index()).removeClass('d-none');
     });
 
-    $('.save-result-description').on('click', function () {
+    $(document).on('click', '.save-result-description', function () {
         let index = $(this).closest('.color-spector-detailed').index();
         let data = takeFormData($(this).parent().parent().next());
         rowValidation($(this).closest('tr'));
@@ -433,26 +433,26 @@ $(document).ready(function() {
         }
         ev.preventDefault()
     });
-    function unsecuredCopyToClipboard(text) {
-        const textArea = document.createElement("textarea");
-        textArea.value = text;
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-        try {
-            document.execCommand('copy');
-        } catch (err) {
-            console.error('Unable to copy to clipboard', err);
-        }
-        document.body.removeChild(textArea);
-    }
+    // function unsecuredCopyToClipboard(text) {
+    //     const textArea = document.createElement("textarea");
+    //     textArea.value = text;
+    //     document.body.appendChild(textArea);
+    //     textArea.focus();
+    //     textArea.select();
+    //     try {
+    //         document.execCommand('copy');
+    //     } catch (err) {
+    //         console.error('Unable to copy to clipboard', err);
+    //     }
+    //     document.body.removeChild(textArea);
+    // }
 
     $('td span').on('dblclick', function() {
         var textToCopy = $(this).text();
         unsecuredCopyToClipboard(textToCopy)
-        // navigator.clipboard.writeText(textToCopy)
-        //     .then(function() {
-                $('#copyNotification').fadeIn().delay(1500).fadeOut();
-            // });
+        navigator.clipboard.writeText(textToCopy)
+            .then(function() {
+            $('#copyNotification').fadeIn().delay(1500).fadeOut();
+        });
     }).disableSelection();
 });
