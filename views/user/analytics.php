@@ -128,7 +128,7 @@ use app\models\Subject;
                         data: 'image',
                         orderable: false,
                         render: function(data, type, row) {
-                            return '<a target="_blank" href="http://youmee.tech/subject?id=' + data.publicID + '&rep=3"><img src="' + data.img + '" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></a>';
+                            return '<a target="_blank" href="https://youmee.tech/subject?id=' + data.publicID + '&rep=3"><img src="' + data.img + '" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></a>';
                         }
                     },
                     { data: 'name' },

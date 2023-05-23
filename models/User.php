@@ -126,7 +126,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
     public function getDeletedsubjects()
     {
-        return $this->hasMany(Subject::class, ['user_id' => 'id'])->andWhere(['copied' => 0])->andWhere(['not', ['deleted_at' => null]])->orderBy('id', 'desc');
+        return $this->hasMany(Subject::class, ['user_id' => 'id'])->andWhere(['>' , 'deleted_at', '2021-05-22 21:30:24'])->orderBy('id', 'desc');
     }
 
     public function getClonedsubjects()
