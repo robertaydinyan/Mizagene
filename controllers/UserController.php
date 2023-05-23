@@ -96,7 +96,7 @@ class UserController extends Controller
     }
 
     public function sendToMizagene($image, $subject) {
-        $command = 'cd /var/www/html/Mizagene/python/landmarks/ && /usr/bin/python index.py ' . $image . ' 2>&1';
+        $command = 'cd /var/www/youmee/python/landmarks/ && /usr/bin/python3 index.py ' . $image . ' 2>&1';
         exec($command);
         $extensions = array(
             'bmp',
@@ -116,7 +116,7 @@ class UserController extends Controller
         foreach ($extensions as $ext) {
             $string = str_replace('.' . $ext, '', $string);
         }
-        $output = file_get_contents(\Yii::getAlias('@webroot') . DS . '..' . DS . 'python' . DS . 'landmarks' . DS . 'json' . DS . str_replace('/var/www/html/Mizagene/web/images/subjects/', '',$string) . '.json');
+        $output = file_get_contents(\Yii::getAlias('@webroot') . DS . '..' . DS . 'python' . DS . 'landmarks' . DS . 'json' . DS . str_replace('/var/www/youmee/web/images/subjects/', '',$string) . '.json');
         $output = json_decode($output)->result;
         $output->subject_id = $subject->id;
         $output->subject_photo_id = 1;
@@ -144,7 +144,7 @@ class UserController extends Controller
 
         $numbers = $mz->getNumbers($subject->id);
         $numbers = json_decode($numbers);
-        $decodedResult = json_decode($result['result']);
+        $decodedResult = json_decode($result);
 
         if ($tresult) {
             $tresult->subject_id = $subject->id;
@@ -445,7 +445,7 @@ class UserController extends Controller
                 if (isset($post['color']) && $post['color'] != '') {
                     if ($post['color'] == $color) {
                         $data[] = [
-                            'image' => str_replace('/var/www/html/Mizagene/web/', '', $subject->image),
+                            'image' => str_replace('/var/www/youmee/web/', '', $subject->image),
                             'name' => $subject->name,
                             'result' => [
                                 'clr' => $color,
@@ -456,7 +456,7 @@ class UserController extends Controller
                 }else if (isset($post['min']) && $post['min'] != '' && isset($post['max']) && $post['max'] != '') {
                     if (($subject_item_result ? floor($subject_item_result[0]) : 0) >= $post['min'] && ($subject_item_result ? floor($subject_item_result[0]) : 0) <= $post['max']) {
                         $data[] = [
-                            'image' => str_replace('/var/www/html/Mizagene/web/', '', $subject->image),
+                            'image' => str_replace('/var/www/youmee/web/', '', $subject->image),
                             'name' => $subject->name,
                             'result' => [
                                 'clr' => $color,
@@ -467,7 +467,7 @@ class UserController extends Controller
 
                 } else {
                     $data[] = [
-                        'image' => str_replace('/var/www/html/Mizagene/web/', '', $subject->image),
+                        'image' => str_replace('/var/www/youmee/web/', '', $subject->image),
                         'name' => $subject->name,
                         'result' => [
                             'clr' => $color,
@@ -545,7 +545,7 @@ class UserController extends Controller
                     'id' => $subject->id,
                     'item_id' => $item->id,
                     'image' => [
-                        'img' => str_replace('/var/www/html/Mizagene/web/', '', $subject->image),
+                        'img' => str_replace('/var/www/youmee/web/', '', $subject->image),
                         'publicID' => $subject->public_id
                     ],
                     'name' => $subject->name,
@@ -632,7 +632,7 @@ class UserController extends Controller
                     'id' => $subject->id,
                     'item_id' => $item->id,
                     'image' => [
-                        'img' => str_replace('/var/www/html/Mizagene/web/', '', $subject->image),
+                        'img' => str_replace('/var/www/youmee/web/', '', $subject->image),
                         'publicID' => $subject->public_id
                     ],
                     'name' => $subject->name,

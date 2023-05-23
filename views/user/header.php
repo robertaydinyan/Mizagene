@@ -35,7 +35,7 @@ use yii\bootstrap5\ActiveForm;
                         <?php if (!Yii::$app->user->isGuest): ?>
                             <div class="dropdown me-3 menuDrop">
                                 <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <?php if (Yii::$app->user->identity->me) { ?><img src="<?= str_replace("/var/www/html/Mizagene/web/", "", Yii::$app->user->identity->me->image) ?>" alt="" style="width: 25px; height: 25px; object-fit: cover; border-radius: 100%"> <?php } else { ?><i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i><?php } ?>
+                                    <?php if (Yii::$app->user->identity->me) { ?><img src="<?= str_replace("/var/www/youmee/web/", "", Yii::$app->user->identity->me->image) ?>" alt="" style="width: 25px; height: 25px; object-fit: cover; border-radius: 100%"> <?php } else { ?><i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i><?php } ?>
 <!--                                    <img src="" alt="" width="32" height="32" class="rounded-circle me-2">-->
                                     <span>Hi, <strong><?= Yii::$app->user->identity->username ?></strong>!</span>
                                 </a>
@@ -73,7 +73,7 @@ use yii\bootstrap5\ActiveForm;
                 <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->me): ?>
                     <li class="nav-item text-center">
                         <a href="/subject?id=<?= Yii::$app->user->identity->me->public_id ?>&rep=3" class="nav-link link-dark px-2">
-                            <img src="<?= str_replace('/var/www/html/Mizagene/web/', '', Yii::$app->user->identity->me->image) ?>" alt="" style="<?= Yii::$app->controller->action->id == 'subject' ? 'width: 60px; height: 60px;' : 'width: 50px; height: 50px;' ?> border-radius: 13px; object-fit: cover" ">
+                            <img src="<?= str_replace('/var/www/youmee/web/', '', Yii::$app->user->identity->me->image) ?>" alt="" style="<?= Yii::$app->controller->action->id == 'subject' ? 'width: 60px; height: 60px;' : 'width: 50px; height: 50px;' ?> border-radius: 13px; object-fit: cover" ">
                         </a>
                     </li>
                 <?php endif; ?>

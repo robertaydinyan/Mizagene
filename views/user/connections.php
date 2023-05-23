@@ -35,11 +35,11 @@ $cons = [
                             foreach ($row->connections as $con): $obj = Subject::findOne($con->object_id); ?>
                     <tr>
                         <td><?= $row->id ?></td>
-                        <td><img src="<?= str_replace('/var/www/html/Mizagene/web/', '', $row->image) ?>" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></td>
+                        <td><img src="<?= str_replace('/var/www/youmee/web/', '', $row->image) ?>" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></td>
                         <td><?= $row->name ?></td>
                         <td><?= $cons[$con->subject_type] ?></td>
                         <td><?= $obj->id ?></td>
-                        <td><img src="<?= str_replace('/var/www/html/Mizagene/web/', '', $obj->image) ?>" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></td>
+                        <td><img src="<?= str_replace('/var/www/youmee/web/', '', $obj->image) ?>" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></td>
                         <td><?= $obj->name ?></td>
                         <td><?= $cons[$con->object_type] ?></td>
                     </tr>

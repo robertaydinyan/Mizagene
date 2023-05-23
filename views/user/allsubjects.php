@@ -76,20 +76,20 @@ $reports = Reports::find()->where(['disabled' => 0])->all();
                         ?>
                             <tr style="<?= isset($subject->deleted_at) ? 'pointer-events: none; background: #ff000052' : '' ?>" class="text-center">
                                 <td class="text-start ps-2"><?= (Yii::$app->user->identity->id == 17 || Yii::$app->user->identity->id == 4) ? $subject->id : $key+1 ?></td>
-                                <td class=""><a href="/subject?id=<?= $subject->public_id ?>&rep=3"><img src="<?= str_replace('/var/www/html/Mizagene/web/', '', $subject->image) ?>" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></a></td>
+                                <td class=""><a href="/subject?id=<?= $subject->public_id ?>&rep=3"><img src="<?= str_replace('/var/www/youmee/web/', '', $subject->image) ?>" alt="" width="40px" height="40px" style="object-fit: cover; border-radius: 3px; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"></a></td>
                                 <td class="text-start"><a href="/subject?id=<?= $subject->public_id ?>&rep=3" style="color: black"><?= $subject->name ?></a></td>
                                 <td><?= date('d.m.Y', strtotime($subject->created_at)) ?></td>
                                 <td><?= date('Y') - $subject->year_of_birth ?></td>
                                 <td><?= $subject->gender == 1 ? '<i class="fa-solid fa-mars" style="color: rgb(75, 173, 233)"></i>' : ($subject->gender == 2 ? '<i class="fa-solid fa-venus" style="color: rgb(210, 58, 225);"></i>' : ($subject->gender == 3 ? '<span style="color: rgb(210, 58, 225)">M</span> <i class="fa-solid fa-transgender" style="color: rgb(75, 173, 233);"></i>' : ($subject->gender == 4 ? '<span style="color: rgb(210, 58, 225)">F</span> <i class="fa-solid fa-transgender" style="color: rgb(210, 58, 225);"></i>' : ''))) ?></td>
                                 <td><?= $subject->height ?></td>
                                 <td><?= $subject->wrist_size ?></td>
-                                <td style="text-align: left"><?php if (count($subject->connections) > 0) { foreach ($subject->connections as $l => $sub) { if ($l == 3) { break; } $person = Subject::findOne($sub->object_id); ?><img src="<?= str_replace("/var/www/html/Mizagene/web/", "", $person->image) ?>" alt="" width="30px" height="30px" style="object-fit: cover; border-radius: 100%; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"><?php } ?> <?= count($subject->connections) > 3 ? '+' . count($subject->connections)-3 : '' ?><?php }  ?></td>
+                                <td style="text-align: left"><?php if (count($subject->connections) > 0) { foreach ($subject->connections as $l => $sub) { if ($l == 3) { break; } $person = Subject::findOne($sub->object_id); ?><img src="<?= str_replace("/var/www/youmee/web/", "", $person->image) ?>" alt="" width="30px" height="30px" style="object-fit: cover; border-radius: 100%; box-shadow: 0 0 10px rgb(0 0 0 / 10%); cursor: pointer;"><?php } ?> <?= count($subject->connections) > 3 ? '+' . count($subject->connections)-3 : '' ?><?php }  ?></td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td class="">
                                     <div class="<?= isset($subject->deleted_at) ? 'd-none' : '' ?>">
                                         <img src="/images/truefalse.png" alt="" width="20px" class="mx-sm-0 ms-3">
-                                        <img title="Click to copy" src="/images/share.png" alt="" width="20px" class="mx-3 shareLink" style="cursor: pointer" data-link="http://youmee.tech/subject?id=<?= $subject->public_id ?>&rep=3">
+                                        <img title="Click to copy" src="/images/share.png" alt="" width="20px" class="mx-3 shareLink" style="cursor: pointer" data-link="https://youmee.tech/subject?id=<?= $subject->public_id ?>&rep=3">
                                         <img src="/images/wrong.png" alt="" width="15px" class="me-sm-2 deleteSubject" style="cursor: pointer" data-id="<?= $subject->id ?>">
                                     </div>
 

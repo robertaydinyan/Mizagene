@@ -7,8 +7,8 @@ use app\models\Subject;
 use app\models\ItemReview;
 $lastDotPosition = strrpos($subject->image, '.');
 $dotImage = substr($subject->image, 0, $lastDotPosition) . '0.jpg';
-$dotImage = '/landmarks' . DS . str_replace('/var/www/html/Mizagene/web/images/subjects/', '', $dotImage);
-$normalImage = str_replace("/var/www/html/Mizagene/web/", "", $subject->image);
+$dotImage = '/landmarks' . DS . str_replace('/var/www/youmee/web/images/subjects/', '', $dotImage);
+$normalImage = str_replace("/var/www/youmee/web/", "", $subject->image);
 $scheme = [
     0 => '#000',
     1 => '#EB4228',
@@ -77,7 +77,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                 <i class="fa-solid fa-xmark fa-lg closeMod d-sm-none d-inlne" data-bs-dismiss="modal" style="color: red; cursor: pointer"></i>
                             </div>
                             <div class="d-flex flex-column p-3 pt-sm-3 pt-1 align-items-center">
-                                <img src="<?= str_replace("/var/www/html/Mizagene/web/", "", $subject->image) ?>" style="border-radius: 5px;  object-fit: cover; width: 100px; height: 100px" alt="">
+                                <img src="<?= str_replace("/var/www/youmee/web/", "", $subject->image) ?>" style="border-radius: 5px;  object-fit: cover; width: 100px; height: 100px" alt="">
                                 <p class="text-center mt-2"><?= $subject->name ?></p>
                                 <input type="hidden" id="subjectID" value="<?= $subject->id ?>">
                                 <input type="hidden" id="objectID" value="">
@@ -148,7 +148,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                             <div class="row mx-auto px-0 d-flex col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 py-3">
                                 <?php foreach (Yii::$app->user->identity->subjects as $key => $sub): if ($subject->id != $sub->id && !isset($sub->deleted_at)):  ?>
                                     <div class="mb-3 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-flex align-items-center">
-                                        <img src="<?= str_replace("/var/www/html/Mizagene/web/", "", $sub->image) ?>" alt="" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
+                                        <img src="<?= str_replace("/var/www/youmee/web/", "", $sub->image) ?>" alt="" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
                                         <span class="objectUser mx-auto" style="cursor: pointer; color: #003C46" data-subject="<?= $sub->id ?>"><?= $sub->name ?></span>
                                     </div>
                                 <?php endif; endforeach;?>
@@ -170,7 +170,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                     <div class="card-body pt-3 bigHeight" style="height: 428px;">
                         <div class="d-flex justify-content-between profilePictureContainer">
 
-                            <img src="<?= str_replace("/var/www/html/Mizagene/web/", "", $subject->image) ?>" class="ms-2 zoomable profilePicture" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px;">
+                            <img src="<?= str_replace("/var/www/youmee/web/", "", $subject->image) ?>" class="ms-2 zoomable profilePicture" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px;">
                             <div class="d-flex flex-column px-2 text-center">
                                 <?php if ($subject->gender == 1 || $subject->gender == 3): ?>
                                     <img src="/images/wscan_white_men.png" alt="" width="40px" class="mb-3 normalFace" style="cursor: pointer; background: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>; border-radius: 3px; padding: 5px">
@@ -334,7 +334,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                 $object = Subject::findOne($con->object_id);?>
                                 <div class="row mb-3 conRow" style="border-bottom: 1px solid lightgrey; padding-bottom: 5px;" data-con="<?= $con->object_type ?>">
                                     <div class="d-flex col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 px-0 text-start">
-                                        <img src="<?= str_replace("/var/www/html/Mizagene/web/", "", $object->image) ?>" alt="" style="width: 45px; height: 45px; object-fit: cover" class="rounded-circle"/>
+                                        <img src="<?= str_replace("/var/www/youmee/web/", "", $object->image) ?>" alt="" style="width: 45px; height: 45px; object-fit: cover" class="rounded-circle"/>
                                         <div class="ms-3">
                                             <p class="fw-bold mb-1"><?= $object->name ?></p>
                                             <p class="text-muted mb-0"><?= $cons[$con->object_type] ?></p>
@@ -528,7 +528,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                                                     <?php } ?>
                                                                     <div class="<?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo (isset($opinion) && $opinion->disagree == 1) ? 'd-flex' : 'd-none' ?> justify-content-between px-4 align-items-center mt-2 mb-4 finalOpinion" style="cursor:pointer;">
                                                                         <span class="d-flex align-items-center"><img src="/images/favicon.png" alt="" width="40" class="me-2"> <span><?= floor($youmeeResult == 0 ? $subject_item_result : $youmeeResult) ?></span></span>
-                                                                        <span class="d-flex align-items-center"><?php if ($subject->user->me) { ?><img class="me-2" src=" <?= str_replace("/var/www/html/Mizagene/web/", "", $subject->user->me->image) ?>" alt="" class="" style="width: 40px; height: 40px; border-radius: 100%; object-fit: cover; filter: grayscale(100%);"><?php } else { ?> <i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i> <?php } ?> <span class="myopinion"><?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo isset($opinion) ? $opinion->disagree_value : '' ?></span></span>
+                                                                        <span class="d-flex align-items-center"><?php if ($subject->user->me) { ?><img class="me-2" src=" <?= str_replace("/var/www/youmee/web/", "", $subject->user->me->image) ?>" alt="" class="" style="width: 40px; height: 40px; border-radius: 100%; object-fit: cover; filter: grayscale(100%);"><?php } else { ?> <i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i> <?php } ?> <span class="myopinion"><?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo isset($opinion) ? $opinion->disagree_value : '' ?></span></span>
                                                                     </div>
 
                                                                 </div>
@@ -604,7 +604,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                                                             <?php } ?>
                                                             <div class="<?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo (isset($opinion) && $opinion->disagree == 1) ? 'd-flex' : 'd-none' ?> justify-content-between px-4 align-items-center mt-2 mb-4 finalOpinion" style="cursor:pointer;">
                                                                 <span class="d-flex align-items-center"><img src="/images/favicon.png" alt="" width="40" class="me-2"> <span><?= floor($youmeeResult == 0 ? $subject_item_result : $youmeeResult) ?></span></span>
-                                                                <span class="d-flex align-items-center"><?php if ($subject->user->me) { ?><img class="me-2" src=" <?= str_replace("/var/www/html/Mizagene/web/", "", $subject->user->me->image) ?>" alt="" class="" style="width: 40px; height: 40px; border-radius: 100%; object-fit: cover; filter: grayscale(100%);"><?php } else { ?> <i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i> <?php } ?> <span class="myopinion"><?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo isset($opinion) ? $opinion->disagree_value : '' ?></span></span>
+                                                                <span class="d-flex align-items-center"><?php if ($subject->user->me) { ?><img class="me-2" src=" <?= str_replace("/var/www/youmee/web/", "", $subject->user->me->image) ?>" alt="" class="" style="width: 40px; height: 40px; border-radius: 100%; object-fit: cover; filter: grayscale(100%);"><?php } else { ?> <i class="fa-solid fa-circle-user fa-xl me-2" style="color: #003C46;"></i> <?php } ?> <span class="myopinion"><?php $opinion = ItemReview::find()->where(['item_id' => $item->id])->andWhere(['subject_id' => $subject->id])->one(); echo isset($opinion) ? $opinion->disagree_value : '' ?></span></span>
                                                             </div>
 
                                                         </div>
