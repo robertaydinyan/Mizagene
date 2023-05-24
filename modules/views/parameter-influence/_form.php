@@ -46,11 +46,11 @@ use yii\bootstrap5\ActiveForm;
                         <div class="col-2"><span>ID <?php echo $model->item_id; ?></span></div>
                         <div class="col-5 d-flex align-items-center" style="padding: 10px;">
                             <img class="flag-icon change-group-item-language language-russian" src="/images/icons/flag1.jpg" alt="Russian" style="margin: 8px;">
-                            <span><?php echo $model->item->getTitle(1)->title; ?></span>
+                            <span><?php echo $model->item ? $model->item->getTitle(1)->title : ''; ?></span>
                         </div>
                         <div class="col-5 d-flex align-items-center" style="padding: 10px;">
                             <img class="flag-icon change-group-item-language language-english" src="/images/icons/flag2.png" alt="English" style="margin: 8px;">
-                            <span><?php echo $model->item->getTitle(2)->title; ?></span>
+                            <span><?php echo $model->item ? $model->item->getTitle(2)->title : ''; ?></span>
                         </div>
                     </div>
                     <hr style="color: white;">
@@ -70,11 +70,11 @@ use yii\bootstrap5\ActiveForm;
                         <div class="col-2"><span>ID <?php echo $model->item_id; ?></span></div>
                         <div class="col-5 d-flex align-items-center" style="padding: 10px;">
                             <img class="flag-icon change-group-item-language language-russian" src="/images/icons/flag1.jpg" alt="Russian" style="margin: 8px;">
-                            <span><?php echo $model->item->getTitle(1)->title; ?></span>
+                            <span><?php echo $model->item ? $model->item->getTitle(1)->title : ''; ?></span>
                         </div>
                         <div class="col-5 d-flex align-items-center" style="padding: 10px;">
                             <img class="flag-icon change-group-item-language language-english" src="/images/icons/flag2.png" alt="English" style="margin: 8px;">
-                            <span><?php echo $model->item->getTitle(2)->title; ?></span>
+                            <span><?php echo $model->item ? $model->item->getTitle(2)->title : ''; ?></span>
                         </div>
                     </div>
                     <div class="influence-item-rules table col-12">
@@ -102,41 +102,41 @@ use yii\bootstrap5\ActiveForm;
                                     </div>
                                     <div class="item-rule-cell">
                                         <?php
-                                            $item_inf->lower_value = $item_inf->lower_value ?: [''];
-                                            foreach ($item_inf->lower_value as $lw) {
-                                                echo sprintf(
-                                                    '<input type="number" class="form-control" name="Item[%s][lower][]" value="%s">',
+                                        $item_inf->lower_value = $item_inf->lower_value ?: [''];
+                                        foreach ($item_inf->lower_value as $lw) {
+                                            echo sprintf(
+                                                '<input type="number" class="form-control" name="Item[%s][lower][]" value="%s">',
 
-                                                    $item_inf->item_id,
-                                                    $lw
-                                                );
-                                            }
+                                                $item_inf->item_id,
+                                                $lw
+                                            );
+                                        }
                                         ?>
                                     </div>
                                     <div class="item-rule-cell">
                                         <?php
-                                            $item_inf->upper_value = $item_inf->upper_value ?: [''];
-                                            foreach ($item_inf->upper_value as $uw) {
-                                                echo sprintf(
-                                                    '<input type="number" class="form-control" name="Item[%s][upper][]" value="%s">',
+                                        $item_inf->upper_value = $item_inf->upper_value ?: [''];
+                                        foreach ($item_inf->upper_value as $uw) {
+                                            echo sprintf(
+                                                '<input type="number" class="form-control" name="Item[%s][upper][]" value="%s">',
 
-                                                    $item_inf->item_id,
-                                                    $uw
-                                                );
-                                            }
+                                                $item_inf->item_id,
+                                                $uw
+                                            );
+                                        }
                                         ?>
                                     </div>
                                     <div class="item-rule-cell">
                                         <?php
-                                            $item_inf->coefficient = $item_inf->coefficient ?: [''];
-                                            foreach ($item_inf->coefficient as $c) {
-                                                echo sprintf(
-                                                    '<input type="number" step="0.01" class="form-control" name="Item[%s][coefficient][]" value="%s">',
+                                        $item_inf->coefficient = $item_inf->coefficient ?: [''];
+                                        foreach ($item_inf->coefficient as $c) {
+                                            echo sprintf(
+                                                '<input type="number" step="0.01" class="form-control" name="Item[%s][coefficient][]" value="%s">',
 
-                                                    $item_inf->item_id,
-                                                    $c
-                                                );
-                                            }
+                                                $item_inf->item_id,
+                                                $c
+                                            );
+                                        }
                                         ?>
                                     </div>
                                     <div class="item-rule-cell"><a class="add-rule" href="javascript:;">+</a></div>
