@@ -159,7 +159,8 @@ $(document).ready(function() {
         $.get('/admin/items/get-items-list' + window.location.search, {
             "search": JSON.stringify({
                 "message": $('.item-search-bar').eq(0).val(),
-                "usg_type": $('.item-search-bar').eq(1).val()
+                "usg_type": $('.item-search-bar').eq(1).val(),
+                "pill": $('#itemPill').val()
             })
         }).done((data) => {
             $('#w1').html(data);

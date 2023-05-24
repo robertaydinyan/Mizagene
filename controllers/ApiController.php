@@ -18,10 +18,11 @@ class ApiController extends Controller {
     public $enableCsrfValidation = false;
 
     public function beforeAction($action) {
-         Yii::$app->response->format = Response::FORMAT_JSON;
-         error_reporting(0);
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        error_reporting(0);
         $secret = '2YUmrIyqgY8wyHbcZPoaWw6YsiSQFS';
         $auth_header = $_SERVER['HTTP_AUTHORIZATION'];
+        var_dump($auth_header);die();
         if (preg_match('/Bearer\s(\S+)/', $auth_header, $matches)) {
             $token = $matches[1];
             if ($secret != $token) {

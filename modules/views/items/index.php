@@ -21,6 +21,7 @@ $active_pill = $tabs[$pill];
     <div class="d-flex col-2">
         <img class="m-icon" src="/images/icons/<?php echo $active_pill[1]; ?>" alt="">
         <div style="margin-left: 12px; margin-top: 4px">
+            <input type="hidden" value="<?php echo $pill?>" id="itemPill">
             <h4><?php echo $active_pill[0];?></h4>
         </div>
     </div>

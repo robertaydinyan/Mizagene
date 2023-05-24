@@ -65,7 +65,20 @@ if (!$lang) {
 <!--        }-->
 <!---->
 </head>
-
+<style>
+    .newBtnPurple {
+        background: rgb(210, 58, 225);
+        color: white;
+        border-radius: 3px;
+        width: 222px;
+    }
+    .newBtnPurple:hover {
+        background: rgb(210, 58, 225);
+        color: white;
+        border-radius: 3px;
+        width: 222px;
+    }
+</style>
 
 
 <body>
@@ -249,10 +262,17 @@ if (!$lang) {
             <?php  } ?>
 
             <input type="hidden" name="activeTab" value="">
-            <div class="col-6 mt-3">
-                <?= Html::submitButton($login_lang, ['class' => 'btn fillButton']) ?>
+            <div class="col-lg-12 mt-3 text-center">
+                <?= Html::submitButton($login_lang, ['class' => 'btn newBtnPurple']) ?>
             </div>
             <?php ActiveForm::end();?>
+
+            <div class="col-lg-12 mt-3 text-center">
+                <button class="btn" type="button" style="background: rgb(53, 104, 176);color: white; border-radius: 3px;"><i class="fa-brands fa-square-facebook fa-lg" style="color: #ffffff;"></i> Continue with Facebook </button>
+            </div>
+
+<!--            site/signup-facebook-->
+
         </div>
 
         <script>

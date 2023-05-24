@@ -52,6 +52,6 @@ class DefaultController extends Controller
     {
         Yii::$app->admin->logout();
 
-        return $this->goHome();
+        return $this->redirect('/admin');
     }
 }
