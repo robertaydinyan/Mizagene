@@ -24,7 +24,8 @@
         "fedemotta/yii2-cronjob": "*",
         "firebase/php-jwt": "^6.4",
         "kartik-v/yii2-widget-select2": "@dev",
-        "kartik-v/yii2-sortable": "@dev"
+        "kartik-v/yii2-sortable": "@dev",
+        "facebook/graph-sdk": "^5.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

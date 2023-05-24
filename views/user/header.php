@@ -25,7 +25,7 @@ use yii\bootstrap5\ActiveForm;
 <header>
     <nav class="navbar navbar-dark bg-light" style="height: 73px">
         <div class="container-fluid">
-                <a class="" style="margin-left: 11px" href="#">
+                <a class="" style="margin-left: 11px" href="/">
                     <img class="navbar-brand mx-0 dashLogoMax" src="/images/logo.png" alt="Logo" width="200" height="55">
                     <img class="navbar-brand mx-0 dashLogoMin ms-2" src="/images/logo.png" alt="Logo" width="" height="55" style="display: none;">
                 </a>
@@ -57,10 +57,16 @@ use yii\bootstrap5\ActiveForm;
                                 </ul>
                             </div>
 
-                         <?php endif; ?>
+
                         <button class="d-sm-none me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#smallMenu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background: none; border: none">
                             <i class="fa-solid fa-bars fa-xl" style="color: #d23ae1;"></i>
                         </button>
+                        <?php endif; ?>
+            <?php if (Yii::$app->user->isGuest): ?>
+            <a href="/" class="me-3" type="button"  style="background: none; border: 1px solid rgb(210, 58, 225); padding: 5px; border-radius: 5px; text-decoration: none; color: rgb(210, 58, 225);">
+                Sign In
+            </a>
+            <?php endif; ?>
         </div>
     </nav>
 </header>
@@ -128,7 +134,7 @@ use yii\bootstrap5\ActiveForm;
                 <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->me): ?>
                     <li class="nav-item text-center">
                         <a href="/subject?id=<?= Yii::$app->user->identity->me->public_id ?>&rep=3" class="nav-link link-dark px-2">
-                            <img src="<?= str_replace('/var/www/html/Mizagene/web/', '', Yii::$app->user->identity->me->image) ?>" alt="" style="<?= Yii::$app->controller->action->id == 'subject' ? 'width: 60px; height: 60px;' : 'width: 50px; height: 50px;' ?> border-radius: 13px; object-fit: cover" ">
+                            <img src="<?= str_replace('/var/www/youmee/web', '', Yii::$app->user->identity->me->image) ?>" alt="" style="<?= Yii::$app->controller->action->id == 'subject' ? 'width: 60px; height: 60px;' : 'width: 50px; height: 50px;' ?> border-radius: 13px; object-fit: cover" ">
                         </a>
                     </li>
                 <?php endif; ?>

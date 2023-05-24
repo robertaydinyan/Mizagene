@@ -844,6 +844,10 @@ input[type="radio"] {
     .centeredTitle {
         justify-content: center!important;
     }
+
+    .dataTables_length {
+        display: none!important;
+    }
 }
 
 

@@ -48,7 +48,7 @@ $reports = Reports::find()->where(['disabled' => 0])->all();
                     <tr>
                         <td class="text-center" >ID</td>
                         <td class="text-center" >Photo</td>
-                        <td class="text-start" >Name/Nickname</td>
+                        <td class="text-start" style="max-width: 100px">Name/Nickname</td>
                         <td class="text-center" >Date & Time</td>
                         <td class="text-center" >Age</td>
                         <td class="text-center" >Gender</td>
@@ -88,7 +88,7 @@ $reports = Reports::find()->where(['disabled' => 0])->all();
                                 <td>0</td>
                                 <td class="">
                                     <div class="<?= isset($subject->deleted_at) ? 'd-none' : '' ?>">
-                                        <img src="/images/truefalse.png" alt="" width="20px" class="mx-sm-0 ms-3">
+                                        <img src="/images/truefalse.png" alt="" width="20px" class="mx-sm-0 ms-3 shareLink" style="cursor: pointer" data-link="https://youmee.tech/subject?id=<?= $subject->public_id ?>&rep=3">
                                         <img title="Click to copy" src="/images/share.png" alt="" width="20px" class="mx-3 shareLink" style="cursor: pointer" data-link="https://youmee.tech/subject?id=<?= $subject->public_id ?>&rep=3">
                                         <img src="/images/wrong.png" alt="" width="15px" class="me-sm-2 deleteSubject" style="cursor: pointer" data-id="<?= $subject->id ?>">
                                     </div>
@@ -284,6 +284,7 @@ $reports = Reports::find()->where(['disabled' => 0])->all();
             tempInput.select();
             document.execCommand('copy');
             document.body.removeChild(tempInput);
+            alert('You successfully copied link!');
         });
     })
 </script>

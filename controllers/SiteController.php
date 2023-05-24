@@ -12,6 +12,8 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use Facebook\Facebook;
+
 
 class SiteController extends Controller
 {
@@ -67,6 +69,58 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+    public function actionSignupFacebook()
+    {
+        $fb = new Facebook([
+            'app_id' => '1905373833188880',
+            'app_secret' => 'c9b641f7e20f41e7b695cacd08235169',
+            'default_graph_version' => 'v13.0',
+        ]);
+
+        $helper = $fb->getRedirectLoginHelper();
+
+        $permissions = ['email'];
+
+        $loginUrl = $helper->getLoginUrl('https://youmee.tech/site/callback', $permissions);
+
+        return $this->redirect($loginUrl);
+    }
+
+    public function actionCallback()
+    {
+        // Replace APP_ID and APP_SECRET with your Facebook app credentials
+        $fb = new Facebook([
+            'app_id' => '1905373833188880',
+            'app_secret' => 'c9b641f7e20f41e7b695cacd08235169',
+            'default_graph_version' => 'v13.0',
+        ]);
+
+        $helper = $fb->getRedirectLoginHelper();
+
+        try {
+            $accessToken = $helper->getAccessToken();
+        } catch (Facebook\Exceptions\FacebookResponseException $e) {
+            // Handle Facebook API errors
+        } catch (Facebook\Exceptions\FacebookSDKException $e) {
+            // Handle SDK errors
+        }
+
+        if (!isset($accessToken)) {
+            // Redirect to login page or display an error message
+        }
+
+        // Get user profile data
+        $response = $fb->get('/me?fields=id,name,email', $accessToken);
+        $userProfile = $response->getGraphUser();
+var_dump($userProfile);die;
+        // Process the user data and create a new user account or perform any other necessary actions
+        // You can access the user's Facebook ID, name, and email using $userProfile->getId(), $userProfile->getName(), $userProfile->getEmail() respectively
+
+        // Redirect the user to a success page or perform any other desired action
+    }
+
+
+
     /**
      * Login action.
      *
@@ -86,7 +140,7 @@ class SiteController extends Controller
                 if (Yii::$app->user->identity->me) {
                     return $this->redirect(['/subject?id=' . Yii::$app->user->identity->me->public_id . '&rep=3']);
                 } else {
-                    return $this->redirect(['/all-subjects']);
+                    return $this->redirect(['/all-subjects?type=my']);
                 }
             } else {
                 return $this->redirect(['/add-subject']);

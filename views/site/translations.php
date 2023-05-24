@@ -1776,9 +1776,9 @@ $data = [
     "es" => "Las fotos de los sujetos de análisis permanecen en este servidor sin ser transferidas a nosotros. SDK mediante Youmee transmite toda la información necesaria, pero a su vez despersonalizada, sobre la contraparte en forma de archivo JSON con coordenadas de puntos de control en la cara. Los resultados del análisis se transmiten al sistema del Cliente a través de la API."],
 
     "t_tile" => [
-    "en" => "ABOUT MIZAGENE TECHNOLOGY",
-    "ru" => "О Технологии Mizagene",
-    "es" => "SOBRE LA TECNOLOGÍA MIZAGENE"],
+    "en" => "ABOUT TECHNOLOGY",
+    "ru" => "О Технологии",
+    "es" => "SOBRE LA TECNOLOGÍA"],
 
     "t_tile1" => [
     "en" => "Mizagene technology is the result of 17 years of hard work of its author Professor H. Sheikh Roshandel and his team.",

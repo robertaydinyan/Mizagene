@@ -193,7 +193,7 @@ class UserController extends Controller
         if ($subject->load($post, '') && $subject->save()) {
             $this->sendToMizagene($post['image'], $subject);
 
-            return $this->redirect(['/all-subjects']);
+            return $this->redirect(['/all-subjects?type=my']);
         }
 
         return $this->redirect(['/add-subject']);
@@ -277,7 +277,7 @@ class UserController extends Controller
             $rep = Reports::findOne($rep);
             return $this->render('user', ['subject' => $subject, 'reports' => $reports, 'rep' => $rep]);
         } else {
-            return $this->redirect(['/all-subjects']);
+            return $this->redirect(['/all-subjects?type=my']);
         }
     }
 
