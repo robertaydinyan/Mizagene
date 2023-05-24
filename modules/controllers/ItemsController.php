@@ -126,6 +126,9 @@ class ItemsController extends Controller
                 $type_sql = substr($type_sql, 0, -4);
                 $model->andWhere($type_sql);
             }
+            if (isset($search->source) && $search->source > -1) {
+                $model->andWhere(['source' => $search->source]);
+            }
             $language = $search->language;
             $model->with([
                 'russian' => function ($query) use ($language) {

@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /** @var app\modules\models\Group $model */
 /** @var app\modules\models\Items[] $items */
 
-$this->title = 'Create Parameter influence';
+$this->title = 'Update Parameter influence';
 $this->params['breadcrumbs'][] = ['label' => 'Parameter influence', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'comb_types' => $comb_types,
         'step' => $step,
         'form' => $form,
-        'mode' => 1
+        'mode' => 2
     ]);
     $form::end(); ?>
 

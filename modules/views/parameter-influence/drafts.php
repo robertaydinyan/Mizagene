@@ -9,7 +9,7 @@ use yii\grid\GridView;
 /** @var app\modules\models\GroupSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Influences';
+$this->title = 'Drafts';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="group-index">

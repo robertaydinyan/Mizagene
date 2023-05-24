@@ -755,4 +755,36 @@ class Items extends \yii\db\ActiveRecord
 
         return $item;
     }
+
+    public static function getDetailedDataById($id) {
+        $it = Items::findOne($id);
+        $item = Items::find()
+            ->select([
+                'items.id as e2e_id',
+                'items.item_id as item_ID',
+                'item_title.title as i_title',
+                'item_title.description as i_description',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 1) as i_zone_1_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 2) as i_zone_2_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 3) as i_zone_3_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 4) as i_zone_4_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 5) as i_zone_5_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 6) as i_zone_6_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 7) as i_zone_7_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 8) as i_zone_8_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 9) as i_zone_9_colour',
+                '(SELECT color_id FROM `item_colors` WHERE `item_id` = 2 AND sector_id = 10) as i_zone_10_colour',
+            ])
+            ->joinWith([
+                'itemTitles' => function ($query) {
+                    $query->select(['itemID', 'languageID', 'title', 'description']);
+                },
+            ], false)
+            ->where(['items.id' => $id])
+            ->asArray()->one();
+        $item['type'] = $it->getType();
+        $item['usg_type'] = $it->getUsgType();
+        $item['comb_type'] = $it->getCombType();
+        return $item;
+    }
 }

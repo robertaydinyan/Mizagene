@@ -9,10 +9,10 @@ use yii\bootstrap5\Html;
 
     <ul class="nav">
         <li class="nav-item">
-            <?= Html::a('Drafts', ["Parameter influences "], ['class' => 'nav-link btn ' . (Yii::$app->controller->action->id == "drafts" ? 'btn-dark-blue' : '')]) ?>
+            <?= Html::a('Drafts', ["drafts"], ['class' => 'nav-link btn ' . (Yii::$app->controller->action->id == "drafts" ? 'btn-dark-blue' : '')]) ?>
         </li>
         <li class="nav-item">
-            <?= Html::a('Groups', ["index"], ['class' => 'nav-link btn ' . (Yii::$app->controller->action->id == "index" ? 'btn-dark-blue' : '')]) ?>
+            <?= Html::a('Influences', ["index"], ['class' => 'nav-link btn ' . (Yii::$app->controller->action->id == "index" ? 'btn-dark-blue' : '')]) ?>
         </li>
         <li class="nav-item">
             <?= Html::a('<i class="fa fa-plus"></i> Create', ["create"], ['class' => 'nav-link btn ' . (Yii::$app->controller->action->id == "create" ? 'btn-dark-blue' : '')]) ?>

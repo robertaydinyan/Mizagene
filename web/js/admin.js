@@ -1,3 +1,71 @@
+function takeFormData($container) {
+    let unindexed_array = $container.find('input, textarea, select').serializeArray();
+    let indexed_object = {};
+
+    $.map(unindexed_array, function(n, i) {
+        let keyParts = n['name'].replace('[]', '').split('[');
+        let currentObject = indexed_object;
+        for (let j = 0; j < keyParts.length; j++) {
+            let keyPart = keyParts[j].replace(']', ''); // remove the closing bracket
+            if (j === keyParts.length - 1) {
+                if (currentObject[keyPart] === undefined) {
+                    currentObject[keyPart] = n['value'];
+                } else {
+                    if (!Array.isArray(currentObject[keyPart])) {
+                        currentObject[keyPart] = [currentObject[keyPart]];
+                    }
+                    currentObject[keyPart].push(n['value']);
+                }
+            } else {
+                if (currentObject[keyPart] === undefined) {
+                    currentObject[keyPart] = {};
+                }
+                currentObject = currentObject[keyPart];
+            }
+        }
+    });
+
+    return indexed_object;
+}
+
+function getActiveItems(el, source = -1) {
+    let data = takeFormData($(el).closest('.group-config'));
+    data['source'] = source;
+    $.get('/admin/items/get-active-items', {
+        'search': JSON.stringify(data),
+    }).done((res) => {
+        let data = JSON.parse(res);
+        let template = $('.group-item-template');
+        $('.group-item-container .group-item:not(.group-item-template)').remove();
+        let clone;
+        let language = $('.item-group-language').val()
+        let selectedValues = $('.droppable .item-id').map(function() {
+            return $(this).val();
+        }).get();
+        $.each(data, (i, k) => {
+            if (!selectedValues.includes(k['id'].toString())) {
+                clone = template.clone().appendTo(template.parent());
+                clone.removeClass('group-item-template');
+                clone.find('.fa-circle').removeClass('disabled').addClass(k['check1'] ? (k['disabled'] ? 'passive' : 'active') : 'disabled');
+                clone.find('.group-item-id').text(k['source'] ? k['item_id'] : k['id']);
+                clone.find('.item-id').val(k['id']);
+                clone.find('.group-item-title-ru').text(k['russian'] ? k['russian']['title'] : '').toggle(language == 1);
+                clone.find('.group-item-title-en').text(k['english'] ? k['english']['title'] : '').toggle(language == 2);
+                clone.find('.group-item-description-ru-editable').val(k['russian'] ? k['russian']['title'] : '').toggle(language == 1);
+                clone.find('.group-item-description-en-editable').val(k['english'] ? k['english']['title'] : '').toggle(language == 2);
+                clone.find('.group-item-description-ru').text(k['russian'] ? k['russian']['description'] : '').toggle(language == 1);
+                clone.find('.group-item-description-en').text(k['english'] ? k['english']['description'] : '').toggle(language == 2);
+                clone.find('.group-item-description-ru').attr('title', k['russian'] ? k['russian']['description'] : '');
+                clone.find('.group-item-description-en').attr('title', k['english'] ? k['english']['description'] : '');
+                clone.find('.group-item-source-' + k['source']).removeClass('d-none');
+                clone.find('.group-item-source-' + (1 - k['source'])).addClass('d-none');
+                // $('.items-container').append('<div class="item"><span>' +  + ' </span><span> ' +  + ' </span><span> ' + item_types[k['i_type']] + '</span></div>');
+            }
+        });
+        groupItemEvents();
+    });
+}
+
 $(document).ready(function() {
     let single_usg_types = {
         1: 'Cհaracter (general)',
@@ -26,37 +94,6 @@ $(document).ready(function() {
 
     // general
     $('.grid-view input, select, textarea').removeAttr('id');
-
-
-    function takeFormData($container) {
-        let unindexed_array = $container.find('input, textarea, select').serializeArray();
-        let indexed_object = {};
-
-        $.map(unindexed_array, function(n, i) {
-            let keyParts = n['name'].replace('[]', '').split('[');
-            let currentObject = indexed_object;
-            for (let j = 0; j < keyParts.length; j++) {
-                let keyPart = keyParts[j].replace(']', ''); // remove the closing bracket
-                if (j === keyParts.length - 1) {
-                    if (currentObject[keyPart] === undefined) {
-                        currentObject[keyPart] = n['value'];
-                    } else {
-                        if (!Array.isArray(currentObject[keyPart])) {
-                            currentObject[keyPart] = [currentObject[keyPart]];
-                        }
-                        currentObject[keyPart].push(n['value']);
-                    }
-                } else {
-                    if (currentObject[keyPart] === undefined) {
-                        currentObject[keyPart] = {};
-                    }
-                    currentObject = currentObject[keyPart];
-                }
-            }
-        });
-
-        return indexed_object;
-    }
 
     function rowValidation(row, type = 0) {
         if (type === 1) {
@@ -132,23 +169,7 @@ $(document).ready(function() {
     //     new_item.find('span').text(option.text());
     //     option.remove();
     // });
-    groupItemEvents();
-    function groupItemEvents() {
-        if ($(".group-item-container").length > 0) {
-            $(".group-item-container, .droppable").sortable({
-                placeholder: "group-item",
-                connectWith: ".group-item-container, .droppable",
-                stop: function(event, ui) {
-                    ui = $(ui.item);
-                    if (ui.closest(".group-item-container").length > 0) {
-                        ui.find('input, textarea').attr('disabled', 'disabled');
-                    } else {
-                        ui.find('input, textarea').removeAttr('disabled');
-                    }
-                }
-            }).disableSelection();
-        }
-    }
+
     $('.select2').each(function() {
         $(this).select2({
             placeholder: $(this).data('placeholder')
@@ -159,7 +180,8 @@ $(document).ready(function() {
         $.get('/admin/items/get-items-list' + window.location.search, {
             "search": JSON.stringify({
                 "message": $('.item-search-bar').eq(0).val(),
-                "usg_type": $('.item-search-bar').eq(1).val()
+                "usg_type": $('.item-search-bar').eq(1).val(),
+                "pill": $('#itemPill').val()
             })
         }).done((data) => {
             $('#w1').html(data);
@@ -339,57 +361,6 @@ $(document).ready(function() {
         }
     });
 
-    function getActiveItems(el) {
-        let data = takeFormData($(el).closest('.group-config'));
-        $.get('/admin/items/get-active-items', {
-            'search': JSON.stringify(data),
-        }).done((res) => {
-            let data = JSON.parse(res);
-            let template = $('.group-item-template');
-            $('.group-item-container .group-item:not(.group-item-template)').remove();
-            let clone;
-            let language = $('.item-group-language').val()
-            let selectedValues = $('.droppable .item-id').map(function() {
-                return $(this).val();
-            }).get();
-            $.each(data, (i, k) => {
-                if (!selectedValues.includes(k['id'].toString())) {
-                    clone = template.clone().appendTo(template.parent());
-                    clone.removeClass('group-item-template');
-                    clone.find('.fa-circle').removeClass('disabled').addClass(k['check1'] ? (k['disabled'] ? 'passive' : 'active') : 'disabled');
-                    clone.find('.group-item-id').text(k['item_id']);
-                    clone.find('.item-id').val(k['id']);
-                    clone.find('.group-item-title-ru').text(k['russian'] ? k['russian']['title'] : '').toggle(language == 1);
-                    clone.find('.group-item-title-en').text(k['english'] ? k['english']['title'] : '').toggle(language == 2);
-                    clone.find('.group-item-description-ru-editable').val(k['russian'] ? k['russian']['title'] : '').toggle(language == 1);
-                    clone.find('.group-item-description-en-editable').val(k['english'] ? k['english']['title'] : '').toggle(language == 2);
-                    clone.find('.group-item-description-ru').text(k['russian'] ? k['russian']['description'] : '').toggle(language == 1);
-                    clone.find('.group-item-description-en').text(k['english'] ? k['english']['description'] : '').toggle(language == 2);
-                    clone.find('.group-item-description-ru').attr('title', k['russian'] ? k['russian']['description'] : '');
-                    clone.find('.group-item-description-en').attr('title', k['english'] ? k['english']['description'] : '');
-                    clone.find('.group-item-source-' + k['source']).removeClass('d-none');
-                    clone.find('.group-item-source-' + (1 - k['source'])).addClass('d-none');
-                    // $('.items-container').append('<div class="item"><span>' +  + ' </span><span> ' +  + ' </span><span> ' + item_types[k['i_type']] + '</span></div>');
-                }
-            });
-            groupItemEvents();
-        });
-    }
-
-    $(document).on('click', '.update-group-items', function () {
-        getActiveItems($(this));
-    });
-
-    $(document).on('keydown', '.group-input-search', function () {
-        getActiveItems($(this));
-    });
-
-    $('.update-group-items').click();
-
-    $('.dropdown-menu').on('click', function(el) {
-        !$(el.target).hasClass('update-group-items') && el.stopPropagation();
-    });
-
     $('.btn-reset').on('click', function() {
         $(this).closest('.dropdown').find('select').val([]).change();
     });
@@ -406,12 +377,12 @@ $(document).ready(function() {
 
     $('.change-group-item-language').on('click', function() {
         let language = $(this).hasClass('language-english');
-        $('.droppable .group-item-title-ru').toggle(!language);
-        $('.droppable .group-item-title-en').toggle(language);
-        $('.droppable .group-item-description-ru').toggle(!language);
-        $('.droppable .group-item-description-en').toggle(language);
-        $('.droppable .group-item-description-ru-editable').toggle(!language);
-        $('.droppable .group-item-description-en-editable').toggle(language);
+        $('.group-item-title-ru').toggle(!language);
+        $('.group-item-title-en').toggle(language);
+        $('.group-item-description-ru').toggle(!language);
+        $('.group-item-description-en').toggle(language);
+        $('.group-item-description-ru-editable').toggle(!language);
+        $('.group-item-description-en-editable').toggle(language);
 
     })
 

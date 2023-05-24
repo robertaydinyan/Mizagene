@@ -18,7 +18,7 @@ class ParameterInfluence extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'parameter influence';
+        return 'parameter_influence';
     }
 
     /**
@@ -42,5 +42,13 @@ class ParameterInfluence extends \yii\db\ActiveRecord
             'type' => 'Type',
             'item_id' => 'Item',
         ];
+    }
+
+    public function getItem() {
+        return $this->hasOne(Items::class, ['id' => 'item_id']);
+    }
+
+    public function getItems() {
+        return $this->hasMany(ParameterInfluenceItem::class, ['influence_id' => 'id']);
     }
 }

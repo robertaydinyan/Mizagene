@@ -4,15 +4,16 @@ namespace app\modules\controllers;
 
 use app\modules\models\Items;
 use app\modules\models\ParameterInfluence;
-use app\modules\models\UsgType;
-use app\modules\models\UsgTypeSearch;
+use app\modules\models\ParameterInfluenceItem;
+use app\modules\models\ParameterInfluenceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\View;
 
+use Yii;
 /**
- * UsgTypeController implements the CRUD actions for UsgType model.
+ * ParameterInfluenceController implements the CRUD actions for ParameterInfluence model.
  */
 class ParameterInfluenceController extends Controller
 {
@@ -41,17 +42,32 @@ class ParameterInfluenceController extends Controller
     }
 
     /**
-     * Lists all UsgType models.
+     * Lists all ParameterInfluence models.
      *
      * @return string
      */
     public function actionIndex() {
+        $searchModel = new ParameterInfluenceSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams, 1);
+
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider
+        ]);
+    }
+
+    public function actionDrafts() {
+        $searchModel = new ParameterInfluenceSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams, 0);
+
+        return $this->render('drafts', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider
         ]);
     }
 
     /**
-     * Displays a single UsgType model.
+     * Displays a single ParameterInfluence model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -64,17 +80,42 @@ class ParameterInfluenceController extends Controller
     }
 
     /**
-     * Creates a new UsgType model.
+     * Creates a new ParameterInfluence model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
-    {
-        $model = new ParameterInfluence();
+    public function actionCreate() {
+        $step = $this->request->get('step') ?: 1;
+        if ($step == 1) {
+            $model = new ParameterInfluence();
+        } else {
+            $model = $this->findModel($this->request->get('id'));
+        }
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['index']);
+//                $items = Yii::$app->request->post('item');
+//                $weights = Yii::$app->request->post('weight');
+                $items = Yii::$app->request->post('Item');
+                foreach ($items['item_id'] as $i => $item_id) {
+                    $item = ParameterInfluenceItem::find()->where(['item_id' => $item_id])->one();
+                    $item = $item ?: new ParameterInfluenceItem();
+                    $item->influence_id = $model->id;
+                    $item->item_id = $item_id;
+                    $item->weight = $items['weight'][$i];
+                    $item->lower_value = $items[$item_id]['lower'];
+                    $item->upper_value = $items[$item_id]['upper'];
+                    $item->coefficient = $items[$item_id]['coefficient'];
+                    $item->save(false);
+                }
+
+                if ($this->request->post('push') !== null) {
+                    $model->pushed = 1;
+                    $model->save();
+                    return $this->redirect(['index']);
+                }
+                $step = min(3, $step + 1);
+                return $this->redirect(['create?step=' . ($step) . '&id=' . $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -92,32 +133,69 @@ class ParameterInfluenceController extends Controller
             'model' => $model,
             'influenceItems' => $influenceItems,
             'usg_types' => $usg_types,
-            'comb_types' => $comb_types
+            'comb_types' => $comb_types,
+            'step' => $step
         ]);
     }
 
     /**
-     * Updates an existing UsgType model.
+     * Updates an existing ParameterInfluence model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['create']);
+    public function actionUpdate($id) {
+        $step = $this->request->get('step') ?: 3;
+        if ($step == 1) {
+            $model = new ParameterInfluence();
+        } else {
+            $model = $this->findModel($this->request->get('id'));
         }
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                $items = Yii::$app->request->post('Item');
+                foreach ($items['item_id'] as $i => $item_id) {
+                    $item = ParameterInfluenceItem::find()->where(['item_id' => $item_id])->one();
+                    $item = $item ?: new ParameterInfluenceItem();
+                    $item->influence_id = $model->id;
+                    $item->item_id = $item_id;
+                    $item->weight = $items['weight'][$i];
+                    $item->lower_value = isset($items[$item_id]) ? $items[$item_id]['lower'] : null;
+                    $item->upper_value = isset($items[$item_id]) ? $items[$item_id]['upper'] : null;
+                    $item->coefficient = isset($items[$item_id]) ? $items[$item_id]['coefficient'] : null;
+                    $item->save(false);
+                }
+                if ($this->request->post('push') !== null) {
+                    $model->pushed = 1;
+                    $model->save();
+                    return $this->redirect(['index']);
+                }
+                $step = min(3, $step + 1);
+                return $this->redirect(['create?step=' . ($step) . '&id=' . $model->id]);
+            }
+        }
+        $influenceItems = \yii\helpers\ArrayHelper::map(Items::find()->select(['items.id as id', 'item_title.title as title'])
+            ->joinWith([
+                'itemTitles' => function ($query) {
+                    $query->where(['languageID' => 1]);
+                },
+            ], false)->where(['influence' => 1])->asArray()->all(), 'id', 'title');
+        $usg_types = Items::getIUsgTypes();
+        $comb_types = Items::getICombTypes();
 
         return $this->render('update', [
             'model' => $model,
+            'influenceItems' => $influenceItems,
+            'usg_types' => $usg_types,
+            'comb_types' => $comb_types,
+            'step' => $step
         ]);
     }
 
     /**
-     * Deletes an existing UsgType model.
+     * Deletes an existing ParameterInfluence model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -132,7 +210,7 @@ class ParameterInfluenceController extends Controller
 
     public function actionGetTypes($type) {
         $type = json_decode($type);
-        $types = UsgType::find()->select('id, name');
+        $types = ParameterInfluence::find()->select('id, name');
         in_array(1, $type) && $types->orFilterWhere(['single' => 1]);
         in_array(2, $type) && $types->orFilterWhere(['multiple' => 1]);
         $types = \yii\helpers\ArrayHelper::map($types->asArray()->all(), 'id', 'name');
@@ -140,15 +218,15 @@ class ParameterInfluenceController extends Controller
     }
 
     /**
-     * Finds the UsgType model based on its primary key value.
+     * Finds the ParameterInfluence model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return UsgType the loaded model
+     * @return ParameterInfluence the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = UsgType::findOne(['id' => $id])) !== null) {
+        if (($model = ParameterInfluence::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

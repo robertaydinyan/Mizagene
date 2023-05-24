@@ -14,6 +14,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\web\View;
 
 /**
  * GroupController implements the CRUD actions for Group model.
@@ -38,13 +39,17 @@ class GroupController extends Controller
         );
     }
 
+    public function beforeAction($action) {
+        $this->view->registerJsFile('@web/js/group.js', ['position' => View::POS_END, 'depends' => [\yii\web\JqueryAsset::className()]]);
+
+        return parent::beforeAction($action);
+    }
+
     /**
      * Lists all Group models.
      *
      * @return string
      */ 
-    
-
     public function actionIndex() {
         $searchModel = new GroupSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
