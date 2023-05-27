@@ -272,6 +272,15 @@
         <script src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0950SNFPP3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-0950SNFPP3');
+        </script>
 
         <!--        <script src="node_modules/echarts" integrity="sha512-VdqgeoWrVJcsDXFlQEKqE5MyhaIgB9yXUVaiUa8DR2J4Lr1uWcFm+ZH/YnzV5WqgKf4GPyHQ64vVLgzqGIchyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
 </body>

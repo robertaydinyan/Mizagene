@@ -319,4 +319,14 @@ var_dump($userProfile);die;
         return $response;
     }
 
+    public function actionPrivacy()
+    {
+        return $this->render('privacy');
+    }
+
+    public function actionTerms()
+    {
+        return $this->render('terms');
+    }
+
 }

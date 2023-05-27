@@ -94,6 +94,15 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="/js/script.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0950SNFPP3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0950SNFPP3');
+</script>
 
 <div class="scrollbar"></div>
     </div>

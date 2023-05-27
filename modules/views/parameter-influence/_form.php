@@ -24,7 +24,7 @@ use yii\bootstrap5\ActiveForm;
                     <button class="nav-link nav-link-dark-blue <?php echo $step == 1 ? 'active' : '' ?>" id="tab1" data-bs-toggle="tab" data-bs-target="#tabContent1" type="button" role="tab" aria-controls="tabContent1">General settings</button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link nav-link-dark-blue <?php echo $step == 2 ? 'active' : '' ?>" id="tab2" data-bs-toggle="tab" data-bs-target="#tabContent2" type="button" role="tab" aria-controls="tabContent2">Parameters building</button>
+                    <button class="nav-link nav-link-dark-blue <?php echo $step == 2 ? 'active' : '' ?>" id="tab2" data-bs-toggle="tab" data-bs-target="#tabContent2" type="button" role="tab" aria-controls="tabContent2">Builder</button>
                 </li>
                 <li class="nav-item">
                     <button class="nav-link nav-link-dark-blue <?php echo $step == 3 ? 'active' : '' ?>" id="tab2" data-bs-toggle="tab" data-bs-target="#tabContent3" type="button" role="tab" aria-controls="tabContent3">Rules</button>

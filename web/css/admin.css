@@ -484,7 +484,6 @@ a.nav-link {
 .nav-link.active {
     background: #ff8900;
     color: white !important;
-    border-radius: 8px;
     padding: 8px 20px !important;
 }
 
