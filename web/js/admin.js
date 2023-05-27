@@ -28,9 +28,10 @@ function takeFormData($container) {
     return indexed_object;
 }
 
-function getActiveItems(el, source = -1) {
+function getActiveItems(el, source = -1, influence = -1) {
     let data = takeFormData($(el).closest('.group-config'));
     data['source'] = source;
+    data['influence'] = influence;
     $.get('/admin/items/get-active-items', {
         'search': JSON.stringify(data),
     }).done((res) => {
@@ -383,8 +384,7 @@ $(document).ready(function() {
         $('.group-item-description-en').toggle(language);
         $('.group-item-description-ru-editable').toggle(!language);
         $('.group-item-description-en-editable').toggle(language);
-
-    })
+    });
 
     $('.accordion').on('hide.bs.collapse', function(e) {
         // Get the number of items that are currently open

@@ -10,9 +10,6 @@ $item = isset($item_inf->item) ? $item_inf->item : new Items();
 ?>
 
 <div class="group-item <?php echo $template ? 'group-item-template' : ''; ?> d-flex">
-    <div class="col-1 form-group <?php echo $template ? 'd-none' : 'd-flex'; ?>  align-items-center">
-        <input name="Item[weight][]" type="number" class="form-control" value="<?php echo $item_inf->weight; ?>" <?php echo $template ? 'disabled' : ''; ?>>
-    </div>
     <div class="col-1 position-relative" style="border-right: 1px solid #d8d8d8;">
         <img class="absolute-center drag-event" src="/images/icons/dots-menu.png" alt="">
         <input class="item-id" type="hidden" name="Item[item_id][]" value="<?php echo $item->id; ?>" <?php echo $template ? 'disabled' : ''; ?>>

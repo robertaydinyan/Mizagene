@@ -22,7 +22,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'comb_types' => $comb_types,
         'step' => $step,
         'form' => $form,
-        'mode' => 1
+        'mode' => 1,
+        'subjects' => $subjects
     ]);
     $form::end(); ?>
 

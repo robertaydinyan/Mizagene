@@ -129,12 +129,14 @@ class ItemsController extends Controller
             if (isset($search->source) && $search->source > -1) {
                 $model->andWhere(['source' => $search->source]);
             }
-            $language = $search->language;
+            if (isset($search->influence) && $search->influence > -1) {
+                $model->andWhere(['influence' => $search->influence]);
+            }
             $model->with([
-                'russian' => function ($query) use ($language) {
+                'russian' => function ($query) {
                     $query->select('title, description, itemID');
                 },
-                'english' => function ($query) use ($language) {
+                'english' => function ($query) {
                     $query->select('title, description, itemID');
                 },
             ]);

@@ -58,11 +58,7 @@ class ItemsSearch extends Items
         $this->filterPills($query, $pill);
         $this->filterSteps($query, $step, $pill, $status);
         if ($search) {
-            if (isset($search->pill) AND $search->pill == 2) {
-                $search->message && $this->filterByTextE2E($query, $search->message);
-            } else {
-                $search->message && $this->filterByText($query, $search->message);
-            }
+            $search->message && $this->filterByText($query, $search->message);
             $search->usg_type && $this->filterByUsgTypes($query, $search->usg_type);
         }
         return $dataProvider;
@@ -71,7 +67,10 @@ class ItemsSearch extends Items
     public function filterByText($query, $search, $t = true) {
         if ($search) {
             if (is_numeric($search)) {
-                $query->andFilterWhere(['like', 'item_id', $search]);
+                $query->andFilterWhere(['or',
+                    ['like', 'item_id', $search],
+                    ['like', 'id', $search]
+                ]);
             } else {
                 $query->joinWith(['itemtitle'], $t);
                 $query->andFilterWhere(['or', ['like', 'title', $search], ['like', 'description', $search]]);
@@ -79,23 +78,7 @@ class ItemsSearch extends Items
         } else {
             $query->orderBy([
                 'priority' => SORT_DESC,
-                'item_id' => SORT_ASC
-            ]);
-        }
-    }
-
-    public function filterByTextE2E($query, $search, $t = true) {
-        if ($search) {
-            if (is_numeric($search)) {
-                $query->andFilterWhere(['like', 'id', $search]);
-            } else {
-                $query->joinWith(['itemtitle'], $t);
-                $query->andFilterWhere(['or', ['like', 'title', $search], ['like', 'description', $search]]);
-            }
-        } else {
-            $query->orderBy([
-                'priority' => SORT_DESC,
-                'item_id' => SORT_ASC
+                'id' => SORT_ASC,
             ]);
         }
     }

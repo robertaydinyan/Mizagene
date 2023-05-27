@@ -2,6 +2,7 @@
 
 namespace app\modules\controllers;
 
+use app\models\Subject;
 use app\modules\models\Items;
 use app\modules\models\ParameterInfluence;
 use app\modules\models\ParameterInfluenceItem;
@@ -97,16 +98,19 @@ class ParameterInfluenceController extends Controller
 //                $items = Yii::$app->request->post('item');
 //                $weights = Yii::$app->request->post('weight');
                 $items = Yii::$app->request->post('Item');
-                foreach ($items['item_id'] as $i => $item_id) {
-                    $item = ParameterInfluenceItem::find()->where(['item_id' => $item_id])->one();
-                    $item = $item ?: new ParameterInfluenceItem();
-                    $item->influence_id = $model->id;
-                    $item->item_id = $item_id;
-                    $item->weight = $items['weight'][$i];
-                    $item->lower_value = $items[$item_id]['lower'];
-                    $item->upper_value = $items[$item_id]['upper'];
-                    $item->coefficient = $items[$item_id]['coefficient'];
-                    $item->save(false);
+
+                if (isset($items['item_id'])) {
+                    foreach ($items['item_id'] as $i => $item_id) {
+                        $item = ParameterInfluenceItem::find()->where(['item_id' => $item_id])->one();
+                        $item = $item ?: new ParameterInfluenceItem();
+                        $item->influence_id = $model->id;
+                        $item->item_id = $item_id;
+                        $item->weight = isset($items['weight']) ? $items['weight'][$i] : null;
+                        $item->lower_value = isset($items[$item_id]) ? $items[$item_id]['lower'] : [''];
+                        $item->upper_value = isset($items[$item_id]) ? $items[$item_id]['upper'] : [''];
+                        $item->coefficient = isset($items[$item_id]) ? $items[$item_id]['coefficient'] : [''];
+                        $item->save(false);
+                    }
                 }
 
                 if ($this->request->post('push') !== null) {
@@ -114,7 +118,7 @@ class ParameterInfluenceController extends Controller
                     $model->save();
                     return $this->redirect(['index']);
                 }
-                $step = min(3, $step + 1);
+                $step = min(2, $step + 1);
                 return $this->redirect(['create?step=' . ($step) . '&id=' . $model->id]);
             }
         } else {
@@ -128,14 +132,41 @@ class ParameterInfluenceController extends Controller
             ], false)->where(['influence' => 1])->asArray()->all(), 'id', 'title');
         $usg_types = Items::getIUsgTypes();
         $comb_types = Items::getICombTypes();
-
+        $subjects = Subject::find()->select('id, user_id, image, name, public_id')->where(['deleted_at' => null])->andWhere(['status' => 0])->andWhere(['copied' => 0])->all();
         return $this->render('create', [
             'model' => $model,
             'influenceItems' => $influenceItems,
             'usg_types' => $usg_types,
             'comb_types' => $comb_types,
-            'step' => $step
+            'step' => $step,
+            'subjects' => $subjects
         ]);
+    }
+
+    // ToDo:: remove this from here
+    public function actionGetSubjectResult() {
+        $subjects = json_decode(Yii::$app->request->get('subjects'));
+        $items = json_decode(Yii::$app->request->get('items'));
+        $result = array();
+        if ($items && $subjects) {
+            foreach ($subjects as $subject_id) {
+                $subject = Subject::findOne($subject_id);
+                $subject_result = json_decode($subject->result->result);
+                $result[$subject_id]['name'] = $subject->name;
+                $result[$subject_id]['items'] = array_reduce(array_filter($subject_result, function($el) use ($items) {
+                    return in_array($el->item_ID, $items);
+                }), function($carry, $el) {
+                    $carry[$el->item_ID] = $el->subject_item_result;
+                    return $carry;
+                }, []);
+//                    (array_map(function($obj) use($items) {
+//                    if (in_array($obj->item_ID, $items)) {
+//                        return $obj->subject_item_result;
+//                    }
+//                }, $subject_result));
+            }
+        }
+        return json_encode($result);
     }
 
     /**

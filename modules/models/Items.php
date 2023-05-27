@@ -426,6 +426,9 @@ class Items extends \yii\db\ActiveRecord
     public function saveData($items) {
         if (isset($items)) {
             if ($this->load($items, '')) {
+                $this->i_usg_type = isset($items['i_usg_type']) ? $items['i_usg_type']: [];
+                $this->i_comb_type_id = isset($items['i_comb_type_id']) ? $items['i_comb_type_id']: [];
+                $this->i_type = isset($items['i_type']) ? $items['i_type']: [];
                 if ($this->save()) {
                     if (isset($items['title'])) {
                         foreach ($items['title'] as $i => $t) {
