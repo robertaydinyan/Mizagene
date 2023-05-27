@@ -98,7 +98,6 @@ class ParameterInfluenceController extends Controller
 //                $items = Yii::$app->request->post('item');
 //                $weights = Yii::$app->request->post('weight');
                 $items = Yii::$app->request->post('Item');
-
                 if (isset($items['item_id'])) {
                     foreach ($items['item_id'] as $i => $item_id) {
                         $item = ParameterInfluenceItem::find()->where(['item_id' => $item_id])->one();
@@ -112,7 +111,6 @@ class ParameterInfluenceController extends Controller
                         $item->save(false);
                     }
                 }
-
                 if ($this->request->post('push') !== null) {
                     $model->pushed = 1;
                     $model->save();
@@ -187,16 +185,18 @@ class ParameterInfluenceController extends Controller
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 $items = Yii::$app->request->post('Item');
-                foreach ($items['item_id'] as $i => $item_id) {
-                    $item = ParameterInfluenceItem::find()->where(['item_id' => $item_id])->one();
-                    $item = $item ?: new ParameterInfluenceItem();
-                    $item->influence_id = $model->id;
-                    $item->item_id = $item_id;
-                    $item->weight = $items['weight'][$i];
-                    $item->lower_value = isset($items[$item_id]) ? $items[$item_id]['lower'] : null;
-                    $item->upper_value = isset($items[$item_id]) ? $items[$item_id]['upper'] : null;
-                    $item->coefficient = isset($items[$item_id]) ? $items[$item_id]['coefficient'] : null;
-                    $item->save(false);
+                if (isset($items['item_id'])) {
+                    foreach ($items['item_id'] as $i => $item_id) {
+                        $item = ParameterInfluenceItem::find()->where(['item_id' => $item_id])->one();
+                        $item = $item ?: new ParameterInfluenceItem();
+                        $item->influence_id = $model->id;
+                        $item->item_id = $item_id;
+                        $item->weight = $items['weight'][$i];
+                        $item->lower_value = isset($items[$item_id]) ? $items[$item_id]['lower'] : null;
+                        $item->upper_value = isset($items[$item_id]) ? $items[$item_id]['upper'] : null;
+                        $item->coefficient = isset($items[$item_id]) ? $items[$item_id]['coefficient'] : null;
+                        $item->save(false);
+                    }
                 }
                 if ($this->request->post('push') !== null) {
                     $model->pushed = 1;

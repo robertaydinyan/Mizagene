@@ -70,7 +70,7 @@ AppAsset::register($this);
                     ['label' => 'Users', 'url' => ['/admin/admin/index'], 'active' => Yii::$app->controller->id == 'admin'],
                     ['label' => 'Item Rules', 'url' => ['/admin/item-rule/index'], 'active' => Yii::$app->controller->id == 'item-rule'],
                     ['label' => 'Usage types', 'url' => ['/admin/usg-type/index'], 'active' => Yii::$app->controller->id == 'usg-type'],
-                    ['label' => 'Parameter influence', 'url' => ['/admin/parameter-influence/index'], 'active' => Yii::$app->controller->id == 'usg-type'],
+                    ['label' => 'Equalizer', 'url' => ['/admin/parameter-influence/index'], 'active' => Yii::$app->controller->id == 'usg-type'],
                     ['label' => 'Language', 'url' => ['/admin/language/index'], 'active' => Yii::$app->controller->id == 'language'],
                     ['label' => 'Reports', 'url' => ['/admin/reports/index'], 'active' => Yii::$app->controller->id == 'reports'],
                     [
