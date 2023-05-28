@@ -77,7 +77,7 @@ class ItemsController extends Controller
     }
 
     public function actionGetItemsList($search) {
-//        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->format = Response::FORMAT_JSON;
         $search = json_decode($search);
         $pill = Yii::$app->request->get('pill') ?: 1;
         $step = Yii::$app->request->get('step') ?: 1;
@@ -102,7 +102,7 @@ class ItemsController extends Controller
         $search = json_decode($search);
         $search_model = new ItemsSearch();
         $search_model->filterByText($model, $search->search, false);
-        isset($search->usg_type) && $search_model->filterByUsgTypes($model, $search->usg_type);
+        isset($search->usg_types) && $search_model->filterByUsgTypes($model, $search->usg_types);
 
         $model->andFilterWhere(['deleted' => 0]);
         $model->groupBy(['items.id']);

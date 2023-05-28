@@ -151,6 +151,7 @@ class ParameterInfluenceController extends Controller
                 $subject = Subject::findOne($subject_id);
                 $subject_result = json_decode($subject->result->result);
                 $result[$subject_id]['name'] = $subject->name;
+                $result[$subject_id]['image'] = str_replace('/var/www/youmee/web', '', $subject->image);
                 $result[$subject_id]['items'] = array_reduce(array_filter($subject_result, function($el) use ($items) {
                     return in_array($el->item_ID, $items);
                 }), function($carry, $el) {

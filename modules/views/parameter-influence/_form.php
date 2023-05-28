@@ -55,109 +55,100 @@ use yii\bootstrap5\ActiveForm;
                 </div>
                 <div class="tab-pane <?php echo $step == 2 ? 'show active' : '' ?>" id="tabContent2" role="tabpanel" aria-labelledby="tab2">
                     <div class="row">
-                        <div class="col-10">
-                            <div class="overflow-auto">
-                                <div class="influence-item-rules">
-                                    <div class="item-rule-row">
-                                        <div class="item-rule-cell"><span>item</span></div>
-                                        <div class="item-rule-cell"><span>weight</span></div>
-                                        <div class="item-rule-cell"><span>%</span></div>
-                                        <div class="item-rule-cell"><span>lower value</span></div>
-                                        <div class="item-rule-cell"><span>upper value</span></div>
-                                        <div class="item-rule-cell"><span>coefficient</span></div>
-                                        <div class="item-rule-cell"><span></span></div>
-                                    </div>
-            <!--                        <div class="item-rule-row item-rule-row-template">-->
-            <!--                            <div class="item-rule-cell"></div>-->
-            <!--                            <div class="item-rule-cell"><input step="0.01" type="number" class="form-control"></div>-->
-            <!--                            <div class="item-rule-cell"><input type="number" class="form-control"></div>-->
-            <!--                            <div class="item-rule-cell"><input type="number" class="form-control"></div>-->
-            <!--                            <div class="item-rule-cell"><input step="0.01" type="number" class="form-control"></div>-->
-            <!--                            <div class="item-rule-cell"><a class="add-rule" href="javascript:;">+</a></div>-->
-            <!--                        </div>-->
-                                    <?php if ($model->items):
-                                        foreach ($model->items as $item_inf):
-                                            $item = $item_inf->item; 
-                                            if (!$item->check1) {
-                                                echo '<input type="text" id="disabledItem" value="1">';
-                                                break;
-                                            } ?>
-                                            <div class="item-rule-row item-rule-<?php echo $item->id; ?>" data-id="<?php echo $item->id; ?>">
-                                                <div class="item-rule-cell">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="fa fa-circle <?php echo $item->check1 ? ($item->disabled ? 'passive' : 'active') : 'disabled'; ?>" style="margin-right: 12px"></i>
-                                                        <span class="group-item-title-ru" style="color: #cc33e6; font-weight: 600;"><?php echo $item->getTitle(1)->title; ?></span>
-                                                        <span class="group-item-title-en" style="color: #cc33e6; font-weight: 600; display: none;"><?php echo $item->getTitle(2)->title; ?></span>
-                                                    </div>
+                        <div class="col-10 d-flex overflow-auto" style="align-self: flex-start;">
+                            <table class="influence-item-rules">
+                                <thead>
+                                    <tr class="item-rule-row">
+                                        <th class="fixed-column">Item</th>
+                                        <th>weight</th>
+                                        <th>%</th>
+                                        <th>lv</th>
+                                        <th>uv</th>
+                                        <th>c</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php if ($model->items):
+                                    foreach ($model->items as $i => $item_inf):
+                                        $item = $item_inf->item;
+                                        if (!$item->check1) { echo '<input type="text" id="disabledItem" value="1">'; break; } ?>
+                                        <tr class="item-rule-row item-rule-<?php echo $item->id; ?>" data-id="<?php echo $item->id; ?>">
+                                            <td class="item-rule-cell fixed-column">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa fa-circle <?php echo $item->check1 ? ($item->disabled ? 'passive' : 'active') : 'disabled'; ?>" style="margin-right: 12px"></i>
+                                                    <span class="group-item-title-ru" data-toggle="tooltip" title="<?php echo $item->getTitle(1)->title; ?>"><?php echo $item->getTitle(1)->title; ?></span>
+                                                    <span class="group-item-title-en" data-toggle="tooltip" title="<?php echo $item->getTitle(2)->title; ?>" style="display: none;"><?php echo $item->getTitle(2)->title; ?></span>
                                                 </div>
-                                                <div class="item-rule-cell">
-                                                    <input type="number" class="form-control weight" step="0.01" name="Item[weight][]" value="<?php echo $item_inf->weight ?: 1; ?>">
-                                                </div>
-                                                <div class="item-rule-cell">
-                                                    <span class="weight-percentage"></span>
-                                                </div>
-                                                <div class="item-rule-cell">
-                                                    <?php
-                                                    $item_inf->lower_value = $item_inf->lower_value ?: [''];
-                                                    foreach ($item_inf->lower_value as $lw) {
-                                                        echo sprintf(
-                                                            '<input type="number" class="form-control lower" name="Item[%s][lower][]" value="%s">',
+                                            </td>
+                                            <td class="item-rule-cell">
+                                                <input type="number" class="form-control weight" step="0.01" name="Item[weight][]" value="<?php echo $item_inf->weight ?: 1; ?>">
+                                            </td>
+                                            <td class="item-rule-cell">
+                                                <span class="weight-percentage"></span>
+                                            </td>
+                                            <td class="item-rule-cell">
+                                                <?php
+                                                $item_inf->lower_value = $item_inf->lower_value ?: [''];
+                                                foreach ($item_inf->lower_value as $lw) {
+                                                    echo sprintf(
+                                                        '<input type="number" class="form-control lower" name="Item[%s][lower][]" value="%s">',
 
-                                                            $item_inf->item_id,
-                                                            $lw
-                                                        );
-                                                    }
-                                                    ?>
-                                                </div>
-                                                <div class="item-rule-cell">
-                                                    <?php
-                                                    $item_inf->upper_value = $item_inf->upper_value ?: [''];
-                                                    foreach ($item_inf->upper_value as $uw) {
-                                                        echo sprintf(
-                                                            '<input type="number" class="form-control upper" name="Item[%s][upper][]" value="%s">',
+                                                        $item_inf->item_id,
+                                                        $lw
+                                                    );
+                                                }
+                                                ?>
+                                            </td>
+                                            <td class="item-rule-cell">
+                                                <?php
+                                                $item_inf->upper_value = $item_inf->upper_value ?: [''];
+                                                foreach ($item_inf->upper_value as $uw) {
+                                                    echo sprintf(
+                                                        '<input type="number" class="form-control upper" name="Item[%s][upper][]" value="%s">',
 
-                                                            $item_inf->item_id,
-                                                            $uw
-                                                        );
-                                                    }
-                                                    ?>
-                                                </div>
-                                                <div class="item-rule-cell">
-                                                    <?php
-                                                    $item_inf->coefficient = $item_inf->coefficient ?: [''];
-                                                    foreach ($item_inf->coefficient as $c) {
-                                                        echo sprintf(
-                                                            '<input type="number" step="0.01" class="form-control" name="Item[%s][coefficient][]" value="%s">',
+                                                        $item_inf->item_id,
+                                                        $uw
+                                                    );
+                                                }
+                                                ?>
+                                            </td>
+                                            <td class="item-rule-cell">
+                                                <?php
+                                                $item_inf->coefficient = $item_inf->coefficient ?: [''];
+                                                foreach ($item_inf->coefficient as $c) {
+                                                    echo sprintf(
+                                                        '<input type="number" step="0.01" class="form-control" name="Item[%s][coefficient][]" value="%s">',
 
-                                                            $item_inf->item_id,
-                                                            $c
-                                                        );
-                                                    }
-                                                    ?>
-                                                </div>
-                                                <div class="item-rule-cell"><a class="add-rule" href="javascript:;">+</a></div>
-                                            </div>
-                                        <?php endforeach;
-                                    endif; ?>
-                                </div>
-                            </div>
+                                                        $item_inf->item_id,
+                                                        $c
+                                                    );
+                                                }
+                                                ?>
+                                            </td>
+                                            <td class="item-rule-cell"><a class="add-rule" href="javascript:;">+</a></td>
+                                        </tr>
+                                    <?php endforeach;
+                                endif; ?>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="col-2">
                             <select class="select2 influence-subjects" multiple>
                                 <option value=""></option>
                                 <?php if ($subjects) {
                                     foreach ($subjects as $subject) {
-                                        echo sprintf('<option value="%s">%s</option>', $subject->id, $subject->name);
+                                        echo sprintf('<option value="%s" selected>%s</option>', $subject->id, $subject->name);
                                     }
                                 } ?>
                             </select>
                             <table class="result-table table">
                                 <thead>
-                                    <tr>
-                                        <th>id</th>
-                                        <th>name</th>
-                                        <th>result</th>
-                                    </tr>
+                                <tr>
+                                    <th>id</th>
+                                    <th>name</th>
+                                    <th>result</th>
+                                </tr>
                                 </thead>
                                 <tbody>
 
@@ -176,36 +167,16 @@ use yii\bootstrap5\ActiveForm;
 </div>
 
 <style>
-    /*.item-rule {*/
-    /*    display: flex;*/
-    /*    justify-content: space-between;*/
+    /*.item-rule-cell {*/
+    /*    margin: 4px;*/
+    /*    height: 40px;*/
     /*}*/
 
-    .item-rule-row div:nth-child(2),
-    .item-rule-row div:nth-child(3),
-    .item-rule-row div:nth-child(4),
-    .item-rule-row div:nth-child(5),
-    .item-rule-row div:nth-child(6) {
-        width: 120px;
-    }
-    .influence-item-rules {
-        display: table;
-        border-collapse: collapse;
-    }
+    /*.influence-item-rules .item-rule-cell {*/
+    /*    max-width: 72px;*/
+    /*}*/
 
-    .item-rule-row {
-        display: table-row;
-    }
-
-    .item-rule-cell {
-        min-width: 100px;
-        display: table-cell;
-        padding: 5px;
-    }
     .item-rule-row:nth-child(odd) {
-    }
-
-    .item-rule-row:nth-child(even) {
         box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.05);
     }
 
@@ -216,11 +187,28 @@ use yii\bootstrap5\ActiveForm;
         margin: 0;
     }
 
-    .item-rule-row-template {
-        display: none;
+    .fixed-column {
+        max-width: 200px;
+        min-width: 200px;
     }
 
-    .droppable .group-item {
-        width: calc(50% - 28px);
+    .item-rule-cell {
+        padding: 4px;
+    }
+
+    .item-rule-cell:not(.fixed-column) {
+        max-width: 60px;
+        min-width: 60px;
+    }
+
+    .subject-column img, .result-table img {
+        height: 60px;
+    }
+
+    .fixed-column {
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        background-color: #fff;
     }
 </style>

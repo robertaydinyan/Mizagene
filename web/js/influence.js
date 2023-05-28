@@ -56,9 +56,10 @@ function itemResultCalculation() {
         result = 0;
         total_weight = 0;
         $.each($('.item-rule-row').not(":eq(0)"), (j, el) => {
+
             coefficient = 1;
             weight = parseFloat($(el).children().eq(1).find('input').val());
-            value = $(el).find('.subject-' + k).find('span').text();
+            value = $(el).find('.subject-' + k).text();
             total_weight += weight;
             iv = value * weight
             for (let i = 0; i <  $(el).children().eq(3).children().length; i++) {
@@ -73,7 +74,7 @@ function itemResultCalculation() {
             result += iv;
         });
         result = Math.round(result / total_weight);
-        body[result] = '<tr><td>' + k + '</td><td>' + $('.subject-' + k).html() + '</td><td>' + (result) + '</td></tr>';
+        body[k] = '<tr><td>' + k + '</td><td>' + $('.subject-' + k).html() + '</td><td>' + (result) + '</td></tr>';
     });
     $('.result-table tbody').html(Object.values(body).reverse().join(''));
 }
@@ -135,12 +136,12 @@ $(document).ready(function() {
         }).done(function(res) {
             $('.subject-column').remove();
             $.each(JSON.parse(res), (i, k) => {
-                $('.item-rule-row').eq(0).append('<div class="item-rule-cell subject-column subject-' + i + '"><span>' + k['name'] + '</span></div>');
+                $('.item-rule-row').eq(0).append('<th class="subject-column subject-' + i + '"><img src="' + k['image'] + '"></th>');
                 $.each(k['items'], (j, t) => {
-                    $('.item-rule-' + j).append('<div class="item-rule-cell subject-column subject-' + i + '""><span>' + Math.round(t) + '</span></div>');
+                    $('.item-rule-' + j).append('<td class="item-rule-cell subject-column subject-' + i + '"">' + Math.round(t) + '</td>');
                 });
-                itemResultCalculation();
             });
+            itemResultCalculation();
         });
     });
 
