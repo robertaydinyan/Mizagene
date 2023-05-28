@@ -105,7 +105,7 @@ $(document).ready(function() {
     });
 
     $(document).on('keydown', '.group-input-search', function () {
-        getActiveItems($(this), 0, 0);
+        getActiveItems($(this));
     });
 
     $(document).on('change', '.weight', function () {

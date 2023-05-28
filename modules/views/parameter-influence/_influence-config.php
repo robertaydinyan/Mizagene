@@ -14,6 +14,18 @@ use yii\bootstrap5\Html;
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="width: 300px;">
                 <div class="dropdown-content px-4 py-3">
+                    <div class="d-flex">
+                        <div class="d-flex col-10 justify-content-around">
+                            <div class="custom-checkbox">
+                                <input type="checkbox" id="MigratedCheckbox" class="item-type-checkbox" value="1" name="source" checked>
+                                <label for="MigratedCheckbox">Migrated</label>
+                            </div>
+                            <div class="custom-checkbox">
+                                <input type="checkbox" id="CreatedCheckbox" class="item-type-checkbox" value="0" name="source">
+                                <label for="CreatedCheckbox">Created</label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group mt-2">
                         <label class="mb-2">By <span style="color: #cc33e6">usage</span> type</label><br>
                         <select class="select2 item-usage-type" multiple="multiple" name="usg_types[]">

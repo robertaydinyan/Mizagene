@@ -28,10 +28,8 @@ function takeFormData($container) {
     return indexed_object;
 }
 
-function getActiveItems(el, source = -1, influence = -1) {
+function getActiveItems(el) {
     let data = takeFormData($(el).closest('.group-config'));
-    data['source'] = source;
-    data['influence'] = influence;
     $.get('/admin/items/get-active-items', {
         'search': JSON.stringify(data),
     }).done((res) => {
