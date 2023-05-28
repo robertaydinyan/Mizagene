@@ -154,4 +154,9 @@ $(document).ready(function() {
 
     $('.update-group-items').click();
     calculateWeightPercentage();
+
+    if ($('#disabledItem').length > 0) {
+        $('.influence-item-rules').closest('.row').remove();
+        $('#tabContent2').append('<div><span>Your items arent active</span></div>');
+    }
 });

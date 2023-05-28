@@ -104,7 +104,7 @@ class ParameterInfluenceController extends Controller
                         $item = $item ?: new ParameterInfluenceItem();
                         $item->influence_id = $model->id;
                         $item->item_id = $item_id;
-                        $item->weight = isset($items['weight']) ? $items['weight'][$i] : null;
+                        $item->weight = isset($items['weight']) ? $items['weight'][$i] : 1;
                         $item->lower_value = isset($items[$item_id]) ? $items[$item_id]['lower'] : [''];
                         $item->upper_value = isset($items[$item_id]) ? $items[$item_id]['upper'] : [''];
                         $item->coefficient = isset($items[$item_id]) ? $items[$item_id]['coefficient'] : [''];
