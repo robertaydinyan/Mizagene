@@ -70,7 +70,7 @@ AppAsset::register($this);
                     ['label' => 'Users', 'url' => ['/admin/admin/index'], 'active' => Yii::$app->controller->id == 'admin'],
                     ['label' => 'Item Rules', 'url' => ['/admin/item-rule/index'], 'active' => Yii::$app->controller->id == 'item-rule'],
                     ['label' => 'Usage types', 'url' => ['/admin/usg-type/index'], 'active' => Yii::$app->controller->id == 'usg-type'],
-                    ['label' => 'Equalizer', 'url' => ['/admin/parameter-influence/index'], 'active' => Yii::$app->controller->id == 'usg-type'],
+                    ['label' => 'Equalizer', 'url' => ['/admin/parameter-influence/index'], 'active' => Yii::$app->controller->id == 'parameter-influence'],
                     ['label' => 'Language', 'url' => ['/admin/language/index'], 'active' => Yii::$app->controller->id == 'language'],
                     ['label' => 'Reports', 'url' => ['/admin/reports/index'], 'active' => Yii::$app->controller->id == 'reports'],
                     [
@@ -97,7 +97,7 @@ AppAsset::register($this);
                             'active' => Yii::$app->controller->id == 'items'
                         ],
 
-                        ['label' => '<span style="margin-left: 50px">Hi, <b>' . Yii::$app->admin->getIdentity()->username . '</b></span>'],
+                        ['label' => '<span style="margin-left: 50px">Hi, <span style="font-weight: 600;">' . Yii::$app->admin->getIdentity()->username . '</span></span>'],
                         ['label' => '<img src="/images/icons/logout.png" style="width: 20px; margin-left: -12px; margin-top: -4px;">', 'url' => ['/admin/logout']],
                     ]
             ): []

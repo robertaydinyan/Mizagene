@@ -409,6 +409,7 @@ main {
 }
 
 .item-search-bar {
+    border-radius: 4px;
     margin-bottom: 8px;
 }
 
@@ -482,8 +483,7 @@ a.nav-link {
 }
 
 .nav-link.active {
-    background: #ff8900;
-    color: white !important;
+    color: #ff8900 !important;
     padding: 8px 20px !important;
 }
 
@@ -494,9 +494,11 @@ a.nav-link {
 .submenu_item {
     padding: 8px 0 !important;
 }
+
 .steps-container {
     padding: 12px;
     background: #f7f7f7;
+    margin-top: 18px;
 }
 
 .absolute-center {
@@ -822,9 +824,9 @@ a.nav-link {
 }
 
 .pagination li.active a {
-    background-color: #337ab7;
+    background-color: #464646;
     color: #fff;
-    border-color: #337ab7;
+    border-color: #464646;
 }
 
 .group-content, .report-content {

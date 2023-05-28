@@ -95,7 +95,7 @@ $comb_types = Items::getICombTypes();
             </div>
         </div>
         <button class="btn btn-dark-blue group-save">save</button>
-        <?php if ($mode == 1 && $step == 2 && Yii::$app->admin->getIdentitY()->role == 1): ?>
+        <?php if ($model->pushed == 0 && $step == 2 && Yii::$app->admin->getIdentitY()->role == 1): ?>
             <input type="submit" class="btn btn-dark-blue group-save" value="push" name="push">
         <?php endif; ?>
     </div>

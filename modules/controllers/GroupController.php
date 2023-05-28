@@ -184,6 +184,7 @@ class GroupController extends Controller
             if ($model->load($this->request->post()) && $model->save()) {
                 if ($this->request->post('push') !== null) {
                     $model->pushed = 1;
+                    $model->datetime = date('Y-m-d H:i:s');
                     $model->save();
                 }
                 $iconFile = UploadedFile::getInstance($model, 'icon');
@@ -194,11 +195,24 @@ class GroupController extends Controller
                 if ($model->save()) {
                     $step = min(2, $step + 1);
 
-                    $variant = GroupVariants::find()->where(['group_id' => $id, 'depth' => 1])->one();
-                    $variant->items = $model->items;
-                    $variant->item_description_ru = Yii::$app->request->post('Group')['item_description_ru'];
-                    $variant->item_description_en = Yii::$app->request->post('Group')['item_description_en'];
-                    $variant->save();
+                    if ($model->pushed == 1) {
+                        $variant = GroupVariants::find()->where(['group_id' => $id, 'depth' => 1])->one();
+                        if ($variant) {
+                            $variant->items = $model->items;
+                            $variant->item_description_ru = Yii::$app->request->post('Group')['item_description_ru'];
+                            $variant->item_description_en = Yii::$app->request->post('Group')['item_description_en'];
+                            $variant->save();
+                        } else {
+                            $variant = new GroupVariants();
+                            $variant->group_id = $model->id;
+                            $variant->depth = 1;
+                            $variant->name = 'Vol 1';
+                            $variant->items = $model->items;
+                            $variant->item_description_ru = Yii::$app->request->post('Group')['item_description_ru'];
+                            $variant->item_description_en = Yii::$app->request->post('Group')['item_description_en'];
+                            $variant->save();
+                        }
+                    }
                     return $this->redirect(['create?step=' . ($step) . '&id=' . $model->id]);
                 }
             }

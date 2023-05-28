@@ -651,6 +651,8 @@ foreach ($cl[0] as $column) {
     'pager' => [
         'hideOnSinglePage' => true,
     ],
+    'layout' => '{items}\n{pager}',
+    // 'options' => ['style' => 'margin: 0 -12px;', 'class' => 'grid-view'],
     'columns' => [
         ...$columns_filtered,
         [
@@ -795,3 +797,14 @@ foreach ($cl[0] as $column) {
         ],
     ],
 ]);
+?>
+<style>
+    .container-fluid {
+        padding: 0 !important;
+    }
+
+    .navbar.fixed-top {
+        margin: 0 12px;
+    }
+
+</style>

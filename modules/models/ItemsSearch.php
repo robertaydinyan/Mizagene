@@ -42,12 +42,6 @@ class ItemsSearch extends Items
 
         // add conditions that should always apply here
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'pageSize' => 100
-            ],
-        ]);
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -61,6 +55,13 @@ class ItemsSearch extends Items
             $search->message && $this->filterByText($query, $search->message);
             $search->usg_type && $this->filterByUsgTypes($query, $search->usg_type);
         }
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 100,
+                'totalCount' => $query->count()
+            ],
+        ]);
         return $dataProvider;
     }
 

@@ -18,11 +18,11 @@ $this->params['breadcrumbs'][] = $this->title;
 $active_pill = $tabs[$pill];
 ?>
 <div class="steps-container d-flex">
-    <div class="d-flex col-2">
+    <div class="d-flex col-2 align-items-center">
         <img class="m-icon" src="/images/icons/<?php echo $active_pill[1]; ?>" alt="">
-        <div style="margin-left: 12px; margin-top: 4px">
+        <div style="margin-left: 12px;">
             <input type="hidden" value="<?php echo $pill?>" id="itemPill">
-            <h4><?php echo $active_pill[0];?></h4>
+            <h4 class="m-0"><?php echo $active_pill[0];?></h4>
         </div>
     </div>
     <ul class="nav nav-pills nav-pills-steps col-10" role="tablist">
@@ -49,13 +49,19 @@ $active_pill = $tabs[$pill];
     </ul>
 </div>
 <div class="grid-header mt-4 col-12 d-flex justify-content-between">
-    <div class="form-group col-6 d-flex">
+    <div class="form-group col-6 d-flex" style="margin: 0 12px;">
+        <div class="col-5">
+            <?php echo \yii\widgets\LinkPager::widget([
+                'pagination' => $dataProvider->pagination,
+            ]); ?>
+        </div>
         <div class="form-group col-6 ">
-            <input type="text" class="form-control item-search-bar" placeholder="search by parameter ID, or any language">
+            <input type="text" class="form-control item-search-bar" placeholder="Search by parameter ID, or any language">
         </div>
         <div class="form-group col-4 mx-3">
             <select class="form-control item-search-bar select2" multiple data-placeholder="Search by usage type" >
-                <?php if ($usgTypes) {
+                <?php 
+                if ($usgTypes) {
                     foreach ($usgTypes as $usgType) {
                         echo sprintf('<option value="%s">%s</option>', $usgType->id, $usgType->name);
                     }
@@ -71,7 +77,7 @@ $active_pill = $tabs[$pill];
     </div>
     <?php if (in_array(Yii::$app->admin->identity->role, [1, 3])): ?>
         <div>
-            <?= Html::a(' <i class="fa fa-plus"></i> Create Parameter', ['create'], ['class' => 'btn btn-dark']) ?>
+            <?= Html::a(' Create Parameter', ['create'], ['class' => 'btn btn-dark', 'style' => 'margin-right: 20px; background: #f08900; border-color: #f08900;']) ?>
         </div>
     <?php endif; ?>
 </div>

@@ -83,7 +83,7 @@ class Reports extends \yii\db\ActiveRecord
             $variant = GroupVariants::findOne(['id' => $group_id]);
             $result[] = ($variant ? $variant->group->title_russian . ' ' . $variant->name : '');
         }
-        if ($this->id == 7)die();
+        // if ($this->id == 7) die();
         return $result;
     }
 }
