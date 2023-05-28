@@ -263,11 +263,11 @@ if (!$lang) {
 
             <input type="hidden" name="activeTab" value="">
             <div class="col-lg-12 mt-3 text-center">
-                <?= Html::submitButton($login_lang, ['class' => 'btn newBtnPurple']) ?>
+                <?= Html::submitButton($login_lang, ['class' => 'btn newBtnPurple', 'style' => 'width: 200px !important']) ?>
             </div>
             <?php ActiveForm::end();?>
 
-            <div class="col-lg-12 mt-3 text-center">
+            <div class="col-lg-12 mt-3 text-center d-flex justify-content-center">
                 <div id="g_id_onload"
                      data-client_id="337924835812-t42uuid33rlj493im60g765f07mp6i16.apps.googleusercontent.com"
                      data-context="signin"

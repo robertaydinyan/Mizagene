@@ -114,7 +114,28 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                         <span style="color: #003C46">Discover <b><?= $subject->name ?>'s</b> character reports <br> <i class="fa-solid fa-check me-1" style="color: #97df2a;"></i>agree or <i class="fa-solid fa-xmark me-1" style="color: red;"></i>disagree with the results</span>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 mt-md-0 mt-3 px-0 text-md-end text-center">
-                        <button class="btn" type="button" style="background: rgb(53, 104, 176);color: white; border-radius: 3px;"><i class="fa-brands fa-square-facebook fa-lg" style="color: #ffffff;"></i> Continue with Facebook </button>
+                        <!-- <button class="btn" type="button" style="background: rgb(53, 104, 176);color: white; border-radius: 3px;"><i class="fa-brands fa-square-facebook fa-lg" style="color: #ffffff;"></i> Continue with Facebook </button> -->
+                        <div class="col-lg-12 mt-3 text-center d-flex justify-content-center">
+                <div id="g_id_onload"
+                     data-client_id="337924835812-t42uuid33rlj493im60g765f07mp6i16.apps.googleusercontent.com"
+                     data-context="signin"
+                     data-ux_mode="popup"
+                     data-login_uri="https://youmee.tech"
+                     data-auto_prompt="false">
+                </div>
+
+                <div class="g_id_signin"
+                     data-type="standard"
+                     data-shape="rectangular"
+                     data-theme="outline"
+                     data-text="continue_with"
+                     data-size="large"
+                     data-locale="en-US"
+                     data-logo_alignment="left">
+                </div>
+<!--                <button class="btn" type="button" style="background: rgb(53, 104, 176);color: white; border-radius: 3px;"><i class="fa-brands fa-square-facebook fa-lg" style="color: #ffffff;"></i> Continue with Facebook </button>-->
+            </div>
+
                     </div>
                 </div>
             </div>

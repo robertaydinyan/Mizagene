@@ -77,7 +77,11 @@ use yii\bootstrap5\ActiveForm;
             <!--                        </div>-->
                                     <?php if ($model->items):
                                         foreach ($model->items as $item_inf):
-                                            $item = $item_inf->item; ?>
+                                            $item = $item_inf->item; 
+                                            if (!$item->check1) {
+                                                echo '<input type="text" id="disabledItem" value="1">';
+                                                break;
+                                            } ?>
                                             <div class="item-rule-row item-rule-<?php echo $item->id; ?>" data-id="<?php echo $item->id; ?>">
                                                 <div class="item-rule-cell">
                                                     <div class="d-flex align-items-center">
