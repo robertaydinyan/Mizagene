@@ -660,6 +660,11 @@ class Items extends \yii\db\ActiveRecord
     public static function getGenders() {
         return self::$genders;
     }
+    public function hasGroup() {
+        return GroupVariants::find()
+            ->where('FIND_IN_SET(:itemId, items)', [':itemId' => $this->id])
+            ->count() > 0;
+    }
 
     public function fields() {
         $fields = parent::fields();
@@ -789,5 +794,12 @@ class Items extends \yii\db\ActiveRecord
         $item['usg_type'] = $it->getUsgType();
         $item['comb_type'] = $it->getCombType();
         return $item;
+    }
+
+    public function getCircleType() {
+        if (!$this->hasGroup()) return 'used';
+        if (!$this->check1) return 'disabled';
+        else if ($this->disabled) return 'passive';
+        else return 'active';
     }
 }

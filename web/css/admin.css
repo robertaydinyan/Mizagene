@@ -678,6 +678,10 @@ a.nav-link {
     color: grey;
 }
 
+.fa-circle.used {
+    color: #ff8900;
+}
+
 .group-item {
     height: 126px;
     margin: 8px 0;

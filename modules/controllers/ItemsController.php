@@ -97,7 +97,7 @@ class ItemsController extends Controller
     }
 
     public function actionGetActiveItems($search) {
-        Yii::$app->response->format = Response::FORMAT_JSON;
+//        Yii::$app->response->format = Response::FORMAT_JSON;
         $model = Items::find()->select('items.id, item_id, i_type, source, check1, disabled');
         $search = json_decode($search);
         $search_model = new ItemsSearch();
@@ -142,8 +142,13 @@ class ItemsController extends Controller
             ]);
         }
         $model->limit(9999);
+        $items = $model->asArray()->all();
+        foreach ($items as &$item) {
+            $itemModel = Items::findOne($item['id']);
+            $item['circle'] = $itemModel->getCircleType();
+        }
         // var_dump($model->createCommand()->getRawSql());die();
-        return json_encode($model->asArray()->all());
+        return json_encode($items);
     }
 
     public function actionGetItem($id) {

@@ -61,20 +61,14 @@ AppAsset::register($this);
             'encodeLabels' => false,
             'items' => !Yii::$app->admin->isGuest ?
                 (Yii::$app->admin->identity->role == 1 ? [
+                    ['label' => 'Analytics', 'url' => ['/admin/admin/index'], 'active' => Yii::$app->controller->id == 'admin'],
                     [
                         'label' => 'Parameters',
                         'items' => $parameters_sub_menu,
                         'active' => Yii::$app->controller->id == 'items'
                     ],
-    //            ['label' => '', 'url' => ['/admin/items/index'], ],
-                    ['label' => 'Users', 'url' => ['/admin/admin/index'], 'active' => Yii::$app->controller->id == 'admin'],
-                    ['label' => 'Item Rules', 'url' => ['/admin/item-rule/index'], 'active' => Yii::$app->controller->id == 'item-rule'],
-                    ['label' => 'Usage types', 'url' => ['/admin/usg-type/index'], 'active' => Yii::$app->controller->id == 'usg-type'],
-                    ['label' => 'Equalizer', 'url' => ['/admin/parameter-influence/index'], 'active' => Yii::$app->controller->id == 'parameter-influence'],
-                    ['label' => 'Language', 'url' => ['/admin/language/index'], 'active' => Yii::$app->controller->id == 'language'],
-                    ['label' => 'Reports', 'url' => ['/admin/reports/index'], 'active' => Yii::$app->controller->id == 'reports'],
                     [
-                        'label' => 'Groups & Regions',
+                        'label' => 'Groups & Reports',
                         'items' => [
                             '<div class="dropdown-header" style="background-color: #ff8900;margin-top: -16px;"></div>',
                             [
@@ -82,12 +76,43 @@ AppAsset::register($this);
                                 'url' => '/admin/group/index'
                             ],
                             [
+                                'label' => '<div class="submenu_item"><span>Reports</span></div>',
+                                'url' => '/admin/reports/index'
+                            ],
+                        ],
+                        'active' => in_array(Yii::$app->controller->id, array('group', 'reports'))
+                    ],
+                    ['label' => 'Equalizer', 'url' => ['/admin/parameter-influence/index'], 'active' => Yii::$app->controller->id == 'parameter-influence'],
+                    [
+                        'label' => 'Lists',
+                        'items' => [
+                            '<div class="dropdown-header" style="background-color: #ff8900;margin-top: -16px;"></div>',
+                            [
+                                'label' => '<div class="submenu_item"><span>Usage types</span></div>',
+                                'url' => '/admin/usg-type/index'
+                            ],
+                            [
                                 'label' => '<div class="submenu_item"><span>Regions</span></div>',
                                 'url' => '/admin/region/index'
                             ],
+                            [
+                                'label' => '<div class="submenu_item"><span>View permissions</span></div>',
+                                'url' => '/admin/item-rule/index'
+                            ],
+                            [
+                                'label' => '<div class="submenu_item"><span>Language</span></div>',
+                                'url' => '/admin/language/index'
+                            ],
                         ],
-                        'active' => in_array(Yii::$app->controller->id, array('group', 'region'))
+                        'active' => in_array(Yii::$app->controller->id, array('usg-type', 'region', 'item-rule', 'language'))
                     ],
+                    //            ['label' => '', 'url' => ['/admin/items/index'], ],
+                    ['label' => 'Subjects', 'url' => ['/admin/admin/index'], 'active' => Yii::$app->controller->id == 'admin'],
+                    ['label' => 'Users', 'url' => ['/admin/admin/index'], 'active' => Yii::$app->controller->id == 'admin'],
+//                    ['label' => 'Item Rules', 'url' => ['/admin/item-rule/index'], 'active' => Yii::$app->controller->id == 'item-rule'],
+//                    ['label' => 'Language', 'url' => ['/admin/language/index'], 'active' => Yii::$app->controller->id == 'language'],
+//                    ['label' => 'Reports', 'url' => ['/admin/reports/index'], 'active' => Yii::$app->controller->id == 'reports'],
+
                     ['label' => '<span style="margin-left: 50px">Hi, <b>' . Yii::$app->admin->getIdentity()->username . '</b></span>'],
                     ['label' => '<img src="/images/icons/logout.png" style="width: 20px; margin-left: -12px; margin-top: -4px;">', 'url' => ['/admin/logout']],
                 ] : [

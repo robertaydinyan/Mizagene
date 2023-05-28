@@ -23,7 +23,7 @@ if (!isset($description_en)) {
     <div class="col-11 group-item-content">
         <div class="d-flex justify-content-between">
             <div class="d-flex">
-                <span><i class="fa fa-circle <?php echo $item->check1 ? ($item->disabled ? 'passive' : 'active') : 'disabled'; ?>"></i></span>
+                <span><i class="fa fa-circle <?php echo $item->getCircleType(); ?>"></i></span>
                 <span class="group-item-id" style="color: #b4b4b4; margin-left: 8px;"><?php echo $item->item_id; ?></span>
             </div>
             <div class="group-item-source-1 col-8 <?php echo $item->source == 0 ? 'd-none' : ''; ?>">
