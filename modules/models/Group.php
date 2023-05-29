@@ -80,15 +80,13 @@ class Group extends \yii\db\ActiveRecord
         return $result;
     }
 
-    public function getItemsCount() {
-        $result = 0;
-        if ($this->items) {
-            is_string($this->items) && $this->items = array($this->items);
-            foreach ($this->items as $items_id) {
-                $result += 1;
-            }
+    public function getItemsCount($c1 = null) {
+        $items = Items::find()->where(['JSON_CONTAINS(REPLACE(\'' . json_encode($this->items) . '\', \'"\', \'\'), CAST(id AS JSON), \'$\')' => 1]);
+        if (!is_null($c1)) {
+            $items->andWhere(['check1' => $c1]);
         }
-        return $result;
+
+        return $items->count();
     }
 
     public function getVols() {

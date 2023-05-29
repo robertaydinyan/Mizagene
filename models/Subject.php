@@ -20,21 +20,24 @@ use Yii;
  * @property int $status
  * @property int $copied
  */
-class Subject extends \yii\db\ActiveRecord
-{
+class Subject extends \yii\db\ActiveRecord {
+    private static $genders = array(
+        1 => 'Male',
+        2 => 'Female',
+        3 => 'Other (born as a male)',
+        4 => 'Other (born as a female)'
+    );
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'subjects';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['user_id', 'name', 'year_of_birth', 'gender', 'height', 'wrist_size', 'image'], 'required'],
             [['is_me'], 'number'],
@@ -45,8 +48,7 @@ class Subject extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
@@ -65,18 +67,23 @@ class Subject extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getResult()
-    {
+    public function getResult() {
         return $this->hasOne(Tresult::class, ['subject_id' => 'id']);
     }
 
-    public function getUser()
-    {
+    public function getUser() {
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
-    public function getConnections()
-    {
+    public function getConnections() {
         return $this->hasMany(Connection::class, ['subject_id' => 'id']);
+    }
+
+    public static function getGenders() {
+        return self::$subjects;
+    }
+
+    public function getGender() {
+        return self::$genders[$this->gender];
     }
 }

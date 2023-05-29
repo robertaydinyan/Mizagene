@@ -426,6 +426,10 @@ main {
     background: #ff8900;
 }
 
+.pill-badge-green {
+    background: #149518;
+}
+
 .pill-badge-dark {
     background: #464646;
 }

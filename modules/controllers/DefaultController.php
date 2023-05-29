@@ -4,6 +4,10 @@ namespace app\modules\controllers;
 
 use app\modules\models\admin;
 use app\modules\models\LoginFormAdmin;
+use app\modules\models\Group;
+use app\modules\models\Reports;
+use app\modules\models\Items;
+use app\models\Subject;
 use Yii;
 use yii\web\Controller;
 use yii\web\Response;
@@ -18,7 +22,17 @@ class DefaultController extends Controller
      * @return string
      */
     public function actionIndex() {
-        return $this->render('index');
+        $groups = Group::find()->all();
+        $reports = Reports::find()->all();
+        $disabled_items = Items::find()->where(['>', 'mark', 0])->all();
+        $subjects_count = \yii\helpers\ArrayHelper::map(Subject::find()->select('gender, count(id) as count')->groupBy('gender')->asArray()->all(), 'gender', 'count');
+
+        return $this->render('index', [
+            'groups' => $groups,
+            'reports' => $reports,
+            'disabled_items' => $disabled_items,
+            'subjects_count' => $subjects_count
+        ]);
     }
 
     public function actionLogin() {
