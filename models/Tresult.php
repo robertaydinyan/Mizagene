@@ -52,4 +52,5 @@ class Tresult extends \yii\db\ActiveRecord
             'balgham' => 'Balgham'
         ];
     }
+
 }

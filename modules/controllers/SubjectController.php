@@ -2,7 +2,9 @@
 
 namespace app\modules\controllers;
 
+use app\models\Subject;
 use app\models\SubjectSearch;
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -49,6 +51,7 @@ class SubjectController extends Controller {
 
         return $this->render('details', [
             'subject' => $subject,
+            'search' => Yii::$app->request->get('search')
         ]);
     }
 }

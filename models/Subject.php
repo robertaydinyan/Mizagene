@@ -80,7 +80,7 @@ class Subject extends \yii\db\ActiveRecord {
     }
 
     public static function getGenders() {
-        return self::$subjects;
+        return self::$genders;
     }
 
     public function getGender() {

@@ -1,6 +1,7 @@
 <?php
 
 use app\modules\models\Admin;
+use app\modules\models\Items;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -11,8 +12,9 @@ use app\models\Subject;
 /** @var app\modules\models\AdminSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Subjects';
+$this->title = 'Subject ' . $subject->name;
 $this->params['breadcrumbs'][] = $this->title;
+$subject_result = $subject->result;
 ?>
 <div class="admin-index">
 
@@ -20,49 +22,47 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
-        'tableOptions' => ['class' => 'table table-striped table-bordered simple-grid'],
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            'id',
-            [
-                'header' => '<div>Image</div>',
-                'format' => 'raw',
-                'value' => function($model) {
-                    return sprintf('<img src="%s" width="100">', str_replace('/var/www/youmee/web', '', $model->image));
-                }
-            ],
-            'name',
-            'year_of_birth',
-            [
-                'header' => '<div>Gender</div>',
-                'format' => 'raw',
-                'value' => function($model) {
-                    return $model->getGender();
-                }
-            ],
-            'height',
-            'wrist_size',
-            'created_at',
-            [
-                'class' => ActionColumn::className(),
-                'template' => '{details}',
-                'urlCreator' => function ($action, Subject $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                },
-                'buttons' => [
-                    'details' => function ($url, Subject $model, $key) {
-                        return Html::a('',
-                            $url,
-                            [
-                                'class' => 'icon push-black label',
-                            ]
+    <form>
+        <input type="hidden" name="id" value="<?php echo $subject->id; ?>">
+        <input type="text" name="search" class="form-control" value="<?php echo $search; ?>">
+    </form>
+    <br>
+
+    <table class="table table-striped table-bordered simple-grid">
+        <thead>
+            <tr>
+                <th>item_id</th>
+                <th>name</th>
+                <th>description</th>
+                <th>value</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php if ($subject_result) {
+            foreach (json_decode($subject_result['result']) as $i => $r) {
+                $item = Items::findOne($r->item_ID);
+                if ($item) {
+                    $title = $item->getTitle(1)->title;
+                    $description = $item->getTitle(1)->description;
+                    if (!$search || ($title && strpos($title, $search) !== false) || ($description && strpos($description, $search) !== false) || strpos($r->item_ID, $search) !== false) {
+                        echo sprintf('
+                                <tr>
+                                    <td>%s</td>
+                                    <td>%s</td>
+                                    <td>%s</td>
+                                    <td>%s</td>
+                                </tr>
+                            ',
+                            $r->item_ID,
+                            $item->getTitle(1)->title,
+                            $item->getTitle(1)->description,
+                            $r->subject_item_result
                         );
                     }
-                ]
-            ],
-        ],
-    ]); ?>
-
+                }
+            }
+        } ?>
+        </tbody>
+    </table>
 
 </div>

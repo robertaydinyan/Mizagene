@@ -107,7 +107,7 @@ AppAsset::register($this);
                         'active' => in_array(Yii::$app->controller->id, array('usg-type', 'region', 'item-rule', 'language'))
                     ],
                     //            ['label' => '', 'url' => ['/admin/items/index'], ],
-                    ['label' => 'Subjects', 'url' => ['/admin/subjec/index'], 'active' => Yii::$app->controller->id == 'subject'],
+                    ['label' => 'Subjects', 'url' => ['/admin/subject/index'], 'active' => Yii::$app->controller->id == 'subject'],
                     ['label' => 'Users', 'url' => ['/admin/admin/index'], 'active' => Yii::$app->controller->id == 'admin'],
 //                    ['label' => 'Item Rules', 'url' => ['/admin/item-rule/index'], 'active' => Yii::$app->controller->id == 'item-rule'],
 //                    ['label' => 'Language', 'url' => ['/admin/language/index'], 'active' => Yii::$app->controller->id == 'language'],
