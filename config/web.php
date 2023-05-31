@@ -36,6 +36,16 @@ $config = [
                 'name' => '_panelAdmin',
             ]
         ],
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => [
+                'google' => [
+                    'class' => 'yii\authclient\clients\Google',
+                    'clientId' => '337924835812-t42uuid33rlj493im60g765f07mp6i16.apps.googleusercontent.com',
+                    'clientSecret' => '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',
+                ],
+            ],
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],

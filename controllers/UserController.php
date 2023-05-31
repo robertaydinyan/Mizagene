@@ -275,6 +275,10 @@ class UserController extends Controller
             }
             $reports = Reports::find()->where(['disabled' => 0])->all();
             $rep = Reports::findOne($rep);
+            if (date('Y') - $subject->year_of_birth < 18 && $rep->id == 7) {
+                $rep = Reports::findOne(3);
+                return $this->render('user', ['subject' => $subject, 'reports' => $reports, 'rep' => $rep]);
+            }
             return $this->render('user', ['subject' => $subject, 'reports' => $reports, 'rep' => $rep]);
         } else {
             return $this->redirect(['/all-subjects?type=my']);

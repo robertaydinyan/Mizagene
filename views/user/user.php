@@ -369,7 +369,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                         <h6 class=" col-12 m-0"><h4 class="font-italic me-1 pb-3">Available Reports</h4></h6>
                         <div style="overflow-y: scroll; height: 270px;">
                             <?php foreach ($reports as $key => $report): ?>
-                                <p class="my-1" style="cursor: pointer; <?php if ($report->id == $rep->id)  { ?> color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?> <?php } ?>">
+                                <p class="my-1 <?= date('Y') - $subject->year_of_birth < 18 && $report->id == 7 ? 'd-none' : ''  ?>" style="cursor: pointer; <?php if ($report->id == $rep->id)  { ?> color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?> <?php } ?>">
                                     <a href="/subject?id=<?= $subject->public_id ?>&rep=<?= $report->id ?>" style="text-decoration: none; color: unset"><span><?= $subjectLang == 2 ? $report->title_english : $report->title_russian ?></span> <?php if ($report->id == $rep->id) { ?><i class="fa-solid fa-caret-right" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"></i><?php } ?></a>
                                 </p>
                             <?php endforeach; ?>
@@ -379,7 +379,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                             <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Talent to sports</p>
                             <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Career guidance</p>
                             <!--                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> HR profile</p>-->
-                            <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Intimate report</p>
+<!--                            <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Intimate report</p>-->
                             <!--                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> KYC Casino</p>-->
                             <!--                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Specialized talent assessment in football</p>-->
                         </div>
@@ -440,7 +440,8 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                         <h6 class=" col-12 m-0"><h4 class="font-italic me-1 pb-3" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>">Available Reports</h4></h6>
                         <div style="overflow-y: scroll; height: 210px;">
                             <?php foreach ($reports as $key => $report): ?>
-                                <p class="my-1" style="cursor: pointer; <?php if ($report->id == $rep->id)  { ?> color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?> <?php } ?>">
+
+                                <p class="my-1 <?= date('Y') - $subject->year_of_birth < 18 && $report->id == 7 ? 'd-none' : ''  ?>" style="cursor: pointer; <?php if ($report->id == $rep->id)  { ?> color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?> <?php } ?>">
                                     <a href="/subject?id=<?= $subject->public_id ?>&rep=<?= $report->id ?>" style="text-decoration: none; color: unset"><span><?= $subjectLang == 2 ? $report->title_english : $report->title_russian ?></span> <?php if ($report->id == $rep->id) { ?><i class="fa-solid fa-caret-right" style="color: <?= ($subject->gender == 1 || $subject->gender == 3) ? 'rgb(75, 173, 233)' : 'rgb(210, 58, 225)' ?>"></i><?php } ?></a>
                                 </p>
                             <?php endforeach; ?>
@@ -450,7 +451,7 @@ $subjectLang = isset($_COOKIE['subjectLang']) ? $_COOKIE['subjectLang'] : 2;
                             <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Talent to sports</p>
                             <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Career guidance</p>
                             <!--                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> HR profile</p>-->
-                            <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Intimate report</p>
+<!--                            <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Intimate report</p>-->
                             <!--                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> KYC Casino</p>-->
                             <!--                        <p class="mt-1 mb-1" style="color: #464646"><i class="fa-solid fa-lock me-2" style="color: #464646"></i> Specialized talent assessment in football</p>-->
                         </div>

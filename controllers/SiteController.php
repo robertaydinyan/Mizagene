@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\SignupForm;
 use app\models\User;
 use app\models\SignupcompanyForm;
+use http\Env\Request;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -13,10 +14,23 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use Facebook\Facebook;
+use yii\authclient\OAuthToken;
+use yii\authclient\clients\Google;
+use yii\helpers\Url;
+use GuzzleHttp\Client;
 
 
 class SiteController extends Controller
 {
+    public function beforeAction($action)
+    {
+        if ($action->id == 'google-login') {
+            $this->enableCsrfValidation = false;
+        }
+
+        return parent::beforeAction($action);
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -69,54 +83,77 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    public function actionSignupFacebook()
+    public function actionGoogleLogin()
     {
-        $fb = new Facebook([
-            'app_id' => '1905373833188880',
-            'app_secret' => 'c9b641f7e20f41e7b695cacd08235169',
-            'default_graph_version' => 'v13.0',
-        ]);
+        $authCode = Yii::$app->request->get('code');
+//var_dump($authCode);die;
+        if ($authCode !== null) {
+            $accessToken = $this->exchangeAuthCodeForAccessToken($authCode);
+            $idToken = $this->getIdTokenFromAccessToken($accessToken);
+            $userInfo = $this->decodeAndVerifyIdToken($idToken);
 
-        $helper = $fb->getRedirectLoginHelper();
-
-        $permissions = ['email'];
-
-        $loginUrl = $helper->getLoginUrl('https://youmee.tech/site/callback', $permissions);
-
-        return $this->redirect($loginUrl);
+            // Process the user information
+            // ...
+var_dump(111);die;
+//            return $this->goHome();
+        }
     }
 
-    public function actionCallback()
+    private function exchangeAuthCodeForAccessToken($authCode)
     {
-        // Replace APP_ID and APP_SECRET with your Facebook app credentials
-        $fb = new Facebook([
-            'app_id' => '1905373833188880',
-            'app_secret' => 'c9b641f7e20f41e7b695cacd08235169',
-            'default_graph_version' => 'v13.0',
+        $client = new Client();
+var_dump($authCode);die;
+        $response = $client->post('https://oauth2.googleapis.com/token', [
+            'form_params' => [
+                'code' => $authCode,
+                'client_id' => '337924835812-t42uuid33rlj493im60g765f07mp6i16.apps.googleusercontent.com',
+                'client_secret' => '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',
+                'redirect_uri' => Url::to(['site/google-login'], true),
+                'grant_type' => 'authorization_code',
+            ],
         ]);
 
-        $helper = $fb->getRedirectLoginHelper();
+        $data = json_decode($response->getBody(), true);
 
-        try {
-            $accessToken = $helper->getAccessToken();
-        } catch (Facebook\Exceptions\FacebookResponseException $e) {
-            // Handle Facebook API errors
-        } catch (Facebook\Exceptions\FacebookSDKException $e) {
-            // Handle SDK errors
+        if (isset($data['access_token'])) {
+            return $data['access_token'];
         }
 
-        if (!isset($accessToken)) {
-            // Redirect to login page or display an error message
+        // Handle error response
+        // ...
+    }
+
+    private function getIdTokenFromAccessToken($accessToken)
+    {
+        $client = new Client();
+
+        $response = $client->get('https://www.googleapis.com/oauth2/v3/tokeninfo', [
+            'query' => [
+                'access_token' => $accessToken,
+            ],
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+
+        if (isset($data['id_token'])) {
+            return $data['id_token'];
         }
 
-        // Get user profile data
-        $response = $fb->get('/me?fields=id,name,email', $accessToken);
-        $userProfile = $response->getGraphUser();
-var_dump($userProfile);die;
-        // Process the user data and create a new user account or perform any other necessary actions
-        // You can access the user's Facebook ID, name, and email using $userProfile->getId(), $userProfile->getName(), $userProfile->getEmail() respectively
+        // Handle error response
+        // ...
+    }
 
-        // Redirect the user to a success page or perform any other desired action
+    private function decodeAndVerifyIdToken($idToken)
+    {
+        $client = new Google_Client();
+        $payload = $client->verifyIdToken($idToken);
+
+        if ($payload) {
+            return $payload;
+        }
+
+        // Handle error response
+        // ...
     }
 
 

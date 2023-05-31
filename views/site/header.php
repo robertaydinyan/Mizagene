@@ -272,7 +272,7 @@ if (!$lang) {
                      data-client_id="337924835812-t42uuid33rlj493im60g765f07mp6i16.apps.googleusercontent.com"
                      data-context="signin"
                      data-ux_mode="popup"
-                     data-login_uri="https://youmee.tech"
+                     data-login_uri="https://youmee.tech/site/google-login"
                      data-auto_prompt="false">
                 </div>
 
@@ -285,6 +285,24 @@ if (!$lang) {
                      data-locale="en-US"
                      data-logo_alignment="left">
                 </div>
+<!---->
+<!--                <div id="g_id_onload"-->
+<!--                     data-client_id="337924835812-t42uuid33rlj493im60g765f07mp6i16.apps.googleusercontent.com"-->
+<!--                     data-context="signin"-->
+<!--                     data-ux_mode="popup"-->
+<!--                     data-login_uri="--><?php //= Yii::$app->getUrlManager()->createAbsoluteUrl(['site/google-login']) ?><!--"-->
+<!--                     data-callback="handleCredentialResponse">-->
+<!--                </div>-->
+<!---->
+<!--                <div class="g_id_signin"-->
+<!--                     data-type="standard"-->
+<!--                     data-shape="rectangular"-->
+<!--                     data-theme="outline"-->
+<!--                     data-text="continue_with"-->
+<!--                     data-size="large"-->
+<!--                     data-locale="en-US"-->
+<!--                     data-logo_alignment="left">-->
+<!--                </div>-->
 <!--                <button class="btn" type="button" style="background: rgb(53, 104, 176);color: white; border-radius: 3px;"><i class="fa-brands fa-square-facebook fa-lg" style="color: #ffffff;"></i> Continue with Facebook </button>-->
             </div>
 
@@ -546,7 +564,18 @@ if (!$lang) {
     </div>
 
 </header>
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
 
+        <script>
+            function onGoogleSignIn(googleUser) {
+                var authCode = googleUser.getAuthResponse().code;
+                handleCredentialResponse(authCode);
+            }
+
+            function handleCredentialResponse(authCode) {
+                window.location.href = '/site/google-login?code=' + authCode.credential;
+            }
+        </script>
         <script>
             const form = document.querySelector('#user-regForm');
             const usernameInput = form.querySelector('#username-input');
