@@ -27,16 +27,27 @@ use app\models\Subject;
             'header' => '<div>Image</div>',
             'format' => 'raw',
             'value' => function($model) {
+                return sprintf('
+                        <div class="d-flex">
+                            <img src="%s" class="subject-image zoomable">
+                        </div>
+                    ',
+                    str_replace('/var/www/youmee/web', '', $model->image)
+                );
+            }
+        ],
+        [
+            'header' => '<div>dots</div>',
+            'format' => 'raw',
+            'value' => function($model) {
                 $lastDotPosition = strrpos($model->image, '.');
                 $dotImage = substr($model->image, 0, $lastDotPosition) . '0.jpg';
                 $dotImage = '/landmarks' . DS . str_replace('/var/www/youmee/web/images/subjects/', '', $dotImage);
                 return sprintf('
                         <div class="d-flex">
-                            <img src="%s" class="subject-image">
-                            <img src="%s" class="subject-image">
+                            <img src="%s" class="subject-image zoomable">
                         </div>
                     ',
-                    str_replace('/var/www/youmee/web', '', $model->image),
                     $dotImage
                 );
             }

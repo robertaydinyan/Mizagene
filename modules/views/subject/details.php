@@ -17,15 +17,16 @@ $this->params['breadcrumbs'][] = $this->title;
 $subject_result = $subject->result;
 ?>
 <div class="admin-index">
+    <div class="d-flex justify-content-between p-2">
+        <h4><?= Html::encode($this->title) ?></h4>
 
-    <h4><?= Html::encode($this->title) ?></h4>
-
+        <form class="col-3">
+            <input type="hidden" name="id" value="<?php echo $subject->id; ?>">
+            <input type="text" name="search" class="form-control" value="<?php echo $search; ?>">
+        </form>
+    </div>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <form>
-        <input type="hidden" name="id" value="<?php echo $subject->id; ?>">
-        <input type="text" name="search" class="form-control" value="<?php echo $search; ?>">
-    </form>
     <br>
     <div class="grid-view">
         <table class="table table-striped table-bordered simple-grid">

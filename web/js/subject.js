@@ -5,4 +5,8 @@ $(document).ready(function() {
             colResizable($('.grid-view table'));
         });
     });
+
+    $('.zoomable').on('click', function() {
+        $(this).toggleClass('zoomed');
+    })
 });
