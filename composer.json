@@ -25,7 +25,9 @@
         "firebase/php-jwt": "^6.4",
         "kartik-v/yii2-widget-select2": "@dev",
         "kartik-v/yii2-sortable": "@dev",
-        "facebook/graph-sdk": "^5.1"
+        "facebook/graph-sdk": "^5.1",
+        "google/apiclient": "^2.12.1",
+        "yiisoft/yii2-authclient": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

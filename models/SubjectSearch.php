@@ -38,7 +38,7 @@ class SubjectSearch extends Subject
      * @return ActiveDataProvider
      */
     public function search($params) {
-        $query = Subject::find()->where(['deleted_at' => null, 'status' => 0]);
+        $query = Subject::find()->where(['deleted_at' => null, 'status' => 0, 'copied' => 0]);
 
         // add conditions that should always apply here
 
