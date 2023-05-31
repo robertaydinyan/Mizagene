@@ -27,42 +27,79 @@ $subject_result = $subject->result;
         <input type="text" name="search" class="form-control" value="<?php echo $search; ?>">
     </form>
     <br>
-
-    <table class="table table-striped table-bordered simple-grid">
-        <thead>
-            <tr>
-                <th>item_id</th>
-                <th>name</th>
-                <th>description</th>
-                <th>value</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php if ($subject_result) {
-            foreach (json_decode($subject_result['result']) as $i => $r) {
-                $item = Items::findOne($r->item_ID);
-                if ($item) {
-                    $title = $item->getTitle(1)->title;
-                    $description = $item->getTitle(1)->description;
-                    if (!$search || ($title && strpos($title, $search) !== false) || ($description && strpos($description, $search) !== false) || strpos($r->item_ID, $search) !== false) {
-                        echo sprintf('
-                                <tr>
-                                    <td>%s</td>
-                                    <td>%s</td>
-                                    <td>%s</td>
-                                    <td>%s</td>
-                                </tr>
-                            ',
-                            $r->item_ID,
-                            $item->getTitle(1)->title,
-                            $item->getTitle(1)->description,
-                            $r->subject_item_result
-                        );
+    <div class="grid-view">
+        <table class="table table-striped table-bordered simple-grid">
+            <thead>
+                <tr>
+                    <th>
+                        <div>
+                            <span>item_id</span>
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            <span>e2e_id</span>
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            <span>name ru</span>
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            <span>description ru</span>
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            <span>name en</span>
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            <span>description en</span>
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            <span>value</span>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php if ($subject_result) {
+                foreach (json_decode($subject_result['result']) as $i => $r) {
+                    $item = Items::find()->where(['item_id' => $r->item_ID])->one();
+                    if ($item) {
+                        $title = $item->getTitle(1)->title;
+                        $description = $item->getTitle(1)->description;
+                        if (!$search || ($title && strpos($title, $search) !== false) || ($description && strpos($description, $search) !== false) || strpos($r->item_ID, $search) !== false) {
+                            echo sprintf('
+                                    <tr>
+                                        <td>%s</td>
+                                        <td>%s</td>
+                                        <td>%s</td>
+                                        <td>%s</td>
+                                        <td>%s</td>
+                                        <td>%s</td>
+                                        <td>%s</td>
+                                    </tr>
+                                ',
+                                $r->item_ID,
+                                $item->id,
+                                $item->getTitle(1)->title,
+                                $item->getTitle(1)->description,
+                                $item->getTitle(2)->title,
+                                $item->getTitle(2)->description,
+                                round($r->subject_item_result, 2)
+                            );
+                        }
                     }
                 }
-            }
-        } ?>
-        </tbody>
-    </table>
-
+            } ?>
+            </tbody>
+        </table>
+    </div>
 </div>

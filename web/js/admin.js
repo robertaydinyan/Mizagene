@@ -28,6 +28,23 @@ function takeFormData($container) {
     return indexed_object;
 }
 
+function colResizable(table) {
+    tableRowsWidth(table);
+    $(table).colResizable({
+        resizeMode: 'fit',
+        liveDrag: true,
+        minWidth: 50,
+        onResize: () => {
+            let widths = [];
+            $.each($(table).find('th'), (i, k) => {
+                widths[i] = $(k).css('width');
+            });
+            localStorage[page] = JSON.stringify(widths)
+        }
+    }).removeClass('JPadding');
+}
+
+
 function getActiveItems(el) {
     let data = takeFormData($(el).closest('.group-config'));
     $.get('/admin/items/get-active-items', {
@@ -63,6 +80,19 @@ function getActiveItems(el) {
         });
         groupItemEvents();
     });
+}
+let page = window.location.href.split('/').slice(3).join('/');
+page = page.split(/[?&]/);
+page = page[0] + "?" + page.filter(item => item.includes('pill'));
+page = page.charAt(page.length - 1) === '?' ? page.slice(0, -1) : page;
+console.log(page);
+function tableRowsWidth(table) {
+    if (localStorage[page]) {
+        let widths = JSON.parse(localStorage[page]);
+        $.each(widths, (i, v) => {
+            $(table).eq(0).find('tr').children().eq(i).css('width', v);
+        });
+    }
 }
 
 $(document).ready(function() {
@@ -123,30 +153,6 @@ $(document).ready(function() {
         }
     }
 
-    let page = window.location.href.split('/').slice(3).join('/');
-    function tableRowsWidth(table) {
-        if (localStorage[page]) {
-            let widths = JSON.parse(localStorage[page]);
-            $.each(widths, (i, v) => {
-                $(table).eq(0).find('tr').children().eq(i).css('width', v);
-            });
-        }
-    }
-    function colResizable(table) {
-        tableRowsWidth(table);
-        $(table).colResizable({
-            resizeMode: 'fit',
-            liveDrag: true,
-            minWidth: 50,
-            onResize: () => {
-                let widths = [];
-                $.each($(table).find('th'), (i, k) => {
-                    widths[i] = $(k).css('width');
-                });
-                localStorage[page] = JSON.stringify(widths)
-            }
-        }).removeClass('JPadding');
-    }
 
     function createOptions(arr) {
         let result = "";

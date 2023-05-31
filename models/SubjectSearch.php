@@ -11,6 +11,7 @@ use app\models\Subject;
  */
 class SubjectSearch extends Subject
 {
+    public $search;
     /**
      * {@inheritdoc}
      */
@@ -45,8 +46,8 @@ class SubjectSearch extends Subject
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
         $this->load($params);
+        $this->search = isset($params['SubjectSearch']) ? $params['SubjectSearch']['search'] : null;
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -74,6 +75,15 @@ class SubjectSearch extends Subject
             ->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'public_id', $this->public_id]);
 
+        if ($this->search) {
+            if (is_numeric($this->search)) {
+                $query->andFilterWhere(['or',
+                    ['like', 'id', $this->search]
+                ]);
+            } else {
+                $query->andFilterWhere(['or', ['like', 'name', $this->search]]);
+            }
+        }
         return $dataProvider;
     }
 }
